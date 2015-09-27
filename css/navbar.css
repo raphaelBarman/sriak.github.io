@@ -1,0 +1,100 @@
+/*MENU*/
+
+#page-wrap { 
+  width: 600px; 
+  margin: 15px auto; 
+  position: relative; 
+}
+
+.menu {
+  list-style: none;
+  line-height: 42px;
+  margin: auto;
+  /*outline: 1px solid red;*/
+  padding-left: 10px;
+  width: 15em;
+}
+
+.menu a {
+  color: #ddd;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  padding-left: 1em;
+  width: 100%;
+}
+
+
+.menu a:hover {
+  margin-left: 1em;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+}
+
+.menu li {
+  box-shadow: 3px 0 rgba(52,152,219,.2) inset;
+  margin-bottom: 5px;
+  padding-left: 0.5em;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;/*outline: 1px solid green*/
+}
+
+.menu .submenu {
+      list-style-type:none;
+}
+
+.menu li:hover { box-shadow: 15em 0 rgba(52,152,219,.2)inset; }
+
+.menu li:nth-child(2) a { background-position: 0 -42px; }
+
+.menu li:nth-child(3) a { background-position: 0 -84px; }
+
+.menu li:nth-child(4) a { background-position: 0 -126px; }
+
+.menu li:nth-child(5) a { background-position: 0 -168px; }
+
+.menu li:last-child a { background-position: 0 -210px; }
+
+/*FIN MENU*/
+/*Posicion Responsive Menu*/
+
+nav {
+  background: #2061A2;
+  padding-right: .25em;
+  position: fixed;
+  left: -18em;
+  top: 0;
+  padding-top: 5em;
+  box-sizing: border-box;
+  z-index: 20;
+  height: 100%;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+nav.active { left: 0; }
+
+#mobile-nav {
+  cursor: pointer;
+  left: 1.5em;
+  height: 32px;
+  position: fixed;
+  top: 1.5em;
+  width: 32px;
+  z-index: 30;
+  transition: transform 0.3s;
+  fill: #0A3F69;
+}
+
+
+#mobile-nav.active {
+      transform: rotate(90deg);
+      fill: white;
+}
+
+#wrapper.active{
+    padding-left: 200px;
+}

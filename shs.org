@@ -1,0 +1,111 @@
+# -*- mode: org; -*-
+#+TITLE: Science technologie et société A
+#+SETUPFILE: htmlnotes.setup
+
+* Week 1
+- logiciels parties intégrantes de la société, font partie de la vie et de la culture. êtres logiciels.
+- Peu pris en compte dans la société. Effets sociaux ? Qui/quoi influence leur conception, fabrication, expansion, distribution ?
+
+** Software studies
+- être logiciel :
+  - Complexité car multiplicité lors de la création, comportement innatendu, etc.
+- Deux processus de gestation :
+  - La façon dont les logiciels ont été façonnés
+  - Dynamique d'expansion et d'usage
+- Culture informatique
+  - Plus loin que juste le code/la technicité, histoire de construction, d'industrie, de changements
+  - Rapprocher les experts en info et les utilisateurs
+- Nombreux enjeux politiques par rapport aux choix faits en informatique
+
+** Contenu du cours
+- Histoires de formations logicielles
+- Economies et cultures logicielles
+- Pratique et consommation logicielles
+- Compostantes logicielles
+- Constructions et conceptions logicielles
+* Week 2
+** Fait d'actualité : Wolkswagen triche sur ses test d'émissions de Diesel
+ - logiciel "espion" qui permettait de tricher
+   - Fait la différence entre test réel et test en laboratoire
+ - Raisons possibles/mobile ?
+   - Normes de l'EPA, difficiles à atteindre, plutôt faite pour moteurs américains
+ - Questions ?
+   - Concurrents l'ont-ils découvert ? Font la même chose ?
+   - Quantités d'immension de gaz testées en laboratoire, ceci remet en cause ces tests ?
+   - Qu'en est-il d'aute logiciels placés dans d'autres objets ? Prolifération
+     potentielle de logiciels agissant à l'insu de l'utilisateur.
+     - Question politique : Faut-il réguler ce genre de question ? Logiciel pas
+       considéré comme objet potentiellement dangereux, pas comme par exemples
+       les armes, les médicaments, l'agro-alimentaire.
+       - (pour les 3 derniers) Mise en oeuvre pas étatique, mais plutôt privée,
+         voir même auto-régulation.
+ - L'usage du logiciel : entreprise utilise logiciel pour contourner législation
+ - Conception/stratégie du logiciel 
+** Histoire du logicielle :
+*** Trois axes en Histoire
+- Evolution des caractéristiques techniques des dispositifs
+- Biographie des personnages clé
+- Histoire intelectuelle des évolutions des porblèmes mathématique et d'ingénierie
+*** Histoire sociotechnique (1945-1965)
+**** WWII, ENIAC, EDVAC et BINAC
+- Dispositifs mécaniques de calcul : fort besoin de calculs pour ballistique,etc.
+- Demande en calcul de plus en plus importante.
+  - Besoin d'autre chose que de l'analogique
+  - En 1943 : projet /Colossus/ pour décrypter le code allemand
+  - Aux USA en 1943, projet ENIAC : but est d'accélérer les calculs balisitiques
+- Projet ENIAC :
+  - Opérationnel en 1946...
+  - "Enrôlé" pour résolution d'équation en physique nucléaire \rightarrow ne marche pas bien...
+- EDVAC, sucesseur, basé sur le modèle de von Neumann : implémente le concept de "stored-program"
+- Personnages clés :
+  - von Neumann
+  - Eckert
+  - Mauchly
+- Trois éléments clés :
+  - Entrée de la recherche en mathématiques appliquées dans les efforts de guerre
+  - Nouvelle configuration géopolitique: Les USA comme superpuissance mondiale
+    et montée de l'URSS
+  - Formation de nouveau collectifs de recherche qui perdureront une fois la
+    guerre terminée
+- Concept d'orientation mutuelle
+**** 1943-1950 et le /Whirlind Project/
+- Les origines :
+  - Fin 1941, entrée en guerre, besoin en termes d'aéronautique et de formation au pilotage.
+  - L'armée américaine disposait déjà des simulateurs de vols, mais électromécanique
+  - *Problème* : pour chaque modèle d'avion, un modèle d'avion spécifique
+- 1943, un simulateur universel
+  - Labo du MIT
+  - Projet confié à Jay Forrester
+- De l'analogique au numérique
+  - A la base, projet de le faire avec des ordinateurs analogique
+  - 1945, Forrester entend parler de l'ordinateur numérique \rightarrow pour lui
+    la solution au problème des opérations de calcul en temps réels, mais besoin
+    de demande de budget \rightarrow demande acceptée.
+- Deux problèmes :
+  - Nouveau système de mémoire vive à instaurer, car mémoires actuelles trop lentes
+  - Fin de la guerre, projet mis sous la tutelle d'un autre organisme qui lui
+    doute de plus en plus de la faisabilité du projet.
+- De simulateur à système d'information
+  - Pour justifier les couts, devient un système d'information militaire
+  - Budget de plus en plus réduit, en 1949, quasi enterré.
+  - Mais en 1949, on apprend que la Russie possède la bombe nucléaire.
+- /Whirlind/ repris par la /Air force/ et devient alors le projet SAGE
+**** 1950-1963 et le projet SAGE
+- 1951 Mémoire électro-statique trop peu performante et fiable \rightarrow une partie du labo est dédiée à la recherche sur la mémoire.
+- 1953 Remplacement de la mémoire par de la mémoire à tore magnétique \rightarrow /Whirlind/ devient l'ordinateur le plus puissant et le plus fiable
+- 1954-1955 Transfert graduelle de la techno du projet à IBM
+- Estimation du coût total du projet depuis la reprise de la /Air Force/ estimée entre 9-16 mia ?
+- 23 IBM (basé sur le SAGE) aux USA
+- Bilan :
+  - En tant que système de commandement, pas eu un rôle très important...
+  - Mais a grandement participé à *l'instauration d'une industrie de sous-traitants* actifs dans le domaine de l'information digitale, le traiment du signal, le /hardware/ et surtout le /software/
+- IBM en sort fondamentalemnt grandie
+
+****  Quelques enseignements : rôles des croyances :
+1. Problématique militaire comme moteur d'innovations technologiques
+   - Mise en place de nouvelles communautés de chercheurs
+   - Croyance de l'utilité de l'informatique et des mathématiques pour des avancées militaire
+2. Instauration d'un modèle de recherche et de développpement qui se répètera dans les décennies suivantes
+   - Triangulation et mise en place d'habitudes de travail entre organismes de financment liés à la défense de ...
+3. Dès ses débuts, la recherche en informatiquese déploie - malgré elle - en parallèle à cette équation: comment diffuser au mieux des injonctions ?
+   - Les concepts de "signaux" et d'"informations" sont fondamentalement liés à des problématiques de gestion et d'encadrement

@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2015-09-27 Sun 20:54 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Circuit et système</title>
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="css/hideshow.css"/>
+<link rel="stylesheet" type="text/css" href="css/navbar.css"/>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="js/bigblow.js"></script>
+<script type="text/javascript" src="js/hideshow.js"></script>
+<script type="text/javascript" src="js/jquery.stickytableheaders.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slider.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Circuit et système</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline35">1. Chapitre 1</a>
+<ul>
+<li><a href="#orgheadline6">1.1. Unités</a>
+<ul>
+<li><a href="#orgheadline1">1.1.1. Tableau récapitulatif</a></li>
+<li><a href="#orgheadline5">1.1.2. Quelques rapports/relations important(e)s</a>
+<ul>
+<li><a href="#orgheadline2">1.1.2.1. Charge et courant</a></li>
+<li><a href="#orgheadline3">1.1.2.2. Puissance</a></li>
+<li><a href="#orgheadline4">1.1.2.3. Énergie</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline12">1.2. Éléments de circuit passifs</a>
+<ul>
+<li><a href="#orgheadline7">1.2.1. Résistance</a></li>
+<li><a href="#orgheadline8">1.2.2. Conductance</a></li>
+<li><a href="#orgheadline9">1.2.3. Capacité</a></li>
+<li><a href="#orgheadline10">1.2.4. Inductance</a></li>
+<li><a href="#orgheadline11">1.2.5. Inductances couplées (mutuelles)</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline17">1.3. Éléments de circuit actifs</a>
+<ul>
+<li><a href="#orgheadline13">1.3.1. Source de tension idéale</a></li>
+<li><a href="#orgheadline14">1.3.2. Source de tension 'réelle'</a></li>
+<li><a href="#orgheadline15">1.3.3. Source de courant idéale</a></li>
+<li><a href="#orgheadline16">1.3.4. Source de courant 'réelle'</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline20">1.4. Lois de Kirchhoff</a>
+<ul>
+<li><a href="#orgheadline18">1.4.1. Pour les noeuds</a></li>
+<li><a href="#orgheadline19">1.4.2. Pour les mailles</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline26">1.5. Éléments en série</a>
+<ul>
+<li><a href="#orgheadline21">1.5.1. Résistances en série</a></li>
+<li><a href="#orgheadline22">1.5.2. Capacités en série</a></li>
+<li><a href="#orgheadline23">1.5.3. Inductances en série</a></li>
+<li><a href="#orgheadline24">1.5.4. Sources de tension en série</a></li>
+<li><a href="#orgheadline25">1.5.5. Sources de courant en série</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline32">1.6. Éléments en parralèle</a>
+<ul>
+<li><a href="#orgheadline27">1.6.1. Résistances en parrallèle</a></li>
+<li><a href="#orgheadline28">1.6.2. Capacités en parrallèle</a></li>
+<li><a href="#orgheadline29">1.6.3. Inductances en parrallèle</a></li>
+<li><a href="#orgheadline30">1.6.4. Sources de tension en parrallèle</a></li>
+<li><a href="#orgheadline31">1.6.5. Sources de courant en parrallèle</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline33">1.7. Diviseurs de tension et de courant</a></li>
+<li><a href="#orgheadline34">1.8. Circuits</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline42">2. Chapitre 2</a>
+<ul>
+<li><a href="#orgheadline36">2.1. Circuits linéaires</a></li>
+<li><a href="#orgheadline37">2.2. Principe de superposition</a></li>
+<li><a href="#orgheadline38">2.3. Transformation de sources</a></li>
+<li><a href="#orgheadline39">2.4. Théorème de Thévenin</a></li>
+<li><a href="#orgheadline40">2.5. Théorème de Norton</a></li>
+<li><a href="#orgheadline41">2.6. Transfert maximal de puissance</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline35" class="outline-2">
+<h2 id="orgheadline35"><span class="section-number-2">1</span> <a href="Chapter-1.pdf">Chapitre 1</a></h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">1.1</span> Unités</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-orgheadline1" class="outline-4">
+<h4 id="orgheadline1"><span class="section-number-4">1.1.1</span> Tableau récapitulatif</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Nom</th>
+<th scope="col" class="org-left">S</th>
+<th scope="col" class="org-left">Unité/S</th>
+<th scope="col" class="org-left">Rapport entre unités</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Intensité du <b>courant</b> élec.</td>
+<td class="org-left">\(I\)</td>
+<td class="org-left">ampère/\(A\)</td>
+<td class="org-left">\(C \cdot s^{-1}\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Puissance</b></td>
+<td class="org-left">\(P\)</td>
+<td class="org-left">watt/\(W\)</td>
+<td class="org-left">\(J \cdot s^{-1}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Quantité d'élec., <b>charge</b> élec,</td>
+<td class="org-left">\(q\), \(Q\)</td>
+<td class="org-left">coulomb/\(C\)</td>
+<td class="org-left">\(s \cdot A\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Tension</b> élec., diff. de potentiel élec.</td>
+<td class="org-left">\(U\) / \(V\)</td>
+<td class="org-left">volt/\(V\)</td>
+<td class="org-left">\(W \cdot A^{-1}\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Résistance</b> élec.</td>
+<td class="org-left">\(R\)</td>
+<td class="org-left">ohm/\(\Omega\)</td>
+<td class="org-left">\(W \cdot A^{-1}\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Conductance</b> élec.</td>
+<td class="org-left">\(G\)</td>
+<td class="org-left">siemens/\(S\)</td>
+<td class="org-left">\(A \cdot V^{-1}\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Capacité</b> élec.</td>
+<td class="org-left">\(C\)</td>
+<td class="org-left">farad/\(F\)</td>
+<td class="org-left">\(C \cdot V^{-1}\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Inductance</b></td>
+<td class="org-left">\(L\)</td>
+<td class="org-left">henry/\(H\)</td>
+<td class="org-left">\(V \cdot s \cdot A^{-1}\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">1.1.2</span> Quelques rapports/relations important(e)s</h4>
+<div class="outline-text-4" id="text-1-1-2">
+</div><div id="outline-container-orgheadline2" class="outline-5">
+<h5 id="orgheadline2"><span class="section-number-5">1.1.2.1</span> Charge et courant</h5>
+<div class="outline-text-5" id="text-1-1-2-1">
+<p>
+\(i(t) = \frac{dq}{dt}\) <br  />
+</p>
+
+<p>
+\(q(t) = \int\limits_0^t i(\tau)d\tau\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-5">
+<h5 id="orgheadline3"><span class="section-number-5">1.1.2.2</span> Puissance</h5>
+<div class="outline-text-5" id="text-1-1-2-2">
+<p>
+Dans un circuit électrique, la puissance instantanée \(p(t)\) est égale au produit
+de la tension et du courant instantanés et la puissance moyenne \(P\), à la valeur
+moyenne de la puissance instantanée.
+</p>
+
+<p>
+\(p(t) = u(t)i(t)\) <br  />
+</p>
+
+<p>
+\(P = \frac{1}{t_2-t_1} \int\limits_{t_1}^{t_2} u(t) i(t) dt\) ou \(P=\frac{1}{T}
+\int\limits_0^T u(t) i(t) dt\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-5">
+<h5 id="orgheadline4"><span class="section-number-5">1.1.2.3</span> Énergie</h5>
+<div class="outline-text-5" id="text-1-1-2-3">
+<p>
+Le joule (\(J\)) équivaut au travail produit par une force de 1 \(N\) dont le point
+d'application se déplace d'un mètre dans le sens de la force.
+</p>
+
+<p>
+\(w(t) = \int\limits_0^t p(\tau)d\tau\)
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">1.2</span> Éléments de circuit passifs</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><span class="section-number-4">1.2.1</span> Résistance</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li>Satisfait la loi d'Ohm : \(u(t) = R i(t)\)</li>
+<li>Puissance dissipée : \(p(t) = u(t)i(t) = Ri^2(t) = \frac{u^2(t)}{R}\)</li>
+<li>Énergie dissipée (sous forme de chaleur): \(w_R(t) = R \int\limits_0^t
+  i^2(\tau)d\tau = \frac{1}{R} \int\limits_0^t u^2 (\tau)d\tau\)
+<ul class="org-ul">
+<li>Régime continu : \(i(t) = I\ u(t) = U \Rightarrow\ w_R(t) = RI^2t=\frac{U^2t}{R}\)</li>
+<li>Régime sinusoïdal : \(u(t) = Û \sin \omega t \Rightarrow\ w_R(t) =
+    \frac{Û^2}{2R}\left[ t - \frac{1}{2\omega} \sin(2\omega t)\right]\)</li>
+</ul></li>
+<li>Court-circuit
+<ul class="org-ul">
+<li>Soit un circuit dont deux points sont reliés par une résistance. Si l'on
+fait tendre la valeur de cette résistance vers <i>zéro</i>, ces deux points
+deviennent en court-circuit.</li>
+<li>En pratique, un bout de fil constitue souvent (pas toujours !) un court-circuit.</li>
+</ul></li>
+<li>Circuit ouvert
+<ul class="org-ul">
+<li>Soit un circuit dont deux points sont reliés par une résistance. Si l'on
+fait tendre la valeur de cette résistance vers l'<i>infini</i>, ces deux points
+deviennent en circuit ouvert</li>
+<li>En pratique, on réalise un circuit ouvert en enlevant tous les éléments qui
+relient les deux points du circuit.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><span class="section-number-4">1.2.2</span> Conductance</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Inverse de la résistance (\(G=1/R\)) : \(i(t) = Gu(t)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">1.2.3</span> Capacité</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<ul class="org-ul">
+<li>Obéit aux relations suivantes : \(q(t) = Cu(t)\)</li>
+<li>Vu que le courant est le débit des charges, on obtient :
+<ul class="org-ul">
+<li>\(i(t) = \frac{dq}{dt}\)</li>
+<li>\(i(t) = C\frac{du}{dt}\)</li>
+<li>\(u(t) = \frac{1}{C} \int\limits_{-\infty}^ti(\tau)d\tau = u(0) + \frac{1}{C}
+    \int\limits_{0}^ti(\tau)d\tau\)</li>
+</ul></li>
+<li>Courant et tension
+<ul class="org-ul">
+<li>En régime continu : circuit ouvert</li>
+<li>En régime sinusoïdal : \(Î = \omega C Û\)</li>
+<li><b>Attention</b> pas de saut de tension ! (Si sauts de courant, tension =
+moyenne, donc pas de sauts)</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><a href="images/capaciteTension.png"><img src="images/capaciteTension.png" alt="capaciteTension.png" /></a>
+</p>
+</div>
+<ul class="org-ul">
+<li>Énergie électrostatique
+<ul class="org-ul">
+<li>\(w_c(t)=\frac{1}{2}Cu^2(t)\)</li>
+<li>Régime sinusoïdal (\(u(t)=Û \sin \omega t\)) : \(w_c(t) = \frac{CÛ^2}{2} \sin^2 \omega t = \frac{CÛ^2}{4} \left[ 1 - \cos 2 \omega t \right]\)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">1.2.4</span> Inductance</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<ul class="org-ul">
+<li>Obéit aux relations suivantes :
+<ul class="org-ul">
+<li>\(u(t) = L \frac{di}{dt}\)</li>
+<li>\(i(t) = \frac{1}{L} \int\limits_{-\infty}^t u(\tau)d\tau = i(0) + \frac{1}{L}
+    \int\limits_0^t u(\tau)d\tau\)</li>
+<li>Courant et tension
+<ul class="org-ul">
+<li>En régime continu : court-circuit</li>
+<li>En régime sinusoïdal : \(Û = \omega L Î\)</li>
+<li><b>Attention</b> pas de saut de courant !</li>
+</ul></li>
+<li>Énergie magnétique :
+<ul class="org-ul">
+<li>\(w_L(t) = \frac{1}{2} Li^2(t)\)</li>
+<li>Régime sinusoïdal (\(i(t)=Î \sin(\omega t)\)) : \(w_L(t) = \frac{LÎ^2}{2}
+      \sin^2 \omega t = \frac{LÎ^2}{4} \left[ 1 - \cos 2\omega t \right]\)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">1.2.5</span> Inductances couplées (mutuelles)</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+Des inductances couplées constituent un biporte défini par les relations
+constitutives :<br  />
+</p>
+
+<p>
+\(u_1 = L_{11} \frac{di_1}{dt}+ L_{12}\frac{di_2}{dt}\)
+</p>
+
+<p>
+\(u_2 = L_{12} \frac{di_1}{dt}+ L_{22}\frac{di_2}{dt}\)
+</p>
+
+<p>
+D'une part, nous avons les inductances propres définies par \(L_{11}\) et \(L_{22}\)
+et de l'autre l'inductance mutuelle définie par \(L{12}\)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">1.3</span> Éléments de circuit actifs</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">1.3.1</span> Source de tension idéale</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<ul class="org-ul">
+<li>Élément de circuit capable de fournir ou absorber de l'énergie électrique et
+dont la tension à ses bornes est constante et indépendante de la charge qui
+lui est branchée</li>
+<li><p>
+Une source de tension ne fournit aucune énergie lorsqu'elle est en circuit
+ouvert
+</p>
+
+
+<div class="figure">
+<p><img src="images/s_tension_ideale.JPG" alt="s_tension_ideale.JPG" />
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">1.3.2</span> Source de tension 'réelle'</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+La tension d'une source de tension réelle, comme une baterrie, diminue en
+fonction du courant qu'elle fournit. On peut modéliser une telle source par une
+source idéale en série avec une résistance :
+</p>
+
+
+<div class="figure">
+<p><img src="images/s_tension_reelle.jpg" alt="s_tension_reelle.jpg" />
+</p>
+</div>
+
+<p>
+\(u=u_0 - R_ii\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">1.3.3</span> Source de courant idéale</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<ul class="org-ul">
+<li>Élément de circuit capable de fournir ou absorber l'énergie électrique et dont
+le courant qui y circule est constant et indépendant de la charge qui lui est branchée.</li>
+<li>Une source de courant idéale ne fournit aucune énergie lorsqu'elle est en
+court circuit.</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="images/s_courant_ideale.JPG" alt="s_courant_ideale.JPG" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">1.3.4</span> Source de courant 'réelle'</h4>
+<div class="outline-text-4" id="text-1-3-4">
+<p>
+Caractéristique courant-tension et circuit équivalent :
+</p>
+
+
+<div class="figure">
+<p><img src="images/s_courant_reelle.JPG" alt="s_courant_reelle.JPG" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">1.4</span> Lois de Kirchhoff</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18"><span class="section-number-4">1.4.1</span> Pour les noeuds</h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+<div class="figure">
+<p><img src="images/kirchhoff_node.jpg" alt="kirchhoff_node.jpg" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">1.4.2</span> Pour les mailles</h4>
+<div class="outline-text-4" id="text-1-4-2">
+
+<div class="figure">
+<p><img src="images/kirchhoff_grid.jpg" alt="kirchhoff_grid.jpg" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26"><span class="section-number-3">1.5</span> Éléments en série</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Des éléments connectés en série sont parcourus par le même courant. La tension
+aux bornes du circuit est égale à la somme des tensions relatives à chaque
+élément.
+</p>
+
+
+<div class="figure">
+<p><img src="images/series01.JPG" alt="series01.JPG" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">1.5.1</span> Résistances en série</h4>
+<div class="outline-text-4" id="text-1-5-1">
+
+<div class="figure">
+<p><img src="images/series02.JPG" alt="series02.JPG" />
+</p>
+</div>
+
+<p>
+\(R_s=\sum\limits_{k=1}^n R_k\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">1.5.2</span> Capacités en série</h4>
+<div class="outline-text-4" id="text-1-5-2">
+
+<div class="figure">
+<p><img src="images/series03.JPG" alt="series03.JPG" />
+</p>
+</div>
+
+<p>
+\(\frac{1}{C_s} = \sum\limits_{k=1}^n \frac{1}{C_k}\) et \(u(0) =
+\sum\limits_{k=1}^n u_{C_k}(0)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="section-number-4">1.5.3</span> Inductances en série</h4>
+<div class="outline-text-4" id="text-1-5-3">
+
+<div class="figure">
+<p><img src="images/series04.JPG" alt="series04.JPG" />
+</p>
+</div>
+
+<p>
+\(L_s = \sum\limits_{k=1}^n L_k\) et \(i(0) = i_{L_k}(0)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">1.5.4</span> Sources de tension en série</h4>
+<div class="outline-text-4" id="text-1-5-4">
+
+<div class="figure">
+<p><img src="images/series05.JPG" alt="series05.JPG" />
+</p>
+</div>
+
+<p>
+\(u_s = \sum\limits_{k=1}^n u_k\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">1.5.5</span> Sources de courant en série</h4>
+<div class="outline-text-4" id="text-1-5-5">
+<p>
+Impossible, <b>sauf si toutes les sources individuelles produisent le même courant</b>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><span class="section-number-3">1.6</span> Éléments en parralèle</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Des éléments connectés en parallèle sont soumis à la même tension. Le courant
+total est la somme des courants individuels.
+</p>
+
+
+<div class="figure">
+<p><img src="images/parrallele01.JPG" alt="parrallele01.JPG" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">1.6.1</span> Résistances en parrallèle</h4>
+<div class="outline-text-4" id="text-1-6-1">
+
+<div class="figure">
+<p><img src="images/parrallele02.JPG" alt="parrallele02.JPG" />
+</p>
+</div>
+
+<p>
+$\frac{1}{R_p} = &sum;\limits<sub>k=1</sub><sup>n</sup> \frac{1}{R_k}
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">1.6.2</span> Capacités en parrallèle</h4>
+<div class="outline-text-4" id="text-1-6-2">
+
+<div class="figure">
+<p><img src="images/parrallele03.JPG" alt="parrallele03.JPG" />
+</p>
+</div>
+
+<p>
+\(C_p = \sum\limits_{k=1}^n C_k\) et \(u(0) = u_k(0)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="section-number-4">1.6.3</span> Inductances en parrallèle</h4>
+<div class="outline-text-4" id="text-1-6-3">
+
+<div class="figure">
+<p><img src="images/parrallele04.JPG" alt="parrallele04.JPG" />
+</p>
+</div>
+
+<p>
+\(\frac{1}{L_p}=\sum\limits_{k=1}^n \frac{1}{L_k}\) et \(i(0) = \sum\limits_{k=1}^n i_{L_k}(0)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30"><span class="section-number-4">1.6.4</span> Sources de tension en parrallèle</h4>
+<div class="outline-text-4" id="text-1-6-4">
+<p>
+Impossible, <b>sauf si toutes les sources individuelles produisent la même tension.</b>
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline31" class="outline-4">
+<h4 id="orgheadline31"><span class="section-number-4">1.6.5</span> Sources de courant en parrallèle</h4>
+<div class="outline-text-4" id="text-1-6-5">
+
+<div class="figure">
+<p><img src="images/parrallele05.JPG" alt="parrallele05.JPG" />
+</p>
+</div>
+
+<p>
+\(i_p = \sum\limits_{k=1}^n i_k\)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33"><span class="section-number-3">1.7</span> Diviseurs de tension et de courant</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<div class="figure">
+<p><img src="images/divTensCour.JPG" alt="divTensCour.JPG" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline34" class="outline-3">
+<h3 id="orgheadline34"><span class="section-number-3">1.8</span> Circuits</h3>
+</div>
+</div>
+<div id="outline-container-orgheadline42" class="outline-2">
+<h2 id="orgheadline42"><span class="section-number-2">2</span> <a href="Chapter-2.pdf">Chapitre 2</a></h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="orgheadline36"><span class="section-number-3">2.1</span> Circuits linéaires</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Un circuit linéaire est celui dont la sortie est reliée linéairement à son entrée.</li>
+<li>Un circuit linéaire ne comporte que des éléments linéaires, des sources
+linéaires dépendantes et indépendante</li>
+<li>Questions :
+<ul class="org-ul">
+<li>Résistance = linéaire</li>
+<li>Capacité = linéaire</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline37" class="outline-3">
+<h3 id="orgheadline37"><span class="section-number-3">2.2</span> Principe de superposition</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Le courant et les tensions dans un élément quelconque d'un circuit linéaire
+sont donnés par la somme des tensions et des courants produits dans cet
+élément par chaque source prise séparement.</li>
+<li><b>Attention</b> ce théorème ne s'applique pas à la puissance.</li>
+<li>Exemple :</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/superposition.JPG" alt="superposition.JPG" width="40%" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="orgheadline38"><span class="section-number-3">2.3</span> Transformation de sources</h3>
+<div class="outline-text-3" id="text-2-3">
+
+<div class="figure">
+<p><img src="images/transformationSource.jpg" alt="transformationSource.jpg" width="40%" />
+</p>
+</div>
+
+<p>
+Plus d'exemples dans le cours
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline39" class="outline-3">
+<h3 id="orgheadline39"><span class="section-number-3">2.4</span> Théorème de Thévenin</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>But : remplacer un circuit complexe par un circuit composé d'une source de
+tension et d'une résistance.</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="images/butThevenin.jpg" alt="butThevenin.jpg" width="40%" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Procédure :
+<ul class="org-ul">
+<li>Identifier les bornes du circuit et la charge externe</li>
+<li>Mesurer ou calculer la tension aux bornes du circuit sans charge extérieure.
+C'est la tension de Thévenin</li>
+<li>Annuler les sources indépendantes et déterminer la résistance vue des bornes
+du circuit. C'est la résistance de Thévenin</li>
+</ul></li>
+<li>Théorème de Thévenin :
+<ul class="org-ul">
+<li>Annuler une source de tension consiste à la remplacer par un court-circuit</li>
+<li>Annuler une source de courant consiste à la remplacer par un circuit-ouvert</li>
+</ul></li>
+</ul>
+
+
+<div class="figure">
+<p><img src="images/theoremeThevenin.jpg" alt="theoremeThevenin.jpg" width="40%" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-3">
+<h3 id="orgheadline40"><span class="section-number-3">2.5</span> Théorème de Norton</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Corollaire au théorème de Thévenin, but :</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="images/butNorton.jpg" alt="butNorton.jpg" width="40%" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>Procédure :
+<ul class="org-ul">
+<li>Identifier les bornes du circuit et la charge externe</li>
+<li>Court-circuiter les bornes du circuit et déterminer théoriquement ou
+expérimentalement l'intensité du courant du court-circuit. C'est la source
+de courant de Norton.</li>
+<li>Annuler les sources indépendantes et déterminer la résistance vue des bornes
+du circuit. C'est la résistance de Norton et de Thévenin.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline41" class="outline-3">
+<h3 id="orgheadline41"><span class="section-number-3">2.6</span> Transfert maximal de puissance</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Comment connaître la valeur de résistance de charge pour laquelle cette dernière
+dissipera un maximum de puissance ?
+</p>
+
+
+<div class="figure">
+<p><img src="images/transfertMaxQ.jpg" alt="transfertMaxQ.jpg" width="40%" /> 
+</p>
+</div>
+
+
+<p>
+On remplace le circuit complexe par son équivalent de Thévenin :
+</p>
+
+<div class="figure">
+<p><img src="images/transfertMaxA.jpg" alt="transfertMaxA.jpg" width="40%" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2015-09-27 Sun 20:54</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+# -*- mode: org; -*-
+#+TITLE: Circuit et système
+#+SETUPFILE: htmlnotes.setup
+
+* [[file:Chapter-1.pdf][Chapitre 1]]
+** Unités
+*** Tableau récapitulatif
+ | Nom                                       | S         | Unité/S      | Rapport entre unités     |
+ |-------------------------------------------+-----------+--------------+--------------------------|
+ | Intensité du *courant* élec.              | $I$       | ampère/$A$   | $C \cdot s^{-1}$         |
+ | *Puissance*                               | $P$       | watt/$W$     | $J \cdot s^{-1}$         |
+ | Quantité d'élec., *charge* élec,          | $q$, $Q$  | coulomb/$C$  | $s \cdot A$              |
+ | *Tension* élec., diff. de potentiel élec. | $U$ / $V$ | volt/$V$     | $W \cdot A^{-1}$         |
+ | *Résistance* élec.                        | $R$       | ohm/$\Omega$ | $W \cdot A^{-1}$         |
+ | *Conductance* élec.                       | $G$       | siemens/$S$  | $A \cdot V^{-1}$         |
+ | *Capacité* élec.                          | $C$       | farad/$F$    | $C \cdot V^{-1}$         |
+ | *Inductance*                              | $L$       | henry/$H$    | $V \cdot s \cdot A^{-1}$ |
+
+*** Quelques rapports/relations important(e)s 
+**** Charge et courant
+$i(t) = \frac{dq}{dt}$ \\  
+
+$q(t) = \int\limits_0^t i(\tau)d\tau$
+**** Puissance
+Dans un circuit électrique, la puissance instantanée $p(t)$ est égale au produit
+de la tension et du courant instantanés et la puissance moyenne $P$, à la valeur
+moyenne de la puissance instantanée.
+
+$p(t) = u(t)i(t)$ \\
+
+$P = \frac{1}{t_2-t_1} \int\limits_{t_1}^{t_2} u(t) i(t) dt$ ou $P=\frac{1}{T}
+\int\limits_0^T u(t) i(t) dt$
+**** Énergie
+Le joule ($J$) équivaut au travail produit par une force de 1 $N$ dont le point
+d'application se déplace d'un mètre dans le sens de la force.
+
+$w(t) = \int\limits_0^t p(\tau)d\tau$
+** Éléments de circuit passifs 
+*** Résistance
+- Satisfait la loi d'Ohm : $u(t) = R i(t)$
+- Puissance dissipée : $p(t) = u(t)i(t) = Ri^2(t) = \frac{u^2(t)}{R}$
+- Énergie dissipée (sous forme de chaleur): $w_R(t) = R \int\limits_0^t
+  i^2(\tau)d\tau = \frac{1}{R} \int\limits_0^t u^2 (\tau)d\tau$
+  - Régime continu : $i(t) = I\ u(t) = U \Rightarrow\ w_R(t) = RI^2t=\frac{U^2t}{R}$
+  - Régime sinusoïdal : $u(t) = Û \sin \omega t \Rightarrow\ w_R(t) =
+    \frac{Û^2}{2R}\left[ t - \frac{1}{2\omega} \sin(2\omega t)\right]$
+- Court-circuit
+  - Soit un circuit dont deux points sont reliés par une résistance. Si l'on
+    fait tendre la valeur de cette résistance vers /zéro/, ces deux points
+    deviennent en court-circuit.
+  - En pratique, un bout de fil constitue souvent (pas toujours !) un court-circuit.
+- Circuit ouvert
+  - Soit un circuit dont deux points sont reliés par une résistance. Si l'on
+    fait tendre la valeur de cette résistance vers l'/infini/, ces deux points
+    deviennent en circuit ouvert
+  - En pratique, on réalise un circuit ouvert en enlevant tous les éléments qui
+    relient les deux points du circuit.
+*** Conductance
+Inverse de la résistance ($G=1/R$) : $i(t) = Gu(t)$
+*** Capacité
+- Obéit aux relations suivantes : $q(t) = Cu(t)$
+- Vu que le courant est le débit des charges, on obtient :
+  - $i(t) = \frac{dq}{dt}$
+  - $i(t) = C\frac{du}{dt}$
+  - $u(t) = \frac{1}{C} \int\limits_{-\infty}^ti(\tau)d\tau = u(0) + \frac{1}{C}
+    \int\limits_{0}^ti(\tau)d\tau$
+- Courant et tension
+  - En régime continu : circuit ouvert
+  - En régime sinusoïdal : $Î = \omega C Û$
+  - *Attention* pas de saut de tension ! (Si sauts de courant, tension =
+    moyenne, donc pas de sauts)
+[[file:images/capaciteTension.png][file:images/capaciteTension.png]]
+- Énergie électrostatique
+  - $w_c(t)=\frac{1}{2}Cu^2(t)$
+  - Régime sinusoïdal ($u(t)=Û \sin \omega t$) : $w_c(t) = \frac{CÛ^2}{2} \sin^2 \omega t = \frac{CÛ^2}{4} \left[ 1 - \cos 2 \omega t \right]$
+*** Inductance
+- Obéit aux relations suivantes :
+  - $u(t) = L \frac{di}{dt}$
+  - $i(t) = \frac{1}{L} \int\limits_{-\infty}^t u(\tau)d\tau = i(0) + \frac{1}{L}
+    \int\limits_0^t u(\tau)d\tau$
+  - Courant et tension
+    - En régime continu : court-circuit
+    - En régime sinusoïdal : $Û = \omega L Î$
+    - *Attention* pas de saut de courant !
+  - Énergie magnétique :
+    - $w_L(t) = \frac{1}{2} Li^2(t)$
+    - Régime sinusoïdal ($i(t)=Î \sin(\omega t)$) : $w_L(t) = \frac{LÎ^2}{2}
+      \sin^2 \omega t = \frac{LÎ^2}{4} \left[ 1 - \cos 2\omega t \right]$
+*** Inductances couplées (mutuelles)
+Des inductances couplées constituent un biporte défini par les relations
+constitutives :\\
+
+$u_1 = L_{11} \frac{di_1}{dt}+ L_{12}\frac{di_2}{dt}$
+
+$u_2 = L_{12} \frac{di_1}{dt}+ L_{22}\frac{di_2}{dt}$
+
+D'une part, nous avons les inductances propres définies par $L_{11}$ et $L_{22}$
+et de l'autre l'inductance mutuelle définie par $L{12}$
+** Éléments de circuit actifs
+*** Source de tension idéale
+- Élément de circuit capable de fournir ou absorber de l'énergie électrique et
+  dont la tension à ses bornes est constante et indépendante de la charge qui
+  lui est branchée
+- Une source de tension ne fournit aucune énergie lorsqu'elle est en circuit
+  ouvert
+
+  [[file:images/s_tension_ideale.JPG]]
+*** Source de tension 'réelle'
+La tension d'une source de tension réelle, comme une baterrie, diminue en
+fonction du courant qu'elle fournit. On peut modéliser une telle source par une
+source idéale en série avec une résistance :
+
+[[file:images/s_tension_reelle.jpg]]
+
+$u=u_0 - R_ii$
+*** Source de courant idéale
+- Élément de circuit capable de fournir ou absorber l'énergie électrique et dont
+  le courant qui y circule est constant et indépendant de la charge qui lui est branchée.
+- Une source de courant idéale ne fournit aucune énergie lorsqu'elle est en
+  court circuit.
+
+[[file:images/s_courant_ideale.JPG]]
+*** Source de courant 'réelle'
+Caractéristique courant-tension et circuit équivalent :
+
+[[file:images/s_courant_reelle.JPG]]
+
+** Lois de Kirchhoff
+*** Pour les noeuds
+#+ATTR_LATEX: :width 15cm
+[[file:images/kirchhoff_node.jpg]]
+*** Pour les mailles
+#+ATTR_LATEX: :width 15cm
+[[file:images/kirchhoff_grid.jpg]]
+** Éléments en série
+Des éléments connectés en série sont parcourus par le même courant. La tension
+aux bornes du circuit est égale à la somme des tensions relatives à chaque
+élément.
+
+[[file:images/series01.JPG]]
+
+*** Résistances en série
+
+[[file:images/series02.JPG]]
+
+$R_s=\sum\limits_{k=1}^n R_k$
+*** Capacités en série
+
+[[file:images/series03.JPG]]
+
+$\frac{1}{C_s} = \sum\limits_{k=1}^n \frac{1}{C_k}$ et $u(0) =
+\sum\limits_{k=1}^n u_{C_k}(0)$
+*** Inductances en série
+
+[[file:images/series04.JPG]]
+
+$L_s = \sum\limits_{k=1}^n L_k$ et $i(0) = i_{L_k}(0)$
+*** Sources de tension en série
+
+[[file:images/series05.JPG]]
+
+$u_s = \sum\limits_{k=1}^n u_k$
+*** Sources de courant en série
+Impossible, *sauf si toutes les sources individuelles produisent le même courant*
+** Éléments en parralèle
+Des éléments connectés en parallèle sont soumis à la même tension. Le courant
+total est la somme des courants individuels.
+
+[[file:images/parrallele01.JPG]]
+
+*** Résistances en parrallèle
+
+[[file:images/parrallele02.JPG]]
+
+$\frac{1}{R_p} = \sum\limits_{k=1}^n \frac{1}{R_k}
+*** Capacités en parrallèle
+
+[[file:images/parrallele03.JPG]]
+
+$C_p = \sum\limits_{k=1}^n C_k$ et $u(0) = u_k(0)$
+*** Inductances en parrallèle
+
+[[file:images/parrallele04.JPG]]
+
+$\frac{1}{L_p}=\sum\limits_{k=1}^n \frac{1}{L_k}$ et $i(0) = \sum\limits_{k=1}^n i_{L_k}(0)$
+*** Sources de tension en parrallèle
+Impossible, *sauf si toutes les sources individuelles produisent la même tension.*
+*** Sources de courant en parrallèle
+
+[[file:images/parrallele05.JPG]]
+
+$i_p = \sum\limits_{k=1}^n i_k$
+
+** Diviseurs de tension et de courant
+[[file:images/divTensCour.JPG]]
+** Circuits 
+* [[file:Chapter-2.pdf][Chapitre 2]]
+** Circuits linéaires
+- Un circuit linéaire est celui dont la sortie est reliée linéairement à son entrée.
+- Un circuit linéaire ne comporte que des éléments linéaires, des sources
+  linéaires dépendantes et indépendante
+- Questions :
+  - Résistance = linéaire
+  - Capacité = linéaire
+** Principe de superposition
+- Le courant et les tensions dans un élément quelconque d'un circuit linéaire
+  sont donnés par la somme des tensions et des courants produits dans cet
+  élément par chaque source prise séparement.
+- *Attention* ce théorème ne s'applique pas à la puissance.
+- Exemple :
+#+attr_html: :width 40%
+#+ATTR_LATEX: :width 15cm
+[[file:images/superposition.JPG]]
+** Transformation de sources
+
+#+attr_html: :width 40%
+#+ATTR_LATEX: :width 15cm
+[[file:images/transformationSource.jpg]]
+
+Plus d'exemples dans le cours
+** Théorème de Thévenin
+:PROPERTIES:
+:Effort:
+:END:
+- But : remplacer un circuit complexe par un circuit composé d'une source de
+  tension et d'une résistance.
+
+#+attr_html: :width 40%
+#+ATTR_LATEX: :width 15cm
+[[file:images/butThevenin.jpg]]
+- Procédure :
+  - Identifier les bornes du circuit et la charge externe
+  - Mesurer ou calculer la tension aux bornes du circuit sans charge extérieure.
+    C'est la tension de Thévenin
+  - Annuler les sources indépendantes et déterminer la résistance vue des bornes
+    du circuit. C'est la résistance de Thévenin
+- Théorème de Thévenin :
+  - Annuler une source de tension consiste à la remplacer par un court-circuit
+  - Annuler une source de courant consiste à la remplacer par un circuit-ouvert
+
+#+attr_html: :width 40%
+#+ATTR_LATEX: :width 15cm
+[[file:images/theoremeThevenin.jpg]]
+** Théorème de Norton
+- Corollaire au théorème de Thévenin, but :
+ 
+#+attr_html: :width 40%
+#+ATTR_LATEX: :width 15cm
+[[file:images/butNorton.jpg]]
+   
+- Procédure :
+  - Identifier les bornes du circuit et la charge externe
+  - Court-circuiter les bornes du circuit et déterminer théoriquement ou
+    expérimentalement l'intensité du courant du court-circuit. C'est la source
+    de courant de Norton.
+  - Annuler les sources indépendantes et déterminer la résistance vue des bornes
+    du circuit. C'est la résistance de Norton et de Thévenin.
+** Transfert maximal de puissance
+Comment connaître la valeur de résistance de charge pour laquelle cette dernière
+dissipera un maximum de puissance ?
+
+ #+attr_html: :width 40%
+#+ATTR_LATEX: :width 15cm
+[[file:images/transfertMaxQ.jpg]] 
+
+
+On remplace le circuit complexe par son équivalent de Thévenin :
+#+attr_html: :width 40%
+#+ATTR_LATEX: :width 15cm
+#+ATTR_HTML: style="float:left;"
+[[file:images/transfertMaxA.jpg]]
+
+
+

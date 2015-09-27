@@ -1,0 +1,245 @@
+# -*- mode: org; -*-
+#+TITLE: Algorithms
+#+SETUPFILE: htmlnotes.setup
+
+* Chapter 1
+** Definition of algorithm
+- Relation between an input and an ouptut
+- Tool to solve a computational problem
+** Instance of a problem
+Input of the problem. 
+Examples :
+- Sorting problem, instance : <32,54,65,23,54>
+- Sum of all numbers to /n/ : 4, /n/ \neq instance
+* Chapter 2
+** Insertion sort algorithm
+#+BEGIN_SRC java
+for j = 2 to A.length
+  key = A[j]
+  // Insert A[j] into the sorted sequance A[1..j-1]
+  i = j -1
+  while i > 0 and A[i] > key
+    A[i+1] = A[i]
+    i = i -1
+  A[i+1] = key
+#+END_SRC
+** Loop Invariant -> prove corectness of algorithm
+- Loop invariant : "a statement that is satisfied during the loop"
+- Need to verify :
+  - *Initialization* : True at the beginning of the 1st iteration of the loop
+  - *Maintenance* :  If it is true before an iteration of of the loop, it remains
+    true before the next iteration
+  - *Termination* : When the loop terminates, the invariant gives us a useful
+    property that helps show that the algorithm is correct
+***  Example 1 : Sum up to /n/
+The algorithm is the following : \\
+*CalculateSum* (/n/):
+#+BEGIN_SRC java
+ans = 0
+for i = 1,2,..,n
+ ans = ans + i
+return ans
+#+END_SRC
+- *Loop invariant* : At the start of each iteration $ans = (i-1) * i/2$
+- *Initialization* : At the begining of the first iteration, $i =1$ and $ans =
+  0 = i(i -1)/2)$ so the invariant is satisfied
+- *Maintenance* : Suppose invariant true at the beginning of iteration when
+  $i=k$, i.e, $ans = (k-1)k/2$. Then the iteration updates $ans$ by adding $k$,
+  i.e., $ans = (k-1)k/2 +k = k(k+1)/2$ so incrementing $i$ then for next
+  iteration preserves the loop invariant.
+- *Termination* : When the loop terminates $i=n+1$. Hence the algorithm returns
+  $ans = n(n+1)/2$
+*** Example 2 : Insertion sort
+#+BEGIN_HTML
+<input checked type=radio name=slider id=slide1 />
+		<input type=radio name=slider id=slide2 />
+		<input type=radio name=slider id=slide3 />
+		<input type=radio name=slider id=slide4 />
+	
+	
+		<!-- The Slider -->
+		
+		<div id=slides>
+		
+			<div id=overflow>
+			
+				<div class=inner>
+				
+					<article>
+						<img src=pdf/insertionsortproof-0.jpg />
+					</article>
+					
+					<article>
+						<img src=pdf/insertionsortproof-1.jpg />
+					</article>
+					
+					<article>
+						<img src=pdf/insertionsortproof-2.jpg />
+					</article>
+					
+					<article>
+						<img src=pdf/insertionsortproof-3.jpg />
+					</article>
+					
+				</div> <!-- .inner -->
+				
+			</div> <!-- #overflow -->
+		
+		</div> <!-- #slides -->
+	
+	
+		<!-- Controls and Active Slide Display -->
+	
+		<div id=controls>
+
+			<label for=slide1></label>
+			<label for=slide2></label>
+			<label for=slide3></label>
+			<label for=slide4></label>
+		
+		</div> <!-- #controls -->
+		
+		<div id=active>
+
+			<label for=slide1></label>
+			<label for=slide2></label>
+			<label for=slide3></label>
+			<label for=slide4></label>
+			
+		</div> <!-- #active -->
+#+END_HTML
+** Divide and conquer approach
+*** Principle : 
+- *Divide* the problem into a number of subproblems that are smaller instances
+  of the same problem
+- *Conquer* the subproblems by solving them recursively. If the subproblem sizes
+  are small enough, however, just solve the subproblems in a straightforwad
+  manner
+- *Combine* the solutions to the subproblems into the solution for the original problem
+*** Application on merge and sort : 
+To sort $A[p...r]$:
+- *Divide* by splitting into two subarrays $A[p...q]$ and $A[q+1,...r]$, whre
+  $q$ is the halfway point of $A[p..r]$
+- *Conquer* by recursively sorting the two subarrays $A[p..q]$ and $A[q+1,...r]$
+- *Combine* by mergie the two sorted subarrays $A[p...q]$ and $A[q+1,...r]$ to
+  produce a single sorted subarray $A[p...r]$
+
+*Merge-Sort* $(A,p,r)$
+#+BEGIN_SRC java
+if p < r  //check for base case
+  q = floor((p+r)/2)  // divide
+  Merge-Sort(A,p,q)  // conquer
+  Merge-Sort(A,q+1,r)  //conquer
+  Merge(A,p,q,r) // combine
+#+END_SRC
+*Merge* ($A$,$p$,$q$,$r$)
+#+BEGIN_SRC java
+n_1 = q - p + 1
+n_2 = r - q
+let L[1..n_1+1] and R[1..n_2+1] be new arrays
+for i = 1 to n_1
+  L[i] = A[p+i-1]
+for j = 1 to n_2
+  R[j] = A[q+j]
+L[n_1+1]= infinity
+R[n_2 +1]= infinity
+i = 1
+j = 1
+for k = p to r
+  if L[i] <= R[j]
+    A[k] = L[i]
+    i = i +1
+  else
+    A[k] = R[j]
+    j = j +1
+#+END_SRC
+**** Corectness
+- What does merge(A,p,q,r) do ?
+  + It takes array $A$ and indexes $p \le q < r$ s.t. $A[p...q]$ and $A[q+1...r]$ are sorted.
+  + Then it outputs $A[p...r]$ contains the same elements in sorted order
+- Proof by induction on $n = r - p$ :
+  - Base case : $n = 0$, in this case $r = p$ so $A[p...r]$ (single element) is trivially sorted.
+  - Inductive case : assume statement true $\forall\ n \in \{0,1,...,n-1\}$ and
+    prove true for $n=k$
+    - By induction hypothesis ( $q - p < n$ ) Merge-Sort(A,p,q) and
+      Merge-Sort(A,q+1,r) sucessfully sort the two subarrays.
+    - Therefore a correct merge procedure will sucessfully sort $A[p...q]$ as required.
+**** Time analysis
+[[file:pdf/mergesorttime.jpg]]
+* Chapter 3 
+** Solving recurrences
+*** Analysing Recurrences
+Consider the following recurrence :
+
+$T(n) = c$ if $n = 1$, else $T(n) = 2T(n/2) + c \cdot n$
+
+Note that this reccurence upper bounds and lower bounds the reccurence for
+Merge-Sort by selecting $c$ sufficiently large and small, respectively.
+
+Three solving techiques :
+**** The substitution method
+- Guess the form of the solution
+- Use mathematical induction to find the constant 
+
+\begin{align*} T(n) &= 2T(n/2) + c \cdot n \\
+&= 2(2T (n/4) + c \cdot n/2) + c \cdot n = 4T(n/4) + 2 \cdot c \cdot n\\
+&= 4(2T (n/8) + c \cdot n/4) + 2 \cdot c \cdot n =  8T(n/8) + 3 \cdot c \cdot n\\
+&\vdots \\
+&= 2^k T(n/2^k) + k \cdot c \cdot n
+\end{align*}
+
+A qualified guess is that $T(n) = \Theta (n \log n)$.
+- and show that the solution works
+  - First upper bound :
+    We want to prove there exists $a > 0$ s.t $T(n) \le a \cdot n \cdot \log n$
+    $\forall n \ge 2$
+    - *Base case* : For any constant $n \in \{2,3,4\}$, $T(n)$ has a constant
+      value, selecting a larger than this value will satisfy the base cases when
+      $n \in \{2,3,4\}$.
+    - *Inductive step* : /Assume statement true $\forall n \{2,3,...,k-1\}$ and
+      prove the statement for $n=k$/
+      \begin{align*}
+      T(n) &= 2T(n/2) + c \cdot n \\
+      &\le 2 \cdot \frac{an}{2} \log(n/2) + c \cdot n = a \cdot n \log(n/2) + c \cdot n \\
+      &= a \cdot n \log n -a \cdot n + c \cdot n \\
+      &\le a \cdot n \log n \text{ (if we select $a \ge c$)}
+      \end{align*}
+      We can thus select $a$ to be a positive constant so taht both the base
+      cases and the inductive step holds. Hence, $T(n) = O(n\log n)$.
+  - Second lower bound :
+    - We want to prove there exists a constant $b > 0$ s.t $T(n) \ge b \cdot n
+      \cdot \log n$ $\forall n \ge 0$
+    - *Base case* : For $n=1,T(n)=c$ and $b \cdot n \log n =0$ so the base case
+      is satisfied for any b.
+    - *Inductive step* : /Assume statement true $\forall n \in \{0,1,...,k-1\}$
+      and prove the statement for $n =k$/
+      \begin{align*}
+      T(n) &= 2T (n/2) + c \cdot n\\
+      &\ge 2 \cdot \frac{b\cdot n}{2} \log(n/2) + c \cdot n = b \cdot n \log(n/2) + c \cdot n\\
+      &= b \cdot n \log n - b \cdot n + c \cdot n \\
+      & \ge b \cdot n \log n \text{ (if we select $b \le c$)}
+      \end{align*}
+We can thus select $b$ to be positive constant so that both the base cases and
+the inductive step holds. Hence, $T(n) = \Omega(n\log n)$.
+
+- Other example
+Prove that $T(n) = O(n)$
+First $\exists c$ s.t.
+\begin{align*}
+ T(n) \le F(n)\\
+\text{and}\\
+F(n) = c \text{ if $n=0, n=1$, else } F(\frac{n}{4} +1 ) + F(\frac{3n}{4} -1) + c
+\end{align*} 
+We shall prove that $F(n) = O(n)$
+claim : there exists constants $b',b > 0$ and $n_0 \ge 0$ s.t. $ \forall n \ge n_0$
+$F(n) \le b \cdot n - b'$
+
+Proof : Inductive step : Assume $F(n) = b \cdot n$ $\forall n \in
+\{n_0,...k-1\}$ prove true for $n=k$.
+\begin{align*}
+ F(n) &= F(\frac{n}{4} +1) + F(\frac{3n}{4} -1) + C \\
+&= b(\frac{n}{4} + 1) b' + b (\frac{3n}{4} -1) b' + C\\
+&= b \cdot n + c - 2b'\\
+&\le b \cdot n - b' \text{ if $ b' \ge C$}
+\end{align*}
+

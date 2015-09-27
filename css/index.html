@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+
+
+	<meta charset="utf-8" />
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+	<meta name="viewport" content="width=device-width">
+
+	<title>CSScience - CSS3 Responsive Slider / Carousel Using Radio Buttons</title>
+
+	<!-- CSS -->
+	<link href="main.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+	<!-- 	This is the only script in here, because iOS devices don't work properly with labels by default.
+		via http://v4.thewatchmakerproject.com/blog/how-to-fix-the-broken-ipad-form-label-click-issue/ 
+		
+		
+		View this page without this script : http://csscience.com/responsiveslidercss3/nojs.html
+	-->
+	<script type="text/javascript" src="iosLabelFix.js"></script>
+	
+	
+</head>
+
+<body>
+
+	<!-- Enable MaxWidth Switching -->
+
+	<input checked type=radio name=respond id=desktop />
+	<input type=radio name=respond id=tablet />
+	<input type=radio name=respond id=mobile />
+	
+	<article id=slider>
+		
+
+		<!-- MaxWidth Options -->
+		
+		<div class=respond>
+		
+			<label class=desktop for=desktop></label>
+			<label class=tablet for=tablet></label>
+			<label class=mobile for=mobile></label>
+			<p><strong>Important:</strong> If you want to resize the window manually, leave at desktop resolution. Or you can just click an icon.</p>
+		
+		</div> <!-- .respond -->
+		
+	
+		<!-- Slider Setup -->
+	
+		<input checked type=radio name=slider id=slide1 />
+		<input type=radio name=slider id=slide2 />
+		<input type=radio name=slider id=slide3 />
+		<input type=radio name=slider id=slide4 />
+		<input type=radio name=slider id=slide5 />
+	
+	
+		<!-- The Slider -->
+		
+		<div id=slides>
+		
+			<div id=overflow>
+			
+				<div class=inner>
+				
+					<article>
+						<div class=info><h3>Cloud Dragon</h3> by <a href="http://voyager3.tumblr.com">Brendan Zabarauskas</a></div>
+						<img src=CouldDragonByBjzaba.png />
+					</article>
+					
+					<article>
+						<div class=info><h3>Mountain Fort</h3> by <a href="http://voyager3.tumblr.com">Brendan Zabarauskas</a></div>
+						<img src=MountainFortByBjzaba.png />
+					</article>
+					
+					<article>
+						<div class=info><h3>Mountain Outpost</h3> by <a href="http://voyager3.tumblr.com">Brendan Zabarauskas</a></div>
+						<img src=MountainOutpostByBjzaba.png />
+					</article>
+					
+					<article>
+						<div class=info><h3>Cliffs</h3> by <a href="http://voyager3.tumblr.com">Brendan Zabarauskas</a></div>
+						<img src=CliffsByBjzaba.png />
+					</article>
+					
+					<article>
+						<div class=info><h3>Hill Fort</h3> by <a href="http://voyager3.tumblr.com">Brendan Zabarauskas</a></div>
+						<img src=HillFortByBjzaba.png />
+					</article>
+					
+				</div> <!-- .inner -->
+				
+			</div> <!-- #overflow -->
+		
+		</div> <!-- #slides -->
+	
+	
+		<!-- Controls and Active Slide Display -->
+	
+		<div id=controls>
+
+			<label for=slide1></label>
+			<label for=slide2></label>
+			<label for=slide3></label>
+			<label for=slide4></label>
+			<label for=slide5></label>
+		
+		</div> <!-- #controls -->
+		
+		<div id=active>
+
+			<label for=slide1></label>
+			<label for=slide2></label>
+			<label for=slide3></label>
+			<label for=slide4></label>
+			<label for=slide5></label>
+			
+		</div> <!-- #active -->
+	
+	
+		<div id=description>
+					
+			<span class=catch>Select catcher</span>
+					
+			<h1>Responsive CSS3 Slider Without Javascript*</h1>
+			<p>Created by <a href="http://twitter.com/teapoted">Ian Hansson (@teapoted)</a></p>
+			<p>Art from <a href="http://voyager3.tumblr.com">Brendan Zabarauskas</a> (<a href="http://twitter.com/bjzaba_">@bjzaba_</a>). <br />
+			Icons from the <a href="http://iconsweets.com/">iconSweets</a> set.</p>
+		
+				<!-- Slider Description -->
+				
+				<h2>Browser Support:</h2>
+				<p><strong>Best In Test</strong>: Firefox (transition performance) <br />
+				<strong>Full Support</strong>: Chrome, Firefox, Opera, Safari (latest versions of all browsers)<br />
+				<strong>Partial Support</strong>: IE9 (Functional, but does not support transitions) </p>
+	
+				<h2>*No JavaScript Functionality (1 compatability fix though)</h2>
+				<p>iOS devices don't handle labels properly. That means if you click on a label, it should target the
+				object that it is for=. I've added a javascript fix for that. I could probably replicate the whole thing
+				using :target rather than :checked which would also mend the problem, but that would mean I could only 
+				have 1 special function per page. I'll look into that some other time.</p>
+				<p>You can view this page without the js iOS fix <a href="nojs.html">here</a>.</p>
+
+				<h2>How Does It Work?</h2>
+				<p>The actual slider is much like any JavaScript slider. It floats all of the content areas (articles) next
+				to each other. And then hides the overflow. We then animate the margin of the inner div, so if we have 5 articles,
+				moving the left-margin -100% would give us the second article.</p>
+				<p>To save our input we are using radio buttons. As mentioned above you could also use :target and anchor links, 
+				but it doesn't mimic Javascript in the same way as you would only be able to handle one action at a time, you would
+				end up with a bunch of items in your history (clicking back would turn the slider back one), and it's been done before.</p>
+				<p>We put the radio buttons at the top so when they are :checked we can use a general sibling selectors (~) to change our 
+				slider.</p>
+				<pre>
+	#slide1:checked ~ #slides .inner { margin-left:0; }
+	#slide2:checked ~ #slides .inner { margin-left:-100%; }
+	#slide3:checked ~ #slides .inner { margin-left:-200%; }
+	#slide4:checked ~ #slides .inner { margin-left:-300%; }
+	#slide5:checked ~ #slides .inner { margin-left:-400%; }
+				</pre>
+				<p>That is all the essential CSS, the other gaff is just styling and animation.</p>
+				
+				<p>Created by <a href="http://twitter.com/teapoted">Ian Hansson (@teapoted)</a>, Feb 2012.</p>
+				
+		</div> <!-- #description -->
+	
+	</article> <!-- #slider -->
+		
+	
+</body>
+</html>

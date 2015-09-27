@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2015-09-27 Sun 20:54 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Algorithms</title>
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="css/hideshow.css"/>
+<link rel="stylesheet" type="text/css" href="css/navbar.css"/>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="js/bigblow.js"></script>
+<script type="text/javascript" src="js/hideshow.js"></script>
+<script type="text/javascript" src="js/jquery.stickytableheaders.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slider.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Algorithms</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline3">1. Chapter 1</a>
+<ul>
+<li><a href="#orgheadline1">1.1. Definition of algorithm</a></li>
+<li><a href="#orgheadline2">1.2. Instance of a problem</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline13">2. Chapter 2</a>
+<ul>
+<li><a href="#orgheadline4">2.1. Insertion sort algorithm</a></li>
+<li><a href="#orgheadline7">2.2. Loop Invariant -&gt; prove corectness of algorithm</a>
+<ul>
+<li><a href="#orgheadline5">2.2.1. Example 1 : Sum up to <i>n</i></a></li>
+<li><a href="#orgheadline6">2.2.2. Example 2 : Insertion sort</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline12">2.3. Divide and conquer approach</a>
+<ul>
+<li><a href="#orgheadline8">2.3.1. Principle :</a></li>
+<li><a href="#orgheadline11">2.3.2. Application on merge and sort :</a>
+<ul>
+<li><a href="#orgheadline9">2.3.2.1. Corectness</a></li>
+<li><a href="#orgheadline10">2.3.2.2. Time analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline17">3. Chapter 3</a>
+<ul>
+<li><a href="#orgheadline16">3.1. Solving recurrences</a>
+<ul>
+<li><a href="#orgheadline15">3.1.1. Analysing Recurrences</a>
+<ul>
+<li><a href="#orgheadline14">3.1.1.1. The substitution method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">1</span> Chapter 1</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Definition of algorithm</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Relation between an input and an ouptut</li>
+<li>Tool to solve a computational problem</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Instance of a problem</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Input of the problem. 
+Examples :
+</p>
+<ul class="org-ul">
+<li>Sorting problem, instance : &lt;32,54,65,23,54&gt;</li>
+<li>Sum of all numbers to <i>n</i> : 4, <i>n</i> &ne; instance</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13"><span class="section-number-2">2</span> Chapter 2</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">2.1</span> Insertion sort algorithm</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">for</span> j = <span style="color: #268bd2; font-weight: bold;">2</span> to A.length
+  key = A<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>
+  <span style="color: #586e75;">// </span><span style="color: #586e75;">Insert A[j] into the sorted sequance A[1..j-1]</span>
+  i = j -<span style="color: #268bd2; font-weight: bold;">1</span>
+  <span style="color: #859900; font-weight: bold;">while</span> i &gt; <span style="color: #268bd2; font-weight: bold;">0</span> and A<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> &gt; key
+    A<span style="color: #2aa198;">[</span>i+<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span> = A<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>
+    i = i -<span style="color: #268bd2; font-weight: bold;">1</span>
+  A<span style="color: #2aa198;">[</span>i+<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span> = key
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">2.2</span> Loop Invariant -&gt; prove corectness of algorithm</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Loop invariant : "a statement that is satisfied during the loop"</li>
+<li>Need to verify :
+<ul class="org-ul">
+<li><b>Initialization</b> : True at the beginning of the 1st iteration of the loop</li>
+<li><b>Maintenance</b> :  If it is true before an iteration of of the loop, it remains
+true before the next iteration</li>
+<li><b>Termination</b> : When the loop terminates, the invariant gives us a useful
+property that helps show that the algorithm is correct</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">2.2.1</span> Example 1 : Sum up to <i>n</i></h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+The algorithm is the following : <br  />
+<b>CalculateSum</b> (<i>n</i>):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">ans = <span style="color: #268bd2; font-weight: bold;">0</span>
+<span style="color: #859900; font-weight: bold;">for</span> i = <span style="color: #268bd2; font-weight: bold;">1</span>,<span style="color: #268bd2; font-weight: bold;">2</span>,..,<span style="color: #b58900;">n</span>
+ <span style="color: #268bd2;">ans</span> = ans + i
+<span style="color: #859900; font-weight: bold;">return</span> ans
+</pre>
+</div>
+<ul class="org-ul">
+<li><b>Loop invariant</b> : At the start of each iteration \(ans = (i-1) * i/2\)</li>
+<li><b>Initialization</b> : At the begining of the first iteration, \(i =1\) and \(ans =
+  0 = i(i -1)/2)\) so the invariant is satisfied</li>
+<li><b>Maintenance</b> : Suppose invariant true at the beginning of iteration when
+\(i=k\), i.e, \(ans = (k-1)k/2\). Then the iteration updates \(ans\) by adding \(k\),
+i.e., \(ans = (k-1)k/2 +k = k(k+1)/2\) so incrementing \(i\) then for next
+iteration preserves the loop invariant.</li>
+<li><b>Termination</b> : When the loop terminates \(i=n+1\). Hence the algorithm returns
+\(ans = n(n+1)/2\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">2.2.2</span> Example 2 : Insertion sort</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<input checked type=radio name=slider id=slide1 />
+    <input type=radio name=slider id=slide2 />
+    <input type=radio name=slider id=slide3 />
+    <input type=radio name=slider id=slide4 />
+  
+  
+    <!-- The Slider -->
+    
+    <div id=slides>
+    
+      <div id=overflow>
+      
+        <div class=inner>
+        
+          <article>
+            <img src=pdf/insertionsortproof-0.jpg />
+          </article>
+          
+          <article>
+            <img src=pdf/insertionsortproof-1.jpg />
+          </article>
+          
+          <article>
+            <img src=pdf/insertionsortproof-2.jpg />
+          </article>
+          
+          <article>
+            <img src=pdf/insertionsortproof-3.jpg />
+          </article>
+          
+        </div> <!-- .inner -->
+        
+      </div> <!-- #overflow -->
+    
+    </div> <!-- #slides -->
+  
+  
+    <!-- Controls and Active Slide Display -->
+  
+    <div id=controls>
+
+      <label for=slide1></label>
+      <label for=slide2></label>
+      <label for=slide3></label>
+      <label for=slide4></label>
+    
+    </div> <!-- #controls -->
+    
+    <div id=active>
+
+      <label for=slide1></label>
+      <label for=slide2></label>
+      <label for=slide3></label>
+      <label for=slide4></label>
+      
+    </div> <!-- #active -->
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">2.3</span> Divide and conquer approach</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><span class="section-number-4">2.3.1</span> Principle :</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<ul class="org-ul">
+<li><b>Divide</b> the problem into a number of subproblems that are smaller instances
+of the same problem</li>
+<li><b>Conquer</b> the subproblems by solving them recursively. If the subproblem sizes
+are small enough, however, just solve the subproblems in a straightforwad
+manner</li>
+<li><b>Combine</b> the solutions to the subproblems into the solution for the original problem</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">2.3.2</span> Application on merge and sort :</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+To sort \(A[p...r]\):
+</p>
+<ul class="org-ul">
+<li><b>Divide</b> by splitting into two subarrays \(A[p...q]\) and \(A[q+1,...r]\), whre
+\(q\) is the halfway point of \(A[p..r]\)</li>
+<li><b>Conquer</b> by recursively sorting the two subarrays \(A[p..q]\) and \(A[q+1,...r]\)</li>
+<li><b>Combine</b> by mergie the two sorted subarrays \(A[p...q]\) and \(A[q+1,...r]\) to
+produce a single sorted subarray \(A[p...r]\)</li>
+</ul>
+
+<p>
+<b>Merge-Sort</b> \((A,p,r)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> p &lt; <span style="color: #b58900;">r</span>  <span style="color: #586e75;">//</span><span style="color: #586e75;">check for base case</span>
+  q = floor<span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>p+r<span style="color: #b58900;">)</span>/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span>  <span style="color: #586e75;">// </span><span style="color: #586e75;">divide</span>
+  Merge-Sort<span style="color: #2aa198;">(</span>A,p,q<span style="color: #2aa198;">)</span>  <span style="color: #586e75;">// </span><span style="color: #586e75;">conquer</span>
+  Merge-Sort<span style="color: #2aa198;">(</span>A,q+<span style="color: #268bd2; font-weight: bold;">1</span>,r<span style="color: #2aa198;">)</span>  <span style="color: #586e75;">//</span><span style="color: #586e75;">conquer</span>
+  Merge<span style="color: #2aa198;">(</span>A,p,q,r<span style="color: #2aa198;">)</span> <span style="color: #586e75;">// </span><span style="color: #586e75;">combine</span>
+</pre>
+</div>
+<p>
+<b>Merge</b> (\(A\),\(p\),\(q\),\(r\))
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">n_1 = q - p + <span style="color: #268bd2; font-weight: bold;">1</span>
+n_2 = r - q
+let L<span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">1</span>..n_1+<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span> and R<span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">1</span>..n_2+<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span> be <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">arrays</span>
+<span style="color: #859900; font-weight: bold;">for</span> i = <span style="color: #268bd2; font-weight: bold;">1</span> to n_1
+  L<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> = A<span style="color: #2aa198;">[</span>p+i-<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">for</span> j = <span style="color: #268bd2; font-weight: bold;">1</span> to n_2
+  R<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span> = A<span style="color: #2aa198;">[</span>q+j<span style="color: #2aa198;">]</span>
+L<span style="color: #2aa198;">[</span>n_1+<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span>= infinity
+R<span style="color: #2aa198;">[</span>n_2 +<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span>= infinity
+i = <span style="color: #268bd2; font-weight: bold;">1</span>
+j = <span style="color: #268bd2; font-weight: bold;">1</span>
+<span style="color: #859900; font-weight: bold;">for</span> k = p to r
+  <span style="color: #859900; font-weight: bold;">if</span> L<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> &lt;= R<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>
+    A<span style="color: #2aa198;">[</span>k<span style="color: #2aa198;">]</span> = L<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>
+    i = i +<span style="color: #268bd2; font-weight: bold;">1</span>
+  <span style="color: #859900; font-weight: bold;">else</span>
+    A<span style="color: #2aa198;">[</span>k<span style="color: #2aa198;">]</span> = R<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>
+    j = j +<span style="color: #268bd2; font-weight: bold;">1</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-5">
+<h5 id="orgheadline9"><span class="section-number-5">2.3.2.1</span> Corectness</h5>
+<div class="outline-text-5" id="text-2-3-2-1">
+<ul class="org-ul">
+<li>What does merge(A,p,q,r) do ?
+<ul class="org-ul">
+<li>It takes array \(A\) and indexes \(p \le q < r\) s.t. \(A[p...q]\) and \(A[q+1...r]\) are sorted.</li>
+<li>Then it outputs \(A[p...r]\) contains the same elements in sorted order</li>
+</ul></li>
+<li>Proof by induction on \(n = r - p\) :
+<ul class="org-ul">
+<li>Base case : \(n = 0\), in this case \(r = p\) so \(A[p...r]\) (single element) is trivially sorted.</li>
+<li>Inductive case : assume statement true \(\forall\ n \in \{0,1,...,n-1\}\) and
+prove true for \(n=k\)
+<ul class="org-ul">
+<li>By induction hypothesis ( \(q - p < n\) ) Merge-Sort(A,p,q) and
+Merge-Sort(A,q+1,r) sucessfully sort the two subarrays.</li>
+<li>Therefore a correct merge procedure will sucessfully sort \(A[p...q]\) as required.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-5">
+<h5 id="orgheadline10"><span class="section-number-5">2.3.2.2</span> Time analysis</h5>
+<div class="outline-text-5" id="text-2-3-2-2">
+
+<div class="figure">
+<p><img src="pdf/mergesorttime.jpg" alt="mergesorttime.jpg" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17"><span class="section-number-2">3</span> Chapter 3</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">3.1</span> Solving recurrences</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">3.1.1</span> Analysing Recurrences</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+Consider the following recurrence :
+</p>
+
+<p>
+\(T(n) = c\) if \(n = 1\), else \(T(n) = 2T(n/2) + c \cdot n\)
+</p>
+
+<p>
+Note that this reccurence upper bounds and lower bounds the reccurence for
+Merge-Sort by selecting \(c\) sufficiently large and small, respectively.
+</p>
+
+<p>
+Three solving techiques :
+</p>
+</div>
+<div id="outline-container-orgheadline14" class="outline-5">
+<h5 id="orgheadline14"><span class="section-number-5">3.1.1.1</span> The substitution method</h5>
+<div class="outline-text-5" id="text-3-1-1-1">
+<ul class="org-ul">
+<li>Guess the form of the solution</li>
+<li>Use mathematical induction to find the constant</li>
+</ul>
+
+\begin{align*} T(n) &= 2T(n/2) + c \cdot n \\
+&= 2(2T (n/4) + c \cdot n/2) + c \cdot n = 4T(n/4) + 2 \cdot c \cdot n\\
+&= 4(2T (n/8) + c \cdot n/4) + 2 \cdot c \cdot n =  8T(n/8) + 3 \cdot c \cdot n\\
+&\vdots \\
+&= 2^k T(n/2^k) + k \cdot c \cdot n
+\end{align*}
+
+<p>
+A qualified guess is that \(T(n) = \Theta (n \log n)\).
+</p>
+<ul class="org-ul">
+<li>and show that the solution works
+<ul class="org-ul">
+<li>First upper bound :
+We want to prove there exists \(a > 0\) s.t \(T(n) \le a \cdot n \cdot \log n\)
+\(\forall n \ge 2\)
+<ul class="org-ul">
+<li><b>Base case</b> : For any constant \(n \in \{2,3,4\}\), \(T(n)\) has a constant
+value, selecting a larger than this value will satisfy the base cases when
+\(n \in \{2,3,4\}\).</li>
+<li><p>
+<b>Inductive step</b> : <i>Assume statement true \(\forall n \{2,3,...,k-1\}\) and
+prove the statement for \(n=k\)</i>
+</p>
+\begin{align*}
+T(n) &= 2T(n/2) + c \cdot n \\
+&\le 2 \cdot \frac{an}{2} \log(n/2) + c \cdot n = a \cdot n \log(n/2) + c \cdot n \\
+&= a \cdot n \log n -a \cdot n + c \cdot n \\
+&\le a \cdot n \log n \text{ (if we select $a \ge c$)}
+\end{align*}
+<p>
+We can thus select \(a\) to be a positive constant so taht both the base
+cases and the inductive step holds. Hence, \(T(n) = O(n\log n)\).
+</p></li>
+</ul></li>
+<li>Second lower bound :
+<ul class="org-ul">
+<li>We want to prove there exists a constant \(b > 0\) s.t \(T(n) \ge b \cdot n
+      \cdot \log n\) \(\forall n \ge 0\)</li>
+<li><b>Base case</b> : For \(n=1,T(n)=c\) and \(b \cdot n \log n =0\) so the base case
+is satisfied for any b.</li>
+<li><p>
+<b>Inductive step</b> : <i>Assume statement true \(\forall n \in \{0,1,...,k-1\}\)
+      and prove the statement for \(n =k\)</i>
+</p>
+\begin{align*}
+T(n) &= 2T (n/2) + c \cdot n\\
+&\ge 2 \cdot \frac{b\cdot n}{2} \log(n/2) + c \cdot n = b \cdot n \log(n/2) + c \cdot n\\
+&= b \cdot n \log n - b \cdot n + c \cdot n \\
+& \ge b \cdot n \log n \text{ (if we select $b \le c$)}
+\end{align*}</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>
+We can thus select \(b\) to be positive constant so that both the base cases and
+the inductive step holds. Hence, \(T(n) = \Omega(n\log n)\).
+</p>
+
+<ul class="org-ul">
+<li>Other example</li>
+</ul>
+<p>
+Prove that \(T(n) = O(n)\)
+First \(\exists c\) s.t.
+</p>
+\begin{align*}
+ T(n) \le F(n)\\
+\text{and}\\
+F(n) = c \text{ if $n=0, n=1$, else } F(\frac{n}{4} +1 ) + F(\frac{3n}{4} -1) + c
+\end{align*} 
+<p>
+We shall prove that \(F(n) = O(n)\)
+claim : there exists constants \(b',b > 0\) and \(n_0 \ge 0\) s.t. \( \forall n \ge n_0\)
+\(F(n) \le b \cdot n - b'\)
+</p>
+
+<p>
+Proof : Inductive step : Assume \(F(n) = b \cdot n\) \(\forall n \in
+\{n_0,...k-1\}\) prove true for \(n=k\).
+</p>
+\begin{align*}
+ F(n) &= F(\frac{n}{4} +1) + F(\frac{3n}{4} -1) + C \\
+&= b(\frac{n}{4} + 1) b' + b (\frac{3n}{4} -1) b' + C\\
+&= b \cdot n + c - 2b'\\
+&\le b \cdot n - b' \text{ if $ b' \ge C$}
+\end{align*}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2015-09-27 Sun 20:54</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
