@@ -1,0 +1,244 @@
+% Created 2015-09-28 Mon 09:11
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{Analyse III}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Analyse III},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.1)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Chapitre 2}
+\label{sec:orgheadline1}
+Intégrales curvilignes
+
+\begin{itemize}
+\item \uline{Def} Courbes
+\end{itemize}
+\(\Gamma \subset \mathbb{R}^d\) est une courbe simple si \(\exists I \subset \mathbb{R}\)  (interval) \(\gamma: I \rightarrow \mathbb{R}^d\) : continu. tel que
+\begin{enumerate}
+\item \(\gamma (I) = \tau\) (courbe)
+\item \$\(\gamma\) * Chapitre 2
+\end{enumerate}
+Intégrales curvilignes
+
+\begin{itemize}
+\item \uline{Def} Courbes
+\end{itemize}
+\(\Gamma \subset \mathbb{R}^d\) est une courbe simple si \(\exists I \subset \mathbb{R}\)  (interval) \(\gamma: I \rightarrow \mathbb{R}^d\) : continu. tel que
+\begin{enumerate}
+\item \(\gamma (I) = \tau\) (courbe)
+\item \(\gamma (t_1) \neq \gamma(t_2)\) \(\forall t_1,t_2 \in I\) (simple)
+\end{enumerate}
+\(\gamma\) : une paramétrisation.
+
+\begin{itemize}
+\item Ex. 1 :
+\end{itemize}
+\(\Gamma = \{ x \in \mathbb{R}^2 : |x|=1\}\)
+dessin cercle \(\gamma: \left[0,2\pi\right] \rightarrow \mathbb{R}^2\) \(\gamma(\theta) = (\cos \theta, \sin \theta)\)
+\begin{itemize}
+\item Ex. 2 : (helix)
+\end{itemize}
+dessin helix \(\gamma \mathbb{R} \rightarrow \mathbb{R}^3\) \(\gamma(t) = (\cos t, \sin t,t)\)
+\begin{itemize}
+\item Ex. 3 :
+\end{itemize}
+\(\mathbb{R} \rightarrow \mathbb{R}^2\)
+\(\gamma(t) = (t^3,t^2)\)
+dessin
+\begin{itemize}
+\item Ex. 4:
+\end{itemize}
+\(\gamma : \mathbb{R} \rightarrow \mathbb{R}^2\)
+\(\gamma(t) = (t,|t|)\)
+dessing
+\begin{itemize}
+\item Ex. 5 :
+\end{itemize}
+\(\mathbb{R}^2\) dessin courbe pas simple
+
+\begin{itemize}
+\item \uline{Def 2} : \(\tau\) : courbe simple est dite fermée si \(\gamma(a) = \gamma(b)\) \(\left(I = \left[a,b\right]\right)\)
+\begin{itemize}
+\item Ex. 1 : fermé \(\gamma(0)=\gamma(2\pi) = (1,0)\) image patate.
+\item Ex. 2,3,4 : non fermé.
+\end{itemize}
+
+\item \uline{Def 3}: \(\Gamma\) : courbe est régulière si \(\exists \left[a,b\right], \gamma: \gamma \cdot \left[a,b\right] \rightarrow \mathbb{R}^d\) tel que
+\begin{itemize}
+\item \(\gamma \in C^1 \left(\left[a,b\right]: \mathbb{R}^2\right)\)
+\item \(\gamma ' (t) \neq 0 \in \mathbb{R}^d\) \(\left( \left(\gamma_1'(t),...,\gamma_d'(t) \right) \neq (0,...,0) \right)\)
+\end{itemize}
+
+\item Ex.1 : régulière \(\gamma'(t) = (-\sin t, cos t) \neq (0,0)\)
+\item Ex.2 : régulière \(\gamma'(y) = (-\sin t, cos t, 1) \neq (0,0,0)\)
+\item Ex.3 : \(\gamma' (t) = (3t^2,2t)\) et \(\gamma'(0) = (0,0)\) : \(\Gamma\) : n'est pas régulière.
+\item Ex.4 : \(\gamma\) n'est pas diff. en \(t=0\). Donc \(\Gamma\) n'est pas régulière.
+\end{itemize}
+
+\uline{Remarque :}
+\begin{itemize}
+\item \(\Gamma\) : régulière. La ligne tangente en \(\gamma(t_0)\).
+\end{itemize}
+
+(L) : \(\gamma(t_0) + \gamma'(t_0)(t-t_0)\)
+
+\begin{itemize}
+\item \(\Gamma\) : courbe \(\subset \mathbb{R}^d\)
+\end{itemize}
+
+\(f: \Gamma \rightarrow \mathbb{R}\): continue.
+
+\uline{Def :} \(\int\limits_{T} f := \int\limits_{a}^{b} f(\gamma(t)) ||\gamma'(t)|| dt\)
+
+\(\gamma : \left[a,b\right] \rightarrow \mathbb{R}^d\): une paramétrisation de \(\Gamma\).
+
+La longueur de \(\Gamma\) : \(\int\limits_{\Gamma} 1 = \int\limits_{a}^{b}||\gamma'(t)|| dt\)
+
+\begin{itemize}
+\item Ex.1 : \(\int\limits_{\Gamma}f\) avec \(f=1\)
+\end{itemize}
+\(= \int\limits_{0}^{2\pi} ||\gamma'(t)|| dt = \int\limits_{0}^{2\pi} 1 dt = 2\pi\)
+
+\begin{itemize}
+\item Ex. : \begin{align*}
+\end{itemize}
+\(\int\)\limits\(_{\Gamma}\) : \\
+f(x,y) = \sqrt{x^2+4y^2} \\
+\(\Gamma\) = \left\lbrace (x,y) \(\in\) \mathbb{R}\(^{\text{2}}\); 2y = x\(^{\text{2}}\); x \(\in\) \left[0,1\right]\right\rbrace \\
+\(\gamma\) : \left[0,1\right] \(\rightarrow\) \mathbb{R}\(^{\text{2}}\)\\
+t \(\rightarrow\) (t,\frac{t^2}{2}\\
+\(\int\)\limits\(_{\Gamma}\) f \&= \(\int\)\limits\(_{\text{0}}^{\text{1}}\) f(\(\gamma\)(t)) || \(\gamma\)'(t)|| dt\\
+\&= \(\int\)\limits\(_{\text{0}}^{\text{1}}\) \sqrt\{t\(^{\text{2}}\) + 4 \frac{t^4}{4}\} \sqrt{1 + t^2} dt\\
+\&= \(\int\)\limits\(_{\text{0}}^{\text{1}}\) \sqrt{t^2 + t^4} \sqrt{1 + t^2} dt\\
+\&= \(\int\)\limits\(_{\text{0}}^{\text{1}}\) t (1+t\(^{\text{2}}\)) dt = \frac{t^2}{2} + \frac{t^4}{4} \big|\(_{\text{0}}^{\text{1}}\)= \frac{3}{4} 
+\end{align*}
+
+image courbe
+
+\begin{align*}
+\int\limits_{\Gamma} \simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\gamma(t_i) \in \Gamma_i \\
+\simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\end{align*}
+\(\Gamma_i = \gamma \left( \left[ t_i, t_{i+1} \right] \right)\): \(\gamma\) une paramétrisation \(\left[a,b\right] \rightarrow \mathbb{R}^d\)
+
+Donc \(\int\limits_{\Gamma} \simeq \sum\limits ||\gamma(t_i)'|| (t_{i+1} - t_i) f(\gamma(t_i)) \simeq \int\limits_{a}^{b} ||\gamma'(t)|| f(\gamma(t)) dt\)(t\(_{\text{1}}\)) \(\neq\) \(\gamma\)(t\(_{\text{2}}\))\$ \(\forall t_1,t_2 \in I\) (simple)
+\(\gamma\) : une paramétrisation.
+
+\begin{itemize}
+\item Ex. 1 :
+\end{itemize}
+\(\Gamma = \{ x \in \mathbb{R}^2 : |x|=1\}\)
+dessin cercle \(\gamma: \left[0,2\pi\right] \rightarrow \mathbb{R}^2\) \(\gamma(\theta) = (\cos \theta, \sin \theta)\)
+\begin{itemize}
+\item Ex. 2 : (helix)
+\end{itemize}
+dessin helix \(\gamma \mathbb{R} \rightarrow \mathbb{R}^3\) \(\gamma(t) = (\cos t, \sin t,t)\)
+\begin{itemize}
+\item Ex. 3 :
+\end{itemize}
+\(\mathbb{R} \rightarrow \mathbb{R}^2\)
+\(\gamma(t) = (t^3,t^2)\)
+dessin
+\begin{itemize}
+\item Ex. 4:
+\end{itemize}
+\(\gamma : \mathbb{R} \rightarrow \mathbb{R}^2\)
+\(\gamma(t) = (t,|t|)\)
+dessing
+\begin{itemize}
+\item Ex. 5 :
+\end{itemize}
+\(\mathbb{R}^2\) dessin courbe pas simple
+
+\begin{itemize}
+\item \uline{Def 2} : \(\tau\) : courbe simple est dite fermée si \(\gamma(a) = \gamma(b)\) \(\left(I = \left[a,b\right]\right)\)
+\begin{itemize}
+\item Ex. 1 : fermé \(\gamma(0)=\gamma(2\pi) = (1,0)\) image patate.
+\item Ex. 2,3,4 : non fermé.
+\end{itemize}
+
+\item \uline{Def 3} : \(\Gamma\) : courbe est régulière si \(\exists \left[a,b\right], \gamma: \gamma \cdot \left[a,b\right] \rightarrow \mathbb{R}^d\) tel que
+\begin{itemize}
+\item \(\gamma \in C^1 \left(\left[a,b\right]: \mathbb{R}^2\right)\)
+\item \(\gamma ' (t) \neq 0 \in \mathbb{R}^d\) \(\left( \left(\gamma_1'(t),...,\gamma_d'(t) \right) \neq (0,...,0) \right)\)
+\end{itemize}
+
+\item Ex.1 : régulière \(\gamma'(t) = (-\sin t, cos t) \neq (0,0)\)
+\item Ex.2 : régulière \(\gamma'(y) = (-\sin t, cos t, 1) \neq (0,0,0)\)
+\item Ex.3 : \(\gamma' (t) = (3t^2,2t)\) et \(\gamma'(0) = (0,0)\) : \(\Gamma\) : n'est pas régulière.
+\item Ex.4 : \(\gamma\) n'est pas diff. en \(t=0\). Donc \(\Gamma\) n'est pas régulière.
+\end{itemize}
+
+\uline{Remarque :} 
+\begin{itemize}
+\item \(\Gamma\) : régulière. La ligne tangente en \(\gamma(t_0)\).
+\end{itemize}
+
+(L) : \(\gamma(t_0) + \gamma'(t_0)(t-t_0)\)
+
+\begin{itemize}
+\item \(\Gamma\) : courbe \(\subset \mathbb{R}^d\)
+\end{itemize}
+
+\(f: \Gamma \rightarrow \mathbb{R}\): continue.
+
+\uline{Def :} \(\int\limits_{T} f := \int\limits_{a}^{b} f(\gamma(t)) ||\gamma'(t)|| dt\)
+
+\(\gamma : \left[a,b\right] \rightarrow \mathbb{R}^d\): une paramétrisation de \(\Gamma\).
+
+La longueur de \(\Gamma\) : \(\int\limits_{\Gamma} 1 = \int\limits_{a}^{b}||\gamma'(t)|| dt\)
+
+\begin{itemize}
+\item Ex.1 : \(\int\limits_{\Gamma}f\) avec \(f=1\)
+\end{itemize}
+\(= \int\limits_{0}^{2\pi} ||\gamma'(t)|| dt = \int\limits_{0}^{2\pi} 1 dt = 2\pi\)
+
+\begin{itemize}
+\item Ex. : \begin{align*}
+\end{itemize}
+\(\int\)\limits\(_{\Gamma}\) : \\
+f(x,y) = \sqrt{x^2+4y^2} \\
+\(\Gamma\) = \left\lbrace (x,y) \(\in\) \mathbb{R}\(^{\text{2}}\); 2y = x\(^{\text{2}}\); x \(\in\) \left[0,1\right]\right\rbrace \\
+\(\gamma\) : \left[0,1\right] \(\rightarrow\) \mathbb{R}\(^{\text{2}}\)\\
+t \(\rightarrow\) (t,\frac{t^2}{2}\\
+\(\int\)\limits\(_{\Gamma}\) f \&= \(\int\)\limits\(_{\text{0}}^{\text{1}}\) f(\(\gamma\)(t)) || \(\gamma\)'(t)|| dt\\
+\&= \(\int\)\limits\(_{\text{0}}^{\text{1}}\) \sqrt\{t\(^{\text{2}}\) + 4 \frac{t^4}{4}\} \sqrt{1 + t^2} dt\\
+\&= \(\int\)\limits\(_{\text{0}}^{\text{1}}\) \sqrt{t^2 + t^4} \sqrt{1 + t^2} dt\\
+\&= \(\int\)\limits\(_{\text{0}}^{\text{1}}\) t (1+t\(^{\text{2}}\)) dt = \frac{t^2}{2} + \frac{t^4}{4} \big|\(_{\text{0}}^{\text{1}}\)= \frac{3}{4} 
+\end{align*}
+
+image courbe
+
+\begin{align*}
+\int\limits_{\Gamma} \simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\gamma(t_i) \in \Gamma_i \\
+\simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\end{align*}
+\(\Gamma_i = \gamma \left( \left[ t_i, t_{i+1} \right] \right)\): \(\gamma\) une paramétrisation \(\left[a,b\right] \rightarrow \mathbb{R}^d\)
+
+Donc \(\int\limits_{\Gamma} \simeq \sum\limits ||\gamma(t_i)'|| (t_{i+1} - t_i) f(\gamma(t_i)) \simeq \int\limits_{a}^{b} ||\gamma'(t)|| f(\gamma(t)) dt\)
+\end{document}

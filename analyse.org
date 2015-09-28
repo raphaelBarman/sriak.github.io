@@ -1,0 +1,162 @@
+# -*- mode: org; -*-
+#+TITLE: Analyse III
+#+SETUPFILE: htmlnotes.setup
+
+* Chapitre 2
+Intégrales curvilignes
+
+- _Def_ Courbes
+$\Gamma \subset \mathbb{R}^d$ est une courbe simple si $\exists I \subset \mathbb{R}$  (interval) $\gamma: I \rightarrow \mathbb{R}^d$ : continu. tel que
+1. $\gamma (I) = \tau$ (courbe)
+2. $\gamma * Chapitre 2
+Intégrales curvilignes
+
+- _Def_ Courbes
+$\Gamma \subset \mathbb{R}^d$ est une courbe simple si $\exists I \subset \mathbb{R}$  (interval) $\gamma: I \rightarrow \mathbb{R}^d$ : continu. tel que
+1. $\gamma (I) = \tau$ (courbe)
+2. $\gamma (t_1) \neq \gamma(t_2)$ $\forall t_1,t_2 \in I$ (simple)
+$\gamma$ : une paramétrisation.
+
+  - Ex. 1 :
+$\Gamma = \{ x \in \mathbb{R}^2 : |x|=1\}$
+dessin cercle $\gamma: \left[0,2\pi\right] \rightarrow \mathbb{R}^2$ $\gamma(\theta) = (\cos \theta, \sin \theta)$
+  - Ex. 2 : (helix)
+dessin helix $\gamma \mathbb{R} \rightarrow \mathbb{R}^3$ $\gamma(t) = (\cos t, \sin t,t)$
+  - Ex. 3 :
+$\mathbb{R} \rightarrow \mathbb{R}^2$
+$\gamma(t) = (t^3,t^2)$
+dessin
+  - Ex. 4:
+$\gamma : \mathbb{R} \rightarrow \mathbb{R}^2$
+$\gamma(t) = (t,|t|)$
+dessing
+  - Ex. 5 :
+$\mathbb{R}^2$ dessin courbe pas simple
+
+- _Def 2_ : $\tau$ : courbe simple est dite fermée si $\gamma(a) = \gamma(b)$ $\left(I = \left[a,b\right]\right)$
+  - Ex. 1 : fermé $\gamma(0)=\gamma(2\pi) = (1,0)$ image patate.
+  - Ex. 2,3,4 : non fermé.
+  
+- _Def 3_: $\Gamma$ : courbe est régulière si $\exists \left[a,b\right], \gamma: \gamma \cdot \left[a,b\right] \rightarrow \mathbb{R}^d$ tel que
+  - $\gamma \in C^1 \left(\left[a,b\right]: \mathbb{R}^2\right)$
+  - $\gamma ' (t) \neq 0 \in \mathbb{R}^d$ $\left( \left(\gamma_1'(t),...,\gamma_d'(t) \right) \neq (0,...,0) \right)$
+  
+- Ex.1 : régulière $\gamma'(t) = (-\sin t, cos t) \neq (0,0)$
+- Ex.2 : régulière $\gamma'(y) = (-\sin t, cos t, 1) \neq (0,0,0)$
+- Ex.3 : $\gamma' (t) = (3t^2,2t)$ et $\gamma'(0) = (0,0)$ : $\Gamma$ : n'est pas régulière.
+- Ex.4 : $\gamma$ n'est pas diff. en $t=0$. Donc $\Gamma$ n'est pas régulière.
+
+_Remarque :_
+- $\Gamma$ : régulière. La ligne tangente en $\gamma(t_0)$. 
+
+(L) : $\gamma(t_0) + \gamma'(t_0)(t-t_0)$
+
+- $\Gamma$ : courbe $\subset \mathbb{R}^d$
+
+$f: \Gamma \rightarrow \mathbb{R}$: continue.
+
+_Def :_ $\int\limits_{T} f := \int\limits_{a}^{b} f(\gamma(t)) ||\gamma'(t)|| dt$
+
+$\gamma : \left[a,b\right] \rightarrow \mathbb{R}^d$: une paramétrisation de $\Gamma$.
+
+La longueur de $\Gamma$ : $\int\limits_{\Gamma} 1 = \int\limits_{a}^{b}||\gamma'(t)|| dt$
+
+- Ex.1 : $\int\limits_{\Gamma}f$ avec $f=1$
+$= \int\limits_{0}^{2\pi} ||\gamma'(t)|| dt = \int\limits_{0}^{2\pi} 1 dt = 2\pi$
+
+- Ex. : \begin{align*}
+\int\limits_{\Gamma} : \\
+f(x,y) = \sqrt{x^2+4y^2} \\
+\Gamma = \left\lbrace (x,y) \in \mathbb{R}^2; 2y = x^2; x \in \left[0,1\right]\right\rbrace \\
+\gamma : \left[0,1\right] \rightarrow \mathbb{R}^2\\
+t \rightarrow (t,\frac{t^2}{2}\\
+\int\limits_{\Gamma} f &= \int\limits_{0}^{1} f(\gamma(t)) || \gamma'(t)|| dt\\
+&= \int\limits_{0}^{1} \sqrt{t^2 + 4 \frac{t^4}{4}} \sqrt{1 + t^2} dt\\
+&= \int\limits_{0}^{1} \sqrt{t^2 + t^4} \sqrt{1 + t^2} dt\\
+&= \int\limits_{0}^{1} t (1+t^2) dt = \frac{t^2}{2} + \frac{t^4}{4} \big|_0^1= \frac{3}{4} 
+\end{align*}
+
+image courbe
+
+\begin{align*}
+\int\limits_{\Gamma} \simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\gamma(t_i) \in \Gamma_i \\
+\simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\end{align*}
+$\Gamma_i = \gamma \left( \left[ t_i, t_{i+1} \right] \right)$: $\gamma$ une paramétrisation $\left[a,b\right] \rightarrow \mathbb{R}^d$
+
+Donc $\int\limits_{\Gamma} \simeq \sum\limits ||\gamma(t_i)'|| (t_{i+1} - t_i) f(\gamma(t_i)) \simeq \int\limits_{a}^{b} ||\gamma'(t)|| f(\gamma(t)) dt$(t_1) \neq \gamma(t_2)$ $\forall t_1,t_2 \in I$ (simple)
+$\gamma$ : une paramétrisation.
+
+  - Ex. 1 :
+$\Gamma = \{ x \in \mathbb{R}^2 : |x|=1\}$
+dessin cercle $\gamma: \left[0,2\pi\right] \rightarrow \mathbb{R}^2$ $\gamma(\theta) = (\cos \theta, \sin \theta)$
+  - Ex. 2 : (helix)
+dessin helix $\gamma \mathbb{R} \rightarrow \mathbb{R}^3$ $\gamma(t) = (\cos t, \sin t,t)$
+  - Ex. 3 :
+$\mathbb{R} \rightarrow \mathbb{R}^2$
+$\gamma(t) = (t^3,t^2)$
+dessin
+  - Ex. 4:
+$\gamma : \mathbb{R} \rightarrow \mathbb{R}^2$
+$\gamma(t) = (t,|t|)$
+dessing
+  - Ex. 5 :
+$\mathbb{R}^2$ dessin courbe pas simple
+
+- _Def 2_ : $\tau$ : courbe simple est dite fermée si $\gamma(a) = \gamma(b)$ $\left(I = \left[a,b\right]\right)$
+  - Ex. 1 : fermé $\gamma(0)=\gamma(2\pi) = (1,0)$ image patate.
+  - Ex. 2,3,4 : non fermé.
+  
+- _Def 3_ : $\Gamma$ : courbe est régulière si $\exists \left[a,b\right], \gamma: \gamma \cdot \left[a,b\right] \rightarrow \mathbb{R}^d$ tel que
+  - $\gamma \in C^1 \left(\left[a,b\right]: \mathbb{R}^2\right)$
+  - $\gamma ' (t) \neq 0 \in \mathbb{R}^d$ $\left( \left(\gamma_1'(t),...,\gamma_d'(t) \right) \neq (0,...,0) \right)$
+  
+- Ex.1 : régulière $\gamma'(t) = (-\sin t, cos t) \neq (0,0)$
+- Ex.2 : régulière $\gamma'(y) = (-\sin t, cos t, 1) \neq (0,0,0)$
+- Ex.3 : $\gamma' (t) = (3t^2,2t)$ et $\gamma'(0) = (0,0)$ : $\Gamma$ : n'est pas régulière.
+- Ex.4 : $\gamma$ n'est pas diff. en $t=0$. Donc $\Gamma$ n'est pas régulière.
+
+_Remarque :_ 
+- $\Gamma$ : régulière. La ligne tangente en $\gamma(t_0)$. 
+
+(L) : $\gamma(t_0) + \gamma'(t_0)(t-t_0)$
+
+- $\Gamma$ : courbe $\subset \mathbb{R}^d$
+
+$f: \Gamma \rightarrow \mathbb{R}$: continue.
+
+_Def :_ $\int\limits_{T} f := \int\limits_{a}^{b} f(\gamma(t)) ||\gamma'(t)|| dt$
+
+$\gamma : \left[a,b\right] \rightarrow \mathbb{R}^d$: une paramétrisation de $\Gamma$.
+
+La longueur de $\Gamma$ : $\int\limits_{\Gamma} 1 = \int\limits_{a}^{b}||\gamma'(t)|| dt$
+
+- Ex.1 : $\int\limits_{\Gamma}f$ avec $f=1$
+$= \int\limits_{0}^{2\pi} ||\gamma'(t)|| dt = \int\limits_{0}^{2\pi} 1 dt = 2\pi$
+
+- Ex. : 
+\begin{align*}
+\int\limits_{\Gamma} &: \\
+&f(x,y) = \sqrt{x^2+4y^2} \\
+&\Gamma = \left\lbrace (x,y) \in \mathbb{R}^2; 2y = x^2; x \in \left[0,1\right]\right\rbrace \\
+&\gamma : \left[0,1\right] \rightarrow \mathbb{R}^2\\
+&t \rightarrow (t,\frac{t^2}{2})
+\end{align*}
+\begin{align*}
+\int\limits_{\Gamma} f &= \int\limits_{0}^{1} f(\gamma(t)) || \gamma'(t)|| dt\\
+&= \int\limits_{0}^{1} \sqrt{t^2 + 4 \frac{t^4}{4}} \sqrt{1 + t^2} dt\\
+&= \int\limits_{0}^{1} \sqrt{t^2 + t^4} \sqrt{1 + t^2} dt\\
+&= \int\limits_{0}^{1} t (1+t^2) dt = \frac{t^2}{2} + \frac{t^4}{4} \big|_0^1= \frac{3}{4} 
+\end{align*}
+
+image courbe
+
+\begin{align*}
+\int\limits_{\Gamma} \simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\gamma(t_i) \in \Gamma_i \\
+\simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\end{align*}
+$\Gamma_i = \gamma \left( \left[ t_i, t_{i+1} \right] \right)$: $\gamma$ une paramétrisation $\left[a,b\right] \rightarrow \mathbb{R}^d$
+
+Donc $\int\limits_{\Gamma} \simeq \sum\limits ||\gamma(t_i)'|| (t_{i+1} - t_i) f(\gamma(t_i)) \simeq \int\limits_{a}^{b} ||\gamma'(t)|| f(\gamma(t)) dt$
