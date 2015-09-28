@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-09-28 Mon 09:13 -->
+<!-- 2015-09-28 Mon 09:53 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -475,11 +475,87 @@ image courbe
 <p>
 Donc \(\int\limits_{\Gamma} \simeq \sum\limits ||\gamma(t_i)'|| (t_{i+1} - t_i) f(\gamma(t_i)) \simeq \int\limits_{a}^{b} ||\gamma'(t)|| f(\gamma(t)) dt\)
 </p>
+
+<p>
+Def : L'intégrale curviligne pour un champ vectoriel.
+</p>
+
+<p>
+\(F : \Gamma \rightarrow \mathbb{R}^d\)
+\(\Gamma\) : courbe \(\gamma\) : paramétrisation sur \(\left[a,b\right]\)
+\(\int\limits_{\Gamma} F \vec{dl} := \int\limits_{a}^{b} F(\gamma(t)\cdot\gamma'(t) dt\) (\(\cdot\) =produit scalaire&#x2026;)
+</p>
+
+<ul class="org-ul">
+<li>Ex : \(\int\limits_{\Gamma} F \vec{dl}\)</li>
+</ul>
+\begin{align*}
+\Gamma &= \left\lbrace (x,y) \in \mathbb{R}^2: y = \cosh x, x \in \left[0,1\right] \right\rbrace\\
+F(x,y) &= (x^2,0)\\
+\gamma: \left[0,1\right] \rightarrow \mathbb{R}^2\\
+\gamma(t) = (t,\cosh t)\\
+\int\limits_{\Gamma} F \vec{dl}\\
+\Gamma &=  \int\limits_{0}^{1} F(\gamma(t)) \cdot \gamma'(t) dt = \int\limits_{0}^{1} (t^2,0)\cdot(1,\sinh t) dt\\
+^= \int\limits_{0}^{1} t^2 dt = \frac{1}{3}
+\end{align*} 
+
+<p>
+<span class="underline">Def :</span> courbe régulière <span class="underline">par morceau</span>.
+\(\exists \gamma \left[a,b\right] \rightarrow \mathbb{R}^d\)
+\(t_0=a,...,t_k=b\)
+tel que : \(\gamma \in C^1 \left(\left[t_i,t_{i+1}\right]\right)\)
+\(\gamma'(t) \neq 0\ \forall t \neq t_i\)
+</p>
+
+<p>
+<span class="underline">Def :</span> \(\Gamma\) régulière <span class="underline">par morceau</span>: \(f : \Gamma \rightarrow \mathbb{R}\): continue.
+</p>
+\begin{align*}
+\int\limits_{\Gamma} f := \sum\limits_{i=0}^{k-1} f(\gamma(t)) || \gamma'(t)|| dt
+\end{align*}
+<p>
+\(F: \Gamma \rightarrow \mathbb{R}^d\) : champ vectoriel:
+</p>
+\begin{align*}
+\int\limits_{\Gamma}F \vec{dl} := \sum\limits_{i=0}^{k-1} \int\limits_{t_i}^{t_{i+1}} F(\gamma(t)) || \gamma'(t)|| dt
+\end{align*}
+
+<ul class="org-ul">
+<li>Ex. : \(\Gamma\) image carré \(\Gamma = \Gamma_1 \cup \Gamma_2 \cup \Gamma_3 \cup \Gamma_4\)</li>
+</ul>
+\begin{align*}
+\Gamma_1 &= \left\lbrace (t,0): t\in \left[0,1\right] \right\rbrace\\
+\Gamma_2 &= \left\lbrace (1,t-1): t\in \left[1,2\right] \right\rbrace\\
+\Gamma_3 &= \left\lbrace (3-t,1): t\in \left[2,3\right] \right\rbrace\\
+\Gamma_4 &= \left\lbrace (0,4-t): t\in \left[3,4\right] \right\rbrace\\
+\gamma: &\left[0,4\right] \rightarrow \mathbb{R}^2
+\end{align*}
+\begin{align*}
+\gamma(t) &= \gamma_1(t) &\left[0,1\right]
+ & \gamma_2(t) &\left[1,2\right]
+ & \gamma_3(t) &\left[2,3\right]
+ & \gamma_4(t) &\left[3,4\right]
+\end{align*}
+
+<p>
+\(f=1\)
+</p>
+\begin{align*}
+|\Gamma| = \int\limits_{\Gamma} f &= \int\limits_{0}^{1} || \gamma'(t)|| dt + \int\limits_{1}^{2} || \gamma'(t)|| dt\\
+&+ \int\limits_{2}^{3} || \gamma'(t)|| dt  + \int\limits_{3}^{4} || \gamma'(t)|| dt\\
+\end{align*}
+\begin{align*}
+(||\gamma'(t)||=1) = \int\limits_{0}^{1} 1 + \int\limits_{1}^{2} 1 + \int\limits_{2}^{3} 1 + \int\limits_{3}^{4} = 4
+\end{align*}
+\begin{align*}
+\int\limits_{\Gamma}f= \sum\limits_{i=1}^4 \int\limits_{\Gamma_i}\\
+\Gamma_2 : \left\lbrace (1,t) t \in \left[0,1\right] \right\rbrace
+\end{align*}
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-09-28 Mon 09:13</p>
+<p class="date">Created: 2015-09-28 Mon 09:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
