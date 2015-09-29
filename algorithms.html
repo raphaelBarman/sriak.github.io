@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-09-27 Sun 20:54 -->
+<!-- 2015-09-28 Mon 15:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -188,7 +188,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline2">1.2. Instance of a problem</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline13">2. Chapter 2</a>
+<li><a href="#orgheadline14">2. Chapter 2</a>
 <ul>
 <li><a href="#orgheadline4">2.1. Insertion sort algorithm</a></li>
 <li><a href="#orgheadline7">2.2. Loop Invariant -&gt; prove corectness of algorithm</a>
@@ -197,7 +197,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline6">2.2.2. Example 2 : Insertion sort</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline12">2.3. Divide and conquer approach</a>
+<li><a href="#orgheadline13">2.3. Divide and conquer approach</a>
 <ul>
 <li><a href="#orgheadline8">2.3.1. Principle :</a></li>
 <li><a href="#orgheadline11">2.3.2. Application on merge and sort :</a>
@@ -206,21 +206,21 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline10">2.3.2.2. Time analysis</a></li>
 </ul>
 </li>
+<li><a href="#orgheadline12">2.3.3. Analysis of divide-and-conquer algorithms</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline17">3. Chapter 3</a>
+<li><a href="#orgheadline18">3. Chapter 3</a>
 <ul>
-<li><a href="#orgheadline16">3.1. Solving recurrences</a>
-<ul>
-<li><a href="#orgheadline15">3.1.1. Analysing Recurrences</a>
-<ul>
-<li><a href="#orgheadline14">3.1.1.1. The substitution method</a></li>
+<li><a href="#orgheadline15">3.1. The substitution method</a></li>
+<li><a href="#orgheadline16">3.2. The recursion tree method</a></li>
+<li><a href="#orgheadline17">3.3. The master method</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li><a href="#orgheadline20">4. Chapter 4</a>
+<ul>
+<li><a href="#orgheadline19">4.1. Brute force</a></li>
 </ul>
 </li>
 </ul>
@@ -253,8 +253,8 @@ Examples :
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13"><span class="section-number-2">2</span> Chapter 2</h2>
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="orgheadline14"><span class="section-number-2">2</span> Chapter 2</h2>
 <div class="outline-text-2" id="text-2">
 </div><div id="outline-container-orgheadline4" class="outline-3">
 <h3 id="orgheadline4"><span class="section-number-3">2.1</span> Insertion sort algorithm</h3>
@@ -378,8 +378,8 @@ iteration preserves the loop invariant.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">2.3</span> Divide and conquer approach</h3>
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">2.3</span> Divide and conquer approach</h3>
 <div class="outline-text-3" id="text-2-3">
 </div><div id="outline-container-orgheadline8" class="outline-4">
 <h4 id="orgheadline8"><span class="section-number-4">2.3.1</span> Principle :</h4>
@@ -480,23 +480,33 @@ Merge-Sort(A,q+1,r) sucessfully sort the two subarrays.</li>
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">2.3.3</span> Analysis of divide-and-conquer algorithms</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+Use a <b>recurrence</b> equation to describe the running time :
+</p>
+<ul class="org-ul">
+<li>Let \(T(n)\) = "running time on a problem of size \(n\)"</li>
+<li>If \(n\) is small enough say \(n\le c\) for some constant \(c\) then \(T(n) = \Theta(1)\) (by brute force)</li>
+<li>Otherwise, suppose we divide into a sub problems each size \(n/b\) (conquer step)</li>
+<li>Let \(D(n)\) be the time to divide and let \(C(n)\) the time to combine solutions</li>
+<li>We get the reccurence : \(T(n) = \Theta(1)\) if \(n\le c\), else \(T(n) = aT(n/b)+D(n)+C(n)\)</li>
+</ul>
 </div>
 </div>
-<div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="orgheadline17"><span class="section-number-2">3</span> Chapter 3</h2>
+</div>
+</div>
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="orgheadline18"><span class="section-number-2">3</span> Chapter 3</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">3.1</span> Solving recurrences</h3>
-<div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15"><span class="section-number-4">3.1.1</span> Analysing Recurrences</h4>
-<div class="outline-text-4" id="text-3-1-1">
 <p>
 Consider the following recurrence :
 </p>
 
 <p>
-\(T(n) = c\) if \(n = 1\), else \(T(n) = 2T(n/2) + c \cdot n\)
+\(T(n) = c\) if \(n = 1\) <br  />
+\(T(n) = 2T(n/2) + c \cdot n\) otherwise
 </p>
 
 <p>
@@ -508,13 +518,13 @@ Merge-Sort by selecting \(c\) sufficiently large and small, respectively.
 Three solving techiques :
 </p>
 </div>
-<div id="outline-container-orgheadline14" class="outline-5">
-<h5 id="orgheadline14"><span class="section-number-5">3.1.1.1</span> The substitution method</h5>
-<div class="outline-text-5" id="text-3-1-1-1">
-<ul class="org-ul">
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">3.1</span> The substitution method</h3>
+<div class="outline-text-3" id="text-3-1">
+<ol class="org-ol">
 <li>Guess the form of the solution</li>
-<li>Use mathematical induction to find the constant</li>
-</ul>
+<li>Use mathematical induction to find the constant (substition method in the book)</li>
+</ol>
 
 \begin{align*} T(n) &= 2T(n/2) + c \cdot n \\
 &= 2(2T (n/4) + c \cdot n/2) + c \cdot n = 4T(n/4) + 2 \cdot c \cdot n\\
@@ -603,14 +613,196 @@ Proof : Inductive step : Assume \(F(n) = b \cdot n\) \(\forall n \in
 &= b \cdot n + c - 2b'\\
 &\le b \cdot n - b' \text{ if $ b' \ge C$}
 \end{align*}
+
+<ul class="org-ul">
+<li>Again other example :</li>
+</ul>
+<p>
+\(T(n) = \Theta(1)\) if \(n=1\) <br  />
+\(8 T(n/2) + c \cdot n^2\) if \(n > 1\) <br  />
+Prove that \(T(n)\) is \(O(n^3)\).
+</p>
+
+<p>
+<span class="underline">Claim</span> : \(\exists d > 0\) and \(n_0 > 0\) s.t. \(T(n) \le d n^3 \forall n \ge n_0\)
+</p>
+
+<p>
+<span class="underline">Base case</span>: for \(n=1,...,k\)
+\(T(1), T(2) ... T(k)\) I can always select \(d \ge max \left\lbrace T(1), T(2),...
+T(k) \right\rbrace\)
+</p>
+
+<p>
+_<sub>Inductive</sub> step__ :
+</p>
+\begin{align*}
+T(n) = 8 \cdot T(n/2) + c \cdot n^2 \\
+\le 8 \cdot d \cdot (n/2)^3 + c \cdot n^2 \\
+= d \cdot n^3 + c \cdot n^2
+\end{align*}
+<p>
+How to remove the low order terms ? We add to our claim a \(-d' \cdot n^2\) s.t.
+\(T(n) \le d n^3 - d' \cdot n^2 \forall n \ge n_0\).
+Now
+</p>
+\begin{align*}
+T(n) = 8 \cdot T(n/2) + c \cdot n^2 \\
+\le d \cdot n^3 - 2 \cdot d' \cdot n^2 + c \cdot n^2\\
+\le d \cdot n^3 - d' \cdot n^2 \text{if $d' \ge c$}
+\end{align*}
 </div>
+</div>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">3.2</span> The recursion tree method</h3>
+<div class="outline-text-3" id="text-3-2">
+<input checked type=radio name=slider id=slide01 />
+    <input type=radio name=slider id=slide02 />
+    <input type=radio name=slider id=slide03 />
+  
+  
+    <!-- The Slider -->
+    
+    <div id=slides>
+    
+      <div id=overflow>
+      
+        <div class=inner>
+        
+          <article>
+            <img src=pdf/recursiontree01.jpg />
+          </article>
+          
+          <article>
+            <img src=pdf/recursiontree02.jpg />
+          </article>
+          
+          <article>
+            <img src=pdf/recursiontree03.jpg />
+          </article>
+          
+        </div> <!-- .inner -->
+        
+      </div> <!-- #overflow -->
+    
+    </div> <!-- #slides -->
+  
+  
+    <!-- Controls and Active Slide Display -->
+  
+    <div id=controls>
+
+      <label for=slide01></label>
+      <label for=slide02></label>
+      <label for=slide03></label>
+    
+    </div> <!-- #controls -->
+    
+    <div id=active>
+
+      <label for=slide01></label>
+      <label for=slide02></label>
+      <label for=slide03></label>
+      
+    </div> <!-- #active -->
+<ul class="org-ul">
+<li>Examples to do with this method :
+<ul class="org-ul">
+<li>\(T(n) = 2 T(n/2) + c \cdot n^2\), cost of base root \(cn^2\), but cost of last
+root : \(cn\)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">3.3</span> The master method</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Used to black-box solve reccurences of form \(T(n) = a \cdot T(n/b) + f(n)\)
+(doesn't work with \(T(n) = T(n/3) + T(2n/3) + cn\) for example).
+</p>
+
+<p>
+<span class="underline">Theorem (Master theorem)</span>
+</p>
+
+<p>
+Let \(a \ge 1\) and \(b > 1\) be constants, let $T(n) be defined on the
+  nonnegative integers by the reccurence :
+</p>
+\begin{align*}
+T(n) = a \cdot T(n/b) + f(n)
+\end{align*}
+<p>
+Then, \(T(n)\) has the following asymptotic bounds :
+</p>
+<ul class="org-ul">
+<li>If \(f(n) = O(n^{\log_b a- \epsilon})\) for some constant \(\epsilon > 0\), then
+\(T(n) = \Theta(n^{\log_b a})\)</li>
+<li>If \(f(n) = \Theta(n^{\log_b a})\), then \(T(n) = \Theta(n^{\log_b a} \log n)\)</li>
+<li>If \(f(n) = \Omega(n^{\log_b a+\epsilon})\) for some constant \(\epsilon > 0\) and
+if \(a \cdot f(n/b) \le c \cdot f(n)\) for some constant \(c < 1\) and all
+sufficiently large \(n\), then \(T(n) = \Theta(f(n))\)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline20" class="outline-2">
+<h2 id="orgheadline20"><span class="section-number-2">4</span> Chapter 4</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<span class="underline"><b>Maximum-subarray problem</b></span>
+</p>
+
+<p>
+"If we let \(A[i]\) = (price after day \(i\)) - (price after day \(i-1\)) then if the
+maximum subarray is \(A[i..j]\) then we should have bought just before day \(i\) and
+sold just after day \(j\).
+</p>
+
+<p>
+<b>Input</b> : An array \(A[1...n]\) of numbers
+</p>
+
+<p>
+<b>Output</b> Indices \(i\) and \(j\) such that \(A[i...j]\) has the greatest sum of any
+ nonempty, contiguous subarray of \(A\), along with the sum of the values in \(A[i...j]\).
+</p>
+</div>
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19"><span class="section-number-3">4.1</span> Brute force</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Simply check all possible subarrays.
+</p>
+
+<p>
+\(\binom{n}{2} =  \Theta (n^2)\) many.
+</p>
+
+<p>
+*Maximum-subarray-slow*(A[1&#x2026;n])
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">B.val = - infinity, B.i = <span style="color: #268bd2; font-weight: bold;">1</span>, B.j = n
+<span style="color: #859900; font-weight: bold;">for</span> i = <span style="color: #268bd2; font-weight: bold;">1</span> to n
+  tmp = <span style="color: #268bd2; font-weight: bold;">0</span>
+  <span style="color: #859900; font-weight: bold;">for</span> j = i to n
+    tmp = tmp + A<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>
+    <span style="color: #859900; font-weight: bold;">if</span> tmp &gt; B.val
+       B.val = tmp
+       B.i = i
+       B.j = j
+<span style="color: #859900; font-weight: bold;">return</span> <span style="color: #2aa198;">(</span>B.i,<span style="color: #268bd2; font-weight: bold;">B</span>.<span style="color: #268bd2; font-weight: bold;">j</span>.B.val<span style="color: #2aa198;">)</span>
+</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-09-27 Sun 20:54</p>
+<p class="date">Created: 2015-09-28 Mon 15:57</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

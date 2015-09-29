@@ -109,3 +109,130 @@
    - Triangulation et mise en place d'habitudes de travail entre organismes de financment liés à la défense de ...
 3. Dès ses débuts, la recherche en informatiquese déploie - malgré elle - en parallèle à cette équation: comment diffuser au mieux des injonctions ?
    - Les concepts de "signaux" et d'"informations" sont fondamentalement liés à des problématiques de gestion et d'encadrement
+
+* Week 3
+** Fait d'actualité : Suite de l'affaire VW 
+_Quels problèmes le logiciel espion permettrait-il (idéalement) de résoudre ?_
+- Entités condensées dans le logiciel 
+  - Obama : Loi anti-pollution
+  - Toyota (modèle hybrider vs diesel chez VW): Concurrence, but de VW = devenir 1er mondial
+  - Diesel
+    - Coût de la recherche et développement : dur de réduire les émissions (problème avec lois anti-pollutions)
+    - Bluetech : technologie nécessitant hygiène usager, implémentée par Peugeot, mais pas VW, mais inventée à la base par Bosch !
+  - PDG de VW
+    - Grosse pression sur VW (poussé à devenir 1er mondial), se répercute
+  - Oxyde d'azote: émis par moteur diesel, doutes sur son origine
+** Histoire du logiciel (1955-1975)
+_*Développement important : pourquoi ?*_
+*** High-level languages (1955-65)
+Avancées précédentes requièrent d'écrire de plus en plus de code et de plus en
+plus de débuggage, besoin d'autre chose.
+
+**** Formula translator (Fortran)
+- 1957, première version du FORTRAN
+- 1958, moitié des ordinateurs gérés par IBM équipés de compilateur FORTRAN
+- FORTRAN (et les autres langages de programmation) facilite le travail de programmation
+- Utilisation effective des ordinateurs très restreinte, propriété de
+  communautés d'élites (professeurs renommés, cadres supérieurs, officiers, etc.)
+**** John Kemeny et le BASIC
+- Personnage brillant, très doué dans son domaine.
+- Bonne connaissance des problèmes
+- Ambition :
+  - Rendre le plus acessible l'interaction avec un ordinateur
+  - Exploiter le potentiel *pédagogique* de ces nouveaux dispositifs.
+- Deux problèmes :
+  - Aspect ésotérique des langages de programmation, y compris FORTRAN et COBOL
+  - Contrainte physique du /batch processing/ qui se prête mal à une utilisation
+    à des fins pédagogiques (beaucoup d'utilisateurs)
+- Invention du /time-sharing/ :
+  - Besoin de deux ordinateurs
+  - Un ordinateur faisant les calculs, l'autre gérant les demandes.
+  - 1er mai 1964: le Dartmouth Time Sharing System (DTSS) devient opérationnel
+- BASIC
+  - DTSS permet l'illusion de l'utilisation simultanée d'un ordinateur de
+    puissance moyenne.
+  - Symétriquement, le DTSS suggère le traitement de "petits" programmes à des
+    fins pédagogiques.
+  - 1962-64 : En parallèle au développement du DTSS, Kemeny, Kurz et une
+    trentaine développent le langage de programmation BASIC
+  - Nouvelles entités
+    - 1965: /General Electric/ vise la clientèle des universités et de lycées en
+      proposant une gamme de systèmes de /time-sharing/ avec compilateur BASIC
+    - Différents BASIC sont adaptés pour différents sysyèmes
+    - Une nouvelle communauté d'étudinats formés à BASIC émerge
+- *4 éléments à retenir*
+  1. Le glissement vers des langages de programmation plus intuitif a été
+     suggéré par l’augmentation de la puissance des ordinateurs
+  2. La configuration quadripartite insuffle le développement de ces nouveaux
+     langages ainsi que les innovations de Dartmouth
+  3. De cette configuration émerge un nouveau collectif: jeunes étudiants
+     capable de s’approprier des ordinateurs dans des espaces quasi-publics
+     (lycées, universités)
+  4. Les ordinateurs restent cantonnés à une élite, cette fois-ci étudiante
+*** Silicon Valley et micro-computer (1955-75)
+- Avénement :
+  - Pour que ordinateurs deviennet plus acessibles, besoin de l'émergence des
+    circuits intégrés.
+  - De par leurs caractéristiques techniques (hautes performances, faibles
+    coûts), ces circuits intégrés ont à leur tour été enrôlés dans la
+    fabrication d’ordinateurs plus compactes mais difficile d’accès
+- Les semis conducteurs:
+  - William Shockley :
+    - Prix nobel de physique
+    - Quitte les laboratoires Bell pour aller à /Mountain View/
+    - Son statut, ses patentes et les nouvelles possiblités californiennes
+      convaiquent plusieurs physiciens importants de le rejoindre, dont *Robert Noyce*
+  - 1957, descensions au sein de /Schockley Semiconductor Laboratory/; Employés,
+    dont Noyce, quittent le labo de Schockley pour fonder leur propre entreprise.
+  - 1957: Mise au point du /planar process/ au sein de la nouvelle entreprise de Noyce.
+  - Forte demande militaires avec l'avénement des missiles balistiques
+    intercontinentaux, du coup baisse des prix de semis conducteurs.
+  - Nouvelle culture d'entreprenariat: parcs scientifiques, investisseurs en
+    capital-risque, modèle de la start-up
+- DEC et les ordinateurs low-cost
+  - 1960 : lancement du PDP-1
+    - 20% du prix d'un autre ordinateur de l'époque
+    - Produit très "sec", vendu avec peu de composants
+  - 1965: Lancement du PDP-8 en intégrant la technologie /Transistor-transistor
+    Logic/ rendue peu onéreuse par le /planar process/
+  - Performances moyennes mais coûts attractifs; équipe passablement
+    d’universités et de petites usines (environ 40 000 exemplaires vendus)
+- Altair 8800
+  - 1968 : Fondation d'Intel
+  - 1971: mise au point de l'Intel 4004, le premier micro-processeur produit industriellement
+  - 1974: commercialisation de l'Intel 8080; d'autres enterprisent suivent, donc
+    chute des prix.
+  - 1975: MITS commercialise l'altair 8800 en se basant sur le microprocesseur
+    Intel 8080.
+  - Stratégie marchande similaire à DEC, cible clientèle *d'initiés* avec
+    (relativement) peu de moyens (à partir de 1800$)
+*** Micro-soft (1973-76)
+- 1972 : Bill Gates et Paul Allen créent un émulateur de micro-processeur intel
+  8008, pas un succès commerciel, mais bonne expérience.
+- 1975 : N'ayant pas les moyens de se payer un Altair 8800, l'émule sur un
+  ordinateur de leur université. Créent ensuite un compilateur BASIC pour
+  l'Altair 8800
+- Deux nouvelles instructions
+  - *Poke* permet au programmeur d'inscrire une valeur à un emplacement
+    spécifique de mémoire.
+  - *Peek* permet au programmeur de lire un valeur spécifique à un emplacement spécifique
+  - Impossible de supporter ces opérations sur un /Time-Sharing System/.
+- 1975 : Démo de l'interpéteur BASIC est un succès, rapidement distribué par MITS
+- Vendent un "kit" plus facile d'accès que l'Altair 8800, marché différents.
+*** Quelques enseignements:
+- *Processus d'enrôlement* : Extension de la configuration à 4 pôles à partir du
+  milieu des années 1970 : instances dirigeantes, agences militaires, industrie,
+  communautés de recherche et – maintenant – habitats
+- *Traces logicielles de problèmes spécifiques* : Les instructions PEEK et POKE
+  du langage BASIC sont les traces d’une configuration spécifique: Paul Allen et
+  Bill Gates qui doivent modifier un langage conçu pour des installations en
+  time-sharing pour l’adapter à un ordinateur conçu – d’après eux – pour être un
+  appareil personnel; le glissement entre micro et personnal computer est
+  exprimé par l’ajout de ces deux instructions
+- *Le concept de /Two-sided software platform/* : Altair BASIC et la création
+  d’un double marché:
+  - D’un côté, les ordinateurs – et leurs constructeurs – ont
+    besoin d’une interface permettant à leurs clients d’interagir avec leur
+    produit.
+  - De l’autre, l’utilisation de cette interface peut elle-même générer la
+    création de produits: jeux-vidéos, petits programmes de gestion et de calcul, etc.

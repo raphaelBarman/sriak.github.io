@@ -166,20 +166,26 @@ for k = p to r
     - Therefore a correct merge procedure will sucessfully sort $A[p...q]$ as required.
 **** Time analysis
 [[file:pdf/mergesorttime.jpg]]
+*** Analysis of divide-and-conquer algorithms
+Use a *recurrence* equation to describe the running time :
+- Let $T(n)$ = "running time on a problem of size $n$"
+- If $n$ is small enough say $n\le c$ for some constant $c$ then $T(n) = \Theta(1)$ (by brute force)
+- Otherwise, suppose we divide into a sub problems each size $n/b$ (conquer step)
+- Let $D(n)$ be the time to divide and let $C(n)$ the time to combine solutions
+- We get the reccurence : $T(n) = \Theta(1)$ if $n\le c$, else $T(n) = aT(n/b)+D(n)+C(n)$
 * Chapter 3 
-** Solving recurrences
-*** Analysing Recurrences
 Consider the following recurrence :
 
-$T(n) = c$ if $n = 1$, else $T(n) = 2T(n/2) + c \cdot n$
+$T(n) = c$ if $n = 1$ \\
+$T(n) = 2T(n/2) + c \cdot n$ otherwise
 
 Note that this reccurence upper bounds and lower bounds the reccurence for
 Merge-Sort by selecting $c$ sufficiently large and small, respectively.
 
 Three solving techiques :
-**** The substitution method
-- Guess the form of the solution
-- Use mathematical induction to find the constant 
+** The substitution method
+1. Guess the form of the solution
+2. Use mathematical induction to find the constant (substition method in the book)
 
 \begin{align*} T(n) &= 2T(n/2) + c \cdot n \\
 &= 2(2T (n/4) + c \cdot n/2) + c \cdot n = 4T(n/4) + 2 \cdot c \cdot n\\
@@ -243,3 +249,132 @@ Proof : Inductive step : Assume $F(n) = b \cdot n$ $\forall n \in
 &\le b \cdot n - b' \text{ if $ b' \ge C$}
 \end{align*}
 
+- Again other example :
+$T(n) = \Theta(1)$ if $n=1$ \\
+$8 T(n/2) + c \cdot n^2$ if $n > 1$ \\
+Prove that $T(n)$ is $O(n^3)$.
+
+_Claim_ : $\exists d > 0$ and $n_0 > 0$ s.t. $T(n) \le d n^3 \forall n \ge n_0$
+
+_Base case_: for $n=1,...,k$
+$T(1), T(2) ... T(k)$ I can always select $d \ge max \left\lbrace T(1), T(2),...
+T(k) \right\rbrace$
+
+__Inductive step__ :
+\begin{align*}
+T(n) = 8 \cdot T(n/2) + c \cdot n^2 \\
+\le 8 \cdot d \cdot (n/2)^3 + c \cdot n^2 \\
+= d \cdot n^3 + c \cdot n^2
+\end{align*}
+How to remove the low order terms ? We add to our claim a $-d' \cdot n^2$ s.t.
+$T(n) \le d n^3 - d' \cdot n^2 \forall n \ge n_0$.
+Now
+\begin{align*}
+T(n) = 8 \cdot T(n/2) + c \cdot n^2 \\
+\le d \cdot n^3 - 2 \cdot d' \cdot n^2 + c \cdot n^2\\
+\le d \cdot n^3 - d' \cdot n^2 \text{if $d' \ge c$}
+\end{align*}
+** The recursion tree method 
+#+BEGIN_HTML
+<input checked type=radio name=slider id=slide01 />
+		<input type=radio name=slider id=slide02 />
+		<input type=radio name=slider id=slide03 />
+	
+	
+		<!-- The Slider -->
+		
+		<div id=slides>
+		
+			<div id=overflow>
+			
+				<div class=inner>
+				
+					<article>
+						<img src=pdf/recursiontree01.jpg />
+					</article>
+					
+					<article>
+						<img src=pdf/recursiontree02.jpg />
+					</article>
+					
+					<article>
+						<img src=pdf/recursiontree03.jpg />
+					</article>
+					
+				</div> <!-- .inner -->
+				
+			</div> <!-- #overflow -->
+		
+		</div> <!-- #slides -->
+	
+	
+		<!-- Controls and Active Slide Display -->
+	
+		<div id=controls>
+
+			<label for=slide01></label>
+			<label for=slide02></label>
+			<label for=slide03></label>
+		
+		</div> <!-- #controls -->
+		
+		<div id=active>
+
+			<label for=slide01></label>
+			<label for=slide02></label>
+			<label for=slide03></label>
+			
+		</div> <!-- #active -->
+#+END_HTML
+- Examples to do with this method :
+  - $T(n) = 2 T(n/2) + c \cdot n^2$, cost of base root $cn^2$, but cost of last
+    root : $cn$
+** The master method
+Used to black-box solve reccurences of form $T(n) = a \cdot T(n/b) + f(n)$
+(doesn't work with $T(n) = T(n/3) + T(2n/3) + cn$ for example).
+
+_Theorem (Master theorem)_
+
+Let $a \ge 1$ and $b > 1$ be constants, let $T(n) be defined on the
+  nonnegative integers by the reccurence :
+\begin{align*}
+T(n) = a \cdot T(n/b) + f(n)
+\end{align*}
+Then, $T(n)$ has the following asymptotic bounds :
+- If $f(n) = O(n^{\log_b a- \epsilon})$ for some constant $\epsilon > 0$, then
+  $T(n) = \Theta(n^{\log_b a})$
+- If $f(n) = \Theta(n^{\log_b a})$, then $T(n) = \Theta(n^{\log_b a} \log n)$
+- If $f(n) = \Omega(n^{\log_b a+\epsilon})$ for some constant $\epsilon > 0$ and
+  if $a \cdot f(n/b) \le c \cdot f(n)$ for some constant $c < 1$ and all
+  sufficiently large $n$, then $T(n) = \Theta(f(n))$
+* Chapter 4 
+_*Maximum-subarray problem*_
+
+"If we let $A[i]$ = (price after day $i$) - (price after day $i-1$) then if the
+maximum subarray is $A[i..j]$ then we should have bought just before day $i$ and
+sold just after day $j$.
+
+*Input* : An array $A[1...n]$ of numbers
+
+*Output* Indices $i$ and $j$ such that $A[i...j]$ has the greatest sum of any
+ nonempty, contiguous subarray of $A$, along with the sum of the values in $A[i...j]$.
+** Brute force
+Simply check all possible subarrays.
+
+$\binom{n}{2} =  \Theta (n^2)$ many.
+
+*Maximum-subarray-slow*(A[1...n])
+#+BEGIN_SRC java
+B.val = - infinity, B.i = 1, B.j = n
+for i = 1 to n
+  tmp = 0
+  for j = i to n
+    tmp = tmp + A[j]
+    if tmp > B.val
+       B.val = tmp
+       B.i = i
+       B.j = j
+return (B.i,B.j.B.val)
+#+END_SRC
+Running time is $\Theta(n^2)$ and we use $\Theta(n)$ space.
+** Divide and conquer

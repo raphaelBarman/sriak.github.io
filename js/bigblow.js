@@ -62,7 +62,15 @@ function generateMiniToc(divId) {
         $("#minitoc").append("<a href='#" + $(this).attr("id") + "'>"
                              + $(this).text() + "</a>");
     });
-    // Ensure that the target is expanded (hideShow)
+    $('#' + divId).find('h4').each(function(i) {
+        $("#minitoc").append("<a href='#" + $(this).attr("id") + "'>"
+                             + "&nbsp;&nbsp;" + $(this).text() + "</a>");
+    });// Ensure that the target is expanded (hideShow)
+
+    $('#' + divId).find('h5').each(function(i) {
+        $("#minitoc").append("<a href='#" + $(this).attr("id") + "'>"
+                             + "&nbsp;&nbsp;&nbsp;&nbsp;" + $(this).text() + "</a>");
+    });
     $('#minitoc a[href^="#"]').click(function() {
         var href = $(this).attr('href');
         hsExpandAnchor(href);

@@ -9,6 +9,55 @@ input {
 #slide4:checked ~ #slides .inner { margin-left:-300%; }
 #slide5:checked ~ #slides .inner { margin-left:-400%; }
 
+/* Copy from here to have more */
+#slide01:checked ~ #slides .inner { margin-left:0; }
+#slide02:checked ~ #slides .inner { margin-left:-100%; }
+#slide03:checked ~ #slides .inner { margin-left:-200%; }
+#slide04:checked ~ #slides .inner { margin-left:-300%; }
+#slide05:checked ~ #slides .inner { margin-left:-400%; }
+
+#slide01:checked ~ #controls label:nth-child(02), 
+#slide02:checked ~ #controls label:nth-child(03), 
+#slide03:checked ~ #controls label:nth-child(04), 
+#slide04:checked ~ #controls label:nth-child(01) {
+  
+	background: url('next.png') no-repeat;
+	float: right;
+	margin: 0 -70px 0 0;
+	display: block;
+}
+
+
+#slide01:checked ~ #controls label:nth-child(04),
+#slide02:checked ~ #controls label:nth-child(01),
+#slide03:checked ~ #controls label:nth-child(02),
+#slide04:checked ~ #controls label:nth-child(03) {
+	background: url('prev.png') no-repeat;
+	float: left;
+	margin: 0 0 0 -70px;
+	display: block;
+}
+
+#slide01:checked ~ #active label:nth-child(01),
+#slide02:checked ~ #active label:nth-child(02),
+#slide03:checked ~ #active label:nth-child(03),
+#slide04:checked ~ #active label:nth-child(04) {
+	background: #333;
+	border-color: #333 !important;
+}
+
+#slide01:checked ~ #slides article:nth-child(1) .info,
+#slide02:checked ~ #slides article:nth-child(2) .info,
+#slide03:checked ~ #slides article:nth-child(3) .info,
+#slide04:checked ~ #slides article:nth-child(4) .info,
+#slide05:checked ~ #slides article:nth-child(5) .info {
+	opacity: 1;
+	-webkit-transition: all 1s ease-out 0.6s;
+	-moz-transition: all 1s ease-out 0.6s;
+	-o-transition: all 1s ease-out 0.6s;
+	transition: all 1s ease-out 0.6s;
+}
+/* Stop copy here to have more */
 
 #overflow {
 	width: 100%;
@@ -73,8 +122,8 @@ article img {
 #slide1:checked ~ #controls label:nth-child(2), 
 #slide2:checked ~ #controls label:nth-child(3), 
 #slide3:checked ~ #controls label:nth-child(4), 
-#slide4:checked ~ #controls label:nth-child(5), 
-#slide5:checked ~ #controls label:nth-child(1) {
+#slide4:checked ~ #controls label:nth-child(1) {
+  
 	background: url('next.png') no-repeat;
 	float: right;
 	margin: 0 -70px 0 0;
@@ -82,11 +131,10 @@ article img {
 }
 
 
-#slide1:checked ~ #controls label:nth-child(5),
+#slide1:checked ~ #controls label:nth-child(4),
 #slide2:checked ~ #controls label:nth-child(1),
 #slide3:checked ~ #controls label:nth-child(2),
-#slide4:checked ~ #controls label:nth-child(3),
-#slide5:checked ~ #controls label:nth-child(4) {
+#slide4:checked ~ #controls label:nth-child(3) {
 	background: url('prev.png') no-repeat;
 	float: left;
 	margin: 0 0 0 -70px;
@@ -96,11 +144,11 @@ article img {
 #slide1:checked ~ #active label:nth-child(1),
 #slide2:checked ~ #active label:nth-child(2),
 #slide3:checked ~ #active label:nth-child(3),
-#slide4:checked ~ #active label:nth-child(4),
-#slide5:checked ~ #active label:nth-child(5) {
+#slide4:checked ~ #active label:nth-child(4) {
 	background: #333;
 	border-color: #333 !important;
 }
+
 
 /* Info Box */
 
@@ -188,6 +236,7 @@ article img {
 	-o-transition: all 1s ease-out 0.6s;
 	transition: all 1s ease-out 0.6s;
 }
+
 
 .info, #controls, #slides, #active, #active label, .info h3, .desktop, .tablet, .mobile {
 	-webkit-transform: translateZ(0);
