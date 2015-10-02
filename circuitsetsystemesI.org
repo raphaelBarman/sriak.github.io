@@ -2,7 +2,7 @@
 #+TITLE: Circuit et système
 #+SETUPFILE: htmlnotes.setup
 
-* [[file:Chapter-1.pdf][Chapitre 1]]
+* Chapitre 1
 ** Unités
 *** Tableau récapitulatif
  | Nom                                       | S         | Unité/S      | Rapport entre unités     |
@@ -194,7 +194,7 @@ $i_p = \sum\limits_{k=1}^n i_k$
 ** Diviseurs de tension et de courant
 [[file:images/divTensCour.JPG]]
 ** Circuits 
-* [[file:Chapter-2.pdf][Chapitre 2]]
+* Chapitre 2
 ** Circuits linéaires
 - Un circuit linéaire est celui dont la sortie est reliée linéairement à son entrée.
 - Un circuit linéaire ne comporte que des éléments linéaires, des sources
@@ -269,6 +269,17 @@ On remplace le circuit complexe par son équivalent de Thévenin :
 #+ATTR_LATEX: :width 15cm
 #+ATTR_HTML: style="float:left;"
 [[file:images/transfertMaxA.jpg]]
+* Chapitre 3
+** Méthodes d'Analyse
+*** Analyse nodale
+1. Sélectionner le noeud $n$ comme noeud de rérérence. Attribuer les tensions
+   $v_1,v_2,...,v_{n-1}$ aux autres ($n-1$) noeuds. Les différneces de potentiel
+   sont établies par rapport au noeud de référence.
+2. Appliquer la loi de Kirchoff (courants) à chacun des $n-1$ noeuds. Exprimer
+   les courants des branches.
+3. Résoudre le système d'équation simultanées afin d'obtenir les valeurs ds
+   tensions inconnues.
 
+**** TODO ajouter exemple 
 
-
+*** Analyse de mailles
