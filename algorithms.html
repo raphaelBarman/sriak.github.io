@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-02 Fri 13:27 -->
+<!-- 2015-10-02 Fri 14:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -218,10 +218,30 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline17">3.3. The master method</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline21">4. Chapter 4</a>
+<li><a href="#orgheadline29">4. Chapter 4</a>
 <ul>
-<li><a href="#orgheadline19">4.1. Brute force</a></li>
-<li><a href="#orgheadline20">4.2. Divide and conquer</a></li>
+<li><a href="#orgheadline23">4.1. Maximum-subarray problem</a>
+<ul>
+<li><a href="#orgheadline19">4.1.1. Brute force</a></li>
+<li><a href="#orgheadline22">4.1.2. Divide and conquer</a>
+<ul>
+<li><a href="#orgheadline20">4.1.2.1. Time analysis</a></li>
+<li><a href="#orgheadline21">4.1.2.2. Crossing subarray</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline28">4.2. Matrix multiplication</a>
+<ul>
+<li><a href="#orgheadline24">4.2.1. Naive algorithm</a></li>
+<li><a href="#orgheadline27">4.2.2. Divide-and-Conquer</a>
+<ul>
+<li><a href="#orgheadline25">4.2.2.1. Pseudocode</a></li>
+<li><a href="#orgheadline26">4.2.2.2. Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -748,13 +768,12 @@ sufficiently large \(n\), then \(T(n) = \Theta(f(n))\)</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline21" class="outline-2">
-<h2 id="orgheadline21"><span class="section-number-2">4</span> Chapter 4</h2>
+<div id="outline-container-orgheadline29" class="outline-2">
+<h2 id="orgheadline29"><span class="section-number-2">4</span> Chapter 4</h2>
 <div class="outline-text-2" id="text-4">
-<p>
-<span class="underline"><b>Maximum-subarray problem</b></span>
-</p>
-
+</div><div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23"><span class="section-number-3">4.1</span> Maximum-subarray problem</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 "If we let \(A[i]\) = (price after day \(i\)) - (price after day \(i-1\)) then if the
 maximum subarray is \(A[i..j]\) then we should have bought just before day \(i\) and
@@ -770,9 +789,9 @@ sold just after day \(j\).
  nonempty, contiguous subarray of \(A\), along with the sum of the values in \(A[i...j]\).
 </p>
 </div>
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19"><span class="section-number-3">4.1</span> Brute force</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">4.1.1</span> Brute force</h4>
+<div class="outline-text-4" id="text-4-1-1">
 <p>
 Simply check all possible subarrays.
 </p>
@@ -782,7 +801,7 @@ Simply check all possible subarrays.
 </p>
 
 <p>
-*Maximum-subarray-slow*(A[1&#x2026;n])
+<b>Maximum-subarray-slow</b> \((A[1...n])\)
 </p>
 <div class="org-src-container">
 
@@ -803,13 +822,229 @@ Running time is \(\Theta(n^2)\) and we use \(\Theta(n)\) space.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20"><span class="section-number-3">4.2</span> Divide and conquer</h3>
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">4.1.2</span> Divide and conquer</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<ul class="org-ul">
+<li><b>Divide</b> the subarray into two subarrays of as equal size as possible. Find the midpoint mid of the subarrays, and consider the subarrays \(A\)[low.. mid]
+and \(A\)[mid+1&#x2026;high].</li>
+<li><b>Conquer</b> by finding maximum subarrays of \(A\)[low . . . mid] and \(A\)[mid + 1 . . . high].</li>
+<li><p>
+<b>Combine</b> by finding a maximum subarray that crosses the midpoint,and using the best solution out of the three
+</p>
+
+<p>
+<b>FIND-MAXIMUM-SUBARRAY</b> \((A,low,high)\)
+</p></li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> high == low
+  <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #2aa198;">(</span>low, high, A<span style="color: #b58900;">[</span>low<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span> <span style="color: #586e75;">// </span><span style="color: #586e75;">base case: only one element</span>
+<span style="color: #859900; font-weight: bold;">else</span> mid = ceil<span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>low + high<span style="color: #b58900;">)</span>/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span>
+  <span style="color: #2aa198;">(</span>left-low, left-high, left-sum<span style="color: #2aa198;">)</span> =
+    FIND-MAXIMUM-SUBARRAY<span style="color: #2aa198;">(</span>A, low, mid<span style="color: #2aa198;">)</span>
+  <span style="color: #2aa198;">(</span>right-low, right-high, right-sum<span style="color: #2aa198;">)</span> =
+    FIND-MAXIMUM-SUBARRAY<span style="color: #2aa198;">(</span>A, mid + <span style="color: #268bd2; font-weight: bold;">1</span>, high<span style="color: #2aa198;">)</span>
+  <span style="color: #2aa198;">(</span>cross-low, cross-high, cross-sum<span style="color: #2aa198;">)</span> =
+    FIND-MAXIMUM-CROSSING-SUBARRAY<span style="color: #2aa198;">(</span>A,low,mid,high<span style="color: #2aa198;">)</span> 
+  <span style="color: #859900; font-weight: bold;">if</span> left-sum &gt;= right-sum and left-sum &gt;= cross-sum
+    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #2aa198;">(</span>left-low, left-high, left-sum<span style="color: #2aa198;">)</span>
+  <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #859900; font-weight: bold;">if</span> right-sum &gt;= left-sum and right-sum &gt;= cross-sum
+    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #2aa198;">(</span>right-low, right-high, right-sum<span style="color: #2aa198;">)</span>
+  <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #2aa198;">(</span>cross-low, cross-high, cross-sum<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-5">
+<h5 id="orgheadline20"><span class="section-number-5">4.1.2.1</span> Time analysis</h5>
+<div class="outline-text-5" id="text-4-1-2-1">
+<p>
+Assume that we can find max-crossing-subarray in time \(\Theta(n)\) :
+</p>
+
+<ul class="org-ul">
+<li><b>Divide</b> takes constant time, i.e, \(D(n) = \Theta(1)\)</li>
+<li><b>Combine</b> time dominated by find-max-crossing-subarray, \(C(n) = \Theta(n)\)</li>
+<li><b>Conquer</b> recusively solve two subproblems, each of size \(n/2\), \(T(n/2)\).</li>
+</ul>
+
+\begin{align*}
+T(n) &= \Theta(1) \text{  if $n=1$}\\
+T(n) &= 2T(n/2)+\Theta(n) \text{  otherwise}
+\end{align*}
+<p>
+so \(T(n)=\Theta)n \log n)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline21" class="outline-5">
+<h5 id="orgheadline21"><span class="section-number-5">4.1.2.2</span> Crossing subarray</h5>
+<div class="outline-text-5" id="text-4-1-2-2">
+<ul class="org-ul">
+<li>Any subarray crossing the midpoint A[mid] is made of two subarrays \(A[i...mid]\) and \(A[mid + 1,...,j]\) where \(low \le i \le mid\) and \(mid < j \le high\)</li>
+<li>Find maximum subarrays of the form \(A[i...mid]\) and \(A[mid + 1...j]\) and then combine them.</li>
+</ul>
+<p>
+<b>FIND-MAXIMUM-CROSSING-SUBARRAY</b> \((A,low,mid,high)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #586e75;">//</span><span style="color: #586e75;">Find a maximum subarray of the form A[i...mid]</span>
+left-sum = - infinity
+sum = <span style="color: #268bd2; font-weight: bold;">0</span>
+<span style="color: #859900; font-weight: bold;">for</span> i = mid downto low
+  sum = sum + A<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>
+  <span style="color: #859900; font-weight: bold;">if</span> sum &gt; left-sum
+    left-sum = sum
+    max-left = i
+<span style="color: #586e75;">//</span><span style="color: #586e75;">Find a maximum subarray of the form A[mid+1...j]</span>
+right-sum = - infinity
+sum = <span style="color: #268bd2; font-weight: bold;">0</span>
+<span style="color: #859900; font-weight: bold;">for</span> j = mid + <span style="color: #268bd2; font-weight: bold;">1</span> to high
+  sum = sum + A<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>
+  <span style="color: #859900; font-weight: bold;">if</span> sum &gt; right-sum
+    right-sum = sum
+    max-right = j
+<span style="color: #586e75;">// </span><span style="color: #586e75;">Return the indices and the sum of the two subarrays.</span>
+<span style="color: #859900; font-weight: bold;">return</span> <span style="color: #2aa198;">(</span>max-left, max-right, left-sum + right-sum<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="orgheadline28"><span class="section-number-3">4.2</span> Matrix multiplication</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Multiply two \(n\times n\) matrices. \(AB=C\)
+</p>
+
+<p>
+\(c_{ij} = \sum\limits_{k=1}^n a_{ik}b_{kj}\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">4.2.1</span> Naive algorithm</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<p>
+<b>SQUARE-MAT-MULT</b> \((A,B,n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">let C <span style="color: #b58900;">be</span> <span style="color: #268bd2;">a</span> <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">n</span> x n matrix
+<span style="color: #859900; font-weight: bold;">for</span> i = <span style="color: #268bd2; font-weight: bold;">1</span> to n
+  <span style="color: #859900; font-weight: bold;">for</span> j = <span style="color: #268bd2; font-weight: bold;">1</span> to n
+    cij = <span style="color: #268bd2; font-weight: bold;">0</span>
+    <span style="color: #859900; font-weight: bold;">for</span> k = <span style="color: #268bd2; font-weight: bold;">1</span> to n
+      cij = cij + aik*bkj
+<span style="color: #859900; font-weight: bold;">return</span> C
+</pre>
+</div>
+<p>
+Running time : \(\Theta(n^3)\)
+</p>
+
+<p>
+Space : \(\Theta(n^2)\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">4.2.2</span> Divide-and-Conquer</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<ul class="org-ul">
+<li><b>Divide</b> each of \(A,B,C\) into four \(n/2 \times n/2\) matrices: so that :</li>
+</ul>
+\begin{align*}
+  \begin{pmatrix}
+  C_{11} & C_{12}\\
+  C_{21} & C_{22}
+  \end{pmatrix} = \begin{pmatrix}
+  A_{11} & A_{12}\\
+  A_{21} & A_{22}
+  \end{pmatrix} \cdot \begin{pmatrix}
+  B_{11} & B_{12}\\
+  B_{21} & B_{22}
+  \end{pmatrix}
+\end{align*}
+<ul class="org-ul">
+<li><b>Conquer</b> : Since</li>
+</ul>
+\begin{align*}
+C_{11} =  A_{11} \cdot B_{11} + A_{12} \cdot B_{21}\\
+C_{12} =  A_{11} \cdot B_{12} + A_{12} \cdot B_{22}\\
+C_{21} =  A_{21} \cdot B_{11} + A_{22} \cdot B_{21}\\
+C_{22} =  A_{21} \cdot B_{12} + A_{22} \cdot B_{22}
+\end{align*}
+<p>
+We recursively solve 8 matrix multiplications that each multiply two \(n/2 \times
+n/2\) matrices.
+</p>
+<ul class="org-ul">
+<li><b>Combine</b> Make the additions to get \(C\)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline25" class="outline-5">
+<h5 id="orgheadline25"><span class="section-number-5">4.2.2.1</span> Pseudocode</h5>
+<div class="outline-text-5" id="text-4-2-2-1">
+<p>
+<b>REC-MAT-MULT</b> \((A,B,n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">let C <span style="color: #b58900;">be</span> <span style="color: #268bd2;">a</span> <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">n</span> x n matrix
+<span style="color: #859900; font-weight: bold;">if</span> n == <span style="color: #268bd2; font-weight: bold;">1</span>
+  c11 = a11 * b11
+<span style="color: #859900; font-weight: bold;">else</span> partition A,<span style="color: #268bd2;">B</span> and C into n/<span style="color: #268bd2; font-weight: bold;">2</span> x n/<span style="color: #268bd2; font-weight: bold;">2</span> submatrices
+  c11 = REC-MAT-MULT<span style="color: #2aa198;">(</span>A11,B11,n/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span> + REC-MAT-MULT<span style="color: #2aa198;">(</span>A12,B21,n/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span>
+  c12 = REC-MAT-MULT<span style="color: #2aa198;">(</span>A11,B12,n/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span> + REC-MAT-MULT<span style="color: #2aa198;">(</span>A12,B22,n/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span>
+  c21 = REC-MAT-MULT<span style="color: #2aa198;">(</span>A21,B11,n/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span> + REC-MAT-MULT<span style="color: #2aa198;">(</span>A22,B21,n/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span>
+  c22 = REC-MAT-MULT<span style="color: #2aa198;">(</span>A21,B12,n/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span> + REC-MAT-MULT<span style="color: #2aa198;">(</span>A22,B22,n/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">return</span> C
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline26" class="outline-5">
+<h5 id="orgheadline26"><span class="section-number-5">4.2.2.2</span> Analysis</h5>
+<div class="outline-text-5" id="text-4-2-2-2">
+<p>
+Let \(T(n)\) be the times to multiply two \(n \times n\) matrices.
+</p>
+<ul class="org-ul">
+<li><b>Base case</b>: \(n=1\). Perform one scalar multiplication: \(\Theta(1)\)</li>
+<li><b>Recursive case</b>: \(n>1\)
+<ul class="org-ul">
+<li>Dividing takes \(\Theta(1)\) time if careful and \(\Theta(n^2)\) if simply copying</li>
+<li>Conquering makes 8 recursive calls, each multiplying \(n/2 \times n/2\)
+    matrices : \(8T(n/2)\)</li>
+<li>Combining takes time \(\Theta(n^2)\) time to add \(n/2 \times n/2\) matrices.</li>
+</ul></li>
+</ul>
+<p>
+Reccurence is :
+</p>
+\begin{align*}
+T(n) &= \Theta(1) \text{  if $n=1$}\\
+T(n) &= 8T(n/2)+\Theta(n^2) \text{  if $n>1$}
+\end{align*}
+<p>
+So \(T(n) = \Theta(n^3)\) (from master method)
+</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-02 Fri 13:27</p>
+<p class="date">Created: 2015-10-02 Fri 14:57</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

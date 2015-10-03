@@ -208,12 +208,10 @@ $i_p = \sum\limits_{k=1}^n i_k$
   élément par chaque source prise séparement.
 - *Attention* ce théorème ne s'applique pas à la puissance.
 - Exemple :
-#+attr_html: :width 40%
 #+ATTR_LATEX: :width 15cm
 [[file:images/superposition.JPG]]
 ** Transformation de sources
 
-#+attr_html: :width 40%
 #+ATTR_LATEX: :width 15cm
 [[file:images/transformationSource.jpg]]
 
@@ -225,7 +223,6 @@ Plus d'exemples dans le cours
 - But : remplacer un circuit complexe par un circuit composé d'une source de
   tension et d'une résistance.
 
-#+attr_html: :width 40%
 #+ATTR_LATEX: :width 15cm
 [[file:images/butThevenin.jpg]]
 - Procédure :
@@ -238,13 +235,11 @@ Plus d'exemples dans le cours
   - Annuler une source de tension consiste à la remplacer par un court-circuit
   - Annuler une source de courant consiste à la remplacer par un circuit-ouvert
 
-#+attr_html: :width 40%
 #+ATTR_LATEX: :width 15cm
 [[file:images/theoremeThevenin.jpg]]
 ** Théorème de Norton
 - Corollaire au théorème de Thévenin, but :
  
-#+attr_html: :width 40%
 #+ATTR_LATEX: :width 15cm
 [[file:images/butNorton.jpg]]
    
@@ -259,15 +254,12 @@ Plus d'exemples dans le cours
 Comment connaître la valeur de résistance de charge pour laquelle cette dernière
 dissipera un maximum de puissance ?
 
- #+attr_html: :width 40%
 #+ATTR_LATEX: :width 15cm
 [[file:images/transfertMaxQ.jpg]] 
 
 
 On remplace le circuit complexe par son équivalent de Thévenin :
-#+attr_html: :width 40%
 #+ATTR_LATEX: :width 15cm
-#+ATTR_HTML: style="float:left;"
 [[file:images/transfertMaxA.jpg]]
 * Chapitre 3
 ** Méthodes d'Analyse

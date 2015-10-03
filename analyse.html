@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-09-28 Mon 09:53 -->
+<!-- 2015-10-03 Sat 17:23 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -154,7 +154,7 @@ for the JavaScript code in this tag.
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        displayAlign: "center",
+        displayAlign: "left",
         displayIndent: "0em",
 
         "HTML-CSS": { scale: 100,
@@ -173,7 +173,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div id="content">
@@ -182,37 +182,198 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Chapitre 2</a></li>
+<li><a href="#orgheadline9">1. Chapitre 1</a>
+<ul>
+<li><a href="#orgheadline1">1.1. Def: Gradient (\(\nabla\))</a></li>
+<li><a href="#orgheadline2">1.2. Def: Laplacien (\(\Delta\))</a></li>
+<li><a href="#orgheadline3">1.3. Def: Champ vectoriel (\(F\))</a></li>
+<li><a href="#orgheadline4">1.4. Def: Divergence (\(div\) ou \(\nabla\).)</a></li>
+<li><a href="#orgheadline7">1.5. Def: Rotationnel (\(rot\) ou  \(\Delta \times\))</a>
+<ul>
+<li><a href="#orgheadline5">1.5.1. Pour n=2</a></li>
+<li><a href="#orgheadline6">1.5.2. Pour n=3</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline8">1.6. Propriétés</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline27">2. Chapitre 2</a>
+<ul>
+<li><a href="#orgheadline15">2.1. Def: Courbe simple</a>
+<ul>
+<li><a href="#orgheadline10">2.1.1. Ex. 1 : Cercle</a></li>
+<li><a href="#orgheadline11">2.1.2. Ex. 2 : Helix</a></li>
+<li><a href="#orgheadline12">2.1.3. Ex. 3 : Puissances</a></li>
+<li><a href="#orgheadline13">2.1.4. Ex. 4: Valeur absolue</a></li>
+<li><a href="#orgheadline14">2.1.5. Ex. 5 : Courbe "complexe"</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline16">2.2. Def 2 :  Courbe simple fermée</a></li>
+<li><a href="#orgheadline18">2.3. Def 3: Courbe régulière</a>
+<ul>
+<li><a href="#orgheadline17">2.3.1. Remarque :</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline22">2.4. Def : \(\int\limits_{\Gamma} f\)</a>
+<ul>
+<li><a href="#orgheadline19">2.4.1. Retour à ex. 1. :</a></li>
+<li><a href="#orgheadline20">2.4.2. Ex. :</a></li>
+<li><a href="#orgheadline21">2.4.3. Somme intégrale</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline23">2.5. Def : L'intégrale curviligne pour un champ vectoriel.</a></li>
+<li><a href="#orgheadline24">2.6. Def : courbe régulière <span class="underline">par morceau</span>.</a></li>
+<li><a href="#orgheadline26">2.7. Def : \(\Gamma\) régulière <span class="underline">par morceau</span>:</a>
+<ul>
+<li><a href="#orgheadline25">2.7.1. Ex. : Périmètre d'un carré</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Chapitre 2</h2>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9"><span class="section-number-2">1</span> Chapitre 1</h2>
 <div class="outline-text-2" id="text-1">
+<p style="font-size:20px">
+<span class="underline"><b>Opérateurs différentiels de la physique</b></span>
+</p>
+</div>
+<div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Def: Gradient (\(\nabla\))</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
-Intégrales curvilignes
+Gradient : \(\mathbb{R}^n \rightarrow \mathbb{R}^n\)
 </p>
 
-<ul class="org-ul">
-<li><span class="underline">Def</span> Courbes</li>
-</ul>
 <p>
-\(\Gamma \subset \mathbb{R}^d\) est une courbe simple si \(\exists I \subset \mathbb{R}\)  (interval) \(\gamma: I \rightarrow \mathbb{R}^d\) : continu. tel que
+\(\text{grad} f(x) = \nabla f(x) = \left(\frac{\delta f}{\delta x_1}
+(x),...,\frac{\delta f}{\delta x_n} (x)\right) \in \mathbb{R^n}\)
 </p>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Def: Laplacien (\(\Delta\))</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Laplacien : \(\mathbb{R}^n \rightarrow \mathbb{R}\)
+</p>
+
+<p>
+\(\Delta f(x) = \sum\limits_{i=1}^n \frac{\delta^2 f}{\delta x_i^2} (x) \in \mathbb{R}^2\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">1.3</span> Def: Champ vectoriel (\(F\))</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Champ vectoriel : \(\mathbb{R}^n \rightarrow \mathbb{R}^n\)
+</p>
+
+<p>
+\(F(x) = \left(F_1(x),...,F_n(x)\right)\)
+</p>
+
+<p>
+\(F_i: \mathbb{R}^n \rightarrow \mathbb{R}\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">1.4</span> Def: Divergence (\(div\) ou \(\nabla\).)</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Divergence : \(\mathbb{R}^n \rightarrow \mathbb{R}\)
+</p>
+
+
+<p>
+\(\text{div} F = \nabla . F = \sum\limits_{i=1}^n \frac{\delta F_i}{\delta x_i}\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">1.5</span> Def: Rotationnel (\(rot\) ou  \(\Delta \times\))</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Rotationnel : \(\mathbb{R}^n \rightarrow \mathbb{R}^{\frac{n(n-1)}{2}}\)
+</p>
+</div>
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">1.5.1</span> Pour n=2</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+\(F: \mathbb{R}^2 \rightarrow \mathbb{R}^2\), \(F=(F_1,F_2)\)
+</p>
+
+<p>
+\(\text{rot} F = \Delta \times F = \frac{\delta F_2}{\delta x_1} - \frac{\delta
+F_1}{\delta x_2} \in \mathbb{R}\)
+</p>
+
+<p>
+\(\left(= \begin{vmatrix}
+\frac{\delta}{\delta x_1} & \frac{\delta}{\delta x_2}\\
+F_1 & F_2
+\end{vmatrix}\right)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.5.2</span> Pour n=3</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+\(F: \mathbb{R}^3 \rightarrow \mathbb{R}^3\), \(F=(F_1,F_2,F_3)\)
+</p>
+
+<p>
+\(\text{rot} F = \Delta \times F = \left( \frac{\delta F_3}{\delta x_2} -
+\frac{\delta F_2}{\delta x_3},\frac{\delta F_1}{\delta x_3} - \frac{\delta
+F_3}{\delta x_1}, \frac{\delta F_2}{\delta x_1} - \frac{\delta F_1}{\delta x_2}
+\right) \in \mathbb{R}^3\)
+</p>
+
+<p>
+\(\left(= \begin{vmatrix}
+\frac{\delta}{\delta x_1} & \frac{\delta}{\delta x_2}& \frac{\delta}{\delta x_3}\\
+F_1 & F_2 & F_3
+\end{vmatrix}\right)\)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">1.6</span> Propriétés</h3>
+<div class="outline-text-3" id="text-1-6">
 <ol class="org-ol">
-<li>\(\gamma (I) = \tau\) (courbe)</li>
-<li>$&gamma; * Chapitre 2</li>
+<li>\(\Delta f = \text{div}(\text{grad} f) = \nabla . (\nabla f)\)</li>
+<li>\(f : \mathbb{R}^n \rightarrow \mathbb{R}\) et \(F: \mathbb{R}^3 \rightarrow
+   \mathbb{R}^3\) <b>\(n=3\)</b> \(\text{rot}(\nabla f) =0 \in \mathbb{R}^3\), \(\text{div(rot} F) =
+   0\) pour <b>\(n=2\)</b> \(\text{rot}(\nabla) = 0 \in \mathbb{R}\)</li>
+<li>\(\text{div}(f\nabla g) = f \Delta g + \nabla f \nabla g\)</li>
+<li>\(\nabla(fg) = g \nabla f + f \nabla g\)</li>
+<li>\(\text{div}(fF) = f \text{div} F + \nabla f F\)</li>
+<li>\(\text{rot rot} F = - \Delta F + \nabla \text{div} F\)</li>
 </ol>
-<p>
-Intégrales curvilignes
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline27" class="outline-2">
+<h2 id="orgheadline27"><span class="section-number-2">2</span> Chapitre 2</h2>
+<div class="outline-text-2" id="text-2">
+<p style="font-size:20px">
+<span class="underline"><b>Intégrales curvilignes</b></span>
 </p>
-
-<ul class="org-ul">
-<li><span class="underline">Def</span> Courbes</li>
-</ul>
+</div>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">2.1</span> Def: Courbe simple</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
-\(\Gamma \subset \mathbb{R}^d\) est une courbe simple si \(\exists I \subset \mathbb{R}\)  (interval) \(\gamma: I \rightarrow \mathbb{R}^d\) : continu. tel que
+\(\Gamma \subset \mathbb{R}^d\) est une courbe simple si \(\exists I \subset
+\mathbb{R}\)  (intervalle) et \(\gamma: I \rightarrow \mathbb{R}^d\) : continue. tel que
 </p>
 <ol class="org-ol">
 <li>\(\gamma (I) = \tau\) (courbe)</li>
@@ -221,69 +382,114 @@ Intégrales curvilignes
 <p>
 \(\gamma\) : une paramétrisation.
 </p>
+</div>
 
-<ul class="org-ul">
-<li>Ex. 1 :</li>
-</ul>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">2.1.1</span> Ex. 1 : Cercle</h4>
+<div class="outline-text-4" id="text-2-1-1">
 <p>
-\(\Gamma = \{ x \in \mathbb{R}^2 : |x|=1\}\)
-dessin cercle \(\gamma: \left[0,2\pi\right] \rightarrow \mathbb{R}^2\) \(\gamma(\theta) = (\cos \theta, \sin \theta)\)
-</p>
-<ul class="org-ul">
-<li>Ex. 2 : (helix)</li>
-</ul>
-<p>
-dessin helix \(\gamma \mathbb{R} \rightarrow \mathbb{R}^3\) \(\gamma(t) = (\cos t, \sin t,t)\)
-</p>
-<ul class="org-ul">
-<li>Ex. 3 :</li>
-</ul>
-<p>
-\(\mathbb{R} \rightarrow \mathbb{R}^2\)
-\(\gamma(t) = (t^3,t^2)\)
-dessin
-</p>
-<ul class="org-ul">
-<li>Ex. 4:</li>
-</ul>
-<p>
-\(\gamma : \mathbb{R} \rightarrow \mathbb{R}^2\)
-\(\gamma(t) = (t,|t|)\)
-dessing
-</p>
-<ul class="org-ul">
-<li>Ex. 5 :</li>
-</ul>
-<p>
-\(\mathbb{R}^2\) dessin courbe pas simple
+\(\Gamma = \{ x \in \mathbb{R}^2 : |x|=1\}\) dessin cercle \(\gamma:
+    \left[0,2\pi\right] \rightarrow \mathbb{R}^2\) \(\gamma(\theta) = (\cos
+    \theta, \sin \theta)\)
 </p>
 
-<ul class="org-ul">
-<li><span class="underline">Def 2</span> : \(\tau\) : courbe simple est dite fermée si \(\gamma(a) = \gamma(b)\) \(\left(I = \left[a,b\right]\right)\)
-<ul class="org-ul">
-<li>Ex. 1 : fermé \(\gamma(0)=\gamma(2\pi) = (1,0)\) image patate.</li>
-<li>Ex. 2,3,4 : non fermé.</li>
-</ul></li>
+<div class="figure">
+<p><img src="images/an_ch2_ex_1.png" alt="an_ch2_ex_1.png" width="200px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">2.1.2</span> Ex. 2 : Helix</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+\(\gamma \mathbb{R} \rightarrow \mathbb{R}^3\) \(\gamma(t) = (\cos t, \sin t,t)\)
+</p>
 
-<li><span class="underline">Def 3</span>: \(\Gamma\) : courbe est régulière si \(\exists \left[a,b\right], \gamma: \gamma \cdot \left[a,b\right] \rightarrow \mathbb{R}^d\) tel que
+<div class="figure">
+<p><img src="images/an_ch2_ex_2.png" alt="an_ch2_ex_2.png" width="200px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">2.1.3</span> Ex. 3 : Puissances</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+\(\mathbb{R} \rightarrow \mathbb{R}^2\) \(\gamma(t) = (t^3,t^2)\)
+</p>
+
+<div class="figure">
+<p><img src="images/an_ch2_ex_3.png" alt="an_ch2_ex_3.png" width="200px" /> 
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">2.1.4</span> Ex. 4: Valeur absolue</h4>
+<div class="outline-text-4" id="text-2-1-4">
+<p>
+\(\gamma : \mathbb{R} \rightarrow \mathbb{R}^2\) \(\gamma(t) = (t,|t|)\) dessin
+</p>
+
+<div class="figure">
+<p><img src="images/an_ch2_ex_4.png" alt="an_ch2_ex_4.png" width="200px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">2.1.5</span> Ex. 5 : Courbe "complexe"</h4>
+<div class="outline-text-4" id="text-2-1-5">
+<p>
+\(\mathbb{R}^2\) courbe pas simple
+</p>
+
+<div class="figure">
+<p><img src="images/an_ch2_ex_5.png" alt="an_ch2_ex_5.png" width="200px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">2.2</span> Def 2 :  Courbe simple fermée</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+\(\tau\) : courbe simple est dite fermée si \(\gamma(a) = \gamma(b)\) \(\left(I = \left[a,b\right]\right)\)
+</p>
+<ul class="org-ul">
+<li>Ex. <a href="#orgheadline10">1</a> : fermé \(\gamma(0)=\gamma(2\pi) = (1,0)\) image patate.</li>
+<li>Ex. <a href="#orgheadline11">2</a>,<a href="#orgheadline12">3</a>,4 : non fermé.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">2.3</span> Def 3: Courbe régulière</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+\(\Gamma\) : courbe est régulière si \(\exists \left[a,b\right], \gamma: \gamma \cdot \left[a,b\right] \rightarrow \mathbb{R}^d\) tel que
+</p>
 <ul class="org-ul">
 <li>\(\gamma \in C^1 \left(\left[a,b\right]: \mathbb{R}^2\right)\)</li>
 <li>\(\gamma ' (t) \neq 0 \in \mathbb{R}^d\) \(\left( \left(\gamma_1'(t),...,\gamma_d'(t) \right) \neq (0,...,0) \right)\)</li>
-</ul></li>
-
-<li>Ex.1 : régulière \(\gamma'(t) = (-\sin t, cos t) \neq (0,0)\)</li>
-<li>Ex.2 : régulière \(\gamma'(y) = (-\sin t, cos t, 1) \neq (0,0,0)\)</li>
-<li>Ex.3 : \(\gamma' (t) = (3t^2,2t)\) et \(\gamma'(0) = (0,0)\) : \(\Gamma\) : n'est pas régulière.</li>
+</ul>
+<ul class="org-ul">
+<li><a href="#orgheadline10">Ex.1</a> : régulière \(\gamma'(t) = (-\sin t, cos t) \neq (0,0)\)</li>
+<li><a href="#orgheadline11">Ex.2</a> : régulière \(\gamma'(y) = (-\sin t, cos t, 1) \neq (0,0,0)\)</li>
+<li><a href="#orgheadline12">Ex.3</a> : \(\gamma' (t) = (3t^2,2t)\) et \(\gamma'(0) = (0,0)\) : \(\Gamma\) : n'est pas régulière.</li>
 <li>Ex.4 : \(\gamma\) n'est pas diff. en \(t=0\). Donc \(\Gamma\) n'est pas régulière.</li>
 </ul>
+</div>
 
-<p>
-<span class="underline">Remarque :</span>
-</p>
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="section-number-4">2.3.1</span> Remarque :</h4>
+<div class="outline-text-4" id="text-2-3-1">
 <ul class="org-ul">
-<li>\(\Gamma\) : régulière. La ligne tangente en \(\gamma(t_0)\).</li>
+<li>\(\Gamma\) : régulière. La ligne tangente en \(\gamma(t_0)\):</li>
 </ul>
-
 <p>
 (L) : \(\gamma(t_0) + \gamma'(t_0)(t-t_0)\)
 </p>
@@ -295,9 +501,15 @@ dessing
 <p>
 \(f: \Gamma \rightarrow \mathbb{R}\): continue.
 </p>
+</div>
+</div>
+</div>
 
+<div id="outline-container-orgheadline22" class="outline-3">
+<h3 id="orgheadline22"><span class="section-number-3">2.4</span> Def : \(\int\limits_{\Gamma} f\)</h3>
+<div class="outline-text-3" id="text-2-4">
 <p>
-<span class="underline">Def :</span> \(\int\limits_{T} f := \int\limits_{a}^{b} f(\gamma(t)) ||\gamma'(t)|| dt\)
+\(\int\limits_{\Gamma} f := \int\limits_{a}^{b} f(\gamma(t)) ||\gamma'(t)|| dt\)
 </p>
 
 <p>
@@ -307,150 +519,33 @@ dessing
 <p>
 La longueur de \(\Gamma\) : \(\int\limits_{\Gamma} 1 = \int\limits_{a}^{b}||\gamma'(t)|| dt\)
 </p>
+</div>
 
-<ul class="org-ul">
-<li>Ex.1 : \(\int\limits_{\Gamma}f\) avec \(f=1\)</li>
-</ul>
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">2.4.1</span> Retour à <a href="#orgheadline10">ex. 1</a>. :</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+\(\int\limits_{\Gamma}f\) avec \(f=1\)
+</p>
+
 <p>
 \(= \int\limits_{0}^{2\pi} ||\gamma'(t)|| dt = \int\limits_{0}^{2\pi} 1 dt = 2\pi\)
 </p>
+</div>
+</div>
 
-<ul class="org-ul">
-<li>Ex. : \begin{align*}</li>
-</ul>
-<p>
-&int;\limits<sub>&Gamma;</sub> : <br  />
-f(x,y) = \sqrt{x^2+4y^2} <br  />
-&Gamma; = \left\lbrace (x,y) &isin; \mathbb{R}<sup>2</sup>; 2y = x<sup>2</sup>; x &isin; \left[0,1\right]\right\rbrace <br  />
-&gamma; : \left[0,1\right] &rarr; \mathbb{R}<sup>2</sup><br  />
-t &rarr; (t,\frac{t^2}{2}<br  />
-&int;\limits<sub>&Gamma;</sub> f &amp;= &int;\limits<sub>0</sub><sup>1</sup> f(&gamma;(t)) || &gamma;'(t)|| dt<br  />
-&amp;= &int;\limits<sub>0</sub><sup>1</sup> \sqrt{t<sup>2</sup> + 4 \frac{t^4}{4}} \sqrt{1 + t^2} dt<br  />
-&amp;= &int;\limits<sub>0</sub><sup>1</sup> \sqrt{t^2 + t^4} \sqrt{1 + t^2} dt<br  />
-&amp;= &int;\limits<sub>0</sub><sup>1</sup> t (1+t<sup>2</sup>) dt = \frac{t^2}{2} + \frac{t^4}{4} \big|<sub>0</sub><sup>1</sup>= \frac{3}{4} 
-\end{align*}
-</p>
-
-<p>
-image courbe
-</p>
-
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">2.4.2</span> Ex. :</h4>
+<div class="outline-text-4" id="text-2-4-2">
 \begin{align*}
-\int\limits_{\Gamma} \simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
-\gamma(t_i) \in \Gamma_i \\
-\simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\int\limits_{\Gamma} : f(x,y) = \sqrt{x^2+4y^2}
 \end{align*}
-<p>
-\(\Gamma_i = \gamma \left( \left[ t_i, t_{i+1} \right] \right)\): \(\gamma\) une paramétrisation \(\left[a,b\right] \rightarrow \mathbb{R}^d\)
-</p>
-
-<p>
-Donc \(\int\limits_{\Gamma} \simeq \sum\limits ||\gamma(t_i)'|| (t_{i+1} - t_i) f(\gamma(t_i)) \simeq \int\limits_{a}^{b} ||\gamma'(t)|| f(\gamma(t)) dt\)(t<sub>1</sub>) &ne; &gamma;(t<sub>2</sub>)$ \(\forall t_1,t_2 \in I\) (simple)
-\(\gamma\) : une paramétrisation.
-</p>
-
-<ul class="org-ul">
-<li>Ex. 1 :</li>
-</ul>
-<p>
-\(\Gamma = \{ x \in \mathbb{R}^2 : |x|=1\}\)
-dessin cercle \(\gamma: \left[0,2\pi\right] \rightarrow \mathbb{R}^2\) \(\gamma(\theta) = (\cos \theta, \sin \theta)\)
-</p>
-<ul class="org-ul">
-<li>Ex. 2 : (helix)</li>
-</ul>
-<p>
-dessin helix \(\gamma \mathbb{R} \rightarrow \mathbb{R}^3\) \(\gamma(t) = (\cos t, \sin t,t)\)
-</p>
-<ul class="org-ul">
-<li>Ex. 3 :</li>
-</ul>
-<p>
-\(\mathbb{R} \rightarrow \mathbb{R}^2\)
-\(\gamma(t) = (t^3,t^2)\)
-dessin
-</p>
-<ul class="org-ul">
-<li>Ex. 4:</li>
-</ul>
-<p>
-\(\gamma : \mathbb{R} \rightarrow \mathbb{R}^2\)
-\(\gamma(t) = (t,|t|)\)
-dessing
-</p>
-<ul class="org-ul">
-<li>Ex. 5 :</li>
-</ul>
-<p>
-\(\mathbb{R}^2\) dessin courbe pas simple
-</p>
-
-<ul class="org-ul">
-<li><span class="underline">Def 2</span> : \(\tau\) : courbe simple est dite fermée si \(\gamma(a) = \gamma(b)\) \(\left(I = \left[a,b\right]\right)\)
-<ul class="org-ul">
-<li>Ex. 1 : fermé \(\gamma(0)=\gamma(2\pi) = (1,0)\) image patate.</li>
-<li>Ex. 2,3,4 : non fermé.</li>
-</ul></li>
-
-<li><span class="underline">Def 3</span> : \(\Gamma\) : courbe est régulière si \(\exists \left[a,b\right], \gamma: \gamma \cdot \left[a,b\right] \rightarrow \mathbb{R}^d\) tel que
-<ul class="org-ul">
-<li>\(\gamma \in C^1 \left(\left[a,b\right]: \mathbb{R}^2\right)\)</li>
-<li>\(\gamma ' (t) \neq 0 \in \mathbb{R}^d\) \(\left( \left(\gamma_1'(t),...,\gamma_d'(t) \right) \neq (0,...,0) \right)\)</li>
-</ul></li>
-
-<li>Ex.1 : régulière \(\gamma'(t) = (-\sin t, cos t) \neq (0,0)\)</li>
-<li>Ex.2 : régulière \(\gamma'(y) = (-\sin t, cos t, 1) \neq (0,0,0)\)</li>
-<li>Ex.3 : \(\gamma' (t) = (3t^2,2t)\) et \(\gamma'(0) = (0,0)\) : \(\Gamma\) : n'est pas régulière.</li>
-<li>Ex.4 : \(\gamma\) n'est pas diff. en \(t=0\). Donc \(\Gamma\) n'est pas régulière.</li>
-</ul>
-
-<p>
-<span class="underline">Remarque :</span> 
-</p>
-<ul class="org-ul">
-<li>\(\Gamma\) : régulière. La ligne tangente en \(\gamma(t_0)\).</li>
-</ul>
-
-<p>
-(L) : \(\gamma(t_0) + \gamma'(t_0)(t-t_0)\)
-</p>
-
-<ul class="org-ul">
-<li>\(\Gamma\) : courbe \(\subset \mathbb{R}^d\)</li>
-</ul>
-
-<p>
-\(f: \Gamma \rightarrow \mathbb{R}\): continue.
-</p>
-
-<p>
-<span class="underline">Def :</span> \(\int\limits_{T} f := \int\limits_{a}^{b} f(\gamma(t)) ||\gamma'(t)|| dt\)
-</p>
-
-<p>
-\(\gamma : \left[a,b\right] \rightarrow \mathbb{R}^d\): une paramétrisation de \(\Gamma\).
-</p>
-
-<p>
-La longueur de \(\Gamma\) : \(\int\limits_{\Gamma} 1 = \int\limits_{a}^{b}||\gamma'(t)|| dt\)
-</p>
-
-<ul class="org-ul">
-<li>Ex.1 : \(\int\limits_{\Gamma}f\) avec \(f=1\)</li>
-</ul>
-<p>
-\(= \int\limits_{0}^{2\pi} ||\gamma'(t)|| dt = \int\limits_{0}^{2\pi} 1 dt = 2\pi\)
-</p>
-
-<ul class="org-ul">
-<li>Ex. :</li>
-</ul>
 \begin{align*}
-\int\limits_{\Gamma} &: \\
-&f(x,y) = \sqrt{x^2+4y^2} \\
-&\Gamma = \left\lbrace (x,y) \in \mathbb{R}^2; 2y = x^2; x \in \left[0,1\right]\right\rbrace \\
-&\gamma : \left[0,1\right] \rightarrow \mathbb{R}^2\\
-&t \rightarrow (t,\frac{t^2}{2})
+\Gamma = \left\lbrace (x,y) \in \mathbb{R}^2; 2y = x^2; x \in \left[0,1\right]\right\rbrace
+\end{align*}
+\begin{align*}
+\gamma : \left[0,1\right] \rightarrow \mathbb{R}^2\\
+t \rightarrow (t,\frac{t^2}{2})
 \end{align*}
 \begin{align*}
 \int\limits_{\Gamma} f &= \int\limits_{0}^{1} f(\gamma(t)) || \gamma'(t)|| dt\\
@@ -458,13 +553,14 @@ La longueur de \(\Gamma\) : \(\int\limits_{\Gamma} 1 = \int\limits_{a}^{b}||\gam
 &= \int\limits_{0}^{1} \sqrt{t^2 + t^4} \sqrt{1 + t^2} dt\\
 &= \int\limits_{0}^{1} t (1+t^2) dt = \frac{t^2}{2} + \frac{t^4}{4} \big|_0^1= \frac{3}{4} 
 \end{align*}
+</div>
+</div>
 
-<p>
-image courbe
-</p>
-
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">2.4.3</span> Somme intégrale</h4>
+<div class="outline-text-4" id="text-2-4-3">
 \begin{align*}
-\int\limits_{\Gamma} \simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
+\int\limits_{\Gamma}f \simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
 \gamma(t_i) \in \Gamma_i \\
 \simeq \sum\limits_i |\Gamma_i| f(\gamma(t_i))\\
 \end{align*}
@@ -473,42 +569,65 @@ image courbe
 </p>
 
 <p>
-Donc \(\int\limits_{\Gamma} \simeq \sum\limits ||\gamma(t_i)'|| (t_{i+1} - t_i) f(\gamma(t_i)) \simeq \int\limits_{a}^{b} ||\gamma'(t)|| f(\gamma(t)) dt\)
+Donc \(\int\limits_{\Gamma}f \simeq \sum\limits ||\gamma(t_i)'|| (t_{i+1} - t_i) f(\gamma(t_i)) \simeq \int\limits_{a}^{b} ||\gamma'(t)|| f(\gamma(t)) dt\)
 </p>
 
 <p>
-Def : L'intégrale curviligne pour un champ vectoriel.
+\((t_1) \neq \gamma(t_2)\) \(\forall t_1,t_2 \in I\) (simple)
+\(\gamma\) : une paramétrisation.
 </p>
+</div>
+</div>
+</div>
 
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23"><span class="section-number-3">2.5</span> Def : L'intégrale curviligne pour un champ vectoriel.</h3>
+<div class="outline-text-3" id="text-2-5">
 <p>
 \(F : \Gamma \rightarrow \mathbb{R}^d\)
 \(\Gamma\) : courbe \(\gamma\) : paramétrisation sur \(\left[a,b\right]\)
-\(\int\limits_{\Gamma} F \vec{dl} := \int\limits_{a}^{b} F(\gamma(t)\cdot\gamma'(t) dt\) (\(\cdot\) =produit scalaire&#x2026;)
+\(\int\limits_{\Gamma} F \vec{dl} := \int\limits_{a}^{b} F(\gamma(t))\cdot\gamma'(t) dt\) (\(\cdot\) =produit scalaire&#x2026;)
 </p>
 
 <ul class="org-ul">
 <li>Ex : \(\int\limits_{\Gamma} F \vec{dl}\)</li>
 </ul>
-\begin{align*}
-\Gamma &= \left\lbrace (x,y) \in \mathbb{R}^2: y = \cosh x, x \in \left[0,1\right] \right\rbrace\\
-F(x,y) &= (x^2,0)\\
-\gamma: \left[0,1\right] \rightarrow \mathbb{R}^2\\
-\gamma(t) = (t,\cosh t)\\
-\int\limits_{\Gamma} F \vec{dl}\\
-\Gamma &=  \int\limits_{0}^{1} F(\gamma(t)) \cdot \gamma'(t) dt = \int\limits_{0}^{1} (t^2,0)\cdot(1,\sinh t) dt\\
-^= \int\limits_{0}^{1} t^2 dt = \frac{1}{3}
-\end{align*} 
+<p>
+\(\Gamma = \left\lbrace (x,y) \in \mathbb{R}^2: y = \cosh x, x \in \left[0,1\right] \right\rbrace\)
+</p>
 
 <p>
-<span class="underline">Def :</span> courbe régulière <span class="underline">par morceau</span>.
+\(F(x,y) = (x^2,0)\ \ \gamma: \left[0,1\right] \rightarrow \mathbb{R}^2\)
+</p>
+
+<p>
+\(\gamma(t) = (t,\cosh t)\)
+\(\int\limits_{\Gamma} F \vec{dl}\)
+</p>
+\begin{align*}
+\Gamma &=  \int\limits_{0}^{1} F(\gamma(t)) \cdot \gamma'(t) dt = \int\limits_{0}^{1} (t^2,0)\cdot(1,\sinh t) dt\\
+&= \int\limits_{0}^{1} t^2 dt = \frac{1}{3}
+\end{align*} 
+</div>
+</div>
+
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24"><span class="section-number-3">2.6</span> Def : courbe régulière <span class="underline">par morceau</span>.</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
 \(\exists \gamma \left[a,b\right] \rightarrow \mathbb{R}^d\)
 \(t_0=a,...,t_k=b\)
 tel que : \(\gamma \in C^1 \left(\left[t_i,t_{i+1}\right]\right)\)
 \(\gamma'(t) \neq 0\ \forall t \neq t_i\)
 </p>
+</div>
+</div>
 
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26"><span class="section-number-3">2.7</span> Def : \(\Gamma\) régulière <span class="underline">par morceau</span>:</h3>
+<div class="outline-text-3" id="text-2-7">
 <p>
-<span class="underline">Def :</span> \(\Gamma\) régulière <span class="underline">par morceau</span>: \(f : \Gamma \rightarrow \mathbb{R}\): continue.
+\(f : \Gamma \rightarrow \mathbb{R}\): continue.
 </p>
 \begin{align*}
 \int\limits_{\Gamma} f := \sum\limits_{i=0}^{k-1} f(\gamma(t)) || \gamma'(t)|| dt
@@ -519,23 +638,31 @@ tel que : \(\gamma \in C^1 \left(\left[t_i,t_{i+1}\right]\right)\)
 \begin{align*}
 \int\limits_{\Gamma}F \vec{dl} := \sum\limits_{i=0}^{k-1} \int\limits_{t_i}^{t_{i+1}} F(\gamma(t)) || \gamma'(t)|| dt
 \end{align*}
+</div>
 
-<ul class="org-ul">
-<li>Ex. : \(\Gamma\) image carré \(\Gamma = \Gamma_1 \cup \Gamma_2 \cup \Gamma_3 \cup \Gamma_4\)</li>
-</ul>
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">2.7.1</span> Ex. : Périmètre d'un carré</h4>
+<div class="outline-text-4" id="text-2-7-1">
+<p width="200px">
+<img src="images/an_ch2_ex_6.png" alt="an_ch2_ex_6.png" width="200px" />
+\(\Gamma = \Gamma_1 \cup \Gamma_2 \cup \Gamma_3 \cup \Gamma_4\)
+</p>
 \begin{align*}
 \Gamma_1 &= \left\lbrace (t,0): t\in \left[0,1\right] \right\rbrace\\
 \Gamma_2 &= \left\lbrace (1,t-1): t\in \left[1,2\right] \right\rbrace\\
 \Gamma_3 &= \left\lbrace (3-t,1): t\in \left[2,3\right] \right\rbrace\\
 \Gamma_4 &= \left\lbrace (0,4-t): t\in \left[3,4\right] \right\rbrace\\
-\gamma: &\left[0,4\right] \rightarrow \mathbb{R}^2
 \end{align*}
+<p>
+\(\gamma: \left[0,4\right] \rightarrow \mathbb{R}^2\)
+</p>
 \begin{align*}
-\gamma(t) &= \gamma_1(t) &\left[0,1\right]
- & \gamma_2(t) &\left[1,2\right]
- & \gamma_3(t) &\left[2,3\right]
+\gamma(t) = &\gamma_1(t) &\left[0,1\right]\\
+ & \gamma_2(t) &\left[1,2\right]\\
+ & \gamma_3(t) &\left[2,3\right]\\
  & \gamma_4(t) &\left[3,4\right]
 \end{align*}
+
 
 <p>
 \(f=1\)
@@ -554,8 +681,10 @@ tel que : \(\gamma \in C^1 \left(\left[t_i,t_{i+1}\right]\right)\)
 </div>
 </div>
 </div>
+</div>
+</div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-09-28 Mon 09:53</p>
+<p class="date">Created: 2015-10-03 Sat 17:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

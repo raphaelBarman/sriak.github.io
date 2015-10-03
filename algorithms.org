@@ -348,7 +348,7 @@ Then, $T(n)$ has the following asymptotic bounds :
   if $a \cdot f(n/b) \le c \cdot f(n)$ for some constant $c < 1$ and all
   sufficiently large $n$, then $T(n) = \Theta(f(n))$
 * Chapter 4 
-_*Maximum-subarray problem*_
+** Maximum-subarray problem
 
 "If we let $A[i]$ = (price after day $i$) - (price after day $i-1$) then if the
 maximum subarray is $A[i..j]$ then we should have bought just before day $i$ and
@@ -358,12 +358,12 @@ sold just after day $j$.
 
 *Output* Indices $i$ and $j$ such that $A[i...j]$ has the greatest sum of any
  nonempty, contiguous subarray of $A$, along with the sum of the values in $A[i...j]$.
-** Brute force
+*** Brute force
 Simply check all possible subarrays.
 
 $\binom{n}{2} =  \Theta (n^2)$ many.
 
-*Maximum-subarray-slow*(A[1...n])
+*Maximum-subarray-slow* $(A[1...n])$
 #+BEGIN_SRC java
 B.val = - infinity, B.i = 1, B.j = n
 for i = 1 to n
@@ -377,4 +377,136 @@ for i = 1 to n
 return (B.i,B.j.B.val)
 #+END_SRC
 Running time is $\Theta(n^2)$ and we use $\Theta(n)$ space.
-** Divide and conquer
+*** Divide and conquer
+- *Divide* the subarray into two subarrays of as equal size as possible. Find the midpoint mid of the subarrays, and consider the subarrays $A$[low.. mid]
+  and $A$[mid+1...high].
+- *Conquer* by finding maximum subarrays of $A$[low . . . mid] and $A$[mid + 1 . . . high].
+- *Combine* by finding a maximum subarray that crosses the midpoint,and using the best solution out of the three
+
+ *FIND-MAXIMUM-SUBARRAY* $(A,low,high)$
+#+BEGIN_SRC java
+if high == low
+  return (low, high, A[low]) // base case: only one element
+else mid = ceil((low + high)/2)
+  (left-low, left-high, left-sum) =
+    FIND-MAXIMUM-SUBARRAY(A, low, mid)
+  (right-low, right-high, right-sum) =
+    FIND-MAXIMUM-SUBARRAY(A, mid + 1, high)
+  (cross-low, cross-high, cross-sum) =
+    FIND-MAXIMUM-CROSSING-SUBARRAY(A,low,mid,high) 
+  if left-sum >= right-sum and left-sum >= cross-sum
+    return (left-low, left-high, left-sum)
+  else if right-sum >= left-sum and right-sum >= cross-sum
+    return (right-low, right-high, right-sum)
+  else return (cross-low, cross-high, cross-sum)
+#+END_SRC
+
+**** Time analysis
+Assume that we can find max-crossing-subarray in time $\Theta(n)$ :
+
+- *Divide* takes constant time, i.e, $D(n) = \Theta(1)$
+- *Combine* time dominated by find-max-crossing-subarray, $C(n) = \Theta(n)$
+- *Conquer* recusively solve two subproblems, each of size $n/2$, $T(n/2)$.
+
+\begin{align*}
+T(n) &= \Theta(1) \text{  if $n=1$}\\
+T(n) &= 2T(n/2)+\Theta(n) \text{  otherwise}
+\end{align*}
+so $T(n)=\Theta)n \log n)$
+**** Crossing subarray
+- Any subarray crossing the midpoint A[mid] is made of two subarrays $A[i...mid]$ and $A[mid + 1,...,j]$ where $low \le i \le mid$ and $mid < j \le high$
+- Find maximum subarrays of the form $A[i...mid]$ and $A[mid + 1...j]$ and then combine them.
+*FIND-MAXIMUM-CROSSING-SUBARRAY* $(A,low,mid,high)$
+#+BEGIN_SRC java
+//Find a maximum subarray of the form A[i...mid]
+left-sum = - infinity
+sum = 0
+for i = mid downto low
+  sum = sum + A[i]
+  if sum > left-sum
+    left-sum = sum
+    max-left = i
+//Find a maximum subarray of the form A[mid+1...j]
+right-sum = - infinity
+sum = 0
+for j = mid + 1 to high
+  sum = sum + A[j]
+  if sum > right-sum
+    right-sum = sum
+    max-right = j
+// Return the indices and the sum of the two subarrays.
+return (max-left, max-right, left-sum + right-sum)
+#+END_SRC
+
+** Matrix multiplication
+Multiply two $n\times n$ matrices. $AB=C$
+
+$c_{ij} = \sum\limits_{k=1}^n a_{ik}b_{kj}$
+
+*** Naive algorithm
+*SQUARE-MAT-MULT* $(A,B,n)$
+#+BEGIN_SRC java
+let C be a new n x n matrix
+for i = 1 to n
+  for j = 1 to n
+    cij = 0
+    for k = 1 to n
+      cij = cij + aik*bkj
+return C
+#+END_SRC
+Running time : $\Theta(n^3)$
+
+Space : $\Theta(n^2)$
+
+*** Divide-and-Conquer
+- *Divide* each of $A,B,C$ into four $n/2 \times n/2$ matrices: so that :
+\begin{align*}
+  \begin{pmatrix}
+  C_{11} & C_{12}\\
+  C_{21} & C_{22}
+  \end{pmatrix} = \begin{pmatrix}
+  A_{11} & A_{12}\\
+  A_{21} & A_{22}
+  \end{pmatrix} \cdot \begin{pmatrix}
+  B_{11} & B_{12}\\
+  B_{21} & B_{22}
+  \end{pmatrix}
+\end{align*}
+- *Conquer* : Since
+\begin{align*}
+C_{11} =  A_{11} \cdot B_{11} + A_{12} \cdot B_{21}\\
+C_{12} =  A_{11} \cdot B_{12} + A_{12} \cdot B_{22}\\
+C_{21} =  A_{21} \cdot B_{11} + A_{22} \cdot B_{21}\\
+C_{22} =  A_{21} \cdot B_{12} + A_{22} \cdot B_{22}
+\end{align*}
+We recursively solve 8 matrix multiplications that each multiply two $n/2 \times
+n/2$ matrices.
+- *Combine* Make the additions to get $C$
+**** Pseudocode
+*REC-MAT-MULT* $(A,B,n)$
+#+BEGIN_SRC java
+let C be a new n x n matrix
+if n == 1
+  c11 = a11 * b11
+else partition A,B and C into n/2 x n/2 submatrices
+  c11 = REC-MAT-MULT(A11,B11,n/2) + REC-MAT-MULT(A12,B21,n/2)
+  c12 = REC-MAT-MULT(A11,B12,n/2) + REC-MAT-MULT(A12,B22,n/2)
+  c21 = REC-MAT-MULT(A21,B11,n/2) + REC-MAT-MULT(A22,B21,n/2)
+  c22 = REC-MAT-MULT(A21,B12,n/2) + REC-MAT-MULT(A22,B22,n/2)
+return C
+#+END_SRC
+**** Analysis
+Let $T(n)$ be the times to multiply two $n \times n$ matrices.
+- *Base case*: $n=1$. Perform one scalar multiplication: $\Theta(1)$
+- *Recursive case*: $n>1$
+  - Dividing takes $\Theta(1)$ time if careful and $\Theta(n^2)$ if simply copying
+  - Conquering makes 8 recursive calls, each multiplying $n/2 \times n/2$
+    matrices : $8T(n/2)$
+  - Combining takes time $\Theta(n^2)$ time to add $n/2 \times n/2$ matrices.
+Reccurence is :
+\begin{align*}
+T(n) &= \Theta(1) \text{  if $n=1$}\\
+T(n) &= 8T(n/2)+\Theta(n^2) \text{  if $n>1$}
+\end{align*}
+So $T(n) = \Theta(n^3)$ (from master method)
+*** Strassen's algorithm 
