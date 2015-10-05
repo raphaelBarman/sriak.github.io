@@ -189,8 +189,13 @@ h6 {
 .outline-4 > ol, #text-footnotes {
     margin-left: 50px;
 }
+
 .outline-text-4, .outline-text-5 {
     margin-left: 75px;
+}
+
+.outline-text-5 {
+    margin-left: 100px;
 }
 
 li > .outline-text-5 {
@@ -335,7 +340,8 @@ img {
  /*   margin-left: auto;
     margin-right: auto; */
     text-align: center;
-    max-width: 75%
+    max-width: 75%;
+    padding: 20px;
 }
 
 .figure {

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-02 Fri 14:57 -->
+<!-- 2015-10-05 Mon 15:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -154,7 +154,7 @@ for the JavaScript code in this tag.
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        displayAlign: "center",
+        displayAlign: "left",
         displayIndent: "0em",
 
         "HTML-CSS": { scale: 100,
@@ -173,7 +173,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div id="content">
@@ -218,7 +218,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline17">3.3. The master method</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline29">4. Chapter 4</a>
+<li><a href="#orgheadline31">4. Chapter 4</a>
 <ul>
 <li><a href="#orgheadline23">4.1. Maximum-subarray problem</a>
 <ul>
@@ -231,7 +231,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline28">4.2. Matrix multiplication</a>
+<li><a href="#orgheadline30">4.2. Matrix multiplication</a>
 <ul>
 <li><a href="#orgheadline24">4.2.1. Naive algorithm</a></li>
 <li><a href="#orgheadline27">4.2.2. Divide-and-Conquer</a>
@@ -240,8 +240,31 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline26">4.2.2.2. Analysis</a></li>
 </ul>
 </li>
+<li><a href="#orgheadline29">4.2.3. Strassen's algorithm</a>
+<ul>
+<li><a href="#orgheadline28">4.2.3.1. Time analysis</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline40">5. Chapter 5</a>
+<ul>
+<li><a href="#orgheadline38">5.1. Heap</a>
+<ul>
+<li><a href="#orgheadline32">5.1.1. Root :</a></li>
+<li><a href="#orgheadline33">5.1.2. Height :</a></li>
+<li><a href="#orgheadline34">5.1.3. Storage :</a></li>
+<li><a href="#orgheadline37">5.1.4. Operations</a>
+<ul>
+<li><a href="#orgheadline35">5.1.4.1. MAX-HEAPIFY</a></li>
+<li><a href="#orgheadline36">5.1.4.2. Building a heaps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline39">5.2. Heapsort</a></li>
 </ul>
 </li>
 </ul>
@@ -748,7 +771,7 @@ Used to black-box solve reccurences of form \(T(n) = a \cdot T(n/b) + f(n)\)
 </p>
 
 <p>
-Let \(a \ge 1\) and \(b > 1\) be constants, let $T(n) be defined on the
+Let \(a \ge 1\) and \(b > 1\) be constants, let \(T(n)\) be defined on the
   nonnegative integers by the reccurence :
 </p>
 \begin{align*}
@@ -768,8 +791,8 @@ sufficiently large \(n\), then \(T(n) = \Theta(f(n))\)</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline29" class="outline-2">
-<h2 id="orgheadline29"><span class="section-number-2">4</span> Chapter 4</h2>
+<div id="outline-container-orgheadline31" class="outline-2">
+<h2 id="orgheadline31"><span class="section-number-2">4</span> Chapter 4</h2>
 <div class="outline-text-2" id="text-4">
 </div><div id="outline-container-orgheadline23" class="outline-3">
 <h3 id="orgheadline23"><span class="section-number-3">4.1</span> Maximum-subarray problem</h3>
@@ -916,8 +939,8 @@ sum = <span style="color: #268bd2; font-weight: bold;">0</span>
 </div>
 </div>
 
-<div id="outline-container-orgheadline28" class="outline-3">
-<h3 id="orgheadline28"><span class="section-number-3">4.2</span> Matrix multiplication</h3>
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="orgheadline30"><span class="section-number-3">4.2</span> Matrix multiplication</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Multiply two \(n\times n\) matrices. \(AB=C\)
@@ -1040,11 +1063,233 @@ So \(T(n) = \Theta(n^3)\) (from master method)
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="section-number-4">4.2.3</span> Strassen's algorithm</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<ul class="org-ul">
+<li><b>Divide</b> eachf \(A,B,C\) into four \(n/2 \times n/2\) matrices: so that :</li>
+</ul>
+
+<p>
+\(\begin{pmatrix}
+C_{11} & C_{12}\\
+C_{21} & C_{22}
+\end{pmatrix} = \begin{pmatrix}
+A_{11} & A_{12}\\
+A_{21} & A_{22}
+\end{pmatrix} \cdot \begin{pmatrix}
+B_{11} & B_{12}\\
+B_{21} & B_{22}
+\end{pmatrix}\)  
+</p>
+
+<ul class="org-ul">
+<li><b>Conquer</b> : calculate recusively 7 matrix multiplications, each of two \(n/2
+  \times n/2\) matrices :</li>
+</ul>
+\begin{align*}
+&M_1 := (A_{11}+A_{22})(B_{11}+B_{22}) &\ M_5 := (A_{11}+A_{12})B_{22}\\
+&M_2 := (A_{21}+A_{22})B_{11} &\ M_6 := (A_{21}-A_{11})(B_{11}+B_{12})\\
+&M_3 := A_{11}(B_{12}-B_{22}) &\ M_7 := (A_{12}-A_{22})(B_{21}+B_{22})\\
+&M_4 := A_{11}(B_{21}-B_{11})
+\end{align*}
+
+<ul class="org-ul">
+<li><b>Combine</b> Let</li>
+</ul>
+\begin{align*}
+&C_{11} = M_1 + M_4 - M_5 + M_7 &\ C_{12} = M_3 + M_5 \\
+&C_{21} = M_2 + M_4 &\ C_{22} = M_1 - M_2 + M_3 + M_6
+\end{align*}
+</div>
+<div id="outline-container-orgheadline28" class="outline-5">
+<h5 id="orgheadline28"><span class="section-number-5">4.2.3.1</span> Time analysis</h5>
+<div class="outline-text-5" id="text-4-2-3-1">
+<ul class="org-ul">
+<li>Base case \(n = 1\) \(\Rightarrow\) it takes time \(\Theta(1)\)</li>
+<li>Recursive case: \(n > 1\)
+<ul class="org-ul">
+<li>Dividing takes time \(\Theta(n^2)\)</li>
+<li>Conquering makes 7 recursive calls, each multiplying \(n/2 \times n/2\)
+    matrices \(\Rightarrow 7 T(n/2)\)</li>
+<li>Combining takes time \(\Theta(n^2)\) time to add \(n/2 \times n/2\) matrices.</li>
+</ul></li>
+</ul>
+<p>
+Reccurence is
+</p>
+\begin{align*}
+T(n) = \Theta(1) \text{ if $n=1$}\\
+T(n) = 7T(n/2) + \Theta(n^2) \text{ if $n > 1$}
+\end{align*}
+<p>
+Master method \(\Rightarrow T(n) = \Theta(n^{\log_2 7})\) 
+</p>
+
+<p>
+Best we could hope for is \(\Theta(n^2)\) because we need to at least look at each
+entry of the matrices.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-2">
+<h2 id="orgheadline40"><span class="section-number-2">5</span> Chapter 5</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="orgheadline38"><span class="section-number-3">5.1</span> Heap</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Heap \(A\) (<sub>not</sub>_ garbage-collected storage) is a nearly complete binary trees
+</p>
+<ul class="org-ul">
+<li>height \(\lceil \log_2(n)\rceil\)</li>
+<li>Atmost one node has one child</li>
+</ul>
+
+<p>
+(Max)-Heap property: key of \(i\) 's children is <span class="underline">smaller or equal</span> to \(i\) 's key
+</p>
+
+<p>
+(Min)-Heap property: key of \(i\) 's children is <span class="underline">greater or equal</span> to \(i\) 's key
+</p>
+</div>
+
+<div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32"><span class="section-number-4">5.1.1</span> Root :</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<ul class="org-ul">
+<li>Max-Heap \(\Rightarrow\) maximum element is the root</li>
+<li>Min-heap \(\Rightarrow\) minimum elememnt is the root</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline33" class="outline-4">
+<h4 id="orgheadline33"><span class="section-number-4">5.1.2</span> Height :</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+Height of node = # of edges on a longest simple path from the node down to a leaf
+</p>
+
+<p>
+Height of heap = height of root = \(\Theta (\log n)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline34" class="outline-4">
+<h4 id="orgheadline34"><span class="section-number-4">5.1.3</span> Storage :</h4>
+<div class="outline-text-4" id="text-5-1-3">
+<p>
+Use that tree is almost complete to store it in array
+<img src="images/al_ch5_01.png" alt="al_ch5_01.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline37" class="outline-4">
+<h4 id="orgheadline37"><span class="section-number-4">5.1.4</span> Operations</h4>
+<div class="outline-text-4" id="text-5-1-4">
+</div><div id="outline-container-orgheadline35" class="outline-5">
+<h5 id="orgheadline35"><span class="section-number-5">5.1.4.1</span> MAX-HEAPIFY</h5>
+<div class="outline-text-5" id="text-5-1-4-1">
+<p>
+MAX-HEAPIFY : given an \(i\) such that the subtrees of \(i\) are heaps, it ensures
+that the subtree rooted at \(i\) is a heap satisfying the heap property.
+</p>
+
+<p>
+<b>Algorithm</b> :
+</p>
+<ul class="org-ul">
+<li>Compare \(A[i],A[Left(i)],A[Right(i)]\)</li>
+<li>If necessary, swap \(A[i]\) with the largest of the two children to preserve
+heap property</li>
+<li>Continue this process of comparing and swapping down the heap, until subtree
+rooted at \(i\) is max-heap</li>
+</ul>
+<p>
+<b>MAX<sub>HEAPIFY</sub></b> \((A,i,n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">l = Left<span style="color: #2aa198;">(</span>i<span style="color: #2aa198;">)</span>
+r = Right<span style="color: #2aa198;">(</span>i<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">if</span> l &lt;= n and A<span style="color: #2aa198;">[</span>l<span style="color: #2aa198;">]</span> &gt; A<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>
+  largest = l
+<span style="color: #859900; font-weight: bold;">else</span> largest = i
+<span style="color: #859900; font-weight: bold;">if</span> r &lt;= and A<span style="color: #2aa198;">[</span>r<span style="color: #2aa198;">]</span> &gt; A<span style="color: #2aa198;">[</span>largest<span style="color: #2aa198;">]</span>
+  largest = r
+<span style="color: #859900; font-weight: bold;">if</span> largest != i
+  exchange A<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> with A<span style="color: #2aa198;">[</span>largest<span style="color: #2aa198;">]</span>
+  MAX-HEAPIFY<span style="color: #2aa198;">(</span>A,largest,n<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+<b>Running time</b> : \(\Theta(\) height of \(i)=O(\log n)\)
+</p>
+
+<p>
+<b>Space</b> : \(\Theta(n)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline36" class="outline-5">
+<h5 id="orgheadline36"><span class="section-number-5">5.1.4.2</span> Building a heaps</h5>
+<div class="outline-text-5" id="text-5-1-4-2">
+<p>
+Given unordered array \(A\) of length \(n\), BUILD-MAX-HEAP(A,n)
+</p>
+
+<p>
+<b>BUILD-MAX-HEAP</b> \((A,n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">for</span> i = floor<span style="color: #2aa198;">(</span>n/<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">)</span> downto <span style="color: #268bd2; font-weight: bold;">1</span>
+  MAX-HEAPIFY<span style="color: #2aa198;">(</span>A,i,n<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+<b>Analysis</b>
+</p>
+
+<p>
+Worst case :
+</p>
+<ul class="org-ul">
+<li>Simple bound : \(O(n)\) calls to MAX-HEAPIFY, each of wich takes \(O(\log n)\)
+  time \(\Rightarrow O(n \log n)\) in total</li>
+<li>Tighter anaysis : Time to run MAX-HEAPIFY is linear in the height of the node
+it's run on. Hence the time bounded by :</li>
+</ul>
+
+<p>
+\(\sum\limits_{h=0}^{\log n}
+  \lbrace \text{# nodes of height } h \rbrace O(h) = O(n \sum\limits_{h=0}^{\log
+  n} \frac{h}{2^h})\)
+</p>
+
+<p>
+which is \(O(n)\) since \(\sum\limits_{h=0}^{\infty} \frac{h}{2^h} =
+\frac{1/2}{(1-1/2)^2} = 2\)
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline39" class="outline-3">
+<h3 id="orgheadline39"><span class="section-number-3">5.2</span> Heapsort</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-02 Fri 14:57</p>
+<p class="date">Created: 2015-10-05 Mon 15:57</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

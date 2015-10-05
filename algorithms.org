@@ -510,3 +510,120 @@ T(n) &= 8T(n/2)+\Theta(n^2) \text{  if $n>1$}
 \end{align*}
 So $T(n) = \Theta(n^3)$ (from master method)
 *** Strassen's algorithm 
+- *Divide* eachf $A,B,C$ into four $n/2 \times n/2$ matrices: so that :
+
+$\begin{pmatrix}
+C_{11} & C_{12}\\
+C_{21} & C_{22}
+\end{pmatrix} = \begin{pmatrix}
+A_{11} & A_{12}\\
+A_{21} & A_{22}
+\end{pmatrix} \cdot \begin{pmatrix}
+B_{11} & B_{12}\\
+B_{21} & B_{22}
+\end{pmatrix}$  
+
+- *Conquer* : calculate recusively 7 matrix multiplications, each of two $n/2
+  \times n/2$ matrices :
+\begin{align*}
+&M_1 := (A_{11}+A_{22})(B_{11}+B_{22}) &\ M_5 := (A_{11}+A_{12})B_{22}\\
+&M_2 := (A_{21}+A_{22})B_{11} &\ M_6 := (A_{21}-A_{11})(B_{11}+B_{12})\\
+&M_3 := A_{11}(B_{12}-B_{22}) &\ M_7 := (A_{12}-A_{22})(B_{21}+B_{22})\\
+&M_4 := A_{11}(B_{21}-B_{11})
+\end{align*}
+
+- *Combine* Let
+\begin{align*}
+&C_{11} = M_1 + M_4 - M_5 + M_7 &\ C_{12} = M_3 + M_5 \\
+&C_{21} = M_2 + M_4 &\ C_{22} = M_1 - M_2 + M_3 + M_6
+\end{align*}
+**** Time analysis
+- Base case $n = 1$ $\Rightarrow$ it takes time $\Theta(1)$
+- Recursive case: $n > 1$
+  - Dividing takes time $\Theta(n^2)$
+  - Conquering makes 7 recursive calls, each multiplying $n/2 \times n/2$
+    matrices $\Rightarrow 7 T(n/2)$
+  - Combining takes time $\Theta(n^2)$ time to add $n/2 \times n/2$ matrices.
+Reccurence is
+\begin{align*}
+T(n) = \Theta(1) \text{ if $n=1$}\\
+T(n) = 7T(n/2) + \Theta(n^2) \text{ if $n > 1$}
+\end{align*}
+Master method $\Rightarrow T(n) = \Theta(n^{\log_2 7})$ 
+
+Best we could hope for is $\Theta(n^2)$ because we need to at least look at each
+entry of the matrices.
+* Chapter 5
+** Heap 
+Heap $A$ (_not_ garbage-collected storage) is a nearly complete binary trees
+- height $\lceil \log_2(n)\rceil$
+- Atmost one node has one child
+
+(Max)-Heap property: key of $i$ 's children is _smaller or equal_ to $i$ 's key
+
+(Min)-Heap property: key of $i$ 's children is _greater or equal_ to $i$ 's key
+
+*** Root :
+- Max-Heap $\Rightarrow$ maximum element is the root
+- Min-heap $\Rightarrow$ minimum elememnt is the root
+*** Height :
+Height of node = # of edges on a longest simple path from the node down to a leaf
+
+Height of heap = height of root = $\Theta (\log n)$
+*** Storage :
+Use that tree is almost complete to store it in array
+[[file:images/al_ch5_01.png]]
+*** Operations
+**** MAX-HEAPIFY
+MAX-HEAPIFY : given an $i$ such that the subtrees of $i$ are heaps, it ensures
+that the subtree rooted at $i$ is a heap satisfying the heap property.
+
+*Algorithm* :
+- Compare $A[i],A[Left(i)],A[Right(i)]$
+- If necessary, swap $A[i]$ with the largest of the two children to preserve
+  heap property
+- Continue this process of comparing and swapping down the heap, until subtree
+  rooted at $i$ is max-heap
+*MAX_HEAPIFY* $(A,i,n)$
+#+BEGIN_SRC java
+l = Left(i)
+r = Right(i)
+if l <= n and A[l] > A[i]
+  largest = l
+else largest = i
+if r <= and A[r] > A[largest]
+  largest = r
+if largest != i
+  exchange A[i] with A[largest]
+  MAX-HEAPIFY(A,largest,n)
+#+END_SRC
+
+*Running time* : $\Theta($ height of $i)=O(\log n)$
+
+*Space* : $\Theta(n)$
+**** Building a heaps
+Given unordered array $A$ of length $n$, BUILD-MAX-HEAP(A,n)
+
+*BUILD-MAX-HEAP* $(A,n)$
+#+BEGIN_SRC java
+for i = floor(n/2) downto 1
+  MAX-HEAPIFY(A,i,n)
+#+END_SRC
+
+*Analysis*
+
+Worst case :
+- Simple bound : $O(n)$ calls to MAX-HEAPIFY, each of wich takes $O(\log n)$
+  time $\Rightarrow O(n \log n)$ in total
+- Tighter anaysis : Time to run MAX-HEAPIFY is linear in the height of the node
+  it's run on. Hence the time bounded by :
+  
+$\sum\limits_{h=0}^{\log n}
+  \lbrace \text{# nodes of height } h \rbrace O(h) = O(n \sum\limits_{h=0}^{\log
+  n} \frac{h}{2^h})$
+
+which is $O(n)$ since $\sum\limits_{h=0}^{\infty} \frac{h}{2^h} =
+\frac{1/2}{(1-1/2)^2} = 2$
+
+
+** Heapsort
