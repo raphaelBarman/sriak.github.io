@@ -335,7 +335,7 @@ Used to black-box solve reccurences of form $T(n) = a \cdot T(n/b) + f(n)$
 
 _Theorem (Master theorem)_
 
-Let $a \ge 1$ and $b > 1$ be constants, let $T(n) be defined on the
+Let $a \ge 1$ and $b > 1$ be constants, let $T(n)$ be defined on the
   nonnegative integers by the reccurence :
 \begin{align*}
 T(n) = a \cdot T(n/b) + f(n)

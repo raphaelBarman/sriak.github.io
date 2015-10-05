@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-03 Sat 17:23 -->
+<!-- 2015-10-05 Mon 10:02 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -228,6 +228,35 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline25">2.7.1. Ex. : Périmètre d'un carré</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#orgheadline41">3. Chapitre 3</a>
+<ul>
+<li><a href="#orgheadline29">3.1. Def:</a>
+<ul>
+<li><a href="#orgheadline28">3.1.1. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline31">3.2. Théorème</a>
+<ul>
+<li><a href="#orgheadline30">3.2.1. Preuve</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline33">3.3. Question:</a>
+<ul>
+<li><a href="#orgheadline32">3.3.1. Réponse</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline35">3.4. Théorème</a>
+<ul>
+<li><a href="#orgheadline34">3.4.1. Preuve</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline36">3.5. Def: Convexe</a></li>
+<li><a href="#orgheadline37">3.6. Def: Connexe</a></li>
+<li><a href="#orgheadline38">3.7. Exemple</a></li>
+<li><a href="#orgheadline39">3.8. Exemple</a></li>
+<li><a href="#orgheadline40">3.9. Exemple</a></li>
 </ul>
 </li>
 </ul>
@@ -682,9 +711,482 @@ tel que : \(\gamma \in C^1 \left(\left[t_i,t_{i+1}\right]\right)\)
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgheadline41" class="outline-2">
+<h2 id="orgheadline41"><span class="section-number-2">3</span> Chapitre 3</h2>
+<div class="outline-text-2" id="text-3">
+<p style="font-size:20px">
+<span class="underline"><b>Champs qui dérivent d'un potentiel</b></span>
+</p>
+</div>
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29"><span class="section-number-3">3.1</span> Def:</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+\(\Omega\) ouvert \(\mathbb{R}^n\)
+</p>
+
+<p>
+\(F: \Omega \rightarrow \mathbb{R}^n\)
+</p>
+
+<p>
+\(F(x) = (F_1(x),...,F_n(x))\)
+</p>
+
+<p>
+On dit que \(F\) dérive d'un potentiel sur \(\Omega\). Si \(\exists f: \Omega \rightarrow \mathbb{R}\)
+</p>
+
+<p>
+\(f\in C^1(\Omega): \nabla f = F ds \Omega\)
+</p>
+</div>
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">3.1.1</span> Exemple</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+\(F(x) = x\)
+</p>
+
+<p>
+\(f(x) = \frac{1}{2} ||x||^2 = \frac{1}{2} \sum\limits_{i=1}^n x_i^2\)
+</p>
+
+<p>
+\(\nabla f = F\)
+</p>
+
+<p>
+\(F\): dérive d'un potentiel.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">3.2</span> Théorème</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+\(F\) dérive d'un potentiel,
+</p>
+
+<p>
+\(F \in C^1(\Omega)\) Alors
+</p>
+
+<p>
+\(\frac{\delta F_i}{\delta x_j}(x) = \frac{\delta F_j}{\delta x_i}(x) \forall i,j \in \lbrace 1,...,n\rbrace,\ \forall x \in \Omega\)
+</p>
+</div>
+<div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30"><span class="section-number-4">3.2.1</span> Preuve</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+\(F\) dérive d'un potentiel de \(f\)
+</p>
+
+<p>
+\(f\) &isin; C<sup>1</sup>(&Omega;)$
+</p>
+
+<p>
+\(\nabla f(x)= F(x) \forall x \in \Omega\)
+</p>
+
+<p>
+Car \(F\in C^1(\Omega)\) on a
+</p>
+
+<p>
+\(f \in C^2(\Omega)\)
+</p>
+
+<p>
+Donc \(\frac{\delta^2 f}{\delta x_i \delta x_j}(x) = \frac{\delta^2 f}{\delta x_j \delta x_i}(x)\) \(\forall i,j \in \lbrace 1,...,n\rbrace,\ \forall x \in \Omega\) (1)
+</p>
+
+<p>
+On a
+</p>
+
+<p>
+\(F_i(x) = \frac{\delta f}{\delta x_i}(x)\) \(\forall x \in \Omega,\ \forall i\)
+</p>
+
+<p>
+\(\frac{\delta^2 f}{\delta x_j}(x) = \frac{\delta^2 f}{\delta x_j \delta x_i}(x)\)  \(\forall x \in \Omega,\ \forall i,j\) (2)
+</p>
+
+<p>
+\(\frac{\delta^2 f}{\delta x_i}(x) = \frac{\delta^2 f}{\delta x_i \delta x_j}(x)\)  \(\forall x \in \Omega,\ \forall i,j\) (3)
+</p>
+
+<p>
+(1) (2) (3) \(\Rightarrow \frac{\delta F_i}{\delta x_j}(x) = \frac{\delta F_j}{\delta x_i}(x)\) 
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33"><span class="section-number-3">3.3</span> Question:</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+F: régulier, suppossons \(\frac{\delta F_i}{\delta x_j}=\frac{\delta F_j}{\delta x_i}\) \(\forall x \in \Omega,\ \forall i,j\)
+</p>
+
+<p>
+Est-ce que \(F\) dérive d'un potentiel ?
+</p>
+</div>
+<div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32"><span class="section-number-4">3.3.1</span> Réponse</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<p>
+Vrai si \(\Omega\) convexe ou simplement connexe.
+</p>
+
+<p>
+"pas vrai": si \(\Omega\) n'est pas simplement connexe.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="orgheadline35"><span class="section-number-3">3.4</span> Théorème</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+\(\Omega\): ouver connexe
+</p>
+
+<p>
+\(F: \Omega \rightarrow \mathbb{R}^n: F\in C(\Omega,\mathbb{R}^n)\)
+</p>
+
+<p>
+Les affirmations suivantes sont équivalentes :
+</p>
+<ol class="org-ol">
+<li>\(F\) dérive d'un potentiel</li>
+<li>\(\int\limits_\Gamma F dl = 0\) \(\forall F\): fermée, régulière, par morceaux, dans \(\Omega\)</li>
+</ol>
+</div>
+
+<div id="outline-container-orgheadline34" class="outline-4">
+<h4 id="orgheadline34"><span class="section-number-4">3.4.1</span> Preuve</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+(1) \(\Rightarrow\) (2)
+</p>
+
+<p>
+\(F\): dérive d'un potentiel
+</p>
+
+<p>
+\(\exists f \in C^1(\Omega)\): \(\nabla f(x) = F(x)\) \(\forall x \in \Omega\)
+</p>
+
+<p>
+\(\Gamma\): courbe fermée régulière.
+</p>
+
+<p>
+\(\gamma: [a,b]:\) \(\Gamma = \gamma([a,b])\) et \(\gamma(a)=\gamma(b)\)
+</p>
+
+<p>
+On calcule 
+</p>
+
+\begin{align*}
+ \int\limits_{\Gamma} F \vec{dl} &= \int\limits_a^b F(\gamma (t)) \gamma'(t) dt\\
+  &= \int\limits_a^b \nabla f(\gamma(t)) \gamma'(t) dt \\
+&= \int\limits_a^b \frac{d}{dt} \left[ f(\gamma(t)) \right] dt\\
+&= f(\gamma(b)) - f(\gamma(a)) = 0
+\end{align*}
+
+
+<p>
+(2) \(\Rightarrow\) (1)
+</p>
+
+<p>
+On sait :
+</p>
+
+<p>
+\(\int\limits_{\Gamma} F \vec{dl} = 0\) \(\forall \Gamma\) fermée régulière.
+</p>
+
+<p>
+\(\Omega\) <a href="https://fr.wikipedia.org/wiki/Ensemble_convexe">convexe</a>.
+</p>
+
+<p>
+On montre \(\bar{f}\) dérive d'un potentiel
+</p>
+
+<p>
+On va essayer de trouver \(f\) tel que
+</p>
+
+<p>
+\(\nabla f = F\)
+</p>
+
+
+<div class="figure">
+<p><img src="images/an_ch3_01.png" alt="an_ch3_01.png" width="200px" />
+</p>
+</div>
+
+<p>
+On fixe : \(x_0 \in \Omega\).
+</p>
+
+<p>
+Pour \(x \in \Omega\), \([x_0,x] = x_0 + t(x-x_0\) \(t \in [0,1]\) 
+</p>
+
+<p>
+Définition : \(f(x) = \int\limits_{[x_0,x]} F \vec{dl}\)
+</p>
+
+<p>
+\(\Omega\) convexe \(\Rightarrow [x_0,x] \subset \Omega\) \(\forall x \in \Omega\)
+</p>
+
+<p>
+On montre:
+</p>
+
+<p>
+\(\nabla f(x) = F(x)\) \(\forall x \in \Omega\)
+</p>
+
+<p>
+<span class="underline">Rappel</span>
+</p>
+
+<p>
+\(f(y) - f(x) = \nabla f(x)(y-x)+o(||y-z||)\)
+</p>
+
+<p>
+\(f(y) - f(x) = \int\limits_{[x_0,y]} F dl - \int\limits_{[x_0,x]} F dl\)
+</p>
+
+<p>
+On a
+</p>
+
+<p>
+\(\int\limits_{[x_0,x]} F dl + \int\limits_{[x,y]} F dl + \int\limits_{[y,x_0]} F
+dl = 0\)
+</p>
+
+<p>
+Donc :
+</p>
+
+\begin{align*}
+f(y) -f(x) &= \int\limits_{[x_0,y]} + \int\limits_{[x,y]} + \int\limits_{[y,x_0]}\\
+&= \int\limits_{[x,y]} F \vec{dl}
+\end{align*}
+
+<p>
+\([x,y] = \lbrace x+ t(y-x): t\in [0,1] \rbrace\)
+</p>
+
+\begin{align*}
+&= \int\limits_0^1 F(\gamma(t)) \gamma'(t) dt\\
+&= \int\limits_0^1 F(\gamma(t)) (y-x) dt\\
+&\sim \int\limits_0^1 F(x) (y-x) dt = F(x) (y-x)
+\end{align*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="orgheadline36"><span class="section-number-3">3.5</span> Def: Convexe</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+\(\Omega\) convexe si et seulement si \(\forall x,y \in \Omega\)
+</p>
+
+<p>
+\([x,y] \subset \Omega\)
+</p>
+
+<p>
+image non-convexe, convexe
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline37" class="outline-3">
+<h3 id="orgheadline37"><span class="section-number-3">3.6</span> Def: Connexe</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+\(\Omega\) simplement connexe si et seulement si
+</p>
+
+<p>
+image connexe 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="orgheadline38"><span class="section-number-3">3.7</span> Exemple</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+\(F(x,y) = (4 x^3 y^2, 2x^4y + y)\)
+</p>
+
+<p>
+Montrer que \(F\) dérive d'un potentiel dans \(\mathbb{R}^2\)
+</p>
+
+<p>
+<span class="underline">Solution</span>: On cherche \(f: \nabla f = F \in \mathbb{R}^2\)
+</p>
+
+<p>
+\(\frac{\delta f}{\delta x} = 4x^3y^2 \Rightarrow f(x,y)=x^4y^2 + g(y)\)
+</p>
+
+<p>
+\(\frac{\delta f}{\delta y} = 2x^4y+y\)
+</p>
+
+<p>
+\(\frac{\delta f}{\delta y} = 2 x^4 y + g'(y) = 2x^4 y + y\)
+</p>
+
+<p>
+Donc \(g'(y) = y\)
+</p>
+
+<p>
+\(g(y) = \frac{1}{2} y^2 + C\)
+</p>
+
+<p>
+Alors \(f(x,y) = x^4y^2 + \frac{1}{2}y^2 + C\)
+</p>
+
+<p>
+Autre possiblité :
+</p>
+
+<p>
+\(f(x,y) = \int\limits{[0,(x,y)]} F dl\)
+</p>
+
+<p>
+\(\lbrace \gamma(t) = (tx,ty)\ t \in [0,1] \rbrace\) 
+</p>
+
+\begin{align*}
+f(x,y) &=\\
+&= \int\limits_0^1 F(tx,ty) (x,y) dt\\
+&= \int\limits_0^1 (4t^3x^3t^2y^2,2t^4x^4ty+ty) (x,y) dt\\
+&= \int\limits_0^1(4t^5x^4y^2+2t^5x^4y^2+ty^2) dt\\
+&= \int\limits_0^1(6t^5x^4y^2+ty^2) dt\\
+&= x^4y^2 + \frac{1}{2}y^2
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-orgheadline39" class="outline-3">
+<h3 id="orgheadline39"><span class="section-number-3">3.8</span> Exemple</h3>
+<div class="outline-text-3" id="text-3-8">
+<p>
+\(F=(2x\sin z, z e^y, x^2 \cos \ + e^y\)
+</p>
+
+<p>
+Potentiel de \(F\) ?
+</p>
+
+<p>
+<span class="underline">Solution</span> On cherche \(f : \nabla f = F\)
+</p>
+
+<p>
+\(\frac{\delta f}{\delta x} = 2 x \sin z \Rightarrow f(x,y,z) = x^2 \sin \ + f_1(y,z)\)
+</p>
+
+<p>
+\(\frac{\delta f}{\delta x} = z e^y = \frac{\delta f_1}{\delta y} (y,z)
+\Rightarrow f_1(y,z) = z e^y + f_2(z)\)
+</p>
+
+<p>
+\(\frac{\delta f}{\delta z} = x^2 \cos z + e^y = e^y + f_2'(z) + x^2 \cos z\)
+</p>
+
+<p>
+\(f_2'(z) = 0 \Rightarrow f_2(z) = C\)
+</p>
+
+<p>
+\(f(x,y,z) = x^2 \sin z + z e^y + C\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline40" class="outline-3">
+<h3 id="orgheadline40"><span class="section-number-3">3.9</span> Exemple</h3>
+<div class="outline-text-3" id="text-3-9">
+<p>
+\(F=\left( \frac{-y}{x^2+y^2},\frac{x}{x^2+y^2}\right)\)
+</p>
+
+<p>
+F est définit sur $\mathbb{R}<sup>2</sup> \backslash \lbrace (0,0) \rbrace$$ 
+</p>
+
+<p>
+Montrer :
+</p>
+
+<p>
+\(\frac{\delta F_1}{\delta y} = \frac{\delta F_2}{\delta x}\)
+</p>
+
+<p>
+Montrer : F ne dérive pas d'un potentiel
+</p>
+
+<p>
+\(\frac{\delta F_1}{\delta y} = \frac{-1(x^2+y^2)+y 2y}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2}\)
+</p>
+
+<p>
+\(\frac{\delta F_2}{\delta x} = \frac{1(x^2+y^2)-2x^2}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2}\)
+</p>
+
+
+<p>
+\(\Gamma\) L le cercle unité.
+</p>
+
+<p>
+\(\gamma (t) = (\cos t, \sin t)\) \(t \in [0,2\pi]\)
+</p>
+
+\begin{align*}
+\int\limits_{\Gamma} F dl &= \int\limits_0^{2\pi} (-\sin t, \cos t) (-\sin t, \cos t) dt\\
+&= \int\limits_0^{2\pi} 1 dt = 2 \pi
+\end{align*}
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-03 Sat 17:23</p>
+<p class="date">Created: 2015-10-05 Mon 10:02</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
