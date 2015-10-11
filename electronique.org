@@ -3,5 +3,147 @@
 #+SETUPFILE: htmlnotes.setup
 * Week 1 
 * Week 2
+** Valeur
+*** Moyenne
+Dans le cas d'un sinusoïde, la valeur moyenne non redressé ne présente aucun
+intérêt, car toujours nulle.
+
+Cas général : $V_{\text{moy}} = \frac{\text{surface}}{\text{période d'analyse}}$
+
+Autrement dit, la valeur moyenne du signal redressé se calcule avec la formule
+suivante :
+
+$\frac{1}{T_f - T_i} \int\limits_{T_i}^{T_f} V(t) dt$
+
+On note que l'intervalle est choisie pour que le calcule intégral soit simple.
+
+Dans le cas d'une sinusoïde : $V_{\text{moy}} = \frac{2A}{\pi}$
+*** Efficace
+La valeur efficace est calculée avec la formule suivante :
+
+$\sqrt{\frac{1}{T_f - T_i} \int\limits_{T_i}^{T_f} V(t)^2 dt}$
+
+Dans le cas d'une sinusoïde, la formule devient $\frac{A}{\sqrt(2)}$
+** Diviseur résistif
+#+attr_html: :width 500px
+[[file:images/el_ch2_01.png]]
+$U_s = U_0 \cdot \frac{R_2}{R_1+R_2}$
 * Week 3
-[[file:circuitsetsystemesI.html#outline-container-orgheadline20][Lois de Kirchhoff]]
+** Condensateur
+$Q = CU$
+
+$i = \frac{dQ}{dt} = C \frac{dU}{dt}$
+
+Supposons $i =$ constanste
+
+$\int\limits_{t_0}^{t_1} \frac{i dt}{C} = \int\limits_{U(t_0)}^{U(t_1)} dV =
+\frac{i(t_1-t_0}{C} = V(t_1)-V(t_0)$
+** Inductance
+$\frac{U \cdot dt}{L}$
+
+Supposons $U=constanste$
+
+$\int\limits_{t_0}^{t_1} \frac{U dt}{L} = \int\limits_{i(t_0)}^{i(t_1)} di =
+\frac{U(t_1-t_0}{L} = i(t_1)-i(t_0)$
+** Tableau récapitulatif
+| Symbole                           | U (Tension)                      | I (Courant)                        |
+|-----------------------------------+----------------------------------+------------------------------------|
+| [[file:images/el_ch2_resistance.png]] | $RI$                             | $\frac{U}{R}$                      |
+| [[file:images/el_ch2_capacite.png]]   | $\frac{1}{C} \int I(t) dt$ $+ k$ | $C \frac{dU}{dt}$                  |
+| [[file:images/el_ch2_Inductance.png]] | $L \frac{dI}{dt}$                | $\frac{1}{L}$ $\int U(t) dt$ $+ k$ |
+|                                   |                                  |                                    |
+** [[file:circuitsetsystemesI.html#outline-container-orgheadline20][Lois de Kirchhoff]]
+** Théorème de Millman
+#+attr_html: :width 500px
+[[file:images/el_ch2_millman.png]]
+** Simplification
+*** Résistances
+**** En série
+#+attr_html: :width 500px
+[[file:images/el_ch2_resistanceSerie.png]]
+**** En parralèle
+#+attr_html: :width 500px
+[[file:images/el_ch2_resistanceParralele.png]]
+**** Théorème de Kennely
+#+attr_html: :width 750px
+[[file:images/el_ch2_kennely.png]]
+*** Inductances
+**** En série
+#+attr_html: :width 500px
+[[file:images/el_ch2_InductanceSerie.png]]
+**** En parralèle
+#+attr_html: :width 500px
+[[file:images/el_ch2_InductanceParralele.png]]
+*** Capacités
+**** En parralèle
+#+attr_html: :width 500px
+[[file:images/el_ch2_capaciteParralele.png]]
+
+$U_1 = U_2$ car si la source est identique, les équipotentielles le sont aussi
+
+$Q_T= Q_1+Q_2$
+
+$i = i_1 + i_2$
+
+$Q_T = C_{eq} \cdot U_2 = C_1 \cdot U_1 + C_2 \cdot U_2$
+
+$C_{eq} = C_1 + C_2$
+**** En série
+#+attr_html: :width 500px
+[[file:images/el_ch2_capaciteSerie.png]]
+
+$i_1 = i_2$
+
+$\frac{1}{C_1} + \frac{1}{C_2} = \frac{1}{C_{eq}}$
+*** Diviseur résistif
+#+attr_html: :width 500px
+[[file:images/el_ch2_diviseurResistif.png]]
+
+$V = U_{IN} \cdot \frac{R_2}{R_1+R_2}$
+
+$I = \frac{U_{IN}}{R_1+R_2}$
+*** Circuit RC
+#+attr_html: :width 500px
+[[file:images/el_ch2_circuitRC.png]]
+
+$U_{IN} = R \cdot I(t) + \frac{1}{C}\int I(t) dt$
+
+$I(t) = \frac{U_{IN}-V(t)}{R} = C \frac{dV}{dt}$ ou encore $U_{IN} = V(t) + RC \frac{dV}{dt}$
+*** Circuit RLC
+#+attr_html: :width 500px
+[[file:images/el_ch2_circuitRLC.png]]
+
+$U_{IN} = R \cdot I(t) + \frac{1}{C} \int I(t) dt + L \frac{dI}{dt}$
+
+$0 = I(t) + RC \frac{dI}{dt} + LC \frac{d^2 I}{dt^2}$
+* Week 4
+** Terminologie
+*** Le dipôle
+*** Le tripôle
+*** Le quadripôle
+** Techniques de simplification
+[[file:images/el_ch4_simplification.png]]
+** Théorème de Thévenin
+La valeur de la résistance est obtenue:
+1. En éliminant les sources intérieures
+2. En évaluant la résistance vue depuis les bornes du dipôle
+#+attr_html: :width 500px
+[[file:images/el_ch3_Thevenin01.png]]
+
+La valeur de la source de tension est obtenue:
+1. En laissant les bornes du dipôle à vide
+2. En mesurant la tension aux bornes du dipôle
+#+attr_html: :width 500px
+[[file:images/el_ch3_Thevenin02.png]]
+** Théorème de Norton
+La valeur de la source de courant est obtenue:
+1. En cout-circuitant les dornes du dipôle
+2. En mesurant le courant à travers le court-circuit
+#+attr_html: :width 500px
+[[file:images/el_ch4_norton01.png]]
+
+La valeur de la résistance est obtenue comme précédemment :
+1. En éliminant les source intérieures
+2. En évaluant la résistance vue depuis les bornes du dipôle
+#+attr_html: :width 500px
+[[file:images/el_ch4_norton02.png]]

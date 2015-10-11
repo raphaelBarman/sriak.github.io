@@ -262,8 +262,7 @@ On remplace le circuit complexe par son équivalent de Thévenin :
 #+ATTR_LATEX: :width 15cm
 [[file:images/transfertMaxA.jpg]]
 * Chapitre 3
-** Méthodes d'Analyse
-*** Analyse nodale
+** Analyse nodale
 1. Sélectionner le noeud $n$ comme noeud de rérérence. Attribuer les tensions
    $v_1,v_2,...,v_{n-1}$ aux autres ($n-1$) noeuds. Les différneces de potentiel
    sont établies par rapport au noeud de référence.
@@ -272,6 +271,68 @@ On remplace le circuit complexe par son équivalent de Thévenin :
 3. Résoudre le système d'équation simultanées afin d'obtenir les valeurs ds
    tensions inconnues.
 
-**** TODO ajouter exemple 
+*** TODO ajouter exemple 
+** Application
+1. La méthode nodale s'applique à des circuits avec des sources de courants (indép. ou dép.)
+2. La méthode 'par inspection' ne s'applique qu'aux circuits avec des sources de
+   courants indép.
+** Analyse de mailles
+- Procédure générale d'analyse des circuits utilisant les courants des mailles
+  comme variables du circuit.
+- Ne s'applique que lorsque le circuit est de type planaire !
+*** Circuit planaire
+Un circuit planaire est un circuit pour lequel les branches ne se croisent pas.
+*** Boucle
+Une boucle est une maille qui ne contient *pas* d'autres mailles en son sein.
 
-*** Analyse de mailles
+Pour l'analyse, on définit un courant virutel en leur sein.
+*** Procédure
+1. Identifier les courants des mailles $i_1,i_2,...i_n$ pour les $n$ boucles du
+   circuit.
+2. Appliquer la loi de Kirchoff (tensions) à chacune des $n$ boucles. Utiliser
+   la loi d'Ohm pour exprimer les tensions en termes de *courant de maille* (pas
+   des autres courants déjà présents).
+3. Résoudre les $n$ équations résultantes pour obtenir les courants de mailles.
+* Chapitre 4
+** Fonctions périodiques
+Une fonction sinusoïdale est une fonction qui vérifie la relation
+$f(t)=f(t+nT)$, où $n$ est un nombre entier et $T$ la période mesurée en unité
+de temps.
++ *Valeur crête* ou *amplitude $A$*: valeur maximale d'une fonction périodique
++ *Valeur crête à crête* : écart maximal d'amplitude atteint durant une période
++ *Valeur moyenne* : $\bar{X} = \frac{1}{T} \int\limits_t^{t+T} x(\tau) d\tau$
++ *Valeur efficace* : $X = \sqrt{\frac{1}{T} \int\limits_t^{t+T} x^2(\tau)d\tau}$
+  toujours positif !
+
+** Fonction sinusoïdale :
+
+$x(t) = A \sin(\frac{2\pi}{T}t + \alpha)$
+
+- Fréquence : Nombre de cycle par unité de temps
+
+$f=1/T$
+
+$x(t) = A \sin(\frac{2\pi}{T}t + \alpha) = A \sin(2\pi ft + \alpha)$
+
+Unité de mesure: le hertz (Hz)
+- Fréquence angulaire ou pulsation \omega :
+  - unité rad/s
+  - $\omega = 2 \pi f = \frac{2\pi}{T}$
+  - $x(t)=A \sin(\omega t + \alpha)$
+
+- Valeur moyenne : toujours nulle
+
+- Valeur efficace : $\frac{A}{\sqrt{2}}$
+  - $u(t) = \hat{U} \cos(\omega t + \alpha)$
+  - $i(t) =  \hat{I} \cos(\omega t + \beta)$
+    - $U = \hat{U}/\sqrt{2}$
+    - $I = \hat{I} / \sqrt{2}$
+      - $u(t) = \sqrt{2} U \cos(\omega t + \alpha)$
+      - $i(t) = \sqrt{2} I \cos(\omega t + \beta)$
+- Déphasage :
+  - Déphasage entre $u(t)$ et $i(t)$: $\varphi = \alpha - \beta$
+  - $\varphi > 0$ : tension en avance sur le courant  
+  - $\varphi < 0$ : tension en retard sur le courant  
+** Grandeurs sinusoïdales
+** Importance du régime sinusoïdal
+** Réponse d'un circuit linéaire à une excitation sinusoïdale

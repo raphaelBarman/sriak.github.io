@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-05 Mon 15:57 -->
+<!-- 2015-10-09 Fri 13:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -249,7 +249,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline40">5. Chapter 5</a>
+<li><a href="#orgheadline43">5. Chapter 5</a>
 <ul>
 <li><a href="#orgheadline38">5.1. Heap</a>
 <ul>
@@ -264,7 +264,13 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline39">5.2. Heapsort</a></li>
+<li><a href="#orgheadline41">5.2. Heapsort</a>
+<ul>
+<li><a href="#orgheadline39">5.2.1. Pseudocode :</a></li>
+<li><a href="#orgheadline40">5.2.2. Analysis</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline42">5.3. Priorty queue</a></li>
 </ul>
 </li>
 </ul>
@@ -1135,14 +1141,14 @@ entry of the matrices.
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline40" class="outline-2">
-<h2 id="orgheadline40"><span class="section-number-2">5</span> Chapter 5</h2>
+<div id="outline-container-orgheadline43" class="outline-2">
+<h2 id="orgheadline43"><span class="section-number-2">5</span> Chapter 5</h2>
 <div class="outline-text-2" id="text-5">
 </div><div id="outline-container-orgheadline38" class="outline-3">
 <h3 id="orgheadline38"><span class="section-number-3">5.1</span> Heap</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
-Heap \(A\) (<sub>not</sub>_ garbage-collected storage) is a nearly complete binary trees
+Heap \(A\) ( <span class="underline">not</span> garbage-collected storage) is a nearly complete binary trees
 </p>
 <ul class="org-ul">
 <li>height \(\lceil \log_2(n)\rceil\)</li>
@@ -1210,7 +1216,7 @@ heap property</li>
 rooted at \(i\) is max-heap</li>
 </ul>
 <p>
-<b>MAX<sub>HEAPIFY</sub></b> \((A,i,n)\)
+<b>MAX-HEAPIFY</b> \((A,i,n)\)
 </p>
 <div class="org-src-container">
 
@@ -1277,19 +1283,96 @@ it's run on. Hence the time bounded by :</li>
 which is \(O(n)\) since \(\sum\limits_{h=0}^{\infty} \frac{h}{2^h} =
 \frac{1/2}{(1-1/2)^2} = 2\)
 </p>
+
+<p>
+<b>Correctness</b>
+</p>
+
+<p>
+<span class="underline">Loop invariant</span> : At start of every iteration of <b>for</b> loop, each node
+\(i+1,i+2,...,n\) is root of max-heap
+</p>
+
+<p>
+<span class="underline">Maintenance</span> :
+</p>
+<ul class="org-ul">
+<li>Children of node \(i\) are indexed higher than \(i\), so by the loop invariant,
+they are both roots of max-heaps</li>
+<li>Therefore, MAX-HEAPIFY makes node \(i\) a max-heap root (so \(i,i+1,...,n\) are
+all roots of max-heaps)</li>
+<li>Hence, the invariant stays true when decredementing \(i\) at the beggining of
+the next iteration</li>
+</ul>
+
+<p>
+<span class="underline">Termination</span>:
+</p>
+<ul class="org-ul">
+<li>When \(i = 0\), the loop terminates</li>
+<li>By the loop invariant, each node, notably node 1, is the root of a max-heap</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 
+<div id="outline-container-orgheadline41" class="outline-3">
+<h3 id="orgheadline41"><span class="section-number-3">5.2</span> Heapsort</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Builds a max-heap from the array</li>
+<li>Starting with the root (the maximum element), the algorithm places the maximum
+element into the correct place in the array by swapping it with the element in
+the last position in the array</li>
+<li>"Discard" this last node (knowing that it is in its correct place) by
+decreasing the heap size, and calling MAX-HEAPIFY on the new (possibly
+incorrect-placed) root</li>
+<li>Repeat this "discarding" process until only one node (the smallest element)
+remains, and therefore is in the correct place in the array</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39"><span class="section-number-4">5.2.1</span> Pseudocode :</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<p>
+<b>HEAPSORT</b> \((A,n)\)
+</p>
+<div class="org-src-container">
 
-<div id="outline-container-orgheadline39" class="outline-3">
-<h3 id="orgheadline39"><span class="section-number-3">5.2</span> Heapsort</h3>
+<pre class="src src-java">BUILD-MAX-HEAP<span style="color: #2aa198;">(</span>A,n<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">for</span> i = n downto <span style="color: #268bd2; font-weight: bold;">2</span>
+  exchange A<span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span> with A<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span>
+  MAX-HEAPIFY<span style="color: #2aa198;">(</span>A,<span style="color: #268bd2; font-weight: bold;">1</span>,i-<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="orgheadline40"><span class="section-number-4">5.2.2</span> Analysis</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<ul class="org-ul">
+<li>BUILD-MAX-HEAP : \(O(n)\)</li>
+<li><b>for</b> loop: \(n-1\) times</li>
+<li>exchange elements: \(O(1)\)</li>
+<li>MAX-HEAPIFY: \(O(\lg n)\)</li>
+</ul>
+
+<p>
+<b>Total time</b> : \(O(n \lg n)\)
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="orgheadline42"><span class="section-number-3">5.3</span> Priorty queue</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-05 Mon 15:57</p>
+<p class="date">Created: 2015-10-09 Fri 13:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

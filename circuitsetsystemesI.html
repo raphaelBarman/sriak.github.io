@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-02 Fri 13:31 -->
+<!-- 2015-10-08 Thu 15:58 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Circuit et système</title>
@@ -154,7 +154,7 @@ for the JavaScript code in this tag.
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        displayAlign: "center",
+        displayAlign: "left",
         displayIndent: "0em",
 
         "HTML-CSS": { scale: 100,
@@ -173,7 +173,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div id="content">
@@ -251,18 +251,30 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline41">2.6. Transfert maximal de puissance</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline47">3. Chapitre 3</a>
+<li><a href="#orgheadline50">3. Chapitre 3</a>
 <ul>
-<li><a href="#orgheadline46">3.1. Méthodes d'Analyse</a>
+<li><a href="#orgheadline44">3.1. Analyse nodale</a>
 <ul>
-<li><a href="#orgheadline44">3.1.1. Analyse nodale</a>
-<ul>
-<li><a href="#orgheadline43">3.1.1.1. <span class="todo nilTODO">TODO</span> ajouter exemple</a></li>
+<li><a href="#orgheadline43">3.1.1. <span class="todo nilTODO">TODO</span> ajouter exemple</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline45">3.1.2. Analyse de mailles</a></li>
+<li><a href="#orgheadline45">3.2. Application</a></li>
+<li><a href="#orgheadline49">3.3. Analyse de mailles</a>
+<ul>
+<li><a href="#orgheadline46">3.3.1. Circuit planaire</a></li>
+<li><a href="#orgheadline47">3.3.2. Boucle</a></li>
+<li><a href="#orgheadline48">3.3.3. Procédure</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#orgheadline56">4. Chapitre 4</a>
+<ul>
+<li><a href="#orgheadline51">4.1. Fonctions périodiques</a></li>
+<li><a href="#orgheadline52">4.2. Fonction sinusoïdale :</a></li>
+<li><a href="#orgheadline53">4.3. Grandeurs sinusoïdales</a></li>
+<li><a href="#orgheadline54">4.4. Importance du régime sinusoïdal</a></li>
+<li><a href="#orgheadline55">4.5. Réponse d'un circuit linéaire à une excitation sinusoïdale</a></li>
 </ul>
 </li>
 </ul>
@@ -946,15 +958,12 @@ On remplace le circuit complexe par son équivalent de Thévenin :
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline47" class="outline-2">
-<h2 id="orgheadline47"><span class="section-number-2">3</span> Chapitre 3</h2>
+<div id="outline-container-orgheadline50" class="outline-2">
+<h2 id="orgheadline50"><span class="section-number-2">3</span> Chapitre 3</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline46" class="outline-3">
-<h3 id="orgheadline46"><span class="section-number-3">3.1</span> Méthodes d'Analyse</h3>
+</div><div id="outline-container-orgheadline44" class="outline-3">
+<h3 id="orgheadline44"><span class="section-number-3">3.1</span> Analyse nodale</h3>
 <div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-orgheadline44" class="outline-4">
-<h4 id="orgheadline44"><span class="section-number-4">3.1.1</span> Analyse nodale</h4>
-<div class="outline-text-4" id="text-3-1-1">
 <ol class="org-ol">
 <li>Sélectionner le noeud \(n\) comme noeud de rérérence. Attribuer les tensions
 \(v_1,v_2,...,v_{n-1}\) aux autres (\(n-1\)) noeuds. Les différneces de potentiel
@@ -966,19 +975,146 @@ tensions inconnues.</li>
 </ol>
 </div>
 
-<div id="outline-container-orgheadline43" class="outline-5">
-<h5 id="orgheadline43"><span class="section-number-5">3.1.1.1</span> <span class="todo TODO">TODO</span> ajouter exemple</h5>
+<div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43"><span class="section-number-4">3.1.1</span> <span class="todo TODO">TODO</span> ajouter exemple</h4>
+</div>
+</div>
+<div id="outline-container-orgheadline45" class="outline-3">
+<h3 id="orgheadline45"><span class="section-number-3">3.2</span> Application</h3>
+<div class="outline-text-3" id="text-3-2">
+<ol class="org-ol">
+<li>La méthode nodale s'applique à des circuits avec des sources de courants (indép. ou dép.)</li>
+<li>La méthode 'par inspection' ne s'applique qu'aux circuits avec des sources de
+courants indép.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline49" class="outline-3">
+<h3 id="orgheadline49"><span class="section-number-3">3.3</span> Analyse de mailles</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Procédure générale d'analyse des circuits utilisant les courants des mailles
+comme variables du circuit.</li>
+<li>Ne s'applique que lorsque le circuit est de type planaire !</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline46" class="outline-4">
+<h4 id="orgheadline46"><span class="section-number-4">3.3.1</span> Circuit planaire</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<p>
+Un circuit planaire est un circuit pour lequel les branches ne se croisent pas.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline47" class="outline-4">
+<h4 id="orgheadline47"><span class="section-number-4">3.3.2</span> Boucle</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<p>
+Une boucle est une maille qui ne contient <b>pas</b> d'autres mailles en son sein.
+</p>
+
+<p>
+Pour l'analyse, on définit un courant virutel en leur sein.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline48" class="outline-4">
+<h4 id="orgheadline48"><span class="section-number-4">3.3.3</span> Procédure</h4>
+<div class="outline-text-4" id="text-3-3-3">
+<ol class="org-ol">
+<li>Identifier les courants des mailles \(i_1,i_2,...i_n\) pour les \(n\) boucles du
+circuit.</li>
+<li>Appliquer la loi de Kirchoff (tensions) à chacune des \(n\) boucles. Utiliser
+la loi d'Ohm pour exprimer les tensions en termes de <b>courant de maille</b> (pas
+des autres courants déjà présents).</li>
+<li>Résoudre les \(n\) équations résultantes pour obtenir les courants de mailles.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline56" class="outline-2">
+<h2 id="orgheadline56"><span class="section-number-2">4</span> Chapitre 4</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgheadline51" class="outline-3">
+<h3 id="orgheadline51"><span class="section-number-3">4.1</span> Fonctions périodiques</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Une fonction sinusoïdale est une fonction qui vérifie la relation
+\(f(t)=f(t+nT)\), où \(n\) est un nombre entier et \(T\) la période mesurée en unité
+de temps.
+</p>
+<ul class="org-ul">
+<li><b>Valeur crête</b> ou <b>amplitude \(A\)</b>: valeur maximale d'une fonction périodique</li>
+<li><b>Valeur crête à crête</b> : écart maximal d'amplitude atteint durant une période</li>
+<li><b>Valeur moyenne</b> : \(\bar{X} = \frac{1}{T} \int\limits_t^{t+T} x(\tau) d\tau\)</li>
+<li><b>Valeur efficace</b> : \(X = \sqrt{\frac{1}{T} \int\limits_t^{t+T} x^2(\tau)d\tau}\)
+  toujours positif !</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline45" class="outline-4">
-<h4 id="orgheadline45"><span class="section-number-4">3.1.2</span> Analyse de mailles</h4>
+<div id="outline-container-orgheadline52" class="outline-3">
+<h3 id="orgheadline52"><span class="section-number-3">4.2</span> Fonction sinusoïdale :</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+\(x(t) = A \sin(\frac{2\pi}{T}t + \alpha)\)
+</p>
+
+<ul class="org-ul">
+<li>Fréquence : Nombre de cycle par unité de temps</li>
+</ul>
+
+<p>
+\(f=1/T\)
+</p>
+
+<p>
+\(x(t) = A \sin(\frac{2\pi}{T}t + \alpha) = A \sin(2\pi ft + \alpha)\)
+</p>
+
+<p>
+Unité de mesure: le hertz (Hz)
+</p>
+<ul class="org-ul">
+<li>Fréquence angulaire ou pulsation &omega; :
+<ul class="org-ul">
+<li>unité rad/s</li>
+<li>\(\omega = 2 \pi f = \frac{2\pi}{T}\)</li>
+<li>\(x(t)=A \sin(\omega t + \alpha)\)</li>
+</ul></li>
+
+<li>Valeur moyenne : toujours nulle</li>
+
+<li>Valeur efficace : \(\frac{A}{\sqrt{2}}\)
+<ul class="org-ul">
+<li>\(u(t) = \hat{U} \cos(\omega t + \alpha)\)</li>
+<li>\(i(t) =  \hat{I} \cos(\omega t + \beta)\)
+<ul class="org-ul">
+<li>\(U = \hat{U}/\sqrt{2}\)</li>
+<li>\(I = \hat{I} / \sqrt{2}\)
+<ul class="org-ul">
+<li>\(u(t) = \sqrt{2} U \cos(\omega t + \alpha)\)</li>
+<li>\(i(t) = \sqrt{2} I \cos(\omega t + \beta)\)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
 </div>
+</div>
+<div id="outline-container-orgheadline53" class="outline-3">
+<h3 id="orgheadline53"><span class="section-number-3">4.3</span> Grandeurs sinusoïdales</h3>
+</div>
+<div id="outline-container-orgheadline54" class="outline-3">
+<h3 id="orgheadline54"><span class="section-number-3">4.4</span> Importance du régime sinusoïdal</h3>
+</div>
+<div id="outline-container-orgheadline55" class="outline-3">
+<h3 id="orgheadline55"><span class="section-number-3">4.5</span> Réponse d'un circuit linéaire à une excitation sinusoïdale</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-02 Fri 13:31</p>
+<p class="date">Created: 2015-10-08 Thu 15:58</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

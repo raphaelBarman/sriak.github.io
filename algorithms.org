@@ -555,7 +555,7 @@ Best we could hope for is $\Theta(n^2)$ because we need to at least look at each
 entry of the matrices.
 * Chapter 5
 ** Heap 
-Heap $A$ (_not_ garbage-collected storage) is a nearly complete binary trees
+Heap $A$ ( _not_ garbage-collected storage) is a nearly complete binary trees
 - height $\lceil \log_2(n)\rceil$
 - Atmost one node has one child
 
@@ -584,7 +584,7 @@ that the subtree rooted at $i$ is a heap satisfying the heap property.
   heap property
 - Continue this process of comparing and swapping down the heap, until subtree
   rooted at $i$ is max-heap
-*MAX_HEAPIFY* $(A,i,n)$
+*MAX-HEAPIFY* $(A,i,n)$
 #+BEGIN_SRC java
 l = Left(i)
 r = Right(i)
@@ -625,5 +625,109 @@ $\sum\limits_{h=0}^{\log n}
 which is $O(n)$ since $\sum\limits_{h=0}^{\infty} \frac{h}{2^h} =
 \frac{1/2}{(1-1/2)^2} = 2$
 
+*Correctness*
+
+_Loop invariant_ : At start of every iteration of *for* loop, each node
+$i+1,i+2,...,n$ is root of max-heap
+
+_Maintenance_ :
+- Children of node $i$ are indexed higher than $i$, so by the loop invariant,
+  they are both roots of max-heaps
+- Therefore, MAX-HEAPIFY makes node $i$ a max-heap root (so $i,i+1,...,n$ are
+  all roots of max-heaps)
+- Hence, the invariant stays true when decredementing $i$ at the beggining of
+  the next iteration
+
+_Termination_:
+- When $i = 0$, the loop terminates
+- By the loop invariant, each node, notably node 1, is the root of a max-heap
 
 ** Heapsort
+- Builds a max-heap from the array
+- Starting with the root (the maximum element), the algorithm places the maximum
+  element into the correct place in the array by swapping it with the element in
+  the last position in the array
+- "Discard" this last node (knowing that it is in its correct place) by
+  decreasing the heap size, and calling MAX-HEAPIFY on the new (possibly
+  incorrect-placed) root
+- Repeat this "discarding" process until only one node (the smallest element)
+  remains, and therefore is in the correct place in the array
+*** Pseudocode :
+*HEAPSORT* $(A,n)$
+#+BEGIN_SRC java
+BUILD-MAX-HEAP(A,n)
+for i = n downto 2
+  exchange A[1] with A[i]
+  MAX-HEAPIFY(A,1,i-1)
+#+END_SRC
+*** Analysis
+- BUILD-MAX-HEAP : $O(n)$
+- *for* loop: $n-1$ times
+- exchange elements: $O(1)$
+- MAX-HEAPIFY: $O(\lg n)$
+
+*Total time* : $O(n \lg n)$
+
+
+** Priorty queue
+- Maintains a dynamic set $S$ of elements
+- Each set element has a *key* - an associated value that regulates its importance
+- Operations :
+  - INSERT(S,x): inserts element $x$ into $S$
+  - MAXIMUM(S) : returns element of $S$ with largest key
+  - EXTRACT-MAX(S): removes and returns element of $S$ with largest key
+  - INCREASED-KEY(S,x,K): increases value of element $x$'s key to $k$; assume $k
+    \le x$ 's current key value.
+*** Operations 
+**** HEAP-MAXIMUM 
+Symply return the root in time $\Theta(1)$
+
+*HEAP-MAXIMUM* $(A)$
+#+BEGIN_SRC java
+Return A[1]
+#+END_SRC
+**** HEAP-EXTRACT-MAX(A,n)
+1. Make sure heap is not empty
+2. Make a copy of the maximum element (the root)
+3. Make the last node in the tree the new root
+4. Re-heapify the heap, with one fewer node
+
+_Analysis_ : Constant-time assignments plus time for MAX-HEAPIFY
+
+So $O(\lg n)$
+
+*HEAP-EXTRACT-MAX* $(A,n)$
+#+BEGIN_SRC java
+if n < 1
+  error "heap underflow"
+max = A[1]
+A[1] = A[n]
+n = n - 1
+MAX-HEAPIFY(A,1,n)
+return max
+#+END_SRC
+**** HEAP-INCREASE-KEY(A,i,key)
+Given a heap $A$, index $i$, and a new value $key$
+1. Make sure $key >= A[i]$
+2. Update $A[i]$ 's value to $key$
+3. Traverse the tree upward comparing new key to the parent and swapping keys if
+   necessary, until the new key is smaller than the parent's keys
+
+_Analysis_ : Upward path frome node $i$ has length $O(\lg n$ in an $n$ -element
+heap.
+
+So $O(\lg n)$
+
+*HEAP-INCREASE-KEY* $(A,i,key)$
+#+BEGIN_SRC java
+if key < A[i]
+  error "new key is smaller than current key"
+A[i] = key
+while i > 1 and A[Parent(i)] < A[i]
+  exchange A[i] with A[Parent(i)]
+  i = Parent(i)
+#+END_SRC
+
+
+
+

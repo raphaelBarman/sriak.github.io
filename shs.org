@@ -86,7 +86,7 @@
   - Fin de la guerre, projet mis sous la tutelle d'un autre organisme qui lui
     doute de plus en plus de la faisabilité du projet.
 - De simulateur à système d'information
-  - Pour justifier les couts, devient un système d'information militaire
+  - En 1947, pour justifier les couts, devient un système d'information militaire
   - Budget de plus en plus réduit, en 1949, quasi enterré.
   - Mais en 1949, on apprend que la Russie possède la bombe nucléaire.
 - /Whirlind/ repris par la /Air force/ et devient alors le projet SAGE
@@ -236,3 +236,67 @@ plus de débuggage, besoin d'autre chose.
     produit.
   - De l’autre, l’utilisation de cette interface peut elle-même générer la
     création de produits: jeux-vidéos, petits programmes de gestion et de calcul, etc.
+* Week 4
+Réponse D
+#+attr_html: :style font-size:20px
+_Économies et cultures logicielles_
+** Vérouillage progressif des codes sources
+- Au début de la mise en vente de l'Altair BASIC, public issus des université;
+  le partage - le plus souvent gratuit - du code est la norme (Comme il se doit
+  dans les université, logiciels = objets de recherche).
+- Après la fuite de l'interpéteur BASIC, Bill Gates publie en *1976* le pamphlet
+  "An open Letter to Hobbyists"; mise en invisibilité du code source et
+  instauration de clauses de confidentialité
+- Dans les années *1980*, la massification du marché de l’informatique créée une
+  clientèle peu concernée par la question de l’accès au code source; la
+  démocratisation de l’accès aux ordinateurs a comme effet – pervers pour
+  certains, salutaire pour d’autres – de restreindre la circulation des codes sources entre les usagers
+** RMS, la FSF et la GPL
+*** RMS
+- Formé au laboratoire d’intelligence artificielle du MIT; développeur principal d’Emacs
+- Bien que soudée, la communauté s’érode au contact des appels de l’industrie
+- *1983*: lancement du projet de système d’exploitation GNU
+- *1985*: création de la /Free Software Foundation/
+***  Logiciel libre
+1. Liberté d’ *exécuter* le programme pour tous les usages
+2. Liberté d’ *étudier* le fonctionnement du programme, et de l’adapter à ses besoins
+3. Liberté de *redistribuer* des copies du logiciel
+4. Liberté d’ *améliorer* le programme et de publier ses améliorations
+*** La General Public License
+- Souvent associée au jeu de mot copyleft
+- Pourtant, licence définissant et encadrant les droits des utilisateurs de façon contraignante
+- L’utilisateur est en droit de redistribuer un programme acquis sous licence GPL si
+  1. Il rend disponible le code source de la version modifiée
+  2. Il distribue la version modifiée sous les termes de la GPL
+- Si l’utilisateur ne respecte pas ces utilisations, il peut être attaqué par
+ l’auteur original en vertu de ses droits d’auteurs
+** GNU/Linux
+- *1992*: le noyau « Linux » développé par Linus Torvald passe sous licence GPL
+- *1994*: la version 1.0 du système d’exploitation GNU/Linux est opérationnel; apparition d’entreprises fournissant des services liés à GNU/Linux
+- Des divergences commencent à émerger quant aux contraintes de la licence GPL
+- *1998*: création de l’Open Source Initiative (OSI) avec comme but affiché de se distancer des licences GPL
+** La Cathédrale et le Bazaar
+*Mode « cathédrale »*
+
+Petites communautés travaillant à l’écart du monde au sein d’une organisation
+stricte et centralisée (Microsoft, GNU)
+
+*Mode « bazar »*
+
+Mode de travail reposant sur une organisation collective et
+décentralisée (Linux)
+
+*Loi de Linus*: « Étant donné suffisamment d’observateurs, tous les bogues sautent aux yeux »
+** Le mouvement open-source
+- Plutôt qu’un combat politique, Open-Source présenté comme une *méthodologie de développement*
+- Des services payants (installation, personnalisation, maintenance)
+- apparaissent; gratuité augmente la diffusion des logiciels et donc également le marché potentiel de consommateurs de ces services
+- Investissement des grandes entreprises (IBM, Google, Red Hat, Intel) dans le développement de logiciels open-source
+
+Libre et open-source : une distinction à relativiser
+-  Les grands projets de logiciels libres ou open-source réunissent le plus
+  souvent des sensibilités « libre » et « open-source »; notion de Free and Open
+  Source Software (FOSS)
+-  Les valeurs véhiculées par ces deux traditions n’empêchent pas l’expression
+  d’un travail collaboratif et de plus en plus décentralisé
+** 
