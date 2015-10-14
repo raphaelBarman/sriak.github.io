@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-05 Mon 10:02 -->
+<!-- 2015-10-12 Mon 12:27 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -257,6 +257,36 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline38">3.7. Exemple</a></li>
 <li><a href="#orgheadline39">3.8. Exemple</a></li>
 <li><a href="#orgheadline40">3.9. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline59">4. Chapitre 4</a>
+<ul>
+<li><a href="#orgheadline42">4.1. Définition :</a></li>
+<li><a href="#orgheadline43">4.2. Ex. Le disque unité (ouvert)</a></li>
+<li><a href="#orgheadline44">4.3. Théorème de Green</a></li>
+<li><a href="#orgheadline45">4.4. Exemple Green</a></li>
+<li><a href="#orgheadline46">4.5. Théorème de la divergence</a></li>
+<li><a href="#orgheadline52">4.6. Propositon :</a>
+<ul>
+<li><a href="#orgheadline51">4.6.1. Preuve :</a>
+<ul>
+<li><a href="#orgheadline47">4.6.1.1. Vérification:</a></li>
+<li><a href="#orgheadline48">4.6.1.2. Vérification :</a></li>
+<li><a href="#orgheadline49">4.6.1.3. Vérification :</a></li>
+<li><a href="#orgheadline50">4.6.1.4. Vérification :</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline58">4.7. Preuve du théorème de Green</a>
+<ul>
+<li><a href="#orgheadline53">4.7.1. Étape 1 :</a></li>
+<li><a href="#orgheadline54">4.7.2. Étape 2 :</a></li>
+<li><a href="#orgheadline55">4.7.3. Étape 3:</a></li>
+<li><a href="#orgheadline56">4.7.4. Étape 4 :</a></li>
+<li><a href="#orgheadline57">4.7.5. Étape 5</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1019,11 +1049,24 @@ f(y) -f(x) &= \int\limits_{[x_0,y]} + \int\limits_{[x,y]} + \int\limits_{[y,x_0]
 </p>
 
 <p>
-image non-convexe, convexe
+Convexe :
+</p>
+
+<div class="figure">
+<p><img src="images/an_ch3-Convexe.png" alt="an_ch3-Convexe.png" width="200px" />
+</p>
+</div>
+
+<p>
+Non-convexe :
+</p>
+
+<div class="figure">
+<p><img src="images/an_ch3-NonConvexe.png" alt="an_ch3-NonConvexe.png" width="200px" />
 </p>
 </div>
 </div>
-
+</div>
 <div id="outline-container-orgheadline37" class="outline-3">
 <h3 id="orgheadline37"><span class="section-number-3">3.6</span> Def: Connexe</h3>
 <div class="outline-text-3" id="text-3-6">
@@ -1032,11 +1075,15 @@ image non-convexe, convexe
 </p>
 
 <p>
-image connexe 
+A connexe, B non-connexe 
+</p>
+
+<div class="figure">
+<p><img src="images/an_ch3-connexe.png" alt="an_ch3-connexe.png" width="200px" /> 
 </p>
 </div>
 </div>
-
+</div>
 <div id="outline-container-orgheadline38" class="outline-3">
 <h3 id="orgheadline38"><span class="section-number-3">3.7</span> Exemple</h3>
 <div class="outline-text-3" id="text-3-7">
@@ -1184,9 +1231,446 @@ Montrer : F ne dérive pas d'un potentiel
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline59" class="outline-2">
+<h2 id="orgheadline59"><span class="section-number-2">4</span> Chapitre 4</h2>
+<div class="outline-text-2" id="text-4">
+<p style="font-size:20px">
+<span class="underline"><b>Théorème de Green</b></span>
+</p>
+</div>
+<div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="orgheadline42"><span class="section-number-3">4.1</span> Définition :</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+\(\Omega \subset \mathbb{R}^2\) est un domaine régulier, s'il existe \(\Omega_0,...,\Omega_m\) (\(m \ge 0\)) des ouverts bornés tels que :
+</p>
+
+<p>
+\(\Omega = \Omega_0 \backslash \lbrace \underset{i=1}{\overset{m}{U}} \Omega_i \rbrace\) 
+</p>
+
+<p>
+\(\bar{\Omega_i} \subset \Omega_0\) \(1 \le i \le m\)
+</p>
+
+<p>
+\(\Omega_i \cap \Omega_j = \varnothing\) \(i \neq j\), \(i \le i,j \le m\)
+</p>
+
+<p>
+\(\delta \Omega_i = \Gamma_i\) : fermées, simples régulières
+</p>
+
+<p>
+image ensemble green
+</p>
+
+<p>
+On dit que \(\delta \Omega = \Gamma_0 \cup ... \cup \Gamma_m\) est orientée positivement si le sens de parcours de \(\Gamma_i\) (\(0\le i \le m\)) laisse \(\Omega\) à gauche.
+</p>
+
+<p>
+\(\gamma_i\) une paramétrisation de \(\Gamma_i\) (\(0\le i \le m\)
+</p>
+
+<p>
+Le vecteur tangent : \((\gamma_{i,1}, \gamma_{i,2}) . (\gamma{i,1}'(t), \gamma{i,2}'(t)\)
+</p>
+
+<p>
+Vecteur normal :\(\nu = \left(\gamma_{i,2}'(t), - \gamma_{i,1}' (t)\right)\) 
+</p>
+
+<p>
+Le sens positif si \(\nu\) : dirigé vers l'extérieur
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline43" class="outline-3">
+<h3 id="orgheadline43"><span class="section-number-3">4.2</span> Ex. Le disque unité (ouvert)</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+\(\Omega = \lbrace (x_1,x_2) \in \mathbb{R}^2: x_1^2+x_2^2 < 1 \rbrace\) un domaine régulier dans \(\mathbb{R}^2\)
+</p>
+
+<p>
+Image cercle
+</p>
+
+<p>
+<span class="underline">Vérification</span> :
+\(\Omega_0 = \Omega\), \(m=0\)
+</p>
+
+<p>
+\(\Gamma_0 = \delta \Omega_0 = \lbrace (\cos \theta, \sin \theta) 0 \le \theta \le 2 \pi \rbrace\)
+</p>
+
+<p>
+\(\gamma (\theta) = (\cos \theta, \sin \theta)\)
+</p>
+
+<p>
+\(\gamma' (\theta) = (- \sin \theta, \cos \theta) \neq (0,0)\)
+</p>
+
+<p>
+\(\Omega\): a un sens positif
+</p>
+
+<p>
+\(\nu = (\cos \theta, \sin \theta)\) \((= (\cos \theta, - - \sin \theta)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline44" class="outline-3">
+<h3 id="orgheadline44"><span class="section-number-3">4.3</span> Théorème de Green</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+\(\Omega \subset \mathbb{R}^2\) domaine régulier
+</p>
+
+<p>
+\(\delta \Omega\) a un sens positif.
+</p>
+
+<p>
+$F &isin; C'(\bar{\Omega}: \mathbb{R}<sup>2</sup>)
+</p>
+
+<p>
+Alors \(\underset{\Omega}{\int\int} rot F  = \int\limits{\delta\Omega} \vec{F} \cdot d\vec{l}\)
+</p>
+
+<p>
+<span class="underline">Rappel</span> :
+</p>
+
+<p>
+\(\int\limits_{\Gamma} \vec{F} d\vec{l} = \int\limits_a^b F(\gamma(t)) \gamma'(t) dt\)
+</p>
+
+<p>
+\(rot F = \frac{\delta F_2}{\delta x_1} - \frac{\delta F_1}{\delta x_2}\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline45" class="outline-3">
+<h3 id="orgheadline45"><span class="section-number-3">4.4</span> Exemple Green</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+\(\Omega = \lbrace (x,y) \in \mathbb{R}^2 x^2+y^2 < 1\rbrace\)
+</p>
+
+<p>
+\(F(x,y) = (y^2,x)\)
+</p>
+
+<p>
+Vérifier le théorème de Green
+</p>
+
+<p>
+<span class="underline">Vérification</span> :
+</p>
+
+<p>
+\(rot F = \frac{\delta F_2}{\delta x} - \frac{\delta F_1}{\delta y} = 1 -2y\) 
+</p>
+
+\begin{align*}
+\underset{\Omega}{\int\int} rot F &= \int\limits_0^1 \int\limits_0^{2\pi} (1- 2 r\sin \theta) r d \theta d r\\
+&= \int\limits_0^1 \left( 2 \pi + 2 r\cos \theta |^{2\pi}_0\right) r dr\\
+&= \int\limits_0^1 2\pi r dr = \pi
+\end{align*}
+
+\begin{align*}
+\int\limits_{d \Omega} \vec{F} d\vec{l} &= \int\limits_0^{2\pi} F (\gamma \theta) \cdot \gamma' \theta d \theta \\
+&= \int\limits_0^{2\pi} (\sin^2 \theta, \cos \theta) \cdot (-\sin \theta, \cos \theta) d \theta \\
+&= \int\limits_0^{2\pi} \sin^3 \theta d \theta + \int\limits_0^{2\pi} \frac{1 + \cos 2 \theta}{2} d \theta = 0 + \pi = \pi
+\end{align*}
+
+\begin{align*}
+\int\limits_{0}^{2\pi} \sin^3 \theta d \theta  &\overset{s=\theta -\pi}{=} \int\limits_{-\pi}^{\pi} \sin^3(s+\pi) d s \\
+&= \int\limits_0^{\pi} \sin^3 \theta d \theta + \int\limits_0^{\pi} \sin^3(s+\pi) d s\\
+&= \int\limits_0^{\pi} \sin^3 \theta d \theta - \int\limits_0^{\pi} \sin^3 s d s \\
+&= 0
+\end{align*}
+</div>
+</div>
+<div id="outline-container-orgheadline46" class="outline-3">
+<h3 id="orgheadline46"><span class="section-number-3">4.5</span> Théorème de la divergence</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+\(\Omega\) domaine régulier \(\mathbb{R}^2\)
+</p>
+
+<p>
+\(\delta \Omega\) sens positif
+</p>
+
+<p>
+\(F \in C'(\bar{\Omega}: \mathbb{R^2}\)
+</p>
+
+<p>
+Alors
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int} div F = \int\limits_{\delta \Omega} F \cdot \nu dl\) : vecteur normal unitaire vers l'extérieur
+</p>
+
+<p>
+<span class="underline">Rappel</span> : 
+</p>
+
+<p>
+\(\int\limits_{\Gamma} f dl = \int\limits_a^b f(\gamma(t)) ||\gamma'(t)|| dt\)
+</p>
+
+<p>
+\(div F = \frac{\delta F_1}{\delta x_1} + \frac{\delta F_2}{\delta x_2}\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline52" class="outline-3">
+<h3 id="orgheadline52"><span class="section-number-3">4.6</span> Propositon :</h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+\(\Omega\) domaine régulier \(\mathbb{R}^2\)
+</p>
+
+<p>
+\(\delta \Omega\) sens positif
+</p>
+
+<p>
+\(u \in C'(\bar{\Omega}: \mathbb{R^2}\)
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int} \frac{\delta u }{\delta x_i} = \int\limits_{\delta \Omega} u \cdot \nu_i dl\)
+</p>
+
+<p>
+\(i=1,2\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline51" class="outline-4">
+<h4 id="orgheadline51"><span class="section-number-4">4.6.1</span> Preuve :</h4>
+<div class="outline-text-4" id="text-4-6-1">
+<p>
+On va montrer que Théorème de Green \(\Leftrightarrow\) théorème de la divergence \(\Leftrightarrow\) Propositon
+</p>
+</div>
+
+<div id="outline-container-orgheadline47" class="outline-5">
+<h5 id="orgheadline47"><span class="section-number-5">4.6.1.1</span> Vérification:</h5>
+<div class="outline-text-5" id="text-4-6-1-1">
+<p>
+Théorème de Green \(\Rightarrow\) Propositon
+</p>
+
+<p>
+On veut vérifier :
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int} \frac{\delta u }{\delta x_i} = \int\limits_{\delta \Omega} u \cdot \nu_1 dl\)
+</p>
+
+<p>
+F = (0, u) par le théorème de Green :
+</p>
+\begin{align*}
+\underset{\Omega}{\int\int} rot F  &= \int\limits{\delta\Omega} \vec{F} d\vec{l}\\
+\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_1} &= \int\limits_a^b \vec{F}(\gamma (t)) \gamma'(t) dt \ (m=0)\\
+&= \int\limits_a^b u(\gamma(t)) \gamma_2'(t) dt \ (1)
+\end{align*}
+
+<p>
+On a :
+</p>
+\begin{align*}
+\int\limits_{\delta\Omega} u \nu_1 d\vec{l} = \int_a^b u(\gamma(t)) \gamma_2'(t) dt\ (2)\\
+\left( \nu (\gamma(t)) = \left(\gamma_2'(t), - \gamma_1'(t)\right)\right)
+\end{align*}
+<p>
+\((1) + (2) \Rightarrow \underset{\Omega}{\int\int} \frac{\delta u }{\delta x_i} = \int\limits_{\delta \Omega} u \cdot \nu_1 dl\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline48" class="outline-5">
+<h5 id="orgheadline48"><span class="section-number-5">4.6.1.2</span> Vérification :</h5>
+<div class="outline-text-5" id="text-4-6-1-2">
+<p>
+Propositon \(\Rightarrow\) Théorème de Green
+</p>
+
+\begin{align*}
+\underset{\Omega}{\int\int} rot F &= \underset{\Omega}{\int\int} \left(\frac{\delta F_2}{\delta x_1}-\frac{\delta F_1}{\delta x_2}\right)\\
+&= \int\limits_{\delta \Omega} F_2 \nu_1 dl - \int\limits_{\delta\Omega} F_1 \nu_2 dl\\
+&= \int\limits_{\delta\Omega} (F_1,F_2)(-\nu_2, \nu_1) dl\\
+&=  \int\limits_{\delta\Omega} F \vec{dl}
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-orgheadline49" class="outline-5">
+<h5 id="orgheadline49"><span class="section-number-5">4.6.1.3</span> Vérification :</h5>
+<div class="outline-text-5" id="text-4-6-1-3">
+<p>
+Propositon \(\Rightarrow\) théorème de Green
+</p>
+
+\begin{align*}
+\underset{\Omega}{\int\int} div F &= \underset{\Omega}{\int\int} \left( \frac{\delta F_1}{\delta x_1}+ \frac{\delta F_2}{\delta x_2}\right)\\
+&= \int\limits_{\delta \Omega} (F_1 \nu_1 + F_2 \nu_2) dl\\
+&= \int\limits_{\delta \Omega} F \nu dl
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-orgheadline50" class="outline-5">
+<h5 id="orgheadline50"><span class="section-number-5">4.6.1.4</span> Vérification :</h5>
+<div class="outline-text-5" id="text-4-6-1-4">
+<p>
+Théorème de la divergence
+</p>
+
+\begin{align*}
+\underset{\Omega}{\int\int}\frac{\delta u}{\delta x_1} &= \underset{\Omega}{\int\int} \left(\frac{\delta u}{\delta x_1}+ \frac{\delta 0}{\delta x_2} \right)
+F=(u,0)\\
+&= \underset{\Omega}{\int\int} div F = \int\limits_{\delta \Omega} F \nu dl\\
+&= \int\limits_{\delta \Omega} u \nu_1 dl
+\end{align*}
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline58" class="outline-3">
+<h3 id="orgheadline58"><span class="section-number-3">4.7</span> Preuve du théorème de Green</h3>
+<div class="outline-text-3" id="text-4-7">
+</div><div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53"><span class="section-number-4">4.7.1</span> Étape 1 :</h4>
+<div class="outline-text-4" id="text-4-7-1">
+<p>
+image domaine
+</p>
+
+<p>
+\(\Omega = \lbrace (x_1,x_2) : a \le x_1 \le b, f(x_1) \le x_2 \le g(x_1) \rbrace\)
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_2} = \int\limits_{\delta\Omega} u \nu_2 dl\)
+</p>
+
+\begin{align*}
+\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_2} &= \int\limits_a^b \left(\int\limits_{f(x_1}^{g(x_1} \frac{\delta u}{\delta x_2} (x_1,x_2) dx_2\right)dx_1 \\
+&= \int\limits_a^b \left[u(x_1,g(x_1)) - u(x_1,f(x_1))\right]dx_1 \\
+&= \int\limits_a^b u(x_1,g(x_1)) - \int\limits_a^b u (x_1,f(x_1)) dx_1
+\end{align*}
+
+
+
+<p>
+\(\int\limits_{\delta\Omega} u \nu_2 = \left(\int\limits_{\Gamma_1} + \int\limits_{\Gamma_2} + \int\limits_{\Gamma_3} + \int\limits_{\Gamma_4}\right) u \nu_2\) 
+</p>
+
+<p>
+Notons que : \(\nu_2 = 0\) sur \(\Gamma_1 \cup \Gamma_3\)
+</p>
+
+<p>
+Donc 
+\(\int\limits_{\delta\Omega} u \nu_2 = \left(\int\limits_{\Gamma_2}+ \int\limits_{\Gamma_4}\right) u \nu_2\) 
+</p>
+
+<p>
+\(\int\limits_{\Gamma_2} u \nu_2 = - \int\limits_a^b u(x_1,f(x_1))dx_1\)
+</p>
+
+<p>
+\(\gamma(x_1) = (x_1,f(x_1))\) : \(a \le x_1 \le b\)
+</p>
+
+<p>
+\(\gamma'(x_1) = (1,f'(x_1))\) : \(\nu(\gamma(x_1)) = (f'(x_1),-1)\)
+</p>
+
+<p>
+\(\int\limits_{\Gamma_4} u \nu_2 = - \int\limits_a^b u(x_1,g(x_1))dx_1\)
+</p>
+
+<p>
+\(\gamma(x_1) = (x_1,g(x_1))\) (neg)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline54" class="outline-4">
+<h4 id="orgheadline54"><span class="section-number-4">4.7.2</span> Étape 2 :</h4>
+<div class="outline-text-4" id="text-4-7-2">
+<p>
+\(\Omega = \lbrace (x_1,x_2) : x\le x_2 \le d, f(x_2) \le x_1 \le g(x_2) \rbrace\)
+</p>
+
+<p>
+image domaine 2
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_1} = \int\limits_{\delta\Omega} u \nu_1 dl\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline55" class="outline-4">
+<h4 id="orgheadline55"><span class="section-number-4">4.7.3</span> Étape 3:</h4>
+<div class="outline-text-4" id="text-4-7-3">
+<p>
+image domaine 3
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_1} = \int\limits_{\delta\Omega} u \nu_1 dl\)
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_2} = \int\limits_{\delta\Omega} u \nu_2 dl\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline56" class="outline-4">
+<h4 id="orgheadline56"><span class="section-number-4">4.7.4</span> Étape 4 :</h4>
+<div class="outline-text-4" id="text-4-7-4">
+<p>
+image domaine 4
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline57" class="outline-4">
+<h4 id="orgheadline57"><span class="section-number-4">4.7.5</span> Étape 5</h4>
+<div class="outline-text-4" id="text-4-7-5">
+<p>
+image domaine 5
+</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-05 Mon 10:02</p>
+<p class="date">Created: 2015-10-12 Mon 12:27</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

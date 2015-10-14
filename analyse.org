@@ -372,13 +372,19 @@ $\Omega$ convexe si et seulement si $\forall x,y \in \Omega$
 
 $[x,y] \subset \Omega$
 
-image non-convexe, convexe
+Convexe :
+#+attr_html: :width 200px
+[[file:images/an_ch3-Convexe.png]]
 
+Non-convexe :
+#+attr_html: :width 200px
+[[file:images/an_ch3-NonConvexe.png]]
 ** Def: Connexe
 $\Omega$ simplement connexe si et seulement si
 
-image connexe 
-
+A connexe, B non-connexe 
+#+attr_html: :width 200px
+[[file:images/an_ch3-connexe.png]] 
 ** Exemple
 $F(x,y) = (4 x^3 y^2, 2x^4y + y)$
 
@@ -455,3 +461,225 @@ $\gamma (t) = (\cos t, \sin t)$ $t \in [0,2\pi]$
 \int\limits_{\Gamma} F dl &= \int\limits_0^{2\pi} (-\sin t, \cos t) (-\sin t, \cos t) dt\\
 &= \int\limits_0^{2\pi} 1 dt = 2 \pi
 \end{align*}
+* Chapitre 4
+#+attr_html: :style font-size:20px
+_*Théorème de Green*_
+** Définition :
+$\Omega \subset \mathbb{R}^2$ est un domaine régulier, s'il existe $\Omega_0,...,\Omega_m$ ($m \ge 0$) des ouverts bornés tels que :
+
+$\Omega = \Omega_0 \backslash \lbrace \underset{i=1}{\overset{m}{U}} \Omega_i \rbrace$ 
+
+$\bar{\Omega_i} \subset \Omega_0$ $1 \le i \le m$
+
+$\Omega_i \cap \Omega_j = \varnothing$ $i \neq j$, $i \le i,j \le m$
+
+$\delta \Omega_i = \Gamma_i$ : fermées, simples régulières
+
+image ensemble green
+
+On dit que $\delta \Omega = \Gamma_0 \cup ... \cup \Gamma_m$ est orientée positivement si le sens de parcours de $\Gamma_i$ ($0\le i \le m$) laisse $\Omega$ à gauche.
+
+$\gamma_i$ une paramétrisation de $\Gamma_i$ ($0\le i \le m$
+
+Le vecteur tangent : $(\gamma_{i,1}, \gamma_{i,2}) . (\gamma{i,1}'(t), \gamma{i,2}'(t)$
+
+Vecteur normal :$\nu = \left(\gamma_{i,2}'(t), - \gamma_{i,1}' (t)\right)$ 
+
+Le sens positif si $\nu$ : dirigé vers l'extérieur
+** Ex. Le disque unité (ouvert)
+$\Omega = \lbrace (x_1,x_2) \in \mathbb{R}^2: x_1^2+x_2^2 < 1 \rbrace$ un domaine régulier dans $\mathbb{R}^2$
+
+Image cercle
+
+_Vérification_ :
+$\Omega_0 = \Omega$, $m=0$
+
+$\Gamma_0 = \delta \Omega_0 = \lbrace (\cos \theta, \sin \theta) 0 \le \theta \le 2 \pi \rbrace$
+
+$\gamma (\theta) = (\cos \theta, \sin \theta)$
+
+$\gamma' (\theta) = (- \sin \theta, \cos \theta) \neq (0,0)$
+
+$\Omega$: a un sens positif
+
+$\nu = (\cos \theta, \sin \theta)$ $(= (\cos \theta, - - \sin \theta)$
+** Théorème de Green
+$\Omega \subset \mathbb{R}^2$ domaine régulier
+
+$\delta \Omega$ a un sens positif.
+
+$F \in C'(\bar{\Omega}: \mathbb{R}^2)
+
+Alors $\underset{\Omega}{\int\int} rot F  = \int\limits{\delta\Omega} \vec{F} \cdot d\vec{l}$
+
+_Rappel_ :
+
+$\int\limits_{\Gamma} \vec{F} d\vec{l} = \int\limits_a^b F(\gamma(t)) \gamma'(t) dt$
+
+$rot F = \frac{\delta F_2}{\delta x_1} - \frac{\delta F_1}{\delta x_2}$
+
+** Exemple Green
+$\Omega = \lbrace (x,y) \in \mathbb{R}^2 x^2+y^2 < 1\rbrace$
+
+$F(x,y) = (y^2,x)$
+
+Vérifier le théorème de Green
+
+_Vérification_ :
+
+$rot F = \frac{\delta F_2}{\delta x} - \frac{\delta F_1}{\delta y} = 1 -2y$ 
+
+\begin{align*}
+\underset{\Omega}{\int\int} rot F &= \int\limits_0^1 \int\limits_0^{2\pi} (1- 2 r\sin \theta) r d \theta d r\\
+&= \int\limits_0^1 \left( 2 \pi + 2 r\cos \theta |^{2\pi}_0\right) r dr\\
+&= \int\limits_0^1 2\pi r dr = \pi
+\end{align*}
+
+\begin{align*}
+\int\limits_{d \Omega} \vec{F} d\vec{l} &= \int\limits_0^{2\pi} F (\gamma \theta) \cdot \gamma' \theta d \theta \\
+&= \int\limits_0^{2\pi} (\sin^2 \theta, \cos \theta) \cdot (-\sin \theta, \cos \theta) d \theta \\
+&= \int\limits_0^{2\pi} \sin^3 \theta d \theta + \int\limits_0^{2\pi} \frac{1 + \cos 2 \theta}{2} d \theta = 0 + \pi = \pi
+\end{align*}
+
+\begin{align*}
+\int\limits_{0}^{2\pi} \sin^3 \theta d \theta  &\overset{s=\theta -\pi}{=} \int\limits_{-\pi}^{\pi} \sin^3(s+\pi) d s \\
+&= \int\limits_0^{\pi} \sin^3 \theta d \theta + \int\limits_0^{\pi} \sin^3(s+\pi) d s\\
+&= \int\limits_0^{\pi} \sin^3 \theta d \theta - \int\limits_0^{\pi} \sin^3 s d s \\
+&= 0
+\end{align*}
+** Théorème de la divergence
+$\Omega$ domaine régulier $\mathbb{R}^2$
+
+$\delta \Omega$ sens positif
+
+$F \in C'(\bar{\Omega}: \mathbb{R^2}$
+
+Alors
+
+$\underset{\Omega}{\int\int} div F = \int\limits_{\delta \Omega} F \cdot \nu dl$ : vecteur normal unitaire vers l'extérieur
+
+_Rappel_ : 
+
+$\int\limits_{\Gamma} f dl = \int\limits_a^b f(\gamma(t)) ||\gamma'(t)|| dt$
+
+$div F = \frac{\delta F_1}{\delta x_1} + \frac{\delta F_2}{\delta x_2}$
+
+** Propositon :
+
+$\Omega$ domaine régulier $\mathbb{R}^2$
+
+$\delta \Omega$ sens positif
+
+$u \in C'(\bar{\Omega}: \mathbb{R^2}$
+
+$\underset{\Omega}{\int\int} \frac{\delta u }{\delta x_i} = \int\limits_{\delta \Omega} u \cdot \nu_i dl$
+
+$i=1,2$
+
+*** Preuve :
+On va montrer que Théorème de Green $\Leftrightarrow$ théorème de la divergence $\Leftrightarrow$ Propositon
+
+**** Vérification:
+Théorème de Green $\Rightarrow$ Propositon
+
+On veut vérifier :
+
+$\underset{\Omega}{\int\int} \frac{\delta u }{\delta x_i} = \int\limits_{\delta \Omega} u \cdot \nu_1 dl$
+
+F = (0, u) par le théorème de Green :
+\begin{align*}
+\underset{\Omega}{\int\int} rot F  &= \int\limits{\delta\Omega} \vec{F} d\vec{l}\\
+\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_1} &= \int\limits_a^b \vec{F}(\gamma (t)) \gamma'(t) dt \ (m=0)\\
+&= \int\limits_a^b u(\gamma(t)) \gamma_2'(t) dt \ (1)
+\end{align*}
+
+On a :
+\begin{align*}
+\int\limits_{\delta\Omega} u \nu_1 d\vec{l} = \int_a^b u(\gamma(t)) \gamma_2'(t) dt\ (2)\\
+\left( \nu (\gamma(t)) = \left(\gamma_2'(t), - \gamma_1'(t)\right)\right)
+\end{align*}
+$(1) + (2) \Rightarrow \underset{\Omega}{\int\int} \frac{\delta u }{\delta x_i} = \int\limits_{\delta \Omega} u \cdot \nu_1 dl$
+
+**** Vérification : 
+Propositon $\Rightarrow$ Théorème de Green
+
+\begin{align*}
+\underset{\Omega}{\int\int} rot F &= \underset{\Omega}{\int\int} \left(\frac{\delta F_2}{\delta x_1}-\frac{\delta F_1}{\delta x_2}\right)\\
+&= \int\limits_{\delta \Omega} F_2 \nu_1 dl - \int\limits_{\delta\Omega} F_1 \nu_2 dl\\
+&= \int\limits_{\delta\Omega} (F_1,F_2)(-\nu_2, \nu_1) dl\\
+&=  \int\limits_{\delta\Omega} F \vec{dl}
+\end{align*}
+
+**** Vérification :
+Propositon $\Rightarrow$ théorème de Green
+
+\begin{align*}
+\underset{\Omega}{\int\int} div F &= \underset{\Omega}{\int\int} \left( \frac{\delta F_1}{\delta x_1}+ \frac{\delta F_2}{\delta x_2}\right)\\
+&= \int\limits_{\delta \Omega} (F_1 \nu_1 + F_2 \nu_2) dl\\
+&= \int\limits_{\delta \Omega} F \nu dl
+\end{align*}
+
+**** Vérification :
+Théorème de la divergence
+
+\begin{align*}
+\underset{\Omega}{\int\int}\frac{\delta u}{\delta x_1} &= \underset{\Omega}{\int\int} \left(\frac{\delta u}{\delta x_1}+ \frac{\delta 0}{\delta x_2} \right)
+F=(u,0)\\
+&= \underset{\Omega}{\int\int} div F = \int\limits_{\delta \Omega} F \nu dl\\
+&= \int\limits_{\delta \Omega} u \nu_1 dl
+\end{align*}
+
+** Preuve du théorème de Green
+*** Étape 1 :
+image domaine
+
+$\Omega = \lbrace (x_1,x_2) : a \le x_1 \le b, f(x_1) \le x_2 \le g(x_1) \rbrace$
+
+$\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_2} = \int\limits_{\delta\Omega} u \nu_2 dl$
+
+\begin{align*}
+\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_2} &= \int\limits_a^b \left(\int\limits_{f(x_1}^{g(x_1} \frac{\delta u}{\delta x_2} (x_1,x_2) dx_2\right)dx_1 \\
+&= \int\limits_a^b \left[u(x_1,g(x_1)) - u(x_1,f(x_1))\right]dx_1 \\
+&= \int\limits_a^b u(x_1,g(x_1)) - \int\limits_a^b u (x_1,f(x_1)) dx_1
+\end{align*}
+
+
+
+$\int\limits_{\delta\Omega} u \nu_2 = \left(\int\limits_{\Gamma_1} + \int\limits_{\Gamma_2} + \int\limits_{\Gamma_3} + \int\limits_{\Gamma_4}\right) u \nu_2$ 
+
+Notons que : $\nu_2 = 0$ sur $\Gamma_1 \cup \Gamma_3$
+
+Donc 
+$\int\limits_{\delta\Omega} u \nu_2 = \left(\int\limits_{\Gamma_2}+ \int\limits_{\Gamma_4}\right) u \nu_2$ 
+
+$\int\limits_{\Gamma_2} u \nu_2 = - \int\limits_a^b u(x_1,f(x_1))dx_1$
+
+$\gamma(x_1) = (x_1,f(x_1))$ : $a \le x_1 \le b$
+
+$\gamma'(x_1) = (1,f'(x_1))$ : $\nu(\gamma(x_1)) = (f'(x_1),-1)$
+
+$\int\limits_{\Gamma_4} u \nu_2 = - \int\limits_a^b u(x_1,g(x_1))dx_1$
+
+$\gamma(x_1) = (x_1,g(x_1))$ (neg)
+
+*** Étape 2 :
+$\Omega = \lbrace (x_1,x_2) : x\le x_2 \le d, f(x_2) \le x_1 \le g(x_2) \rbrace$
+
+image domaine 2
+
+$\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_1} = \int\limits_{\delta\Omega} u \nu_1 dl$
+
+*** Étape 3:
+image domaine 3
+
+$\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_1} = \int\limits_{\delta\Omega} u \nu_1 dl$
+
+$\underset{\Omega}{\int\int} \frac{\delta u}{\delta x_2} = \int\limits_{\delta\Omega} u \nu_2 dl$
+
+*** Étape 4 :
+
+image domaine 4
+
+*** Étape 5
+
+image domaine 5

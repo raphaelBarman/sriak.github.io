@@ -239,7 +239,7 @@ plus de débuggage, besoin d'autre chose.
 * Week 4
 Réponse D
 #+attr_html: :style font-size:20px
-_Économies et cultures logicielles_
+_Logiciels open source et libres_
 ** Vérouillage progressif des codes sources
 - Au début de la mise en vente de l'Altair BASIC, public issus des université;
   le partage - le plus souvent gratuit - du code est la norme (Comme il se doit
@@ -300,3 +300,139 @@ Libre et open-source : une distinction à relativiser
 -  Les valeurs véhiculées par ces deux traditions n’empêchent pas l’expression
   d’un travail collaboratif et de plus en plus décentralisé
 ** 
+* Week 5
+#+attr_html: :style font-size:20px
+_Algorithmes_
+** Fait d'actualité
+Lors de la mise à jour d'iOS 9, possiblité de développer des /adblockers/ pour le navigateur internet Safari.
+
+Différentes réactions :
+- Développeur d'applications "adblocker"
+- Réactions d'éditeurs qui font leur revenu sur les publicités
+- Vendeurs de publicités sur internet
+- Pour certains = la mort d'internet
+- Développement le marché qui permet aux publicitaires d'acheter un "contournement" aux /adblockers/
+- Regard biaisé des médias, mis en avant comme qqch de nouveau, surtraité, alors qu'existe depuis longtemps
+- Première exception qu'Apple fait par rapport à sa politique d'extension web pour les publicités : interroge beaucoup de monde
+** PageRank
+*** Origine
+- Au début d'internet, annuaire d'adresse, indexés à la main
+- Ensuite, AltaVista, début d'indexation par contenu
+- 1998 arrivée de Google, indexation au delà de contenu, passage à l'hypertexte,
+  valorisation des pages par le nombre de liens pointant vers elle
+- Brevet déposé en 1998 par Lawrence Page
+- En 1998, l'idée est peu originale, simple et largement antérieure
+- En 1997, Baidu dépose brevet similaire
+- Question de l' *hypercentralité* et des *effets de réseau*
+*** Dans l'esprit du pagerank par Cardon :
+- Pour google : faire du mond un meilleur endroit
+- Pour l'auteur : pagerank est une machine morale
+- Sociométrie et scientométrie
+  - Sociogramme, Moreno, affinité avec d'autres personnes
+  - Scientométrie, en lien avec les citations d'articles scientifiques
+- 5 Propriétés de PageRank :
+  - *Extériorité* : percepetion globable et non individuelle
+  - *Abstraction* : percepetion globable \rightarrow référence devient
+    citation (A \rightarrow B devient B \leftarrow A) \rightarrow La référence
+    perd la puissance de son contexte (réduction)
+  - *Procédurale* : réduction et abstraction \rightarrow automatisation du processus
+  - *Neutralité* : réduction, abstraction et procédure \rightarrow
+    objectivation de la mesure.
+  - *Honnêteté* : l'objectivation supose l'honnêteté des producteurs de citation
+  - \rightarrow Suppose l'invisibilité du processus, ne pas encourage à la
+    manipulation de la mesure
+- Le lien est un vote
+  - "PageRank est un champion de la démocratie [...] : tout lien pointant de
+    la page A à la page B est considéré comme un vote de la page A en faveur de la page B".
+- "La démocratie sur le web fonctionne" dixit Google
+- Pondération récursive
+  - La citaiton ne suffit pas
+  - Les citations des pages les plus citées font en cela plus autorité que d'autres
+  - PageRank est une mesure de la « force du lien entrant ».
+  - Autorité d'une page \rightarrow autorité des liens \rightarrow autorité d’une page
+- Sagesse des foules
+  - *Le miracle de l'agrégation*
+    - principe du jury de Condorcet (plus grand nombre, le plus différent
+      possible, sans influences).
+    - Expérience de Galton de 1906 sur le poids d'une vache.
+  - *La richesse délibérative des réseaux*
+    - sphère publique d'Habermas (1962).
+    - la richesse des réseaux de Yochai Benkler (2009).\rightarrow principe d'auto-organisation de la visibilité et de la reconnaissance.
+  - *La coordination non-coordonnée*
+    - coordination : procédure d'agrégation de la délibération
+    - non-coordonnée : les individus n'ont pas l'intention de cette coordination
+      \rightarrow présupposition d'honnêteté des individus
+    - + présupposition de l'honnêteté de Google
+- Google ?
+  - Le financement de Google repose sur la publicité.
+  - Google repose non seulement sur PageRank (pas si original)
+  - mais aussi sur la séparation stricte du classement organique et stratégique \rightarrow PageRank et AdWords / Sagesse des foules et marché.
+  - GoTo.com de Bill Gross mélangeait recherche organique et stratégique.
+  - Enchères « de Vickrey ».
+- Ne pas intervenir manuellement
+  - Pourquoi non vendons de la publicité et non des résultats ?
+  - L'algorithme reflète l'autorité organique.
+  - Objectivité par agrégation de l'inter-subjectivité.
+  - Les résultats ne doivent absolument pas être modifié.
+  - C'est pourquoi la publicité doit absolument être distinguée des résultats (cf. presse).
+  - Les problèmes de classement sont le résultat de l'algorithme et non de
+    Google
+  - Les ordinateurs sont idiots, c'est pourquoi nous pouvons leur faire confiance.
+  - Jugement procédural vs jugement substantiel.
+- L'invisibilité
+  - Google cherche donc à être invisible.
+  - PageRank doit être invisible.
+  - Google détourne les sites vers la qualité de leur contenu et non celle de
+    l'algorithme. \rightarrow Google est très prescripteur sur les bonnes pratiques et la qualité d'un site.
+- Des internautes calculateurs
+  - Pour Google, la réputation se mérite ou s'achète.
+  - Présupposé de l'honnêteté et de l'invisibilité infondé.
+  - contenu ne compte pas \rightarrow créer des liens sans contenus (White hat SEO vs Black hat SEO) .
+  - Approche /procédurale/ par opposition à approche /substantielle/ pervertie
+  - Considération des /relations/ plutôt que des /contenus/ pervertie.
+    \rightarrow Panda (depuis 2011-contenus). (+ Penguin (depuis 2012-liens),
+    TrustRank (2005) et nombreuses modifications depuis.)
+_La crise du PageRank_
+
+*Popularité*
+- 90% du PageRank entre 10% des sites (Pandurangan et al. 2006)
+- Logiques des hubs,  (Albert-Laszló Barábasi, 2002)
+- « Matthew Effect » (Robert Merton, 1968) et winners takes all.
+
+*Affinités*
+- Les réseaux sociaux ont étendu la participation des internautes
+- Les "like" et les partages complètent les liens hypertextes.
+- + ils échappent pour une large part à Google.
+
+*Efficacité*
+- procédures de plus en plus particulières.
+- individualisation des processus.
+- gestions des exceptions (exemple des juridictions nationales).
+
+
+_Conclusion_
+
+«  De fait, la machine inventée par Google est devenue si complexe, si sensible aux tests
+statistiques qui ne cessent de la reparamétrer, si dévoreuse de variables et de traces, si auto-
+apprenante, que ses comportements ne peuvent plus désormais être compris et interprétés,
+pas même par ses géniteurs ».
+ 
+*** Relativisation
+- Article de 2011, "PageRank is still in use today, but it is now a part of a
+  much larger system"
+- Google intervient sur de nombreux aspects lors du Ranking
+*** Autre article
+- L’agrégation de données produites dans des conditions très hétérogènes.
+  -  augmentation de leur quantité, réduction de leur qualification, de leur qualité.
+  - dissolution du contexte, du sens et réductionnisme.
+- Non représentation...
+  - de l’ensemble des réalités sociales.
+  - de ce qui les constitue singulièrement et subjectivement.
+- Effacement du sujet, glissement de l’individu à l’individu statistique.
+- Dissolution du sujet dans le réseau.
+*** Conclusion
+« La gouvernementalité algorithmique [...] contourne et évite les sujets humains
+réflexifs, elle se nourrit de données infra-individuelles insignifiantes en elles-
+mêmes, pour façonner des modèles de comportements ou profils supra-
+individuels sans jamais en appeler au sujet, sans jamais l’appeler à rendre
+compte par lui-même de ce qu’il est ni de ce qu’il pourrait devenir»

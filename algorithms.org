@@ -668,7 +668,6 @@ for i = n downto 2
 
 *Total time* : $O(n \lg n)$
 
-
 ** Priorty queue
 - Maintains a dynamic set $S$ of elements
 - Each set element has a *key* - an associated value that regulates its importance
@@ -676,7 +675,7 @@ for i = n downto 2
   - INSERT(S,x): inserts element $x$ into $S$
   - MAXIMUM(S) : returns element of $S$ with largest key
   - EXTRACT-MAX(S): removes and returns element of $S$ with largest key
-  - INCREASED-KEY(S,x,K): increases value of element $x$'s key to $k$; assume $k
+  - INCREASED-KEY(S,x,K): increases value of element $x$ 's key to $k$; assume $k
     \le x$ 's current key value.
 *** Operations 
 **** HEAP-MAXIMUM 
@@ -713,7 +712,7 @@ Given a heap $A$, index $i$, and a new value $key$
 3. Traverse the tree upward comparing new key to the parent and swapping keys if
    necessary, until the new key is smaller than the parent's keys
 
-_Analysis_ : Upward path frome node $i$ has length $O(\lg n$ in an $n$ -element
+_Analysis_ : Upward path frome node $i$ has length $O(\lg n)$ in an $n$ -element
 heap.
 
 So $O(\lg n)$
@@ -728,6 +727,182 @@ while i > 1 and A[Parent(i)] < A[i]
   i = Parent(i)
 #+END_SRC
 
+** Stacks
+Last in, first out.
+- Insert operation called PUSH($S,x$)
+- Delete operation called POP($S$)
+*** Implementation
+Implementation using arrays: $S$ consists of elements $S[1,...,S.top]$
+- $S[1]$ element at the bottom
+- $S[S.top]$ element at the top
+*** Operations
+*STACK-EMPTY* $(S)$
+#+BEGIN_SRC java
+if S.top = 0
+  return true
+else return false
+#+END_SRC
 
+*PUSH* $(S,x)$
+#+BEGIN_SRC java
+S.top = S.top + 1
+S[S.top] = x
+#+END_SRC
 
+*POP* $(S)$
+#+BEGIN_SRC java
+if STACK-EMPTY(S)
+  error "underflow"
+else
+  S.top = S.top -1
+  return S[S.top+1]
+#+END_SRC
 
+All these operations are $O(1)$
+
+** Queue
+First-in, first-outputs
+- Insert operation called ENQUEUE($Q,x)$
+- Delete operation called DEQUEUE$(Q)$
+*** Implementation
+Implementation using arrays: $Q$ consists of elements $S[Q.head,...,Q.tail-1]$
+- $Q.head$ points at the first elements
+- $Q.tail$ points at the next location where a newly arrived alement wille be placed
+*** Operations
+*ENQUEUE* $(Q,x)$
+#+BEGIN_SRC java
+Q[Q.tail] = x
+if Q.tail == Q.length
+  Q.tail = 1
+else Q.tail = Q.tail + 1
+#+END_SRC
+
+*DEQUEUE* $(Q,x)$
+#+BEGIN_SRC java
+x = Q[Q.head]
+if Q.head == Q.length
+  Q.head = 1
+else Q.head = Q.head + 1
+return x
+#+END_SRC
+
+All these operations are $O(1)$
+
+** Stacks and queues
+*** Pros
+- Very efficent
+- Natural operations
+*** Cons
+- Limited support: for example, no search
+- Implementations using arrays have a fixed capacity
+** Linked list
+Objects are arranged in a linear order : not indexes in array, but pointer to
+next object in each object.
+
+A list can be :
+- Single linked or double linked
+- Sorted or unsorted
+- etc.
+
+Example : An element in a double linked list :
+- x.key (key value)
+- x.prev (point to previous element)
+- x.next (points to next element)
+*** Searching in a linked list
+Given $k$ return pointer to first element with key $k$
+
+*LIST-SEARCH* $(L,k)$
+#+BEGIN_SRC java
+x = L.head
+while x != nil and x.key != k
+  x = x.next
+return x
+#+END_SRC
+
+Running time : $O(n)$
+
+If no element with key $k$ ? Returns /nil/
+
+*** Inserting into a linked list
+Insert a new element $x$
+
+*LIST-INSERT* $(L,x)$
+#+BEGIN_SRC java
+x.next = L.head
+if L.head != nil
+  L.head.prev = x
+L.head = x
+x.prev = NIL
+#+END_SRC
+
+Running time : $O(1)$
+
+*** Deleting from a linked list
+Given a pointer to an element $x$ removes it from $L$
+
+*LIST-DELETE* $(L,x)$
+#+BEGIN_SRC java
+if x.prev != nil
+  x.prev.next = x.next
+else L.head = x.next
+if x.next != nil
+  x.next.prev = x.prev
+#+END_SRC
+
+Running time : $O(1)$
+*** TODO Using Sentinels
+*Add image for clarity*
+
+We add a "sentinel" called L.nil which
+- Points to itself for prev and next if list is empty
+- Next points to first element of list (head), prev points to last element of the list
+  and last element of the list points to it
+
+Then we can symplify delete and insert by :
+
+*LIST-DELETE* $(L,x)$
+#+BEGIN_SRC java
+x.prev.next = x.next
+x.next.prev = x.prev
+#+END_SRC
+
+*LIST-INSERT* $(L,x)$
+#+BEGIN_SRC java
+x.next = L.nil.next
+L.nil.next.prev = x
+L.nil.next = x
+x.prev = L.nil
+#+END_SRC
+
+*** Summary
+- Dynamic data structure without predefined capacity
+- Insertion : $O(1)$
+- Deletion : $O(1)$ (if double linked)
+- Search : $O(n)$
+* Chapter 6
+** Binary Search trees
+Encodes a strategy whatever number we look for.
+
+Key property:
+- if $y$ is in the left subtree of $x$ then $y.key < x.key$ 
+- if $y$ is in the right subtree of $x$ then $y.key \ge x.key$
+
+Height ($h$) is the number of edges in longest path from root to leaf.
+
+Basic operations take time proportional to height: $O(h)$
+
+Each element $x$ has :
+- $x.left$ : pointer to left child
+- $x.right : pointer to right child
+- $x.p$ : pointer to parent
+- $x.key$ : key
+*** Searching
+Running time : $O(h)$
+*** Min and Max
+*** Sucessor and Predecessor
+*** Printing
+**** Inorder
+**** Preorder and Postorder
+*** Modifying
+**** Inserting
+**** Deleting
