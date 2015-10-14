@@ -1,0 +1,124 @@
+# -*- mode: org; -*-
+#+TITLE: Computer Networks
+#+SETUPFILE: htmlnotes.setup
+
+* Chapter 1
+** Definitions
+*** Network
+A network is made of
+- end-systems (server or client)
+- Internet Service Provider (ISP)
+- Links
+- Switches
+*** Acess network
+**** Digital Subscriber Line (DSL)
+- Uses *existing* telephone line
+- *Dedicated* line
+**** Cable network
+- *Shared* line
+**** Enterprise acess networks (ethernet)
+- Used by companies/universities
+- Instituional link to ISP
+- Use of ethernet switches
+**** Wireless networks
+- Local or wide-area (cellular networks)
+*** Protocol
+A protocol defines format, order of messages sent and received among network
+entities and actions taken on message transmisson/receiption.
+*** Packets
+- Host divides what he want to send into chunks called *packets* of length $L$
+- transmit packet into network at *transmission rate* $R$
+*** Routing
+Determines source-destination route taken by packets \rightarrow /routing algorithms/
+*** Forwading
+Move packets from router's input to appropriate router output
+*** Switch contents
+- Buffers \rightarrow store data
+- Forwading table
+  - Store meta-data
+  - Indicate where to send the data
+*** Throughput
+Rate (bps) at which bits are transferred between sender/receiver. Depends on the
+*bottleneck* link (slowest link). Meaning that the average throughput is equal
+to the minimum link bandwith of network.
+** Concepts
+*** Circuit vs packet switching
+| Circuit-switching                                        | Packet-switching                                      |
+|----------------------------------------------------------+-------------------------------------------------------|
+| resources reserved per active connection                 | Packets treated on demand                             |
+| admission control & forwarding decision : per connection | admission control & forwarding decision : per packet  |
+| inefficient resource user                                | efficient ressource use                               |
+| predictable performance                                  | unpredictable performance                             |
+|                                                          | simpler to implement, but requires congestion control |
+|                                                          | allow more user to use the network                    |
+**** Circuit-switching
+- End to end resources reserved for "call" between source and destination
+- No sharing : circuit-like (guaranteed) performance
+- Twos implemation :
+  - Time Division Multiplexing (TDM)
+    - Divides time in *time slot*
+    - separate time slot per connection (burst at full speed)
+  - Frequency Division Multiplexing (FDM)
+    - Divide frequency spectrum in *frequency bands*
+    - separate frequency band per connection
+**** Packet-switching
+- Hosts break application-layer messages into packer
+  - Forward packets from one routeur to the next, across links on path from
+    source to destination
+  - Each packet transmitted at *full link capacity*
+- *Store and forward* : entire packet must arriver at routeur before it can be
+  transmitted on next link
+- If arrival rate (bits) to link > transmission rate of link :
+  - packet will *queue*, waiting to be transmitted
+  - packets can be *dropped* (lost) if buffer fills up
+*** Internet organization
+[[file:images/compnet_01.png]]
+*** Delay
+We have that :
+
+d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop}
+
+- d_{trans} : transmission delay
+  - Time needed to push all the bits of a packet into a link
+  - L: packet length (bits)
+  - R: link bandwidth (bps)
+  - d_{trans} = L/R
+- d_{prop}: propagation delay
+  - Time needed to move one bit from one end of a link to the other
+  - d: length of physical link
+  - s: propagation speed in medium
+  - d_{prop} = d/s
+- d_{proc}: nodal processing
+  - check bit errors
+  - determine output link
+  - typically < msec
+- d_{queue} : queuing delay
+  - time waiting at output link for transmission
+  - depends on congestion level of routeur (and burstiness of arrival)
+  - statistical mesure
+  - Way to analyse :
+    - units :
+      - L: packet length (bits)
+      - R: link bandwidth (bps)
+      - a: average packet arrival rate
+    - analysis :
+      - La/R ~ 0 : average queuing delay *small*
+      - La/R ~ 1 : average queuing delay *large*
+      - La/R > 1 : more "work" arriving than can be serviced, average queuing
+        delay *infinite*
+*** Internet  layering
+- application : application that exchange *messages*
+- transport : transports *segments* between two apps
+- network : move *datagrams* around the network
+- link : moves *frames* across a link
+- physical : moves data across a physical medium
+
+Advantages :
+- reduce complexity
+- improve flexibility
+*** Security
+Different ways of attacking :
+- Malware
+- Denial of Service (DoS)
+- Packet sniffing (eavesdropping)
+- Ip spoofing (impersonating)

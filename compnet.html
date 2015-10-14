@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2015-10-14 Wed 20:44 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Computer Networks</title>
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="css/hideshow.css"/>
+<link rel="stylesheet" type="text/css" href="css/navbar.css"/>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="js/bigblow.js"></script>
+<script type="text/javascript" src="js/hideshow.js"></script>
+<script type="text/javascript" src="js/jquery.stickytableheaders.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slider.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Computer Networks</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline22">1. Chapter 1</a>
+<ul>
+<li><a href="#orgheadline13">1.1. Definitions</a>
+<ul>
+<li><a href="#orgheadline1">1.1.1. Network</a></li>
+<li><a href="#orgheadline6">1.1.2. Acess network</a>
+<ul>
+<li><a href="#orgheadline2">1.1.2.1. Digital Subscriber Line (DSL)</a></li>
+<li><a href="#orgheadline3">1.1.2.2. Cable network</a></li>
+<li><a href="#orgheadline4">1.1.2.3. Enterprise acess networks (ethernet)</a></li>
+<li><a href="#orgheadline5">1.1.2.4. Wireless networks</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline7">1.1.3. Protocol</a></li>
+<li><a href="#orgheadline8">1.1.4. Packets</a></li>
+<li><a href="#orgheadline9">1.1.5. Routing</a></li>
+<li><a href="#orgheadline10">1.1.6. Forwading</a></li>
+<li><a href="#orgheadline11">1.1.7. Switch contents</a></li>
+<li><a href="#orgheadline12">1.1.8. Throughput</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline21">1.2. Concepts</a>
+<ul>
+<li><a href="#orgheadline16">1.2.1. Circuit vs packet switching</a>
+<ul>
+<li><a href="#orgheadline14">1.2.1.1. Circuit-switching</a></li>
+<li><a href="#orgheadline15">1.2.1.2. Packet-switching</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline17">1.2.2. Internet organization</a></li>
+<li><a href="#orgheadline18">1.2.3. Delay</a></li>
+<li><a href="#orgheadline19">1.2.4. Internet  layering</a></li>
+<li><a href="#orgheadline20">1.2.5. Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="orgheadline22"><span class="section-number-2">1</span> Chapter 1</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">1.1</span> Definitions</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-orgheadline1" class="outline-4">
+<h4 id="orgheadline1"><span class="section-number-4">1.1.1</span> Network</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+A network is made of
+</p>
+<ul class="org-ul">
+<li>end-systems (server or client)</li>
+<li>Internet Service Provider (ISP)</li>
+<li>Links</li>
+<li>Switches</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.1.2</span> Acess network</h4>
+<div class="outline-text-4" id="text-1-1-2">
+</div><div id="outline-container-orgheadline2" class="outline-5">
+<h5 id="orgheadline2"><span class="section-number-5">1.1.2.1</span> Digital Subscriber Line (DSL)</h5>
+<div class="outline-text-5" id="text-1-1-2-1">
+<ul class="org-ul">
+<li>Uses <b>existing</b> telephone line</li>
+<li><b>Dedicated</b> line</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-5">
+<h5 id="orgheadline3"><span class="section-number-5">1.1.2.2</span> Cable network</h5>
+<div class="outline-text-5" id="text-1-1-2-2">
+<ul class="org-ul">
+<li><b>Shared</b> line</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-5">
+<h5 id="orgheadline4"><span class="section-number-5">1.1.2.3</span> Enterprise acess networks (ethernet)</h5>
+<div class="outline-text-5" id="text-1-1-2-3">
+<ul class="org-ul">
+<li>Used by companies/universities</li>
+<li>Instituional link to ISP</li>
+<li>Use of ethernet switches</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-5">
+<h5 id="orgheadline5"><span class="section-number-5">1.1.2.4</span> Wireless networks</h5>
+<div class="outline-text-5" id="text-1-1-2-4">
+<ul class="org-ul">
+<li>Local or wide-area (cellular networks)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><span class="section-number-4">1.1.3</span> Protocol</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+A protocol defines format, order of messages sent and received among network
+entities and actions taken on message transmisson/receiption.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><span class="section-number-4">1.1.4</span> Packets</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<ul class="org-ul">
+<li>Host divides what he want to send into chunks called <b>packets</b> of length \(L\)</li>
+<li>transmit packet into network at <b>transmission rate</b> \(R\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">1.1.5</span> Routing</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<p>
+Determines source-destination route taken by packets &rarr; <i>routing algorithms</i>
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">1.1.6</span> Forwading</h4>
+<div class="outline-text-4" id="text-1-1-6">
+<p>
+Move packets from router's input to appropriate router output
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">1.1.7</span> Switch contents</h4>
+<div class="outline-text-4" id="text-1-1-7">
+<ul class="org-ul">
+<li>Buffers &rarr; store data</li>
+<li>Forwading table
+<ul class="org-ul">
+<li>Store meta-data</li>
+<li>Indicate where to send the data</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">1.1.8</span> Throughput</h4>
+<div class="outline-text-4" id="text-1-1-8">
+<p>
+Rate (bps) at which bits are transferred between sender/receiver. Depends on the
+<b>bottleneck</b> link (slowest link). Meaning that the average throughput is equal
+to the minimum link bandwith of network.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21"><span class="section-number-3">1.2</span> Concepts</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">1.2.1</span> Circuit vs packet switching</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Circuit-switching</th>
+<th scope="col" class="org-left">Packet-switching</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">resources reserved per active connection</td>
+<td class="org-left">Packets treated on demand</td>
+</tr>
+
+<tr>
+<td class="org-left">admission control &amp; forwarding decision : per connection</td>
+<td class="org-left">admission control &amp; forwarding decision : per packet</td>
+</tr>
+
+<tr>
+<td class="org-left">inefficient resource user</td>
+<td class="org-left">efficient ressource use</td>
+</tr>
+
+<tr>
+<td class="org-left">predictable performance</td>
+<td class="org-left">unpredictable performance</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">simpler to implement, but requires congestion control</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">allow more user to use the network</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-orgheadline14" class="outline-5">
+<h5 id="orgheadline14"><span class="section-number-5">1.2.1.1</span> Circuit-switching</h5>
+<div class="outline-text-5" id="text-1-2-1-1">
+<ul class="org-ul">
+<li>End to end resources reserved for "call" between source and destination</li>
+<li>No sharing : circuit-like (guaranteed) performance</li>
+<li>Twos implemation :
+<ul class="org-ul">
+<li>Time Division Multiplexing (TDM)
+<ul class="org-ul">
+<li>Divides time in <b>time slot</b></li>
+<li>separate time slot per connection (burst at full speed)</li>
+</ul></li>
+<li>Frequency Division Multiplexing (FDM)
+<ul class="org-ul">
+<li>Divide frequency spectrum in <b>frequency bands</b></li>
+<li>separate frequency band per connection</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline15" class="outline-5">
+<h5 id="orgheadline15"><span class="section-number-5">1.2.1.2</span> Packet-switching</h5>
+<div class="outline-text-5" id="text-1-2-1-2">
+<ul class="org-ul">
+<li>Hosts break application-layer messages into packer
+<ul class="org-ul">
+<li>Forward packets from one routeur to the next, across links on path from
+source to destination</li>
+<li>Each packet transmitted at <b>full link capacity</b></li>
+</ul></li>
+<li><b>Store and forward</b> : entire packet must arriver at routeur before it can be
+transmitted on next link</li>
+<li>If arrival rate (bits) to link &gt; transmission rate of link :
+<ul class="org-ul">
+<li>packet will <b>queue</b>, waiting to be transmitted</li>
+<li>packets can be <b>dropped</b> (lost) if buffer fills up</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="section-number-4">1.2.2</span> Internet organization</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<div class="figure">
+<p><img src="images/compnet_01.png" alt="compnet_01.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18"><span class="section-number-4">1.2.3</span> Delay</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+We have that :
+</p>
+
+<p>
+d<sub>nodal</sub> = d<sub>proc</sub> + d<sub>queue</sub> + d<sub>trans</sub> + d<sub>prop</sub>
+</p>
+
+<ul class="org-ul">
+<li>d<sub>trans</sub> : transmission delay
+<ul class="org-ul">
+<li>Time needed to push all the bits of a packet into a link</li>
+<li>L: packet length (bits)</li>
+<li>R: link bandwidth (bps)</li>
+<li>d<sub>trans</sub> = L/R</li>
+</ul></li>
+<li>d<sub>prop</sub>: propagation delay
+<ul class="org-ul">
+<li>Time needed to move one bit from one end of a link to the other</li>
+<li>d: length of physical link</li>
+<li>s: propagation speed in medium</li>
+<li>d<sub>prop</sub> = d/s</li>
+</ul></li>
+<li>d<sub>proc</sub>: nodal processing
+<ul class="org-ul">
+<li>check bit errors</li>
+<li>determine output link</li>
+<li>typically &lt; msec</li>
+</ul></li>
+<li>d<sub>queue</sub> : queuing delay
+<ul class="org-ul">
+<li>time waiting at output link for transmission</li>
+<li>depends on congestion level of routeur (and burstiness of arrival)</li>
+<li>statistical mesure</li>
+<li>Way to analyse :
+<ul class="org-ul">
+<li>units :
+<ul class="org-ul">
+<li>L: packet length (bits)</li>
+<li>R: link bandwidth (bps)</li>
+<li>a: average packet arrival rate</li>
+</ul></li>
+<li>analysis :
+<ul class="org-ul">
+<li>La/R ~ 0 : average queuing delay <b>small</b></li>
+<li>La/R ~ 1 : average queuing delay <b>large</b></li>
+<li>La/R &gt; 1 : more "work" arriving than can be serviced, average queuing
+delay <b>infinite</b></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">1.2.4</span> Internet  layering</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<ul class="org-ul">
+<li>application : application that exchange <b>messages</b></li>
+<li>transport : transports <b>segments</b> between two apps</li>
+<li>network : move <b>datagrams</b> around the network</li>
+<li>link : moves <b>frames</b> across a link</li>
+<li>physical : moves data across a physical medium</li>
+</ul>
+
+<p>
+Advantages :
+</p>
+<ul class="org-ul">
+<li>reduce complexity</li>
+<li>improve flexibility</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">1.2.5</span> Security</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+Different ways of attacking :
+</p>
+<ul class="org-ul">
+<li>Malware</li>
+<li>Denial of Service (DoS)</li>
+<li>Packet sniffing (eavesdropping)</li>
+<li>Ip spoofing (impersonating)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2015-10-14 Wed 20:44</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
