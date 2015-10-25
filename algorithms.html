@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-12 Mon 15:45 -->
+<!-- 2015-10-23 Fri 14:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -310,13 +310,58 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline67">6. Chapter 6</a>
+<li><a href="#orgheadline94">6. Chapter 6</a>
 <ul>
-<li><a href="#orgheadline66">6.1. Binary Search trees</a>
+<li><a href="#orgheadline72">6.1. Binary Search trees</a>
 <ul>
-<li><a href="#orgheadline63">6.1.1. Querying a binary search tree</a></li>
-<li><a href="#orgheadline64">6.1.2. Printing a binary search tree</a></li>
-<li><a href="#orgheadline65">6.1.3. Modifying a binary search tree</a></li>
+<li><a href="#orgheadline63">6.1.1. Searching</a></li>
+<li><a href="#orgheadline64">6.1.2. Min and Max</a></li>
+<li><a href="#orgheadline65">6.1.3. Sucessor and Predecessor</a></li>
+<li><a href="#orgheadline68">6.1.4. Printing</a>
+<ul>
+<li><a href="#orgheadline66">6.1.4.1. Inorder</a></li>
+<li><a href="#orgheadline67">6.1.4.2. Preorder and Postorder</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline71">6.1.5. Modifying</a>
+<ul>
+<li><a href="#orgheadline69">6.1.5.1. Inserting</a></li>
+<li><a href="#orgheadline70">6.1.5.2. Deleting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline93">6.2. Dynamic programming</a>
+<ul>
+<li><a href="#orgheadline73">6.2.1. Key element in designing a DP-algorithm</a></li>
+<li><a href="#orgheadline76">6.2.2. Fibonacci numbers</a>
+<ul>
+<li><a href="#orgheadline74">6.2.2.1. Memoization</a></li>
+<li><a href="#orgheadline75">6.2.2.2. Bottom-updates</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline85">6.2.3. Rod cutting</a>
+<ul>
+<li><a href="#orgheadline77">6.2.3.1. Size of the problem</a></li>
+<li><a href="#orgheadline78">6.2.3.2. Structural theorem</a></li>
+<li><a href="#orgheadline79">6.2.3.3. First algorithm</a></li>
+<li><a href="#orgheadline80">6.2.3.4. Top-down algorithm</a></li>
+<li><a href="#orgheadline81">6.2.3.5. Bottom-up</a></li>
+<li><a href="#orgheadline82">6.2.3.6. Analysis</a></li>
+<li><a href="#orgheadline83">6.2.3.7. Optimal solution</a></li>
+<li><a href="#orgheadline84">6.2.3.8. Summary</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline92">6.2.4. Matrix-chain multiplication</a>
+<ul>
+<li><a href="#orgheadline86">6.2.4.1. Cost of matrix multiplication</a></li>
+<li><a href="#orgheadline87">6.2.4.2. Definition</a></li>
+<li><a href="#orgheadline88">6.2.4.3. Optimal substructure</a></li>
+<li><a href="#orgheadline89">6.2.4.4. Recursive formula</a></li>
+<li><a href="#orgheadline90">6.2.4.5. Bottom-up algorithm</a></li>
+<li><a href="#orgheadline91">6.2.4.6. Print optimal solution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1833,26 +1878,879 @@ x.prev = L.nil
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline67" class="outline-2">
-<h2 id="orgheadline67"><span class="section-number-2">6</span> Chapter 6</h2>
+<div id="outline-container-orgheadline94" class="outline-2">
+<h2 id="orgheadline94"><span class="section-number-2">6</span> Chapter 6</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgheadline66" class="outline-3">
-<h3 id="orgheadline66"><span class="section-number-3">6.1</span> Binary Search trees</h3>
+</div><div id="outline-container-orgheadline72" class="outline-3">
+<h3 id="orgheadline72"><span class="section-number-3">6.1</span> Binary Search trees</h3>
 <div class="outline-text-3" id="text-6-1">
-</div><div id="outline-container-orgheadline63" class="outline-4">
-<h4 id="orgheadline63"><span class="section-number-4">6.1.1</span> Querying a binary search tree</h4>
+<p>
+Encodes a strategy whatever number we look for.
+</p>
+
+<p>
+Key property:
+</p>
+<ul class="org-ul">
+<li>if \(y\) is in the left subtree of \(x\) then \(y.key < x.key\)</li>
+<li>if \(y\) is in the right subtree of \(x\) then \(y.key \ge x.key\)</li>
+</ul>
+
+<p>
+Height (\(h\)) is the number of edges in longest path from root to leaf.
+</p>
+
+<p>
+Basic operations take time proportional to height: \(O(h)\)
+</p>
+
+<p>
+Each element \(x\) has :
+</p>
+<ul class="org-ul">
+<li>\(x.left\) : pointer to left child</li>
+<li>\(x.right\) : pointer to right child</li>
+<li>\(x.p\) : pointer to parent</li>
+<li>\(x.key\) : key</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63"><span class="section-number-4">6.1.1</span> Searching</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<p>
+<b>TREE-SEARCH</b> \((x,k)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> x == NIL or k == key<span style="color: #2aa198;">[</span>x<span style="color: #2aa198;">]</span>
+  <span style="color: #859900; font-weight: bold;">return</span> x
+<span style="color: #859900; font-weight: bold;">if</span> k &lt; x.<span style="color: #b58900;">key</span>
+  <span style="color: #859900; font-weight: bold;">return</span> TREE-SEARCH<span style="color: #2aa198;">(</span>x.left,k<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">else</span> <span style="color: #859900; font-weight: bold;">return</span> TREE-SEARCH<span style="color: #2aa198;">(</span>x.right,k<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+Running time : \(O(h)\)
+</p>
+</div>
 </div>
 <div id="outline-container-orgheadline64" class="outline-4">
-<h4 id="orgheadline64"><span class="section-number-4">6.1.2</span> Printing a binary search tree</h4>
+<h4 id="orgheadline64"><span class="section-number-4">6.1.2</span> Min and Max</h4>
+<div class="outline-text-4" id="text-6-1-2">
+<p>
+By key property :
+</p>
+<ul class="org-ul">
+<li>Minimum is located in leftmost node</li>
+<li>Maximum is located in rightmost node</li>
+</ul>
+
+<p>
+<b>TREE-MINIMUM</b> \((x)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">while</span> x.left != NIL
+  x = x.left
+<span style="color: #859900; font-weight: bold;">return</span> x
+</pre>
+</div>
+
+<p>
+<b>TREE-MAXIMUM</b> \((x)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">while</span> x.right != NIL
+  x = x.right
+<span style="color: #859900; font-weight: bold;">return</span> x
+</pre>
+</div>
+
+<p>
+Running time : \(O(h)\)
+</p>
+</div>
 </div>
 <div id="outline-container-orgheadline65" class="outline-4">
-<h4 id="orgheadline65"><span class="section-number-4">6.1.3</span> Modifying a binary search tree</h4>
+<h4 id="orgheadline65"><span class="section-number-4">6.1.3</span> Sucessor and Predecessor</h4>
+<div class="outline-text-4" id="text-6-1-3">
+<p>
+Sucessor of a node \(x\) is the node \(y\) sutch that \(y.key\) is the
+</p>
+
+<p>
+"smallest key" &gt; \(x.key\)
+</p>
+
+<p>
+Two case :
+</p>
+<ul class="org-ul">
+<li>\(x\) has a non-empty right subtree &rarr; \(x\) 's sucessor is the minimum
+in the right subtree</li>
+<li>\(x\) has an empty right subtree &rarr; As long as we go to the left up the
+tree we're visiting smaller keys. \(x\) 's sucessor is \(y\) is the  node that \(x\)
+is the predecessor of.</li>
+</ul>
+
+<p>
+<b>TREE-SUCESSOR</b> \((x)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> x.right != NIL
+  <span style="color: #859900; font-weight: bold;">return</span> TREE-MINIMUM<span style="color: #2aa198;">(</span>x.right<span style="color: #2aa198;">)</span>
+y = x.p
+<span style="color: #859900; font-weight: bold;">while</span> y != NIL and x == y.right
+  x = y
+  y = y.p
+<span style="color: #859900; font-weight: bold;">return</span> y
+</pre>
+</div>
+
+<p>
+Running time : \(O(h)\)
+</p>
+
+<p>
+Predecessor is symmetric !
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline68" class="outline-4">
+<h4 id="orgheadline68"><span class="section-number-4">6.1.4</span> Printing</h4>
+<div class="outline-text-4" id="text-6-1-4">
+</div><div id="outline-container-orgheadline66" class="outline-5">
+<h5 id="orgheadline66"><span class="section-number-5">6.1.4.1</span> Inorder</h5>
+<div class="outline-text-5" id="text-6-1-4-1">
+<ul class="org-ul">
+<li>Print left subtree recursively</li>
+<li>Print root</li>
+<li>Print right subtree recursively</li>
+</ul>
+
+<p>
+<b>INORDER-TREE-WALK</b> \((x)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> x != NIL
+  INORDER-TREE-WALK<span style="color: #2aa198;">(</span>x.left<span style="color: #2aa198;">)</span>
+  print key<span style="color: #2aa198;">[</span>x<span style="color: #2aa198;">]</span>
+  INORDER-TREE-WALK<span style="color: #2aa198;">(</span>x.right<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+Running time : \(\theta(n)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline67" class="outline-5">
+<h5 id="orgheadline67"><span class="section-number-5">6.1.4.2</span> Preorder and Postorder</h5>
+<div class="outline-text-5" id="text-6-1-4-2">
+<p>
+<b>PREORDER-TREE-WALK</b> \((x)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> x != NIL
+  print key<span style="color: #2aa198;">[</span>x<span style="color: #2aa198;">]</span>
+  INORDER-TREE-WALK<span style="color: #2aa198;">(</span>x.left<span style="color: #2aa198;">)</span>
+  INORDER-TREE-WALK<span style="color: #2aa198;">(</span>x.right<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+<b>POSTORDER-TREE-WALK</b> \((x)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> x != NIL
+  INORDER-TREE-WALK<span style="color: #2aa198;">(</span>x.left<span style="color: #2aa198;">)</span>
+  INORDER-TREE-WALK<span style="color: #2aa198;">(</span>x.right<span style="color: #2aa198;">)</span>
+  print key<span style="color: #2aa198;">[</span>x<span style="color: #2aa198;">]</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline71" class="outline-4">
+<h4 id="orgheadline71"><span class="section-number-4">6.1.5</span> Modifying</h4>
+<div class="outline-text-4" id="text-6-1-5">
+</div><div id="outline-container-orgheadline69" class="outline-5">
+<h5 id="orgheadline69"><span class="section-number-5">6.1.5.1</span> Inserting</h5>
+<div class="outline-text-5" id="text-6-1-5-1">
+<ul class="org-ul">
+<li>Search for \(z.key\)</li>
+<li>When arrived at \(nil\) insert \(z\) at that position</li>
+</ul>
+
+<p>
+<b>TREE-INSERT</b> \((T,z)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">y = NIL
+x = T.root
+<span style="color: #859900; font-weight: bold;">while</span> x != NIL
+  y = x
+  <span style="color: #859900; font-weight: bold;">if</span> z.key &lt; x.<span style="color: #b58900;">key</span>
+    x = x.left
+  <span style="color: #859900; font-weight: bold;">else</span> x = x.right
+z.p = y
+<span style="color: #859900; font-weight: bold;">if</span> y == NIL
+  T.root = z <span style="color: #586e75;">// </span><span style="color: #586e75;">tree T was empty</span>
+elseif z.key &lt; y.<span style="color: #b58900;">key</span>
+  y.left = z
+<span style="color: #859900; font-weight: bold;">else</span> y.right = z
+</pre>
+</div>
+
+<p>
+Running time : \(O(h)\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline70" class="outline-5">
+<h5 id="orgheadline70"><span class="section-number-5">6.1.5.2</span> Deleting</h5>
+<div class="outline-text-5" id="text-6-1-5-2">
+<p>
+3 cases :
+</p>
+<ul class="org-ul">
+<li>If \(z\) has no children, remove it</li>
+<li>if \(z\) has one child, then make that child takes \(z\) 's position in the tree</li>
+<li>if \(z\) has two children, then find its sucessor \(y\) and replace \(z\) by \(y\)</li>
+</ul>
+
+<p>
+We first need to define a helper function which replace subtree rooted at \(u\) with
+that rooted at \(v\)
+</p>
+
+<p>
+<b>TRANSPLANT</b> \((T,u,v)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> u.p == NIL
+  T.root = v
+elseif u == u.p.left
+  u.p.left = v
+<span style="color: #859900; font-weight: bold;">else</span> u.p.right = v
+<span style="color: #859900; font-weight: bold;">if</span> v != NIL
+  v.p = u.p
+</pre>
+</div>
+
+<p>
+Then the actual deletion algorithm :
+</p>
+
+<p>
+<b>TREE-DELETE</b> \((T,z)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> z.left == NIL
+  TRANSPLANT<span style="color: #2aa198;">(</span>T,z,z.right<span style="color: #2aa198;">)</span> <span style="color: #586e75;">// </span><span style="color: #586e75;">z has no left child</span>
+elseif z.right == NIL
+  TRANSPLANT<span style="color: #2aa198;">(</span>T,z,z.left<span style="color: #2aa198;">)</span> <span style="color: #586e75;">// </span><span style="color: #586e75;">z has just a left child</span>
+<span style="color: #859900; font-weight: bold;">else</span> <span style="color: #586e75;">// </span><span style="color: #586e75;">z has two children</span>
+  y = TREE-MINIMUM<span style="color: #2aa198;">(</span>z.right<span style="color: #2aa198;">)</span> <span style="color: #586e75;">// </span><span style="color: #586e75;">y is z's sucessor</span>
+  <span style="color: #859900; font-weight: bold;">if</span> y.p != z
+    <span style="color: #586e75;">// </span><span style="color: #586e75;">y lies within z's right subtree but is not the root of this</span>
+    TRANSPLANT<span style="color: #2aa198;">(</span>T,y,y.right<span style="color: #2aa198;">)</span>
+    y.right = z.right
+    y.right.p = y
+  <span style="color: #586e75;">// </span><span style="color: #586e75;">Replace z by y</span>
+  TRANSPLANT<span style="color: #2aa198;">(</span>T,z,y<span style="color: #2aa198;">)</span>
+  y.left = z.left
+  y.left.p = y
+</pre>
+</div>
+
+<p>
+Running time : \(O(h)\)
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline93" class="outline-3">
+<h3 id="orgheadline93"><span class="section-number-3">6.2</span> Dynamic programming</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Main idea :
+</p>
+<ul class="org-ul">
+<li>Remember calculations already made</li>
+<li>Saves enormous amounts of computation</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline73" class="outline-4">
+<h4 id="orgheadline73"><span class="section-number-4">6.2.1</span> Key element in designing a DP-algorithm</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<p>
+<span class="underline">Optimal substructure :</span>
+</p>
+<ul class="org-ul">
+<li>Show that a solution to a problem consists of making a choice, which leaves
+one or several subproblems to solve and the optimal solution solves the
+subproblems optimally &rArr; allows us to write a recursion</li>
+</ul>
+
+<p>
+<span class="underline">Overlapping subproblems :</span>
+</p>
+<ul class="org-ul">
+<li>A naive recursive algorithm may revisit the same (sub)problem over and over.</li>
+<li>Top-down with memoization : Solve recursively but store each result in a table</li>
+<li>Bottom-up Sort the subproblems and solve the smaller ones first; that way,
+when solving a subproblem, have already solved the smaller subproblems we need</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline76" class="outline-4">
+<h4 id="orgheadline76"><span class="section-number-4">6.2.2</span> Fibonacci numbers</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<p>
+basic resursive function : same calculations again and again &rArr; exponential time !
+</p>
+
+<p>
+Solution ? Remember what we have down :
+</p>
+
+<p>
+Two ways:
+</p>
+<ul class="org-ul">
+<li>Top-down with memoization
+<ul class="org-ul">
+<li>Solve recursively but store each result in a table</li>
+<li>Memoizing is remembering what we have computed previously</li>
+</ul></li>
+<li>Bottom-up
+<ul class="org-ul">
+<li>Sort the subproblems and solve the smaller ones first</li>
+<li>That way, when solving a subproblem, have already solved the smaller subproblems we need</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline74" class="outline-5">
+<h5 id="orgheadline74"><span class="section-number-5">6.2.2.1</span> Memoization</h5>
+<div class="outline-text-5" id="text-6-2-2-1">
+<p>
+<b>MEMOIZED-FIB</b> \((n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">Let <span style="color: #268bd2;">r</span> = <span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">0</span>...n<span style="color: #2aa198;">]</span> be a new array
+<span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">0</span> to n
+  <span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> = - infinity
+<span style="color: #859900; font-weight: bold;">return</span> MEMOIZED-FIB-AUX<span style="color: #2aa198;">(</span>n,r<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+<b>MEMOIZED-FIB-AUX</b> \((n,r)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">if</span> r<span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span> &gt;= <span style="color: #268bd2; font-weight: bold;">0</span>
+  <span style="color: #859900; font-weight: bold;">return</span> r<span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">n</span> = <span style="color: #268bd2; font-weight: bold;">0</span> <span style="color: #859900; font-weight: bold;">or</span> <span style="color: #268bd2;">n</span> = <span style="color: #268bd2; font-weight: bold;">1</span>
+  <span style="color: #268bd2;">ans</span> = <span style="color: #268bd2; font-weight: bold;">1</span>
+<span style="color: #859900; font-weight: bold;">else</span>
+  <span style="color: #268bd2;">ans</span> = MEMOIZED-FIB-AUX<span style="color: #2aa198;">(</span>n-<span style="color: #268bd2; font-weight: bold;">1</span>,r<span style="color: #2aa198;">)</span>+MEMOIZED-FIB-AUX<span style="color: #2aa198;">(</span>n-<span style="color: #268bd2; font-weight: bold;">2</span>,r<span style="color: #2aa198;">)</span>
+<span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span> = ans
+<span style="color: #859900; font-weight: bold;">return</span> r<span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span>
+</pre>
+</div>
+
+<p>
+Time analysis :
+</p>
+<ul class="org-ul">
+<li>Steps 1-3 in MEMOIZED-FIB takes times \(\Theta(n)\)</li>
+<li>Each call to MEMOIZED-FIB-AUX takes \(\Theta(1)\)</li>
+<li>Number of calls to MEMOIZED-FIB-AUX is \(\Theta(n)\)</li>
+<li>Total time is thus \(\Theta(n)\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline75" class="outline-5">
+<h5 id="orgheadline75"><span class="section-number-5">6.2.2.2</span> Bottom-updates</h5>
+<div class="outline-text-5" id="text-6-2-2-2">
+<p>
+<b>BOTTOM-UP-FIB</b> \((n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">Let <span style="color: #268bd2;">r</span> = <span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">0</span>..n<span style="color: #2aa198;">]</span> be a new aray
+<span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">0</span><span style="color: #2aa198;">]</span> = <span style="color: #268bd2; font-weight: bold;">1</span>
+<span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span> = <span style="color: #268bd2; font-weight: bold;">1</span>
+<span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">2</span> to n
+  <span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> = r<span style="color: #2aa198;">[</span>i-<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span>+r<span style="color: #2aa198;">[</span>i-<span style="color: #268bd2; font-weight: bold;">2</span><span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">return</span> r<span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline85" class="outline-4">
+<h4 id="orgheadline85"><span class="section-number-4">6.2.3</span> Rod cutting</h4>
+<div class="outline-text-4" id="text-6-2-3">
+<p>
+<span class="underline">Instance</span> :
+</p>
+<ul class="org-ul">
+<li>A length \(n\) of a metal rod</li>
+<li>A table of prices \(p_i\) for rods of lengths \(i=1,...n\)</li>
+</ul>
+
+<p>
+<span class="underline">Objective</span> : Decide how to cut the rod into pieces and maximize the price
+</p>
+</div>
+
+<div id="outline-container-orgheadline77" class="outline-5">
+<h5 id="orgheadline77"><span class="section-number-5">6.2.3.1</span> Size of the problem</h5>
+<div class="outline-text-5" id="text-6-2-3-1">
+<ul class="org-ul">
+<li>There are 2<sup>n-1</sup> possible solutions - either cut or do not cut after every length unit</li>
+<li>Need structure for an efficient algorithm</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline78" class="outline-5">
+<h5 id="orgheadline78"><span class="section-number-5">6.2.3.2</span> Structural theorem</h5>
+<div class="outline-text-5" id="text-6-2-3-2">
+<p>
+If
+</p>
+<ul class="org-ul">
+<li>the leftmost cut in an optimal solution is after \(i\) units</li>
+<li>an optimal way to cut a solution of size \(n-i\) is into rods of sizes: \(s_1,s_2,...,s_k\)</li>
+</ul>
+<p>
+Then, an optimal way to cut our rods is into rods of size: \(i,s_1,s_2,...,s_k\)
+</p>
+
+<p>
+<span class="underline">Proof</span>
+</p>
+
+<p>
+Feasability : Since \(s_1,s_2,...,s_k\) is a feasible solution for  an instance of
+size \(n-i\):
+</p>
+
+<p>
+\(\sum\limits_{j=1}^k s_j = n - i\)
+</p>
+
+<p>
+Hence, \(i + \sum\limits_{j=1}^k s_j = n\)
+</p>
+
+<p>
+Optimality: Let \(i,o_1,o_2,...,o_l\) be an optimal solution - exists by
+assumption. Recall that \(s_1,s_2,...,s_k\) is an optimal way to cut a rod of size
+\(n-1\), thus
+</p>
+
+<p>
+\(\sum\limits_{j=1}^k p_{s_j} \ge \sum\limits_{j=1}^l p_{o_j}\)
+</p>
+
+<p>
+Hence, \(p_i + \sum\limits_{j=1}^k p_{s_j} \ge p_i + \sum\limits_{j=1}^l p_{o_j}\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline79" class="outline-5">
+<h5 id="orgheadline79"><span class="section-number-5">6.2.3.3</span> First algorithm</h5>
+<div class="outline-text-5" id="text-6-2-3-3">
+<p>
+if we let \(r(n)\) be the optimal revenu from a rod of length \(n\), then, by 
+the strucural theorem, we can express \(r(n)\) recursively as follows
+</p>
+
+<p>
+\(r(n) = 0\) if \(n = 0\)
+</p>
+
+<p>
+$r(n) = max<sub>1&le; i &le; n</sub>\lbrace p<sub>i</sub> + r(n-i)\rbrace otherwise \(n \ge 1\)
+</p>
+
+<p>
+<b>CUT-ROD</b> \((p,n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">if</span> n == <span style="color: #268bd2; font-weight: bold;">0</span>
+  <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #268bd2; font-weight: bold;">0</span>
+<span style="color: #268bd2;">q</span> = -infinity
+<span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1</span> to n
+  <span style="color: #268bd2;">q</span> = <span style="color: #839496; font-weight: bold;">max</span><span style="color: #2aa198;">(</span>q,p<span style="color: #b58900;">[</span>i<span style="color: #b58900;">]</span>+ CUT-ROD<span style="color: #b58900;">(</span>p,n-i<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">return</span> q
+</pre>
+</div>
+
+<p>
+Procedure is extremly inefficient, exponential
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline80" class="outline-5">
+<h5 id="orgheadline80"><span class="section-number-5">6.2.3.4</span> Top-down algorithm</h5>
+<div class="outline-text-5" id="text-6-2-3-4">
+<ul class="org-ul">
+<li>Keep the recurive structure of the pseudocode</li>
+<li>Memoize (store) the result of every recursive call</li>
+<li>At each recursively call, try to avoid work using memoized results</li>
+</ul>
+
+<p>
+<b>MEMOIZED-CUT-ROD</b> \((p,n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">let r<span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">0</span>..n<span style="color: #2aa198;">]</span> be a new array
+<span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">0</span> to n
+  <span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> = -infinity
+<span style="color: #859900; font-weight: bold;">return</span> MEMOIZED-CUT-ROD-AUX<span style="color: #2aa198;">(</span>p,n,r<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+<b>MEMOIZED-CUT-ROD-AUX</b> \((p,n,r)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">if</span> r<span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span> &gt;= <span style="color: #268bd2; font-weight: bold;">0</span>
+  <span style="color: #859900; font-weight: bold;">return</span> r<span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">if</span> n == <span style="color: #268bd2; font-weight: bold;">0</span>
+  q == <span style="color: #268bd2; font-weight: bold;">0</span>
+<span style="color: #859900; font-weight: bold;">else</span> <span style="color: #268bd2;">q</span> = -infinity
+  <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1</span> to n
+    <span style="color: #268bd2;">q</span> = <span style="color: #839496; font-weight: bold;">max</span><span style="color: #2aa198;">(</span>q,p<span style="color: #b58900;">[</span>i<span style="color: #b58900;">]</span>+MEMOIZED-CUT-ROD-AUX<span style="color: #b58900;">(</span>p,n-i,r<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+<span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span> = q
+<span style="color: #859900; font-weight: bold;">return</span> q
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Initialization takes \(O(n)\) time</li>
+<li>Processing each sub-problems takes linear time in the number of sub-problems
+it evokes</li>
+<li>The time complexity is proportional to the numbers of nodes and edges in the
+subproblem graph</li>
+</ul>
+
+<p>
+Time complexity : \(O(n^2)\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline81" class="outline-5">
+<h5 id="orgheadline81"><span class="section-number-5">6.2.3.5</span> Bottom-up</h5>
+<div class="outline-text-5" id="text-6-2-3-5">
+<ul class="org-ul">
+<li>Sort the sub-problems by size</li>
+<li>Solve the smaller ones first</li>
+<li>When reaching sub-problem, the smaller ones are already solved</li>
+</ul>
+
+<p>
+<b>BOTTOM-UP-CUT-ROD</b> \((p,n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">let r<span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">0</span>..n<span style="color: #2aa198;">]</span> be a new array
+<span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">0</span><span style="color: #2aa198;">]</span> = <span style="color: #268bd2; font-weight: bold;">0</span>
+<span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">j</span> = <span style="color: #268bd2; font-weight: bold;">1</span> to n
+  <span style="color: #268bd2;">q</span> = - infinity
+  <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1</span> to j
+    <span style="color: #268bd2;">q</span> = <span style="color: #839496; font-weight: bold;">max</span><span style="color: #2aa198;">(</span>q,p<span style="color: #b58900;">[</span>i<span style="color: #b58900;">]</span>+r<span style="color: #b58900;">[</span>j-i<span style="color: #b58900;">]</span>
+  r<span style="color: #b58900;">[</span>j<span style="color: #b58900;">]</span> = q
+<span style="color: #859900; font-weight: bold;">return</span> r<span style="color: #b58900;">[</span>n<span style="color: #b58900;">]</span>
+</pre>
+</div>
+
+<p>
+Time complexity : \(O(n^2)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline82" class="outline-5">
+<h5 id="orgheadline82"><span class="section-number-5">6.2.3.6</span> Analysis</h5>
+<div class="outline-text-5" id="text-6-2-3-6">
+<ul class="org-ul">
+<li>Choice: where to make the leftmost cut</li>
+<li>Optimal substructure: to obtain an optimal solution, we need to cut the
+remaining piece in an optimal way</li>
+</ul>
+
+<p>
+Hence, if we let r (n) be the optimal revenue from a rod of length n, we
+can express \(r(n)\) recursively as follows
+</p>
+
+<p>
+\(r(n) = 0\) if \(n = 0\)
+</p>
+
+<p>
+\(r(n) = max_{1\le i \le n} \lbrace p_i + r(n-i)\rbrace\) otherwise if \(n \ge 1\)
+</p>
+
+<ul class="org-ul">
+<li>Overlapping subproblems: Solve recurrence using top-down with memoization or
+bottom-up which yields an algorithm that runs in time \(\Theta(n^2)\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline83" class="outline-5">
+<h5 id="orgheadline83"><span class="section-number-5">6.2.3.7</span> Optimal solution</h5>
+<div class="outline-text-5" id="text-6-2-3-7">
+<ul class="org-ul">
+<li>The above algorithms only return the optimal profit</li>
+<li>Sometimes one needs also to find an optimal solution</li>
+</ul>
+
+<p>
+<span class="underline">Approach</span>
+</p>
+<ul class="org-ul">
+<li>Each cell of the memoization table corresponds to a decision: the location of
+the left most cut</li>
+<li>Store the decision corresponding to every cell in a separate table</li>
+</ul>
+
+<p>
+<b>EXTENDED-BOTTOM-UP-CUT-ROD</b> \((p,n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">let r<span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">0</span>..n<span style="color: #2aa198;">]</span> <span style="color: #859900; font-weight: bold;">and</span> s<span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">0</span>..n<span style="color: #2aa198;">]</span> be new arrays
+<span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">0</span><span style="color: #2aa198;">]</span> = <span style="color: #268bd2; font-weight: bold;">0</span>
+<span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">j</span> = <span style="color: #268bd2; font-weight: bold;">1</span> to n
+  <span style="color: #268bd2;">q</span> = - infinity
+  <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1</span> to j
+    <span style="color: #268bd2;">q</span> = p<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span> + r<span style="color: #2aa198;">[</span>j-i<span style="color: #2aa198;">]</span>
+    <span style="color: #268bd2;">s</span><span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span> = i
+  <span style="color: #268bd2;">r</span><span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span> = q
+<span style="color: #859900; font-weight: bold;">return</span> r <span style="color: #859900; font-weight: bold;">and</span> s
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>The table <b>s</b> stores the choices that lead to an optimal solution.</li>
+<li>These decicisions can be extracted from the table</li>
+</ul>
+
+<p>
+<b>PRINT-CUT-ROD-SOLUTION</b> \((p,n)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #2aa198;">(</span>r,s<span style="color: #2aa198;">)</span> = EXTENDED-BOTTOM-UP-CUT-ROD<span style="color: #2aa198;">(</span>p,n<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">while</span> n &gt; <span style="color: #268bd2; font-weight: bold;">0</span>
+  <span style="color: #859900; font-weight: bold;">print</span> s<span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span>
+  <span style="color: #268bd2;">n</span> = n - s<span style="color: #2aa198;">[</span>n<span style="color: #2aa198;">]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline84" class="outline-5">
+<h5 id="orgheadline84"><span class="section-number-5">6.2.3.8</span> Summary</h5>
+<div class="outline-text-5" id="text-6-2-3-8">
+<ul class="org-ul">
+<li>We had a recursive formulation for the optimal value for our problem</li>
+</ul>
+<p>
+\(r(n) = 0\) if \(n = 0\)
+</p>
+
+<p>
+\(r(n) = max_{1\le i \le n} \lbrace p_i + r(n-i)\rbrace\) otherwise if \(n \ge 1\)
+</p>
+<ul class="org-ul">
+<li>Speed up the calculations by fillind in a table either "top-down with
+memoization" or with "bottom-up"</li>
+<li>Recovered an optimal solution using an additional table</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline92" class="outline-4">
+<h4 id="orgheadline92"><span class="section-number-4">6.2.4</span> Matrix-chain multiplication</h4>
+<div class="outline-text-4" id="text-6-2-4">
+</div><div id="outline-container-orgheadline86" class="outline-5">
+<h5 id="orgheadline86"><span class="section-number-5">6.2.4.1</span> Cost of matrix multiplication</h5>
+<div class="outline-text-5" id="text-6-2-4-1">
+<p>
+$A<sub>p,q</sub>$&times; \(B_{q,r}\) = \(C_{p,r}\)
+</p>
+
+<ul class="org-ul">
+<li>Each cell of \(C\) requires \(q\) scalar multiplication</li>
+<li>In total : \(pqr\) scalar multiplication</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline87" class="outline-5">
+<h5 id="orgheadline87"><span class="section-number-5">6.2.4.2</span> Definition</h5>
+<div class="outline-text-5" id="text-6-2-4-2">
+<ul class="org-ul">
+<li>Input : A chain \(<A_1,A_2,...,A_n>\) of \(n\) matrices where for \(i=1,2,...,n\)
+  matrix \(A_i\) has dimension \(p_{i-1} \times p_i\)</li>
+<li>Output : A full parenthesization of the product \(A_1A_2...A_n\) in a way that
+minimizes the number of scala multiplications.</li>
+<li>Remarks :
+<ul class="org-ul">
+<li>We are not asked to calculate the product, only find the best parenthesization</li>
+<li>The parenthesization can significantly affect the number of multiplications</li>
+</ul></li>
+<li>Example :
+<ul class="org-ul">
+<li>A product \(A_1A_2A_3\) with dimensions: \(50 \times 5\), \(5 \times 100\) and
+\(100 \times 10\)</li>
+<li>Calculating \((A_1A_2)A_3\) requires: \(50 · 5 · 100 + 50 · 100 · 10 = 75000\)
+    scalar multiplications.</li>
+<li>Calculating \(A_1(A_2A_3)\) requires: \(5 · 100 · 10 + 50 · 5 · 10 = 7500\)
+    scalar multiplications.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline88" class="outline-5">
+<h5 id="orgheadline88"><span class="section-number-5">6.2.4.3</span> Optimal substructure</h5>
+<div class="outline-text-5" id="text-6-2-4-3">
+<p>
+<span class="underline">Theorem</span> :
+</p>
+
+<p>
+if :
+</p>
+<ul class="org-ul">
+<li>the outermost parenthesization in an optimal solution is :
+\((A_1A_2...A_i)(A_{i+1}A_{i+2}...A_n)\)</li>
+<li>\(P_L\) and \(P_R\) are optimal parenthesizations for \(A_1A_2...A_i\) and
+\(A_{i+1}A_{i+2}...A_n\) respectively</li>
+</ul>
+<p>
+Then, \(((P_L)·(P_R))\) is an optimal parenthesizations for \(A_1A_2...A_n\)
+</p>
+
+<p>
+<span class="underline">Proof</span> :
+</p>
+<ul class="org-ul">
+<li>Let \(((O_L)·(O_R))\) be an optimal parenthesization, where \(O_L\) and \(O_R\) are
+parenthesization for \(A_1A_2...A_i\) and \(A_{i+1}A_{i+2}...A_n\) respectively</li>
+<li>Let \(M(P)\) be the number of scalar multiplications required by a
+parenthesization</li>
+</ul>
+
+\begin{align*}
+M((O_L)·(O_R)) &= p_0·p_i·p_n+M(O_L)+M(O_R)\\
+&\ge p_0·p_i·p_n+M(P_L)+M(P_R) = M((P_L)·(P_R))
+\end{align*}
+
+<ul class="org-ul">
+<li>Since \(P_L\) and \(P_R\) are optimal: \(M(P_L) \le M(O_L)\) and \(M(P_R) \le M(O_R)\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline89" class="outline-5">
+<h5 id="orgheadline89"><span class="section-number-5">6.2.4.4</span> Recursive formula</h5>
+<div class="outline-text-5" id="text-6-2-4-4">
+<ul class="org-ul">
+<li>Let \(m[i,j]\) be the optimal number of scalar multiplications for calulating
+\(A_iA_{i+1}....A_J\)</li>
+<li>\(m[i,j]\) can be expressed recusively as follows :</li>
+</ul>
+<p>
+\(m[i,j] = 0\) if i = j
+</p>
+
+<p>
+\(m[i,j] = min_{i\le k < j}\lbrace m[i,k]+m[k+1,j]+p_{i-1}p_kp_j\rbrace\) if i &lt; j
+</p>
+<ul class="org-ul">
+<li>Each \(m[i,j]\) depend only on subproblems with smaller \(j-i\)</li>
+<li>A bottom-up algorithm should solve subproblems in increasing \(j-i\) order</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline90" class="outline-5">
+<h5 id="orgheadline90"><span class="section-number-5">6.2.4.5</span> Bottom-up algorithm</h5>
+<div class="outline-text-5" id="text-6-2-4-5">
+<p>
+<b>MATRIX-CHAIN-ORDER</b> \((p)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">n</span> = p.length - <span style="color: #268bd2; font-weight: bold;">1</span>
+let m<span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">1</span>..n,<span style="color: #268bd2; font-weight: bold;">1</span>..n<span style="color: #2aa198;">]</span> <span style="color: #859900; font-weight: bold;">and</span> s<span style="color: #2aa198;">[</span><span style="color: #268bd2; font-weight: bold;">1</span>..n,<span style="color: #268bd2; font-weight: bold;">1</span>..n<span style="color: #2aa198;">]</span> be new tables
+<span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1</span> to n
+  <span style="color: #268bd2;">m</span><span style="color: #2aa198;">[</span>i,i<span style="color: #2aa198;">]</span> = <span style="color: #268bd2; font-weight: bold;">0</span>
+<span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">l</span> = <span style="color: #268bd2; font-weight: bold;">2</span> to n <span style="color: #586e75;">#</span><span style="color: #586e75;">l is the chain length</span>
+  <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1</span> to n-l+<span style="color: #268bd2; font-weight: bold;">1</span>
+    <span style="color: #268bd2;">j</span> = i + l -<span style="color: #268bd2; font-weight: bold;">1</span>
+    <span style="color: #268bd2;">m</span><span style="color: #2aa198;">[</span>i,j<span style="color: #2aa198;">]</span> = infinity
+    <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">k</span> = <span style="color: #268bd2; font-weight: bold;">1</span> to j - <span style="color: #268bd2; font-weight: bold;">1</span>
+      <span style="color: #268bd2;">q</span> = m<span style="color: #2aa198;">[</span>i,k<span style="color: #2aa198;">]</span> + m<span style="color: #2aa198;">[</span>k+<span style="color: #268bd2; font-weight: bold;">1</span>,j<span style="color: #2aa198;">]</span> + p<span style="color: #2aa198;">[</span>i-<span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #2aa198;">]</span>p<span style="color: #2aa198;">[</span>k<span style="color: #2aa198;">]</span>p<span style="color: #2aa198;">[</span>j<span style="color: #2aa198;">]</span>
+      <span style="color: #859900; font-weight: bold;">if</span> q &lt; m<span style="color: #2aa198;">[</span>i,j<span style="color: #2aa198;">]</span>
+        <span style="color: #268bd2;">m</span><span style="color: #2aa198;">[</span>i,j<span style="color: #2aa198;">]</span> = q
+        <span style="color: #268bd2;">s</span><span style="color: #2aa198;">[</span>i,j<span style="color: #2aa198;">]</span> = k
+<span style="color: #859900; font-weight: bold;">return</span> m <span style="color: #859900; font-weight: bold;">and</span> s
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline91" class="outline-5">
+<h5 id="orgheadline91"><span class="section-number-5">6.2.4.6</span> Print optimal solution</h5>
+<div class="outline-text-5" id="text-6-2-4-6">
+<p>
+<b>PRINT-OPTIMAL-PARENS</b> \((s,i,j)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">if</span> i == j
+  <span style="color: #859900; font-weight: bold;">print</span> <span style="color: #2aa198;">"Ai"</span>
+<span style="color: #859900; font-weight: bold;">else</span> <span style="color: #859900; font-weight: bold;">print</span> <span style="color: #2aa198;">"("</span>
+  PRINT-OPTIMAL-PARENS<span style="color: #2aa198;">(</span>s, i, s<span style="color: #b58900;">[</span>i,j<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+  PRINT-OPTIMAL-PARENS<span style="color: #2aa198;">(</span>s,s<span style="color: #b58900;">[</span>i,j<span style="color: #b58900;">]</span>+<span style="color: #268bd2; font-weight: bold;">1</span>,j<span style="color: #2aa198;">)</span>
+  <span style="color: #859900; font-weight: bold;">print</span> <span style="color: #2aa198;">")"</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-12 Mon 15:45</p>
+<p class="date">Created: 2015-10-23 Fri 14:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

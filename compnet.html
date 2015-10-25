@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-14 Wed 20:44 -->
+<!-- 2015-10-25 Sun 17:16 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Networks</title>
@@ -182,9 +182,9 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline22">1. Chapter 1</a>
+<li><a href="#orgheadline23">1. Chapter 1</a>
 <ul>
-<li><a href="#orgheadline13">1.1. Definitions</a>
+<li><a href="#orgheadline14">1.1. Definitions</a>
 <ul>
 <li><a href="#orgheadline1">1.1.1. Network</a></li>
 <li><a href="#orgheadline6">1.1.2. Acess network</a>
@@ -201,33 +201,115 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline10">1.1.6. Forwading</a></li>
 <li><a href="#orgheadline11">1.1.7. Switch contents</a></li>
 <li><a href="#orgheadline12">1.1.8. Throughput</a></li>
+<li><a href="#orgheadline13">1.1.9. Round-trip time (RTT)</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline21">1.2. Concepts</a>
+<li><a href="#orgheadline22">1.2. Concepts</a>
 <ul>
-<li><a href="#orgheadline16">1.2.1. Circuit vs packet switching</a>
+<li><a href="#orgheadline17">1.2.1. Circuit vs packet switching</a>
 <ul>
-<li><a href="#orgheadline14">1.2.1.1. Circuit-switching</a></li>
-<li><a href="#orgheadline15">1.2.1.2. Packet-switching</a></li>
+<li><a href="#orgheadline15">1.2.1.1. Circuit-switching</a></li>
+<li><a href="#orgheadline16">1.2.1.2. Packet-switching</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline17">1.2.2. Internet organization</a></li>
-<li><a href="#orgheadline18">1.2.3. Delay</a></li>
-<li><a href="#orgheadline19">1.2.4. Internet  layering</a></li>
-<li><a href="#orgheadline20">1.2.5. Security</a></li>
+<li><a href="#orgheadline18">1.2.2. Internet organization</a></li>
+<li><a href="#orgheadline19">1.2.3. Delay</a></li>
+<li><a href="#orgheadline20">1.2.4. Internet  layering</a></li>
+<li><a href="#orgheadline21">1.2.5. Security</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#orgheadline52">2. Chapter 2</a>
+<ul>
+<li><a href="#orgheadline26">2.1. Application architectures</a>
+<ul>
+<li><a href="#orgheadline24">2.1.1. Client-server architecturea</a></li>
+<li><a href="#orgheadline25">2.1.2. Peer-to-peer architecture</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline29">2.2. Internet transport services</a>
+<ul>
+<li><a href="#orgheadline27">2.2.1. TCP</a></li>
+<li><a href="#orgheadline28">2.2.2. UDP</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline30">2.3. HTTP</a></li>
+<li><a href="#orgheadline31">2.4. Web caching</a></li>
+<li><a href="#orgheadline32">2.5. Web design</a></li>
+<li><a href="#orgheadline42">2.6. Domain Name Service (DNS)</a>
+<ul>
+<li><a href="#orgheadline33">2.6.1. Why not centralize DNS ?</a></li>
+<li><a href="#orgheadline34">2.6.2. Hierachy</a></li>
+<li><a href="#orgheadline35">2.6.3. Local DNS Server</a></li>
+<li><a href="#orgheadline38">2.6.4. Query</a>
+<ul>
+<li><a href="#orgheadline36">2.6.4.1. Recursive query</a></li>
+<li><a href="#orgheadline37">2.6.4.2. Iterative query</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline39">2.6.5. Caching</a></li>
+<li><a href="#orgheadline40">2.6.6. Design</a></li>
+<li><a href="#orgheadline41">2.6.7. Attacking</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline48">2.7. Peer-to-Peer (P2P) applications</a>
+<ul>
+<li><a href="#orgheadline43">2.7.1. File distribution time</a></li>
+<li><a href="#orgheadline47">2.7.2. BitTorrent</a>
+<ul>
+<li><a href="#orgheadline44">2.7.2.1. Design</a></li>
+<li><a href="#orgheadline45">2.7.2.2. Circular DHT</a></li>
+<li><a href="#orgheadline46">2.7.2.3. Peer churn</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline51">2.8. Socket programming</a>
+<ul>
+<li><a href="#orgheadline49">2.8.1. UDP</a></li>
+<li><a href="#orgheadline50">2.8.2. TCP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline66">3. Chapter 3</a>
+<ul>
+<li><a href="#orgheadline55">3.1. Multiplexing and Demultiplexing</a>
+<ul>
+<li><a href="#orgheadline53">3.1.1. Connection-less Demultiplexing (UDP)</a></li>
+<li><a href="#orgheadline54">3.1.2. Connection-oriented Demultiplexing (TCP)</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline65">3.2. Reliable data transfer</a>
+<ul>
+<li><a href="#orgheadline56">3.2.1. Checksum</a></li>
+<li><a href="#orgheadline57">3.2.2. Acknowledgment</a></li>
+<li><a href="#orgheadline58">3.2.3. Seqence numbers</a></li>
+<li><a href="#orgheadline59">3.2.4. Timeout + ACK</a></li>
+<li><a href="#orgheadline60">3.2.5. RDT elements</a></li>
+<li><a href="#orgheadline61">3.2.6. Stop and wait</a></li>
+<li><a href="#orgheadline64">3.2.7. Pipelining</a>
+<ul>
+<li><a href="#orgheadline62">3.2.7.1. Go-back-N</a></li>
+<li><a href="#orgheadline63">3.2.7.2. Selective Repeat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline67">4. HW1</a></li>
+<li><a href="#orgheadline68">5. HW2</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-2">
-<h2 id="orgheadline22"><span class="section-number-2">1</span> Chapter 1</h2>
+<div id="outline-container-orgheadline23" class="outline-2">
+<h2 id="orgheadline23"><span class="section-number-2">1</span> Chapter 1</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">1.1</span> Definitions</h3>
+</div><div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">1.1</span> Definitions</h3>
 <div class="outline-text-3" id="text-1-1">
 </div><div id="outline-container-orgheadline1" class="outline-4">
 <h4 id="orgheadline1"><span class="section-number-4">1.1.1</span> Network</h4>
@@ -339,12 +421,21 @@ to the minimum link bandwith of network.
 </p>
 </div>
 </div>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">1.1.9</span> Round-trip time (RTT)</h4>
+<div class="outline-text-4" id="text-1-1-9">
+<p>
+Time it takes for a signal to be sent plus the length of time it takes for an
+acknowledgment of that signal to be received.
+</p>
 </div>
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21"><span class="section-number-3">1.2</span> Concepts</h3>
+</div>
+</div>
+<div id="outline-container-orgheadline22" class="outline-3">
+<h3 id="orgheadline22"><span class="section-number-3">1.2</span> Concepts</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="orgheadline16"><span class="section-number-4">1.2.1</span> Circuit vs packet switching</h4>
+</div><div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="section-number-4">1.2.1</span> Circuit vs packet switching</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -372,7 +463,7 @@ to the minimum link bandwith of network.
 </tr>
 
 <tr>
-<td class="org-left">inefficient resource user</td>
+<td class="org-left">inefficient resource use</td>
 <td class="org-left">efficient ressource use</td>
 </tr>
 
@@ -393,8 +484,8 @@ to the minimum link bandwith of network.
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgheadline14" class="outline-5">
-<h5 id="orgheadline14"><span class="section-number-5">1.2.1.1</span> Circuit-switching</h5>
+<div id="outline-container-orgheadline15" class="outline-5">
+<h5 id="orgheadline15"><span class="section-number-5">1.2.1.1</span> Circuit-switching</h5>
 <div class="outline-text-5" id="text-1-2-1-1">
 <ul class="org-ul">
 <li>End to end resources reserved for "call" between source and destination</li>
@@ -415,8 +506,8 @@ to the minimum link bandwith of network.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline15" class="outline-5">
-<h5 id="orgheadline15"><span class="section-number-5">1.2.1.2</span> Packet-switching</h5>
+<div id="outline-container-orgheadline16" class="outline-5">
+<h5 id="orgheadline16"><span class="section-number-5">1.2.1.2</span> Packet-switching</h5>
 <div class="outline-text-5" id="text-1-2-1-2">
 <ul class="org-ul">
 <li>Hosts break application-layer messages into packer
@@ -436,8 +527,8 @@ transmitted on next link</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17"><span class="section-number-4">1.2.2</span> Internet organization</h4>
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18"><span class="section-number-4">1.2.2</span> Internet organization</h4>
 <div class="outline-text-4" id="text-1-2-2">
 
 <div class="figure">
@@ -446,8 +537,8 @@ transmitted on next link</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="orgheadline18"><span class="section-number-4">1.2.3</span> Delay</h4>
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">1.2.3</span> Delay</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 We have that :
@@ -503,13 +594,13 @@ delay <b>infinite</b></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="orgheadline19"><span class="section-number-4">1.2.4</span> Internet  layering</h4>
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">1.2.4</span> Internet  layering</h4>
 <div class="outline-text-4" id="text-1-2-4">
 <ul class="org-ul">
 <li>application : application that exchange <b>messages</b></li>
-<li>transport : transports <b>segments</b> between two apps</li>
-<li>network : move <b>datagrams</b> around the network</li>
+<li>transport : transports <b>segments</b> between <b>processes</b></li>
+<li>network : move <b>datagrams</b> between <b>hosts</b></li>
 <li>link : moves <b>frames</b> across a link</li>
 <li>physical : moves data across a physical medium</li>
 </ul>
@@ -523,8 +614,8 @@ Advantages :
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline20" class="outline-4">
-<h4 id="orgheadline20"><span class="section-number-4">1.2.5</span> Security</h4>
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">1.2.5</span> Security</h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 Different ways of attacking :
@@ -539,9 +630,653 @@ Different ways of attacking :
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline52" class="outline-2">
+<h2 id="orgheadline52"><span class="section-number-2">2</span> Chapter 2</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26"><span class="section-number-3">2.1</span> Application architectures</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">2.1.1</span> Client-server architecturea</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<ul class="org-ul">
+<li>Clear separation of roles</li>
+<li>Server runs on dedicated infrastrure</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">2.1.2</span> Peer-to-peer architecture</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<ul class="org-ul">
+<li>A peer may act both as client and server</li>
+<li>Peer runs on personally owned end-system</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29"><span class="section-number-3">2.2</span> Internet transport services</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Both offers no security and performance (delay and bandwidth) guarantees
+</p>
+</div>
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">2.2.1</span> TCP</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<ul class="org-ul">
+<li>reliable, in-order message delivery</li>
+<li>"connection-oriented" or "stateful"</li>
+<li>flow and congestion control</li>
+<li>Can be persistent or non-persistent (modern browser &rarr; persistent)</li>
+<li>Can be one or multiple connection (mordern browser &rarr; multiple)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">2.2.2</span> UDP</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<ul class="org-ul">
+<li>only the adress of the client/server is stored</li>
+<li>doesn't keep any state about the packet</li>
+<li>lost packets are not retransmitted</li>
+<li>used-in time-critical applications
+<ul class="org-ul">
+<li>voice transmission</li>
+<li>video chat</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="orgheadline30"><span class="section-number-3">2.3</span> HTTP</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>web's application layer protocol</li>
+<li>uses TCP</li>
+<li>Stateles</li>
+<li>Persistent or non persistent
+<ul class="org-ul">
+<li>non persistent at most one object per connection</li>
+<li>persistent multiple object sent over one TCP connection</li>
+</ul></li>
+<li>Request types
+<ul class="org-ul">
+<li>GET: client requests to download a file</li>
+<li>POST : client provides information</li>
+<li>PUT : client requests to upload a file</li>
+<li>DELETE : client requests to delete a file</li>
+</ul></li>
+<li>Response types
+<ul class="org-ul">
+<li>OK</li>
+<li>Not found</li>
+<li>Moved permanently</li>
+<li>Bad request</li>
+<li>&#x2026;</li>
+</ul></li>
+<li>Cookies
+<ul class="org-ul">
+<li>state kept by server</li>
+<li>links previous HTTP requests to the same web client</li>
+<li>privacy issues, user-tracking</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">2.4</span> Web caching</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>cache copies of other web-server files</li>
+<li>act as a web server to nearby web clients</li>
+<li>lower bandwidth usage</li>
+<li>Ensure file is fresh with "conditional GET" request</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><span class="section-number-3">2.5</span> Web design</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Architecture : client-server architecture</li>
+<li>Communication protocol : HTTP requests &amp; responses</li>
+<li>Transport service : TCP (typically with persistent TCP connections)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="orgheadline42"><span class="section-number-3">2.6</span> Domain Name Service (DNS)</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Hostname to IP adress translation
+</p>
+</div>
+<div id="outline-container-orgheadline33" class="outline-4">
+<h4 id="orgheadline33"><span class="section-number-4">2.6.1</span> Why not centralize DNS ?</h4>
+<div class="outline-text-4" id="text-2-6-1">
+<ul class="org-ul">
+<li>single point of failure</li>
+<li>too much traffic volume</li>
+<li>cannot be close to all DNS client</li>
+<li>maintenance</li>
+<li><b>doesn't scale</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline34" class="outline-4">
+<h4 id="orgheadline34"><span class="section-number-4">2.6.2</span> Hierachy</h4>
+<div class="outline-text-4" id="text-2-6-2">
+<ul class="org-ul">
+<li>root servers</li>
+<li>TLD (top-level domain) servers (e.g. .ch servers)</li>
+<li>authoritative servers (e.g. epfl.ch servers)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline35" class="outline-4">
+<h4 id="orgheadline35"><span class="section-number-4">2.6.3</span> Local DNS Server</h4>
+<div class="outline-text-4" id="text-2-6-3">
+<ul class="org-ul">
+<li>does not belong to hierachy</li>
+<li>all ISPs have one</li>
+<li>DNS queries are first sent to it</li>
+<li>acts as a proxy : when getting a mapping to an IP it will store it in order to reuse it for other clients</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline38" class="outline-4">
+<h4 id="orgheadline38"><span class="section-number-4">2.6.4</span> Query</h4>
+<div class="outline-text-4" id="text-2-6-4">
+</div><div id="outline-container-orgheadline36" class="outline-5">
+<h5 id="orgheadline36"><span class="section-number-5">2.6.4.1</span> Recursive query</h5>
+<div class="outline-text-5" id="text-2-6-4-1">
+<ul class="org-ul">
+<li>puts burden of name resolution on contacted name server</li>
+<li>heavy load at upper levels of hierachy</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/compnet_02.png" alt="compnet_02.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline37" class="outline-5">
+<h5 id="orgheadline37"><span class="section-number-5">2.6.4.2</span> Iterative query</h5>
+<div class="outline-text-5" id="text-2-6-4-2">
+<ul class="org-ul">
+<li>contacted server replies with name of server to contact</li>
+<li>"I don't know this name, but ask this server"</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/compnet_03.png" alt="compnet_03.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39"><span class="section-number-4">2.6.5</span> Caching</h4>
+<div class="outline-text-4" id="text-2-6-5">
+<ul class="org-ul">
+<li>Caching of DNS responses at all levels</li>
+<li>Reduces load at all levels</li>
+<li>Reduces delay experienced by DNS clients</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="orgheadline40"><span class="section-number-4">2.6.6</span> Design</h4>
+<div class="outline-text-4" id="text-2-6-6">
+<ul class="org-ul">
+<li>Architecture
+<ul class="org-ul">
+<li>client-server: DNS client - local DNS server</li>
+<li>client-server: local DNS server - hierachy</li>
+</ul></li>
+<li>Communication protocol
+<ul class="org-ul">
+<li>DNS queries &amp; replies</li>
+<li>Resource Records (RR)</li>
+</ul></li>
+<li>Transport service
+<ul class="org-ul">
+<li>UDP</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline41" class="outline-4">
+<h4 id="orgheadline41"><span class="section-number-4">2.6.7</span> Attacking</h4>
+<div class="outline-text-4" id="text-2-6-7">
+<ul class="org-ul">
+<li><b>Impersonation</b> : give the wrong IP adress to the DNS client</li>
+<li><b>DDOS</b> of root server of TLD : make them unavailable to the rest of the world</li>
+<li><b>Poison the cache</b> of a DNS server : increase delay experienced by DNS clients</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline48" class="outline-3">
+<h3 id="orgheadline48"><span class="section-number-3">2.7</span> Peer-to-Peer (P2P) applications</h3>
+<div class="outline-text-3" id="text-2-7">
+</div><div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43"><span class="section-number-4">2.7.1</span> File distribution time</h4>
+<div class="outline-text-4" id="text-2-7-1">
+<p>
+(times it takes to get a copy of the file to all N clients)
+</p>
+
+<div class="figure">
+<p><img src="images/compnet_04.png" alt="compnet_04.png" width="500px" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>Client-server (CS) : time increases <b>linearly</b> with the number of clients</li>
+<li>Peer-to-peer (P2P) : time increases <b>sub-linearly</b> with the numbers of peers</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/compnet_05.png" alt="compnet_05.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline47" class="outline-4">
+<h4 id="orgheadline47"><span class="section-number-4">2.7.2</span> BitTorrent</h4>
+<div class="outline-text-4" id="text-2-7-2">
+<ul class="org-ul">
+<li>file divided into chunks</li>
+<li>peers in torrent send/receive chunks</li>
+<li>Each peer is given an id</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline44" class="outline-5">
+<h5 id="orgheadline44"><span class="section-number-5">2.7.2.1</span> Design</h5>
+<div class="outline-text-5" id="text-2-7-2-1">
+<ul class="org-ul">
+<li>Who gives the metadata ?
+<ul class="org-ul">
+<li>Server
+<ul class="org-ul">
+<li>peers obtains file with <b>metadata</b> from server</li>
+<li>uses content to obtain the data from peers</li>
+</ul></li>
+<li>Set of peers, with help from server
+<ul class="org-ul">
+<li>peer obtains <b>pointer to metadata</b> from servers</li>
+<li>uses pointer to obtain metadata from peers</li>
+<li>uses metadata to obtain the data from peers</li>
+</ul></li>
+</ul></li>
+<li>Who gives the ID's of the peers ?
+<ul class="org-ul">
+<li>server (= <b>tracker</b>) : one node that keeps track of which peers have the given content</li>
+<li>set of peers, thru <b>distributed hash table</b> : distributed structure that
+keeps track of which peers have what content</li>
+</ul></li>
+<li>Who gives the data ?
+<ul class="org-ul">
+<li>set of peers</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline45" class="outline-5">
+<h5 id="orgheadline45"><span class="section-number-5">2.7.2.2</span> Circular DHT</h5>
+<div class="outline-text-5" id="text-2-7-2-2">
+<ul class="org-ul">
+<li>Each peer <i>only</i> aware of immediate successor and predecessor</li>
+<li>"overlay network"</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline46" class="outline-5">
+<h5 id="orgheadline46"><span class="section-number-5">2.7.2.3</span> Peer churn</h5>
+<div class="outline-text-5" id="text-2-7-2-3">
+<ul class="org-ul">
+<li>peers may come and go (churn)</li>
+<li>each peers knows adress of its two sucessors</li>
+<li>each peer periodically pings its two sucessors to check aliveness</li>
+<li>if immediate sucessor leaves, choose next sucessor as new immediate sucessor</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline51" class="outline-3">
+<h3 id="orgheadline51"><span class="section-number-3">2.8</span> Socket programming</h3>
+<div class="outline-text-3" id="text-2-8">
+</div><div id="outline-container-orgheadline49" class="outline-4">
+<h4 id="orgheadline49"><span class="section-number-4">2.8.1</span> UDP</h4>
+<div class="outline-text-4" id="text-2-8-1">
+<ul class="org-ul">
+<li><span class="underline">no connection</span> between client and servers
+<ul class="org-ul">
+<li>no handshake before sending data</li>
+<li>sender explicitly attaches IP adress and port number of the destination to
+each packet</li>
+<li>receiver extracts IP address and port number from the received packet</li>
+</ul></li>
+<li>Transmitted data <span class="underline">may be lost</span> or received <span class="underline">out of order</span></li>
+</ul>
+<p>
+Application viewpoint: UDP provides unreliable transfer of group of bytes (“datagram”) between client and servers
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline50" class="outline-4">
+<h4 id="orgheadline50"><span class="section-number-4">2.8.2</span> TCP</h4>
+<div class="outline-text-4" id="text-2-8-2">
+<ul class="org-ul">
+<li>Client process must contact server
+<ul class="org-ul">
+<li>Create socket, specifying IP address, port number of server process</li>
+<li>Establish connection to server TCP (handshake)</li>
+</ul></li>
+<li>Server process
+<ul class="org-ul">
+<li>Must be running already</li>
+<li>Must have created TCP socket that welcomes client’s contact</li>
+</ul></li>
+<li>Server creates new socket whenever contacted by a client
+-Communication socket used to communicate with that particular client
+<ul class="org-ul">
+<li>Source IP + source port numbers used to distinguish clients</li>
+</ul></li>
+</ul>
+<p>
+Application viewpoint: TCP provides reliable, in-order byte-stream transfer (“pipe”) between client and server
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline66" class="outline-2">
+<h2 id="orgheadline66"><span class="section-number-2">3</span> Chapter 3</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgheadline55" class="outline-3">
+<h3 id="orgheadline55"><span class="section-number-3">3.1</span> Multiplexing and Demultiplexing</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Multiplexing at sender : handle data from multiple sockets, add transport
+header (later used for demultiplexing)</li>
+<li>Demultiplexing at receiver : use header to deliver received segments to
+correct socket</li>
+</ul>
+
+<p>
+<span class="underline">Demultiplexing</span>
+</p>
+
+<ul class="org-ul">
+<li>Host receices IP datagrams
+<ul class="org-ul">
+<li>each datagram has source IP adress, destination IP adress</li>
+<li>each datagram carries one transport-layer segment</li>
+<li>each segment has source, destination port numbers</li>
+</ul></li>
+<li>Host use <b>IP addresses &amp; port numbers</b> to direct segment to appropriate socket</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53"><span class="section-number-4">3.1.1</span> Connection-less Demultiplexing (UDP)</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>Socket has local port number</li>
+<li>Datagram to be sent into UDP socket specifies : destination IP adress +
+destination port number</li>
+<li>UDP socket identified by two-tuple
+<ul class="org-ul">
+<li>(destination IP adress, destination port number)</li>
+<li>Receiver uses destination port number to direct UDP segment to the
+appropriate socket</li>
+</ul></li>
+</ul>
+
+<p>
+Datagrams with <span class="underline">same destination port</span> directed to the <span class="underline">same socket</span> at destination
+</p>
+
+<div class="figure">
+<p><img src="images/compnet_06.png" alt="compnet_06.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline54" class="outline-4">
+<h4 id="orgheadline54"><span class="section-number-4">3.1.2</span> Connection-oriented Demultiplexing (TCP)</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<ul class="org-ul">
+<li>TCP socket identified by 4-tuple :
+<ul class="org-ul">
+<li>(source IP addresse, source port, destination IP address, destination port)</li>
+<li>receiver uses all 4 values to direct segment to appropriate socket</li>
+</ul></li>
+<li>Server waits for connections on "welcoming socket"
+<ul class="org-ul">
+<li>creates new "communication socket" for each new connection</li>
+<li>associates the 4-tuples with the new socket</li>
+</ul></li>
+<li>Example : web servers
+<ul class="org-ul">
+<li>persistent HTTP - different socket for each connection client</li>
+<li>non-persistent HTTP - different socket for each request</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/compnet_07.png" alt="compnet_07.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline65" class="outline-3">
+<h3 id="orgheadline65"><span class="section-number-3">3.2</span> Reliable data transfer</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="outline-container-orgheadline56" class="outline-4">
+<h4 id="orgheadline56"><span class="section-number-4">3.2.1</span> Checksum</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<ul class="org-ul">
+<li>Redundent information
+<ul class="org-ul">
+<li>e.g., the binary sum of all data bytes</li>
+<li>sender adds checksum to each segment</li>
+</ul></li>
+<li>Used to detect (+correct) data corruption
+<ul class="org-ul">
+<li>receiver recomputes checksum to detect corruption</li>
+<li>(potentially uses checksum to correct corruption)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline57" class="outline-4">
+<h4 id="orgheadline57"><span class="section-number-4">3.2.2</span> Acknowledgment</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<ul class="org-ul">
+<li>Feedback from receiver to sender
+<ul class="org-ul">
+<li>receiver determines whether a segment is corrupted</li>
+<li>sens positive or negative ACK</li>
+</ul></li>
+<li>Use to overcome data corruption
+<ul class="org-ul">
+<li>if receiver sends a negative ACK, sender retransmits</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline58" class="outline-4">
+<h4 id="orgheadline58"><span class="section-number-4">3.2.3</span> Seqence numbers</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<ul class="org-ul">
+<li>An identifier for segments
+<ul class="org-ul">
+<li>sender includes a sequence number in each segement</li>
+<li>receiver includes a seqence number in each ACK</li>
+</ul></li>
+<li>Use to disambiguate between segements
+<ul class="org-ul">
+<li>sender indicates whether it sends new segement</li>
+<li>receiver indicates which was the last segment that was correctly received</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline59" class="outline-4">
+<h4 id="orgheadline59"><span class="section-number-4">3.2.4</span> Timeout + ACK</h4>
+<div class="outline-text-4" id="text-3-2-4">
+<ul class="org-ul">
+<li>Timeout = an expected ACK is late
+<ul class="org-ul">
+<li>the receiver communicates to the sender which was the last correct packet it received</li>
+</ul></li>
+<li>Use to overcome <b>data loss</b>
+<ul class="org-ul">
+<li>if the sender's timeout expires, the sender retransmits</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline60" class="outline-4">
+<h4 id="orgheadline60"><span class="section-number-4">3.2.5</span> RDT elements</h4>
+<div class="outline-text-4" id="text-3-2-5">
+<ul class="org-ul">
+<li>Checksums &rarr; detect <b>data corruption</b> at receiver</li>
+<li>ACK + retransmissions &rarr; overcome <b>data corruption</b></li>
+<li>Timeouts + ACK + retransmissions &rarr; overcome <b>data loss</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline61" class="outline-4">
+<h4 id="orgheadline61"><span class="section-number-4">3.2.6</span> Stop and wait</h4>
+<div class="outline-text-4" id="text-3-2-6">
+<ul class="org-ul">
+<li>Poor sender utilization &rarr; the sender does nothing while waiting for
+the receiver's ACK or timeout</li>
+<li>Time it takes : Transmission delay (L/R) + RTT (2x propagation delay)</li>
+<li>Server utilization : transmission of N packets /(transmission + RTT)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline64" class="outline-4">
+<h4 id="orgheadline64"><span class="section-number-4">3.2.7</span> Pipelining</h4>
+<div class="outline-text-4" id="text-3-2-7">
+<p>
+Better sender utilization, the sender sends up to N un-ACKed segments (N =
+sliding window size)
+</p>
+
+<p>
+Then, two ways :
+</p>
+</div>
+<div id="outline-container-orgheadline62" class="outline-5">
+<h5 id="orgheadline62"><span class="section-number-5">3.2.7.1</span> Go-back-N</h5>
+<div class="outline-text-5" id="text-3-2-7-1">
+<ul class="org-ul">
+<li>The receiver accepts 0 out-of-order segmeents</li>
+<li>Acks are <b>cumulative</b>
+<ul class="org-ul">
+<li>ACK for segment 10 indicates that <b>all</b> segements
+until segment 10 have been received</li>
+</ul></li>
+<li>When the sender retransmits, it retransmits <b>all</b> the un-ACK-ed segments</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline63" class="outline-5">
+<h5 id="orgheadline63"><span class="section-number-5">3.2.7.2</span> Selective Repeat</h5>
+<div class="outline-text-5" id="text-3-2-7-2">
+<ul class="org-ul">
+<li>The receiver accepts N-1 out-of-order packets</li>
+<li>Acks are <b>selective</b>
+<ul class="org-ul">
+<li>Ack for segment 10 indicates that segment 10 has been received</li>
+</ul></li>
+<li>When the sender retransmits, it retransmits <b>only one</b> segment</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline67" class="outline-2">
+<h2 id="orgheadline67"><span class="section-number-2">4</span> HW1</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Imagine d<sub>end</sub>-to-end between 2 links is D, imagine now N links, to send P
+packets, time taken is N*D+(P-1)*D, in words, time for the first packet to
+reach destination + time for all the other packets to go from last link to destination
+</p>
+
+<p>
+Max user in a FDM of total speed S and required speed s<sub>req</sub> : S/s<sub>req</sub>
+</p>
+
+<p>
+Max user for TDM : Suppose that the duration of a frame is T sec. Suppose also
+that the number of timeslots in the frame is U. Since the same slot is
+assigned always to the same user, U is also equal to the number of users.
+Therefore, a user that requires s<sub>req</sub> transmitting rate, has to send (T
+∙ s<sub>req</sub>) kbits of data during the timeslot which is assigned to him. On the
+other hand, one may send up to S ∙ T/U kbits during that timeslot. So T ∙
+s<sub>req</sub> &le; S ∙ T/U &rArr; U &le; S/s<sub>req</sub>
+</p>
+
+<p>
+Suppose a system with N users, probability that a user is transmitting is p,
+probability that n user use the link simultaneously : \(\binom{N}{n}\) p<sup>n</sup> (1-p)<sup>N-n</sup>
+</p>
+
+<p>
+Maximum number of bit on a link of speed R (continuous file sending) :
+R∙d<sub>prop</sub>
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline68" class="outline-2">
+<h2 id="orgheadline68"><span class="section-number-2">5</span> HW2</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Time to get ip-address from name (cache empty), with n servers and constant
+delay of D between any two machines (RTT=2D) : 2nD. Now if cache contains name : 2D
+</p>
+
+<p>
+Non persistent HTTP routine : TCP-handshake-TCP-handshake reply (1RTT), GET
+page.html-200 OK (page.html) (1RTT) and then for each element to load :
+TCP-handshake-TCP-handshake reply (1RTT) + GET object&#x2026; - 200 OK (object&#x2026;)
+(1RTT). So time to load a page with n objects = (n+1)*RTT (Where you may need
+to add DNS delay)
+</p>
+
+<p>
+Non persistent HTTP in parallel, n=pk objects, p parallel connections : We
+need to do 2(n/p) = 2k roundtrip, so time is : (DNS delay) + 2RTT (= initial
+handshake + get page.html) + 2k RTT
+</p>
+
+<p>
+Persistent HTTP single connection : (DNS delay) + 2 RTT (=initial handshake +
+get page.html) + RTT (only if transmission delay for sending n requests and n
+replies is negligeable)
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-14 Wed 20:44</p>
+<p class="date">Created: 2015-10-25 Sun 17:16</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

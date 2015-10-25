@@ -893,16 +893,476 @@ Basic operations take time proportional to height: $O(h)$
 
 Each element $x$ has :
 - $x.left$ : pointer to left child
-- $x.right : pointer to right child
+- $x.right$ : pointer to right child
 - $x.p$ : pointer to parent
 - $x.key$ : key
 *** Searching
+*TREE-SEARCH* $(x,k)$
+#+BEGIN_SRC java
+if x == NIL or k == key[x]
+  return x
+if k < x.key
+  return TREE-SEARCH(x.left,k)
+else return TREE-SEARCH(x.right,k)
+#+END_SRC
+
 Running time : $O(h)$
 *** Min and Max
+By key property :
+- Minimum is located in leftmost node
+- Maximum is located in rightmost node
+
+*TREE-MINIMUM* $(x)$
+#+BEGIN_SRC java
+while x.left != NIL
+  x = x.left
+return x
+#+END_SRC
+
+*TREE-MAXIMUM* $(x)$
+#+BEGIN_SRC java
+while x.right != NIL
+  x = x.right
+return x
+#+END_SRC
+
+Running time : $O(h)$
 *** Sucessor and Predecessor
+Sucessor of a node $x$ is the node $y$ sutch that $y.key$ is the
+
+"smallest key" > $x.key$
+
+Two case :
++ $x$ has a non-empty right subtree \rightarrow $x$ 's sucessor is the minimum
+  in the right subtree
++ $x$ has an empty right subtree \rightarrow As long as we go to the left up the
+  tree we're visiting smaller keys. $x$ 's sucessor is $y$ is the  node that $x$
+  is the predecessor of.
+
+*TREE-SUCESSOR* $(x)$
+#+BEGIN_SRC java
+if x.right != NIL
+  return TREE-MINIMUM(x.right)
+y = x.p
+while y != NIL and x == y.right
+  x = y
+  y = y.p
+return y
+#+END_SRC
+
+Running time : $O(h)$
+
+Predecessor is symmetric !
+
 *** Printing
 **** Inorder
+- Print left subtree recursively
+- Print root
+- Print right subtree recursively
+
+*INORDER-TREE-WALK* $(x)$
+#+BEGIN_SRC java
+if x != NIL
+  INORDER-TREE-WALK(x.left)
+  print key[x]
+  INORDER-TREE-WALK(x.right)
+#+END_SRC
+
+Running time : $\theta(n)$
 **** Preorder and Postorder
+*PREORDER-TREE-WALK* $(x)$
+#+BEGIN_SRC java
+if x != NIL
+  print key[x]
+  INORDER-TREE-WALK(x.left)
+  INORDER-TREE-WALK(x.right)
+#+END_SRC
+
+*POSTORDER-TREE-WALK* $(x)$
+#+BEGIN_SRC java
+if x != NIL
+  INORDER-TREE-WALK(x.left)
+  INORDER-TREE-WALK(x.right)
+  print key[x]
+#+END_SRC
 *** Modifying
 **** Inserting
+- Search for $z.key$
+- When arrived at $nil$ insert $z$ at that position
+
+*TREE-INSERT* $(T,z)$
+#+BEGIN_SRC java
+y = NIL
+x = T.root
+while x != NIL
+  y = x
+  if z.key < x.key
+    x = x.left
+  else x = x.right
+z.p = y
+if y == NIL
+  T.root = z // tree T was empty
+elseif z.key < y.key
+  y.left = z
+else y.right = z
+#+END_SRC
+
+Running time : $O(h)$
+
 **** Deleting
+3 cases :
+- If $z$ has no children, remove it
+- if $z$ has one child, then make that child takes $z$ 's position in the tree
+- if $z$ has two children, then find its sucessor $y$ and replace $z$ by $y$
+
+We first need to define a helper function which replace subtree rooted at $u$ with
+that rooted at $v$
+
+*TRANSPLANT* $(T,u,v)$
+#+BEGIN_SRC java
+if u.p == NIL
+  T.root = v
+elseif u == u.p.left
+  u.p.left = v
+else u.p.right = v
+if v != NIL
+  v.p = u.p
+#+END_SRC
+
+Then the actual deletion algorithm :
+
+*TREE-DELETE* $(T,z)$
+#+BEGIN_SRC java
+if z.left == NIL
+  TRANSPLANT(T,z,z.right) // z has no left child
+elseif z.right == NIL
+  TRANSPLANT(T,z,z.left) // z has just a left child
+else // z has two children
+  y = TREE-MINIMUM(z.right) // y is z's sucessor
+  if y.p != z
+    // y lies within z's right subtree but is not the root of this
+    TRANSPLANT(T,y,y.right)
+    y.right = z.right
+    y.right.p = y
+  // Replace z by y
+  TRANSPLANT(T,z,y)
+  y.left = z.left
+  y.left.p = y
+#+END_SRC
+
+Running time : $O(h)$
+** Dynamic programming
+Main idea :
+- Remember calculations already made
+- Saves enormous amounts of computation
+*** Key element in designing a DP-algorithm
+_Optimal substructure :_
+- Show that a solution to a problem consists of making a choice, which leaves
+  one or several subproblems to solve and the optimal solution solves the
+  subproblems optimally \Rightarrow allows us to write a recursion
+
+_Overlapping subproblems :_
+- A naive recursive algorithm may revisit the same (sub)problem over and over.
+- Top-down with memoization : Solve recursively but store each result in a table
+- Bottom-up Sort the subproblems and solve the smaller ones first; that way,
+  when solving a subproblem, have already solved the smaller subproblems we need
+*** Fibonacci numbers
+basic resursive function : same calculations again and again \Rightarrow exponential time !
+
+Solution ? Remember what we have down :
+
+Two ways:
+- Top-down with memoization
+  - Solve recursively but store each result in a table
+  - Memoizing is remembering what we have computed previously
+- Bottom-up
+  - Sort the subproblems and solve the smaller ones first
+  - That way, when solving a subproblem, have already solved the smaller subproblems we need
+**** Memoization
+*MEMOIZED-FIB* $(n)$
+#+BEGIN_SRC python
+Let r = [0...n] be a new array
+for i = 0 to n
+  r[i] = - infinity
+return MEMOIZED-FIB-AUX(n,r)
+#+END_SRC
+
+*MEMOIZED-FIB-AUX* $(n,r)$
+#+BEGIN_SRC python
+if r[n] >= 0
+  return r[n]
+if n = 0 or n = 1
+  ans = 1
+else
+  ans = MEMOIZED-FIB-AUX(n-1,r)+MEMOIZED-FIB-AUX(n-2,r)
+r[n] = ans
+return r[n]
+#+END_SRC
+
+Time analysis :
+- Steps 1-3 in MEMOIZED-FIB takes times $\Theta(n)$
+- Each call to MEMOIZED-FIB-AUX takes $\Theta(1)$
+- Number of calls to MEMOIZED-FIB-AUX is $\Theta(n)$
+- Total time is thus $\Theta(n)$
+**** Bottom-updates
+*BOTTOM-UP-FIB* $(n)$
+#+BEGIN_SRC python
+Let r = [0..n] be a new aray
+r[0] = 1
+r[1] = 1
+for i = 2 to n
+  r[i] = r[i-1]+r[i-2]
+return r[n]
+#+END_SRC
+
+*** Rod cutting
+_Instance_ :
+- A length $n$ of a metal rod
+- A table of prices $p_i$ for rods of lengths $i=1,...n$
+
+_Objective_ : Decide how to cut the rod into pieces and maximize the price
+
+**** Size of the problem
+- There are 2^{n-1} possible solutions - either cut or do not cut after every length unit
+- Need structure for an efficient algorithm
+****  Structural theorem
+If
+- the leftmost cut in an optimal solution is after $i$ units
+- an optimal way to cut a solution of size $n-i$ is into rods of sizes: $s_1,s_2,...,s_k$
+Then, an optimal way to cut our rods is into rods of size: $i,s_1,s_2,...,s_k$
+
+_Proof_
+
+Feasability : Since $s_1,s_2,...,s_k$ is a feasible solution for  an instance of
+size $n-i$:
+
+$\sum\limits_{j=1}^k s_j = n - i$
+
+Hence, $i + \sum\limits_{j=1}^k s_j = n$
+
+Optimality: Let $i,o_1,o_2,...,o_l$ be an optimal solution - exists by
+assumption. Recall that $s_1,s_2,...,s_k$ is an optimal way to cut a rod of size
+$n-1$, thus
+
+$\sum\limits_{j=1}^k p_{s_j} \ge \sum\limits_{j=1}^l p_{o_j}$
+
+Hence, $p_i + \sum\limits_{j=1}^k p_{s_j} \ge p_i + \sum\limits_{j=1}^l p_{o_j}$
+ 
+**** First algorithm
+if we let $r(n)$ be the optimal revenu from a rod of length $n$, then, by 
+the strucural theorem, we can express $r(n)$ recursively as follows
+
+$r(n) = 0$ if $n = 0$
+
+$r(n) = max_{1\le i \le n}\lbrace p_i + r(n-i)\rbrace otherwise $n \ge 1$
+
+*CUT-ROD* $(p,n)$
+#+BEGIN_SRC python
+if n == 0
+  return 0
+q = -infinity
+for i = 1 to n
+  q = max(q,p[i]+ CUT-ROD(p,n-i))
+return q
+#+END_SRC
+
+Procedure is extremly inefficient, exponential
+
+**** Top-down algorithm
+- Keep the recurive structure of the pseudocode
+- Memoize (store) the result of every recursive call
+- At each recursively call, try to avoid work using memoized results
+
+*MEMOIZED-CUT-ROD* $(p,n)$
+#+BEGIN_SRC python
+let r[0..n] be a new array
+for i = 0 to n
+  r[i] = -infinity
+return MEMOIZED-CUT-ROD-AUX(p,n,r)
+#+END_SRC
+
+*MEMOIZED-CUT-ROD-AUX* $(p,n,r)$
+#+BEGIN_SRC python
+if r[n] >= 0
+  return r[n]
+if n == 0
+  q == 0
+else q = -infinity
+  for i = 1 to n
+    q = max(q,p[i]+MEMOIZED-CUT-ROD-AUX(p,n-i,r))
+r[n] = q
+return q
+#+END_SRC
+
+- Initialization takes $O(n)$ time
+- Processing each sub-problems takes linear time in the number of sub-problems
+  it evokes
+- The time complexity is proportional to the numbers of nodes and edges in the
+  subproblem graph
+
+Time complexity : $O(n^2)$
+
+**** Bottom-up
+- Sort the sub-problems by size
+- Solve the smaller ones first
+- When reaching sub-problem, the smaller ones are already solved
+
+*BOTTOM-UP-CUT-ROD* $(p,n)$
+#+BEGIN_SRC python
+let r[0..n] be a new array
+r[0] = 0
+for j = 1 to n
+  q = - infinity
+  for i = 1 to j
+    q = max(q,p[i]+r[j-i]
+  r[j] = q
+return r[n]
+#+END_SRC
+
+Time complexity : $O(n^2)$
+**** Analysis
+- Choice: where to make the leftmost cut
+- Optimal substructure: to obtain an optimal solution, we need to cut the
+  remaining piece in an optimal way
+
+Hence, if we let r (n) be the optimal revenue from a rod of length n, we
+can express $r(n)$ recursively as follows
+
+$r(n) = 0$ if $n = 0$
+
+$r(n) = max_{1\le i \le n} \lbrace p_i + r(n-i)\rbrace$ otherwise if $n \ge 1$
+
+- Overlapping subproblems: Solve recurrence using top-down with memoization or
+  bottom-up which yields an algorithm that runs in time $\Theta(n^2)$
+**** Optimal solution
+- The above algorithms only return the optimal profit
+- Sometimes one needs also to find an optimal solution
+
+_Approach_
+- Each cell of the memoization table corresponds to a decision: the location of
+  the left most cut
+- Store the decision corresponding to every cell in a separate table
+
+*EXTENDED-BOTTOM-UP-CUT-ROD* $(p,n)$
+#+BEGIN_SRC python
+let r[0..n] and s[0..n] be new arrays
+r[0] = 0
+for j = 1 to n
+  q = - infinity
+  for i = 1 to j
+    q = p[i] + r[j-i]
+    s[j] = i
+  r[j] = q
+return r and s
+#+END_SRC
+
+- The table *s* stores the choices that lead to an optimal solution.
+- These decicisions can be extracted from the table
+
+*PRINT-CUT-ROD-SOLUTION* $(p,n)$
+#+BEGIN_SRC python
+(r,s) = EXTENDED-BOTTOM-UP-CUT-ROD(p,n)
+while n > 0
+  print s[n]
+  n = n - s[n]
+#+END_SRC
+
+**** Summary
+- We had a recursive formulation for the optimal value for our problem
+$r(n) = 0$ if $n = 0$
+
+$r(n) = max_{1\le i \le n} \lbrace p_i + r(n-i)\rbrace$ otherwise if $n \ge 1$
+- Speed up the calculations by fillind in a table either "top-down with
+  memoization" or with "bottom-up"
+- Recovered an optimal solution using an additional table
+
+
+*** Matrix-chain multiplication
+**** Cost of matrix multiplication
+$A_{p,q}$\times $B_{q,r}$ = $C_{p,r}$
+
+- Each cell of $C$ requires $q$ scalar multiplication
+- In total : $pqr$ scalar multiplication
+**** Definition
+- Input : A chain $<A_1,A_2,...,A_n>$ of $n$ matrices where for $i=1,2,...,n$
+  matrix $A_i$ has dimension $p_{i-1} \times p_i$
+- Output : A full parenthesization of the product $A_1A_2...A_n$ in a way that
+  minimizes the number of scala multiplications.
+- Remarks :
+  - We are not asked to calculate the product, only find the best parenthesization
+  - The parenthesization can significantly affect the number of multiplications
+- Example :
+  - A product $A_1A_2A_3$ with dimensions: $50 \times 5$, $5 \times 100$ and
+    $100 \times 10$
+  - Calculating $(A_1A_2)A_3$ requires: $50 · 5 · 100 + 50 · 100 · 10 = 75000$
+    scalar multiplications.
+  - Calculating $A_1(A_2A_3)$ requires: $5 · 100 · 10 + 50 · 5 · 10 = 7500$
+    scalar multiplications.
+**** Optimal substructure
+_Theorem_ :
+
+if :
+- the outermost parenthesization in an optimal solution is :
+  $(A_1A_2...A_i)(A_{i+1}A_{i+2}...A_n)$
+- $P_L$ and $P_R$ are optimal parenthesizations for $A_1A_2...A_i$ and
+  $A_{i+1}A_{i+2}...A_n$ respectively
+Then, $((P_L)·(P_R))$ is an optimal parenthesizations for $A_1A_2...A_n$
+
+_Proof_ :
+- Let $((O_L)·(O_R))$ be an optimal parenthesization, where $O_L$ and $O_R$ are
+  parenthesization for $A_1A_2...A_i$ and $A_{i+1}A_{i+2}...A_n$ respectively
+- Let $M(P)$ be the number of scalar multiplications required by a
+  parenthesization
+
+\begin{align*}
+M((O_L)·(O_R)) &= p_0·p_i·p_n+M(O_L)+M(O_R)\\
+&\ge p_0·p_i·p_n+M(P_L)+M(P_R) = M((P_L)·(P_R))
+\end{align*}
+
+- Since $P_L$ and $P_R$ are optimal: $M(P_L) \le M(O_L)$ and $M(P_R) \le M(O_R)$
+**** Recursive formula
+- Let $m[i,j]$ be the optimal number of scalar multiplications for calulating
+  $A_iA_{i+1}....A_J$
+- $m[i,j]$ can be expressed recusively as follows :
+$m[i,j] = 0$ if i = j
+
+$m[i,j] = min_{i\le k < j}\lbrace m[i,k]+m[k+1,j]+p_{i-1}p_kp_j\rbrace$ if i < j
+- Each $m[i,j]$ depend only on subproblems with smaller $j-i$
+- A bottom-up algorithm should solve subproblems in increasing $j-i$ order
+**** Bottom-up algorithm
+*MATRIX-CHAIN-ORDER* $(p)$
+#+BEGIN_SRC python
+n = p.length - 1
+let m[1..n,1..n] and s[1..n,1..n] be new tables
+for i = 1 to n
+  m[i,i] = 0
+for l = 2 to n #l is the chain length
+  for i = 1 to n-l+1
+    j = i + l -1
+    m[i,j] = infinity
+    for k = 1 to j - 1
+      q = m[i,k] + m[k+1,j] + p[i-1]p[k]p[j]
+      if q < m[i,j]
+        m[i,j] = q
+        s[i,j] = k
+return m and s
+#+END_SRC
+**** Print optimal solution
+*PRINT-OPTIMAL-PARENS* $(s,i,j)$
+#+BEGIN_SRC python
+if i == j
+  print "Ai"
+else print "("
+  PRINT-OPTIMAL-PARENS(s, i, s[i,j])
+  PRINT-OPTIMAL-PARENS(s,s[i,j]+1,j)
+  print ")"
+#+END_SRC
+**** Summary
+_Choice_ where to make the outermost parenthesis
+
+$(A_1...A_k)(A_{k+1}...A_n)$
+
+_Optimal substructure_ : to obtain an optimal solution, we to parenthesize the
+two remaining expressions in a optimal way.
+
+Hence, 

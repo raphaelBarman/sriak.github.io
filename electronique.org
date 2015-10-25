@@ -1,8 +1,8 @@
 # -*- mode: org; -*-
 #+TITLE: Electronique
 #+SETUPFILE: htmlnotes.setup
-* Week 1 
-* Week 2
+* Semaine 1 
+* Semaine 2
 ** Valeur
 *** Moyenne
 Dans le cas d'un sinusoïde, la valeur moyenne non redressé ne présente aucun
@@ -28,7 +28,7 @@ Dans le cas d'une sinusoïde, la formule devient $\frac{A}{\sqrt(2)}$
 #+attr_html: :width 500px
 [[file:images/el_ch2_01.png]]
 $U_s = U_0 \cdot \frac{R_2}{R_1+R_2}$
-* Week 3
+* Semaine 3
 ** Condensateur
 $Q = CU$
 
@@ -116,7 +116,7 @@ $I(t) = \frac{U_{IN}-V(t)}{R} = C \frac{dV}{dt}$ ou encore $U_{IN} = V(t) + RC \
 $U_{IN} = R \cdot I(t) + \frac{1}{C} \int I(t) dt + L \frac{dI}{dt}$
 
 $0 = I(t) + RC \frac{dI}{dt} + LC \frac{d^2 I}{dt^2}$
-* Week 4
+* Semaine 4
 ** Terminologie
 *** Le dipôle
 *** Le tripôle
@@ -147,3 +147,5 @@ La valeur de la résistance est obtenue comme précédemment :
 2. En évaluant la résistance vue depuis les bornes du dipôle
 #+attr_html: :width 500px
 [[file:images/el_ch4_norton02.png]]
+* Semaine 5
+** Capacité et signal sinusoïdal

@@ -436,3 +436,79 @@ réflexifs, elle se nourrit de données infra-individuelles insignifiantes en el
 mêmes, pour façonner des modèles de comportements ou profils supra-
 individuels sans jamais en appeler au sujet, sans jamais l’appeler à rendre
 compte par lui-même de ce qu’il est ni de ce qu’il pourrait devenir»
+* Week 6
+** Fait d'actualité
+App Facebook iOS problème de drain de batterie \rightarrow serait dû au fait que
+l'application "traque" la localisation des utilisateurs
+
+Réponse de Facebook : ne traque pas en background d'après eux et possible d'y
+désactiver.
+
+Passerait par le VOIP pour contourner le fait que l'application en background ne
+peut opérer \rightarrow utilisation justifiée par l'application messenger.
+
+Qu'est-ce qui nourrit le désir de collecter de plus en plus de donnée ?
+- Vente de publicités de plus en plus ciblées
+- Se rendre de plus en plus pertinent et donc indispensable
+
+Ambiguité de acteurs entre émancipation (chercher, trouver, rencontrer),
+services personnels et collectes de données. \rightarrow pratiques utilisés par
+d'autres institutions (police, NSA, etc.) \rightarrow Tout cela continue de
+marcher si les gens *font confiance*, indispensable
+
+- Anticipations : que va devenir l'entreprise, de quoi aura-t-elle besoin pour
+  survivre
+** Façonnage social des technologies
+- Les acteurs qui façonnent la technologie peuvent être nombreux
+- t = résultat de choix (conscients ou pas) faits par des acteurs
+  - La manière d'en *parler* (ce qu'elle va faire ou permettre de faire) =
+    signification associées à la technique, vision du futur, promesses
+  - Les *caractéristiques techniques* = choix de conception, de fonctionnalités,
+    d'association à d'autre techiques
+- Différentes trajectoires étaient possibles
+  - Comprendre les contextes qui contribuent à la définir, à la mettre en forme
+    et à orienter le cheminement de son évolution
+  - Inversement, la technique agit et façonne la société
+** One laptop per child
+*** Imagerie
+- Idée d'égalité en matière d'éducation
+- Imagerie pour enfant
+- Couleurs pacifistes
+- Ordinateur comme moyen de réaliser des rêves, mais rêves "occidentaux"
+- Promesses qui semblent un peu irréaliste \rightarrow mots en décalage avec les
+  enfants ? Peut-être hypothèse sur les conséquences 
+- Promesses technologiques = les transformations qui viendront grâce à la
+  nouvelle technologie
+- Technologie qui transforme le monde, _la_ solution pour le futur
+- Discours promotionels \rightarrow emballage marketing \rightarrow sans
+  conséquences pour le fond ?
+*** La technologie ne tombe pas du ciel
+- Décision politique : pourquoi ce choix ?
+- Soutien de donateurs : d'où vient l'argent ?
+- Nombreux acteurs
+*** Résultats
+- Pas concluants
+- Pas de meilleurs résultats scolaire
+- Que ce soit en zone urbaine ou rurale
+- Peut-être que les test cassiques ne marchent pas
+- Enfants de zone rurales ont un peu plus confiance en eux \rightarrow osent
+  poursuivre leurs études
+- N'arrête pas l'extension du projet
+*** Cadrage techno-universaliste
+- Croyance qu'un artéfact technologique unique soit une solution universellement
+  valable pour tous les utilisateurs, dans n'importe quelle contexte que ce soit
+- Cadre et oriente la conception et le développement de la technique
+- L'ordinateur va sauver les enfants de l'illetrisme et de la pauvreté
+*** Fondamentaliste technologique
+- "I have a technology that is goind to change the quality of life"
+*** L'ordinateur seul ?
+Une technologie produit rarement ses effets toute seule. Elle suppose d'être
+associées à d'autres technologies et à un environemment social et matériel
+favorable
+- inscription de la nouvelle technologie dans un contexte localisation
+- Environnement pour la technologie ?
+- Batterie, accessoires ?
+- Web ?
+- Intégration de l'outil dans la classe
+- Instituteur ?
+

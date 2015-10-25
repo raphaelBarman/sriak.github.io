@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-12 Mon 12:27 -->
+<!-- 2015-10-19 Mon 10:02 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -259,9 +259,9 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline40">3.9. Exemple</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline59">4. Chapitre 4</a>
+<li><a href="#orgheadline60">4. Chapitre 4</a>
 <ul>
-<li><a href="#orgheadline42">4.1. Définition :</a></li>
+<li><a href="#orgheadline42">4.1. Définition domaine régulièr :</a></li>
 <li><a href="#orgheadline43">4.2. Ex. Le disque unité (ouvert)</a></li>
 <li><a href="#orgheadline44">4.3. Théorème de Green</a></li>
 <li><a href="#orgheadline45">4.4. Exemple Green</a></li>
@@ -287,6 +287,28 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline57">4.7.5. Étape 5</a></li>
 </ul>
 </li>
+<li><a href="#orgheadline59">4.8. Corrolaire chapitre 3-4</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline69">5. Chapitre 5</a>
+<ul>
+<li><a href="#orgheadline62">5.1. Déf.</a>
+<ul>
+<li><a href="#orgheadline61">5.1.1. Exemple : sphère</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline64">5.2. Def.</a>
+<ul>
+<li><a href="#orgheadline63">5.2.1. Ex.</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline67">5.3. Def.</a>
+<ul>
+<li><a href="#orgheadline65">5.3.1. Exemple 5.3</a></li>
+<li><a href="#orgheadline66">5.3.2. Exemple 5.4</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline68">5.4. Def.</a></li>
 </ul>
 </li>
 </ul>
@@ -885,7 +907,7 @@ Vrai si \(\Omega\) convexe ou simplement connexe.
 <h3 id="orgheadline35"><span class="section-number-3">3.4</span> Théorème</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
-\(\Omega\): ouver connexe
+\(\Omega\): ouvert connexe
 </p>
 
 <p>
@@ -1231,15 +1253,15 @@ Montrer : F ne dérive pas d'un potentiel
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline59" class="outline-2">
-<h2 id="orgheadline59"><span class="section-number-2">4</span> Chapitre 4</h2>
+<div id="outline-container-orgheadline60" class="outline-2">
+<h2 id="orgheadline60"><span class="section-number-2">4</span> Chapitre 4</h2>
 <div class="outline-text-2" id="text-4">
 <p style="font-size:20px">
 <span class="underline"><b>Théorème de Green</b></span>
 </p>
 </div>
 <div id="outline-container-orgheadline42" class="outline-3">
-<h3 id="orgheadline42"><span class="section-number-3">4.1</span> Définition :</h3>
+<h3 id="orgheadline42"><span class="section-number-3">4.1</span> Définition domaine régulièr :</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 \(\Omega \subset \mathbb{R}^2\) est un domaine régulier, s'il existe \(\Omega_0,...,\Omega_m\) (\(m \ge 0\)) des ouverts bornés tels que :
@@ -1335,11 +1357,11 @@ Image cercle
 </p>
 
 <p>
-$F &isin; C'(\bar{\Omega}: \mathbb{R}<sup>2</sup>)
+\(F \in C'(\bar{\Omega}: \mathbb{R}^2)\)
 </p>
 
 <p>
-Alors \(\underset{\Omega}{\int\int} rot F  = \int\limits{\delta\Omega} \vec{F} \cdot d\vec{l}\)
+Alors \(\underset{\Omega}{\int\int} rot F  = \int\limits_{\delta\Omega} \vec{F} \cdot d\vec{l}\)
 </p>
 
 <p>
@@ -1667,10 +1689,346 @@ image domaine 5
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline59" class="outline-3">
+<h3 id="orgheadline59"><span class="section-number-3">4.8</span> Corrolaire chapitre 3-4</h3>
+<div class="outline-text-3" id="text-4-8">
+<p>
+\(\Omega\) : convexe (\(\Omega\) n'a pas de trou)
+</p>
+
+<p>
+Si \(rot F = 0\) alors \(F\) dérive d'un potentiel
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline69" class="outline-2">
+<h2 id="orgheadline69"><span class="section-number-2">5</span> Chapitre 5</h2>
+<div class="outline-text-2" id="text-5">
+<p style="font-size:20px">
+<span class="underline"><b>Intégrales de surfaces</b></span>
+</p>
+</div>
+<div id="outline-container-orgheadline62" class="outline-3">
+<h3 id="orgheadline62"><span class="section-number-3">5.1</span> Déf.</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+\(\Sigma \subset \mathbb{R}^3\) est une surface régulière. S'il existe
+</p>
+
+<ol class="org-ol">
+<li>\(A \subset \mathbb{R}^2\), ouvert borné, tel que \(\delta A\) (\(\delta\) = bord d'un ensemble) une courbe simple fermée régulière</li>
+<li>\(\sigma\): \(\bar{A} \rightarrow \Sigma = \sigma (\bar{A})\): injective et
+\(\sigma_u \times \sigma_{v} \neq 0\) $&sigma;(u,v) = (&sigma;<sub>1</sub>(u,v),
+&sigma;<sub>2</sub>(u,v), &sigma;<sub>3</sub>(u,v))</li>
+</ol>
+
+<p>
+<span class="underline">Notations</span> :
+</p>
+
+<p>
+\(\frac{\sigma_u \wedge \sigma_v}{||\sigma_u \wedge \sigma_v ||}\) : normal unité
+</p>
+
+<p>
+\(\sigma(\delta A) = \sigma \Sigma\) : la frontière de \(\Sigma\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline61" class="outline-4">
+<h4 id="orgheadline61"><span class="section-number-4">5.1.1</span> Exemple : sphère</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+\(\Sigma \lbrace (x,y,z) \in \mathbb{R}^3, x^2+y^2+z^2=1 \rbrace\)
+</p>
+
+<p>
+\((x,y,z) = (\sin \varphi \cos \theta, \sin \varphi \sin \theta, \cos \varphi)\)
+</p>
+
+<p>
+\(\sigma\): \((0,2\pi) \times (0,\pi) \rightarrow \Sigma\) \((\theta,\varphi)
+\rightarrow \sigma(\theta,\varphi)\)
+</p>
+
+<p>
+i) \(A = (0,2\pi) \times (0,\pi)\)
+</p>
+
+<p>
+image carrée cf. Grégoire
+</p>
+
+<p>
+A ouvert 
+</p>
+
+<p>
+ii) \(\sigma(\bar{A}) = \Sigma\)
+</p>
+
+<p>
+On peut vérifier que \(\sigma\) injective sur \(A\)
+</p>
+
+<p>
+\(\sigma_{\theta} \wedge \sigma_{\varphi} \neq 0\) \(\forall (\theta,\varphi)\in A\)
+</p>
+
+<p>
+\(\sigma_{\theta} = (- \sin \varphi \sin \theta, \sin \varphi \cos \theta, 0)\)
+</p>
+
+<p>
+\(\sigma_{\varphi} = (\cos \varphi \cos \theta, \cos \varphi \sin \theta,
+-\sin(\varphi))\)
+</p>
+
+<p>
+<span class="underline">Rappel</span>
+</p>
+
+<p>
+\(x,y \in \mathbb{R}^3\)
+</p>
+
+<p>
+\(x \wedge y = \begin{pmatrix}
+x_1 & x_2 & x_3 \\
+y_1 & y_2 & y_3
+\end{pmatrix} = (x_2y_3-x_3y_2,x_3y_1-x_1y_3,x_1y_2-x_2y_1)\)
+</p>
+
+<p>
+On va vérifier
+</p>
+
+<p>
+\(\sigma_{\theta} \wedge \sigma_{\varphi} \neq (0,0,0) \in \mathbb{R}^3\)
+</p>
+
+<p>
+\(( \sigma_{\theta} \wedge \sigma_{\varphi})_3\)
+</p>
+\begin{align*}
+&= -\sin \varphi \sin \theta \cos \varphi \sin \theta - \sin \varphi \cos \theta \cos \varphi \cos \theta\\
+&= - \sin \varphi \cos \varphi
+\end{align*}
+
+\begin{align*}
+( \sigma_{\theta} \wedge \sigma_{\varphi})_1 = -sin\varphi \cos \theta \sin \varphi \\
+&= - \sin^2 \varphi \cos \theta
+\end{align*}
+
+<p>
+\(( \sigma_{\theta} \wedge \sigma_{\varphi})_2 = - \sin^2 \varphi \sin \theta\)
+</p>
+
+\begin{align*}
+\sigma_{\theta} \wedge \sigma_{\varphi} =
+&= (- \sin \varphi \cos \theta, -\sin^2
+\varphi \sin \theta, -\sin \varphi \cos \varphi)
+&= - \sin \varphi(\sin \varphi \cos \theta, \sin \varphi \sin \theta, \cos \varphi)
+\end{align*}
+
+<p>
+\(||\sigma_{\theta} \wedge \sigma_{\varphi}|| = || \sin \varphi|| \neq 0\) &varphi;
+&isin; (0,&pi;)$
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline64" class="outline-3">
+<h3 id="orgheadline64"><span class="section-number-3">5.2</span> Def.</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+\(\Sigma\) surface régulière par morceau si (intuitivement) elle est union finie
+de surfaces régulière "disjointes".
+</p>
+</div>
+
+<div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63"><span class="section-number-4">5.2.1</span> Ex.</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<p>
+\(\Sigma = \lbrace (x,y,z) : x^2+y^2 = 1, 0 \le z \le h \rbrace\)
+</p>
+
+<p>
+image cylindre
+</p>
+
+<p>
+\(\sigma: [0,2\pi] \times [0,h] \rightarrow \mathbb{R}^2\)
+</p>
+
+<p>
+\((\theta,z) \rightarrow (\cos \theta, \sin \theta, z)\)
+</p>
+
+<p>
+\(\sigma(\bar{A}) = \Sigma\)
+</p>
+
+<p>
+\(\sigma\) : injective \(A\)
+</p>
+
+<p>
+\(\sigma_{\theta} \wedge \sigma_z \neq (0,0,0) \in \mathbb{R}^3\)
+</p>
+
+<p>
+\(\sigma_{\theta} =(-\sin\theta, \cos \theta, 0)\)
+</p>
+
+<p>
+\(\sigma_{z} =(0,0,1)\)
+</p>
+
+<p>
+\(\sigma_{\theta} \wedge \sigma_z = (\cos \theta, \sin \theta, 0)\)
+</p>
+
+<p>
+\(|| \sigma_{\theta} \wedge \sigma_z || = 1 \neq 0\)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline67" class="outline-3">
+<h3 id="orgheadline67"><span class="section-number-3">5.3</span> Def.</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+\(\Sigma\) une surface régulière, \(f: \Sigma \rightarrow \mathbb{R}\) continue.
+</p>
+
+<p>
+On définit :
+</p>
+
+<p>
+\(\underset{\Sigma}{\int\int} f ds := \int\limits_A f(u,v) |\sigma_u \wedge \sigma_v| du dv\)
+</p>
+
+<p>
+(\(\sigma: A \rightarrow \Sigma\): une paramétrisation )
+</p>
+
+<p>
+Si \(\Sigma\) régulière par morceau (\(\Sigma =  \cup \Sigma_i\), \(\Sigma_i\) "disjointes")
+</p>
+
+<p>
+\(\underset{\Sigma}{\int\int} f ds := \Sigma_i \int\limits_{\Sigma} f ds = \Sigma _i \underset{A}{\int\int}f[\sigma_i(u,v)]|\frac{d\sigma_i}{du}\wedge \frac{d\sigma_i}{dv}|dudv\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline65" class="outline-4">
+<h4 id="orgheadline65"><span class="section-number-4">5.3.1</span> Exemple 5.3</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<p>
+\(\Sigma = \lbrace (x,y,z): x^2+y^2+z^2 = R^2 \rbrace\)
+</p>
+
+<p>
+Calculer : \(\int\limits_{\Sigma} 1 =\) aire(\(\Sigma\))
+</p>
+
+<p>
+\(\sigma: [0,2\pi] \times [0,\pi] \rightarrow \mathbb{R}^3\)
+</p>
+
+<p>
+$(&theta;, &varphi;) &rarr; R(sin &varphi; cos &theta;, sin &varphi; sin &theta;, cos &varphi; $
+</p>
+
+<p>
+\(\sigma_{\theta} = \frac{d \sigma}{d\theta} = R I_1\)
+</p>
+
+<p>
+\(\sigma_{\varphi} = \frac{d \sigma}{d\varphi} = R I_2\)
+</p>
+
+<p>
+\(\sigma_{\theta} \wedge \sigma_{\varphi} = RI_1 \times RI_2 = R^2 I_1 \wedge I_2\)
+</p>
+
+<p>
+\(|\sigma_{\theta} \times \sigma_{\varphi}| = R^2 |I_1 \wedge I_2| = R^2 \sin \varphi\)
+</p>
+
+\begin{align*}
+\underset{\Sigma}{\int\int}f ds &= \underset{[0,2\pi] \times [0,\pi]}{\int\int} 1 R^2 \sin \varphi d\theta d\varphi\\
+&= \int\limits_0^{\pi} 2\pi R^2 \sin \varphi d \varphi\\
+&= - 2\pi R^2 \cos \varphi |^{\pi}_0\\
+&= 4 \pi R
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-orgheadline66" class="outline-4">
+<h4 id="orgheadline66"><span class="section-number-4">5.3.2</span> Exemple 5.4</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<p>
+\(\underset{\Sigma}{\int\int}f ds\) \(f(x,y,z) = x^2+y^2+2z\) et
+</p>
+
+<p>
+\(\Sigma \lbrace x^2+y^2 = 1, 0 \le z \le 1 \rbrace\)
+</p>
+
+\begin{align*}
+\underset{\Sigma}{\int\int}f ds &= \underset{[0,2\pi] \times [0,\pi]}{\int\int} f(\cos \theta, \sin \theta, z) 1 d\theta dz\\
+&= \underset{[0,2\pi] \times [0,\pi]}{\int\int} (\cos^2 \theta + \sin^2 \theta + 2z) d \theta dz \\
+&= \int\limits_0^1 \left[ \int\limits_0^{2\pi} (1+2z) d\theta \right] dz \\
+&= \int\limits_0^1 2 \pi (1 + 2z) dz \\
+&= 2\pi 4\pi \frac{z^2}{2}|_0^1\\
+&= 2\pi + 2\pi = 4\pi
+\end{align*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline68" class="outline-3">
+<h3 id="orgheadline68"><span class="section-number-3">5.4</span> Def.</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+\(\Sigma\) regulière par morceau
+</p>
+
+<p>
+\(F: \Sigma \rightarrow \mathbb{R}^3\)
+</p>
+
+<p>
+On définit :
+</p>
+
+<p>
+\(\underset{\Sigma}{\int\int} \vec{F} \vec{ds} = \underset{A}{\int\int} \vec{F}(\sigma(u,v))(\sigma_u\wedge \sigma_v du dv\)
+</p>
+
+<p>
+On a :
+</p>
+
+\begin{align*}
+\underset{\Sigma}{\int\int} \vec{F} \vec{ds} &=
+&= \underset{\Sigma}{\int\int} (\vec{F} \vec{\nu})[\sigma(u,v)] du dv\\
+\text{où $\nu(\sigma(u,v))$}\\
+&= \frac{\sigma_u \wedge \sigma_v}{||\sigma_u \wedge \sigma_v||}
+\end{align*}
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-12 Mon 12:27</p>
+<p class="date">Created: 2015-10-19 Mon 10:02</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

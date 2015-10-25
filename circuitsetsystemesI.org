@@ -314,6 +314,7 @@ $f=1/T$
 
 $x(t) = A \sin(\frac{2\pi}{T}t + \alpha) = A \sin(2\pi ft + \alpha)$
 
+** Grandeurs sinusoïdales
 Unité de mesure: le hertz (Hz)
 - Fréquence angulaire ou pulsation \omega :
   - unité rad/s
@@ -333,6 +334,25 @@ Unité de mesure: le hertz (Hz)
   - Déphasage entre $u(t)$ et $i(t)$: $\varphi = \alpha - \beta$
   - $\varphi > 0$ : tension en avance sur le courant  
   - $\varphi < 0$ : tension en retard sur le courant  
-** Grandeurs sinusoïdales
+- Échauffement d'une résistance
+  - $u(t) = \hat{U} \sin(\omega t)$
+  - $i(t) = \frac{\hat{U}}{R}\sin(\omega t)$
+  - $U = \frac{\hat{U}}{\sqrt{2}} \Rightarrow P = \frac{U^2}{R}$
+  - $\hat{U} = R\hat{I}$ et $I=\frac{\hat{I}}{\sqrt{2}}$ $\Rightarrow P = R I^2$
 ** Importance du régime sinusoïdal
+La produciton d'énergie électrique fournit une tension sinusoïdale: conversion
+énergie mécanique \rightarrow énergie électrique.
+
 ** Réponse d'un circuit linéaire à une excitation sinusoïdale
+Tous les courants et toutes les tensions du circuit seront sinusoïdaux de même fréquence
+* Chapitre 5
+** Phaseurs et nombres complexes
+** Nombres complexes
+*** Notions d'algèbre complexe
+*** Formule d'Euler
+*** Dérivation et intégration
+** Phaseurs
+*** Définition
+*** Opérations élémentaires
+** Impédance et admittance
+

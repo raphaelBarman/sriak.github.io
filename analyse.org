@@ -283,7 +283,7 @@ Vrai si $\Omega$ convexe ou simplement connexe.
 
 "pas vrai": si $\Omega$ n'est pas simplement connexe.
 ** Théorème
-$\Omega$: ouver connexe
+$\Omega$: ouvert connexe
 
 $F: \Omega \rightarrow \mathbb{R}^n: F\in C(\Omega,\mathbb{R}^n)$
 
@@ -464,7 +464,7 @@ $\gamma (t) = (\cos t, \sin t)$ $t \in [0,2\pi]$
 * Chapitre 4
 #+attr_html: :style font-size:20px
 _*Théorème de Green*_
-** Définition :
+** Définition domaine régulièr :
 $\Omega \subset \mathbb{R}^2$ est un domaine régulier, s'il existe $\Omega_0,...,\Omega_m$ ($m \ge 0$) des ouverts bornés tels que :
 
 $\Omega = \Omega_0 \backslash \lbrace \underset{i=1}{\overset{m}{U}} \Omega_i \rbrace$ 
@@ -508,9 +508,9 @@ $\Omega \subset \mathbb{R}^2$ domaine régulier
 
 $\delta \Omega$ a un sens positif.
 
-$F \in C'(\bar{\Omega}: \mathbb{R}^2)
+$F \in C'(\bar{\Omega}: \mathbb{R}^2)$
 
-Alors $\underset{\Omega}{\int\int} rot F  = \int\limits{\delta\Omega} \vec{F} \cdot d\vec{l}$
+Alors $\underset{\Omega}{\int\int} rot F  = \int\limits_{\delta\Omega} \vec{F} \cdot d\vec{l}$
 
 _Rappel_ :
 
@@ -630,6 +630,7 @@ F=(u,0)\\
 \end{align*}
 
 ** Preuve du théorème de Green
+
 *** Étape 1 :
 image domaine
 
@@ -683,3 +684,180 @@ image domaine 4
 *** Étape 5
 
 image domaine 5
+** Corrolaire chapitre 3-4
+$\Omega$ : convexe ($\Omega$ n'a pas de trou)
+
+Si $rot F = 0$ alors $F$ dérive d'un potentiel
+* Chapitre 5
+#+attr_html: :style font-size:20px
+_*Intégrales de surfaces*_
+** Déf.
+$\Sigma \subset \mathbb{R}^3$ est une surface régulière. S'il existe
+
+1) $A \subset \mathbb{R}^2$, ouvert borné, tel que $\delta A$ ($\delta$ = bord d'un ensemble) une courbe simple fermée régulière
+2) $\sigma$: $\bar{A} \rightarrow \Sigma = \sigma (\bar{A})$: injective et
+   $\sigma_u \times \sigma_{v} \neq 0$ $\sigma(u,v) = (\sigma_1(u,v),
+   \sigma_2(u,v), \sigma_3(u,v))
+
+_Notations_ :
+
+$\frac{\sigma_u \wedge \sigma_v}{||\sigma_u \wedge \sigma_v ||}$ : normal unité
+
+$\sigma(\delta A) = \sigma \Sigma$ : la frontière de $\Sigma$
+
+*** Exemple : sphère
+$\Sigma \lbrace (x,y,z) \in \mathbb{R}^3, x^2+y^2+z^2=1 \rbrace$
+
+$(x,y,z) = (\sin \varphi \cos \theta, \sin \varphi \sin \theta, \cos \varphi)$
+
+$\sigma$: $(0,2\pi) \times (0,\pi) \rightarrow \Sigma$ $(\theta,\varphi)
+\rightarrow \sigma(\theta,\varphi)$
+
+i) $A = (0,2\pi) \times (0,\pi)$
+
+image carrée cf. Grégoire
+
+A ouvert 
+
+ii) $\sigma(\bar{A}) = \Sigma$
+
+On peut vérifier que $\sigma$ injective sur $A$
+
+$\sigma_{\theta} \wedge \sigma_{\varphi} \neq 0$ $\forall (\theta,\varphi)\in A$
+
+$\sigma_{\theta} = (- \sin \varphi \sin \theta, \sin \varphi \cos \theta, 0)$
+
+$\sigma_{\varphi} = (\cos \varphi \cos \theta, \cos \varphi \sin \theta,
+-\sin(\varphi))$
+
+_Rappel_
+
+$x,y \in \mathbb{R}^3$
+
+$x \wedge y = \begin{pmatrix}
+x_1 & x_2 & x_3 \\
+y_1 & y_2 & y_3
+\end{pmatrix} = (x_2y_3-x_3y_2,x_3y_1-x_1y_3,x_1y_2-x_2y_1)$
+
+On va vérifier
+
+$\sigma_{\theta} \wedge \sigma_{\varphi} \neq (0,0,0) \in \mathbb{R}^3$
+
+$( \sigma_{\theta} \wedge \sigma_{\varphi})_3$
+\begin{align*}
+&= -\sin \varphi \sin \theta \cos \varphi \sin \theta - \sin \varphi \cos \theta \cos \varphi \cos \theta\\
+&= - \sin \varphi \cos \varphi
+\end{align*}
+
+\begin{align*}
+( \sigma_{\theta} \wedge \sigma_{\varphi})_1 = -sin\varphi \cos \theta \sin \varphi \\
+&= - \sin^2 \varphi \cos \theta
+\end{align*}
+
+$( \sigma_{\theta} \wedge \sigma_{\varphi})_2 = - \sin^2 \varphi \sin \theta$
+
+\begin{align*}
+\sigma_{\theta} \wedge \sigma_{\varphi} =
+&= (- \sin \varphi \cos \theta, -\sin^2
+\varphi \sin \theta, -\sin \varphi \cos \varphi)
+&= - \sin \varphi(\sin \varphi \cos \theta, \sin \varphi \sin \theta, \cos \varphi)
+\end{align*}
+
+$||\sigma_{\theta} \wedge \sigma_{\varphi}|| = || \sin \varphi|| \neq 0$ \varphi
+\in (0,\pi)$
+
+** Def.
+$\Sigma$ surface régulière par morceau si (intuitivement) elle est union finie
+de surfaces régulière "disjointes".
+
+*** Ex.
+$\Sigma = \lbrace (x,y,z) : x^2+y^2 = 1, 0 \le z \le h \rbrace$
+
+image cylindre
+
+$\sigma: [0,2\pi] \times [0,h] \rightarrow \mathbb{R}^2$
+
+$(\theta,z) \rightarrow (\cos \theta, \sin \theta, z)$
+
+$\sigma(\bar{A}) = \Sigma$
+
+$\sigma$ : injective $A$
+
+$\sigma_{\theta} \wedge \sigma_z \neq (0,0,0) \in \mathbb{R}^3$
+
+$\sigma_{\theta} =(-\sin\theta, \cos \theta, 0)$
+
+$\sigma_{z} =(0,0,1)$
+
+$\sigma_{\theta} \wedge \sigma_z = (\cos \theta, \sin \theta, 0)$
+
+$|| \sigma_{\theta} \wedge \sigma_z || = 1 \neq 0$
+
+** Def.
+$\Sigma$ une surface régulière, $f: \Sigma \rightarrow \mathbb{R}$ continue.
+
+On définit :
+
+$\underset{\Sigma}{\int\int} f ds := \int\limits_A f(u,v) |\sigma_u \wedge \sigma_v| du dv$
+
+($\sigma: A \rightarrow \Sigma$: une paramétrisation )
+
+Si $\Sigma$ régulière par morceau ($\Sigma =  \cup \Sigma_i$, $\Sigma_i$ "disjointes")
+
+$\underset{\Sigma}{\int\int} f ds := \Sigma_i \int\limits_{\Sigma} f ds = \Sigma _i \underset{A}{\int\int}f[\sigma_i(u,v)]|\frac{d\sigma_i}{du}\wedge \frac{d\sigma_i}{dv}|dudv$
+
+*** Exemple 5.3
+$\Sigma = \lbrace (x,y,z): x^2+y^2+z^2 = R^2 \rbrace$
+
+Calculer : $\int\limits_{\Sigma} 1 =$ aire($\Sigma$)
+
+$\sigma: [0,2\pi] \times [0,\pi] \rightarrow \mathbb{R}^3$
+
+$(\theta, \varphi) \rightarrow R(\sin \varphi \cos \theta, \sin \varphi \sin \theta, \cos \varphi $
+
+$\sigma_{\theta} = \frac{d \sigma}{d\theta} = R I_1$
+
+$\sigma_{\varphi} = \frac{d \sigma}{d\varphi} = R I_2$
+
+$\sigma_{\theta} \wedge \sigma_{\varphi} = RI_1 \times RI_2 = R^2 I_1 \wedge I_2$
+
+$|\sigma_{\theta} \times \sigma_{\varphi}| = R^2 |I_1 \wedge I_2| = R^2 \sin \varphi$
+
+\begin{align*}
+\underset{\Sigma}{\int\int}f ds &= \underset{[0,2\pi] \times [0,\pi]}{\int\int} 1 R^2 \sin \varphi d\theta d\varphi\\
+&= \int\limits_0^{\pi} 2\pi R^2 \sin \varphi d \varphi\\
+&= - 2\pi R^2 \cos \varphi |^{\pi}_0\\
+&= 4 \pi R
+\end{align*}
+
+*** Exemple 5.4
+$\underset{\Sigma}{\int\int}f ds$ $f(x,y,z) = x^2+y^2+2z$ et
+
+$\Sigma \lbrace x^2+y^2 = 1, 0 \le z \le 1 \rbrace$
+
+\begin{align*}
+\underset{\Sigma}{\int\int}f ds &= \underset{[0,2\pi] \times [0,\pi]}{\int\int} f(\cos \theta, \sin \theta, z) 1 d\theta dz\\
+&= \underset{[0,2\pi] \times [0,\pi]}{\int\int} (\cos^2 \theta + \sin^2 \theta + 2z) d \theta dz \\
+&= \int\limits_0^1 \left[ \int\limits_0^{2\pi} (1+2z) d\theta \right] dz \\
+&= \int\limits_0^1 2 \pi (1 + 2z) dz \\
+&= 2\pi 4\pi \frac{z^2}{2}|_0^1\\
+&= 2\pi + 2\pi = 4\pi
+\end{align*}
+
+** Def.
+$\Sigma$ regulière par morceau
+
+$F: \Sigma \rightarrow \mathbb{R}^3$
+
+On définit :
+
+$\underset{\Sigma}{\int\int} \vec{F} \vec{ds} = \underset{A}{\int\int} \vec{F}(\sigma(u,v))(\sigma_u\wedge \sigma_v du dv$
+
+On a :
+
+\begin{align*}
+\underset{\Sigma}{\int\int} \vec{F} \vec{ds} &=
+&= \underset{\Sigma}{\int\int} (\vec{F} \vec{\nu})[\sigma(u,v)] du dv\\
+\text{où $\nu(\sigma(u,v))$}\\
+&= \frac{\sigma_u \wedge \sigma_v}{||\sigma_u \wedge \sigma_v||}
+\end{align*}
