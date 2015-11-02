@@ -512,3 +512,135 @@ favorable
 - Intégration de l'outil dans la classe
 - Instituteur ?
 
+* Week 7
+#+attr_html: :style font-size:20px
+Histoires et performativités des jeux vidéo
+
+Quels ont été les ressorts de cette industrie récente et comment a-t-elle réussi
+à s’infiltrer dans nos pratiques de tous les jours ?
+
+** 1966-1983 : des premières recherches systèmatiques jusqu'à la "crise des jeux vidéo"
+Le concept de programmes informatiques à visée ludiques est presque concomitant
+à celui d’ordinateur. *Mais* – dans un premier temps – ces programmes avaient
+comme but affiché la promotion et/ou l’exploration d’un nouveau système.
+Donc dans les universités au départ, public restreint.
+
+*** Ralph Baer
+- Issu du domaine télévisuel.
+- Travaille dans le département de recherche. Gagne du
+statut en travaillant pour un équipementier militaire.
+- 1966 Débloque fond pour un laboratoire TV, but construire boîtier se branchant
+  à n'importe qu'elle tv.
+- 1967
+démo d'une "console" et d'un pistolet photoélectrique permettant de "jouer".
+- 1968 /Brown Box/ premier prototype commercialisable, mais son entreprise
+  refuse d'investir.
+- 1970 Magnavox acquière les droits d'exploitation de la /Brown Box/
+- 1972 lancement de la /Magnavox Odyssey/
+- Lancement réussi, mais les ventes retombent rapidement :
+  - Mauvaise stratégie marketing \rightarrow lie la console aux téléviseurs
+    Magnavox, alors que compatible avec tous les téléviseurs
+  - Concurrent : Atari et PONG
+*** Atari et PONG
+- S'inspire de l'Odyssey pour développer un jeu similaire associé à une borne à pièces
+- 1972 : prototype testé et marche très bien
+- 1973 : Magnavox attaque Atari en justice et gagne \rightarrow forcé d'acheter
+  la licence + verser royalties
+- Home Pong : 1975 150'000 unités vendues la première année
+- 1975 : dans la précipitation, Atari ne parvient pas à breveter Home PONG
+- 1978 : 75 versions de PONG coexistent sur des consoles différentes
+*** Cartouche à mémoire
+- 1976 : Fairchild Camera lance pour la première fois une console avec
+  cartouches contenant les jeux
+- Grâce notamment à l’abaissement des coûts des circuits intégrés, ce format
+  deviendra la norme; un détachement s’opère progressivement entre les consoles
+  et les jeux qu’elles supportent
+*** Atari video computer system
+- 1977: Atari lance la Video Computer System
+- Un fois acquis les droits du jeu d’arcade très populaire Space Invaders, la
+ console se vend à plus de 15 millions d’exemplaires entre 1979 et 1982
+*** Durcissement du modèle
+- Consoles de jeu comme dispositifs s’organisant autour d’un microprocesseur
+  avec lesquels sont associés des cartouches disposant de mémoires sur
+  lesquelles sont inscrites un ou plusieurs programmes ludiques
+- Détachement entre consoles et jeux avec deux grandes conséquences:
+  1. Changement dans l’établissement des prix d’achats; give away razors to sell blades
+  2. Développeurs tiers peuvent se greffer sur les supports existants
+*** 1983 : la crise des jeux vidéo
+- Explosion de l’offre vidéo-ludique; jeux souvent bâclés
+- Déploiement du personal computer permettant d’avantages de fonctionnalités
+
+*Crise des jeux vidéo*:
+
+Entre 1982 et 1983, seules 6 parmi les 130 entreprises de développement de jeux
+vidéo récemment créées survivent à la baisse des ventes.
+
+Il faudra attendre les années 1985-1990 pour que l’industrie vidéo-ludique s’en
+remette, notamment via l’arrivée de nouveaux acteurs et de nouveaux modèles marchands
+*** 3 éléments clés
+1. Importance des recherches menées par le laboratoire de Sanders dans la
+  définition des jeux vidéo comme produits de consommation à haute valeur ajoutée
+2. Stratégie « razor/blade » instaurée par Atari en 1977 concomitante au
+  détachement entre « consoles » et « jeux »
+3. Multiplication des développeurs tiers à partir de 1977; explosion de l’offre
+  vidéo-ludique et concurrence accrue des personnal computer
+** 1985-2001 : Nouveaux acteurs et modèles marchands
+*** Nintendo et la NES
+Nintendo met en place quatre mesures afin d'assurer qualité + royalties de
+production pour développeurs tiers :
+1. Puce d'authentification pour chaque cartouche
+2. label de qualité
+3. Interdiction de proposer plus de 5 jeux par années
+4. Définition des prix de tous ces jeux, même de ceux des tiers
+*** Retour gagnant
+- 1989 Sega \rightarrow détrône même Nintendo aux USA
+- Durant les années 90 4 fois plus de revenus pour les jeux consoles que pour PC
+*** "Two-sided plateform"
+- Deux clientèle distincte pour les entreprises de consoles : les consommateurs
+  et les développeurs
+- Principe similaire à celui instauré par d'autres entreprises comme Microsoft
+*** 1995 : Sony et la Playstation
+- Prix de base inférieur à son concurrant Sega
+- Utilisation de disque optique
+- 1er système d'exploitation pour console
+- Mise à disposition d'outils de développement pour les développeurs tiers
+
+\Rightarrow Environnement propice aux développements de jeux vidéo plus
+complexes et innovants
+
+- Succès planétaire : en 2000 81mio de consoles vendues (N64: 29mio,Sega
+  Dreamcast 17mio)
+- Console la plus vendure jusqu'à aujourd'hui: 104 mio
+
+**** Playstation 2 
+- Permet l'utilisation des jeux Playstation 1 \rightarrow attractivité dès lancement
+- Attractivité a motivé développeurs tiers à investir dans la création de jeux
+  pour ce nouveau support *malgré* des outils de développement moins complets...
+*** 2001: Microsoft et la Xbox
+Innovations :
+- Inclusion d'une carte réseau \rightarrow Xbox Live
+- Inclusion d'un disque dur \rightarrow téléchargement de contenus
+- Investissement massifs pour soutenir les développeurs tiers
+*** Éléments clés
+1. Instauration par Nintendo et Sega d’un marché biface qui s’adressent à la
+  fois aux développeurs et aux consommateurs
+2. Tendance forte mise en place par Sony puis renforcée par Microsoft
+  d’investir dans les outils de développements afin de faciliter le travail des
+  développeurs tiers
+3. Depuis le lancement de Xbox Live, importance grandissante des plateformes de
+  services en ligne et du téléchargement de contenus
+
+** 2007-... : Smartphones et Freemium
+- Smartphones \rightarrow nouveaux contextes de consommation et d'acquisition,
+  nouveaux concepts marchands
+*** Freemium
+- Contraction de /free/ et /premium/
+- Principe consistant à proposer des services payants qui influent plus ou moins
+  sur le déroulement d'un cours d'action vidéoludique
+
+\Rightarrow Ce principe marchand s’exprime à chaque fois différemment puisqu’il
+se décline en fonction des cours d’action des jeux vidéo
+*** Éléments clés
+1. Influence grandissante de service en ligne
+2. Boucle de rétroaction: le /freemium/ devient controversé et et suggère de
+   nouvelles stratégies qui particpent à sa transformation

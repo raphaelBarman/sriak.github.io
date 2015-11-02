@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-19 Mon 10:02 -->
+<!-- 2015-11-02 Mon 08:38 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -309,6 +309,30 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#orgheadline68">5.4. Def.</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline77">6. Chapitre 6</a>
+<ul>
+<li><a href="#orgheadline70">6.1. Def.</a></li>
+<li><a href="#orgheadline71">6.2. Théorème de la divergence</a></li>
+<li><a href="#orgheadline72">6.3. Ex. 6.4</a></li>
+<li><a href="#orgheadline74">6.4. Explication du théorème</a>
+<ul>
+<li><a href="#orgheadline73">6.4.1. <span class="todo nilTODO">TODO</span> Debug&#x2026;</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline76">6.5. Propositon</a>
+<ul>
+<li><a href="#orgheadline75">6.5.1. Ex.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline81">7. Chapitre 7</a>
+<ul>
+<li><a href="#orgheadline78">7.1. Théorème de Stokes</a></li>
+<li><a href="#orgheadline79">7.2. Théorème de Stokes-dim 2</a></li>
+<li><a href="#orgheadline80">7.3. Le lien :</a></li>
 </ul>
 </li>
 </ul>
@@ -2010,7 +2034,7 @@ On définit :
 </p>
 
 <p>
-\(\underset{\Sigma}{\int\int} \vec{F} \vec{ds} = \underset{A}{\int\int} \vec{F}(\sigma(u,v))(\sigma_u\wedge \sigma_v du dv\)
+\(\underset{\Sigma}{\int\int} \vec{F} \vec{ds} = \underset{A}{\int\int} \vec{F}(\sigma(u,v))(\sigma_u\wedge \sigma_v) du dv\)
 </p>
 
 <p>
@@ -2018,17 +2042,425 @@ On a :
 </p>
 
 \begin{align*}
-\underset{\Sigma}{\int\int} \vec{F} \vec{ds} &=
-&= \underset{\Sigma}{\int\int} (\vec{F} \vec{\nu})[\sigma(u,v)] du dv\\
+\underset{\Sigma}{\int\int} \vec{F} \vec{ds} &= \underset{\Sigma}{\int\int} (\vec{F} \vec{\nu})[\sigma(u,v)] du dv\\
 \text{où $\nu(\sigma(u,v))$}\\
 &= \frac{\sigma_u \wedge \sigma_v}{||\sigma_u \wedge \sigma_v||}
 \end{align*}
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline77" class="outline-2">
+<h2 id="orgheadline77"><span class="section-number-2">6</span> Chapitre 6</h2>
+<div class="outline-text-2" id="text-6">
+<p style="font-size:20px">
+<span class="underline"><b>Théorème de la divergence</b></span>
+</p>
+</div>
+<div id="outline-container-orgheadline70" class="outline-3">
+<h3 id="orgheadline70"><span class="section-number-3">6.1</span> Def.</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+\(\Omega \subset \mathbb{R}^3\) ouvert, est une domaine régulier s'il existe
+\(\Omega_0,...,\Omega_m\) domaines bornés de \(\mathbb{R}^3\) tels que
+</p>
+
+<ol class="org-ol">
+<li>\(\Omega = \Omega_0 \backslash \left( U_{i=1}^m \Omega_i \right)\)</li>
+<li>\(\bar{\Omega}_i \subset \Omega_0\) \(1\le i \le m\)</li>
+<li>\(\Omega_i \cap \Omega_j \neq \varnothing\) \(i\neq j\), \(1\le i,j \le m\)</li>
+<li>\(\delta \Omega_i = \Sigma_i\) régulière orientable (par morceau), \(\delta
+   \Sigma_i = \varnothing\), \(i=0,...,m\)</li>
+<li>Il existe un champ de normales extérieures \(\nu\) à \(\Omega\), <b>image patate
+orientable avec trous</b></li>
+</ol>
+
+<p>
+<span class="underline">Remarque</span>: Un domaine \(\Omega\) est régulier si \(\forall x_0 \in \delta \Omega\), autour de \(x_0\) on peut considérer \(\Omega\) comme la moitié de l'espace
+<b>dessin omega, demi espace</b>
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline71" class="outline-3">
+<h3 id="orgheadline71"><span class="section-number-3">6.2</span> Théorème de la divergence</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+\(\Omega\) domaine régulier.
+</p>
+
+<p>
+\(F: \bar{\Omega} \rightarrow \mathbb{R}^3\) : \(C^1\)
+</p>
+
+<p>
+Alors :
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int\int} \text{div} F =
+\underset{\delta\Omega}{\int\int} (F \nu) ds\)
+</p>
+
+<p>
+(ici \(\nu\) est le vecteur normal extérieur)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline72" class="outline-3">
+<h3 id="orgheadline72"><span class="section-number-3">6.3</span> Ex. 6.4</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+\(\Omega = \lbrace (x,y,z) \in \mathbb{R}^3: x^2+y^2+z^2 < 1 \rbrace\)
+</p>
+
+<p>
+\(F(x,y,z) = (xy,y,z)\)
+</p>
+
+<p>
+On veut vérifier le théorème de la divergence
+</p>
+
+<p>
+\(div F = y + 1 + 1 = y + 2\)
+</p>
+
+<p>
+\((x,y,z) = (r\cos\theta\sin\varphi,r\sin\theta\sin\varphi,r\cos\varphi)\)
+</p>
+
+\begin{align*}
+\underset{\Omega}{\int\int\int} (y+2) &= \int\limits_0^{1} \int\limits_0^{2\pi}
+\int\limits_0^{\pi} (r\sin\theta\sin\varphi + 2) r^2\sin\varphi d\varphi d\theta
+dr \\
+&= \int\limits_0^{1}r^3 dr \int\limits_0^{2\pi} \sin\theta d\theta \int\limits_0^{\pi} \sin^2\varphi d\varphi \\
+&+ 2 \int\limits_0^{1}r^2 dr \int\limits_0^{2\pi} 1 d\theta \int\limits_0^{\pi} \sin\varphi d\varphi \\
+&= \frac{1}{4} 0 \int\limits_0^{\pi} \sin^2\varphi d\varphi \\
+&+ 2 \frac{1}{3} 2\pi (-\cos\varphi)|^{\pi}_0 = \frac{8\pi}{3}
+\end{align*}
+
+<p>
+\(\sigma(\theta,\varphi)\)
+</p>
+
+<p>
+\(\delta \Omega = \Sigma = \lbrace
+(\cos\theta\sin\varphi,\sin\theta\sin\varphi,\cos\varphi:\ \theta \in [0,2\pi],
+\varphi \in[0,\pi]\rbrace\)
+</p>
+
+<p>
+\(\sigma_{\theta}=\frac{\delta \sigma}{\delta \theta} =
+(-\sin\theta\sin\varphi,\cos\theta\sin\varphi,0)\)
+</p>
+
+<p>
+\(\sigma_{\varphi} = \frac{\delta\sigma}{\delta\varphi} = (\cos\theta\cos\varphi,\sin\theta\cos\varphi,-\sin\varphi)\)
+</p>
+
+\begin{align*}
+\sigma_{\theta} \wedge \sigma_{\varphi} &= \left( \cos\theta\sin\varphi(-\sin\varphi), 0\cos\theta\cos\varphi - \sin\theta\sin^2\varphi,-\sin^2\theta\sin\varphi\cos\varphi-\cos^2\theta\sin\varphi\cos\varphi\right)\\
+&= ( -\cos\theta\sin^2\varphi,-\sin\theta\sin^2\varphi,-\sin\varphi\cos\varphi)\\
+&= - \sin\varphi (\cos\theta\sin\varphi,\sin\theta\sin\varphi,\cos\varphi)
+\end{align*}
+
+<p>
+<b>image normal sphère</b>
+</p>
+
+<p>
+\(\nu (x,y,z) = (x,y,z)\)
+</p>
+
+\begin{align*}
+(F \nu) [\sigma(\theta,\varphi)] &= (xy \cdot x + y \cdot y + z \cdot z) (\sigma(\theta,\varphi))\\
+&= (x^2y+1-x+ 2)[\sigma(\theta,varphi)]\\
+&= \cos^2\theta\sin^2\varphi\sin\theta\sin\varphi + 1 - \cos^2\theta\sin^2\varphi
+\end{align*}
+
+\begin{align*}
+|\sigma_{\theta} \wedge \sigma_{\varphi}| &= |\sin\varphi|(\cos^2\theta\sin^2\varphi+\sin^2\theta\sin^2\varphi + \cos^2\varphi)^{\frac{1}{2}}\\
+&= \sin \varphi
+\end{align*}
+
+\begin{align*}
+\underset{\delta\Omega}{\int\int} (F\nu)ds &= \int\limits_0^{2\pi}\int\limits_0^{\pi} (\cos^2\theta\sin\theta\sin^3\varphi-\cos^2\theta\sin^3\varphi+1)\sin\varphi d\varphi d\theta \\
+&= \int\limits_0^{2\pi}\cos^2\theta\sin\theta \int\limits_0^{\pi} \sin^4 \varphi \text{(   = $I_1$)} \\
+&-\int\limits_0^{2\pi}\cos^2\theta\int\limits_0^{\pi}\sin^3\varphi\text{(   = $I_2$)}\\
+&+\int\limits_0^{2\pi}1\int\limits_0^{\pi}\sin\varphi\text{(    = $I_3$)}
+\end{align*}
+
+<p>
+\(I_1 = \int\limits_0^{2\pi}\cos^2\theta\sin\theta \int\limits_0^{\pi} \sin^4 \varphi\)
+</p>
+
+<p>
+On a, \(\theta_1 = \theta - \pi\)
+\(\int\limits_0^{2\pi}\cos^2\theta\sin\theta = - \int\limits_{-\pi}^{\pi} \cos^2 \theta_1\sin\theta_1 d\theta_1 = 0\) (car fonction pair \(\cdot\) impair = impair et impair s'annule)
+</p>
+
+<p>
+Donc \(I_1 = 0\)
+</p>
+
+<p>
+\(I_2 = -\int\limits_0^{2\pi}\cos^2\theta\int\limits_0^{\pi}\sin^3\varphi\)
+</p>
+
+<p>
+\(\int\limits_0^{2\pi}\cos^2\theta = \int\limits_0^{2\pi} \frac{1+\cos(2\theta)}{2} d\theta = \pi + 0 = \pi\)
+</p>
+
+\begin{align*}
+\int\limits_0^{\pi}\sin^3\varphi &= \left[ -\cos\varphi + \frac{\cos^3\varphi}{3} \right]^{\pi}_0\\
+&= \left[ +1 - \frac{1}{3} \right] - \left[-1 + \frac{1}{3}\right] = \frac{4}{3}
+\end{align*}
+
+<p>
+\(I_2 = -\pi \frac{4}{3} = - \frac{4\pi}{3}\)
+</p>
+
+\begin{align*}
+I_3 &= \int\limits_0^{2\pi}1\int\limits_0^{\pi}\sin\varphi\\
+&= 2\pi [-\cos\varphi]^{\pi}_0\\
+&= 2\pi 2 = 4\pi
+\end{align*}
+
+\begin{align*}
+\underset{\delta\Omega}{\int\int} (F\nu) &= I_1 + I_2 + I_3\\
+&= 0 - \frac{4\pi}{3}+4\pi=\frac{8\pi}{3}\\
+&= \underset{\Omega}{\int\int\int} div F
+\end{align*}
+</div>
+</div>
+<div id="outline-container-orgheadline74" class="outline-3">
+<h3 id="orgheadline74"><span class="section-number-3">6.4</span> Explication du théorème</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+\(\Omega = [a_1,b_1]\times[a_2,b_2]\times[a_3,b_3]\)
+</p>
+
+<p>
+<b>image boite</b>
+</p>
+
+<p>
+On veut vérifier
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int\int} div F = \underset{\delta\Omega}{\int\int} (F\nu)ds\)
+</p>
+
+<p>
+\(\delta\Omega = S_1 \cup S_2 \cup S_3 \cup S_4 \cup S_5 \cup S_6\)
+</p>
+
+<p>
+\(F=(F_1,F_2,F_3)\)
+</p>
+
+<p>
+\(divF = \frac{\delta F_1}{\delta x_1} + \frac{\delta F_2}{\delta x_2} + \frac{\delta F_3}{\delta x_3}\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline73" class="outline-4">
+<h4 id="orgheadline73"><span class="section-number-4">6.4.1</span> <span class="todo TODO">TODO</span> Debug&#x2026;</h4>
+<div class="outline-text-4" id="text-6-4-1">
+\begin{align*}
+\underset{\Omega}{\int\int\int} \frac{\delta F_1}{\delta x_1} &= \int\limits_{a_3}^{b_3}\int\limits_{a_2}^{b_2}\int\limits_{a_1}^{b_1} \frac{\delta F_1}\delta x_1} (x_1,x_2,x_3)\\
+&= \int\limits_{a_3}^{b_3} \int\limits_{a_2}^{b_2} \left[ F_1(b_1,x_2,x_3) - F_1(a_1,x_2,x_3) \right]\\
+&= \int\limits_{a_3}^{b_3} \int\limits_{a_2}^{b_2} F_1(b_1,x_2,x_3) - \int\limits_{a_3}^{b_3}\int\limits_{a_2}^{b_2} F_1(a_1,x_2,x_3)\\
+&= \underset{S_3}{\int\int} F_1 - \underset{S_6}{\int\int} F_1
+\end{align*}
+
+<p>
+\(\underset{S_3}{\int\int} F_1 = \underset{S_3}{\int\int} F \cdot \nu\)
+</p>
+
+<p>
+\(-\underset{S_6}{\int\int} F_1 = \underset{S_6}{\int\int} F \cdot \nu\)
+</p>
+
+<p>
+On vient de montrer 
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int\int} \frac{\delta F_1}{\delta x_1} = \underset{S_3 \cup S_6}{\int\int} F\cdot \nu\)
+</p>
+
+<p>
+Par la même méthode
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int\int} \frac{\delta F_2}{\delta x_2} = \underset{S_2 \cup S_5}{\int\int} F\cdot \nu\)
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int\int} \frac{\delta F_3}{\delta x_3} = \underset{S_1 \cup S_4}{\int\int} F\cdot \nu\)
+</p>
+
+<p>
+Donc
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int\int} div F = \underset{\Omega}{\int\int} F \cdot \nu\)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline76" class="outline-3">
+<h3 id="orgheadline76"><span class="section-number-3">6.5</span> Propositon</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+\(\Omega\) domaine régulier et \(u\) régulier sur \(\bar{\Omega}\)
+</p>
+
+<p>
+\(\underset{\Omega}{\int\int\int} \frac{\delta u}{\delta x_i} = \underset{\Omega}{\int\int} u \nu_1 ds\)
+</p>
+
+<p>
+\(\nu = (\nu_1,\nu_2,\nu_3)\) normal éxtérieur
+</p>
+</div>
+<div id="outline-container-orgheadline75" class="outline-4">
+<h4 id="orgheadline75"><span class="section-number-4">6.5.1</span> Ex.</h4>
+<div class="outline-text-4" id="text-6-5-1">
+<p>
+\(\Omega\) domaine régulier et \(u\) régulier sur \(\bar{\Omega}\)
+</p>
+
+<p>
+$&int;\limits<sub>&Omega;</sub> &Delta; u &sdot; &nu; = &int;\limits<sub>&delta;&Omega;</sub> \frac{\delta u}{\delta \nu} - &int;\limits<sub>&Omega;</sub> &nabla; u &nabla; &nu; $
+</p>
+
+<p>
+$&Delta; u $
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline81" class="outline-2">
+<h2 id="orgheadline81"><span class="section-number-2">7</span> Chapitre 7</h2>
+<div class="outline-text-2" id="text-7">
+<p style="font-size:20px">
+<span class="underline"><b>Théorème de Stokes</b></span>
+</p>
+</div>
+
+<div id="outline-container-orgheadline78" class="outline-3">
+<h3 id="orgheadline78"><span class="section-number-3">7.1</span> Théorème de Stokes</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+\(\underset{A}{\int\int}(\text{rot}\vec{F} \cdot \vec{\nu}) ds = \int\limits_{\delta A} \vec{F} d\vec{l}\)
+</p>
+
+<p>
+\(A\) une surface réguliere par morceau orientable
+</p>
+
+<p>
+\(F=(F_1,F_2,F_3)\) \(:\bar{A} \rightarrow \mathbb{R}^3\)
+</p>
+
+<p>
+dessin surface A
+</p>
+
+<p>
+Deux choses importantes : Choisir la direction de la courbe et de \(\vec{\nu}\) (la normale)
+</p>
+
+<p>
+<span class="underline">Condition de compatibilité :</span> la règle de la main droite
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline79" class="outline-3">
+<h3 id="orgheadline79"><span class="section-number-3">7.2</span> Théorème de Stokes-dim 2</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+dessin A \(\subset \mathbb{R}^2\)
+</p>
+
+<p>
+\(F=(F_1,F_2): \bar{A} \rightarrow \mathbb{R}^2\)
+</p>
+
+<p>
+\(\text{rot} F = \frac{\delta F_2}{\delta x_1} - \delta{\delta F_1}{\delta x_2}\)
+</p>
+
+<p>
+<span class="underline">Thm :</span>
+</p>
+
+<p>
+\(\underset{A}{\int\int} \text{rot}\vec{F} ds = \int\limits_{\delta A} \vec{F} d\vec{l}\)
+</p>
+
+<p>
+Théorème de Stokes dans la dimension 2 est équivalent au théorème de la divergence.
+</p>
+
+<p>
+\(\underset{A}{\int\int} div F = \int\limits_{\delta A} F \nu\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline80" class="outline-3">
+<h3 id="orgheadline80"><span class="section-number-3">7.3</span> Le lien :</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+i) \(A \subset \mathbb{R}^3\), \(AC \lbrace (x_1,x_2,0) \rbrace\)
+</p>
+
+<p>
+dessin A avec axes carthésien
+</p>
+
+<p>
+\(\nu = e_3\)
+</p>
+
+<p>
+\(F:=(F_1,F_2,F_3)\) \(:\bar{A} \rightarrow \mathbb{R}^3\)
+</p>
+
+<p>
+Théorème de Stokes dans la dimension 3 :
+</p>
+
+<p>
+\(\text{rot} F \cdot \nu = \text{rot} F \cdot e_3 = \frac{\delta F_2}{\delta x_1} - \frac{\delta F_1}{\delta x_2}\)
+</p>
+
+<p>
+\(\vec{F} \cdot \vec{dl} = \hat{F} d\hat{l}\)
+</p>
+
+<p>
+\(\gamma: [0,1] \rightarrow \mathbb{R}^3\) \(\lbrace (x_1,x_2,0) \rbrace\)
+</p>
+
+<p>
+\(\gamma = (\gamma_1,\gamma_2,0)\)
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-19 Mon 10:02</p>
+<p class="date">Created: 2015-11-02 Mon 08:38</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -851,13 +851,272 @@ $F: \Sigma \rightarrow \mathbb{R}^3$
 
 On définit :
 
-$\underset{\Sigma}{\int\int} \vec{F} \vec{ds} = \underset{A}{\int\int} \vec{F}(\sigma(u,v))(\sigma_u\wedge \sigma_v du dv$
+$\underset{\Sigma}{\int\int} \vec{F} \vec{ds} = \underset{A}{\int\int} \vec{F}(\sigma(u,v))(\sigma_u\wedge \sigma_v) du dv$
 
 On a :
 
 \begin{align*}
-\underset{\Sigma}{\int\int} \vec{F} \vec{ds} &=
-&= \underset{\Sigma}{\int\int} (\vec{F} \vec{\nu})[\sigma(u,v)] du dv\\
+\underset{\Sigma}{\int\int} \vec{F} \vec{ds} &= \underset{\Sigma}{\int\int} (\vec{F} \vec{\nu})[\sigma(u,v)] du dv\\
 \text{où $\nu(\sigma(u,v))$}\\
 &= \frac{\sigma_u \wedge \sigma_v}{||\sigma_u \wedge \sigma_v||}
 \end{align*}
+* Chapitre 6
+#+attr_html: :style font-size:20px
+_*Théorème de la divergence*_
+** Def. 
+$\Omega \subset \mathbb{R}^3$ ouvert, est une domaine régulier s'il existe
+$\Omega_0,...,\Omega_m$ domaines bornés de $\mathbb{R}^3$ tels que
+
+1. $\Omega = \Omega_0 \backslash \left( U_{i=1}^m \Omega_i \right)$
+2. $\bar{\Omega}_i \subset \Omega_0$ $1\le i \le m$
+3. $\Omega_i \cap \Omega_j \neq \varnothing$ $i\neq j$, $1\le i,j \le m$
+4. $\delta \Omega_i = \Sigma_i$ régulière orientable (par morceau), $\delta
+   \Sigma_i = \varnothing$, $i=0,...,m$
+5. Il existe un champ de normales extérieures $\nu$ à $\Omega$, *image patate
+   orientable avec trous*
+
+_Remarque_: Un domaine $\Omega$ est régulier si $\forall x_0 \in \delta \Omega$, autour de $x_0$ on peut considérer $\Omega$ comme la moitié de l'espace
+*dessin omega, demi espace*
+** Théorème de la divergence
+$\Omega$ domaine régulier.
+
+$F: \bar{\Omega} \rightarrow \mathbb{R}^3$ : $C^1$
+
+Alors :
+
+$\underset{\Omega}{\int\int\int} \text{div} F =
+\underset{\delta\Omega}{\int\int} (F \nu) ds$
+
+(ici $\nu$ est le vecteur normal extérieur)
+
+** Ex. 6.4 
+$\Omega = \lbrace (x,y,z) \in \mathbb{R}^3: x^2+y^2+z^2 < 1 \rbrace$
+
+$F(x,y,z) = (xy,y,z)$
+
+On veut vérifier le théorème de la divergence
+
+$div F = y + 1 + 1 = y + 2$
+
+$(x,y,z) = (r\cos\theta\sin\varphi,r\sin\theta\sin\varphi,r\cos\varphi)$
+
+\begin{align*}
+\underset{\Omega}{\int\int\int} (y+2) &= \int\limits_0^{1} \int\limits_0^{2\pi}
+\int\limits_0^{\pi} (r\sin\theta\sin\varphi + 2) r^2\sin\varphi d\varphi d\theta
+dr \\
+&= \int\limits_0^{1}r^3 dr \int\limits_0^{2\pi} \sin\theta d\theta \int\limits_0^{\pi} \sin^2\varphi d\varphi \\
+&+ 2 \int\limits_0^{1}r^2 dr \int\limits_0^{2\pi} 1 d\theta \int\limits_0^{\pi} \sin\varphi d\varphi \\
+&= \frac{1}{4} 0 \int\limits_0^{\pi} \sin^2\varphi d\varphi \\
+&+ 2 \frac{1}{3} 2\pi (-\cos\varphi)|^{\pi}_0 = \frac{8\pi}{3}
+\end{align*}
+
+$\sigma(\theta,\varphi)$
+
+$\delta \Omega = \Sigma = \lbrace
+(\cos\theta\sin\varphi,\sin\theta\sin\varphi,\cos\varphi:\ \theta \in [0,2\pi],
+\varphi \in[0,\pi]\rbrace$
+
+$\sigma_{\theta}=\frac{\delta \sigma}{\delta \theta} =
+(-\sin\theta\sin\varphi,\cos\theta\sin\varphi,0)$
+
+$\sigma_{\varphi} = \frac{\delta\sigma}{\delta\varphi} = (\cos\theta\cos\varphi,\sin\theta\cos\varphi,-\sin\varphi)$
+
+\begin{align*}
+\sigma_{\theta} \wedge \sigma_{\varphi} &= \left( \cos\theta\sin\varphi(-\sin\varphi), 0\cos\theta\cos\varphi - \sin\theta\sin^2\varphi,-\sin^2\theta\sin\varphi\cos\varphi-\cos^2\theta\sin\varphi\cos\varphi\right)\\
+&= ( -\cos\theta\sin^2\varphi,-\sin\theta\sin^2\varphi,-\sin\varphi\cos\varphi)\\
+&= - \sin\varphi (\cos\theta\sin\varphi,\sin\theta\sin\varphi,\cos\varphi)
+\end{align*}
+
+*image normal sphère*
+
+$\nu (x,y,z) = (x,y,z)$
+
+\begin{align*}
+(F \nu) [\sigma(\theta,\varphi)] &= (xy \cdot x + y \cdot y + z \cdot z) (\sigma(\theta,\varphi))\\
+&= (x^2y+1-x+ 2)[\sigma(\theta,varphi)]\\
+&= \cos^2\theta\sin^2\varphi\sin\theta\sin\varphi + 1 - \cos^2\theta\sin^2\varphi
+\end{align*}
+
+\begin{align*}
+|\sigma_{\theta} \wedge \sigma_{\varphi}| &= |\sin\varphi|(\cos^2\theta\sin^2\varphi+\sin^2\theta\sin^2\varphi + \cos^2\varphi)^{\frac{1}{2}}\\
+&= \sin \varphi
+\end{align*}
+
+\begin{align*}
+\underset{\delta\Omega}{\int\int} (F\nu)ds &= \int\limits_0^{2\pi}\int\limits_0^{\pi} (\cos^2\theta\sin\theta\sin^3\varphi-\cos^2\theta\sin^3\varphi+1)\sin\varphi d\varphi d\theta \\
+&= \int\limits_0^{2\pi}\cos^2\theta\sin\theta \int\limits_0^{\pi} \sin^4 \varphi \text{(   = $I_1$)} \\
+&-\int\limits_0^{2\pi}\cos^2\theta\int\limits_0^{\pi}\sin^3\varphi\text{(   = $I_2$)}\\
+&+\int\limits_0^{2\pi}1\int\limits_0^{\pi}\sin\varphi\text{(    = $I_3$)}
+\end{align*}
+
+$I_1 = \int\limits_0^{2\pi}\cos^2\theta\sin\theta \int\limits_0^{\pi} \sin^4 \varphi$
+
+On a, $\theta_1 = \theta - \pi$
+$\int\limits_0^{2\pi}\cos^2\theta\sin\theta = - \int\limits_{-\pi}^{\pi} \cos^2 \theta_1\sin\theta_1 d\theta_1 = 0$ (car fonction pair $\cdot$ impair = impair et impair s'annule)
+
+Donc $I_1 = 0$
+
+$I_2 = -\int\limits_0^{2\pi}\cos^2\theta\int\limits_0^{\pi}\sin^3\varphi$
+
+$\int\limits_0^{2\pi}\cos^2\theta = \int\limits_0^{2\pi} \frac{1+\cos(2\theta)}{2} d\theta = \pi + 0 = \pi$
+
+\begin{align*}
+\int\limits_0^{\pi}\sin^3\varphi &= \left[ -\cos\varphi + \frac{\cos^3\varphi}{3} \right]^{\pi}_0\\
+&= \left[ +1 - \frac{1}{3} \right] - \left[-1 + \frac{1}{3}\right] = \frac{4}{3}
+\end{align*}
+
+$I_2 = -\pi \frac{4}{3} = - \frac{4\pi}{3}$
+
+\begin{align*}
+I_3 &= \int\limits_0^{2\pi}1\int\limits_0^{\pi}\sin\varphi\\
+&= 2\pi [-\cos\varphi]^{\pi}_0\\
+&= 2\pi 2 = 4\pi
+\end{align*}
+
+\begin{align*}
+\underset{\delta\Omega}{\int\int} (F\nu) &= I_1 + I_2 + I_3\\
+&= 0 - \frac{4\pi}{3}+4\pi=\frac{8\pi}{3}\\
+&= \underset{\Omega}{\int\int\int} div F
+\end{align*}
+** Explication du théorème
+$\Omega = [a_1,b_1]\times[a_2,b_2]\times[a_3,b_3]$
+
+*image boite*
+
+On veut vérifier
+
+$\underset{\Omega}{\int\int\int} div F = \underset{\delta\Omega}{\int\int} (F\nu)ds$
+
+$\delta\Omega = S_1 \cup S_2 \cup S_3 \cup S_4 \cup S_5 \cup S_6$
+
+$F=(F_1,F_2,F_3)$
+
+$divF = \frac{\delta F_1}{\delta x_1} + \frac{\delta F_2}{\delta x_2} + \frac{\delta F_3}{\delta x_3}$
+
+*** TODO Debug...
+\begin{align*}
+\underset{\Omega}{\int\int\int} \frac{\delta F_1}{\delta x_1} &= \int\limits_{a_3}^{b_3}\int\limits_{a_2}^{b_2}\int\limits_{a_1}^{b_1} \frac{\delta F_1}\delta x_1} (x_1,x_2,x_3)\\
+&= \int\limits_{a_3}^{b_3} \int\limits_{a_2}^{b_2} \left[ F_1(b_1,x_2,x_3) - F_1(a_1,x_2,x_3) \right]\\
+&= \int\limits_{a_3}^{b_3} \int\limits_{a_2}^{b_2} F_1(b_1,x_2,x_3) - \int\limits_{a_3}^{b_3}\int\limits_{a_2}^{b_2} F_1(a_1,x_2,x_3)\\
+&= \underset{S_3}{\int\int} F_1 - \underset{S_6}{\int\int} F_1
+\end{align*}
+
+$\underset{S_3}{\int\int} F_1 = \underset{S_3}{\int\int} F \cdot \nu$
+
+$-\underset{S_6}{\int\int} F_1 = \underset{S_6}{\int\int} F \cdot \nu$
+
+On vient de montrer 
+
+$\underset{\Omega}{\int\int\int} \frac{\delta F_1}{\delta x_1} = \underset{S_3 \cup S_6}{\int\int} F\cdot \nu$
+
+Par la même méthode
+
+$\underset{\Omega}{\int\int\int} \frac{\delta F_2}{\delta x_2} = \underset{S_2 \cup S_5}{\int\int} F\cdot \nu$
+
+$\underset{\Omega}{\int\int\int} \frac{\delta F_3}{\delta x_3} = \underset{S_1 \cup S_4}{\int\int} F\cdot \nu$
+
+Donc
+
+$\underset{\Omega}{\int\int\int} div F = \underset{\Omega}{\int\int} F \cdot \nu$
+** Propositon
+$\Omega$ domaine régulier et $u$ régulier sur $\bar{\Omega}$
+
+$\underset{\Omega}{\int\int\int} \frac{\delta u}{\delta x_i} = \underset{\Omega}{\int\int} u \nu_1 ds$
+
+$\nu = (\nu_1,\nu_2,\nu_3)$ normal éxtérieur
+*** Ex.
+$\Omega$ domaine régulier et $u$ régulier sur $\bar{\Omega}$
+
+$\int\limits_{\Omega} \Delta u \cdot \nu = \int\limits_{\delta\Omega} \frac{\delta u}{\delta \nu} - \int\limits_{\Omega} \nabla u \nabla \nu $
+
+$\Delta u $
+* Chapitre 7
+#+attr_html: :style font-size:20px
+_*Théorème de Stokes*_
+
+** Théorème de Stokes
+$\underset{A}{\int\int}(\text{rot}\vec{F} \cdot \vec{\nu}) ds = \int\limits_{\delta A} \vec{F} d\vec{l}$
+
+$A$ une surface réguliere par morceau orientable
+
+$F=(F_1,F_2,F_3)$ $:\bar{A} \rightarrow \mathbb{R}^3$
+
+dessin surface A
+
+Deux choses importantes : Choisir la direction de la courbe et de $\vec{\nu}$ (la normale)
+
+_Condition de compatibilité :_ la règle de la main droite
+
+
+** Théorème de Stokes-dim 2
+dessin A $\subset \mathbb{R}^2$
+
+$F=(F_1,F_2): \bar{A} \rightarrow \mathbb{R}^2$
+
+$\text{rot} F = \frac{\delta F_2}{\delta x_1} - \delta{\delta F_1}{\delta x_2}$
+
+_Thm :_
+
+$\underset{A}{\int\int} \text{rot}\vec{F} ds = \int\limits_{\delta A} \vec{F} d\vec{l}$
+
+Théorème de Stokes dans la dimension 2 est équivalent au théorème de la divergence.
+
+$\underset{A}{\int\int} div F = \int\limits_{\delta A} F \nu$
+
+** Le lien :
+*** $A$ un  plan
+
+$A \subset \mathbb{R}^3$, $AC \lbrace (x_1,x_2,0) \rbrace$
+
+dessin A avec axes carthésien
+
+$\nu = e_3$
+
+$F:=(F_1,F_2,F_3)$ $:\bar{A} \rightarrow \mathbb{R}^3$
+
+$\hat{A} = \lbrace (x_1,x_2): (x_1,x_2,0) \in A \rbrace$
+
+Théorème de Stokes dans la dimension 3 :
+
+$\text{rot} F \cdot \nu = \text{rot} F \cdot e_3 = \frac{\delta F_2}{\delta x_1} - \frac{\delta F_1}{\delta x_2}$
+
+$\vec{F} \cdot \vec{dl} = \hat{F} d\hat{l}$
+
+$\gamma: [0,1] \rightarrow \mathbb{R}^3$ $\lbrace (x_1,x_2,0) \rbrace$
+
+$\gamma = (\gamma_1,\gamma_2,0)$
+
+$\hat{F} = (F_1,F_2)$
+
+$d\hat{l} = (dl_1,dl_2)$
+
+Théorème de Stokes dans dimension 3
+
+($A$ stokes 3d, $\hat{A}$ stokes 2d)
+
+$\underset{A}{\int\int} F \cdot dl = \int\limits_{\delta \hat{A}} \hat{F} \hat{dl}$ 
+
+*** Le cas général
+Dessin A partionné en A_i
+
+$\underset{A_i}{\int\int}(\text{rot} F \nu) \sim \int\limits_{\delta A_i} \vec{F} \vec{dl}$
+
+$\sum\limits_{i} \underset{A_i}{\int\int}(\text{rot} F \nu) \sim \sum\limits_{i} \int\limits_{\delta A_i} \vec{F} \vec{dl}$
+
+$\underset{A}{\int\int}(\text{rot} F \nu) \sim \int\limits_{\delta A} \vec{F} \vec{dl}$
+
+On va vérifier que $\sum\limits_{i} \int\limits_{\delta A_i} \vec{F} \vec{dl} = \int\limits_{\delta A} \vec{F} \vec{dl}$
+
+dessin A partionné en 4
+
+** Exemple : sphère
+
+$\Sigma = \lbrace (x,y,z) \in \mathbb{R}^3: x^2+y^2+z^2 = 1 \rbrace$
+
+$\delta \Sigma = \varnothing$
+
+$F : \Sigma \rightarrow \mathbb{R}^3$
+
+$\underset{\Sigma}{\int\int} (\text{rot} F \nu) = 0$ par $S$ dans 3d
+
+

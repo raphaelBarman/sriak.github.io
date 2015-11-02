@@ -2,7 +2,7 @@
 #+TITLE: Algorithms
 #+SETUPFILE: htmlnotes.setup
 
-* Chapter 1
+* Week 1
 ** Definition of algorithm
 - Relation between an input and an ouptut
 - Tool to solve a computational problem
@@ -11,7 +11,7 @@ Input of the problem.
 Examples :
 - Sorting problem, instance : <32,54,65,23,54>
 - Sum of all numbers to /n/ : 4, /n/ \neq instance
-* Chapter 2
+* Week 2
 ** Insertion sort algorithm
 #+BEGIN_SRC java
 for j = 2 to A.length
@@ -170,10 +170,10 @@ for k = p to r
 Use a *recurrence* equation to describe the running time :
 - Let $T(n)$ = "running time on a problem of size $n$"
 - If $n$ is small enough say $n\le c$ for some constant $c$ then $T(n) = \Theta(1)$ (by brute force)
-- Otherwise, suppose we divide into a sub problems each size $n/b$ (conquer step)
+- Otherwise, suppose we divide into $a$ sub problems each size $n/b$ (conquer step)
 - Let $D(n)$ be the time to divide and let $C(n)$ the time to combine solutions
 - We get the reccurence : $T(n) = \Theta(1)$ if $n\le c$, else $T(n) = aT(n/b)+D(n)+C(n)$
-* Chapter 3 
+* Week 3 
 Consider the following recurrence :
 
 $T(n) = c$ if $n = 1$ \\
@@ -347,7 +347,7 @@ Then, $T(n)$ has the following asymptotic bounds :
 - If $f(n) = \Omega(n^{\log_b a+\epsilon})$ for some constant $\epsilon > 0$ and
   if $a \cdot f(n/b) \le c \cdot f(n)$ for some constant $c < 1$ and all
   sufficiently large $n$, then $T(n) = \Theta(f(n))$
-* Chapter 4 
+* Week 4 
 ** Maximum-subarray problem
 
 "If we let $A[i]$ = (price after day $i$) - (price after day $i-1$) then if the
@@ -553,7 +553,7 @@ Master method $\Rightarrow T(n) = \Theta(n^{\log_2 7})$
 
 Best we could hope for is $\Theta(n^2)$ because we need to at least look at each
 entry of the matrices.
-* Chapter 5
+* Week 5
 ** Heap 
 Heap $A$ ( _not_ garbage-collected storage) is a nearly complete binary trees
 - height $\lceil \log_2(n)\rceil$
@@ -879,7 +879,7 @@ x.prev = L.nil
 - Insertion : $O(1)$
 - Deletion : $O(1)$ (if double linked)
 - Search : $O(n)$
-* Chapter 6
+* Week 6
 ** Binary Search trees
 Encodes a strategy whatever number we look for.
 
@@ -974,15 +974,15 @@ Running time : $\theta(n)$
 #+BEGIN_SRC java
 if x != NIL
   print key[x]
-  INORDER-TREE-WALK(x.left)
-  INORDER-TREE-WALK(x.right)
+  PREORDER-TREE-WALK(x.left)
+  PREORDER-TREE-WALK(x.right)
 #+END_SRC
 
 *POSTORDER-TREE-WALK* $(x)$
 #+BEGIN_SRC java
 if x != NIL
-  INORDER-TREE-WALK(x.left)
-  INORDER-TREE-WALK(x.right)
+  POSTORDER-TREE-WALK(x.left)
+  POSTORDER-TREE-WALK(x.right)
   print key[x]
 #+END_SRC
 *** Modifying
@@ -1064,9 +1064,11 @@ _Optimal substructure :_
 _Overlapping subproblems :_
 - A naive recursive algorithm may revisit the same (sub)problem over and over.
 - Top-down with memoization : Solve recursively but store each result in a table
+  (only solves subproblems really required to find solution)
 - Bottom-up Sort the subproblems and solve the smaller ones first; that way,
   when solving a subproblem, have already solved the smaller subproblems we need
-*** Fibonacci numbers
+  (can be better in term of memory)
+** Fibonacci numbers
 basic resursive function : same calculations again and again \Rightarrow exponential time !
 
 Solution ? Remember what we have down :
@@ -1078,9 +1080,9 @@ Two ways:
 - Bottom-up
   - Sort the subproblems and solve the smaller ones first
   - That way, when solving a subproblem, have already solved the smaller subproblems we need
-**** Memoization
+*** Memoization
 *MEMOIZED-FIB* $(n)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 Let r = [0...n] be a new array
 for i = 0 to n
   r[i] = - infinity
@@ -1088,7 +1090,7 @@ return MEMOIZED-FIB-AUX(n,r)
 #+END_SRC
 
 *MEMOIZED-FIB-AUX* $(n,r)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 if r[n] >= 0
   return r[n]
 if n = 0 or n = 1
@@ -1104,9 +1106,9 @@ Time analysis :
 - Each call to MEMOIZED-FIB-AUX takes $\Theta(1)$
 - Number of calls to MEMOIZED-FIB-AUX is $\Theta(n)$
 - Total time is thus $\Theta(n)$
-**** Bottom-updates
+*** Bottom-updates
 *BOTTOM-UP-FIB* $(n)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 Let r = [0..n] be a new aray
 r[0] = 1
 r[1] = 1
@@ -1115,17 +1117,17 @@ for i = 2 to n
 return r[n]
 #+END_SRC
 
-*** Rod cutting
+** Rod cutting
 _Instance_ :
 - A length $n$ of a metal rod
 - A table of prices $p_i$ for rods of lengths $i=1,...n$
 
 _Objective_ : Decide how to cut the rod into pieces and maximize the price
 
-**** Size of the problem
+*** Size of the problem
 - There are 2^{n-1} possible solutions - either cut or do not cut after every length unit
 - Need structure for an efficient algorithm
-****  Structural theorem
+***  Structural theorem
 If
 - the leftmost cut in an optimal solution is after $i$ units
 - an optimal way to cut a solution of size $n-i$ is into rods of sizes: $s_1,s_2,...,s_k$
@@ -1148,16 +1150,16 @@ $\sum\limits_{j=1}^k p_{s_j} \ge \sum\limits_{j=1}^l p_{o_j}$
 
 Hence, $p_i + \sum\limits_{j=1}^k p_{s_j} \ge p_i + \sum\limits_{j=1}^l p_{o_j}$
  
-**** First algorithm
+*** First algorithm
 if we let $r(n)$ be the optimal revenu from a rod of length $n$, then, by 
 the strucural theorem, we can express $r(n)$ recursively as follows
 
 $r(n) = 0$ if $n = 0$
 
-$r(n) = max_{1\le i \le n}\lbrace p_i + r(n-i)\rbrace otherwise $n \ge 1$
+$r(n) = \text{max}_{1\le i \le n}\lbrace p_i + r(n-i)\rbrace$ otherwise $n \ge 1$
 
 *CUT-ROD* $(p,n)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 if n == 0
   return 0
 q = -infinity
@@ -1168,13 +1170,13 @@ return q
 
 Procedure is extremly inefficient, exponential
 
-**** Top-down algorithm
+*** Top-down algorithm
 - Keep the recurive structure of the pseudocode
 - Memoize (store) the result of every recursive call
 - At each recursively call, try to avoid work using memoized results
 
 *MEMOIZED-CUT-ROD* $(p,n)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 let r[0..n] be a new array
 for i = 0 to n
   r[i] = -infinity
@@ -1182,7 +1184,7 @@ return MEMOIZED-CUT-ROD-AUX(p,n,r)
 #+END_SRC
 
 *MEMOIZED-CUT-ROD-AUX* $(p,n,r)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 if r[n] >= 0
   return r[n]
 if n == 0
@@ -1202,13 +1204,13 @@ return q
 
 Time complexity : $O(n^2)$
 
-**** Bottom-up
+*** Bottom-up
 - Sort the sub-problems by size
 - Solve the smaller ones first
 - When reaching sub-problem, the smaller ones are already solved
 
 *BOTTOM-UP-CUT-ROD* $(p,n)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 let r[0..n] be a new array
 r[0] = 0
 for j = 1 to n
@@ -1220,7 +1222,7 @@ return r[n]
 #+END_SRC
 
 Time complexity : $O(n^2)$
-**** Analysis
+*** Analysis
 - Choice: where to make the leftmost cut
 - Optimal substructure: to obtain an optimal solution, we need to cut the
   remaining piece in an optimal way
@@ -1234,7 +1236,7 @@ $r(n) = max_{1\le i \le n} \lbrace p_i + r(n-i)\rbrace$ otherwise if $n \ge 1$
 
 - Overlapping subproblems: Solve recurrence using top-down with memoization or
   bottom-up which yields an algorithm that runs in time $\Theta(n^2)$
-**** Optimal solution
+*** Optimal solution
 - The above algorithms only return the optimal profit
 - Sometimes one needs also to find an optimal solution
 
@@ -1244,7 +1246,7 @@ _Approach_
 - Store the decision corresponding to every cell in a separate table
 
 *EXTENDED-BOTTOM-UP-CUT-ROD* $(p,n)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 let r[0..n] and s[0..n] be new arrays
 r[0] = 0
 for j = 1 to n
@@ -1260,14 +1262,14 @@ return r and s
 - These decicisions can be extracted from the table
 
 *PRINT-CUT-ROD-SOLUTION* $(p,n)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 (r,s) = EXTENDED-BOTTOM-UP-CUT-ROD(p,n)
 while n > 0
   print s[n]
   n = n - s[n]
 #+END_SRC
 
-**** Summary
+*** Summary
 - We had a recursive formulation for the optimal value for our problem
 $r(n) = 0$ if $n = 0$
 
@@ -1276,15 +1278,14 @@ $r(n) = max_{1\le i \le n} \lbrace p_i + r(n-i)\rbrace$ otherwise if $n \ge 1$
   memoization" or with "bottom-up"
 - Recovered an optimal solution using an additional table
 
-
-*** Matrix-chain multiplication
-**** Cost of matrix multiplication
-$A_{p,q}$\times $B_{q,r}$ = $C_{p,r}$
+** Matrix-chain multiplication
+*** Cost of matrix multiplication
+$A_{p,q} \times B_{q,r}$ = $C_{p,r}$
 
 - Each cell of $C$ requires $q$ scalar multiplication
 - In total : $pqr$ scalar multiplication
-**** Definition
-- Input : A chain $<A_1,A_2,...,A_n>$ of $n$ matrices where for $i=1,2,...,n$
+*** Definition
+- Input : A chain $< A_1,A_2,...,A_n >$ of $n$ matrices where for $i=1,2,...,n$
   matrix $A_i$ has dimension $p_{i-1} \times p_i$
 - Output : A full parenthesization of the product $A_1A_2...A_n$ in a way that
   minimizes the number of scala multiplications.
@@ -1298,7 +1299,7 @@ $A_{p,q}$\times $B_{q,r}$ = $C_{p,r}$
     scalar multiplications.
   - Calculating $A_1(A_2A_3)$ requires: $5 · 100 · 10 + 50 · 5 · 10 = 7500$
     scalar multiplications.
-**** Optimal substructure
+*** Optimal substructure
 _Theorem_ :
 
 if :
@@ -1320,7 +1321,7 @@ M((O_L)·(O_R)) &= p_0·p_i·p_n+M(O_L)+M(O_R)\\
 \end{align*}
 
 - Since $P_L$ and $P_R$ are optimal: $M(P_L) \le M(O_L)$ and $M(P_R) \le M(O_R)$
-**** Recursive formula
+*** Recursive formula
 - Let $m[i,j]$ be the optimal number of scalar multiplications for calulating
   $A_iA_{i+1}....A_J$
 - $m[i,j]$ can be expressed recusively as follows :
@@ -1329,9 +1330,9 @@ $m[i,j] = 0$ if i = j
 $m[i,j] = min_{i\le k < j}\lbrace m[i,k]+m[k+1,j]+p_{i-1}p_kp_j\rbrace$ if i < j
 - Each $m[i,j]$ depend only on subproblems with smaller $j-i$
 - A bottom-up algorithm should solve subproblems in increasing $j-i$ order
-**** Bottom-up algorithm
+*** Bottom-up algorithm
 *MATRIX-CHAIN-ORDER* $(p)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 n = p.length - 1
 let m[1..n,1..n] and s[1..n,1..n] be new tables
 for i = 1 to n
@@ -1347,9 +1348,9 @@ for l = 2 to n #l is the chain length
         s[i,j] = k
 return m and s
 #+END_SRC
-**** Print optimal solution
+*** Print optimal solution
 *PRINT-OPTIMAL-PARENS* $(s,i,j)$
-#+BEGIN_SRC python
+#+BEGIN_SRC java
 if i == j
   print "Ai"
 else print "("
@@ -1357,7 +1358,7 @@ else print "("
   PRINT-OPTIMAL-PARENS(s,s[i,j]+1,j)
   print ")"
 #+END_SRC
-**** Summary
+*** Summary
 _Choice_ where to make the outermost parenthesis
 
 $(A_1...A_k)(A_{k+1}...A_n)$
@@ -1365,4 +1366,166 @@ $(A_1...A_k)(A_{k+1}...A_n)$
 _Optimal substructure_ : to obtain an optimal solution, we to parenthesize the
 two remaining expressions in a optimal way.
 
-Hence, 
+Hence,  if we let $m[i,j]$ be the optimal value for chain multiplication of
+matrices $A_i,...,A_j$, we can express $m[i,j]$ recusively as follows
+
+$m[i,j] = 0$ if $i=j$
+
+$m[i,j] = min_{j\le k < j} \lbrace m[i,k] + m[k+1,j] + p_{i-1}p_k p_j\rbrace$
+otherwise if $i < j$
+
+_Overlapping subproblems_: Solve reccurence using top-down with memoization or
+bottom-up which yields an algorithm that runs in time $\theta(n^3)$
+* Week 7
+** Longest common subsequence
+_Input_ : 2 sequences, $X= < x_1,...x_m >$ and $Y = < y_1,...,y_n >$
+
+_Output_ : A subsequence common to both whose length is longest. (A
+subsequence doesn't have to be consecutive, but it has to be in order)
+*** Brute force
+For every subsequence of $X$, check wether it's a subsequence of $Y$
+
+Time : $\Theta(n2^m)$
+- $2^m$ subsequences of $X$ to check
+- Each subsequence takes $\Theta(n)$ time to check: scan $Y$ for first letter,
+  from there scan for second, and so on
+*** Dynamic programming
+**** Choice
+Start at the end of both words and move to the left step-by-step
+
+*Choice?*
+
+If the same, pick letter to be in the subsequence
+
+If not the same, optimal subsequence can be obtained by moving a step
+to the left in one of the words.
+
+Let $X_i= < x_1 , x_2 , ... , x_i >$ and $Y_i= < y_1,y_2,...,y_j >$
+
+*Choice*
+
+if $x_i = y_j$ then either
+- OPT "matches" $x_i$ with $y_j$ and remaining OPT is in ($X_{i-1},Y_{j-1})$
+- OPT is in $(X_{i-1},Y_j)$ or
+- OPT is in $X_i,Y_{j-1}$
+
+if $x_i \neq x_j$ then either
+- OPT is in $(X_{i-1},Y_j)$ or
+- OPT is in $X_i,Y_{j-1}$
+
+We prove that we can assume that OPT “matches” $x_i$ with $y_j$ if they are
+equal so we can simplify the first case
+
+**** Optimal substructure
+Let $X_i$ and $Y_j$ denote the prefixes $< x_1,x_2,...,x_i >$ and $< y_1,y_2,...,y_j >$
+
+Theorem :
+
+Let $Z_k= < z_1 , z_2 , ... , z_k >$ be any LCS of $X_i$ and $Y_j$
+
+1. If $x_i = y_j$ then $z_k = x_i = y_j$ and $Z_{k-1}$ is an LCS of $X_{i-1}$ and $Y_{j-1}$
+2. If $x_i \neq y_j$ $z_k \neq x_i$ \Rightarrow $Z$ is an LCS of $X_{i-1}$ and $Y_j$
+3. If $x_i \neq y_j$ $z_k \neq y_j$ \Rightarrow $Z$ is an LCS of $X_i$ and $Y_{j-1}$
+
+**** Recursive formulation
+Define $c[i,j] =$ length of LCS of $X_i$ and $Y_j$. We want $c[m,n]$
+
+\begin{align*}
+  c[i,j]=\begin{cases}
+    0 & \text{if $i=0$ or $j=0$}\\
+    c[i-1,j-1] + 1 & \text{if $i,j>0$ and $x_i=y_j$}\\
+    \text{max}(c[i-1,j],c[i,j-1]) & \text{if $i,j>0$ and $x_i \neq y_j$}
+  \end{cases}
+\end{align*}
+
+**** Bottom-up pseudocode
+*LCS-LENGTH* $(X,Y,m,n)$
+#+BEGIN_SRC java
+let b[1..m,1..n] and c[0..m,o..n] be new tables
+for i = 1 to m
+  c[i,0] = 0
+for j = 0 to n
+  c[0,j] = 0
+for i = 1 to m
+  for j = 1 to n
+    if x_i == y_j
+      c[i,j]=c[i-1,j-1]+1
+      b[i,j] = "Top-left arrow"
+    else if c[i-1,j] >= c[i,j-1]
+      c[i,j] = c[i-1,j]
+      b[i,j] = "Top arrow"
+      else
+        c[i,j] = c[i,j-1]
+        b[i,j] = "right arrow"   
+return c and b
+#+END_SRC
+
+- Time dominated by instructions inside the two nested loops which execute
+  $m\cdot n$ times
+- Total time is $\Theta(m\cdot n)$
+
+
+**** Printing solution pseudocode
+*PRINT-LCS* $(b,X,i,j)$
+#+BEGIN_SRC java
+if i == 0 or j == 0
+  return
+if b[i,j] == "top left arrow"
+  PRINT-LCS(b,X,i-1,j-1)
+  print x_i
+else if b[i,j] == "top arrow"
+  PRINT-LCS(b,X,i-1,j)
+else PRINT-LCS(b,X,i,j-1)
+#+END_SRC
+
+- Each recursive call decreases $i + j$ by at least one.
+- Hence, if we let $n = i + j$, the time needed is at most
+$T(n) \le T(n − 1) + \Theta(1)$ which is $O(n)$
+- We can thus print the found string in time $\Theta(|X | + |Y |)$
+(the lower bound following from that $T(n) \ge T(n − 2) + \Theta(1)$)
+
+** Optimal binary search trees
+*** Idea
+- Give sequence $K= < k_1,k_2,...,k_n >$ of $n$ distinct keys, sorted
+  ($k_1 < k_2 < ... < k_n$)
+- Want to build a binary search tree from the keys
+- For $k_i$, have probability $p_i$ that a search is for $k_i$
+- Want BST with minimum expected shared cost
+- Actual cost = # of items examined
+
+For key $k_i$, cost = $\text{depth}_T(k_i) + 1$, where $\text{depth}_T(k_i)$
+denotes the depth of $k_i$ in BST T
+
+\begin{align*}
+\mathbb{E}[\text{search cost in }T] &= \sum\limits_{i=1}^n (\text{depth}_T(k_i) + 1 )p_i\\
+&= 1+ \sum\limits_{i=1}^n (\text{depth}_T(k_i))p_i 
+\end{align*}
+*** Observations
+- Optimal BST might not have smallest height
+- Optimal BST might not have highest-probability key at root
+
+*Build by exhaustive checking ?*
+- Construct each $n-$ node BST
+- For each put in keys
+- Then compute expected search cost
+- But there are exponentially many trees
+*** Optimal substructure
+A binary search tree can be built by first picking the root and then building
+the subtrees recursively
+
+After picking root solution to subtrees must be optimal
+
+add image slide
+
+*** Recursive formulation
+Let $e[i,j]=$ expected search cost of optimal BST of $k_i,...,k_j$
+
+\begin{align*}
+  e[i,j]=\begin{cases}
+    0 & \text{if $i=j+1$}\\
+    \text{min}_{i\le r\le j} \lbrace e[i,r-1]+e[r+1,j]+\sum\limits_{l=i}^j p_{\mathcal{l}} \rbrace & \text{if $i \le j$}
+  \end{cases}
+\end{align*}
+
+*** Bottom-up pseudocode
+
