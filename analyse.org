@@ -1109,7 +1109,8 @@ On va vérifier que $\sum\limits_{i} \int\limits_{\delta A_i} \vec{F} \vec{dl} =
 
 dessin A partionné en 4
 
-** Exemple : sphère
+** Exemple
+*** sphère
 
 $\Sigma = \lbrace (x,y,z) \in \mathbb{R}^3: x^2+y^2+z^2 = 1 \rbrace$
 
@@ -1119,4 +1120,97 @@ $F : \Sigma \rightarrow \mathbb{R}^3$
 
 $\underset{\Sigma}{\int\int} (\text{rot} F \nu) = 0$ par $S$ dans 3d
 
+image sphère
+*** Demi-sphère
+image demi-sphère
 
+$\Sigma = \lbrace (x,y,z) \in \mathbb{R}^3: x^2+y^2+z^2 = 1, z \ge 0 \rbrace$
+
+$\delta \Sigma = \lbrace (x,y,z), z=0, x^2+y^2=1 \rbrace$ 
+
+*** Cylindre
+image cylindre
+
+$\Sigma = \lbrace (x,y,z) \in \mathbb{R}^3: x^2+y^2 = 1, 0 \le z \ge 1 \rbrace$
+
+$\delta \Sigma = \Gamma_0 \cup \Gamma_1$ 
+
+$\Gamma_0 = \lbrace (x,y,z): z = 0, x^2+y^2=1 \rbrace$
+
+$\Gamma_1 = \lbrace (x,y,z): z=1, x^2+y^2=1$
+
+** Ex. 
+$F(x,y,z) = (z,x,y)$
+
+$\Sigma = \lbrace (x,y,z): x^2+y^2+z^2 = 1, z \ge 0 \rbrace$ (demi-sphère)
+
+$\text{rot} F = \begin{pmatrix}
+\delta_x & \delta_y & \delta_z \\
+z & x & y
+\end{pmatrix} = (1,1,1)$
+
+$\gamma: [0,2\pi] \rightarrow \mathbb{R}^3$
+
+$\theta \rightarrow (\cos \theta, \sin \theta, 0)$
+
+\begin{align*}
+\int\limits_{\delta\Sigma} \vec{F}\vec{dl} &= \int\limits_0^{2\pi} F(\gamma(\theta)) \gamma'(\theta) d\theta \\
+&= \int\limits_0^{2\pi}(0,\cos \theta, \sin \theta)(-\sin \theta, \cos \theta,0) d\theta \\
+&= \int\limits_0^{2\pi} \cos^2 \theta d\theta = \int\limits_0^{2\pi} \frac{1+\cos(2\theta)}{2} d\theta = \pi
+\end{align*}
+
+image demi-sphère avec $\nu$
+
+$\nu (x,y,z) = (x,y,z)$, $(x,y,z) \in \Sigma$
+
+$\sigma: [0,2\pi] \times [0,\frac{\pi}{2}] \rightarrow \mathbb{R}^3$
+
+$(\theta, \varphi) \rightarrow (\cos \theta \sin \varphi, \sin\theta\sin\varphi,\cos\varphi)$
+
+\begin{align*}
+(\text{rot} F \nu)(\sigma(\theta,\varphi)) &= (1,1,1)(\cos \theta \sin \varphi, \sin\theta\sin\varphi,\cos\varphi)\\
+&= (\cos \theta \sin \varphi, \sin\theta\sin\varphi,\cos\varphi)
+\end{align*}
+
+$\underset{\Sigma}{\int\int}(\text{rot} F \nu) =
+\int\limits_0^{2\pi}\int\limits_0^{\frac{\pi}{2}}(\text{rot} F
+\nu)(\sigma(\theta,\varphi)) |\sigma_{\theta} \wedge \sigma_{\varphi}|d \theta d
+\varphi$
+
+$\sigma_{\theta} = (-\sin\theta\sin\varphi,\cos\theta\sin\varphi,0)$
+
+$\sigma_{\varphi} = (\cos\theta\cos\varphi,\sin\theta\cos\varphi,-\sin\varphi)$
+
+$\sigma_{\theta} \wedge \sigma_{\varphi} =
+(-\cos\theta\sin^2\varphi,-\sin\theta\sin^2\varphi,-\sin\varphi\cos\varphi) = -\sin\varphi(\cos\theta\sin\varphi,\sin\theta,\sin\varphi,\cos\varphi)$
+
+$|\sigma_{\theta} \wedge \sigma_{\varphi}| = \sin\varphi$
+
+
+\begin{align*}
+\underset{\Sigma}{\int\int}(\text{rot} F \nu) &= \int\limits_0^{2\pi}\int\limits_0^{\frac{\pi}{2}}(\cos\theta\sin\varphi+\sin\theta\sin\varphi+\cos\varphi)\sin\varphi d \theta d \\
+&= \int\limits_0^{2\pi}\int\limits_0^{\frac{\pi}{2}}(\cos\theta\sin^2\varphi+\sin\theta\sin^2\varphi+\cos\varphi\sin\varphi)d \theta d \\
+&= \int\limits_0^{\frac{pi}{2}} \sin^2\varphi \int\limits_0^{2\pi} \cos\theta + \int\limits_0^{\frac{pi}{2}} \sin^2\varphi \int\limits_0^{2\pi} \sin\theta + 2\pi \int\limits_0^{\frac{pi}{2}} \frac{\sin(2\varphi)}{2} d\varphi\\
+&= \frac{\pi}{2} \times [-\cos(2\varphi)]^{\frac{\pi}{2}}_0 = \pi
+\end{align*}
+
+*** Clever way...
+$\Sigma = \lbrace (x,y,z): x^2+y^2+z^2=1, z \ge 0 \rbrace$
+
+$\Sigma_1 = \lbrace (x,y,z): x^2+y^2\le 1, z = 0 \rbrace$
+
+$\hat{\Sigma} = \Sigma \cup \Sigma_1$
+
+$\delta \hat{\Sigma} = \varnothing$
+
+$\underset{\hat{\Sigma}}{\int\int}(\text{rot} F \nu) = 0$
+
+$\underset{\Sigma}{\int\int}(\text{rot} F \nu) +
+\underset{\Sigma_1}{\int\int}(\text{rot} F \nu) = 0$
+
+$\underset{\Sigma}{\int\int}(\text{rot} F \nu) = - \underset{\Sigma_1}{\int\int}(\text{rot} F \nu) = - (-\pi) = \pi$
+
+Car
+
+$\underset{x^2+y^2\le 1}{\int\int}(1,1,1)(0,0,-1) =\underset{x^2+y^2\le
+1}{\int\int} -1 = -1 \pi$

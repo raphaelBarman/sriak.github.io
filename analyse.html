@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-02 Mon 08:38 -->
+<!-- 2015-11-02 Mon 12:32 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -328,11 +328,28 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline81">7. Chapitre 7</a>
+<li><a href="#orgheadline89">7. Chapitre 7</a>
 <ul>
 <li><a href="#orgheadline78">7.1. Théorème de Stokes</a></li>
 <li><a href="#orgheadline79">7.2. Théorème de Stokes-dim 2</a></li>
-<li><a href="#orgheadline80">7.3. Le lien :</a></li>
+<li><a href="#orgheadline82">7.3. Le lien :</a>
+<ul>
+<li><a href="#orgheadline80">7.3.1. \(A\) un  plan</a></li>
+<li><a href="#orgheadline81">7.3.2. Le cas général</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline86">7.4. Exemple</a>
+<ul>
+<li><a href="#orgheadline83">7.4.1. sphère</a></li>
+<li><a href="#orgheadline84">7.4.2. Demi-sphère</a></li>
+<li><a href="#orgheadline85">7.4.3. Cylindre</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline88">7.5. Ex.</a>
+<ul>
+<li><a href="#orgheadline87">7.5.1. Clever way&#x2026;</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2346,8 +2363,8 @@ $&Delta; u $
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline81" class="outline-2">
-<h2 id="orgheadline81"><span class="section-number-2">7</span> Chapitre 7</h2>
+<div id="outline-container-orgheadline89" class="outline-2">
+<h2 id="orgheadline89"><span class="section-number-2">7</span> Chapitre 7</h2>
 <div class="outline-text-2" id="text-7">
 <p style="font-size:20px">
 <span class="underline"><b>Théorème de Stokes</b></span>
@@ -2417,11 +2434,14 @@ Théorème de Stokes dans la dimension 2 est équivalent au théorème de la div
 </div>
 </div>
 
-<div id="outline-container-orgheadline80" class="outline-3">
-<h3 id="orgheadline80"><span class="section-number-3">7.3</span> Le lien :</h3>
+<div id="outline-container-orgheadline82" class="outline-3">
+<h3 id="orgheadline82"><span class="section-number-3">7.3</span> Le lien :</h3>
 <div class="outline-text-3" id="text-7-3">
+</div><div id="outline-container-orgheadline80" class="outline-4">
+<h4 id="orgheadline80"><span class="section-number-4">7.3.1</span> \(A\) un  plan</h4>
+<div class="outline-text-4" id="text-7-3-1">
 <p>
-i) \(A \subset \mathbb{R}^3\), \(AC \lbrace (x_1,x_2,0) \rbrace\)
+\(A \subset \mathbb{R}^3\), \(AC \lbrace (x_1,x_2,0) \rbrace\)
 </p>
 
 <p>
@@ -2434,6 +2454,10 @@ dessin A avec axes carthésien
 
 <p>
 \(F:=(F_1,F_2,F_3)\) \(:\bar{A} \rightarrow \mathbb{R}^3\)
+</p>
+
+<p>
+\(\hat{A} = \lbrace (x_1,x_2): (x_1,x_2,0) \in A \rbrace\)
 </p>
 
 <p>
@@ -2455,12 +2479,262 @@ Théorème de Stokes dans la dimension 3 :
 <p>
 \(\gamma = (\gamma_1,\gamma_2,0)\)
 </p>
+
+<p>
+\(\hat{F} = (F_1,F_2)\)
+</p>
+
+<p>
+\(d\hat{l} = (dl_1,dl_2)\)
+</p>
+
+<p>
+Théorème de Stokes dans dimension 3
+</p>
+
+<p>
+(\(A\) stokes 3d, \(\hat{A}\) stokes 2d)
+</p>
+
+<p>
+\(\underset{A}{\int\int} F \cdot dl = \int\limits_{\delta \hat{A}} \hat{F} \hat{dl}\) 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline81" class="outline-4">
+<h4 id="orgheadline81"><span class="section-number-4">7.3.2</span> Le cas général</h4>
+<div class="outline-text-4" id="text-7-3-2">
+<p>
+Dessin A partionné en A<sub>i</sub>
+</p>
+
+<p>
+\(\underset{A_i}{\int\int}(\text{rot} F \nu) \sim \int\limits_{\delta A_i} \vec{F} \vec{dl}\)
+</p>
+
+<p>
+\(\sum\limits_{i} \underset{A_i}{\int\int}(\text{rot} F \nu) \sim \sum\limits_{i} \int\limits_{\delta A_i} \vec{F} \vec{dl}\)
+</p>
+
+<p>
+\(\underset{A}{\int\int}(\text{rot} F \nu) \sim \int\limits_{\delta A} \vec{F} \vec{dl}\)
+</p>
+
+<p>
+On va vérifier que \(\sum\limits_{i} \int\limits_{\delta A_i} \vec{F} \vec{dl} = \int\limits_{\delta A} \vec{F} \vec{dl}\)
+</p>
+
+<p>
+dessin A partionné en 4
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline86" class="outline-3">
+<h3 id="orgheadline86"><span class="section-number-3">7.4</span> Exemple</h3>
+<div class="outline-text-3" id="text-7-4">
+</div><div id="outline-container-orgheadline83" class="outline-4">
+<h4 id="orgheadline83"><span class="section-number-4">7.4.1</span> sphère</h4>
+<div class="outline-text-4" id="text-7-4-1">
+<p>
+\(\Sigma = \lbrace (x,y,z) \in \mathbb{R}^3: x^2+y^2+z^2 = 1 \rbrace\)
+</p>
+
+<p>
+\(\delta \Sigma = \varnothing\)
+</p>
+
+<p>
+\(F : \Sigma \rightarrow \mathbb{R}^3\)
+</p>
+
+<p>
+\(\underset{\Sigma}{\int\int} (\text{rot} F \nu) = 0\) par \(S\) dans 3d
+</p>
+
+<p>
+image sphère
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline84" class="outline-4">
+<h4 id="orgheadline84"><span class="section-number-4">7.4.2</span> Demi-sphère</h4>
+<div class="outline-text-4" id="text-7-4-2">
+<p>
+image demi-sphère
+</p>
+
+<p>
+\(\Sigma = \lbrace (x,y,z) \in \mathbb{R}^3: x^2+y^2+z^2 = 1, z \ge 0 \rbrace\)
+</p>
+
+<p>
+\(\delta \Sigma = \lbrace (x,y,z), z=0, x^2+y^2=1 \rbrace\) 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline85" class="outline-4">
+<h4 id="orgheadline85"><span class="section-number-4">7.4.3</span> Cylindre</h4>
+<div class="outline-text-4" id="text-7-4-3">
+<p>
+image cylindre
+</p>
+
+<p>
+\(\Sigma = \lbrace (x,y,z) \in \mathbb{R}^3: x^2+y^2 = 1, 0 \le z \ge 1 \rbrace\)
+</p>
+
+<p>
+\(\delta \Sigma = \Gamma_0 \cup \Gamma_1\) 
+</p>
+
+<p>
+\(\Gamma_0 = \lbrace (x,y,z): z = 0, x^2+y^2=1 \rbrace\)
+</p>
+
+<p>
+\(\Gamma_1 = \lbrace (x,y,z): z=1, x^2+y^2=1\)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline88" class="outline-3">
+<h3 id="orgheadline88"><span class="section-number-3">7.5</span> Ex.</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+\(F(x,y,z) = (z,x,y)\)
+</p>
+
+<p>
+\(\Sigma = \lbrace (x,y,z): x^2+y^2+z^2 = 1, z \ge 0 \rbrace\) (demi-sphère)
+</p>
+
+<p>
+\(\text{rot} F = \begin{pmatrix}
+\delta_x & \delta_y & \delta_z \\
+z & x & y
+\end{pmatrix} = (1,1,1)\)
+</p>
+
+<p>
+\(\gamma: [0,2\pi] \rightarrow \mathbb{R}^3\)
+</p>
+
+<p>
+\(\theta \rightarrow (\cos \theta, \sin \theta, 0)\)
+</p>
+
+\begin{align*}
+\int\limits_{\delta\Sigma} \vec{F}\vec{dl} &= \int\limits_0^{2\pi} F(\gamma(\theta)) \gamma'(\theta) d\theta \\
+&= \int\limits_0^{2\pi}(0,\cos \theta, \sin \theta)(-\sin \theta, \cos \theta,0) d\theta \\
+&= \int\limits_0^{2\pi} \cos^2 \theta d\theta = \int\limits_0^{2\pi} \frac{1+\cos(2\theta)}{2} d\theta = \pi
+\end{align*}
+
+<p>
+image demi-sphère avec \(\nu\)
+</p>
+
+<p>
+\(\nu (x,y,z) = (x,y,z)\), \((x,y,z) \in \Sigma\)
+</p>
+
+<p>
+\(\sigma: [0,2\pi] \times [0,\frac{\pi}{2}] \rightarrow \mathbb{R}^3\)
+</p>
+
+<p>
+\((\theta, \varphi) \rightarrow (\cos \theta \sin \varphi, \sin\theta\sin\varphi,\cos\varphi)\)
+</p>
+
+\begin{align*}
+(\text{rot} F \nu)(\sigma(\theta,\varphi)) &= (1,1,1)(\cos \theta \sin \varphi, \sin\theta\sin\varphi,\cos\varphi)\\
+&= (\cos \theta \sin \varphi, \sin\theta\sin\varphi,\cos\varphi)
+\end{align*}
+
+<p>
+\(\underset{\Sigma}{\int\int}(\text{rot} F \nu) =
+\int\limits_0^{2\pi}\int\limits_0^{\frac{\pi}{2}}(\text{rot} F
+\nu)(\sigma(\theta,\varphi)) |\sigma_{\theta} \wedge \sigma_{\varphi}|d \theta d
+\varphi\)
+</p>
+
+<p>
+\(\sigma_{\theta} = (-\sin\theta\sin\varphi,\cos\theta\sin\varphi,0)\)
+</p>
+
+<p>
+\(\sigma_{\varphi} = (\cos\theta\cos\varphi,\sin\theta\cos\varphi,-\sin\varphi)\)
+</p>
+
+<p>
+\(\sigma_{\theta} \wedge \sigma_{\varphi} =
+(-\cos\theta\sin^2\varphi,-\sin\theta\sin^2\varphi,-\sin\varphi\cos\varphi) = -\sin\varphi(\cos\theta\sin\varphi,\sin\theta,\sin\varphi,\cos\varphi)\)
+</p>
+
+<p>
+\(|\sigma_{\theta} \wedge \sigma_{\varphi}| = \sin\varphi\)
+</p>
+
+
+\begin{align*}
+\underset{\Sigma}{\int\int}(\text{rot} F \nu) &= \int\limits_0^{2\pi}\int\limits_0^{\frac{\pi}{2}}(\cos\theta\sin\varphi+\sin\theta\sin\varphi+\cos\varphi)\sin\varphi d \theta d \\
+&= \int\limits_0^{2\pi}\int\limits_0^{\frac{\pi}{2}}(\cos\theta\sin^2\varphi+\sin\theta\sin^2\varphi+\cos\varphi\sin\varphi)d \theta d \\
+&= \int\limits_0^{\frac{pi}{2}} \sin^2\varphi \int\limits_0^{2\pi} \cos\theta + \int\limits_0^{\frac{pi}{2}} \sin^2\varphi \int\limits_0^{2\pi} \sin\theta + 2\pi \int\limits_0^{\frac{pi}{2}} \frac{\sin(2\varphi)}{2} d\varphi\\
+&= \frac{\pi}{2} \times [-\cos(2\varphi)]^{\frac{\pi}{2}}_0 = \pi
+\end{align*}
+</div>
+
+<div id="outline-container-orgheadline87" class="outline-4">
+<h4 id="orgheadline87"><span class="section-number-4">7.5.1</span> Clever way&#x2026;</h4>
+<div class="outline-text-4" id="text-7-5-1">
+<p>
+\(\Sigma = \lbrace (x,y,z): x^2+y^2+z^2=1, z \ge 0 \rbrace\)
+</p>
+
+<p>
+\(\Sigma_1 = \lbrace (x,y,z): x^2+y^2\le 1, z = 0 \rbrace\)
+</p>
+
+<p>
+\(\hat{\Sigma} = \Sigma \cup \Sigma_1\)
+</p>
+
+<p>
+\(\delta \hat{\Sigma} = \varnothing\)
+</p>
+
+<p>
+\(\underset{\hat{\Sigma}}{\int\int}(\text{rot} F \nu) = 0\)
+</p>
+
+<p>
+\(\underset{\Sigma}{\int\int}(\text{rot} F \nu) +
+\underset{\Sigma_1}{\int\int}(\text{rot} F \nu) = 0\)
+</p>
+
+<p>
+\(\underset{\Sigma}{\int\int}(\text{rot} F \nu) = - \underset{\Sigma_1}{\int\int}(\text{rot} F \nu) = - (-\pi) = \pi\)
+</p>
+
+<p>
+Car
+</p>
+
+<p>
+\(\underset{x^2+y^2\le 1}{\int\int}(1,1,1)(0,0,-1) =\underset{x^2+y^2\le
+1}{\int\int} -1 = -1 \pi\)
+</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-02 Mon 08:38</p>
+<p class="date">Created: 2015-11-02 Mon 12:32</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

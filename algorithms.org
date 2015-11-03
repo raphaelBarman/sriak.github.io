@@ -726,6 +726,19 @@ while i > 1 and A[Parent(i)] < A[i]
   exchange A[i] with A[Parent(i)]
   i = Parent(i)
 #+END_SRC
+**** MAX-HEAP-INSERT(A,key,n)
+Given a new key to insert into heap
+1. Increment the heap size
+2. Insert a new node in the last position in the heap, with key − \infty
+3. Increase the − \infty value to key using Heap-Increase-Key
+
+*MAX-HEAP-INSERT* $(A,key,n)$
+#+BEGIN_SRC java
+n = n+1
+A[n] = - infinity
+HEAP-INCREASE-KEY(A,n,key)
+#+END_SRC
+
 
 ** Stacks
 Last in, first out.
@@ -1406,8 +1419,7 @@ Let $X_i= < x_1 , x_2 , ... , x_i >$ and $Y_i= < y_1,y_2,...,y_j >$
 
 if $x_i = y_j$ then either
 - OPT "matches" $x_i$ with $y_j$ and remaining OPT is in ($X_{i-1},Y_{j-1})$
-- OPT is in $(X_{i-1},Y_j)$ or
-- OPT is in $X_i,Y_{j-1}$
+No need to check the others possibilities, cf. proof
 
 if $x_i \neq x_j$ then either
 - OPT is in $(X_{i-1},Y_j)$ or
@@ -1500,6 +1512,8 @@ denotes the depth of $k_i$ in BST T
 \mathbb{E}[\text{search cost in }T] &= \sum\limits_{i=1}^n (\text{depth}_T(k_i) + 1 )p_i\\
 &= 1+ \sum\limits_{i=1}^n (\text{depth}_T(k_i))p_i 
 \end{align*}
+
+Last equality, because $\sum\limits_{i=1}^n p_i = 1$
 *** Observations
 - Optimal BST might not have smallest height
 - Optimal BST might not have highest-probability key at root
@@ -1528,4 +1542,34 @@ Let $e[i,j]=$ expected search cost of optimal BST of $k_i,...,k_j$
 \end{align*}
 
 *** Bottom-up pseudocode
+*OPTIMAL-BST* $(p,q,n)$
+#+BEGIN_SRC java
+let e[1..n+1,0..n], w[1...n+1,0...n], and root[1..n,1..n] be new tables
+for i = 1 to n+1
+  e[i,i-1] = 0
+  w[i,i-1] = 0
+for l = 1 to n
+  for i = 1 to n-l +1
+    j = i + l -1
+    e[i,j] = infinity
+    w[i,j] = w[i,j-1] + pj
+    for r = i to j
+      t = e[i,r-1] + e[r+1,j] + w[i,j]
+      if t < e[i,j]
+        e[i,j] = t
+        root[i,j] = t
+return e and root
+#+END_SRC
+
+$e[i,j]$ records the expected search cost of optimal BST of $k_i,...,k_j$
+
+$r[i,j]$ records the best root in optimal BST of $k_i,...,k_j$
+
+$w[i,j]$ records $\sum\limits_{l=i}^j p_l$
+
+*** Time analysis
+Runtime dominated by three nested loops, total time is $\Theta(n^3)$
+
+Alternatively, $\Theta(n^2)$ cells to fill in. Most cells take $\Theta(n)$ time
+to fill in. Hence, total time is $\Theta(n^3)$
 
