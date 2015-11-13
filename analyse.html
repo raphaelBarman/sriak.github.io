@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-02 Mon 12:32 -->
+<!-- 2015-11-09 Mon 10:03 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -348,6 +348,29 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline88">7.5. Ex.</a>
 <ul>
 <li><a href="#orgheadline87">7.5.1. Clever way&#x2026;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline103">8. Chapitre 14</a>
+<ul>
+<li><a href="#orgheadline90">8.1. Définition</a></li>
+<li><a href="#orgheadline91">8.2. Exemple :</a></li>
+<li><a href="#orgheadline92">8.3. Exemple 1</a></li>
+<li><a href="#orgheadline93">8.4. Exemple 2</a></li>
+<li><a href="#orgheadline94">8.5. Exemple 3</a></li>
+<li><a href="#orgheadline95">8.6. Exemple</a></li>
+<li><a href="#orgheadline96">8.7. Definition</a></li>
+<li><a href="#orgheadline98">8.8. Théorème</a>
+<ul>
+<li><a href="#orgheadline97">8.8.1. Preuve</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline99">8.9. Théorème de Dirichlet</a></li>
+<li><a href="#orgheadline100">8.10. Exemple 14.11</a></li>
+<li><a href="#orgheadline102">8.11. Propositon</a>
+<ul>
+<li><a href="#orgheadline101">8.11.1. Preuve :</a></li>
 </ul>
 </li>
 </ul>
@@ -2732,9 +2755,434 @@ Car
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgheadline103" class="outline-2">
+<h2 id="orgheadline103"><span class="section-number-2">8</span> Chapitre 14</h2>
+<div class="outline-text-2" id="text-8">
+<p style="font-size:20px">
+<span class="underline"><b>Séries de Fourier</b></span>
+</p>
+</div>
+
+<div id="outline-container-orgheadline90" class="outline-3">
+<h3 id="orgheadline90"><span class="section-number-3">8.1</span> Définition</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+\(f : \mathbb{R} \rightarrow \mathbb{R}\), périodique \(T\), i.e. \(f(x+T) = f(x)\) \(\forall x \in \mathbb{R}\)
+</p>
+
+<p>
+\(a_n = \frac{2}{T} \int\limits_0^T f(x) \cos(\frac{n 2\pi x}{T} dx\) pour $n = 0,1,&#x2026;$
+</p>
+
+<p>
+\(b_n = \frac{2}{T} \int\limits_0^T f(x) \sin(\frac{n 2\pi x}{T} dx\) pour $n = 1,2,&#x2026;$
+</p>
+
+<p>
+\(\cos(\frac{n 2\pi x}{T}\) et \(\sin(\frac{n 2\pi x}{T}\) sont périodiques \(T\)
+</p>
+
+<p>
+La série de Fourier partielle d'ordre \(N\) de \(f\) :
+</p>
+
+<p>
+\(F_N f(x) = \frac{a_0}{2} + \sum\limits_{n=1}^N \left(a_n \cos(\frac{2\pi x}{T}) + b_n \sin(\frac{2\pi x}{T})\right)\)
+</p>
+
+<p>
+<span class="underline">Remarque</span>
+</p>
+
+<p>
+\(a_n = \frac{2}{T} \int\limits_a^{a+T} f(x) \cos(\frac{2\pi x}{T}) dx\)
+</p>
+
+<p>
+dessin repère
+</p>
+
+<p>
+\(b_n = \frac{2}{T} \int\limits_a^{a+T} f(x) \sin(\frac{2\pi x}{T}) dx\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline91" class="outline-3">
+<h3 id="orgheadline91"><span class="section-number-3">8.2</span> Exemple :</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+\(T=2\pi\)
+</p>
+
+<p>
+\(f(x) = \sin x\)
+</p>
+
+<p>
+\(a_0 = \frac{1}{\pi} \int\limits_0^{2\pi} \sin x = 0\)
+</p>
+
+<p>
+\(a_n = \frac{1}{\pi} \int\limits_0^{2\pi} \sin x \cos(n x) dx\) où \(n\ge 1\)
+</p>
+
+<p>
+<span class="underline">Rappel</span>
+</p>
+
+<p>
+\(\sin x + \sin y = 2 \sin(\frac{x+y}{2})\cos(\frac{x-y}{2})\)
+</p>
+
+<p>
+\(\sin a \cos b = \frac{1}{2} \left( \sin(a+b) + \sin(a-b) \right)\)
+</p>
+
+<p>
+Et donc
+\(a_n = \frac{1}{2\pi} \int\limits_0^{2\pi} \left( \sin(x(n+1)) + \sin((1-n)x)\right) = 0\)
+</p>
+
+\begin{align*}
+b_1 &= \frac{1}{\pi} \int\limits_0^{2\pi} \sin x \sin x dx \\
+&= \frac{1}{\pi} \int\limits_0^{2\pi} \frac{1-\cos(2x)}{2} dx \\
+&= 1 \\
+b_n &= \frac{1}{\pi} \int\limits_0^{2\pi} \sin x \sin(n x) dx \text{ $n \ge 2$}\\
+&= \frac{1}{2\pi} \int\limits_0^{2\pi} \left(\cos((1+n)x)-\cos((1-n)x)\right)\\
+&= 0
+\end{align*}
+
+<p>
+Observation :
+</p>
+
+<p>
+\(f(x) = \sin x = a_0 + \sum\limits_{n=1}^{+\infty} \left( a_n \cos(nx) + b_n\sin(nx)\right)\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline92" class="outline-3">
+<h3 id="orgheadline92"><span class="section-number-3">8.3</span> Exemple 1</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+\(T=2\pi\)
+</p>
+
+<p>
+\(\sin(nx)\) \((n\ge 1)\)
+</p>
+
+<p>
+\(a_k=0\) \(\forall k \ge 0\),
+</p>
+\begin{align*}
+  b_k=\begin{cases}
+    0 & k \neq n\\
+    1 & k = n\\
+  \end{cases}
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-orgheadline93" class="outline-3">
+<h3 id="orgheadline93"><span class="section-number-3">8.4</span> Exemple 2</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+\(T=2\pi\)
+</p>
+
+<p>
+\(\cos(nx)\) \((n\ge 1)\)
+</p>
+
+\begin{align*}
+  a_k=\begin{cases}
+    0 & k \neq n\\
+    1 & k = n\\
+  \end{cases}
+\end{align*}
+<p>
+\(b_k=0\) \(\forall k \ge 1\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline94" class="outline-3">
+<h3 id="orgheadline94"><span class="section-number-3">8.5</span> Exemple 3</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+\(T=2\pi\)
+</p>
+
+<p>
+\(f=1\)
+</p>
+
+\begin{align*}
+  a_k=\begin{cases}
+    2 & k = 0\\
+    0 & k \ge 1\\
+  \end{cases}
+\end{align*}
+<p>
+\(b_k=0\) \(\forall k\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline95" class="outline-3">
+<h3 id="orgheadline95"><span class="section-number-3">8.6</span> Exemple</h3>
+<div class="outline-text-3" id="text-8-6">
+<p>
+\(T=2\pi\)
+</p>
+
+<p>
+\(f(x) = \cos x + \sin 2 x\)
+</p>
+
+<p>
+\(a_1 = 1\), \(b_2 = 1\),
+</p>
+\begin{align*}
+  \begin{cases}
+    a_k=0 & k \neq 1\\
+    b_k = 0 & k \neq 2 \\
+  \end{cases}
+\end{align*}
+
+<p>
+\(f(x) = \frac{a_0}{2} + \sum\limits_{n=1}^{+\infty} \left( a_n \cos (nx) + b_n \sin(nx) \right)\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline96" class="outline-3">
+<h3 id="orgheadline96"><span class="section-number-3">8.7</span> Definition</h3>
+<div class="outline-text-3" id="text-8-7">
+<p>
+\(f\) régulière par morceau sur \(\mathbb{R}\) ssi \(f\) régulière par morceau \([a,b]\), \(\forall -\infty < a < b < + \infty\)
+</p>
+
+<p>
+c'est à dire \(\exists a = a_0 < a_1 < ... < a_m = b\)
+</p>
+
+<p>
+tel que \(f(a_i,a_{i+1})\) : régulière, 0 &le; 1 &le; m-1
+</p>
+
+<p>
+\(f,f' (a_i,a_{i+1})\) ont la limite quand \(x \rightarrow a\) ou \(x \rightarrow a_{i+1}\)
+</p>
+
+<p>
+dessin intervalle a<sub>i</sub> a<sub>i+1</sub>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline98" class="outline-3">
+<h3 id="orgheadline98"><span class="section-number-3">8.8</span> Théorème</h3>
+<div class="outline-text-3" id="text-8-8">
+<p>
+\(f\) régulière par morceau, périodique T. Alors
+</p>
+
+<p>
+\(F_N(f)\) converge si \(f\) est continue en \(x\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline97" class="outline-4">
+<h4 id="orgheadline97"><span class="section-number-4">8.8.1</span> Preuve</h4>
+<div class="outline-text-4" id="text-8-8-1">
+<p>
+\(f\) régulière \((C^2)\)
+</p>
+
+\begin{align*}
+a_n &= \frac{2}{T} \int\limits_0^T f(x) \cos(\frac{n2\pi x}{T}) dx\\
+&= \frac{2}{T} \int\limits_0^T f(x) \frac{T}{n2\pi} d \sin(\frac{n2\pi x}{T})\\
+&= \frac{1}{n\pi} \int\limits_0^T f(x) d \sin(\frac{n2\pi x}{T})\\
+&= \frac{1}{n\pi} \left[ f(x) \sin(\frac{n2\pi x}{T}) \right]^T_0 - \frac{1}{n\pi} \int\limits_0^T \sin(\frac{n2\pi x}{T}) f'(x) dx\\
+&=  \frac{1}{n\pi} \int\limits_0^T f'(x) \frac{T}{n2\pi}  d \cos(\frac{n2\pi x}{T}\\
+&= \frac{T}{2(n\pi)^2} \int\limits_0^T f'(x) d \cos(\frac{n2\pi x}{T}\\
+&= \frac{T}{2(n\pi)^2} \left[f'(x) \cos(\frac{n2\pi x}{T}) \right]^T_0 - \frac{T}{2(n\pi)^2} \int\limits_0^T \cos(\frac{n2\pi x}{T} f''(x) dx \\
+&= \frac{-T}{2(n\pi)^2} \int\limits_0^T f'' \cos(\frac{n2\pi x}{T}) dx
+\end{align*}
+
+<p>
+Donc \(|a_n| \le \frac{T}{2(n\pi)^2} \int\limits_0^T |f''||\)
+</p>
+
+<p>
+Par la même méthode
+</p>
+
+<p>
+\(|b_n| \le \frac{T}{2(n\pi)^2} \int\limits_0^T |f''||\)
+</p>
+
+<p>
+Donc $F<sub>N</sub>(f(x)) converge
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline99" class="outline-3">
+<h3 id="orgheadline99"><span class="section-number-3">8.9</span> Théorème de Dirichlet</h3>
+<div class="outline-text-3" id="text-8-9">
+<p>
+\(f\) régulière par morceau
+</p>
+
+<p>
+Alors
+</p>
+\begin{align*}
+\lim\limits_{N\rightarrow + \infty} F_N(x) = \begin{cases}
+f(x) & \text{Si $f$ est continue en $x$} \\
+\frac{f(x_+) + f(x_-)}{2} & \text{sinon} \\
+\end{cases}
+\end{align*}
+
+<p>
+\(f(x_+) = \lim\limits_{t \rightarrow x, t > x} f(t)\)
+</p>
+
+<p>
+\(f(x_-) = \lim\limits_{t \rightarrow x, t < x} f(t)\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline100" class="outline-3">
+<h3 id="orgheadline100"><span class="section-number-3">8.10</span> Exemple 14.11</h3>
+<div class="outline-text-3" id="text-8-10">
+\begin{align*}
+f(x) = \begin{cases}
+1 & [0,\pi) \\
+0 & [\pi,2\pi)\\
+\end{cases}
+\end{align*}
+
+<p>
+Calculer \(a_n\) et \(b_n\) et \(\sum\limits_{n=0}^{+\infty} \frac{(-1)^n}{2n+1}\)
+</p>
+
+<p>
+<span class="underline">Preuve</span>
+</p>
+
+<p>
+\(T= 2\pi\)
+</p>
+
+<p>
+\(a_0 = \frac{1}{\pi} \int\limits_0^{2\pi} f(x) dx = \frac{1}{\pi} \int\limits_0^{\pi} 1 = 1\)
+</p>
+
+\begin{align*}
+a_n &= \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \cos(n x) dx\\
+&= \frac{1}{\pi} \int\limits_0^{\pi} \cos(n x) dx = \frac{1}{n\pi} \sin(nx)|^{\pi}_0
+&= \frac{1}{n\pi} \left[\sin(n\pi) - \sin 0 \right] = 0
+\end{align*}
+
+\begin{align*}
+b_n &= \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \sin(n x) dx\\
+&= \frac{1}{\pi} \int\limits_0^{\pi} \sin(n x) dx = \frac{-1}{n\pi} \cos(nx)|^{\pi}_0\\
+&=\begin{cases}
+\frac{2}{n\pi} & n = (2k+1)\\
+0 & n = 2k\\
+\end{cases}
+\end{align*}
+
+\begin{align*}
+F_N(x) &= \frac{1}{2} + \sum\limits_{n=1}^N b_n \sin(nx)\\
+&\rightarrow \frac{1}{2} + \sum\limits_{n=1}^{\infty} b_n \sin(nx)\\
+&= \frac{1}{2} + \sum\limits_{k=0}^{\infty} b_{2k+1} \sin((2k+1)x)\\
+&= \frac{1}{2} + \sum\limits_{k=0}^{\infty} \frac{2}{(2k+1)\pi} \sin((2k+1)x)\\
+&= \begin{cases}
+1 & 0 < x < \pi \\
+0 & \pi < x < 2\pi \\
+\frac{1}{2} & x = \pi\\
+\frac{1}{2} & x = 0\\
+\end{cases}
+\end{align*}
+
+<p>
+Notons que \(f(x) = f(x+2\pi)\)
+</p>
+
+<p>
+Prendre \(x=\frac{\pi}{2}\)
+</p>
+
+<p>
+\(\sin((2k+1)\frac{\pi}{2}) = \sin(k\pi + \frac{pi}{2}) = (-1)^k\)
+</p>
+
+<p>
+On a :
+</p>
+
+<p>
+\(\frac{1}{2} + \sum\limits_{k=0}^{+\infty} \frac{2 (-1)^k}{(2k+1)\pi} = 1\)
+</p>
+
+<p>
+Donc 
+</p>
+
+<p>
+\(\sum\limits_{k=0}^{+\infty} \frac{(-1)^k}{2k+1} = \frac{\pi}{4}\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline102" class="outline-3">
+<h3 id="orgheadline102"><span class="section-number-3">8.11</span> Propositon</h3>
+<div class="outline-text-3" id="text-8-11">
+<p>
+Supposons \(F_N(f)(x)\): converge \(\forall x\)
+</p>
+
+<p>
+On va noter : \(\lim\limits_{n\to + \infty} F_N(f(x)) = F_{f(x)}\)
+</p>
+
+<p>
+On a : les coefficients de Fourier de \(F_f\) sont égaux aux coefficients de \(f\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline101" class="outline-4">
+<h4 id="orgheadline101"><span class="section-number-4">8.11.1</span> Preuve :</h4>
+<div class="outline-text-4" id="text-8-11-1">
+<p>
+\(f \in C^2\)
+\(T = 2\pi\)
+</p>
+
+\begin{align*}
+a_{n_{(F_f)}} &= \frac{1}{\pi} \int\limits_0^{2\pi} F_f(x) \cos (nx) dx\\
+&= \frac{1}{\pi} \int\limits_0^{2\pi} \lim\limits_{N\to +\infty} F_N f(x) \cos (nx) dx\\
+&= \lim\limits_{N\to +\infty} \frac{1}{\pi} \int\limits_0^{2\pi} \left(\frac{a_0}{2} = \sum\limits_{k=1}^N a_k \cos(kx) + b_k \sin(kx)\right) x \cos(nx) dx\\
+&= \lim\limits_{N\to +\infty} a_n = a_n
+\end{align*}
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-02 Mon 12:32</p>
+<p class="date">Created: 2015-11-09 Mon 10:03</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -149,3 +149,5 @@ La valeur de la résistance est obtenue comme précédemment :
 [[file:images/el_ch4_norton02.png]]
 * Semaine 5
 ** Capacité et signal sinusoïdal
+* Semaine 6
+* Semaine 7

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-03 Tue 10:06 -->
+<!-- 2015-11-09 Mon 14:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -392,6 +392,19 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline108">7.2.4. Recursive formulation</a></li>
 <li><a href="#orgheadline109">7.2.5. Bottom-up pseudocode</a></li>
 <li><a href="#orgheadline110">7.2.6. Time analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline119">8. Graphs</a>
+<ul>
+<li><a href="#orgheadline113">8.1. Adjacency Lists</a></li>
+<li><a href="#orgheadline114">8.2. Adjacency matrix</a></li>
+<li><a href="#orgheadline115">8.3. Comparison</a></li>
+<li><a href="#orgheadline118">8.4. Breadth-First search</a>
+<ul>
+<li><a href="#orgheadline116">8.4.1. Pseudocode</a></li>
+<li><a href="#orgheadline117">8.4.2. Analysis</a></li>
 </ul>
 </li>
 </ul>
@@ -3180,9 +3193,163 @@ to fill in. Hence, total time is \(\Theta(n^3)\)
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgheadline119" class="outline-2">
+<h2 id="orgheadline119"><span class="section-number-2">8</span> Graphs</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+A graph \(G = (V,E)\) consists of
+</p>
+<ul class="org-ul">
+<li>a vertex set \(V\)</li>
+<li>an edge set \(E\) that contain (ordered) pairs of vertices</li>
+</ul>
+
+<p>
+Graph can be undirected (goes both ways), directed, vertex-weighted, edge-weighted, etc.
+</p>
+
+<p>
+How to store ?
+</p>
+</div>
+<div id="outline-container-orgheadline113" class="outline-3">
+<h3 id="orgheadline113"><span class="section-number-3">8.1</span> Adjacency Lists</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Array Adj of \(|V|\) lists, one per vertex</li>
+<li>Vertex \(u\) 's list has all vertices \(v\) such that \((u,v) \in E\)</li>
+<li>In pseudocode, we will denote the array as attribute \(G.Adj\), so we will see
+notation such as \(G.Adj[u]\)</li>
+<li>Size ? \(\Theta(|v| + |E|)\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline114" class="outline-3">
+<h3 id="orgheadline114"><span class="section-number-3">8.2</span> Adjacency matrix</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+\(A\) \(|V| \times |V|\) matrix \(A=(a_{ij}\) where
+</p>
+\begin{align*}
+a_{ij} = \begin{cases}
+1 & \text{if $(i,j) \in E$}
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+</div>
+</div>
+<div id="outline-container-orgheadline115" class="outline-3">
+<h3 id="orgheadline115"><span class="section-number-3">8.3</span> Comparison</h3>
+<div class="outline-text-3" id="text-8-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Adjacency list</th>
+<th scope="col" class="org-left">Adjacency matrix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Space : \(\Theta(V+E)\)</td>
+<td class="org-left">Space : \(\Theta(V^2)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Time : to list all vertices adjacent to \(u\): \(\Theta(\text{degree}(u))\)</td>
+<td class="org-left">Time : to list all vertices adjacent to \(u\): \(\Theta(V)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Time to determine wheter \((u,v) \in E\): \(O(\text{degree}(u))\)</td>
+<td class="org-left">Time to determine wheter \((u,v) \in E\): \(\Theta(1)\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline118" class="outline-3">
+<h3 id="orgheadline118"><span class="section-number-3">8.4</span> Breadth-First search</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+Input : Graph \(G = (V,E)\) either directed or undirected and source vertex \(s \in
+V\), not weighted !
+</p>
+
+<p>
+Output : \(v.d\) = distance (smallest number of edges from \(s\) to \(v\), forall \(v
+\in V\)
+</p>
+
+<p>
+Idea :
+</p>
+<ul class="org-ul">
+<li>Send a "wave" out from \(s\)</li>
+<li>First hits all vertices 1 edge from \(s\)</li>
+<li>From there, hits all vertices 2 edges from \(s\)</li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline116" class="outline-4">
+<h4 id="orgheadline116"><span class="section-number-4">8.4.1</span> Pseudocode</h4>
+<div class="outline-text-4" id="text-8-4-1">
+<p>
+<b>BFS</b> \((V,E.s)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">for</span> each u in V - <span style="color: #2aa198;">{</span>s<span style="color: #2aa198;">}</span>
+  u.d = infinity
+s.d = <span style="color: #268bd2; font-weight: bold;">0</span>
+Q = nil <span style="color: #586e75;">// </span><span style="color: #586e75;">Empty queue</span>
+Enqueue<span style="color: #2aa198;">(</span>Q.s<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">while</span> Q != nil
+  u = Dequeue<span style="color: #2aa198;">(</span>Q<span style="color: #2aa198;">)</span>
+  <span style="color: #859900; font-weight: bold;">for</span> each v in G.adj<span style="color: #2aa198;">[</span>u<span style="color: #2aa198;">]</span>
+    <span style="color: #859900; font-weight: bold;">if</span> v.d == infinity <span style="color: #586e75;">// </span><span style="color: #586e75;">Not discovered</span>
+      v.d = u.d + <span style="color: #268bd2; font-weight: bold;">1</span>
+      ENQUEUE<span style="color: #2aa198;">(</span>Q,v<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline117" class="outline-4">
+<h4 id="orgheadline117"><span class="section-number-4">8.4.2</span> Analysis</h4>
+<div class="outline-text-4" id="text-8-4-2">
+<p>
+Informal Idea of corectness :
+</p>
+<ul class="org-ul">
+<li>Suppose that \(v.d\) is greater than the shortest distance from \(s\) to \(v\)</li>
+<li>but since algorithm repeatedly considers the vertices closes to the root (by
+adding them to the queue) this cannot happen</li>
+</ul>
+
+<p>
+Runtime analysis : \(O(V+E)\)
+</p>
+<ul class="org-ul">
+<li>\(O(V)\) because each vertex enqueud at most once</li>
+<li>$O(E) because vertex dequeued at most once and we examine \((u,v)\) only when
+\(u\) is dequeued. Therefore, every edge examined at most once if dirercted and
+at most twice if undirected.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-03 Tue 10:06</p>
+<p class="date">Created: 2015-11-09 Mon 14:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

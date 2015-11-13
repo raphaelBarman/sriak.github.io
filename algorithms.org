@@ -1573,3 +1573,135 @@ Runtime dominated by three nested loops, total time is $\Theta(n^3)$
 Alternatively, $\Theta(n^2)$ cells to fill in. Most cells take $\Theta(n)$ time
 to fill in. Hence, total time is $\Theta(n^3)$
 
+* Graphs
+A graph $G = (V,E)$ consists of
+- a vertex set $V$
+- an edge set $E$ that contain (ordered) pairs of vertices
+
+Graph can be undirected (goes both ways), directed, vertex-weighted, edge-weighted, etc.
+
+How to store ?
+** Adjacency Lists
+- Array Adj of $|V|$ lists, one per vertex
+- Vertex $u$ 's list has all vertices $v$ such that $(u,v) \in E$
+- In pseudocode, we will denote the array as attribute $G.Adj$, so we will see
+  notation such as $G.Adj[u]$
+- Size ? $\Theta(|v| + |E|)$
+** Adjacency matrix
+$A$ $|V| \times |V|$ matrix $A=(a_{ij}$ where
+\begin{align*}
+a_{ij} = \begin{cases}
+1 & \text{if $(i,j) \in E$}
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+** Comparison
+| Adjacency list                                                          | Adjacency matrix                                         |
+|-------------------------------------------------------------------------+----------------------------------------------------------|
+| Space : $\Theta(V+E)$                                                   | Space : $\Theta(V^2)$                                    |
+| Time : to list all vertices adjacent to $u$: $\Theta(\text{degree}(u))$ | Time : to list all vertices adjacent to $u$: $\Theta(V)$ |
+| Time to determine wheter $(u,v) \in E$: $O(\text{degree}(u))$           | Time to determine wheter $(u,v) \in E$: $\Theta(1)$      |
+
+** Breadth-First search
+Input : Graph $G = (V,E)$ either directed or undirected and source vertex $s \in
+V$, not weighted !
+
+Output : $v.d$ = distance (smallest number of edges from $s$ to $v$, forall $v
+\in V$
+
+Idea :
+- Send a "wave" out from $s$
+- First hits all vertices 1 edge from $s$
+- From there, hits all vertices 2 edges from $s$
+
+*** Pseudocode
+*BFS* $(V,E.s)$
+#+BEGIN_SRC java
+for each u in V - {s}
+  u.d = infinity
+s.d = 0
+Q = nil // Empty queue
+Enqueue(Q.s)
+while Q != nil
+  u = Dequeue(Q)
+  for each v in G.adj[u]
+    if v.d == infinity // Not discovered
+      v.d = u.d + 1
+      ENQUEUE(Q,v)
+#+END_SRC
+*** Analysis
+Informal Idea of corectness :
+- Suppose that $v.d$ is greater than the shortest distance from $s$ to $v$
+- but since algorithm repeatedly considers the vertices closes to the root (by
+  adding them to the queue) this cannot happen
+
+Runtime analysis : $O(V+E)$
+- $O(V)$ because each vertex enqueud at most once
+- $O(E) because vertex dequeued at most once and we examine $(u,v)$ only when
+  $u$ is dequeued. Therefore, every edge examined at most once if dirercted and
+  at most twice if undirected.
+*** Final notes on BFS
+- BFS may not reach all the vertices
+- We can save the shortest path tree by keeping track of the edge that
+  discovered the vertex
+
+** Depth-First search
+Input : Graph $G=(V,E)$, either directed or undirected
+
+Output: 2 timestamps on each vertex: $v.d$ = *discovery time* and $v.f$ =
+*finishing time*
+
+Idea :
+- Methodically explore every edge
+- Start over from different vertices as necessary
+- As soon as we discover a vertex explore from it
+  - Unlike BFS, which explores vertices that are close to a source first
+*** Pseudocode
+*DFS* $(G)$
+#+BEGIN_SRC java
+for each u in G.V
+  u.color = WHITE
+time = 0
+for each u in G.V
+  if u.color == WHITE
+    DFS-VISIT(G,u)
+#+END_SRC
+
+*DFS-VISIT* $(G,u)$
+#+BEGIN_SRC java
+time = time + 1
+u.d = time
+u.color = GRAY // discover u
+for each v in G.Adj[u] // explore (u,v)
+   if v.color == WHITE
+     DFS-VISIT(G,v)
+u.color = BLACK
+time = time + 1
+u.f = time //finish u
+#+END_SRC
+
+*** Analysis
+DFS forms a depth-first forest comprimised of $> 1$ depth-first trees. Each tree
+is made of edges $(u,v)$ such that $u$ is gray and $v$ is white, then $(u,v)$ is
+explored.
+
+Runtime analysis: $\Theta(V+E)$
+- $\Theta(V)$ because each vertex is discovered once
+- $\Theta(E)$ because each edge is examined once if directed graph and twice if
+  undirected graph
+*** Classification of edges
+- Tree edge : In the depth-first forest, found by exploring $(u,v)$
+- Back edge : $(u,v)$ where $u$ is a descendant of $v$
+- Forward edge : $(u,v)$ where $v$ is a descendant of $u$, but not a tree edge
+- Cross edge : any other edge
+*** Parenthesis theorem
+For all $u,v$ exactly one of the following holds :
+1. $u.d < u.f < v.d < v.f$ or $v.d < v.f < u.d < u.f$ and neither of $u$ and $v$
+   are descendant of each other
+2. $u.d < v.d < v.f < u.f$ and $v$ is a descendant of $u$.
+3. $v.d < u.d < u.f < v.d$ and $u$ is a descendant of $v$.
+*** White-path Theorem
+Vertex $v$ is a descendant of $u$ if and only if at time $u.d$ there is a path
+from $u$ to $v$ consisting of only white vertices (except for $u$, which was
+just colored gray)
+** Topological sort

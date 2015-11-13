@@ -1214,3 +1214,243 @@ Car
 
 $\underset{x^2+y^2\le 1}{\int\int}(1,1,1)(0,0,-1) =\underset{x^2+y^2\le
 1}{\int\int} -1 = -1 \pi$
+
+* Chapitre 14
+#+attr_html: :style font-size:20px
+_*Séries de Fourier*_
+
+** Définition
+$f : \mathbb{R} \rightarrow \mathbb{R}$, périodique $T$, i.e. $f(x+T) = f(x)$ $\forall x \in \mathbb{R}$
+
+$a_n = \frac{2}{T} \int\limits_0^T f(x) \cos(\frac{n 2\pi x}{T} dx$ pour $n = 0,1,...$
+
+$b_n = \frac{2}{T} \int\limits_0^T f(x) \sin(\frac{n 2\pi x}{T} dx$ pour $n = 1,2,...$
+
+$\cos(\frac{n 2\pi x}{T}$ et $\sin(\frac{n 2\pi x}{T}$ sont périodiques $T$
+
+La série de Fourier partielle d'ordre $N$ de $f$ :
+
+$F_N f(x) = \frac{a_0}{2} + \sum\limits_{n=1}^N \left(a_n \cos(\frac{2\pi x}{T}) + b_n \sin(\frac{2\pi x}{T})\right)$
+
+_Remarque_
+
+$a_n = \frac{2}{T} \int\limits_a^{a+T} f(x) \cos(\frac{2\pi x}{T}) dx$
+
+dessin repère
+
+$b_n = \frac{2}{T} \int\limits_a^{a+T} f(x) \sin(\frac{2\pi x}{T}) dx$
+
+** Exemple :
+$T=2\pi$
+
+$f(x) = \sin x$
+
+$a_0 = \frac{1}{\pi} \int\limits_0^{2\pi} \sin x = 0$
+
+$a_n = \frac{1}{\pi} \int\limits_0^{2\pi} \sin x \cos(n x) dx$ où $n\ge 1$
+
+_Rappel_
+
+$\sin x + \sin y = 2 \sin(\frac{x+y}{2})\cos(\frac{x-y}{2})$
+
+$\sin a \cos b = \frac{1}{2} \left( \sin(a+b) + \sin(a-b) \right)$
+
+Et donc
+$a_n = \frac{1}{2\pi} \int\limits_0^{2\pi} \left( \sin(x(n+1)) + \sin((1-n)x)\right) = 0$
+
+\begin{align*}
+b_1 &= \frac{1}{\pi} \int\limits_0^{2\pi} \sin x \sin x dx \\
+&= \frac{1}{\pi} \int\limits_0^{2\pi} \frac{1-\cos(2x)}{2} dx \\
+&= 1 \\
+b_n &= \frac{1}{\pi} \int\limits_0^{2\pi} \sin x \sin(n x) dx \text{ $n \ge 2$}\\
+&= \frac{1}{2\pi} \int\limits_0^{2\pi} \left(\cos((1+n)x)-\cos((1-n)x)\right)\\
+&= 0
+\end{align*}
+
+Observation :
+
+$f(x) = \sin x = a_0 + \sum\limits_{n=1}^{+\infty} \left( a_n \cos(nx) + b_n\sin(nx)\right)$
+
+** Exemple 1
+$T=2\pi$
+
+$\sin(nx)$ $(n\ge 1)$
+
+$a_k=0$ $\forall k \ge 0$,
+\begin{align*}
+  b_k=\begin{cases}
+    0 & k \neq n\\
+    1 & k = n\\
+  \end{cases}
+\end{align*}
+
+** Exemple 2
+$T=2\pi$
+
+$\cos(nx)$ $(n\ge 1)$
+
+\begin{align*}
+  a_k=\begin{cases}
+    0 & k \neq n\\
+    1 & k = n\\
+  \end{cases}
+\end{align*}
+$b_k=0$ $\forall k \ge 1$
+
+** Exemple 3
+$T=2\pi$
+
+$f=1$
+
+\begin{align*}
+  a_k=\begin{cases}
+    2 & k = 0\\
+    0 & k \ge 1\\
+  \end{cases}
+\end{align*}
+$b_k=0$ $\forall k$
+
+** Exemple
+$T=2\pi$
+
+$f(x) = \cos x + \sin 2 x$
+
+$a_1 = 1$, $b_2 = 1$,
+\begin{align*}
+  \begin{cases}
+    a_k=0 & k \neq 1\\
+    b_k = 0 & k \neq 2 \\
+  \end{cases}
+\end{align*}
+
+$f(x) = \frac{a_0}{2} + \sum\limits_{n=1}^{+\infty} \left( a_n \cos (nx) + b_n \sin(nx) \right)$
+
+** Definition
+$f$ régulière par morceau sur $\mathbb{R}$ ssi $f$ régulière par morceau $[a,b]$, $\forall -\infty < a < b < + \infty$
+
+c'est à dire $\exists a = a_0 < a_1 < ... < a_m = b$
+ 
+tel que $f(a_i,a_{i+1})$ : régulière, 0 \le 1 \le m-1
+
+$f,f' (a_i,a_{i+1})$ ont la limite quand $x \rightarrow a$ ou $x \rightarrow a_{i+1}$
+
+dessin intervalle a_i a_{i+1}
+
+
+** Théorème
+$f$ régulière par morceau, périodique T. Alors
+
+$F_N(f)$ converge si $f$ est continue en $x$
+
+*** Preuve
+$f$ régulière $(C^2)$
+
+\begin{align*}
+a_n &= \frac{2}{T} \int\limits_0^T f(x) \cos(\frac{n2\pi x}{T}) dx\\
+&= \frac{2}{T} \int\limits_0^T f(x) \frac{T}{n2\pi} d \sin(\frac{n2\pi x}{T})\\
+&= \frac{1}{n\pi} \int\limits_0^T f(x) d \sin(\frac{n2\pi x}{T})\\
+&= \frac{1}{n\pi} \left[ f(x) \sin(\frac{n2\pi x}{T}) \right]^T_0 - \frac{1}{n\pi} \int\limits_0^T \sin(\frac{n2\pi x}{T}) f'(x) dx\\
+&=  \frac{1}{n\pi} \int\limits_0^T f'(x) \frac{T}{n2\pi}  d \cos(\frac{n2\pi x}{T}\\
+&= \frac{T}{2(n\pi)^2} \int\limits_0^T f'(x) d \cos(\frac{n2\pi x}{T}\\
+&= \frac{T}{2(n\pi)^2} \left[f'(x) \cos(\frac{n2\pi x}{T}) \right]^T_0 - \frac{T}{2(n\pi)^2} \int\limits_0^T \cos(\frac{n2\pi x}{T} f''(x) dx \\
+&= \frac{-T}{2(n\pi)^2} \int\limits_0^T f'' \cos(\frac{n2\pi x}{T}) dx
+\end{align*}
+
+Donc $|a_n| \le \frac{T}{2(n\pi)^2} \int\limits_0^T |f''||$
+
+Par la même méthode
+
+$|b_n| \le \frac{T}{2(n\pi)^2} \int\limits_0^T |f''||$
+
+Donc $F_N(f(x)) converge
+
+** Théorème de Dirichlet
+$f$ régulière par morceau
+
+Alors
+\begin{align*}
+\lim\limits_{N\rightarrow + \infty} F_N(x) = \begin{cases}
+f(x) & \text{Si $f$ est continue en $x$} \\
+\frac{f(x_+) + f(x_-)}{2} & \text{sinon} \\
+\end{cases}
+\end{align*}
+
+$f(x_+) = \lim\limits_{t \rightarrow x, t > x} f(t)$
+
+$f(x_-) = \lim\limits_{t \rightarrow x, t < x} f(t)$
+
+** Exemple 14.11
+\begin{align*}
+f(x) = \begin{cases}
+1 & [0,\pi) \\
+0 & [\pi,2\pi)\\
+\end{cases}
+\end{align*}
+
+Calculer $a_n$ et $b_n$ et $\sum\limits_{n=0}^{+\infty} \frac{(-1)^n}{2n+1}$
+
+_Preuve_
+
+$T= 2\pi$
+
+$a_0 = \frac{1}{\pi} \int\limits_0^{2\pi} f(x) dx = \frac{1}{\pi} \int\limits_0^{\pi} 1 = 1$
+
+\begin{align*}
+a_n &= \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \cos(n x) dx\\
+&= \frac{1}{\pi} \int\limits_0^{\pi} \cos(n x) dx = \frac{1}{n\pi} \sin(nx)|^{\pi}_0
+&= \frac{1}{n\pi} \left[\sin(n\pi) - \sin 0 \right] = 0
+\end{align*}
+
+\begin{align*}
+b_n &= \frac{1}{\pi} \int\limits_0^{2\pi} f(x) \sin(n x) dx\\
+&= \frac{1}{\pi} \int\limits_0^{\pi} \sin(n x) dx = \frac{-1}{n\pi} \cos(nx)|^{\pi}_0\\
+&=\begin{cases}
+\frac{2}{n\pi} & n = (2k+1)\\
+0 & n = 2k\\
+\end{cases}
+\end{align*}
+
+\begin{align*}
+F_N(x) &= \frac{1}{2} + \sum\limits_{n=1}^N b_n \sin(nx)\\
+&\rightarrow \frac{1}{2} + \sum\limits_{n=1}^{\infty} b_n \sin(nx)\\
+&= \frac{1}{2} + \sum\limits_{k=0}^{\infty} b_{2k+1} \sin((2k+1)x)\\
+&= \frac{1}{2} + \sum\limits_{k=0}^{\infty} \frac{2}{(2k+1)\pi} \sin((2k+1)x)\\
+&= \begin{cases}
+1 & 0 < x < \pi \\
+0 & \pi < x < 2\pi \\
+\frac{1}{2} & x = \pi\\
+\frac{1}{2} & x = 0\\
+\end{cases}
+\end{align*}
+
+Notons que $f(x) = f(x+2\pi)$
+
+Prendre $x=\frac{\pi}{2}$
+
+$\sin((2k+1)\frac{\pi}{2}) = \sin(k\pi + \frac{pi}{2}) = (-1)^k$
+
+On a :
+
+$\frac{1}{2} + \sum\limits_{k=0}^{+\infty} \frac{2 (-1)^k}{(2k+1)\pi} = 1$
+
+Donc 
+
+$\sum\limits_{k=0}^{+\infty} \frac{(-1)^k}{2k+1} = \frac{\pi}{4}$
+
+** Propositon
+Supposons $F_N(f)(x)$: converge $\forall x$
+
+On va noter : $\lim\limits_{n\to + \infty} F_N(f(x)) = F_{f(x)}$
+
+On a : les coefficients de Fourier de $F_f$ sont égaux aux coefficients de $f$
+
+*** Preuve :
+$f \in C^2$
+$T = 2\pi$
+
+\begin{align*}
+a_{n_{(F_f)}} &= \frac{1}{\pi} \int\limits_0^{2\pi} F_f(x) \cos (nx) dx\\
+&= \frac{1}{\pi} \int\limits_0^{2\pi} \lim\limits_{N\to +\infty} F_N f(x) \cos (nx) dx\\
+&= \lim\limits_{N\to +\infty} \frac{1}{\pi} \int\limits_0^{2\pi} \left(\frac{a_0}{2} = \sum\limits_{k=1}^N a_k \cos(kx) + b_k \sin(kx)\right) x \cos(nx) dx\\
+&= \lim\limits_{N\to +\infty} a_n = a_n
+\end{align*}
