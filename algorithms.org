@@ -1637,8 +1637,8 @@ Informal Idea of corectness :
 
 Runtime analysis : $O(V+E)$
 - $O(V)$ because each vertex enqueud at most once
-- $O(E) because vertex dequeued at most once and we examine $(u,v)$ only when
-  $u$ is dequeued. Therefore, every edge examined at most once if dirercted and
+- $O(E)$ because vertex dequeued at most once and we examine $(u,v)$ only when
+  $u$ is dequeued. Therefore, every edge examined at most once if directed and
   at most twice if undirected.
 *** Final notes on BFS
 - BFS may not reach all the vertices
@@ -1696,12 +1696,88 @@ Runtime analysis: $\Theta(V+E)$
 - Cross edge : any other edge
 *** Parenthesis theorem
 For all $u,v$ exactly one of the following holds :
-1. $u.d < u.f < v.d < v.f$ or $v.d < v.f < u.d < u.f$ and neither of $u$ and $v$
+1) $[u.d , u.f]$ and  $[ v.d, v.f]$ are disjoint neither of $u$ and $v$
    are descendant of each other
-2. $u.d < v.d < v.f < u.f$ and $v$ is a descendant of $u$.
-3. $v.d < u.d < u.f < v.d$ and $u$ is a descendant of $v$.
+2) $u.d < v.d < v.f < u.f$ and $v$ is a descendant of $u$.
+3) $v.d < u.d < u.f < v.d$ and $u$ is a descendant of $v$.
 *** White-path Theorem
 Vertex $v$ is a descendant of $u$ if and only if at time $u.d$ there is a path
 from $u$ to $v$ consisting of only white vertices (except for $u$, which was
 just colored gray)
 ** Topological sort
+Input: A directed acyclic graph (DAG) $G = (V,E)$
+
+Output: a linear ordering of vertices such that if $(u,v) \in E$, then $u$
+appears somewhere before $v$.
+*** Acyclic lemma
+**** Lemma :
+A directed graph $G$ is acyclic if and only if a DFS of $G$ yields no
+back edges.
+
+**** Proof
+First show that back-edege implies cycle :
+
+Suppose there is a back edge $(u,v)$. Then $v$ is ancestor of $u$ in depth-first
+forest. Therefore there is a path from $v$ to $u$, which creates a cycle.
+
+Second show that cycle implies back-edge.
+
+Let $v$ be the first vertex discovered in the cycle $C$ and let $(u,v)$ be the
+preceding edge in $C$. At time $v.d$ vertices in $C$ form a white-path from $v$
+to $u$ and hence $u$ is a descendant of $v$.
+*** Algorithm
+*TOPOLOGICAL-SORT* $(G)$
+
+1. Call $DFS(G)$ to compute finishing times $v.f$ for all $v \in G.V$
+2. Output vertices in order of decreasing finishing times.
+*** Time analysis
+Do not need to sort by finishing times :
+- Can just output vertices as they are finished and understand that we want the
+  reverse of the list
+- Or put them onto the front of a linked list as they are finished. When done,
+  the list containes vertices in topologically sorted order.
+
+Time : $\Theta(V+E)$ (Same as DFS)
+*** Corectness
+We need to show that if $(u,v) \in E$ then $v.f < u.f$
+
+When we explore $(u,v) what are the colors of $u$ and $v$ ?
+- $u$ is gray
+- Is $v$ gray too ?
+  - No, because then $v$ would be ancestor of $u$ which implies that there is a
+    back edge so the graph is not acyclic (by previous Lemma)
+- Is $v$ white ?
+  - Then becomes descendant of $u$. By parenthis theorem, $u.d < v.d < v.f < u.f$
+- Is $v$ black ?
+  - Then $v$ is already finished. Since we are exploring $(u,v)$, we have not
+    yet finished $u$. Therefore, $v.f < u.f$.
+  
+** Strongly connected component
+Definition : A strongly connected component (SCC) of a directed graph $G=(V,E)$
+is a maximal set of vertices $C\subset V$ such that for all $u,v \in C$, both
+$u \to v$ and $v \to u$
+
+Lemma : G^{SCC} is DAG (directed acyclic graph)
+
+*** Algorithm
+*SCC* $(G)$
+1. Call $DFS(G)$ to compute finishing times $u.f$ for all $u$
+2. Compute $G^T$
+3. Call $DFS(G^T)$ but in the main loop, consider vertices in order of
+   decreasing $u.f$ (as computed in first $DFS$.
+4. Output the vertices in each tree of the depth-first forest formed in second
+   $DFS$ as a separate $SCC$
+
+Graph $G^T$ is the transpose of $G$:
+- $G^T = (V,E)$, $E^T = \lbrace (u,v): (v,u) \in E \rbrace$
+- $G^T$ is $G$ with all edges reversed.
+
+Observations:
+- Can create $G^T$ in $\Theta(V+E)$ time if using adjacency lists
+- $G$ and $G^T$ has the same $SCC$ s
+*** Analysis
+Runtime : Each step takes $\Theta(V+E)$ so total running time is $\Theta(V+E)$
+
+Why does it work ? Intuition :
+- The first DFS order SCC's in topological order (recall G^{SCC} is acyclic)
+- Second DFS the output the vertices in each SCC

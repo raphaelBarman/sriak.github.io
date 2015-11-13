@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-09 Mon 14:55 -->
+<!-- 2015-11-13 Fri 14:58 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -396,15 +396,44 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline119">8. Graphs</a>
+<li><a href="#orgheadline136">8. Graphs</a>
 <ul>
 <li><a href="#orgheadline113">8.1. Adjacency Lists</a></li>
 <li><a href="#orgheadline114">8.2. Adjacency matrix</a></li>
 <li><a href="#orgheadline115">8.3. Comparison</a></li>
-<li><a href="#orgheadline118">8.4. Breadth-First search</a>
+<li><a href="#orgheadline119">8.4. Breadth-First search</a>
 <ul>
 <li><a href="#orgheadline116">8.4.1. Pseudocode</a></li>
 <li><a href="#orgheadline117">8.4.2. Analysis</a></li>
+<li><a href="#orgheadline118">8.4.3. Final notes on BFS</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline125">8.5. Depth-First search</a>
+<ul>
+<li><a href="#orgheadline120">8.5.1. Pseudocode</a></li>
+<li><a href="#orgheadline121">8.5.2. Analysis</a></li>
+<li><a href="#orgheadline122">8.5.3. Classification of edges</a></li>
+<li><a href="#orgheadline123">8.5.4. Parenthesis theorem</a></li>
+<li><a href="#orgheadline124">8.5.5. White-path Theorem</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline132">8.6. Topological sort</a>
+<ul>
+<li><a href="#orgheadline128">8.6.1. Acyclic lemma</a>
+<ul>
+<li><a href="#orgheadline126">8.6.1.1. Lemma :</a></li>
+<li><a href="#orgheadline127">8.6.1.2. Proof</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline129">8.6.2. Algorithm</a></li>
+<li><a href="#orgheadline130">8.6.3. Time analysis</a></li>
+<li><a href="#orgheadline131">8.6.4. Corectness</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline135">8.7. Strongly connected component</a>
+<ul>
+<li><a href="#orgheadline133">8.7.1. Algorithm</a></li>
+<li><a href="#orgheadline134">8.7.2. Analysis</a></li>
 </ul>
 </li>
 </ul>
@@ -3194,8 +3223,8 @@ to fill in. Hence, total time is \(\Theta(n^3)\)
 </div>
 </div>
 
-<div id="outline-container-orgheadline119" class="outline-2">
-<h2 id="orgheadline119"><span class="section-number-2">8</span> Graphs</h2>
+<div id="outline-container-orgheadline136" class="outline-2">
+<h2 id="orgheadline136"><span class="section-number-2">8</span> Graphs</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 A graph \(G = (V,E)\) consists of
@@ -3276,8 +3305,8 @@ a_{ij} = \begin{cases}
 </div>
 </div>
 
-<div id="outline-container-orgheadline118" class="outline-3">
-<h3 id="orgheadline118"><span class="section-number-3">8.4</span> Breadth-First search</h3>
+<div id="outline-container-orgheadline119" class="outline-3">
+<h3 id="orgheadline119"><span class="section-number-3">8.4</span> Breadth-First search</h3>
 <div class="outline-text-3" id="text-8-4">
 <p>
 Input : Graph \(G = (V,E)\) either directed or undirected and source vertex \(s \in
@@ -3339,9 +3368,309 @@ Runtime analysis : \(O(V+E)\)
 </p>
 <ul class="org-ul">
 <li>\(O(V)\) because each vertex enqueud at most once</li>
-<li>$O(E) because vertex dequeued at most once and we examine \((u,v)\) only when
-\(u\) is dequeued. Therefore, every edge examined at most once if dirercted and
+<li>\(O(E)\) because vertex dequeued at most once and we examine \((u,v)\) only when
+\(u\) is dequeued. Therefore, every edge examined at most once if directed and
 at most twice if undirected.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline118" class="outline-4">
+<h4 id="orgheadline118"><span class="section-number-4">8.4.3</span> Final notes on BFS</h4>
+<div class="outline-text-4" id="text-8-4-3">
+<ul class="org-ul">
+<li>BFS may not reach all the vertices</li>
+<li>We can save the shortest path tree by keeping track of the edge that
+discovered the vertex</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline125" class="outline-3">
+<h3 id="orgheadline125"><span class="section-number-3">8.5</span> Depth-First search</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+Input : Graph \(G=(V,E)\), either directed or undirected
+</p>
+
+<p>
+Output: 2 timestamps on each vertex: \(v.d\) = <b>discovery time</b> and \(v.f\) =
+<b>finishing time</b>
+</p>
+
+<p>
+Idea :
+</p>
+<ul class="org-ul">
+<li>Methodically explore every edge</li>
+<li>Start over from different vertices as necessary</li>
+<li>As soon as we discover a vertex explore from it
+<ul class="org-ul">
+<li>Unlike BFS, which explores vertices that are close to a source first</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline120" class="outline-4">
+<h4 id="orgheadline120"><span class="section-number-4">8.5.1</span> Pseudocode</h4>
+<div class="outline-text-4" id="text-8-5-1">
+<p>
+<b>DFS</b> \((G)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">for</span> each u in <span style="color: #268bd2; font-weight: bold;">G</span>.V
+  u.color = WHITE
+time = <span style="color: #268bd2; font-weight: bold;">0</span>
+<span style="color: #859900; font-weight: bold;">for</span> each u in <span style="color: #268bd2; font-weight: bold;">G</span>.V
+  <span style="color: #859900; font-weight: bold;">if</span> u.color == WHITE
+    DFS-VISIT<span style="color: #2aa198;">(</span>G,u<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+<b>DFS-VISIT</b> \((G,u)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">time = time + <span style="color: #268bd2; font-weight: bold;">1</span>
+u.d = time
+u.color = GRAY <span style="color: #586e75;">// </span><span style="color: #586e75;">discover u</span>
+<span style="color: #859900; font-weight: bold;">for</span> each v in <span style="color: #268bd2; font-weight: bold;">G</span>.Adj<span style="color: #2aa198;">[</span>u<span style="color: #2aa198;">]</span> <span style="color: #586e75;">// </span><span style="color: #586e75;">explore (u,v)</span>
+   <span style="color: #859900; font-weight: bold;">if</span> v.color == WHITE
+     DFS-VISIT<span style="color: #2aa198;">(</span>G,v<span style="color: #2aa198;">)</span>
+u.color = BLACK
+time = time + <span style="color: #268bd2; font-weight: bold;">1</span>
+u.f = time <span style="color: #586e75;">//</span><span style="color: #586e75;">finish u</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline121" class="outline-4">
+<h4 id="orgheadline121"><span class="section-number-4">8.5.2</span> Analysis</h4>
+<div class="outline-text-4" id="text-8-5-2">
+<p>
+DFS forms a depth-first forest comprimised of \(> 1\) depth-first trees. Each tree
+is made of edges \((u,v)\) such that \(u\) is gray and \(v\) is white, then \((u,v)\) is
+explored.
+</p>
+
+<p>
+Runtime analysis: \(\Theta(V+E)\)
+</p>
+<ul class="org-ul">
+<li>\(\Theta(V)\) because each vertex is discovered once</li>
+<li>\(\Theta(E)\) because each edge is examined once if directed graph and twice if
+undirected graph</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline122" class="outline-4">
+<h4 id="orgheadline122"><span class="section-number-4">8.5.3</span> Classification of edges</h4>
+<div class="outline-text-4" id="text-8-5-3">
+<ul class="org-ul">
+<li>Tree edge : In the depth-first forest, found by exploring \((u,v)\)</li>
+<li>Back edge : \((u,v)\) where \(u\) is a descendant of \(v\)</li>
+<li>Forward edge : \((u,v)\) where \(v\) is a descendant of \(u\), but not a tree edge</li>
+<li>Cross edge : any other edge</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline123" class="outline-4">
+<h4 id="orgheadline123"><span class="section-number-4">8.5.4</span> Parenthesis theorem</h4>
+<div class="outline-text-4" id="text-8-5-4">
+<p>
+For all \(u,v\) exactly one of the following holds :
+</p>
+<ol class="org-ol">
+<li>\([u.d , u.f]\) and  \([ v.d, v.f]\) are disjoint neither of \(u\) and \(v\)
+   are descendant of each other</li>
+<li>\(u.d < v.d < v.f < u.f\) and \(v\) is a descendant of \(u\).</li>
+<li>\(v.d < u.d < u.f < v.d\) and \(u\) is a descendant of \(v\).</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline124" class="outline-4">
+<h4 id="orgheadline124"><span class="section-number-4">8.5.5</span> White-path Theorem</h4>
+<div class="outline-text-4" id="text-8-5-5">
+<p>
+Vertex \(v\) is a descendant of \(u\) if and only if at time \(u.d\) there is a path
+from \(u\) to \(v\) consisting of only white vertices (except for \(u\), which was
+just colored gray)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline132" class="outline-3">
+<h3 id="orgheadline132"><span class="section-number-3">8.6</span> Topological sort</h3>
+<div class="outline-text-3" id="text-8-6">
+<p>
+Input: A directed acyclic graph (DAG) \(G = (V,E)\)
+</p>
+
+<p>
+Output: a linear ordering of vertices such that if \((u,v) \in E\), then \(u\)
+appears somewhere before \(v\).
+</p>
+</div>
+<div id="outline-container-orgheadline128" class="outline-4">
+<h4 id="orgheadline128"><span class="section-number-4">8.6.1</span> Acyclic lemma</h4>
+<div class="outline-text-4" id="text-8-6-1">
+</div><div id="outline-container-orgheadline126" class="outline-5">
+<h5 id="orgheadline126"><span class="section-number-5">8.6.1.1</span> Lemma :</h5>
+<div class="outline-text-5" id="text-8-6-1-1">
+<p>
+A directed graph \(G\) is acyclic if and only if a DFS of \(G\) yields no
+back edges.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline127" class="outline-5">
+<h5 id="orgheadline127"><span class="section-number-5">8.6.1.2</span> Proof</h5>
+<div class="outline-text-5" id="text-8-6-1-2">
+<p>
+First show that back-edege implies cycle :
+</p>
+
+<p>
+Suppose there is a back edge \((u,v)\). Then \(v\) is ancestor of \(u\) in depth-first
+forest. Therefore there is a path from \(v\) to \(u\), which creates a cycle.
+</p>
+
+<p>
+Second show that cycle implies back-edge.
+</p>
+
+<p>
+Let \(v\) be the first vertex discovered in the cycle \(C\) and let \((u,v)\) be the
+preceding edge in \(C\). At time \(v.d\) vertices in \(C\) form a white-path from \(v\)
+to \(u\) and hence \(u\) is a descendant of \(v\).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline129" class="outline-4">
+<h4 id="orgheadline129"><span class="section-number-4">8.6.2</span> Algorithm</h4>
+<div class="outline-text-4" id="text-8-6-2">
+<p>
+<b>TOPOLOGICAL-SORT</b> \((G)\)
+</p>
+
+<ol class="org-ol">
+<li>Call \(DFS(G)\) to compute finishing times \(v.f\) for all \(v \in G.V\)</li>
+<li>Output vertices in order of decreasing finishing times.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline130" class="outline-4">
+<h4 id="orgheadline130"><span class="section-number-4">8.6.3</span> Time analysis</h4>
+<div class="outline-text-4" id="text-8-6-3">
+<p>
+Do not need to sort by finishing times :
+</p>
+<ul class="org-ul">
+<li>Can just output vertices as they are finished and understand that we want the
+reverse of the list</li>
+<li>Or put them onto the front of a linked list as they are finished. When done,
+the list containes vertices in topologically sorted order.</li>
+</ul>
+
+<p>
+Time : \(\Theta(V+E)\) (Same as DFS)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline131" class="outline-4">
+<h4 id="orgheadline131"><span class="section-number-4">8.6.4</span> Corectness</h4>
+<div class="outline-text-4" id="text-8-6-4">
+<p>
+We need to show that if \((u,v) \in E\) then \(v.f < u.f\)
+</p>
+
+<p>
+When we explore $(u,v) what are the colors of \(u\) and \(v\) ?
+</p>
+<ul class="org-ul">
+<li>\(u\) is gray</li>
+<li>Is \(v\) gray too ?
+<ul class="org-ul">
+<li>No, because then \(v\) would be ancestor of \(u\) which implies that there is a
+back edge so the graph is not acyclic (by previous Lemma)</li>
+</ul></li>
+<li>Is \(v\) white ?
+<ul class="org-ul">
+<li>Then becomes descendant of \(u\). By parenthis theorem, \(u.d < v.d < v.f < u.f\)</li>
+</ul></li>
+<li>Is \(v\) black ?
+<ul class="org-ul">
+<li>Then \(v\) is already finished. Since we are exploring \((u,v)\), we have not
+yet finished \(u\). Therefore, \(v.f < u.f\).</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline135" class="outline-3">
+<h3 id="orgheadline135"><span class="section-number-3">8.7</span> Strongly connected component</h3>
+<div class="outline-text-3" id="text-8-7">
+<p>
+Definition : A strongly connected component (SCC) of a directed graph \(G=(V,E)\)
+is a maximal set of vertices \(C\subset V\) such that for all \(u,v \in C\), both
+\(u \to v\) and \(v \to u\)
+</p>
+
+<p>
+Lemma : G<sup>SCC</sup> is DAG (directed acyclic graph)
+</p>
+</div>
+
+<div id="outline-container-orgheadline133" class="outline-4">
+<h4 id="orgheadline133"><span class="section-number-4">8.7.1</span> Algorithm</h4>
+<div class="outline-text-4" id="text-8-7-1">
+<p>
+<b>SCC</b> \((G)\)
+</p>
+<ol class="org-ol">
+<li>Call \(DFS(G)\) to compute finishing times \(u.f\) for all \(u\)</li>
+<li>Compute \(G^T\)</li>
+<li>Call \(DFS(G^T)\) but in the main loop, consider vertices in order of
+decreasing \(u.f\) (as computed in first \(DFS\).</li>
+<li>Output the vertices in each tree of the depth-first forest formed in second
+\(DFS\) as a separate \(SCC\)</li>
+</ol>
+
+<p>
+Graph \(G^T\) is the transpose of \(G\):
+</p>
+<ul class="org-ul">
+<li>\(G^T = (V,E)\), \(E^T = \lbrace (u,v): (v,u) \in E \rbrace\)</li>
+<li>\(G^T\) is \(G\) with all edges reversed.</li>
+</ul>
+
+<p>
+Observations:
+</p>
+<ul class="org-ul">
+<li>Can create \(G^T\) in \(\Theta(V+E)\) time if using adjacency lists</li>
+<li>\(G\) and \(G^T\) has the same \(SCC\) s</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline134" class="outline-4">
+<h4 id="orgheadline134"><span class="section-number-4">8.7.2</span> Analysis</h4>
+<div class="outline-text-4" id="text-8-7-2">
+<p>
+Runtime : Each step takes \(\Theta(V+E)\) so total running time is \(\Theta(V+E)\)
+</p>
+
+<p>
+Why does it work ? Intuition :
+</p>
+<ul class="org-ul">
+<li>The first DFS order SCC's in topological order (recall G<sup>SCC</sup> is acyclic)</li>
+<li>Second DFS the output the vertices in each SCC</li>
 </ul>
 </div>
 </div>
@@ -3349,7 +3678,7 @@ at most twice if undirected.</li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-09 Mon 14:55</p>
+<p class="date">Created: 2015-11-13 Fri 14:58</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
