@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-13 Fri 14:58 -->
+<!-- 2015-11-16 Mon 15:49 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -396,7 +396,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline136">8. Graphs</a>
+<li><a href="#orgheadline147">8. Graphs</a>
 <ul>
 <li><a href="#orgheadline113">8.1. Adjacency Lists</a></li>
 <li><a href="#orgheadline114">8.2. Adjacency matrix</a></li>
@@ -434,6 +434,26 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgheadline133">8.7.1. Algorithm</a></li>
 <li><a href="#orgheadline134">8.7.2. Analysis</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline139">8.8. Flow networks</a>
+<ul>
+<li><a href="#orgheadline136">8.8.1. Definition of network</a></li>
+<li><a href="#orgheadline137">8.8.2. Definition of a flow</a></li>
+<li><a href="#orgheadline138">8.8.3. Value of a flow</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline146">8.9. Maximum-flow problem</a>
+<ul>
+<li><a href="#orgheadline140">8.9.1. Ford-Fulkerson method'54</a></li>
+<li><a href="#orgheadline141">8.9.2. Residual network</a></li>
+<li><a href="#orgheadline145">8.9.3. Why is returned flow optimal ? (Min-cuts)</a>
+<ul>
+<li><a href="#orgheadline142">8.9.3.1. Net flow across a cut</a></li>
+<li><a href="#orgheadline143">8.9.3.2. Capacity a cut</a></li>
+<li><a href="#orgheadline144">8.9.3.3. Flow and cut capacity</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -3223,8 +3243,8 @@ to fill in. Hence, total time is \(\Theta(n^3)\)
 </div>
 </div>
 
-<div id="outline-container-orgheadline136" class="outline-2">
-<h2 id="orgheadline136"><span class="section-number-2">8</span> Graphs</h2>
+<div id="outline-container-orgheadline147" class="outline-2">
+<h2 id="orgheadline147"><span class="section-number-2">8</span> Graphs</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 A graph \(G = (V,E)\) consists of
@@ -3675,10 +3695,186 @@ Why does it work ? Intuition :
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgheadline139" class="outline-3">
+<h3 id="orgheadline139"><span class="section-number-3">8.8</span> Flow networks</h3>
+<div class="outline-text-3" id="text-8-8">
+</div><div id="outline-container-orgheadline136" class="outline-4">
+<h4 id="orgheadline136"><span class="section-number-4">8.8.1</span> Definition of network</h4>
+<div class="outline-text-4" id="text-8-8-1">
+<ul class="org-ul">
+<li>Directed graph \(G=(V,E)\)</li>
+<li>Each edge \((u,v)\) has a capacity \(c(u,v) \ge 0\) (\(c(u,v) = 0\) if \((u,v) \not\in E\))</li>
+<li>Source \(s\) and sink \(t\) (flow goes from \(s\) to \(t\))</li>
+<li>No antiparallel edges (assumed without loss of generality for simplicity)
+<ul class="org-ul">
+<li>if there are two parallel edges \((u,v)\) and \((v,u)\), choose one of them say \((u,v)\)</li>
+<li>Create a new vertex \(v'\)</li>
+<li>Replace \((u,v)\) be two new edges \((u,v')\) and \((v',v)\) with \(c(u,v') = c(v',u) = c(u,v)\)</li>
+<li>Repeat this \(O(E)\) times to get an equivalent flow with no antiparallel edges</li>
+<li>Add image</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline137" class="outline-4">
+<h4 id="orgheadline137"><span class="section-number-4">8.8.2</span> Definition of a flow</h4>
+<div class="outline-text-4" id="text-8-8-2">
+<p>
+A flow is a function \(f: V \times V \to \mathbb{R}\) satisfying :
+</p>
+<ul class="org-ul">
+<li>Capacity constraint : \(\forall u,v \in V\ : 0 \le f(u,v) \le c(u,v)\)</li>
+<li>Flow conservation: \(\forall u \in V \backslash \lbrace s,t \rbrace\),
+\(\sum\limits_{v\in V} f(u,v) = \sum\limits_{v\in V} f(u,v)\) (flow into \(u\) =
+flow out of \(u\))</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline138" class="outline-4">
+<h4 id="orgheadline138"><span class="section-number-4">8.8.3</span> Value of a flow</h4>
+<div class="outline-text-4" id="text-8-8-3">
+<p>
+Value of a flow
+</p>
+\begin{align*}
+f &= |f|\\
+&= \sum\limits_{v\in V} f(s,v) - \sum\limits_{v\in V}f(v,s)\\
+&= \text{flow out of source - flow into source}
+\end{align*}
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline146" class="outline-3">
+<h3 id="orgheadline146"><span class="section-number-3">8.9</span> Maximum-flow problem</h3>
+<div class="outline-text-3" id="text-8-9">
+</div><div id="outline-container-orgheadline140" class="outline-4">
+<h4 id="orgheadline140"><span class="section-number-4">8.9.1</span> Ford-Fulkerson method'54</h4>
+<div class="outline-text-4" id="text-8-9-1">
+<p>
+<b>FORD-FULKERSON-METHOD</b> \((G,s,t)\)
+</p>
+<ol class="org-ol">
+<li>Initialize flow \(f\) to 0</li>
+<li>while there exists an <b>augmenting path</b> \(p\) in the <b>residual network</b> G<sub>f</sub></li>
+<li><b>augment flow</b> \(f\) along \(p\)</li>
+<li>return f</li>
+</ol>
+
+<p>
+Basic idea :
+</p>
+<ul class="org-ul">
+<li>As long as there is a path from source to sink, with available capacity on all
+edges in the path</li>
+<li>send flow along one of these paths and then we find another path and so on</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline141" class="outline-4">
+<h4 id="orgheadline141"><span class="section-number-4">8.9.2</span> Residual network</h4>
+<div class="outline-text-4" id="text-8-9-2">
+<ul class="org-ul">
+<li>Given a flow \(f\) and a network \(G=(V,E)\)</li>
+<li>the residual network consists of edges with capacities that represent how we
+can change the flow of edges</li>
+</ul>
+
+<p>
+<b>Residual capacity</b>
+</p>
+
+\begin{align*}
+c_f(u,v) = \begin{cases}
+c(u,v) - f(u,v) & \text{if } (u,v) \in E \text{ (amount of capacity left)}\\
+f(u,v) & \text{if } (v,u) \in E\text{ (amount of that can be reversed)}\\
+0 & \text{otherwise} 
+\end{cases}
+\end{align*}
+
+<p>
+<b>Residual network</b>
+</p>
+
+<p>
+\(G_f = (V,E_f)\) where \(E_f = \lbrace (u,v \in V \times V : c_f(u,v) > 0 \rbrace\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline145" class="outline-4">
+<h4 id="orgheadline145"><span class="section-number-4">8.9.3</span> Why is returned flow optimal ? (Min-cuts)</h4>
+<div class="outline-text-4" id="text-8-9-3">
+<p>
+A cut of flow network \(G(V,E)\) is
+</p>
+<ul class="org-ul">
+<li>a partition of \(V\) into \(S\) and \(T=V\backslash S\)</li>
+<li>such that \(s\in S\) and \(t \in T\)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline142" class="outline-5">
+<h5 id="orgheadline142"><span class="section-number-5">8.9.3.1</span> Net flow across a cut</h5>
+<div class="outline-text-5" id="text-8-9-3-1">
+<p>
+The net flow across cut \((S,T)\) is
+</p>
+
+<p>
+\(f(S,T) = \sum\limits_{u\in S, v\in T} f(u,v) - \sum\limits_{u\in S,v\in T} f(v,u)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline143" class="outline-5">
+<h5 id="orgheadline143"><span class="section-number-5">8.9.3.2</span> Capacity a cut</h5>
+<div class="outline-text-5" id="text-8-9-3-2">
+<p>
+The capacity of a cut \((S,T)\) is
+</p>
+
+<p>
+\(c(S,T) = \sum\limits_{u\in S,v\in T} c(u,v)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline144" class="outline-5">
+<h5 id="orgheadline144"><span class="section-number-5">8.9.3.3</span> Flow and cut capacity</h5>
+<div class="outline-text-5" id="text-8-9-3-3">
+<p>
+For any flow \(f\) and any cut \((S,T)\):
+</p>
+
+\begin{align*}
+|f| &= f(S,T)\\
+&= \sum\limits_{u\in S, v\in T} f(u,v) - \sum\limits_{u\in S,v\in T} f(v,u)\\
+&\le \sum\limits_{u\in S, v\in T} f(u,v) \\
+&\le \sum\limits_{u\in S, v\in T} c(u,v) \\
+&= c(S,T)
+\end{align*}
+
+<p>
+Therefore max-flow \(\le\) min-cut
+</p>
+
+<p>
+We shall prove :
+</p>
+
+<p>
+Theorem (max-flow min-cut theorem)
+</p>
+
+<p>
+max-flow = min-cut
+</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-13 Fri 14:58</p>
+<p class="date">Created: 2015-11-16 Mon 15:49</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

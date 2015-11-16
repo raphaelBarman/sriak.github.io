@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-09 Mon 10:03 -->
+<!-- 2015-11-16 Mon 09:43 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -373,6 +373,23 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline101">8.11.1. Preuve :</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#orgheadline114">9. Chapitre 15</a>
+<ul>
+<li><a href="#orgheadline104">9.1. Théorème</a></li>
+<li><a href="#orgheadline105">9.2. Corrolaire</a></li>
+<li><a href="#orgheadline106">9.3. Théorème</a></li>
+<li><a href="#orgheadline107">9.4. Notation complexes</a></li>
+<li><a href="#orgheadline110">9.5. Lemma</a>
+<ul>
+<li><a href="#orgheadline108">9.5.1. Rappels</a></li>
+<li><a href="#orgheadline109">9.5.2. preuve</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline111">9.6. Exemple</a></li>
+<li><a href="#orgheadline112">9.7. Lemma</a></li>
+<li><a href="#orgheadline113">9.8. Thèorème</a></li>
 </ul>
 </li>
 </ul>
@@ -2772,15 +2789,15 @@ Car
 </p>
 
 <p>
-\(a_n = \frac{2}{T} \int\limits_0^T f(x) \cos(\frac{n 2\pi x}{T} dx\) pour $n = 0,1,&#x2026;$
+\(a_n = \frac{2}{T} \int\limits_0^T f(x) \cos(\frac{n 2\pi x}{T}) dx\) pour $n = 0,1,&#x2026;$
 </p>
 
 <p>
-\(b_n = \frac{2}{T} \int\limits_0^T f(x) \sin(\frac{n 2\pi x}{T} dx\) pour $n = 1,2,&#x2026;$
+\(b_n = \frac{2}{T} \int\limits_0^T f(x) \sin(\frac{n 2\pi x}{T}) dx\) pour $n = 1,2,&#x2026;$
 </p>
 
 <p>
-\(\cos(\frac{n 2\pi x}{T}\) et \(\sin(\frac{n 2\pi x}{T}\) sont périodiques \(T\)
+\(\cos(\frac{n 2\pi x}{T})\) et \(\sin(\frac{n 2\pi x}{T})\) sont périodiques \(T\)
 </p>
 
 <p>
@@ -3180,9 +3197,393 @@ a_{n_{(F_f)}} &= \frac{1}{\pi} \int\limits_0^{2\pi} F_f(x) \cos (nx) dx\\
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline114" class="outline-2">
+<h2 id="orgheadline114"><span class="section-number-2">9</span> Chapitre 15</h2>
+<div class="outline-text-2" id="text-9">
+<p style="font-size:20px">
+<span class="underline"><b>Séries de Fourier</b></span>
+</p>
+</div>
+<div id="outline-container-orgheadline104" class="outline-3">
+<h3 id="orgheadline104"><span class="section-number-3">9.1</span> Théorème</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+\(f,g\): régulières, T-périodiques
+\(a_n(f) = a_n(g)\)
+</p>
+
+<p>
+\(b_n(f) = b_n(g)\)
+</p>
+
+<p>
+Alors \(f(x)=g(x)\) si \(f,g\) sont continus en \(x\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline105" class="outline-3">
+<h3 id="orgheadline105"><span class="section-number-3">9.2</span> Corrolaire</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+\(f: C^2\)
+</p>
+
+<p>
+Alors \(f(x) = F_f(x)\)
+où \(F_f(x) = \lim\limits_{N\to \infty} F_n(f(x)) = \frac{a_0}{2} + \sum\limits_{n=1}^{\infty} \lbrace a_n \cos(\frac{2n\pi x}{T}) + b_n \sin(\frac{2n\pi x}{T}) \rbrace\)
+</p>
+
+<p>
+<span class="underline">Preuve</span> :
+</p>
+
+<p>
+\(a_n(F_f(x)) = a_n(f)\) (*)
+</p>
+
+<p>
+\(b_n(F_f(x)) = b_n(f)\)
+</p>
+
+<p>
+Vérification de (*) pour \(n=1\)
+</p>
+
+\begin{align*}
+a_1(F_f) &= \frac{2}{T} \int\limits_{0}^{T} F_f(x) \cos(\frac{2\pi x}{T}) dx \\
+&= \frac{2}{T} \int\limits_{0}^{T} \lim\limits_{N\to +\infty} F_N(f) \cos(\frac{2\pi x}{T}) dx \\
+\text{Mais, $N\ge 1$}\\
+&= \frac{2}{T} \int\limits_{0}^{T} F_N(f(x)) \cos(\frac{2\pi x}{T}) dx = a_1 \\
+\text{parce que :}\\
+\frac{2}{T} \int\limits_{0}^{T} \cos(\frac{2\pi x}{T}) dx = \begin{cases}
+1 & m=1
+0 & m\neq 1
+\end{cases}\\
+\frac{2}{T} \int\limits_{0}^{T} \cos(\frac{2\pi x}{T}) dx = 0
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-orgheadline106" class="outline-3">
+<h3 id="orgheadline106"><span class="section-number-3">9.3</span> Théorème</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+\(f\) régulière, T-périodique
+</p>
+
+<p>
+Alors :
+</p>
+\begin{align*}
+F_N(x) \to \begin{cases}
+f(x) & \text{$f$ cont. enx.} \\
+\frac{f(x_+)+f(x_-)}{2} & \text{$f$ discont en $x$}
+\end{cases}
+\end{align*}
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline107" class="outline-3">
+<h3 id="orgheadline107"><span class="section-number-3">9.4</span> Notation complexes</h3>
+<div class="outline-text-3" id="text-9-4">
+<p>
+\(f\) régulière, T-périodique
+</p>
+
+<p>
+\(c_n = \frac{1}{T} \int\limits_0^T f(x) e^{-\frac{in2\pi x}{T}} dx\) \(n \in \mathbb{Z}\)
+</p>
+
+<p>
+Attention au signe !
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline110" class="outline-3">
+<h3 id="orgheadline110"><span class="section-number-3">9.5</span> Lemma</h3>
+<div class="outline-text-3" id="text-9-5">
+<p>
+\(F_n(f) = \sum\limits_{n=-N}^{N} c_n e^{\frac{in2\pi x}{T}}\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline108" class="outline-4">
+<h4 id="orgheadline108"><span class="section-number-4">9.5.1</span> Rappels</h4>
+<div class="outline-text-4" id="text-9-5-1">
+<p>
+\(t \in \mathbb{R}\)
+</p>
+
+<p>
+\(e^{it} = \cos t + i \sin t\)
+</p>
+
+<p>
+\(e^{-it} = \cos t - i \sin t\)
+</p>
+
+<p>
+\(\cos t = \frac{e^{it}+e^{-it}}{2}\)
+</p>
+
+<p>
+\(\sin t = \frac{1}{2i} (e^{it} - e^{-it})\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline109" class="outline-4">
+<h4 id="orgheadline109"><span class="section-number-4">9.5.2</span> preuve</h4>
+<div class="outline-text-4" id="text-9-5-2">
+<p>
+\(n \ge 1\)
+</p>
+\begin{align*}
+&a_n \cos(\frac{2n\pi x}{T}) + b_n \sin(\frac{2 n \pi x}{T})\\
+= &\frac{a_n}{2} \left[ e^{\frac{i2n\pi x}{T}} + e^{\frac{-i2n\pi x}{T}} \right]\\
++ &\frac{b_n}{2} \left[ e^{\frac{i2n\pi x}{T}} - e^{\frac{-i2n\pi x}{T}} \right]\\
+&= e^{\frac{i2n\pi x}{T}} \left[\frac{a_n}{2} + \frac{b_n}{2i} \right]\\
++ &e^{\frac{-i2n\pi x}{T}} \left[ \frac{a_n}{2} - \frac{b_n}{2i} \right]
+\end{align*}
+
+<p>
+On va montrer
+\(c_n = \frac{1}{2} a_n + \frac{b_n}{2i}\)
+</p>
+
+<p>
+\(c_{-n} = \frac{a_n}{2} - \frac{b_n}{2i}\)
+</p>
+
+<p>
+On a
+</p>
+
+\begin{align*}
+\frac{1}{2} a_n + \frac{b_n}{2i} &= \frac{1}{T} \int\limits_0^T f(x)\cos(\frac{2n\pi x}{T} ) + \frac{1}{t} \int\limits_0^t f(x)\frac{1}{i} \sin(\frac{2n\pi x}{T} )\\
+&= \frac{1}{T} \int\limits_0^T f(x) \left[ \cos(\frac{2n\pi x}{T} ) - i \sin(\frac{2n\pi x}{t}\right]\\
+&= \frac{1}{T} \int\limits_0^T f(x) e^{\frac{-in2\pi x}{T}} dx
+\end{align*}
+
+<p>
+On a pour \(n \ge 1\)
+</p>
+
+<p>
+\(c_n = \frac{a_n}{2} + \frac{b_n}{2i}\)
+</p>
+
+<p>
+\(c_{-n} = \frac{a_n}{2} - \frac{b_n}{2i}\)
+</p>
+
+<p>
+\(c_0 = \frac{a_0}{2}\)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline111" class="outline-3">
+<h3 id="orgheadline111"><span class="section-number-3">9.6</span> Exemple</h3>
+<div class="outline-text-3" id="text-9-6">
+<p>
+\( T = 2\pi, e^{ix}\)
+</p>
+
+\begin{align*}
+c_n = \begin{cases}
+1 & n =1\\
+0 & n \in \mathbb{Z} \backslash \lbrace 1 \rbrace
+\end{cases}
+\end{align*}
+
+<p>
+<span class="underline">Preuve:</span>
+</p>
+
+\begin{align*}
+c_n &= \frac{1}{2\pi} \int\limits_{0}^{2\pi} e^{ix} e^{inx} dx \\
+&= \frac{1}{2\pi} \int\limits_{0}^{2\pi} e^{(i-n)x}dx \\
+&= \begin{cases}
+1 & n=1\\
+0 & n \in \mathbb{Z} \backslash \lbrace 1 \rbrace
+\end{cases}
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-orgheadline112" class="outline-3">
+<h3 id="orgheadline112"><span class="section-number-3">9.7</span> Lemma</h3>
+<div class="outline-text-3" id="text-9-7">
+<p>
+\(c_n (F_N f) = c_n (f)\) si \(N\ge |n|\)
+</p>
+
+<p>
+<span class="underline">Preuve :</span>
+</p>
+
+\begin{align*}
+c_n (F_N f)(x) &= \frac{1}{T} \int\limits_0^T F_N f(x) e^{\frac{-in2\pi x}{T}} dx\\
+T=2\pi \\
+&=\frac{1}{2\pi} \int\limits_0^T \left( \sum\limits_{-N}^{N} c_k e^{ikx} \right) e^{-inx} dx \\
+&=\frac{1}{2\pi} \sum\limits_{-N}^{N} c_k \int\limits_0^{2\pi} e^{i(k-n)x} dx\\
+&= c_n
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-orgheadline113" class="outline-3">
+<h3 id="orgheadline113"><span class="section-number-3">9.8</span> Thèorème</h3>
+<div class="outline-text-3" id="text-9-8">
+<p>
+\(f,g\) régulières T-périodiques
+</p>
+
+<p>
+Supposons:
+</p>
+
+<p>
+\(c_n(f) = c_n(g) \forall n \in \mathbb{Z}\)
+</p>
+
+<p>
+Alors
+</p>
+
+<p>
+\(f(x)=g(x)\) si
+</p>
+
+<p>
+\(f,g\) continues en \(x\)
+</p>
+
+<p>
+<span class="underline">Preuve:</span>
+</p>
+
+<p>
+On va montrer 
+</p>
+
+<p>
+Sigma
+</p>
+\begin{align*}
+\begin{cases}
+$h$ \text{: régulière} & \text{T-périodique}\\
+c_n(h) = 0 & \forall n \in \mathbb{Z}
+\end{cases}
+\end{align*}
+
+<p>
+Alors
+</p>
+
+<p>
+\(h(x) = 0\) si
+</p>
+
+<p>
+\(h\) est continue \(x\)
+</p>
+
+<p>
+On va supposer \(T=2\pi\)
+</p>
+
+<p>
+On \(2\pi\)
+</p>
+
+<p>
+\(c_n(h) = \frac{1}{2\pi} \int\limits_0^{2\pi} h(x) e^{-inx} dx = 0\) \(\forall n \in \mathbb{Z}\)
+</p>
+
+<p>
+Définition :
+</p>
+
+<p>
+\(D_N(x) = \sum\limits_{-N}^N e^{inx}\) 
+</p>
+
+<p>
+\(G_N(x) = D_0(x) + ... + D_{N-1}(x)\)
+</p>
+
+<p>
+On va montrer :
+</p>
+
+<p>
+\(D_N(x) = \frac{\sin \left[(N+1/2)x \right]}{\sin (\frac{x}{2})}\)
+</p>
+
+<p>
+\(G_N(x) = \frac{\sin^2(Nx/2)}{N \sin^2(\frac{x}{2})}\)
+</p>
+
+<p>
+On a :
+</p>
+
+<p>
+\(\frac{1}{2\pi} \int\limits_{0}^{2\pi} D_N(x) = \frac{1}{2\pi}\int\limits_0^{2\pi} G_N(x) dx\)
+</p>
+
+<p>
+En fait,
+</p>
+
+<p>
+\(D_N(x) = 1 + \sum\limits_{|n| ge 1}^{N} e^{inx}\)
+</p>
+
+<p>
+\(\frac{1}{2\pi} \int\limits_{0}^{2\pi} D_N(x) = \frac{1}{2\pi} \int\limits_{0}^{2\pi} 1 + \frac{1}{2\pi} \int\limits_{0}^{2\pi} \sum\limits_{|n| ge 1}^{N} e^{inx}\)
+</p>
+
+<p>
+\(\frac{1}{2\pi}\int\limits_0^{2\pi} G_N(x) dx = \frac{1}{2\pi N}\int\limits_0^{2\pi} \left( D_0(x)+ ... + D_{N-1} (x) \right) dx =  1\)
+</p>
+
+
+<p>
+Le comportement de \(G_N\)
+</p>
+
+<p>
+\(\frac{1}{2\pi}\int\limits_{-\pi}^{\pi} G_N(x) dx = 1\) \(G_N \ge 0\)
+</p>
+
+<p>
+\(G_N\) : concentré autour de 0
+</p>
+
+<p>
+dessin G<sub>N</sub>
+</p>
+
+<p>
+c'est à dire \(\forall \delta > 0\)
+</p>
+
+<p>
+\(\lim\limits_{N\to + \infty} \frac{1}{2\pi} \int\limits_{\delta < |x| < \pi} G_n(x) dx = 0\)
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-09 Mon 10:03</p>
+<p class="date">Created: 2015-11-16 Mon 09:43</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

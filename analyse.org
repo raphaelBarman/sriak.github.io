@@ -1222,11 +1222,11 @@ _*Séries de Fourier*_
 ** Définition
 $f : \mathbb{R} \rightarrow \mathbb{R}$, périodique $T$, i.e. $f(x+T) = f(x)$ $\forall x \in \mathbb{R}$
 
-$a_n = \frac{2}{T} \int\limits_0^T f(x) \cos(\frac{n 2\pi x}{T} dx$ pour $n = 0,1,...$
+$a_n = \frac{2}{T} \int\limits_0^T f(x) \cos(\frac{n 2\pi x}{T}) dx$ pour $n = 0,1,...$
 
-$b_n = \frac{2}{T} \int\limits_0^T f(x) \sin(\frac{n 2\pi x}{T} dx$ pour $n = 1,2,...$
+$b_n = \frac{2}{T} \int\limits_0^T f(x) \sin(\frac{n 2\pi x}{T}) dx$ pour $n = 1,2,...$
 
-$\cos(\frac{n 2\pi x}{T}$ et $\sin(\frac{n 2\pi x}{T}$ sont périodiques $T$
+$\cos(\frac{n 2\pi x}{T})$ et $\sin(\frac{n 2\pi x}{T})$ sont périodiques $T$
 
 La série de Fourier partielle d'ordre $N$ de $f$ :
 
@@ -1453,4 +1453,254 @@ a_{n_{(F_f)}} &= \frac{1}{\pi} \int\limits_0^{2\pi} F_f(x) \cos (nx) dx\\
 &= \frac{1}{\pi} \int\limits_0^{2\pi} \lim\limits_{N\to +\infty} F_N f(x) \cos (nx) dx\\
 &= \lim\limits_{N\to +\infty} \frac{1}{\pi} \int\limits_0^{2\pi} \left(\frac{a_0}{2} = \sum\limits_{k=1}^N a_k \cos(kx) + b_k \sin(kx)\right) x \cos(nx) dx\\
 &= \lim\limits_{N\to +\infty} a_n = a_n
+\end{align*}
+* Chapitre 15
+#+attr_html: :style font-size:20px
+_*Séries de Fourier*_
+** Théorème
+$f,g$: régulières, T-périodiques
+$a_n(f) = a_n(g)$
+
+$b_n(f) = b_n(g)$
+
+Alors $f(x)=g(x)$ si $f,g$ sont continus en $x$.
+
+** Corrolaire
+$f: C^2$
+
+Alors $f(x) = F_f(x)$
+où $F_f(x) = \lim\limits_{N\to \infty} F_n(f(x)) = \frac{a_0}{2} + \sum\limits_{n=1}^{\infty} \lbrace a_n \cos(\frac{2n\pi x}{T}) + b_n \sin(\frac{2n\pi x}{T}) \rbrace$
+
+_Preuve_ :
+
+$a_n(F_f(x)) = a_n(f)$ (*)
+
+$b_n(F_f(x)) = b_n(f)$
+
+Vérification de (*) pour $n=1$
+
+\begin{align*}
+a_1(F_f) &= \frac{2}{T} \int\limits_{0}^{T} F_f(x) \cos(\frac{2\pi x}{T}) dx \\
+&= \frac{2}{T} \int\limits_{0}^{T} \lim\limits_{N\to +\infty} F_N(f) \cos(\frac{2\pi x}{T}) dx \\
+\text{Mais, $N\ge 1$}\\
+&= \frac{2}{T} \int\limits_{0}^{T} F_N(f(x)) \cos(\frac{2\pi x}{T}) dx = a_1 \\
+\text{parce que :}\\
+\frac{2}{T} \int\limits_{0}^{T} \cos(\frac{2\pi x}{T}) dx = \begin{cases}
+1 & m=1
+0 & m\neq 1
+\end{cases}\\
+\frac{2}{T} \int\limits_{0}^{T} \cos(\frac{2\pi x}{T}) dx = 0
+\end{align*}
+
+** Théorème
+$f$ régulière, T-périodique
+
+Alors :
+\begin{align*}
+F_N(x) \to \begin{cases}
+f(x) & \text{$f$ cont. enx.} \\
+\frac{f(x_+)+f(x_-)}{2} & \text{$f$ discont en $x$}
+\end{cases}
+\end{align*}
+
+
+** Notation complexes
+$f$ régulière, T-périodique
+
+$c_n = \frac{1}{T} \int\limits_0^T f(x) e^{-\frac{in2\pi x}{T}} dx$ $n \in \mathbb{Z}$
+
+Attention au signe !
+
+** Lemma
+$F_n(f) = \sum\limits_{n=-N}^{N} c_n e^{\frac{in2\pi x}{T}}$
+
+*** Rappels
+$t \in \mathbb{R}$
+
+$e^{it} = \cos t + i \sin t$
+
+$e^{-it} = \cos t - i \sin t$
+
+$\cos t = \frac{e^{it}+e^{-it}}{2}$
+
+$\sin t = \frac{1}{2i} (e^{it} - e^{-it})$
+
+*** preuve
+$n \ge 1$
+\begin{align*}
+&a_n \cos(\frac{2n\pi x}{T}) + b_n \sin(\frac{2 n \pi x}{T})\\
+= &\frac{a_n}{2} \left[ e^{\frac{i2n\pi x}{T}} + e^{\frac{-i2n\pi x}{T}} \right]\\
++ &\frac{b_n}{2} \left[ e^{\frac{i2n\pi x}{T}} - e^{\frac{-i2n\pi x}{T}} \right]\\
+&= e^{\frac{i2n\pi x}{T}} \left[\frac{a_n}{2} + \frac{b_n}{2i} \right]\\
++ &e^{\frac{-i2n\pi x}{T}} \left[ \frac{a_n}{2} - \frac{b_n}{2i} \right]
+\end{align*}
+
+On va montrer
+$c_n = \frac{1}{2} a_n + \frac{b_n}{2i}$
+
+$c_{-n} = \frac{a_n}{2} - \frac{b_n}{2i}$
+
+On a
+
+\begin{align*}
+\frac{1}{2} a_n + \frac{b_n}{2i} &= \frac{1}{T} \int\limits_0^T f(x)\cos(\frac{2n\pi x}{T} ) + \frac{1}{t} \int\limits_0^t f(x)\frac{1}{i} \sin(\frac{2n\pi x}{T} )\\
+&= \frac{1}{T} \int\limits_0^T f(x) \left[ \cos(\frac{2n\pi x}{T} ) - i \sin(\frac{2n\pi x}{t}\right]\\
+&= \frac{1}{T} \int\limits_0^T f(x) e^{\frac{-in2\pi x}{T}} dx
+\end{align*}
+
+On a pour $n \ge 1$
+
+$c_n = \frac{a_n}{2} + \frac{b_n}{2i}$
+
+$c_{-n} = \frac{a_n}{2} - \frac{b_n}{2i}$
+
+$c_0 = \frac{a_0}{2}$
+
+** Exemple
+$ T = 2\pi, e^{ix}$
+
+\begin{align*}
+c_n = \begin{cases}
+1 & n =1\\
+0 & n \in \mathbb{Z} \backslash \lbrace 1 \rbrace
+\end{cases}
+\end{align*}
+
+_Preuve:_
+
+\begin{align*}
+c_n &= \frac{1}{2\pi} \int\limits_{0}^{2\pi} e^{ix} e^{inx} dx \\
+&= \frac{1}{2\pi} \int\limits_{0}^{2\pi} e^{(i-n)x}dx \\
+&= \begin{cases}
+1 & n=1\\
+0 & n \in \mathbb{Z} \backslash \lbrace 1 \rbrace
+\end{cases}
+\end{align*}
+
+** Lemma
+$c_n (F_N f) = c_n (f)$ si $N\ge |n|$
+
+_Preuve :_
+
+\begin{align*}
+c_n (F_N f)(x) &= \frac{1}{T} \int\limits_0^T F_N f(x) e^{\frac{-in2\pi x}{T}} dx\\
+T=2\pi \\
+&=\frac{1}{2\pi} \int\limits_0^T \left( \sum\limits_{-N}^{N} c_k e^{ikx} \right) e^{-inx} dx \\
+&=\frac{1}{2\pi} \sum\limits_{-N}^{N} c_k \int\limits_0^{2\pi} e^{i(k-n)x} dx\\
+&= c_n
+\end{align*}
+
+** Thèorème
+$f,g$ régulières T-périodiques
+
+Supposons:
+
+$c_n(f) = c_n(g) \forall n \in \mathbb{Z}$
+
+Alors
+
+$f(x)=g(x)$ si
+
+$f,g$ continues en $x$
+
+_Preuve:_
+
+On va montrer 
+
+Sigma
+\begin{align*}
+\begin{cases}
+$h$ \text{: régulière} & \text{T-périodique}\\
+c_n(h) = 0 & \forall n \in \mathbb{Z}
+\end{cases}
+\end{align*}
+
+Alors
+
+$h(x) = 0$ si
+
+$h$ est continue $x$
+
+On va supposer $T=2\pi$
+
+On $2\pi$
+
+$c_n(h) = \frac{1}{2\pi} \int\limits_0^{2\pi} h(x) e^{-inx} dx = 0$ $\forall n \in \mathbb{Z}$
+
+Définition :
+
+$D_N(x) = \sum\limits_{-N}^N e^{inx}$ 
+
+$G_N(x) = D_0(x) + ... + D_{N-1}(x)$
+
+On va montrer :
+
+$D_N(x) = \frac{\sin \left[(N+1/2)x \right]}{\sin (\frac{x}{2})}$
+
+$G_N(x) = \frac{\sin^2(Nx/2)}{N \sin^2(\frac{x}{2})}$
+
+On a :
+
+$\frac{1}{2\pi} \int\limits_{0}^{2\pi} D_N(x) = \frac{1}{2\pi}\int\limits_0^{2\pi} G_N(x) dx$
+
+En fait,
+
+$D_N(x) = 1 + \sum\limits_{|n| ge 1}^{N} e^{inx}$
+
+$\frac{1}{2\pi} \int\limits_{0}^{2\pi} D_N(x) = \frac{1}{2\pi} \int\limits_{0}^{2\pi} 1 + \frac{1}{2\pi} \int\limits_{0}^{2\pi} \sum\limits_{|n| ge 1}^{N} e^{inx}$
+
+$\frac{1}{2\pi}\int\limits_0^{2\pi} G_N(x) dx = \frac{1}{2\pi N}\int\limits_0^{2\pi} \left( D_0(x)+ ... + D_{N-1} (x) \right) dx =  1$
+
+
+Le comportement de $G_N$
+
+$\frac{1}{2\pi}\int\limits_{-\pi}^{\pi} G_N(x) dx = 1$ $G_N \ge 0$
+
+$G_N$ : concentré autour de 0
+
+dessin G_N
+
+c'est à dire $\forall \delta > 0$
+
+$\lim\limits_{N\to + \infty} \frac{1}{2\pi} \int\limits_{\delta < |x| < \pi} G_n(x) dx = 0$
+
+_Rappel_
+
+$G_N(x) = \frac{1}{N} \frac{\sin^2(Nx/2)}{\sin^2(n/2)}$
+
+image cercle
+
+Si $\delta < |x| < \pi$ alors $\sin^2(x/2) \ge c_{\delta}$
+
+On fixe $x_0$: $h(x_0) > c > 0$
+
+\begin{align*}
+\exists \delta \begin{cases}
+|x-x_0| < \delta\\
+h(x) < \frac{c}{2}
+\end{cases}
+\end{align*}
+
+$c_n(h) = 0$ $\forall n$
+
+$c_n(h) e^{inx_0} = 0$
+
+$\frac{1}{2\pi} \int\limits_0^{2\pi} h(x) e^{-inx} e^{inx_0} dx = 0$
+
+$\frac{1}{2\pi} \int\limits_0^{2\pi} h(x) e^{in(x_0-x)}dx = 0$
+
+$\Leftarrow \sum\limits_{-N}^{N} \int\limits_0^{2\pi} h(x) \alpha_n e^{in(x_0-x) dx = 0$
+
+$\forall \alpha_n \in \mathbb{C}$
+
+On sait que : $\exists \alpha_n$ tel que
+
+$G_n(x) = \sum\limits_{-N}^N \alpha_n e^{inx}$
+
+On sait
+
+\begin{align*}
+0 &= \int\limits_{x_0-\pi}^{x_0+\pi} h(x) G_n(x_0-x) dx\\
+&= \int\limits_{|x-x_0| < \delta} h(x) G_N(x_0-x) + \int\limits_{\delta < |x-x_0| < \pi} h(x) G(x_0 -x) dx
+&\ge \frac{c}{2} \int\limits_{|x-x_0| < \delta} G_N(x_0-x)dx = \frac{c}{2}
 \end{align*}

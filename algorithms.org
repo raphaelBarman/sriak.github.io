@@ -1781,3 +1781,89 @@ Runtime : Each step takes $\Theta(V+E)$ so total running time is $\Theta(V+E)$
 Why does it work ? Intuition :
 - The first DFS order SCC's in topological order (recall G^{SCC} is acyclic)
 - Second DFS the output the vertices in each SCC
+
+** Flow networks
+*** Definition of network
+- Directed graph $G=(V,E)$
+- Each edge $(u,v)$ has a capacity $c(u,v) \ge 0$ ($c(u,v) = 0$ if $(u,v) \not\in E$)
+- Source $s$ and sink $t$ (flow goes from $s$ to $t$)
+- No antiparallel edges (assumed without loss of generality for simplicity)
+  - if there are two parallel edges $(u,v)$ and $(v,u)$, choose one of them say $(u,v)$
+  - Create a new vertex $v'$
+  - Replace $(u,v)$ be two new edges $(u,v')$ and $(v',v)$ with $c(u,v') = c(v',u) = c(u,v)$
+  - Repeat this $O(E)$ times to get an equivalent flow with no antiparallel edges
+  - Add image
+*** Definition of a flow
+A flow is a function $f: V \times V \to \mathbb{R}$ satisfying :
+- Capacity constraint : $\forall u,v \in V\ : 0 \le f(u,v) \le c(u,v)$
+- Flow conservation: $\forall u \in V \backslash \lbrace s,t \rbrace$,
+  $\sum\limits_{v\in V} f(u,v) = \sum\limits_{v\in V} f(u,v)$ (flow into $u$ =
+  flow out of $u$)
+*** Value of a flow
+Value of a flow
+\begin{align*}
+f &= |f|\\
+&= \sum\limits_{v\in V} f(s,v) - \sum\limits_{v\in V}f(v,s)\\
+&= \text{flow out of source - flow into source}
+\end{align*}
+** Maximum-flow problem
+*** Ford-Fulkerson method'54
+*FORD-FULKERSON-METHOD* $(G,s,t)$
+1. Initialize flow $f$ to 0
+2. while there exists an *augmenting path* $p$ in the *residual network* G_f
+3. *augment flow* $f$ along $p$
+4. return f
+
+Basic idea :
+- As long as there is a path from source to sink, with available capacity on all
+  edges in the path
+- send flow along one of these paths and then we find another path and so on
+
+*** Residual network
+- Given a flow $f$ and a network $G=(V,E)$
+- the residual network consists of edges with capacities that represent how we
+  can change the flow of edges
+
+*Residual capacity*
+
+\begin{align*}
+c_f(u,v) = \begin{cases}
+c(u,v) - f(u,v) & \text{if } (u,v) \in E \text{ (amount of capacity left)}\\
+f(u,v) & \text{if } (v,u) \in E\text{ (amount of that can be reversed)}\\
+0 & \text{otherwise} 
+\end{cases}
+\end{align*}
+
+*Residual network*
+
+$G_f = (V,E_f)$ where $E_f = \lbrace (u,v \in V \times V : c_f(u,v) > 0 \rbrace$
+*** Why is returned flow optimal ? (Min-cuts)
+A cut of flow network $G(V,E)$ is
+- a partition of $V$ into $S$ and $T=V\backslash S$
+- such that $s\in S$ and $t \in T$
+**** Net flow across a cut
+The net flow across cut $(S,T)$ is
+
+$f(S,T) = \sum\limits_{u\in S, v\in T} f(u,v) - \sum\limits_{u\in S,v\in T} f(v,u)$
+**** Capacity a cut
+The capacity of a cut $(S,T)$ is
+
+$c(S,T) = \sum\limits_{u\in S,v\in T} c(u,v)$
+**** Flow and cut capacity
+For any flow $f$ and any cut $(S,T)$:
+
+\begin{align*}
+|f| &= f(S,T)\\
+&= \sum\limits_{u\in S, v\in T} f(u,v) - \sum\limits_{u\in S,v\in T} f(v,u)\\
+&\le \sum\limits_{u\in S, v\in T} f(u,v) \\
+&\le \sum\limits_{u\in S, v\in T} c(u,v) \\
+&= c(S,T)
+\end{align*}
+
+Therefore max-flow $\le$ min-cut
+
+We shall prove :
+
+Theorem (max-flow min-cut theorem)
+
+max-flow = min-cut
