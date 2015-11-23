@@ -644,3 +644,96 @@ se décline en fonction des cours d’action des jeux vidéo
 1. Influence grandissante de service en ligne
 2. Boucle de rétroaction: le /freemium/ devient controversé et et suggère de
    nouvelles stratégies qui particpent à sa transformation
+* Week 10
+** Le réseau social
+Ingénieurs passent beaucoup de temps à créer/entretenir des réseaux sociaux.
+- Pourquoi ces réseaux sociaux ?
+  - coordination techique
+  - Organisation du travail
+  - Supervision
+  - Conseil
+  - Formation
+- Pourquoi construction dès la formation
+  - Ressource dans le travail
+  - Ressource/influence dans l'évolution de la carrière
+
+Réseau social = capital social
+- Ressources effective ou potentielles
+- Dépend du nombre et leur propre capital
+
+Réseau = influence
+- Réseau plus influent et influencé qu'il est fortement connecté à d'autres
+  - qui lui font confiance
+  - obligation de la soutenir
+  - ou qui dépendent d'échanges avec lui
+  - peut être contraignant dans l'ouverture de la manière dont on pense
+- Offre accès à des ressources encastrée dans une strucutre sociale
+- Ressources politique qui permettent d'influencer les processsus décisionnels
+
+Relation hors de l'entreprise
+- donnent accès à des informations cruciales à
+la réussite de projets
+- Toutefois, risqué \rightarrow fuites d'informations
+- Mode d'acquisition de connaissances
+- Intégration des connaissances directement aux routines de l'organisation
+
+Relation hautement personelles, parfois extra-professionnelles
+
+
+** Ingénieur-e-s R&D en microélectronique
+Enjeu = réussir la miniaturisaiton des circuits et d'augmenter leur performance
+Trois formes de mobilisations :
+*** Conseil technique
+But :
+Obtenir des connaissances pour résoudre rapidement des problèmes ou identifier
+des idées nouvelles
+
+Utilisation des réseau plutôt que les bases de connaissances
+- Rapidité
+- Difficulté à savoir précisément quoi chercher
+- accès au savoir tacite
+Dans la microélectronique, les *techniques* de fabrication sont très *complexes*
+(grand nombre d’opérations interdépendantes) et les *connaissances* à intégrer
+*dispersées*
+
+Consultations ponctuelles, mais pas sur des connaissances confidentielles
+\rightarrow Le respect de la confidentialité est même une *condition sine qua
+non de la pérennisation de la relation*
+
+ Réseau académique
+- Accès à des connaissances spécialisées
+- Réseau naturel facile à mobiliser
+- Statut interne d'expert, fondé sur leurs relations externes
+
+Réseau permet de savoir "qui sait quoi"
+
+*** Recours à un service
+Machines indispensables pour tester idées pas forcément disponible localement.
+
+Négociation du passage prioritaire
+*** Compréhension de l'environnement
+La compréhension de l’environnement interne
+- Concurrence entre équipes projet pour capter du soutien et des ressources
+- Opposants potentiels et menaces sur le projet
+- Connaissance des personnes et appuis éventuels sur lesquels compter
+- Manière dont le projet est perçu en dehors de l’équipe projet
+- Concurrence entre domaines d’expertise
+- Interprétation des discours stratégiques de la direction
+- « Faire passer un message »
+- Donner de la visibilité au projet ou domaine d’expertise
+
+La compréhension de l’environnement externe
+- Partenariats avec d’autres entreprises, telles que des équipementiers
+- Portes d’entrée dans l’organisation partenaire
+  - pour que le projet y soit « poussé » et défendu
+  - pour comprendre les attentes du partenaire
+  - ou pour monter un projet
+** Conclusion
+RÉSEAU SOCIAL
+- Complément important à l’expertise
+- Évolue au cours du cycle de vie professionnel
+  - S’accroît avec l’ancienneté
+- Change de nature selon qu’il est tourné vers
+  - l’université
+  - les fournisseurs, concurrents, clients
+  - l’intérieur de l’organisation

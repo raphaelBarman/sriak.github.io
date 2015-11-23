@@ -1454,9 +1454,7 @@ a_{n_{(F_f)}} &= \frac{1}{\pi} \int\limits_0^{2\pi} F_f(x) \cos (nx) dx\\
 &= \lim\limits_{N\to +\infty} \frac{1}{\pi} \int\limits_0^{2\pi} \left(\frac{a_0}{2} = \sum\limits_{k=1}^N a_k \cos(kx) + b_k \sin(kx)\right) x \cos(nx) dx\\
 &= \lim\limits_{N\to +\infty} a_n = a_n
 \end{align*}
-* Chapitre 15
-#+attr_html: :style font-size:20px
-_*Séries de Fourier*_
+
 ** Théorème
 $f,g$: régulières, T-périodiques
 $a_n(f) = a_n(g)$
@@ -1703,4 +1701,142 @@ On sait
 0 &= \int\limits_{x_0-\pi}^{x_0+\pi} h(x) G_n(x_0-x) dx\\
 &= \int\limits_{|x-x_0| < \delta} h(x) G_N(x_0-x) + \int\limits_{\delta < |x-x_0| < \pi} h(x) G(x_0 -x) dx
 &\ge \frac{c}{2} \int\limits_{|x-x_0| < \delta} G_N(x_0-x)dx = \frac{c}{2}
+\end{align*}
+** Théorème : Identité de Paserval
+$f$ : T-périodique
+
+$a_n = \frac{1}{T} \int\limits_0^T f(x) e^{\frac{in2\pi x}{T}} dx$
+
+Alors :
+
+$\frac{1}{T} \int\limits_0^T |f(x)|^2 dx = \sum\limits^{+\infty}_{-\infty} |c_n|^2$
+
+$\frac{2}{T} \int\limits_0^T |f(x)|^2 dx = \frac{|a_0|^2}{2} + \sum\limits_{n \ge 1} (|a_n|^2 + |b_n|^2)$
+
+** Propriété
+$f,g$ T-périodique
+
+$c_n(f) = \frac{1}{T} \int\limits_0^T f(x) e^{\frac{-in2\pi x}{T}} dx$
+
+$c_n(g) = \frac{1}{T} \int\limits_0^T g(x) e^{\frac{-in2\pi x}{T}} dx$
+
+Alors 
+
+$\frac{1}{T} \int\limits_0^T f(x) \bar{g(x)} dx = \sum\limits_{-\infty}^{+\infty} c_n(f) \cdot \bar{c_n(g)}$
+
+*** Lemme 1:
+$n,m \in \mathbb{Z}$
+\begin{align*}
+\frac{1}{T} \int\limits_0^T e^{\frac{in2\pi x}{T}} e^{\frac{-im2\pi x}{T}} dx\\
+= \begin{cases}
+1 & \text{ si $n=m$}\\
+0 & \text{ sinon}
+\end{cases} 
+\end{align*}
+
+_Preuve_
+
+$n=m$ ok
+
+$n\neq m$ :
+
+$\frac{1}{T} \int\limits^T_0 e^{\frac{(n-m)2\pi}{T}} dx = 0$
+
+*** Lemme 2:
+$f$ : T-périodique
+
+$F_{Nf}(x) = \sum\limits_{-N}^{N} c_n e^{\frac{in2\pi x}{T}}$
+
+_Alors_ :
+
+\begin{align*}
+&\frac{1}{T} \int\limits_0^T |f(x)|^2 dx \\
+&= \frac{1}{T} \int\limits_0^T | f(x) - F_{Nf}(x)|^2\\
+&+ \frac{1}{T} \int\limits_0^T |F_{Nf}(X)|^2 dx
+\end{align*}
+** Théorème
+$f$ : T-périodique
+
+$\frac{1}{T} \int\limits_0^T |f-F_{Nf}|^2 = \text{min} \frac{1}{T} \int\limits_0^T | f - \sum\limits_{-N}^{N} \gamma_n e^{\frac{in2\pi x}{T}}|^2$
+
+$\gamma_n \in \mathbb{C}$
+
+*image*
+
+** Ex. 11
+$f:$ $2\pi$ -périodique, impaire
+
+\begin{align*}
+f(x) = \begin{cases}
+x & 0 \le x \le \frac{\pi}{2}\\
+\pi - x & \frac{\pi}{2} < x \le \pi
+\end{cases}
+\end{align*}
+
+$f$ est impaire ssi $f(x)=-f(-x)$ $\forall x \in \mathbb{R}$
+
+$x\in (-\pi,0) \Leftrightarrow -x \in (0,\pi)$
+
+\begin{align*}
+f(x) &= - f(-x) \\
+&= \begin{cases}
+- (-x) & \text{si } -x \in (0,\frac{\pi}{2}]\\
+- (\pi - (-x)) & -x \in (\frac{\pi}{2},\pi)
+\end{cases} \\
+&= \begin{cases}
+x & \text{si } -x \in [-\frac{\pi}{2},0)\\
+- (\pi +x) & -x \in (-\pi ,-\frac{\pi}{2})
+\end{cases}
+\end{align*}
+
+Donc
+
+\begin{align*}
+f(x) = \begin{cases}
+\pi - x & \frac{\pi}{2} < x \le \pi\\
+x & \frac{-\pi}{2} \le x \le \frac{\pi}{2}\\
+-(\pi + x) & -\pi < x < \frac{-\pi}{2}
+\end{cases}
+\end{align*}
+
+$a_n = 0$ $n\le 0$
+
+car $f$:impaire
+
+\begin{align*}
+b_n &= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \sin(nx) dx\\
+&= \frac{1}{\pi} 2 \int\limits_0^{\pi} f(x) \sin(nx) dx\\
+&= \frac{2}{\pi} \left[ \int\limits_0^{\frac{\pi}{2}} x \sin(nx) dx + \int\limits_{\frac{\pi}{2}}^{\pi} (\pi -x) \sin(nx) dx \right]
+\end{align*}
+
+\begin{align*}
+\int\limits_0^{\frac{\pi}{2}} x \sin(nx) dx &= -\frac{1}{n} \int\limits_0^{\frac{\pi}{2}} x d\left[\cos(nx)\right]\\
+&= -\frac{1}{n} x \cos(nx) |^{\frac{\pi}{2}}_0 + \frac{1}{n} \int\limits_0^{\frac{\pi}{2}} \cos(nx) dx\\
+&= -\frac{1}{n} \frac{\pi}{2} \cos(n\frac{\pi}{2})+ \frac{1}{n} \frac{1}{n} \sin(nx)|^{\frac{\pi}{2}}_0\\
+&= \frac{1}{n^2} \sin(\frac{n\pi}{2}) - \frac{\pi}{2n} \cos(\frac{n\pi}{2})
+\end{align*}
+
+\begin{align*}
+\int\limits_{\frac{\pi}{2}}^{\pi} (\pi -x) \sin(nx) dx \\
+= \frac{\pi}{2n} \cos(\frac{n\pi}{2}) + \frac{1}{n^2} \sin(\frac{n\pi}{2})
+\end{align*}
+
+\begin{align*}
+b_n = \frac{2}{\pi} \lbrace \frac{1}{n^2} \sin(\frac{n\pi}{2} - \frac{\pi}{2n} \cos(\frac{n\pi}{2})\\
++ \frac{\pi}{2n}\cos(\frac{n\pi}{2}) + \frac{1}{n^2} \sin(\frac{n\pi}{2})\rbrace\\
+= \frac{4}{\pi n^2} \sin(\frac{n\pi}{2})
+\end{align*}
+
+ii) $x \in [-a,a]$; $a > 0$
+
+$x = \frac{4}{\pi^2} ia \sum\limits_{-\infty}^{\infty} \frac{(-1)^k}{(2k-1)^2} e^{\frac{\pi i x (2k-1)}{2a}}
+
+\begin{align*}
+b_n &= \frac{4}{\pi n^2} \sin(\frac{n\pi}{2})\\
+&= \begin{cases}
+0 & n=4m
+\frac{4}{\pi n^2} & n=4m+1
+0 & n=4m+2
+-\frac{4}{\pi n^2} & n=4m+3
+\end{cases}
 \end{align*}

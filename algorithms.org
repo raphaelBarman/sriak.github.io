@@ -1591,7 +1591,7 @@ How to store ?
 $A$ $|V| \times |V|$ matrix $A=(a_{ij}$ where
 \begin{align*}
 a_{ij} = \begin{cases}
-1 & \text{if $(i,j) \in E$}
+1 & \text{if $(i,j) \in E$}\\
 0 & \text{otherwise}
 \end{cases}
 \end{align*}

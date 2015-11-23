@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-10-25 Sun 17:16 -->
+<!-- 2015-11-22 Sun 12:40 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Networks</title>
@@ -273,7 +273,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline66">3. Chapter 3</a>
+<li><a href="#orgheadline82">3. Chapter 3</a>
 <ul>
 <li><a href="#orgheadline55">3.1. Multiplexing and Demultiplexing</a>
 <ul>
@@ -297,10 +297,65 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
+<li><a href="#orgheadline81">3.3. TCP</a>
+<ul>
+<li><a href="#orgheadline67">3.3.1. TCP connection</a>
+<ul>
+<li><a href="#orgheadline66">3.3.1.1. Establishmente</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline67">4. HW1</a></li>
-<li><a href="#orgheadline68">5. HW2</a></li>
+<li><a href="#orgheadline70">3.3.2. Reliable data transfer</a>
+<ul>
+<li><a href="#orgheadline68">3.3.2.1. Seq and ACK</a></li>
+<li><a href="#orgheadline69">3.3.2.2. Timeout and retransmit</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline71">3.3.3. Flow control</a></li>
+<li><a href="#orgheadline72">3.3.4. Connection closing</a></li>
+<li><a href="#orgheadline75">3.3.5. Security</a>
+<ul>
+<li><a href="#orgheadline73">3.3.5.1. Impersonation</a></li>
+<li><a href="#orgheadline74">3.3.5.2. Flood</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline80">3.3.6. Congestion control</a>
+<ul>
+<li><a href="#orgheadline76">3.3.6.1. Congestion effects</a></li>
+<li><a href="#orgheadline77">3.3.6.2. Approches</a></li>
+<li><a href="#orgheadline78">3.3.6.3. Some definitions</a></li>
+<li><a href="#orgheadline79">3.3.6.4. TCP congestion control</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline94">4. Chapter 4</a>
+<ul>
+<li><a href="#orgheadline83">4.1. Network layer function</a></li>
+<li><a href="#orgheadline87">4.2. Network layer services</a>
+<ul>
+<li><a href="#orgheadline84">4.2.1. Possible services</a></li>
+<li><a href="#orgheadline85">4.2.2. Virtual-circuit networks</a></li>
+<li><a href="#orgheadline86">4.2.3. Datagram network</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline93">4.3. Internet Protocol (IP)</a>
+<ul>
+<li><a href="#orgheadline88">4.3.1. Ip adress/prefix format</a></li>
+<li><a href="#orgheadline89">4.3.2. Subnets</a></li>
+<li><a href="#orgheadline91">4.3.3. IP addresse assignment</a>
+<ul>
+<li><a href="#orgheadline90">4.3.3.1. Dynamic Host Configuration Protocol (DCHP)</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline92">4.3.4. Network Address Translation (NAT)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline95">5. HW1</a></li>
+<li><a href="#orgheadline96">6. HW2</a></li>
 </ul>
 </div>
 </div>
@@ -999,8 +1054,8 @@ Application viewpoint: TCP provides reliable, in-order byte-stream transfer (“
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline66" class="outline-2">
-<h2 id="orgheadline66"><span class="section-number-2">3</span> Chapter 3</h2>
+<div id="outline-container-orgheadline82" class="outline-2">
+<h2 id="orgheadline82"><span class="section-number-2">3</span> Chapter 3</h2>
 <div class="outline-text-2" id="text-3">
 </div><div id="outline-container-orgheadline55" class="outline-3">
 <h3 id="orgheadline55"><span class="section-number-3">3.1</span> Multiplexing and Demultiplexing</h3>
@@ -1209,11 +1264,493 @@ until segment 10 have been received</li>
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgheadline81" class="outline-3">
+<h3 id="orgheadline81"><span class="section-number-3">3.3</span> TCP</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-orgheadline67" class="outline-4">
+<h4 id="orgheadline67"><span class="section-number-4">3.3.1</span> TCP connection</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<ul class="org-ul">
+<li>Sockets &rarr; pass data between app-layer process and TCP</li>
+<li>Bidirectional communication</li>
+<li>MSS: Maximum Segment Size</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline66" class="outline-5">
+<h5 id="orgheadline66"><span class="section-number-5">3.3.1.1</span> Establishmente</h5>
+<div class="outline-text-5" id="text-3-3-1-1">
+<p>
+3-way handshake between end-systems
+</p>
+<ul class="org-ul">
+<li>Client sends connection request</li>
+<li>Server sends request acknowledgment</li>
+<li>Client send ack. of request ack.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline70" class="outline-4">
+<h4 id="orgheadline70"><span class="section-number-4">3.3.2</span> Reliable data transfer</h4>
+<div class="outline-text-4" id="text-3-3-2">
+</div><div id="outline-container-orgheadline68" class="outline-5">
+<h5 id="orgheadline68"><span class="section-number-5">3.3.2.1</span> Seq and ACK</h5>
+<div class="outline-text-5" id="text-3-3-2-1">
+<ul class="org-ul">
+<li>Sequence number (SEQ)
+<ul class="org-ul">
+<li>provided by data sender</li>
+<li># of first byte of data</li>
+</ul></li>
+<li>Acknowledgment number (ACK)
+<ul class="org-ul">
+<li>provided by data receiver</li>
+<li># of oldest byte expected by receiver (cumulative)</li>
+</ul></li>
+<li>Both are <b>always present</b>, even when not needed</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline69" class="outline-5">
+<h5 id="orgheadline69"><span class="section-number-5">3.3.2.2</span> Timeout and retransmit</h5>
+<div class="outline-text-5" id="text-3-3-2-2">
+<ul class="org-ul">
+<li>Sender times out
+<ul class="org-ul">
+<li>segement corrupted, lost or delayed</li>
+<li>ACK corrupted, lost or delayed</li>
+</ul></li>
+<li>Sender retransmits the segment with oldest un-ACKed sequence #</li>
+<li>Timeout
+<ul class="org-ul">
+<li>Bit longer than RTT
+<ul class="org-ul">
+<li>If too short : premature timeout, unecessary retransmissions</li>
+<li>If too long : slow reaction to segment loss</li>
+</ul></li>
+<li>Calculation
+<ul class="org-ul">
+<li>SampleRTT : measured time form segment transmission until ACK reception (ignore retransmissions)</li>
+<li>EstimatedRTT = 0.875 EstimatedRTT + 0.125 SampleRTT</li>
+<li>DevRTT = function(RTT variance)</li>
+<li>Timeout = EstimatedRTT + 4 DevRTT</li>
+</ul></li>
+<li>Empirical, conservative prediction of RTT</li>
+</ul></li>
+<li>Fast retransmit
+<ul class="org-ul">
+<li>Sender receives 3 duplicate ACKs &rarr; segment lost or delayed</li>
+<li>Sender retransmits segement with <b>oldest un-ACKed sequence #</b></li>
+</ul></li>
+<li>Retransmission event
+<ul class="org-ul">
+<li>Sender times out</li>
+<li>Sender receives 3 duplicate ACKS</li>
+</ul></li>
+<li>Pipelining policy
+<ul class="org-ul">
+<li>From Go-Back-N
+<ul class="org-ul">
+<li>receiver sends cumulative ACKs</li>
+<li>doesn't ACK individual out-of-order segments</li>
+</ul></li>
+<li>From SR
+<ul class="org-ul">
+<li>sender rentransmits only <b>one segment</b></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>
+<b>Image TCP sender simplified (book's slides chapter 3, p.67) ?</b>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline71" class="outline-4">
+<h4 id="orgheadline71"><span class="section-number-4">3.3.3</span> Flow control</h4>
+<div class="outline-text-4" id="text-3-3-3">
+<ul class="org-ul">
+<li>Receiver provides receiver window
+<ul class="org-ul">
+<li>equal to free space in TCP receive buffer</li>
+<li>specifies how many bytes it can receive</li>
+</ul></li>
+<li>Sender sends up to this # of bytes &rarr; must wait for window to "open" (sends same SEQ #, but no data, until window not null)</li>
+<li>Guarantees receive buffer will not overflow</li>
+<li>Slows down the sender</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline72" class="outline-4">
+<h4 id="orgheadline72"><span class="section-number-4">3.3.4</span> Connection closing</h4>
+<div class="outline-text-4" id="text-3-3-4">
+<ul class="org-ul">
+<li>client, server each close their side of connection &rarr; send TCP segment with FIN bit = 1</li>
+<li>Respond to received FIN with ACK</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline75" class="outline-4">
+<h4 id="orgheadline75"><span class="section-number-4">3.3.5</span> Security</h4>
+<div class="outline-text-4" id="text-3-3-5">
+</div><div id="outline-container-orgheadline73" class="outline-5">
+<h5 id="orgheadline73"><span class="section-number-5">3.3.5.1</span> Impersonation</h5>
+<div class="outline-text-5" id="text-3-3-5-1">
+<ul class="org-ul">
+<li>Attack : impersonate one of the parties and provide fake content</li>
+<li>Defense : randomize sequence numbers &rarr; make segment content unpredictable</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline74" class="outline-5">
+<h5 id="orgheadline74"><span class="section-number-5">3.3.5.2</span> Flood</h5>
+<div class="outline-text-5" id="text-3-3-5-2">
+<ul class="org-ul">
+<li>Attack : exhaust the SYN buffer</li>
+<li>Defense : get rid of SYN buffer, instead use non-forgeable ticket &rarr; pass the state to the TCP client</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline80" class="outline-4">
+<h4 id="orgheadline80"><span class="section-number-4">3.3.6</span> Congestion control</h4>
+<div class="outline-text-4" id="text-3-3-6">
+</div><div id="outline-container-orgheadline76" class="outline-5">
+<h5 id="orgheadline76"><span class="section-number-5">3.3.6.1</span> Congestion effects</h5>
+<div class="outline-text-5" id="text-3-3-6-1">
+<ul class="org-ul">
+<li>Long queuing delays</li>
+<li>Ressources waste
+<ul class="org-ul">
+<li>Sender has to retransmit</li>
+<li>routers transmit duplicate packets</li>
+<li>routers transmit packets that will be dropped</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline77" class="outline-5">
+<h5 id="orgheadline77"><span class="section-number-5">3.3.6.2</span> Approches</h5>
+<div class="outline-text-5" id="text-3-3-6-2">
+<ul class="org-ul">
+<li>End-to-end congestion control (network layer)
+<ul class="org-ul">
+<li>no explicit feedback from network</li>
+<li>congestion inferred from end-system observed loss, delay</li>
+</ul></li>
+<li>Network-assisted congestion control (transport layer)
+<ul class="org-ul">
+<li>Routers provide feeedback to end system</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline78" class="outline-5">
+<h5 id="orgheadline78"><span class="section-number-5">3.3.6.3</span> Some definitions</h5>
+<div class="outline-text-5" id="text-3-3-6-3">
+<ul class="org-ul">
+<li>Congestion window size (CWND)
+<ul class="org-ul">
+<li># of unacknowledged bytes that the sender may transmit so as to avoid creating congestion</li>
+</ul></li>
+<li>Bandwith-delay product
+<ul class="org-ul">
+<li>Max amount of traffic that the sender can transmit until he gets the first ACK = max sender window size</li>
+</ul></li>
+<li>Self-clocking
+<ul class="org-ul">
+<li>Inferring the "right" congestion widnow based on the ACKs
+<ul class="org-ul">
+<li>ACK = no congestion, increase window</li>
+<li>No ACK = congestion, decrease window</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline79" class="outline-5">
+<h5 id="orgheadline79"><span class="section-number-5">3.3.6.4</span> TCP congestion control</h5>
+<div class="outline-text-5" id="text-3-3-6-4">
+<ul class="org-ul">
+<li>Increase window size
+<ul class="org-ul">
+<li>Exponentially
+<ul class="org-ul">
+<li>by 1 MSS for every ACKed MSS</li>
+<li>when we do not expect congestion</li>
+</ul></li>
+<li>Linearly
+<ul class="org-ul">
+<li>by 1 MSS evert RTT</li>
+<li>when we expect congestion</li>
+</ul></li>
+</ul></li>
+<li>Basic algorithm
+<ul class="org-ul">
+<li>Start with exponential increase
+<ul class="org-ul">
+<li>when sender times out, it resets windo to MSS</li>
+<li>sets congestion treshold to last window size /2</li>
+</ul></li>
+<li>Transition to linear increase, when :
+<ul class="org-ul">
+<li>window reaches congestion threshold</li>
+<li>sender receives 3 duplicates ACKs</li>
+</ul></li>
+</ul></li>
+<li>Terminology
+<ul class="org-ul">
+<li>Exponential increase = <b>slow start</b>
+<ul class="org-ul">
+<li>when sender times out, it resets window to MSS</li>
+<li>sets congestion threshold to last window size / 2</li>
+</ul></li>
+<li><p>
+Linear increase = congestion avoidance
+</p>
+<ul class="org-ul">
+<li>window reaches congestion threshold</li>
+<li>sender receives 3 duplicate ACKs</li>
+</ul>
+<p>
+<b>slide chapter 3 p.104 ?</b>
+</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgheadline67" class="outline-2">
-<h2 id="orgheadline67"><span class="section-number-2">4</span> HW1</h2>
+<div id="outline-container-orgheadline94" class="outline-2">
+<h2 id="orgheadline94"><span class="section-number-2">4</span> Chapter 4</h2>
 <div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgheadline83" class="outline-3">
+<h3 id="orgheadline83"><span class="section-number-3">4.1</span> Network layer function</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Forwading
+</p>
+<ul class="org-ul">
+<li><b>Local router</b> process that determines output link for each packet</li>
+<li>How :
+<ul class="org-ul">
+<li>read value from packet’s network-layer header</li>
+<li>search forwarding table</li>
+</ul></li>
+</ul>
+<p>
+Routing
+</p>
+<ul class="org-ul">
+<li><b>Network wide</b> process that determines end-to-end path for each packet</li>
+<li>How :
+<ul class="org-ul">
+<li>centralized routing algorithm</li>
+<li>distributed routing algorithm</li>
+</ul></li>
+</ul>
+<p>
+Interplay between routing and forwarding &rarr; routing algorithm stores in forwarding table path, forwarding table determines local forwarding
+</p>
+
+<p>
+Connection setup
+</p>
+<ul class="org-ul">
+<li><b>Path-wide</b> that sets up <span class="underline">connection state</span> in routers &rarr; before
+datagrams flow, two end hosts <i>and</i> intervening routers establish virtual
+connection</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline87" class="outline-3">
+<h3 id="orgheadline87"><span class="section-number-3">4.2</span> Network layer services</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-orgheadline84" class="outline-4">
+<h4 id="orgheadline84"><span class="section-number-4">4.2.1</span> Possible services</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<ul class="org-ul">
+<li>Guaranteed (in-order) delivery</li>
+<li>Guaranteed maximum delay</li>
+<li>Guaranteed minimum throughput</li>
+<li>Security (confidentiality, authenticity)</li>
+</ul>
+<p>
+Internet provides best-effort delivery
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline85" class="outline-4">
+<h4 id="orgheadline85"><span class="section-number-4">4.2.2</span> Virtual-circuit networks</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<ul class="org-ul">
+<li>“source-to-dest path behaves much like telephone circuit”
+<ul class="org-ul">
+<li>performance-wise</li>
+<li>network actions along source-to-dest path</li>
+<li>Connection state</li>
+</ul></li>
+<li>Useful for network-layer guarantees</li>
+<li>VC consists of :
+<ul class="org-ul">
+<li>Path from source to dest</li>
+<li>VC #, one # for each link along the path</li>
+<li>entries in forwarding table in routers along the path</li>
+</ul></li>
+<li>Forwarding state: per connection
+<ul class="org-ul">
+<li>VC #, input link, output link</li>
+<li>populated by connection setup (must establish conneciton <i>before</i> data can flow)VC routers maintain connection state informati</li>
+</ul></li>
+<li>VC routers maintain connection state information</li>
+<li>Not used in today's internet</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline86" class="outline-4">
+<h4 id="orgheadline86"><span class="section-number-4">4.2.3</span> Datagram network</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<ul class="org-ul">
+<li>No call setup at network layer (connection-less)</li>
+<li>routers: no state about end-to-end connections</li>
+<li>Appropriate for best-effort services</li>
+<li>packets forwarded using destination host address
+<ul class="org-ul">
+<li>populated by routing process</li>
+<li>Use of address range (prefix)</li>
+<li>Longest prefix matching &rarr; when looking for forwarding table entry
+for given destination address, use longest address prefix that matches destination address.</li>
+</ul></li>
+<li>Why this approach ?
+<ul class="org-ul">
+<li>Scales better &rarr; no per-connection state in routers</li>
+<li>Keeps network simpler &rarr; no suppport for conneciton setup and
+teardown in routers</li>
+</ul></li>
+<li>Location-dependent addresses
+<ul class="org-ul">
+<li>Address embeds location information
+<ul class="org-ul">
+<li>address proximity implies location proximity</li>
+</ul></li>
+<li>Significantly reduces forwarding state
+<ul class="org-ul">
+<li>per destination prefix</li>
+<li>(otherwise, it would be per destination)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline93" class="outline-3">
+<h3 id="orgheadline93"><span class="section-number-3">4.3</span> Internet Protocol (IP)</h3>
+<div class="outline-text-3" id="text-4-3">
+</div><div id="outline-container-orgheadline88" class="outline-4">
+<h4 id="orgheadline88"><span class="section-number-4">4.3.1</span> Ip adress/prefix format</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<ul class="org-ul">
+<li>IP address = number from 0 to 2<sup>32</sup> -1</li>
+<li>IP prefix = range of IP addresses
+<ul class="org-ul">
+<li>Notation using a mask : 223.1.1.0 / 24, means applying a mask with 24
+first bits to 1</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline89" class="outline-4">
+<h4 id="orgheadline89"><span class="section-number-4">4.3.2</span> Subnets</h4>
+<div class="outline-text-4" id="text-4-3-2">
+<p>
+-IP address:
+</p>
+<ul class="org-ul">
+<li>subnet part - high order bits (223.1.1.* or 223.1.1.0/24)</li>
+<li>host part - low order bits (223.1.1.1 or 223.1.1.2,&#x2026;)</li>
+</ul>
+<ul class="org-ul">
+<li>what's a subnet ?
+<ul class="org-ul">
+<li>device interfaces with same subnet part of IP address</li>
+<li>can physically reach each other without intervening router</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline91" class="outline-4">
+<h4 id="orgheadline91"><span class="section-number-4">4.3.3</span> IP addresse assignment</h4>
+<div class="outline-text-4" id="text-4-3-3">
+<ul class="org-ul">
+<li>Each organization obtains IP prefixes
+<ul class="org-ul">
+<li>from its ISP or from regulatory body</li>
+</ul></li>
+<li>Network operator assigns IP addresses
+<ul class="org-ul">
+<li>to router interfaces: manually</li>
+<li>to end-systems: manually or through DHCP</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline90" class="outline-5">
+<h5 id="orgheadline90"><span class="section-number-5">4.3.3.1</span> Dynamic Host Configuration Protocol (DCHP)</h5>
+<div class="outline-text-5" id="text-4-3-3-1">
+<p>
+goal: allow host to dynamically obtain its IP address from network server when
+it joins network
+</p>
+<ul class="org-ul">
+<li>can renew its lease on address in use</li>
+<li>allows reuse of addresses (only hold address while connected/“on”)</li>
+<li>support for mobile users who want to join network (more shortly)</li>
+</ul>
+<p>
+DHCP overview:
+</p>
+<ul class="org-ul">
+<li>host broadcasts “DHCP discover” msg [optional]</li>
+<li>DHCP server responds with “DHCP offer” msg [optional]</li>
+<li>host requests IP address: “DHCP request” msg</li>
+<li>DHCP server sends address: “DHCP ack” msg</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline92" class="outline-4">
+<h4 id="orgheadline92"><span class="section-number-4">4.3.4</span> Network Address Translation (NAT)</h4>
+<div class="outline-text-4" id="text-4-3-4">
+<ul class="org-ul">
+<li>Motivation :local network uses just one IP address as far as outside world is concerned:
+<ul class="org-ul">
+<li>range of addresses not needed from ISP: just one IP address for all devices</li>
+<li>can change addresses of devices in local network without notifying outside world</li>
+<li>can change ISP without changing addresses of devices in local network</li>
+<li>devices inside local net not explicitly addressable, visible by outside world
+(a security plus)</li>
+</ul></li>
+<li>Resolves IP address depletion problem</li>
+<li>Requires per-connection state</li>
+<li>NAT is controversial:
+<ul class="org-ul">
+<li>routers should only process up to layer 3</li>
+<li>violates end-to-end argument
+<ul class="org-ul">
+<li>NAT possibility must be taken into account by app designers, e.g., P2P applications</li>
+</ul></li>
+<li>address shortage should instead be solved by IPv6</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline95" class="outline-2">
+<h2 id="orgheadline95"><span class="section-number-2">5</span> HW1</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Imagine d<sub>end</sub>-to-end between 2 links is D, imagine now N links, to send P
 packets, time taken is N*D+(P-1)*D, in words, time for the first packet to
@@ -1245,9 +1782,9 @@ R∙d<sub>prop</sub>
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline68" class="outline-2">
-<h2 id="orgheadline68"><span class="section-number-2">5</span> HW2</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgheadline96" class="outline-2">
+<h2 id="orgheadline96"><span class="section-number-2">6</span> HW2</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 Time to get ip-address from name (cache empty), with n servers and constant
 delay of D between any two machines (RTT=2D) : 2nD. Now if cache contains name : 2D
@@ -1276,7 +1813,7 @@ replies is negligeable)
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-10-25 Sun 17:16</p>
+<p class="date">Created: 2015-11-22 Sun 12:40</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

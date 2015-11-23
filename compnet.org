@@ -374,6 +374,225 @@ Then, two ways :
   - Ack for segment 10 indicates that segment 10 has been received
 - When the sender retransmits, it retransmits *only one* segment
 
+** TCP
+*** TCP connection
+- Sockets \rightarrow pass data between app-layer process and TCP
+- Bidirectional communication
+- MSS: Maximum Segment Size
+**** Establishmente
+3-way handshake between end-systems
+- Client sends connection request
+- Server sends request acknowledgment
+- Client send ack. of request ack.
+*** Reliable data transfer
+**** Seq and ACK
+- Sequence number (SEQ)
+  - provided by data sender
+  - # of first byte of data
+- Acknowledgment number (ACK)
+  - provided by data receiver
+  - # of oldest byte expected by receiver (cumulative)
+- Both are *always present*, even when not needed
+**** Timeout and retransmit
+- Sender times out
+  - segement corrupted, lost or delayed
+  - ACK corrupted, lost or delayed
+- Sender retransmits the segment with oldest un-ACKed sequence #
+- Timeout
+  - Bit longer than RTT
+    - If too short : premature timeout, unecessary retransmissions
+    - If too long : slow reaction to segment loss
+  - Calculation
+    - SampleRTT : measured time form segment transmission until ACK reception (ignore retransmissions)
+    - EstimatedRTT = 0.875 EstimatedRTT + 0.125 SampleRTT
+    - DevRTT = function(RTT variance)
+    - Timeout = EstimatedRTT + 4 DevRTT
+  - Empirical, conservative prediction of RTT
+- Fast retransmit
+  - Sender receives 3 duplicate ACKs \rightarrow segment lost or delayed
+  - Sender retransmits segement with *oldest un-ACKed sequence #*
+- Retransmission event
+  - Sender times out
+  - Sender receives 3 duplicate ACKS
+- Pipelining policy
+  - From Go-Back-N
+    - receiver sends cumulative ACKs
+    - doesn't ACK individual out-of-order segments
+  - From SR
+    - sender rentransmits only *one segment*
+*Image TCP sender simplified (book's slides chapter 3, p.67) ?*
+*** Flow control
+- Receiver provides receiver window
+  - equal to free space in TCP receive buffer
+  - specifies how many bytes it can receive
+- Sender sends up to this # of bytes \rightarrow must wait for window to "open" (sends same SEQ #, but no data, until window not null)
+- Guarantees receive buffer will not overflow
+- Slows down the sender
+*** Connection closing
+- client, server each close their side of connection \rightarrow send TCP segment with FIN bit = 1
+- Respond to received FIN with ACK
+*** Security
+**** Impersonation
+- Attack : impersonate one of the parties and provide fake content
+- Defense : randomize sequence numbers \rightarrow make segment content unpredictable
+**** Flood
+- Attack : exhaust the SYN buffer
+- Defense : get rid of SYN buffer, instead use non-forgeable ticket \rightarrow pass the state to the TCP client
+*** Congestion control
+**** Congestion effects
+- Long queuing delays
+- Ressources waste
+  - Sender has to retransmit
+  - routers transmit duplicate packets
+  - routers transmit packets that will be dropped
+**** Approches
+- End-to-end congestion control (network layer)
+  - no explicit feedback from network
+  - congestion inferred from end-system observed loss, delay
+- Network-assisted congestion control (transport layer)
+  - Routers provide feeedback to end system
+**** Some definitions 
+- Congestion window size (CWND)
+  - # of unacknowledged bytes that the sender may transmit so as to avoid creating congestion
+- Bandwith-delay product
+  - Max amount of traffic that the sender can transmit until he gets the first ACK = max sender window size
+- Self-clocking
+  - Inferring the "right" congestion widnow based on the ACKs
+    - ACK = no congestion, increase window
+    - No ACK = congestion, decrease window
+**** TCP congestion control
+- Increase window size
+  - Exponentially
+    - by 1 MSS for every ACKed MSS
+    - when we do not expect congestion
+  - Linearly
+    - by 1 MSS evert RTT
+    - when we expect congestion
+- Basic algorithm
+  - Start with exponential increase
+    - when sender times out, it resets windo to MSS
+    - sets congestion treshold to last window size /2
+  - Transition to linear increase, when :
+    - window reaches congestion threshold
+    - sender receives 3 duplicates ACKs
+- Terminology
+  - Exponential increase = *slow start*
+    - when sender times out, it resets window to MSS
+    - sets congestion threshold to last window size / 2
+  - Linear increase = congestion avoidance
+    - window reaches congestion threshold
+    - sender receives 3 duplicate ACKs
+    *slide chapter 3 p.104 ?*
+
+* Chapter 4
+** Network layer function
+Forwading
+- *Local router* process that determines output link for each packet
+- How :
+  - read value from packet’s network-layer header
+  - search forwarding table
+Routing
+- *Network wide* process that determines end-to-end path for each packet
+- How :
+  - centralized routing algorithm
+  - distributed routing algorithm
+Interplay between routing and forwarding \rightarrow routing algorithm stores in forwarding table path, forwarding table determines local forwarding
+
+Connection setup
+- *Path-wide* that sets up _connection state_ in routers \rightarrow before
+  datagrams flow, two end hosts /and/ intervening routers establish virtual
+  connection
+** Network layer services
+*** Possible services
+- Guaranteed (in-order) delivery
+- Guaranteed maximum delay
+- Guaranteed minimum throughput
+- Security (confidentiality, authenticity)
+Internet provides best-effort delivery
+*** Virtual-circuit networks
+- “source-to-dest path behaves much like telephone circuit”
+  - performance-wise
+  - network actions along source-to-dest path
+  - Connection state
+- Useful for network-layer guarantees
+- VC consists of :
+  - Path from source to dest
+  - VC #, one # for each link along the path
+  - entries in forwarding table in routers along the path
+- Forwarding state: per connection
+  - VC #, input link, output link
+  - populated by connection setup (must establish conneciton /before/ data can flow)VC routers maintain connection state informati
+- VC routers maintain connection state information
+- Not used in today's internet
+*** Datagram network
+- No call setup at network layer (connection-less)
+- routers: no state about end-to-end connections
+- Appropriate for best-effort services
+- packets forwarded using destination host address
+  - populated by routing process
+  - Use of address range (prefix)
+  - Longest prefix matching \rightarrow when looking for forwarding table entry
+    for given destination address, use longest address prefix that matches destination address.
+- Why this approach ?
+  - Scales better \rightarrow no per-connection state in routers
+  - Keeps network simpler \rightarrow no suppport for conneciton setup and
+    teardown in routers
+- Location-dependent addresses
+  - Address embeds location information
+    - address proximity implies location proximity
+  - Significantly reduces forwarding state
+    - per destination prefix
+    - (otherwise, it would be per destination)
+** Internet Protocol (IP)
+*** Ip adress/prefix format
+- IP address = number from 0 to 2^32 -1
+- IP prefix = range of IP addresses
+  - Notation using a mask : 223.1.1.0 / 24, means applying a mask with 24
+    first bits to 1
+*** Subnets
+-IP address:
+  - subnet part - high order bits (223.1.1.* or 223.1.1.0/24)
+  - host part - low order bits (223.1.1.1 or 223.1.1.2,...)
+- what's a subnet ?
+  - device interfaces with same subnet part of IP address
+  - can physically reach each other without intervening router
+*** IP addresse assignment
+- Each organization obtains IP prefixes
+  - from its ISP or from regulatory body
+- Network operator assigns IP addresses
+  - to router interfaces: manually
+  - to end-systems: manually or through DHCP
+**** Dynamic Host Configuration Protocol (DCHP)
+goal: allow host to dynamically obtain its IP address from network server when
+it joins network
+- can renew its lease on address in use
+- allows reuse of addresses (only hold address while connected/“on”)
+- support for mobile users who want to join network (more shortly)
+DHCP overview:
+- host broadcasts “DHCP discover” msg [optional]
+- DHCP server responds with “DHCP offer” msg [optional]
+- host requests IP address: “DHCP request” msg
+- DHCP server sends address: “DHCP ack” msg
+*** Ip fragmentation & reassembly
+- When packet size exceeds MTU (Max. transfert unit)
+  - router fragments it
+  - adds an identifier to each fragment
+- The end-system reassembles the fragments before passing the packet to the transport layer
+*** Network Address Translation (NAT)
+- Motivation :local network uses just one IP address as far as outside world is concerned:
+  - range of addresses not needed from ISP: just one IP address for all devices
+  - can change addresses of devices in local network without notifying outside world
+  - can change ISP without changing addresses of devices in local network
+  - devices inside local net not explicitly addressable, visible by outside world
+    (a security plus)
+- Resolves IP address depletion problem
+- Requires per-connection state
+- NAT is controversial:
+  - routers should only process up to layer 3
+  - violates end-to-end argument
+    - NAT possibility must be taken into account by app designers, e.g., P2P applications
+  - address shortage should instead be solved by IPv6
+
 * HW1
 Imagine d_end-to-end between 2 links is D, imagine now N links, to send P
 packets, time taken is N*D+(P-1)*D, in words, time for the first packet to
