@@ -1838,6 +1838,7 @@ f(u,v) & \text{if } (v,u) \in E\text{ (amount of that can be reversed)}\\
 
 $G_f = (V,E_f)$ where $E_f = \lbrace (u,v \in V \times V : c_f(u,v) > 0 \rbrace$
 *** Why is returned flow optimal ? (Min-cuts)
+cf. [[https://en.wikipedia.org/wiki/Max-flow_min-cut_theorem#Proof][Wikipedia]] for nice proof
 A cut of flow network $G(V,E)$ is
 - a partition of $V$ into $S$ and $T=V\backslash S$
 - such that $s\in S$ and $t \in T$
@@ -1867,3 +1868,169 @@ We shall prove :
 Theorem (max-flow min-cut theorem)
 
 max-flow = min-cut
+*** Running time
+It takes $O(E)$ time to find a path in the residual network (use for example breadth-first search)
+
+Each time the flow value is increased by at least 1
+
+Running time is $O(E \cdot |f_{\text{max}}|)$ where $|f_{\text{max}}|$ denotes the value
+of a maximum flow
+
+However, if we either take the *shortest path* or the *fattest path* then this
+will not happen if the capacities are integer :
+
+BFS shortest path, $\le \frac{1}{2} E \cdot V$ number of iterations
+
+Fattest path, $\le E \cdot \log(E \cdot U)$ number of iterations
+
+- $U$ is the maximum flow value
+- Fattest path: choose augmenting path with largest minimum capacity
+  (bottleneck)
+* Week 10
+** DIsjoint-set data strucutre
+- Also known as “union find”
+- Maintain collection S = {S 1 , . . . , S k } of disjoint dynamic (changing over time) sets
+- Each set is identified by a representative, which is some member of the set
+  
+Doesn’t matter which member is the representative, as long as if we ask for the
+representative twice without modifying the set, we get the same answer both
+times
+** Operations
+- Make-Set(x): make a new set $S_i = \lbrace x \rbrace$, and add $S_i$ to $S$
+- Union(x, y): if $x \in S_x$, $y \in S_y$ , then $S = S − S_x − S_y \cup
+  \lbrace S_x \cup S_y \rbrace$
+  + Representative of new set is any member in $S_x \cup S_y$ , often the representative of one of $S_x$ and $S_y$
+  + Destroys $S_x$ and $S_y$ (since sets must be disjoint)
+- Find(x): return representative of set containing $x$
+** Connected components
+*CONNECTED-COMPONENTS* $(G)$
+#+BEGIN_SRC java
+for each vertex v in G.V
+  MAKE-SET(v)
+for each edge(u,v) in G.E
+  if FIND-SET(u) != FIND-SET(v)
+    UNION(u,v)
+#+END_SRC
+** Linked list representation
+- Each set is a single linked list represented by a set object that has
+  - a pointer to the head of the list (assumed to be the representative
+  - a pointer to the tail of the list
+- Each object in the list has attributes for the set member, pointer to the set
+  object and next
+
+Implementation of operations :
+- Make-Set(x): Create a singleton list in time $\Theta(1)$
+- Find(x): follow the pointer back to the list object, and then follow the head
+  pointer to the representative (time $\Theta(1)$)
+- Union, 2 ways to implement:
+  1. Append $y$ ’s list onto the end of $x$ ’s list. Use $x$ ’s tail pointer to find the end.
+     - Need to update the pointer back to the set object for every node on $y$ ’s
+       list.
+     - If appending a large list onto a small list, it can take a while
+       ($\Theta$(length of 2nd list))
+  2. Weighted-union heuristic always append the smaller list to the larger list
+     (break ties arbitrarily)
+*** Theorem weighted-union heuristic
+With weighted-uinon heuristic, a sequence of $m$ operations on $n$ elements take
+$O(m+n \lg n)$ time
+** Disjoint-set forest
+- One tree per set. Root is representative
+- Each node only points to its parent
+
+Make-Set(x): Make a single-node tree $\Theta(1)$
+
+Find(x): follow pointers to the root $O(h)$
+
+Union(x, y): make one root a child of another $\Theta(1)$
+*** Great heuristics
+*Union by rank*: make the root of the smaller tree a child of the root of the larger tree
+- Don’t actually use size
+- Use rank, which is an upper bound on height of node
+- Make the root with the smaller rank a child of the root with the larger rank
+
+*Path compression: Find path* = nodes visited during Find on the trip to the
+root, make all nodes on the find path direct children to root.
+*** Pseudocode
+*MAKE-SET* $(x)$
+#+BEGIN_SRC java
+x.p = x
+x.rank = 0
+#+END_SRC
+
+*FIND-SET* $(x)$
+#+BEGIN_SRC java
+if x != x.p
+  x.p = FIND-SET(x.p)
+return x.p
+#+END_SRC
+
+*UNION* $(x,y)$
+#+BEGIN_SRC java
+LINK(FIND-SET(x),FIND-SET(y))
+#+END_SRC
+
+*LINK* $(x,y)$
+#+BEGIN_SRC java
+if x.rank > y.rank
+  y.p = x
+else x.p = y
+  if x.rank == y.rank
+    y.rank = y.rank+1
+#+END_SRC
+*** Running time
+If use both union by rank and path compression,
+
+$O(m \cdot \alpha(n))$
+
+where $\alpha(n)$ is an extremly slowly growing function.
+
+- $\alpha(n) \le 5$ for any practical purpose
+- The bound O(m\cdot \alpha(n))$ is tight
+**** Runnin time of connected components
+*CONNECTED-COMPONENTS* $(G)$
+#+BEGIN_SRC java
+for each vertex v in G.V
+  MAKE-SET(v)
+for each edge(u,v) in G.E
+  if FIND-SET(u) != FIND-SET(v)
+    UNION(u,v)
+#+END_SRC
+- $V$ elements
+- $\le V + 3E$ operations on Union-Find data structure
+- Total running time if implemented as linked list with weighted-union
+  heuristic :
+
+$O(V \log V+E)$
+
+- Total running time if implemented as forest with union-by-rank and
+  path-compression :
+
+$O((V+E)\alpha(V)) \approx O(V+E)$
+** Minimum spanning trees
+Spanning tree of a graph = A set $T$ of edges that is
+- acyclic
+- Spanning (connects all vertices)
+
+INPUT: an undirected graph $G = (V , E )$ with weight $w (u, v )$ for each edge $(u, v ) \in E$
+
+OUTPUT: a spanning tree of minimum total weight
+** Prim's algorithm
+Start with any vertex $v$ , set tree $T$ to singleton $v$
+
+Greedily grow tree $T$ :
+
+at each step add to $T$ a minimum weight crossing edge with respect to the cut induced by $T$
+
+*** Implementation challenge
+How do we find minimum crossing edge at every iteration?
+
+Check all outgoing edges:
+- $O(E)$ comparisons at every iteration
+- $O(E V)$ running time in total
+
+More clever solution:
+- For every node $w$ , keep value dist($w$ ) that measures the “distance” of $w$ from
+  current tree
+- When a new node $u$ is added to tree, check whether neighbors of $u$ decreases
+  their distance to tree; if so, decrease distance
+- Maintain a min-priority queue for the nodes and their distances

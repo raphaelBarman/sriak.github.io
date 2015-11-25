@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-16 Mon 15:54 -->
+<!-- 2015-11-23 Mon 15:50 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -396,7 +396,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline147">8. Graphs</a>
+<li><a href="#orgheadline148">8. Graphs</a>
 <ul>
 <li><a href="#orgheadline113">8.1. Adjacency Lists</a></li>
 <li><a href="#orgheadline114">8.2. Adjacency matrix</a></li>
@@ -443,7 +443,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline138">8.8.3. Value of a flow</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline146">8.9. Maximum-flow problem</a>
+<li><a href="#orgheadline147">8.9. Maximum-flow problem</a>
 <ul>
 <li><a href="#orgheadline140">8.9.1. Ford-Fulkerson method'54</a></li>
 <li><a href="#orgheadline141">8.9.2. Residual network</a></li>
@@ -454,6 +454,36 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline144">8.9.3.3. Flow and cut capacity</a></li>
 </ul>
 </li>
+<li><a href="#orgheadline146">8.9.4. Running time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline162">9. Week 10</a>
+<ul>
+<li><a href="#orgheadline149">9.1. DIsjoint-set data strucutre</a></li>
+<li><a href="#orgheadline150">9.2. Operations</a></li>
+<li><a href="#orgheadline151">9.3. Connected components</a></li>
+<li><a href="#orgheadline153">9.4. Linked list representation</a>
+<ul>
+<li><a href="#orgheadline152">9.4.1. Theorem weighted-union heuristic</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline158">9.5. Disjoint-set forest</a>
+<ul>
+<li><a href="#orgheadline154">9.5.1. Great heuristics</a></li>
+<li><a href="#orgheadline155">9.5.2. Pseudocode</a></li>
+<li><a href="#orgheadline157">9.5.3. Running time</a>
+<ul>
+<li><a href="#orgheadline156">9.5.3.1. Runnin time of connected components</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline159">9.6. Minimum spanning trees</a></li>
+<li><a href="#orgheadline161">9.7. Prim's algorithm</a>
+<ul>
+<li><a href="#orgheadline160">9.7.1. Implementation challenge</a></li>
 </ul>
 </li>
 </ul>
@@ -3243,8 +3273,8 @@ to fill in. Hence, total time is \(\Theta(n^3)\)
 </div>
 </div>
 
-<div id="outline-container-orgheadline147" class="outline-2">
-<h2 id="orgheadline147"><span class="section-number-2">8</span> Graphs</h2>
+<div id="outline-container-orgheadline148" class="outline-2">
+<h2 id="orgheadline148"><span class="section-number-2">8</span> Graphs</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 A graph \(G = (V,E)\) consists of
@@ -3745,8 +3775,8 @@ f &= |f|\\
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline146" class="outline-3">
-<h3 id="orgheadline146"><span class="section-number-3">8.9</span> Maximum-flow problem</h3>
+<div id="outline-container-orgheadline147" class="outline-3">
+<h3 id="orgheadline147"><span class="section-number-3">8.9</span> Maximum-flow problem</h3>
 <div class="outline-text-3" id="text-8-9">
 </div><div id="outline-container-orgheadline140" class="outline-4">
 <h4 id="orgheadline140"><span class="section-number-4">8.9.1</span> Ford-Fulkerson method'54</h4>
@@ -3806,6 +3836,7 @@ f(u,v) & \text{if } (v,u) \in E\text{ (amount of that can be reversed)}\\
 <h4 id="orgheadline145"><span class="section-number-4">8.9.3</span> Why is returned flow optimal ? (Min-cuts)</h4>
 <div class="outline-text-4" id="text-8-9-3">
 <p>
+cf. <a href="https://en.wikipedia.org/wiki/Max-flow_min-cut_theorem#Proof">Wikipedia</a> for nice proof
 A cut of flow network \(G(V,E)\) is
 </p>
 <ul class="org-ul">
@@ -3870,11 +3901,350 @@ max-flow = min-cut
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline146" class="outline-4">
+<h4 id="orgheadline146"><span class="section-number-4">8.9.4</span> Running time</h4>
+<div class="outline-text-4" id="text-8-9-4">
+<p>
+It takes \(O(E)\) time to find a path in the residual network (use for example breadth-first search)
+</p>
+
+<p>
+Each time the flow value is increased by at least 1
+</p>
+
+<p>
+Running time is \(O(E \cdot |f_{\text{max}}|)\) where \(|f_{\text{max}}|\) denotes the value
+of a maximum flow
+</p>
+
+<p>
+However, if we either take the <b>shortest path</b> or the <b>fattest path</b> then this
+will not happen if the capacities are integer :
+</p>
+
+<p>
+BFS shortest path, \(\le \frac{1}{2} E \cdot V\) number of iterations
+</p>
+
+<p>
+Fattest path, \(\le E \cdot \log(E \cdot U)\) number of iterations
+</p>
+
+<ul class="org-ul">
+<li>\(U\) is the maximum flow value</li>
+<li>Fattest path: choose augmenting path with largest minimum capacity
+(bottleneck)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline162" class="outline-2">
+<h2 id="orgheadline162"><span class="section-number-2">9</span> Week 10</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-orgheadline149" class="outline-3">
+<h3 id="orgheadline149"><span class="section-number-3">9.1</span> DIsjoint-set data strucutre</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Also known as “union find”</li>
+<li>Maintain collection S = {S 1 , . . . , S k } of disjoint dynamic (changing over time) sets</li>
+<li>Each set is identified by a representative, which is some member of the set</li>
+</ul>
+
+<p>
+Doesn’t matter which member is the representative, as long as if we ask for the
+representative twice without modifying the set, we get the same answer both
+times
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline150" class="outline-3">
+<h3 id="orgheadline150"><span class="section-number-3">9.2</span> Operations</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Make-Set(x): make a new set \(S_i = \lbrace x \rbrace\), and add \(S_i\) to \(S\)</li>
+<li>Union(x, y): if \(x \in S_x\), \(y \in S_y\) , then \(S = S − S_x − S_y \cup
+  \lbrace S_x \cup S_y \rbrace\)
+<ul class="org-ul">
+<li>Representative of new set is any member in \(S_x \cup S_y\) , often the representative of one of \(S_x\) and \(S_y\)</li>
+<li>Destroys \(S_x\) and \(S_y\) (since sets must be disjoint)</li>
+</ul></li>
+<li>Find(x): return representative of set containing \(x\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline151" class="outline-3">
+<h3 id="orgheadline151"><span class="section-number-3">9.3</span> Connected components</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+<b>CONNECTED-COMPONENTS</b> \((G)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">for</span> each vertex v in <span style="color: #268bd2; font-weight: bold;">G</span>.V
+  MAKE-SET<span style="color: #2aa198;">(</span>v<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">for</span> each edge<span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span> in <span style="color: #268bd2; font-weight: bold;">G</span>.E
+  <span style="color: #859900; font-weight: bold;">if</span> FIND-SET<span style="color: #2aa198;">(</span>u<span style="color: #2aa198;">)</span> != FIND-SET<span style="color: #2aa198;">(</span>v<span style="color: #2aa198;">)</span>
+    UNION<span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline153" class="outline-3">
+<h3 id="orgheadline153"><span class="section-number-3">9.4</span> Linked list representation</h3>
+<div class="outline-text-3" id="text-9-4">
+<ul class="org-ul">
+<li>Each set is a single linked list represented by a set object that has
+<ul class="org-ul">
+<li>a pointer to the head of the list (assumed to be the representative</li>
+<li>a pointer to the tail of the list</li>
+</ul></li>
+<li>Each object in the list has attributes for the set member, pointer to the set
+object and next</li>
+</ul>
+
+<p>
+Implementation of operations :
+</p>
+<ul class="org-ul">
+<li>Make-Set(x): Create a singleton list in time \(\Theta(1)\)</li>
+<li>Find(x): follow the pointer back to the list object, and then follow the head
+pointer to the representative (time \(\Theta(1)\))</li>
+<li>Union, 2 ways to implement:
+<ol class="org-ol">
+<li>Append \(y\) ’s list onto the end of \(x\) ’s list. Use \(x\) ’s tail pointer to find the end.
+<ul class="org-ul">
+<li>Need to update the pointer back to the set object for every node on \(y\) ’s
+list.</li>
+<li>If appending a large list onto a small list, it can take a while
+(\(\Theta\)(length of 2nd list))</li>
+</ul></li>
+<li>Weighted-union heuristic always append the smaller list to the larger list
+(break ties arbitrarily)</li>
+</ol></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline152" class="outline-4">
+<h4 id="orgheadline152"><span class="section-number-4">9.4.1</span> Theorem weighted-union heuristic</h4>
+<div class="outline-text-4" id="text-9-4-1">
+<p>
+With weighted-uinon heuristic, a sequence of \(m\) operations on \(n\) elements take
+\(O(m+n \lg n)\) time
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline158" class="outline-3">
+<h3 id="orgheadline158"><span class="section-number-3">9.5</span> Disjoint-set forest</h3>
+<div class="outline-text-3" id="text-9-5">
+<ul class="org-ul">
+<li>One tree per set. Root is representative</li>
+<li>Each node only points to its parent</li>
+</ul>
+
+<p>
+Make-Set(x): Make a single-node tree \(\Theta(1)\)
+</p>
+
+<p>
+Find(x): follow pointers to the root \(O(h)\)
+</p>
+
+<p>
+Union(x, y): make one root a child of another \(\Theta(1)\)
+</p>
+</div>
+<div id="outline-container-orgheadline154" class="outline-4">
+<h4 id="orgheadline154"><span class="section-number-4">9.5.1</span> Great heuristics</h4>
+<div class="outline-text-4" id="text-9-5-1">
+<p>
+<b>Union by rank</b>: make the root of the smaller tree a child of the root of the larger tree
+</p>
+<ul class="org-ul">
+<li>Don’t actually use size</li>
+<li>Use rank, which is an upper bound on height of node</li>
+<li>Make the root with the smaller rank a child of the root with the larger rank</li>
+</ul>
+
+<p>
+<b>Path compression: Find path</b> = nodes visited during Find on the trip to the
+root, make all nodes on the find path direct children to root.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline155" class="outline-4">
+<h4 id="orgheadline155"><span class="section-number-4">9.5.2</span> Pseudocode</h4>
+<div class="outline-text-4" id="text-9-5-2">
+<p>
+<b>MAKE-SET</b> \((x)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">x.p = x
+x.rank = <span style="color: #268bd2; font-weight: bold;">0</span>
+</pre>
+</div>
+
+<p>
+<b>FIND-SET</b> \((x)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> x != x.p
+  x.p = FIND-SET<span style="color: #2aa198;">(</span>x.p<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">return</span> x.p
+</pre>
+</div>
+
+<p>
+<b>UNION</b> \((x,y)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">LINK<span style="color: #2aa198;">(</span>FIND-SET<span style="color: #b58900;">(</span>x<span style="color: #b58900;">)</span>,FIND-SET<span style="color: #b58900;">(</span>y<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+<b>LINK</b> \((x,y)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> x.rank &gt; y.rank
+  y.p = x
+<span style="color: #859900; font-weight: bold;">else</span> x.p = y
+  <span style="color: #859900; font-weight: bold;">if</span> x.rank == y.rank
+    y.rank = y.rank+<span style="color: #268bd2; font-weight: bold;">1</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline157" class="outline-4">
+<h4 id="orgheadline157"><span class="section-number-4">9.5.3</span> Running time</h4>
+<div class="outline-text-4" id="text-9-5-3">
+<p>
+If use both union by rank and path compression,
+</p>
+
+<p>
+\(O(m \cdot \alpha(n))\)
+</p>
+
+<p>
+where \(\alpha(n)\) is an extremly slowly growing function.
+</p>
+
+<ul class="org-ul">
+<li>\(\alpha(n) \le 5\) for any practical purpose</li>
+<li>The bound O(m&sdot; &alpha;(n))$ is tight</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline156" class="outline-5">
+<h5 id="orgheadline156"><span class="section-number-5">9.5.3.1</span> Runnin time of connected components</h5>
+<div class="outline-text-5" id="text-9-5-3-1">
+<p>
+<b>CONNECTED-COMPONENTS</b> \((G)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">for</span> each vertex v in <span style="color: #268bd2; font-weight: bold;">G</span>.V
+  MAKE-SET<span style="color: #2aa198;">(</span>v<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">for</span> each edge<span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span> in <span style="color: #268bd2; font-weight: bold;">G</span>.E
+  <span style="color: #859900; font-weight: bold;">if</span> FIND-SET<span style="color: #2aa198;">(</span>u<span style="color: #2aa198;">)</span> != FIND-SET<span style="color: #2aa198;">(</span>v<span style="color: #2aa198;">)</span>
+    UNION<span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>\(V\) elements</li>
+<li>\(\le V + 3E\) operations on Union-Find data structure</li>
+<li>Total running time if implemented as linked list with weighted-union
+heuristic :</li>
+</ul>
+
+<p>
+\(O(V \log V+E)\)
+</p>
+
+<ul class="org-ul">
+<li>Total running time if implemented as forest with union-by-rank and
+path-compression :</li>
+</ul>
+
+<p>
+\(O((V+E)\alpha(V)) \approx O(V+E)\)
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline159" class="outline-3">
+<h3 id="orgheadline159"><span class="section-number-3">9.6</span> Minimum spanning trees</h3>
+<div class="outline-text-3" id="text-9-6">
+<p>
+Spanning tree of a graph = A set \(T\) of edges that is
+</p>
+<ul class="org-ul">
+<li>acyclic</li>
+<li>Spanning (connects all vertices)</li>
+</ul>
+
+<p>
+INPUT: an undirected graph \(G = (V , E )\) with weight \(w (u, v )\) for each edge \((u, v ) \in E\)
+</p>
+
+<p>
+OUTPUT: a spanning tree of minimum total weight
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline161" class="outline-3">
+<h3 id="orgheadline161"><span class="section-number-3">9.7</span> Prim's algorithm</h3>
+<div class="outline-text-3" id="text-9-7">
+<p>
+Start with any vertex \(v\) , set tree \(T\) to singleton \(v\)
+</p>
+
+<p>
+Greedily grow tree \(T\) :
+</p>
+
+<p>
+at each step add to \(T\) a minimum weight crossing edge with respect to the cut induced by \(T\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline160" class="outline-4">
+<h4 id="orgheadline160"><span class="section-number-4">9.7.1</span> Implementation challenge</h4>
+<div class="outline-text-4" id="text-9-7-1">
+<p>
+How do we find minimum crossing edge at every iteration?
+</p>
+
+<p>
+Check all outgoing edges:
+</p>
+<ul class="org-ul">
+<li>\(O(E)\) comparisons at every iteration</li>
+<li>\(O(E V)\) running time in total</li>
+</ul>
+
+<p>
+More clever solution:
+</p>
+<ul class="org-ul">
+<li>For every node \(w\) , keep value dist(\(w\) ) that measures the “distance” of \(w\) from
+current tree</li>
+<li>When a new node \(u\) is added to tree, check whether neighbors of \(u\) decreases
+their distance to tree; if so, decrease distance</li>
+<li>Maintain a min-priority queue for the nodes and their distances</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-16 Mon 15:54</p>
+<p class="date">Created: 2015-11-23 Mon 15:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

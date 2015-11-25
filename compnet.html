@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-22 Sun 12:40 -->
+<!-- 2015-11-25 Wed 20:54 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Networks</title>
@@ -330,7 +330,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline94">4. Chapter 4</a>
+<li><a href="#orgheadline109">4. Chapter 4</a>
 <ul>
 <li><a href="#orgheadline83">4.1. Network layer function</a></li>
 <li><a href="#orgheadline87">4.2. Network layer services</a>
@@ -340,7 +340,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline86">4.2.3. Datagram network</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline93">4.3. Internet Protocol (IP)</a>
+<li><a href="#orgheadline94">4.3. Internet Protocol (IP)</a>
 <ul>
 <li><a href="#orgheadline88">4.3.1. Ip adress/prefix format</a></li>
 <li><a href="#orgheadline89">4.3.2. Subnets</a></li>
@@ -349,13 +349,40 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline90">4.3.3.1. Dynamic Host Configuration Protocol (DCHP)</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline92">4.3.4. Network Address Translation (NAT)</a></li>
+<li><a href="#orgheadline92">4.3.4. Ip fragmentation &amp; reassembly</a></li>
+<li><a href="#orgheadline93">4.3.5. Network Address Translation (NAT)</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline101">4.4. Routing algorithm</a>
+<ul>
+<li><a href="#orgheadline95">4.4.1. Least-cost path routing</a></li>
+<li><a href="#orgheadline96">4.4.2. Link state algorithm (LS)</a></li>
+<li><a href="#orgheadline99">4.4.3. Distance vector algorithm (DV)</a>
+<ul>
+<li><a href="#orgheadline97">4.4.3.1. Problem with Bellman-Ford</a></li>
+<li><a href="#orgheadline98">4.4.3.2. Solution</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline100">4.4.4. Comparison of LS and DV</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline108">4.5. Routing in the Internet</a>
+<ul>
+<li><a href="#orgheadline102">4.5.1. Challenges</a></li>
+<li><a href="#orgheadline103">4.5.2. intra-AS routing</a></li>
+<li><a href="#orgheadline104">4.5.3. Inter-AS routing</a></li>
+<li><a href="#orgheadline107">4.5.4. Internet routing protocol</a>
+<ul>
+<li><a href="#orgheadline105">4.5.4.1. Intra-AS</a></li>
+<li><a href="#orgheadline106">4.5.4.2. Inter-AS : Border Gateway Protocol (BGP)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline95">5. HW1</a></li>
-<li><a href="#orgheadline96">6. HW2</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline110">5. HW1</a></li>
+<li><a href="#orgheadline111">6. HW2</a></li>
 </ul>
 </div>
 </div>
@@ -1524,8 +1551,8 @@ Linear increase = congestion avoidance
 </div>
 </div>
 
-<div id="outline-container-orgheadline94" class="outline-2">
-<h2 id="orgheadline94"><span class="section-number-2">4</span> Chapter 4</h2>
+<div id="outline-container-orgheadline109" class="outline-2">
+<h2 id="orgheadline109"><span class="section-number-2">4</span> Chapter 4</h2>
 <div class="outline-text-2" id="text-4">
 </div><div id="outline-container-orgheadline83" class="outline-3">
 <h3 id="orgheadline83"><span class="section-number-3">4.1</span> Network layer function</h3>
@@ -1646,8 +1673,8 @@ teardown in routers</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline93" class="outline-3">
-<h3 id="orgheadline93"><span class="section-number-3">4.3</span> Internet Protocol (IP)</h3>
+<div id="outline-container-orgheadline94" class="outline-3">
+<h3 id="orgheadline94"><span class="section-number-3">4.3</span> Internet Protocol (IP)</h3>
 <div class="outline-text-3" id="text-4-3">
 </div><div id="outline-container-orgheadline88" class="outline-4">
 <h4 id="orgheadline88"><span class="section-number-4">4.3.1</span> Ip adress/prefix format</h4>
@@ -1721,8 +1748,21 @@ DHCP overview:
 </div>
 </div>
 <div id="outline-container-orgheadline92" class="outline-4">
-<h4 id="orgheadline92"><span class="section-number-4">4.3.4</span> Network Address Translation (NAT)</h4>
+<h4 id="orgheadline92"><span class="section-number-4">4.3.4</span> Ip fragmentation &amp; reassembly</h4>
 <div class="outline-text-4" id="text-4-3-4">
+<ul class="org-ul">
+<li>When packet size exceeds MTU (Max. transfert unit)
+<ul class="org-ul">
+<li>router fragments it</li>
+<li>adds an identifier to each fragment</li>
+</ul></li>
+<li>The end-system reassembles the fragments before passing the packet to the transport layer</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline93" class="outline-4">
+<h4 id="orgheadline93"><span class="section-number-4">4.3.5</span> Network Address Translation (NAT)</h4>
+<div class="outline-text-4" id="text-4-3-5">
 <ul class="org-ul">
 <li>Motivation :local network uses just one IP address as far as outside world is concerned:
 <ul class="org-ul">
@@ -1747,9 +1787,242 @@ DHCP overview:
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgheadline101" class="outline-3">
+<h3 id="orgheadline101"><span class="section-number-3">4.4</span> Routing algorithm</h3>
+<div class="outline-text-3" id="text-4-4">
+</div><div id="outline-container-orgheadline95" class="outline-4">
+<h4 id="orgheadline95"><span class="section-number-4">4.4.1</span> Least-cost path routing</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<ul class="org-ul">
+<li>Given: router graph &amp; link costs</li>
+<li>Goal: find least-cost path from each source router to each destination router using an algorithm</li>
+</ul>
 </div>
-<div id="outline-container-orgheadline95" class="outline-2">
-<h2 id="orgheadline95"><span class="section-number-2">5</span> HW1</h2>
+</div>
+<div id="outline-container-orgheadline96" class="outline-4">
+<h4 id="orgheadline96"><span class="section-number-4">4.4.2</span> Link state algorithm (LS)</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<ul class="org-ul">
+<li>Dijkstra’s algorithm
+<ul class="org-ul">
+<li><b>net topology</b>, link costs known to all nodes
+<ul class="org-ul">
+<li>accomplished via “link state broadcast”</li>
+<li>all nodes have same info</li>
+</ul></li>
+<li>computes least cost paths from one node (‘source”) to all other nodes</li>
+<li>gives forwarding table for that node</li>
+<li>iterative: after k iterations, know least cost path to k dest.’s</li>
+<li>Complexity: n(n+1)/2 comparison : \(O(n^2)\), more efficient implemations possible : \(O(n\log n)\)</li>
+</ul></li>
+<li>Link-state routing algorithm for source u
+<ul class="org-ul">
+<li>Centralized algorithm &rarr; not distributed</li>
+<li>Option #1: Router u runs the algorithm &rarr; computes least-cost path to every other router</li>
+<li>Option #2: Separate machine runs the algorithm &rarr; computes least-cost paths between all routers</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline99" class="outline-4">
+<h4 id="orgheadline99"><span class="section-number-4">4.4.3</span> Distance vector algorithm (DV)</h4>
+<div class="outline-text-4" id="text-4-4-3">
+<p>
+key idea:
+</p>
+<ul class="org-ul">
+<li>from time-to-time, each node sends its own distance vector estimate to neighbors</li>
+<li>when x receives new DV estimate from neighbor, it updates
+its own DV using B-F equation: \(D_x(y) \leftarrow min_v\lbrace c(x,v) + D_v
+  (y) \rbrace\) (min over all neighbors) for each node \(y \in N\)</li>
+<li>under minor, natural conditions, the estimate D x (y) converge to the actual
+least cost d x (y)</li>
+<li>All neighbors exchange information</li>
+<li>Each router checks whether it can improve current paths by leveraging the new information</li>
+<li>Ends when no improvement is possible</li>
+</ul>
+
+<p>
+iterative, asynchronous: each local iteration caused by:
+</p>
+<ul class="org-ul">
+<li>local link cost change</li>
+<li>DV update message from neighbor</li>
+</ul>
+<p>
+distributed:
+</p>
+<ul class="org-ul">
+<li>each router runs its own instance</li>
+<li>each node notifies neighbors only when its DV changes &rarr; neighbors
+then notify their neighbors if necessary</li>
+</ul>
+<p>
+each node:
+</p>
+<ul class="org-ul">
+<li>wait for (change in local link cost or msg from neighbor)</li>
+<li>recompute estimates</li>
+<li>if DV to any dest has changed, notify neighbors</li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline97" class="outline-5">
+<h5 id="orgheadline97"><span class="section-number-5">4.4.3.1</span> Problem with Bellman-Ford</h5>
+<div class="outline-text-5" id="text-4-4-3-1">
+<ul class="org-ul">
+<li>Routing loop
+<ul class="org-ul">
+<li>z routes through y, y routes through x</li>
+<li>y loses connectivity to x</li>
+<li>y decides to route through z</li>
+</ul></li>
+<li>Can take very long to resolve
+<ul class="org-ul">
+<li>"bad news travels slow - “</li>
+<li>count-to-infinity scenario</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline98" class="outline-5">
+<h5 id="orgheadline98"><span class="section-number-5">4.4.3.2</span> Solution</h5>
+<div class="outline-text-5" id="text-4-4-3-2">
+<ul class="org-ul">
+<li>Poisoned reverse
+<ul class="org-ul">
+<li>if z routes to x through y, z advertises to y that its cost to x infinite</li>
+<li>y never decides to route to x through z</li>
+</ul></li>
+<li>Algorithm re-converges quickly
+<ul class="org-ul">
+<li>avoids count-to-infinity scenario</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline100" class="outline-4">
+<h4 id="orgheadline100"><span class="section-number-4">4.4.4</span> Comparison of LS and DV</h4>
+<div class="outline-text-4" id="text-4-4-4">
+<ul class="org-ul">
+<li>message complexity
+<ul class="org-ul">
+<li>LS: with n nodes, E links, \(O(nE)\) msgs sent</li>
+<li>DV: exchange between neighbors only &rarr; convergence time varies</li>
+</ul></li>
+<li>speed of convergence
+<ul class="org-ul">
+<li>LS: \(O(n^2)\) algorithm requires \(O(nE)\) msgs, may have oscillations</li>
+<li>DV: convergence time varies
+<ul class="org-ul">
+<li>may be routing loops</li>
+<li>count-to-infinity problem</li>
+</ul></li>
+</ul></li>
+<li>robustness: what happens if router malfunctions?
+<ul class="org-ul">
+<li>LS:
+<ul class="org-ul">
+<li>node can advertise incorrect link cost</li>
+<li>each node computes only its own table</li>
+</ul></li>
+<li>DV:
+<ul class="org-ul">
+<li>DV node can advertise incorrect path cost</li>
+<li>each node’s table used by others &rarr; error propagate thru network</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline108" class="outline-3">
+<h3 id="orgheadline108"><span class="section-number-3">4.5</span> Routing in the Internet</h3>
+<div class="outline-text-3" id="text-4-5">
+</div><div id="outline-container-orgheadline102" class="outline-4">
+<h4 id="orgheadline102"><span class="section-number-4">4.5.1</span> Challenges</h4>
+<div class="outline-text-4" id="text-4-5-1">
+<ul class="org-ul">
+<li>Scale
+<ul class="org-ul">
+<li>link-state would cause flooding</li>
+<li>distance-vector would not converge</li>
+</ul></li>
+<li>Administrative autonomy
+<ul class="org-ul">
+<li>an ISP may not want to do least-cost routing</li>
+<li>may want to hide its link costs from the world</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline103" class="outline-4">
+<h4 id="orgheadline103"><span class="section-number-4">4.5.2</span> intra-AS routing</h4>
+<div class="outline-text-4" id="text-4-5-2">
+<ul class="org-ul">
+<li>aggregate routers into regions, “autonomous systems” (AS)</li>
+<li>routers in same AS run same routing protocol
+<ul class="org-ul">
+<li>“intra-AS” routing protocol &rarr; determines the path between every pair of routers in the same AS</li>
+<li>routers in different AS can run different intra-AS routing protocol</li>
+</ul></li>
+<li>gateway router:
+<ul class="org-ul">
+<li>at “edge” of its own AS</li>
+<li>has link to router in another AS</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline104" class="outline-4">
+<h4 id="orgheadline104"><span class="section-number-4">4.5.3</span> Inter-AS routing</h4>
+<div class="outline-text-4" id="text-4-5-3">
+<ul class="org-ul">
+<li>Run by all Internet routers</li>
+<li>Determines the path from every router to every foreign AS
+<ul class="org-ul">
+<li>not exactly so: determines the path from each router to each IP prefix advertized by a foreign AS</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline107" class="outline-4">
+<h4 id="orgheadline107"><span class="section-number-4">4.5.4</span> Internet routing protocol</h4>
+<div class="outline-text-4" id="text-4-5-4">
+</div><div id="outline-container-orgheadline105" class="outline-5">
+<h5 id="orgheadline105"><span class="section-number-5">4.5.4.1</span> Intra-AS</h5>
+<div class="outline-text-5" id="text-4-5-4-1">
+<ul class="org-ul">
+<li>Routing Information Protocol (RIP) &rarr; distance vector algorithm</li>
+<li>Open Shortest Path First (OSPF) &rarr; LS algorithm</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline106" class="outline-5">
+<h5 id="orgheadline106"><span class="section-number-5">4.5.4.2</span> Inter-AS : Border Gateway Protocol (BGP)</h5>
+<div class="outline-text-5" id="text-4-5-4-2">
+<ul class="org-ul">
+<li>BGP points
+<ul class="org-ul">
+<li>A router distributes reachability information to external routers through e-BGP.</li>
+<li>A router distributes external reachability information to other local routers through i-BGP.</li>
+</ul></li>
+<li>BGP route selection
+<ul class="org-ul">
+<li>Route that crosses fewer ASes</li>
+<li>Route that crosses fewer local routers</li>
+<li>Route with highest local preference</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline110" class="outline-2">
+<h2 id="orgheadline110"><span class="section-number-2">5</span> HW1</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Imagine d<sub>end</sub>-to-end between 2 links is D, imagine now N links, to send P
@@ -1782,8 +2055,8 @@ R∙d<sub>prop</sub>
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline96" class="outline-2">
-<h2 id="orgheadline96"><span class="section-number-2">6</span> HW2</h2>
+<div id="outline-container-orgheadline111" class="outline-2">
+<h2 id="orgheadline111"><span class="section-number-2">6</span> HW2</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Time to get ip-address from name (cache empty), with n servers and constant
@@ -1813,7 +2086,7 @@ replies is negligeable)
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-22 Sun 12:40</p>
+<p class="date">Created: 2015-11-25 Wed 20:54</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

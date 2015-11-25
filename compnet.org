@@ -593,6 +593,109 @@ DHCP overview:
     - NAT possibility must be taken into account by app designers, e.g., P2P applications
   - address shortage should instead be solved by IPv6
 
+** Routing algorithm
+*** Least-cost path routing
+- Given: router graph & link costs
+- Goal: find least-cost path from each source router to each destination router using an algorithm
+*** Link state algorithm (LS)
+- Dijkstra’s algorithm
+  - *net topology*, link costs known to all nodes
+    - accomplished via “link state broadcast”
+    - all nodes have same info
+  - computes least cost paths from one node (‘source”) to all other nodes
+  - gives forwarding table for that node
+  - iterative: after k iterations, know least cost path to k dest.’s
+  - Complexity: n(n+1)/2 comparison : $O(n^2)$, more efficient implemations possible : $O(n\log n)$
+- Link-state routing algorithm for source u
+  - Centralized algorithm \rightarrow not distributed
+  - Option #1: Router u runs the algorithm \rightarrow computes least-cost path to every other router
+  - Option #2: Separate machine runs the algorithm \rightarrow computes least-cost paths between all routers
+*** Distance vector algorithm (DV)
+key idea:
+- from time-to-time, each node sends its own distance vector estimate to neighbors
+- when x receives new DV estimate from neighbor, it updates
+  its own DV using B-F equation: $D_x(y) \leftarrow min_v\lbrace c(x,v) + D_v
+  (y) \rbrace$ (min over all neighbors) for each node $y \in N$
+- under minor, natural conditions, the estimate D x (y) converge to the actual
+  least cost d x (y)
+- All neighbors exchange information
+- Each router checks whether it can improve current paths by leveraging the new information
+- Ends when no improvement is possible
+
+iterative, asynchronous: each local iteration caused by:
+- local link cost change
+- DV update message from neighbor
+distributed:
+- each router runs its own instance
+- each node notifies neighbors only when its DV changes \rightarrow neighbors
+  then notify their neighbors if necessary
+each node:
+- wait for (change in local link cost or msg from neighbor)
+- recompute estimates
+- if DV to any dest has changed, notify neighbors
+
+**** Problem with Bellman-Ford
+- Routing loop
+  - z routes through y, y routes through x
+  - y loses connectivity to x
+  - y decides to route through z
+- Can take very long to resolve
+  - "bad news travels slow - “
+  - count-to-infinity scenario
+**** Solution
+- Poisoned reverse
+  - if z routes to x through y, z advertises to y that its cost to x infinite
+  - y never decides to route to x through z
+- Algorithm re-converges quickly
+  - avoids count-to-infinity scenario
+*** Comparison of LS and DV
+- message complexity
+  - LS: with n nodes, E links, $O(nE)$ msgs sent
+  - DV: exchange between neighbors only \rightarrow convergence time varies
+- speed of convergence
+  - LS: $O(n^2)$ algorithm requires $O(nE)$ msgs, may have oscillations
+  - DV: convergence time varies
+    - may be routing loops
+    - count-to-infinity problem
+- robustness: what happens if router malfunctions?
+  - LS:
+    - node can advertise incorrect link cost
+    - each node computes only its own table
+  - DV:
+    - DV node can advertise incorrect path cost
+    - each node’s table used by others \rightarrow error propagate thru network
+** Routing in the Internet
+*** Challenges
+- Scale
+  - link-state would cause flooding
+  - distance-vector would not converge
+- Administrative autonomy
+  - an ISP may not want to do least-cost routing
+  - may want to hide its link costs from the world
+*** intra-AS routing
+- aggregate routers into regions, “autonomous systems” (AS)
+- routers in same AS run same routing protocol
+  - “intra-AS” routing protocol \rightarrow determines the path between every pair of routers in the same AS
+  - routers in different AS can run different intra-AS routing protocol
+- gateway router:
+  - at “edge” of its own AS
+  - has link to router in another AS
+*** Inter-AS routing
+- Run by all Internet routers
+- Determines the path from every router to every foreign AS
+  - not exactly so: determines the path from each router to each IP prefix advertized by a foreign AS
+*** Internet routing protocol
+**** Intra-AS 
+- Routing Information Protocol (RIP) \rightarrow distance vector algorithm
+- Open Shortest Path First (OSPF) \rightarrow LS algorithm
+**** Inter-AS : Border Gateway Protocol (BGP)
+- BGP points
+  - A router distributes reachability information to external routers through e-BGP.
+  - A router distributes external reachability information to other local routers through i-BGP.
+- BGP route selection
+  - Route that crosses fewer ASes
+  - Route that crosses fewer local routers
+  - Route with highest local preference
 * HW1
 Imagine d_end-to-end between 2 links is D, imagine now N links, to send P
 packets, time taken is N*D+(P-1)*D, in words, time for the first packet to
