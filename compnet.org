@@ -696,6 +696,285 @@ each node:
   - Route that crosses fewer ASes
   - Route that crosses fewer local routers
   - Route with highest local preference
+* Chapter 5
+** Terminology
+- nodes: hosts, switches, routers
+- link: communication channel that connects adjacent nodes
+  - wired links
+  - wireless links
+- frame: link-layer “packet”
+- Hardware: network adaptor (NIC)
+
+*data-link layer* has responsibility of transferring datagram from one node to
+*physically adjacent* node over a link
+** Link Layer Services
+- Error detection
+  - detect bit errors caused by signal attenuation, noise
+  - drop frames with bit errors
+- Reliable data delivery
+  - error detection + correction/retransmission
+  - used for links with high-error rate (wireless)
+- Link access
+  - how to share the same link with other nodes
+- Flow control
+  - pacing between adjacent sending and receiving nodes
+** Error detection and correction
+- EDC= Error Detection and Correction bits (redundancy)
+- D = Data protected by error checking, may include header fields
+- Error detection not 100% reliable!
+  - protocol may miss some errors, but rarely
+  - larger EDC field yields better detection and correction
+*** Implemantations
+- Single bit parity: detect single bit errors
+- Two-dimensional bit parity: detect and correct single bit errors
+- Cyclic Redundancy Check (CRC)
+  - more powerful error-detection than parity checking
+  - widely used in practice: Ethernet, WiFi
+** Media Access Control (MAC)
+two types of “links”: 
+- point-to-point
+  - PPP for dial-up access 
+  - point-to-point link between Ethernet switch, host
+- broadcast (shared wire or medium) 
+  - old-fashioned Ethernet 
+  - upstream HFC 
+  - 802.11 wireless LAN
+*** Multiple access protocols
+- Given single shared broadcast link of rate R
+- The problem 
+  - interference = two or more simultaneous transmissions 
+  - collision = node receives two or more signals at the same time
+- An ideal multiple access protocol 
+  - when only one node wants to transmit, it can send at rate R 
+  - when N nodes want to transmit, each can send at average rate R/N 
+  - simple, fully decentralized
+*** MAC strategies
+**** Channel partitioning
+- TDMA: time divided in equal frames and slots
+- FDMA: frequency spectrum divided into frequency bands
+- Efficient at high load. Inefficient at low load
+**** Random access
+- if single node - transmit at full rate R bps
+- if N nodes - transmit at well below ideal R/N bps each (collisions, empty slots)
+- random access MAC protocol specifies:
+  - how to detect collisions
+  - how to recover from collisions (e.g., via delayed retransmissions)
+Efficient at low load. Inefficient at high load.
+
+Exemple :
+CSMA (carrier sense multiple access)
+- listen before transmit:
+  - if channel sensed idle: transmit entire frame 
+  - if channel sensed busy, defer transmission
+- collisions can still occur:
+  - propagation delay means two nodes may not hear
+    each other’s transmission
+  - In case of collision, entire packet transmission time wasted
+  - distance & propagation delay play role in in determining collision
+    probability
+- Collision detection
+  - Sense the channel before transmitting
+    - if channel sensed idle, transmit
+    - if channel sensed busy, defer transmission
+  - If a collision is detected
+    - abort transmission
+    - defer transmission
+  - Algorithm
+    1) NIC receives datagram from network layer, creates frame
+    2) If NIC senses channel idle, starts frame transmission. If NIC senses
+       channel busy, waits until channel idle, then transmits.
+    3) If NIC transmits entire frame without detecting another transmission, NIC
+       is done with frame!
+    4) If NIC detects another transmission while transmitting, aborts and sends
+       jam signal
+    5) After aborting, NIC enters exponential backoff: more collisions
+       \rightarrow longer wait interval
+**** Taking turns
+- Polling: master “invites” slave to transmit
+  - Main concerns 
+    - polling overhead 
+    - single point of failure (master)
+- Token passing: control token passed from one node to the next sequentially
+  - Main concerns 
+    - token overhead 
+    - single point of failure (token)
+** Link-layer forwarding++
+*** MAC Addresses and Address Resolution Protocol (ARP)
+- MAC Addresses
+  - Used to move frames between link-layer nodes \rightarrow one address per NIC
+  - Format: 48 bit address, flat \rightarrow usually shown in hexadecimal format
+- ARP
+  - How to determine interface’s MAC address, knowing its IP address?
+  - Source broadcasts request for destination’s MAC address
+  - Stores response in local ARP table < IP address; MAC address; TTL>
+*** Ethernet
+- The dominant wired LAN technology
+  - First widely used LAN technology
+  - Simpler, cheaper than token LANs and ATM
+  - Kept up with speed race: 10 Mbps – 100 Gbps
+**** Ethernet services
+- Connectionless 
+  - no handshaking between sending and receiving NICs
+- Unreliable 
+  - receiving NIC does not send ACKs or NACKs to sending NIC 
+  - recover dropped frames only if sender uses higher layer “rdt” (TCP)
+- MAC protocol 
+  - CSMA/CD with exponential backoff
+**** Ethernet Frame Structure
+- Sending adapter encapsulates datagram in Ethernet frame
+- preamble: 7 x 10101010 followed by 1 x 10101011
+  - synchronize sender, receiver clock rates
+- addresses: 48 bit source, source/destination MAC address
+  - receive frame only if destination matches or broadcast
+- type: indicates higher layer protocol: mostly IP, others possible
+- CRC: cyclic redundancy check at receiver
+**** Ethernet Physical Topology
+- bus: popular in the mid 90s
+  - all nodes in same collision domain (frames can collide)
+- star: prevails today
+  - active switch in the middle - each “spoke” in a separate
+    collision domain (no collisions)
+*** Link-layer Switch
+- Forwards frames within LAN 
+  - determines output port based on destination MAC address 
+  - similar to router forwarding process
+
+- Self-learning 
+  - forwarding table populated automatically 
+  - no need for manual configuration or routing protocol
+**** Self learning
+When a frame is received at the switch:
+1. Record pair (source MAC address; incoming link)
+2. Index forwarding table using destination MAC address
+3. If entry found:
+   - if destination on link from which frame arrived drop frame
+   - else forward frame on link indicated by entry
+4. (else) If entry not found:
+   - flood: forward on all links except the arriving interface
+**** Switches vs routers
+Both are store-and-forward
+- routers: network-layer devices (examine network-layer headers)
+- switches: link-layer devices (examine link-layer headers)
+Both have forwarding tables 
+- routers: using routing 
+- switches: using self-learning
+* Chapter 8
+** Security properties
+- Confidentiality
+  - only the sender and the receiver understand the contents of the message
+- Authenticity
+  - the message is from whom it claims to be
+- Integrity
+  - the message was not changed along the way
+** Building blocks
+*** Symmetric key cryptography
+- Alice and Bob share the same key \rightarrow used both for the encryption and decryption algorithm
+- Used to “scramble” the plaintext
+  - stream ciphers & block ciphers
+  - RC4, AES, Blowfish
+
+Challenge: how to share a key?
+- out of band
+- not always an option
+*** Asymmetric key cryptography
+- Alice and Bob use different keys
+  - public (key+) and private (key-) key
+- There is a special relationship between them
+  - key-{ key+{ plaintext } } = plaintext
+  - key+{ key-{ plaintext } } = plaintext
+  - RSA, DSA
+
+Challenge: computationally expensive
+- sophisticated encryption/decryption algorithms based on number theory
+*** Cryptographic hash function
+- Maps larger input to smaller hash
+- Hash should not reveal information on input
+- Should be hard to identify 2 inputs that lead to the same hash
+** Providing confidentiality
+- With symmetric key crypto
+  - Alice encrypts message with shared key
+  - only Bob can decrypt it
+
+- With asymmetric key crypto
+  - Alice encrypts message with Bob’s public key
+  - only Bob can decrypt it (with his private key)
+  - but beware of man-in-the-middle attacks
+** Providing authenticity
+- With symmetric key crypto
+  - Alice appends hash of message + shared key
+  - Bob verifies that it is correct (using shared key)
+
+- With asymmetric key crypto
+  - Alice encrypts hash of message with her private key, appends to unencrypted message
+  - Bob verifies that it is correct (using Alice’s public key)
+ 
+- Nonce for avoiding replay attacks
+  - Bob sends Alice a nonce (random number)
+  - Alice appends hash of message + shared key + nonce
+ 
+- Still one issue: man in the middle attack
+- Manuel poses as Alice (to Bob) and as Bob (to Alice) difficult to detect
+  - Bob receives everything that Alice sends, and vice versa. (e.g., so Bob,
+    Alice can meet one week later and recall conversation!)
+  - problem is that Manul receives all messages as well!
+** Providing integrity
+- cryptographic technique analogous to hand-written signatures:
+  - sender (Bob) digitally signs document, establishing he is document owner/creator.
+  - verifiable, nonforgeable: recipient (Alice) can prove to someone that Bob,
+    and no one else (including Alice), must have signed document
+*** Public key certification
+- Trusted certificate authority (CA) digitally signs that key+ is Bob’s public
+  key using the CA’s private key
+- CA’s public key is obtained out of band \rightarrow web browsers pre-configured with CA public keys
+
+** Securing email
+*** Confidentiality
+Alice wants to send confidential e-mail, m, to Bob.
+
+Alice:
+- generates random symmetric private key, K_S
+- encrypts message with K_S (for efficiency)
+- also encrypts K_S with Bob’s public key
+- sends both K_S(m) and K_B(K_S) to Bob
+
+Bob:
+- uses his private key to decrypt and recover K_S
+- uses K_S to decrypt K_S(m) to recover m
+*** Authenticity and Integrity
+Alice wants to provide sender authentication message integrity
+
+- Alice digitally signs message
+- sends both message (in the clear) and digital signature
+*** All of them
+Alice wants to provide secrecy, sender authentication, message integrity.
+
+Alice uses *three keys*: her private key, Bob’s public key, newly created symmetric key
+** Securing TCP
+- Server sends its certificate, includes its public key
+- Client creates and sends a shared master key, encrypts it with server’s public key
+- Both use master key to create 4 session keys
+  - 1 key for encrypting client \rightarrow server data
+  - 1 key for creating MAC for client \rightarrow server data
+  - same for server \rightarrow client data
+
+- Client organizes data in records, each record has a sequence number
+- Creates MAC for each record + sequence #, using one of the 4 session keys
+- Encrypts the data + MAC for each record, using (another) one of the 4 session keys
+** Securing IP
+- 2 IP routers establish a “secure tunnel” \rightarrow usually between branch offices of a company
+- Source encrypts each IP packet using a shared key
+- Source creates MAC for encrypted IP packet using another shared key
+*** Key ideas
+- Combination of symmetric/asymmetric keys
+  - asymmetric key crypto to exchange shared keys
+  - symmetric key crypto for confidentiality,authenticity, & integrity
+  - symmetric key crypto is faster
+- Seq. numbers to avoid reordering attacks
+  - organize data in records with seq. numbers
+  - compute MAC on record data + seq. number
+** Firewall
+isolates organization’s internal net from larger Internet, allowing some packets
+to pass, blocking others
 * HW1
 Imagine d_end-to-end between 2 links is D, imagine now N links, to send P
 packets, time taken is N*D+(P-1)*D, in words, time for the first packet to

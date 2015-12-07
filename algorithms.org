@@ -2020,7 +2020,27 @@ Start with any vertex $v$ , set tree $T$ to singleton $v$
 Greedily grow tree $T$ :
 
 at each step add to $T$ a minimum weight crossing edge with respect to the cut induced by $T$
+*** Why does it work ?
++ A cut $(S, V \backslash S)$ is a partition of the vertices into two nonempty
+  disjoint sets $S$ and $V \backslash S$
++ A crossing edge is an edge connecting vertex $S$ to vertex in $V \backslash S$
+**** Cut property
+Consider a cut $(S, V \backslash S)$ and let
+- $T$ be a tree on $S$ which is part of a MST
+- $e$ be a crossing edge of minimum weight
+Then there is MST of $G$ containing $e$ and $T$
 
+Proof :
+- If $e$ is already in MST we are done.
+- Otherwise add $e$ to the MST
+  - This creates a cycle
+  - At least one other crossing edge $f$ in cycle $w(f) \ge w(e)$ (actually must
+    be equal)
+  - Replace $f$ by $e$ in MST
+  - This gives new MST which contains $T$ and $e$
+**** $T$ is always a subtree of a MST
+Proof by induction on number of nodes in T . Final T is MST by this result.
+[[file:images/al_proofMST.png]]
 *** Implementation challenge
 How do we find minimum crossing edge at every iteration?
 
@@ -2034,3 +2054,248 @@ More clever solution:
 - When a new node $u$ is added to tree, check whether neighbors of $u$ decreases
   their distance to tree; if so, decrease distance
 - Maintain a min-priority queue for the nodes and their distances
+*** Pseudocode and analysis
+*PRIM* $(G,w,r)$
+#+BEGIN_SRC java
+Q = {}
+for each u in G.V
+  u.key = infinity
+  u.pi = NIL
+  INSERT(Q.u)
+DECREASE-KEY(Q,r,0) //r.key = 0
+while Q != {}
+  u = EXTRACT-MIN(Q)
+  for each v in G.Adj[u]
+    if v in Q and w(u,v) < v.key
+      v.pi = u
+      DECREASE-KEY(Q,v,w(u,v))
+#+END_SRC
+
+- Initialize $Q$ and first for loop: $O(V\lg V)$
+- Decrease key of $r$ : $O(\lg V )$
+- while loop:
+  - $V$ Extract-Min calls \Leftrightarrow $O(V\lg V)$
+  - $\le E$ Decrease-Key calls \Leftrightarrow $O(E\lg V)$
+- Total: $O(E\lg V)$ (can be made $O(V\lg V)$ with careful queue implementation)
+** Kruskal's algorithm
+Start from empty forest $T$
+
+Greedily maintain forest $T$ which will become MST at the end: at each step add
+cheapest edge that does not create a cycle
+*** Why does it work ?
+Claim: $T$ is always a sub-forest of a MST
+
+Proof by induction on the number of components/edges in $T$
+[[file:images/al_proofMSTKruskal.png]]
+*** Implementation challenge
+In each iteration, we need to check whether cheapest edge creates a cycle
+
+This is the same thing as checking whether its endpoints belong to the same
+component \Leftrightarrow *use disjoint sets (union-find) data structure*
+
+Let the connected components denote sets
+- Initially each singleton is a set
+- When edge $(u, v)$ is added to $T$ , make union of the two connected
+  components/sets
+*** Implemenation and analysis
+*KRUSKAL* $(G,w)$
+#+BEGIN_SRC java
+A = {}
+for each vertex v in G.V
+  MAKE-SET(v)
+sort the edges of G.E into nondecreasing order by weight w
+for each (u,v) taken from the sorted list
+  if FIND-SET(u) != FIND-SET(v)
+    A = A union {(u,v)}
+    UNION(u,v)
+return A
+#+END_SRC
+
+- Initialize A: $O(1)$
+- First for loop: $V$ Make-Sets
+- Sort $E$ : $O(E \lg E)$
+- Second for loop: $O(E)$ Find-Sets and Unions
+- Total time: $O((V + E )\alpha(V)) + O(E\lg E) = O(E\lg E ) = O(E\lg V)$
+If edges already sorted time is $O(E \alpha(V))$ which is almost linear
+** Problem solving
+A feedback edge set of a graph $G$ is a subset $F$ of the edges such that every
+cycle in $G$ contains at least one edge in $F$ . In other words, removing every edge
+in $F$ makes the graph $G$ acyclic. Describe and analyze a fast algorithm to compute
+the minimum weight feedback edge set of of a given edge-weighted graph.
+
+Let $G = (V , E)$ be an arbitrary connected graph with weighted edges. Assume
+further that no two edges have the same weight.
+1) Prove that for any partition of the vertices $V$ into two subsets, the
+   minimum-weight edge with one endpoint in each subset is in the minimum
+   spanning tree of $G$.
+2) Prove that the maximum-weight edge in any cycle of $G$ is not in the minimum
+   spanning tree of $G$.
+
+
+* Week 11
+** The shortest path problem 
+Input: directed graph $G = (V,E)$, edge-weights $w(u,v)$ for $(u,v) \in E$
+
+Shortest paths from $a$: (may have many solutions)
+*** Variants
+- Single-source: Find shortest paths from source vertex to every vertex
+- Single-destination: Find shortest paths to given destination vertex
+  - Can be solved by single-source by reversing edge directions
+- Single-pair: Find shortest path from u to v
+  - No algorithm known that is better in worst case than solving single-source
+- All-pairs: Find shortest path from u to v for all pairs u, v of vertices
+  - Can be solved by solving single-source for each vertex. Better algorithms known
+*** Negative weights and applications
+We will allow negative weights
+
+OK, as long as no negative-weight cycle is reachable from source:
+- Then we can just keep going around it to have paths of length $-\infty$
+
+Some algorithms only work with positive weights (Dijkstra’s algorithm)
+*** Bellman-Ford algorithm
+Input: directed graph with edge weights, a source s, no negative cycles
+
+For each vertex v keep track of
+- $l(v)$ = current upper estimate of length of shortest path to v
+- $π(v)$ = is the predecessor of $v$ in this shortest path
+
+Start by trivial initialization:
+*INIT-SINGLE-SOURCE* $(G,s)$
+#+BEGIN_SRC java
+for each v in G.V
+  v.d = infinity
+  v.π = NIL
+s.d = 0
+#+END_SRC
+
+Can we improve the shortest path estimate for $v$ by going through $u$ and taking $(u,v)$?
+
+*RELAX* $(u,v,w)$
+#+BEGIN_SRC java
+if v.d > u.d w(u,v)
+   v.d = u.d + w(u,v)
+   v.π = u
+#+END_SRC
+
+Bellman-Ford updates shortest-path estimates iteratively by using Relax.
+
+*BELLMAN-FORD* $(G,w,s)$
+#+BEGIN_SRC java
+INIT-SINGLE-SOURCE(G,s)
+for i = 1 to |G.V| - 1
+  for each edge (u,v) in G.E
+    RELAX(u,v,w)
+#+END_SRC
+**** Correctness
+Only guaranteed to work if no negative cycles!
+
+As we shall see later, it can also be used to detect negative cycles
+**** Optimal substructure
+If $< s, v_1,...,v_k,v_{k+1} >$ is a shortest path from $s$ to $v_{k+1}$
+Then $< s,v_1,...,v_k >$ is a shortest path from $s$ to $v_k$
+
+Proof:
+- Suppose toward contradiction: there exists shorter path $p'$ from $s$ to $v_k$
+- Then weight of $p' + (v_k , v_{k+1} )$ is smaller than $p + (v_k , v_{k+1} )$
+  which contradicts that $p + (v_k , v_{k+1})$ was a shortest path from $s$ to $v_{k+1}$
+**** Proof of corectness
+*Invariant*: $\mathcal{l}(v)$ is at most the length of the shortest path from $s$ to $v$ using
+at most $i$ edges after the $i$ ’th iteration
+
+
+*If there are no negative cycles reachable from* $s$, then for any $v$ there is a
+shortest path from $s$ to $v$ using at most $n − 1$ edges
+
+*Proof*: If there is a path with $n$ or more edges, then there is a cycle and
+since its weight is non-negative it can be removed
+
+Therefore, Bellman-Ford will return correct answer if no negative cycles after
+$n − 1$ iterations
+**** Detecting negative cycles
+There is a negative cycle reachable from the source if and only if the
+$\mathcal{l}$ -value of at least one node changes if we run one more ($n$:th)
+iteration of Bellman-Ford
+
+*BELLMAN-FORD* $(G,w,s)$
+#+BEGIN_SRC java
+INIT-SINGLE-SOURCE(G,s)
+for i = 1 to |G.V| - 1
+  for each edge (u,v) in G.E
+    RELAX(u,v,w)
+for each edge (u,v) in G.E
+  if v.d > u.d + w(u,v)
+    return False
+return True
+#+END_SRC
+
+There is no negative cycle reachable from the source if and only if the
+$\mathcal{l}$ -value
+of no node changes if we run one more ($n$:th) iteration of Bellman-Ford
+
+From the correctness proof, we have that if there are no negative cycles
+reachable from the source, then the $\mathcal{L}$ -values don’t change in $n$:th iteration.
+
+We need to prove: If the $\mathcal{l}$ -value of the vertices don’t change in
+the $n$:th iteration, then there is no negative cycle that is reachable from the source
+
+*Proof*. In this case $\forall (u,v) \in E: \mathcal{l}(u)+w(u,v) \ge
+\mathcal{l}(v)$
+
+So for a cycle $v_0 - v_1 - ... - v_{t-1} - v_t = v_0$,
+
+$\sum\limits_{i=1}^t \mathcal{l}(v_i) \le
+\sum\limits_{i=1}^t(\mathcal{l}(v_{i-1}) + w(v_{i-1},v_i)) = \sum\limits_{i=1}^t
+\mathcal{l}(v_{i-1}) + \sum\limits_{i=1}^t w(v_{i-1},v_i)$
+
+$\sum\limits_{i=1}^t \mathcal{l}(v_i)=\sum\limits_{i=1}^t \mathcal{l}(v_{i-1})$,
+hence the cycle is non-negative $0 \le \sum\limits_{i=1}^t w(v_{i-1},v_i)$
+
+**** Runtime analysis
+- Init-Single-Source updates $\mathcal$, π for each vertex in time $\Theta(V)$
+- Nested for loops runs Relax $V − 1$ times for each edge. Hence total time for
+  these loops is $\Theta(E \cdot V)$
+- Final for loop runs once for each edge. Time is $\Theta(E)$
+
+Total time: $\Theta(E\cdot V)$
+**** Final comments on Bellman-Ford
+- Can be used to find negative cycles
+  - Run for $n$ -iterations and detect cycles in “shortest path tree” these will
+    correspond to negative cycles
+- Easy to implement in distributed settings: each vertex repeatedly ask their
+  neighbors for the best path
+  - Good for routing and dynamic networks
+
+
+
+*** Dijkstra's Algorithm
+- Only works when all weights are nonnegative
+- Greedy and faster than Bellman-Ford
+- Similar idea to Prim’s algorithm (essentially weighted version of BFS)
+
+Start with source $S =\lbrace s \rbrace$
+
+Greedily grow S:
+
+at each step add to $S$ the vertex is closest to $S$ (minimum $v \not\in S : u.d + w(u,v)$)
+
+**** Implemenation
+Implementation with priority-queue as Prim’s algorithm with shortest path keys:
+*DIJKSTRA* $(G,w,s)$
+#+BEGIN_SRC java
+INIT-SINGLE-SOURCE(G,s)
+S = {}
+Q = G.V //i.e insert all vertices into Q
+while Q != {}
+  u = EXTRACT-MIN(Q)
+  S = S union {u}
+  for each vertex v in G.Adj[u]
+    RELAX(u,v,w)
+#+END_SRC
+
+**** Running time
+Running time Like Prim’s dominated by operations on priority queue:
+- If binary heap, each operation takes $O(\lg V)$ time \Rightarrow $O(E\lg V)$
+- More careful implementation time is $O(V \lg V + E)$
+* Proba analysis and randomized algorithms
+** The Hiring Problem
+To complete

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 15:50 -->
+<!-- 2015-12-04 Fri 13:25 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algorithms</title>
@@ -459,7 +459,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline162">9. Week 10</a>
+<li><a href="#orgheadline171">9. Week 10</a>
 <ul>
 <li><a href="#orgheadline149">9.1. DIsjoint-set data strucutre</a></li>
 <li><a href="#orgheadline150">9.2. Operations</a></li>
@@ -481,9 +481,45 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#orgheadline159">9.6. Minimum spanning trees</a></li>
-<li><a href="#orgheadline161">9.7. Prim's algorithm</a>
+<li><a href="#orgheadline165">9.7. Prim's algorithm</a>
 <ul>
-<li><a href="#orgheadline160">9.7.1. Implementation challenge</a></li>
+<li><a href="#orgheadline162">9.7.1. Why does it work ?</a>
+<ul>
+<li><a href="#orgheadline160">9.7.1.1. Cut property</a></li>
+<li><a href="#orgheadline161">9.7.1.2. \(T\) is always a subtree of a MST</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline163">9.7.2. Implementation challenge</a></li>
+<li><a href="#orgheadline164">9.7.3. Pseudocode and analysis</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline169">9.8. Kruskal's algorithm</a>
+<ul>
+<li><a href="#orgheadline166">9.8.1. Why does it work ?</a></li>
+<li><a href="#orgheadline167">9.8.2. Implementation challenge</a></li>
+<li><a href="#orgheadline168">9.8.3. Implemenation and analysis</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline170">9.9. Problem solving</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline183">10. Week 11</a>
+<ul>
+<li><a href="#orgheadline182">10.1. The shortest path problem</a>
+<ul>
+<li><a href="#orgheadline172">10.1.1. Variants</a></li>
+<li><a href="#orgheadline173">10.1.2. Negative weights and applications</a></li>
+<li><a href="#orgheadline180">10.1.3. Bellman-Ford algorithm</a>
+<ul>
+<li><a href="#orgheadline174">10.1.3.1. Correctness</a></li>
+<li><a href="#orgheadline175">10.1.3.2. Optimal substructure</a></li>
+<li><a href="#orgheadline176">10.1.3.3. Proof of corectness</a></li>
+<li><a href="#orgheadline177">10.1.3.4. Detecting negative cycles</a></li>
+<li><a href="#orgheadline178">10.1.3.5. Runtime analysis</a></li>
+<li><a href="#orgheadline179">10.1.3.6. Final comments on Bellman-Ford</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline181">10.1.4. Dijkstra's Algorithm</a></li>
 </ul>
 </li>
 </ul>
@@ -3939,8 +3975,8 @@ Fattest path, \(\le E \cdot \log(E \cdot U)\) number of iterations
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline162" class="outline-2">
-<h2 id="orgheadline162"><span class="section-number-2">9</span> Week 10</h2>
+<div id="outline-container-orgheadline171" class="outline-2">
+<h2 id="orgheadline171"><span class="section-number-2">9</span> Week 10</h2>
 <div class="outline-text-2" id="text-9">
 </div><div id="outline-container-orgheadline149" class="outline-3">
 <h3 id="orgheadline149"><span class="section-number-3">9.1</span> DIsjoint-set data strucutre</h3>
@@ -4197,8 +4233,8 @@ OUTPUT: a spanning tree of minimum total weight
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline161" class="outline-3">
-<h3 id="orgheadline161"><span class="section-number-3">9.7</span> Prim's algorithm</h3>
+<div id="outline-container-orgheadline165" class="outline-3">
+<h3 id="orgheadline165"><span class="section-number-3">9.7</span> Prim's algorithm</h3>
 <div class="outline-text-3" id="text-9-7">
 <p>
 Start with any vertex \(v\) , set tree \(T\) to singleton \(v\)
@@ -4212,10 +4248,58 @@ Greedily grow tree \(T\) :
 at each step add to \(T\) a minimum weight crossing edge with respect to the cut induced by \(T\)
 </p>
 </div>
-
-<div id="outline-container-orgheadline160" class="outline-4">
-<h4 id="orgheadline160"><span class="section-number-4">9.7.1</span> Implementation challenge</h4>
+<div id="outline-container-orgheadline162" class="outline-4">
+<h4 id="orgheadline162"><span class="section-number-4">9.7.1</span> Why does it work ?</h4>
 <div class="outline-text-4" id="text-9-7-1">
+<ul class="org-ul">
+<li>A cut \((S, V \backslash S)\) is a partition of the vertices into two nonempty
+disjoint sets \(S\) and \(V \backslash S\)</li>
+<li>A crossing edge is an edge connecting vertex \(S\) to vertex in \(V \backslash S\)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline160" class="outline-5">
+<h5 id="orgheadline160"><span class="section-number-5">9.7.1.1</span> Cut property</h5>
+<div class="outline-text-5" id="text-9-7-1-1">
+<p>
+Consider a cut \((S, V \backslash S)\) and let
+</p>
+<ul class="org-ul">
+<li>\(T\) be a tree on \(S\) which is part of a MST</li>
+<li>\(e\) be a crossing edge of minimum weight</li>
+</ul>
+<p>
+Then there is MST of \(G\) containing \(e\) and \(T\)
+</p>
+
+<p>
+Proof :
+</p>
+<ul class="org-ul">
+<li>If \(e\) is already in MST we are done.</li>
+<li>Otherwise add \(e\) to the MST
+<ul class="org-ul">
+<li>This creates a cycle</li>
+<li>At least one other crossing edge \(f\) in cycle \(w(f) \ge w(e)\) (actually must
+be equal)</li>
+<li>Replace \(f\) by \(e\) in MST</li>
+<li>This gives new MST which contains \(T\) and \(e\)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline161" class="outline-5">
+<h5 id="orgheadline161"><span class="section-number-5">9.7.1.2</span> \(T\) is always a subtree of a MST</h5>
+<div class="outline-text-5" id="text-9-7-1-2">
+<p>
+Proof by induction on number of nodes in T . Final T is MST by this result.
+<img src="images/al_proofMST.png" alt="al_proofMST.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline163" class="outline-4">
+<h4 id="orgheadline163"><span class="section-number-4">9.7.2</span> Implementation challenge</h4>
+<div class="outline-text-4" id="text-9-7-2">
 <p>
 How do we find minimum crossing edge at every iteration?
 </p>
@@ -4240,11 +4324,441 @@ their distance to tree; if so, decrease distance</li>
 </ul>
 </div>
 </div>
+<div id="outline-container-orgheadline164" class="outline-4">
+<h4 id="orgheadline164"><span class="section-number-4">9.7.3</span> Pseudocode and analysis</h4>
+<div class="outline-text-4" id="text-9-7-3">
+<p>
+<b>PRIM</b> \((G,w,r)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">Q = <span style="color: #2aa198;">{}</span>
+<span style="color: #859900; font-weight: bold;">for</span> each u in <span style="color: #268bd2; font-weight: bold;">G</span>.V
+  u.key = infinity
+  u.pi = NIL
+  INSERT<span style="color: #2aa198;">(</span>Q.u<span style="color: #2aa198;">)</span>
+DECREASE-KEY<span style="color: #2aa198;">(</span>Q,r,<span style="color: #268bd2; font-weight: bold;">0</span><span style="color: #2aa198;">)</span> <span style="color: #586e75;">//</span><span style="color: #586e75;">r.key = 0</span>
+<span style="color: #859900; font-weight: bold;">while</span> Q != <span style="color: #2aa198;">{}</span>
+  u = EXTRACT-MIN<span style="color: #2aa198;">(</span>Q<span style="color: #2aa198;">)</span>
+  <span style="color: #859900; font-weight: bold;">for</span> each v in <span style="color: #268bd2; font-weight: bold;">G</span>.Adj<span style="color: #2aa198;">[</span>u<span style="color: #2aa198;">]</span>
+    <span style="color: #859900; font-weight: bold;">if</span> v in Q and w<span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span> &lt; v.key
+      v.pi = u
+      DECREASE-KEY<span style="color: #2aa198;">(</span>Q,v,w<span style="color: #b58900;">(</span>u,v<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Initialize \(Q\) and first for loop: \(O(V\lg V)\)</li>
+<li>Decrease key of \(r\) : \(O(\lg V )\)</li>
+<li>while loop:
+<ul class="org-ul">
+<li>\(V\) Extract-Min calls &hArr; \(O(V\lg V)\)</li>
+<li>\(\le E\) Decrease-Key calls &hArr; \(O(E\lg V)\)</li>
+</ul></li>
+<li>Total: \(O(E\lg V)\) (can be made \(O(V\lg V)\) with careful queue implementation)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline169" class="outline-3">
+<h3 id="orgheadline169"><span class="section-number-3">9.8</span> Kruskal's algorithm</h3>
+<div class="outline-text-3" id="text-9-8">
+<p>
+Start from empty forest \(T\)
+</p>
+
+<p>
+Greedily maintain forest \(T\) which will become MST at the end: at each step add
+cheapest edge that does not create a cycle
+</p>
+</div>
+<div id="outline-container-orgheadline166" class="outline-4">
+<h4 id="orgheadline166"><span class="section-number-4">9.8.1</span> Why does it work ?</h4>
+<div class="outline-text-4" id="text-9-8-1">
+<p>
+Claim: \(T\) is always a sub-forest of a MST
+</p>
+
+<p>
+Proof by induction on the number of components/edges in \(T\)
+<img src="images/al_proofMSTKruskal.png" alt="al_proofMSTKruskal.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline167" class="outline-4">
+<h4 id="orgheadline167"><span class="section-number-4">9.8.2</span> Implementation challenge</h4>
+<div class="outline-text-4" id="text-9-8-2">
+<p>
+In each iteration, we need to check whether cheapest edge creates a cycle
+</p>
+
+<p>
+This is the same thing as checking whether its endpoints belong to the same
+component &hArr; <b>use disjoint sets (union-find) data structure</b>
+</p>
+
+<p>
+Let the connected components denote sets
+</p>
+<ul class="org-ul">
+<li>Initially each singleton is a set</li>
+<li>When edge \((u, v)\) is added to \(T\) , make union of the two connected
+components/sets</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline168" class="outline-4">
+<h4 id="orgheadline168"><span class="section-number-4">9.8.3</span> Implemenation and analysis</h4>
+<div class="outline-text-4" id="text-9-8-3">
+<p>
+<b>KRUSKAL</b> \((G,w)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">A = <span style="color: #2aa198;">{}</span>
+<span style="color: #859900; font-weight: bold;">for</span> each vertex v in <span style="color: #268bd2; font-weight: bold;">G</span>.V
+  MAKE-SET<span style="color: #2aa198;">(</span>v<span style="color: #2aa198;">)</span>
+sort the edges of <span style="color: #268bd2; font-weight: bold;">G</span>.E into nondecreasing order by weight w
+<span style="color: #859900; font-weight: bold;">for</span> each <span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span> taken from the sorted list
+  <span style="color: #859900; font-weight: bold;">if</span> FIND-SET<span style="color: #2aa198;">(</span>u<span style="color: #2aa198;">)</span> != FIND-SET<span style="color: #2aa198;">(</span>v<span style="color: #2aa198;">)</span>
+    A = A union <span style="color: #2aa198;">{</span><span style="color: #b58900;">(</span>u,v<span style="color: #b58900;">)</span><span style="color: #2aa198;">}</span>
+    UNION<span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">return</span> A
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Initialize A: \(O(1)\)</li>
+<li>First for loop: \(V\) Make-Sets</li>
+<li>Sort \(E\) : \(O(E \lg E)\)</li>
+<li>Second for loop: \(O(E)\) Find-Sets and Unions</li>
+<li>Total time: \(O((V + E )\alpha(V)) + O(E\lg E) = O(E\lg E ) = O(E\lg V)\)</li>
+</ul>
+<p>
+If edges already sorted time is \(O(E \alpha(V))\) which is almost linear
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline170" class="outline-3">
+<h3 id="orgheadline170"><span class="section-number-3">9.9</span> Problem solving</h3>
+<div class="outline-text-3" id="text-9-9">
+<p>
+A feedback edge set of a graph \(G\) is a subset \(F\) of the edges such that every
+cycle in \(G\) contains at least one edge in \(F\) . In other words, removing every edge
+in \(F\) makes the graph \(G\) acyclic. Describe and analyze a fast algorithm to compute
+the minimum weight feedback edge set of of a given edge-weighted graph.
+</p>
+
+<p>
+Let \(G = (V , E)\) be an arbitrary connected graph with weighted edges. Assume
+further that no two edges have the same weight.
+</p>
+<ol class="org-ol">
+<li>Prove that for any partition of the vertices \(V\) into two subsets, the
+minimum-weight edge with one endpoint in each subset is in the minimum
+spanning tree of \(G\).</li>
+<li>Prove that the maximum-weight edge in any cycle of \(G\) is not in the minimum
+spanning tree of \(G\).</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline183" class="outline-2">
+<h2 id="orgheadline183"><span class="section-number-2">10</span> Week 11</h2>
+<div class="outline-text-2" id="text-10">
+</div><div id="outline-container-orgheadline182" class="outline-3">
+<h3 id="orgheadline182"><span class="section-number-3">10.1</span> The shortest path problem</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Input: directed graph \(G = (V,E)\), edge-weights \(w(u,v)\) for \((u,v) \in E\)
+</p>
+
+<p>
+Shortest paths from \(a\): (may have many solutions)
+</p>
+</div>
+<div id="outline-container-orgheadline172" class="outline-4">
+<h4 id="orgheadline172"><span class="section-number-4">10.1.1</span> Variants</h4>
+<div class="outline-text-4" id="text-10-1-1">
+<ul class="org-ul">
+<li>Single-source: Find shortest paths from source vertex to every vertex</li>
+<li>Single-destination: Find shortest paths to given destination vertex
+<ul class="org-ul">
+<li>Can be solved by single-source by reversing edge directions</li>
+</ul></li>
+<li>Single-pair: Find shortest path from u to v
+<ul class="org-ul">
+<li>No algorithm known that is better in worst case than solving single-source</li>
+</ul></li>
+<li>All-pairs: Find shortest path from u to v for all pairs u, v of vertices
+<ul class="org-ul">
+<li>Can be solved by solving single-source for each vertex. Better algorithms known</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline173" class="outline-4">
+<h4 id="orgheadline173"><span class="section-number-4">10.1.2</span> Negative weights and applications</h4>
+<div class="outline-text-4" id="text-10-1-2">
+<p>
+We will allow negative weights
+</p>
+
+<p>
+OK, as long as no negative-weight cycle is reachable from source:
+</p>
+<ul class="org-ul">
+<li>Then we can just keep going around it to have paths of length \(-\infty\)</li>
+</ul>
+
+<p>
+Some algorithms only work with positive weights (Dijkstra’s algorithm)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline180" class="outline-4">
+<h4 id="orgheadline180"><span class="section-number-4">10.1.3</span> Bellman-Ford algorithm</h4>
+<div class="outline-text-4" id="text-10-1-3">
+<p>
+Input: directed graph with edge weights, a source s, no negative cycles
+</p>
+
+<p>
+For each vertex v keep track of
+</p>
+<ul class="org-ul">
+<li>\(l(v)\) = current upper estimate of length of shortest path to v</li>
+<li>\(π(v)\) = is the predecessor of \(v\) in this shortest path</li>
+</ul>
+
+<p>
+Start by trivial initialization:
+<b>INIT-SINGLE-SOURCE</b> \((G,s)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">for</span> each v in <span style="color: #268bd2; font-weight: bold;">G</span>.V
+  v.d = infinity
+  v.&#960; = NIL
+s.d = <span style="color: #268bd2; font-weight: bold;">0</span>
+</pre>
+</div>
+
+<p>
+Can we improve the shortest path estimate for \(v\) by going through \(u\) and taking \((u,v)\)?
+</p>
+
+<p>
+<b>RELAX</b> \((u,v,w)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">if</span> v.d &gt; u.d w<span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span>
+   v.d = u.d + w<span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span>
+   v.&#960; = u
+</pre>
+</div>
+
+<p>
+Bellman-Ford updates shortest-path estimates iteratively by using Relax.
+</p>
+
+<p>
+<b>BELLMAN-FORD</b> \((G,w,s)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">INIT-SINGLE-SOURCE<span style="color: #2aa198;">(</span>G,s<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">for</span> i = <span style="color: #268bd2; font-weight: bold;">1</span> to |<span style="color: #268bd2; font-weight: bold;">G</span>.V| - <span style="color: #268bd2; font-weight: bold;">1</span>
+  <span style="color: #859900; font-weight: bold;">for</span> each edge <span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span> in <span style="color: #268bd2; font-weight: bold;">G</span>.E
+    RELAX<span style="color: #2aa198;">(</span>u,v,w<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline174" class="outline-5">
+<h5 id="orgheadline174"><span class="section-number-5">10.1.3.1</span> Correctness</h5>
+<div class="outline-text-5" id="text-10-1-3-1">
+<p>
+Only guaranteed to work if no negative cycles!
+</p>
+
+<p>
+As we shall see later, it can also be used to detect negative cycles
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline175" class="outline-5">
+<h5 id="orgheadline175"><span class="section-number-5">10.1.3.2</span> Optimal substructure</h5>
+<div class="outline-text-5" id="text-10-1-3-2">
+<p>
+If \(< s, v_1,...,v_k,v_{k+1} >\) is a shortest path from \(s\) to \(v_{k+1}\)
+Then \(< s,v_1,...,v_k >\) is a shortest path from \(s\) to \(v_k\)
+</p>
+
+<p>
+Proof:
+</p>
+<ul class="org-ul">
+<li>Suppose toward contradiction: there exists shorter path \(p'\) from \(s\) to \(v_k\)</li>
+<li>Then weight of \(p' + (v_k , v_{k+1} )\) is smaller than \(p + (v_k , v_{k+1} )\)
+  which contradicts that \(p + (v_k , v_{k+1})\) was a shortest path from \(s\) to \(v_{k+1}\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline176" class="outline-5">
+<h5 id="orgheadline176"><span class="section-number-5">10.1.3.3</span> Proof of corectness</h5>
+<div class="outline-text-5" id="text-10-1-3-3">
+<p>
+<b>Invariant</b>: \(\mathcal{l}(v)\) is at most the length of the shortest path from \(s\) to \(v\) using
+at most \(i\) edges after the \(i\) ’th iteration
+</p>
+
+
+<p>
+<b>If there are no negative cycles reachable from</b> \(s\), then for any \(v\) there is a
+shortest path from \(s\) to \(v\) using at most \(n − 1\) edges
+</p>
+
+<p>
+<b>Proof</b>: If there is a path with \(n\) or more edges, then there is a cycle and
+since its weight is non-negative it can be removed
+</p>
+
+<p>
+Therefore, Bellman-Ford will return correct answer if no negative cycles after
+\(n − 1\) iterations
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline177" class="outline-5">
+<h5 id="orgheadline177"><span class="section-number-5">10.1.3.4</span> Detecting negative cycles</h5>
+<div class="outline-text-5" id="text-10-1-3-4">
+<p>
+There is a negative cycle reachable from the source if and only if the
+\(\mathcal{l}\) -value of at least one node changes if we run one more (\(n\):th)
+iteration of Bellman-Ford
+</p>
+
+<p>
+<b>BELLMAN-FORD</b> \((G,w,s)\)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">INIT-SINGLE-SOURCE<span style="color: #2aa198;">(</span>G,s<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">for</span> i = <span style="color: #268bd2; font-weight: bold;">1</span> to |<span style="color: #268bd2; font-weight: bold;">G</span>.V| - <span style="color: #268bd2; font-weight: bold;">1</span>
+  <span style="color: #859900; font-weight: bold;">for</span> each edge <span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span> in <span style="color: #268bd2; font-weight: bold;">G</span>.E
+    RELAX<span style="color: #2aa198;">(</span>u,v,w<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">for</span> each edge <span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span> in <span style="color: #268bd2; font-weight: bold;">G</span>.E
+  <span style="color: #859900; font-weight: bold;">if</span> v.d &gt; u.d + w<span style="color: #2aa198;">(</span>u,v<span style="color: #2aa198;">)</span>
+    <span style="color: #859900; font-weight: bold;">return</span> False
+<span style="color: #859900; font-weight: bold;">return</span> True
+</pre>
+</div>
+
+<p>
+There is no negative cycle reachable from the source if and only if the
+\(\mathcal{l}\) -value
+of no node changes if we run one more (\(n\):th) iteration of Bellman-Ford
+</p>
+
+<p>
+From the correctness proof, we have that if there are no negative cycles
+reachable from the source, then the \(\mathcal{L}\) -values don’t change in \(n\):th iteration.
+</p>
+
+<p>
+We need to prove: If the \(\mathcal{l}\) -value of the vertices don’t change in
+the \(n\):th iteration, then there is no negative cycle that is reachable from the source
+</p>
+
+<p>
+<b>Proof</b>. In this case \(\forall (u,v) \in E: \mathcal{l}(u)+w(u,v) \ge
+\mathcal{l}(v)\)
+</p>
+
+<p>
+So for a cycle \(v_0 - v_1 - ... - v_{t-1} - v_t = v_0\),
+</p>
+
+<p>
+\(\sum\limits_{i=1}^t \mathcal{l}(v_i) \le
+\sum\limits_{i=1}^t(\mathcal{l}(v_{i-1}) + w(v_{i-1},v_i)) = \sum\limits_{i=1}^t
+\mathcal{l}(v_{i-1}) + \sum\limits_{i=1}^t w(v_{i-1},v_i)\)
+</p>
+
+<p>
+\(\sum\limits_{i=1}^t \mathcal{l}(v_i)=\sum\limits_{i=1}^t \mathcal{l}(v_{i-1})\),
+hence the cycle is non-negative \(0 \le \sum\limits_{i=1}^t w(v_{i-1},v_i)\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline178" class="outline-5">
+<h5 id="orgheadline178"><span class="section-number-5">10.1.3.5</span> Runtime analysis</h5>
+<div class="outline-text-5" id="text-10-1-3-5">
+<ul class="org-ul">
+<li>Init-Single-Source updates \(\mathcal\), π for each vertex in time \(\Theta(V)\)</li>
+<li>Nested for loops runs Relax \(V − 1\) times for each edge. Hence total time for
+these loops is \(\Theta(E \cdot V)\)</li>
+<li>Final for loop runs once for each edge. Time is \(\Theta(E)\)</li>
+</ul>
+
+<p>
+Total time: \(\Theta(E\cdot V)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline179" class="outline-5">
+<h5 id="orgheadline179"><span class="section-number-5">10.1.3.6</span> Final comments on Bellman-Ford</h5>
+<div class="outline-text-5" id="text-10-1-3-6">
+<ul class="org-ul">
+<li>Can be used to find negative cycles
+<ul class="org-ul">
+<li>Run for \(n\) -iterations and detect cycles in “shortest path tree” these will
+correspond to negative cycles</li>
+</ul></li>
+<li>Easy to implement in distributed settings: each vertex repeatedly ask their
+neighbors for the best path
+<ul class="org-ul">
+<li>Good for routing and dynamic networks</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline181" class="outline-4">
+<h4 id="orgheadline181"><span class="section-number-4">10.1.4</span> Dijkstra's Algorithm</h4>
+<div class="outline-text-4" id="text-10-1-4">
+<ul class="org-ul">
+<li>Only works when all weights are nonnegative</li>
+<li>Greedy and faster than Bellman-Ford</li>
+<li>Similar idea to Prim’s algorithm (essentially weighted version of BFS)</li>
+</ul>
+
+<p>
+Start with source \(S =\lbrace s \rbrace\)
+</p>
+
+<p>
+Greedily grow S:
+</p>
+
+<p>
+at each step add to \(S\) the vertex is closest to \(S\) (minimum \(v \not\in S : u.d + w(u,v)\))
+</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 15:50</p>
+<p class="date">Created: 2015-12-04 Fri 13:25</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

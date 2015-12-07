@@ -1840,3 +1840,280 @@ b_n &= \frac{4}{\pi n^2} \sin(\frac{n\pi}{2})\\
 -\frac{4}{\pi n^2} & n=4m+3
 \end{cases}
 \end{align*}
+* Chapitre 18
+#+attr_html: :style font-size:20px
+_*Application des séries de Fourier*_
+
+** équation de la chaleur
+$\delta_t u - K \delta_{x\ x}^2 u = 0$ $[0,T]\times[0,L]$
+
+($\delta_{x\ x}^2 = \frac{\delta^2}{\delta x^2}$)
+
+$K$: la constante de la diffusion
+
+$u(t=0,x)=\varphi(x)$ $[0,L]$
+*** Conditions aux limites de Dirichlet
+$u(t,0)=u(t,L) = 0$
+
+Le système :
+
+\begin{align*}
+\begin{cases}
+\delta_t u - \delta_{x\ x} u = 0 & t > 0, x \in [0,L]\\
+u(t,0) = u(t,L) = 0 & t > 0\\
+u(t=0,x) = \varphi(x) & x \in [0,L]
+\end{cases}
+\end{align*}
+
+*graphe chaleur*
+
+La méthodé : séparation des variables
+
+On cherche des solutions (non zéros) de
+\begin{align*}
+\begin{cases}
+\delta_t u - \delta_{x\ x}^2 u = 0 \\
+u(t,0) = u(t,L) = 0
+\end{cases}
+\end{align*}
+sour la forme $u(t,X)=T(t).X(x)$
+\begin{align*}
+\begin{cases}
+\delta_t u = T'(t).X(x) \\
+\delta_{x\ x}^2 u = T(t).X''(x)\\
+X(0) = X(L) = 0
+\end{cases}
+\end{align*}
+
+$\delta_t u -K \delta_{x\ x}^2 u = T'(t).X(x) - K T(t).X''(x) = 0$
+
+Cela implique:
+
+$T'(t).X(x) = T(t).X''(x) \Rightarrow \frac{T'(t)}{T(t)} = \frac{X''(t)}{X(x)} = - \lambda$ constante (*)
+
+On va montrer $\lambda \ge 0$ $(\lambda > 0)$
+
+On a
+\begin{align*}
+&\begin{cases}
+X''(x) + \lambda X(x) = 0 \text{ (**)}\\
+X(0) = X(L) = 0
+\end{cases} \\
+&\int\limits_0^L [X''(x) + \lambda X(x)] X(x) dx = 0\\
+&\Rightarrow - \int\limits_0^L X'(x) + X'(x)X(x)|^L_0 + \lambda \int\limits_0^L X^(x) dx = 0
+\end{align*}
+En utilisant le fait
+
+$X(0) = X(L) = 0$ on a
+
+$- \int\limits_0^L X'(x)^2 dx + \int\limits_0^L \lambda X(x)^2 dx = 0 \Rightarrow \lambda \ge 0$
+
+\begin{align*}
+&\text{(**) } \Leftrightarrow \begin{cases}
+X''(x) = - \sqrt{\lambda}^2 X(x)\\
+X(0) = X(L) = 0
+\end{cases}\\
+&\Rightarrow X(x) = a \cos(\sqrt{\lambda} x) + b \sin(\sqrt{\lambda} x)\\
+&a,b \in \mathbb{R}\\
+&X(0) = 0\\
+&\Rightarrow a \cos(0) = 0\\
+&\Rightarrow a = 0\\
+& X(L) = 0\\
+&\Rightarrow b \sin(\sqrt{\lambda} L) = 0\\
+&\Rightarrow \sin (\sqrt{\lambda} L) = 0\\
+&\Rightarrow \sqrt{\lambda} L = n \pi,\ n \ge 1\\
+&\Rightarrow \lambda = \left(\frac{n\pi}{L}\right)^2,\ n \ge 1
+\end{align*}
+
+Résumé :
+\begin{align*}
+\begin{cases}
+X(x) = b\sin (\sqrt{\lambda_n} x)\\
+\lambda_n = \left(\frac{n\pi}{L}\right)^2,\ n \ge 1
+\end{cases}
+\end{align*}
+
+On cherche $T(t)$
+\begin{align*}
+&\text{(*)} \Rightarrow T'(t) = - K \lambda_n T(t)\\
+&\Rightarrow T(t) = c e^{K\lambda_n t}\\
+&\text{Donc}\\
+&u(t,x)= T(t) X(x)\\
+&= \alpha_n e^{-K\lambda_n t} \sin(\sqrt{\lambda_n} x)\\
+&\text{où}\\
+&\lambda_n = \left(\frac{n\pi}{L}\right)^2,\ n \ge 1
+\end{align*}
+
+_Lemme_: Si $u_1$, $u_2$ sont 2 solutions du système
+\begin{align*}
+\begin{cases}
+\delta_t u \delta_{x\ x}^2 u = 0\ t \ge 0\ x \in [0,L]\\
+u(t,0) = u(t,L) = 0\ t \ge 0
+\end{cases}
+\end{align*}
+et $c_1,c_2 $\in \mathbb{R}$
+
+Alors $c_1u_1+c_2u_2$ est aussi une solution
+
+Formellement, on obtient
+
+$u(t,x) = \sum\limits_{n=1}^{\infty} \alpha_n e^{-K\lambda n t} \sin(\sqrt{\lambda} x)$
+
+est une solution de
+\begin{align*}
+\delta_t u - \delta^2_{x\ x} u = 0 & t > 0, x \in [0,1]\\
+u(t,0) = u(t,L) = 0 & t > 0
+\end{align*}
+
+On cherche $\alpha_n$ en utilisant le fait
+
+$u(t=0,x) = \varphi(x)$
+
+$\sum\limits_{n=1}^{\infty} \alpha_n \sin(\sqrt{\lambda_n} x) = \varphi(x)
+
+Rappel sur les séries de Fourier :
+
+Soit $f:[0,L] \rightarrow \mathbb{R}$
+
+Alors:
+
+$f(x) = \sum\limits_{n \ge 1}^{+\infty} a_n \sin(\frac{n\pi x}{L})$
+
+où $a_n = \frac{2}{L} \int\limits_0^L f(x) \sin(\frac{n\pi x}{L})$
+
+bla bla
+
+*
+** Thèorème :
+$\varphi (x) = \sum a_n \sin(\frac{n\pi x}{L})$ et $\sum |\lambda_n|^2 |a_n|^2 < + \infty$
+
+$u(t,x) = \sum a_n e^{-k \lambda_n t} \sin(\sqrt{\lambda n} x)$
+
+** Résoudre le système :
+\begin{align*}
+\begin{cases}
+\delta_t u (t,x) - \delta_{x\ x}^2 u(t,x) = 0\\
+u(t,\pi) = u(t,0) = 0 & (t,x) \in (0,+\infty) \times (0,\pi)\\
+u(0,x) = \sin x + \sin 2 x
+\end{cases}
+\end{align*}
+
+Dans notre cas $L=\pi$
+
+$\varphi (x) = \sin x + \sin 2 x = \sum\limits_{n\le 1} a_n \sin(n x)$
+
+$a_1 = 1$
+
+$a_2 = 1$
+
+$\forall n \in [3,+\infty),\ a_n = 0$
+
+\begin{align*}
+u(t,x) &= a_1 e^{-\lambda_1 t} \sin(\sqrt{\lambda_1} x) + a_2 e^{-\lambda_2 t} \sin(\sqrt{\lambda_2} x)\\
+&= e^{-t} \sin(x) + e^{-4t} \sin(2 x)
+\end{align*}
+** Résoudre le système
+\begin{align*}
+\begin{cases}
+\delta_t u(t,x) - K \delta_{x\ x}^2 u(t,x) = f(t,x) & \text{pour } (t,x) \in (0,+\infty) \times (0,L)\\
+u(t,0) = u(t,L) = 0 & t>0\\
+u(0,x) = \varphi(x) & x\in (0,L)
+\end{cases}
+\end{align*}
+
+On cherche une solution sours la forme
+
+$u(t,x) = \sum\limits_{n\ge 1} a_n (t) \sin(\sqrt{\lambda_n} x)$
+
+Supposons que
+
+$f(t,x) = \sum\limits_{n \ge 1} f_n(t) \sin(\sqrt{\lambda_n} x)$
+
+$\delta_t u(t,x) = \sum\limits_{n \ge 1}(a_n'(t) \sin(\sqrt{\lambda_n} x)$
+
+$k \delta_{x\ x}^2 u(t,x) = \sum\limits_{n \ge 1} K a_n(t) (-\lambda_n \sin(\sqrt{\lambda_n} x))$
+
+Comme $u$ satisfait l'équation de la chaleur avec source $f$
+
+$\sum\limits_{n \ge 1} (a_n(t)' - k \lambda_n a_n(t) - f_n(t))\sin(\sqrt{\lambda_n} x) = 0$
+
+On obtient:
+
+$\forall n \ge 1$  $a_n'(t) + k \lambda_n a_n(t) = f_n(t)$ $t>0$
+
+On peut écrire:
+
+$a_n(t) = a_n(0) e^{-k\lambda_n t} + \int\limits_0^t e^{k\lambda_n (s-t) f_n(s) ds$
+
+On écrit que $\varphi(x) = \sum\limits_{n\ ge 1} a_n \sin(\sqrt{\lambda_n} x)$
+
+$u(0,x) = \varphi(x) \Leftrightarrow \forall n \in \mathbb{N}* a_n(0) = a_n$
+
+Nécessairement:
+
+$u(t,x) = \sum\limits_{n\ge 1} a_n e^{-k \lambda_n t} \sin(\sqrt{\lambda_n} x) + \sum\limits_{n \ge 1} (\sum\limits_0^t e^{k(s-t)} f_n(s) ds) \sin(\sqrt{\lambda_n} x)$
+** Thèorème
+Supposons que
+\begin{align*}
+\begin{cases}
+\varphi(x) = \sum\limits_{n \ge 1} a_n \sin(\frac{n\pi x}{L})\\
+f(t,x) = \sum\limits_{n \ge } f_n(t) \sin(\frac{n \pi x}{L})
+\end{cases}
+\end{align*}
+
+On suppose aussi:
+
+$\sum\limits_{n \ge 1} \lambda_n^2 |a_n|^2 < + \infty$
+
+$\sum\limits_{n \ge 1} \text{sup}_{t \in [0,T]} \lambda_n^2 |f_n(t)| < + infty$
+
+Alors $u(t,x) = \sum\limits a_n e^{-k \lambda_n t} \sin(\sqrt{\lambda_n} x) + \sum\limits_{n \ge 1} \int\limits_0^t \int\limits_0^t e^{k \lambda_n (s-t)} f_n(s) ds \sin(\sqrt{\lambda_n} x)$
+
+*** Exemple
+Résoudre :
+\begin{align*}
+\begin{cases}
+\delta_t u(t,x) - \delta^2_{x\ x} u(t,x) = 0 & (t,x) \in (0,+\infty) \times (0,\pi)\\
+u(t,0) = 0\\
+u(t,\pi) = g(t) = \pi t
+u(0,x) = \sin x + tx & x \in (0,\pi)
+\end{cases}
+\end{align*}
+
+Posons
+
+$v(t,x) = u(t,x) - tx$ $(t,x) \in (0, +\infty) \times (0,\pi)$
+
+$\delta_t v(t,x) = \delta_t u(t,x) -x$
+
+$\delta^2_{x\ x} v(t,x) = \delta^2_{x\ x} u(t,x)$
+
+\begin{align*}
+\begin{cases}
+\delta_t v(t,x) 0 \delta^2_{x\ x} v(t,x) = x & (t,x) \in (0,+\infty) \times (0,\pi)\\
+v(t,0) = t(t,\pi) = 0\\
+u(0,x) = \sin x & x \in (0,\pi)
+\end{cases}
+\end{align*}
+
+Cherchons $a_n$, dans notre cas
+
+$\varphi(x) = \sin x$
+
+$\forall n \neq 1$ $a_n = 0$ et $a_1 = 1$
+
+Cherchons $f_n$. On veut écrire $x=\sum_{n \ge 1} f_n(t) \sin(\sqrt{\lambda_n} x)$
+
+\begin{align*}
+f_n(t) &= \frac{1}{\pi} \int\limits_0^{\pi} x \sin n x dx\\
+&= \frac{1}{\pi} \left( [ x \frac{- \cos nx}{n}]^{\pi}_0 + \frac{1}{n} \int\limits_0^{\pi} \cos nx dx \right)\\
+&= \frac{1}{\pi} \frac{\pi (-1)^{n+1}}{n} + 0 = \frac{(-1)^{n+1}}{n}
+\end{align*}
+
+Il faut vérifier que $\sum\limits_{n \ge 1} |a_n|^2 \lambda_n^2 < +\infty$ et $\sum\limits_{n\ge 1} \text{sup}_{t \in [0,T]} | f_n(t)| \lambda_n^2 < + \infty$
+
+Ok pour le 1er car $a_n = 0$ si $n \ge 2$. Pour le 2ème :
+
+$\text{sup}_{t\in [0,T]} |f_n(t)| |\lambda_n|^2 = \frac{1}{n} (\frac{n\pi}{L})^2$ Faute..,
+
+

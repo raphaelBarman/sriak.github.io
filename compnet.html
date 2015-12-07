@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-25 Wed 20:54 -->
+<!-- 2015-12-06 Sun 20:52 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Networks</title>
@@ -381,8 +381,82 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline110">5. HW1</a></li>
-<li><a href="#orgheadline111">6. HW2</a></li>
+<li><a href="#orgheadline129">5. Chapter 5</a>
+<ul>
+<li><a href="#orgheadline110">5.1. Terminology</a></li>
+<li><a href="#orgheadline111">5.2. Link Layer Services</a></li>
+<li><a href="#orgheadline113">5.3. Error detection and correction</a>
+<ul>
+<li><a href="#orgheadline112">5.3.1. Implemantations</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline119">5.4. Media Access Control (MAC)</a>
+<ul>
+<li><a href="#orgheadline114">5.4.1. Multiple access protocols</a></li>
+<li><a href="#orgheadline118">5.4.2. MAC strategies</a>
+<ul>
+<li><a href="#orgheadline115">5.4.2.1. Channel partitioning</a></li>
+<li><a href="#orgheadline116">5.4.2.2. Random access</a></li>
+<li><a href="#orgheadline117">5.4.2.3. Taking turns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline128">5.5. Link-layer forwarding++</a>
+<ul>
+<li><a href="#orgheadline120">5.5.1. MAC Addresses and Address Resolution Protocol (ARP)</a></li>
+<li><a href="#orgheadline124">5.5.2. Ethernet</a>
+<ul>
+<li><a href="#orgheadline121">5.5.2.1. Ethernet services</a></li>
+<li><a href="#orgheadline122">5.5.2.2. Ethernet Frame Structure</a></li>
+<li><a href="#orgheadline123">5.5.2.3. Ethernet Physical Topology</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline127">5.5.3. Link-layer Switch</a>
+<ul>
+<li><a href="#orgheadline125">5.5.3.1. Self learning</a></li>
+<li><a href="#orgheadline126">5.5.3.2. Switches vs routers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline147">6. Chapter 8</a>
+<ul>
+<li><a href="#orgheadline130">6.1. Security properties</a></li>
+<li><a href="#orgheadline134">6.2. Building blocks</a>
+<ul>
+<li><a href="#orgheadline131">6.2.1. Symmetric key cryptography</a></li>
+<li><a href="#orgheadline132">6.2.2. Asymmetric key cryptography</a></li>
+<li><a href="#orgheadline133">6.2.3. Cryptographic hash function</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline135">6.3. Providing confidentiality</a></li>
+<li><a href="#orgheadline136">6.4. Providing authenticity</a></li>
+<li><a href="#orgheadline138">6.5. Providing integrity</a>
+<ul>
+<li><a href="#orgheadline137">6.5.1. Public key certification</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline142">6.6. Securing email</a>
+<ul>
+<li><a href="#orgheadline139">6.6.1. Confidentiality</a></li>
+<li><a href="#orgheadline140">6.6.2. Authenticity and Integrity</a></li>
+<li><a href="#orgheadline141">6.6.3. All of them</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline143">6.7. Securing TCP</a></li>
+<li><a href="#orgheadline145">6.8. Securing IP</a>
+<ul>
+<li><a href="#orgheadline144">6.8.1. Key ideas</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline146">6.9. Firewall</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline148">7. HW1</a></li>
+<li><a href="#orgheadline149">8. HW2</a></li>
 </ul>
 </div>
 </div>
@@ -2021,9 +2095,640 @@ each node:
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline110" class="outline-2">
-<h2 id="orgheadline110"><span class="section-number-2">5</span> HW1</h2>
+<div id="outline-container-orgheadline129" class="outline-2">
+<h2 id="orgheadline129"><span class="section-number-2">5</span> Chapter 5</h2>
 <div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgheadline110" class="outline-3">
+<h3 id="orgheadline110"><span class="section-number-3">5.1</span> Terminology</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>nodes: hosts, switches, routers</li>
+<li>link: communication channel that connects adjacent nodes
+<ul class="org-ul">
+<li>wired links</li>
+<li>wireless links</li>
+</ul></li>
+<li>frame: link-layer “packet”</li>
+<li>Hardware: network adaptor (NIC)</li>
+</ul>
+
+<p>
+<b>data-link layer</b> has responsibility of transferring datagram from one node to
+<b>physically adjacent</b> node over a link
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline111" class="outline-3">
+<h3 id="orgheadline111"><span class="section-number-3">5.2</span> Link Layer Services</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Error detection
+<ul class="org-ul">
+<li>detect bit errors caused by signal attenuation, noise</li>
+<li>drop frames with bit errors</li>
+</ul></li>
+<li>Reliable data delivery
+<ul class="org-ul">
+<li>error detection + correction/retransmission</li>
+<li>used for links with high-error rate (wireless)</li>
+</ul></li>
+<li>Link access
+<ul class="org-ul">
+<li>how to share the same link with other nodes</li>
+</ul></li>
+<li>Flow control
+<ul class="org-ul">
+<li>pacing between adjacent sending and receiving nodes</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline113" class="outline-3">
+<h3 id="orgheadline113"><span class="section-number-3">5.3</span> Error detection and correction</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>EDC= Error Detection and Correction bits (redundancy)</li>
+<li>D = Data protected by error checking, may include header fields</li>
+<li>Error detection not 100% reliable!
+<ul class="org-ul">
+<li>protocol may miss some errors, but rarely</li>
+<li>larger EDC field yields better detection and correction</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline112" class="outline-4">
+<h4 id="orgheadline112"><span class="section-number-4">5.3.1</span> Implemantations</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<ul class="org-ul">
+<li>Single bit parity: detect single bit errors</li>
+<li>Two-dimensional bit parity: detect and correct single bit errors</li>
+<li>Cyclic Redundancy Check (CRC)
+<ul class="org-ul">
+<li>more powerful error-detection than parity checking</li>
+<li>widely used in practice: Ethernet, WiFi</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline119" class="outline-3">
+<h3 id="orgheadline119"><span class="section-number-3">5.4</span> Media Access Control (MAC)</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+two types of “links”: 
+</p>
+<ul class="org-ul">
+<li>point-to-point
+<ul class="org-ul">
+<li>PPP for dial-up access</li>
+<li>point-to-point link between Ethernet switch, host</li>
+</ul></li>
+<li>broadcast (shared wire or medium) 
+<ul class="org-ul">
+<li>old-fashioned Ethernet</li>
+<li>upstream HFC</li>
+<li>802.11 wireless LAN</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline114" class="outline-4">
+<h4 id="orgheadline114"><span class="section-number-4">5.4.1</span> Multiple access protocols</h4>
+<div class="outline-text-4" id="text-5-4-1">
+<ul class="org-ul">
+<li>Given single shared broadcast link of rate R</li>
+<li>The problem 
+<ul class="org-ul">
+<li>interference = two or more simultaneous transmissions</li>
+<li>collision = node receives two or more signals at the same time</li>
+</ul></li>
+<li>An ideal multiple access protocol 
+<ul class="org-ul">
+<li>when only one node wants to transmit, it can send at rate R</li>
+<li>when N nodes want to transmit, each can send at average rate R/N</li>
+<li>simple, fully decentralized</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline118" class="outline-4">
+<h4 id="orgheadline118"><span class="section-number-4">5.4.2</span> MAC strategies</h4>
+<div class="outline-text-4" id="text-5-4-2">
+</div><div id="outline-container-orgheadline115" class="outline-5">
+<h5 id="orgheadline115"><span class="section-number-5">5.4.2.1</span> Channel partitioning</h5>
+<div class="outline-text-5" id="text-5-4-2-1">
+<ul class="org-ul">
+<li>TDMA: time divided in equal frames and slots</li>
+<li>FDMA: frequency spectrum divided into frequency bands</li>
+<li>Efficient at high load. Inefficient at low load</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline116" class="outline-5">
+<h5 id="orgheadline116"><span class="section-number-5">5.4.2.2</span> Random access</h5>
+<div class="outline-text-5" id="text-5-4-2-2">
+<ul class="org-ul">
+<li>if single node - transmit at full rate R bps</li>
+<li>if N nodes - transmit at well below ideal R/N bps each (collisions, empty slots)</li>
+<li>random access MAC protocol specifies:
+<ul class="org-ul">
+<li>how to detect collisions</li>
+<li>how to recover from collisions (e.g., via delayed retransmissions)</li>
+</ul></li>
+</ul>
+<p>
+Efficient at low load. Inefficient at high load.
+</p>
+
+<p>
+Exemple :
+CSMA (carrier sense multiple access)
+</p>
+<ul class="org-ul">
+<li>listen before transmit:
+<ul class="org-ul">
+<li>if channel sensed idle: transmit entire frame</li>
+<li>if channel sensed busy, defer transmission</li>
+</ul></li>
+<li>collisions can still occur:
+<ul class="org-ul">
+<li>propagation delay means two nodes may not hear
+each other’s transmission</li>
+<li>In case of collision, entire packet transmission time wasted</li>
+<li>distance &amp; propagation delay play role in in determining collision
+probability</li>
+</ul></li>
+<li>Collision detection
+<ul class="org-ul">
+<li>Sense the channel before transmitting
+<ul class="org-ul">
+<li>if channel sensed idle, transmit</li>
+<li>if channel sensed busy, defer transmission</li>
+</ul></li>
+<li>If a collision is detected
+<ul class="org-ul">
+<li>abort transmission</li>
+<li>defer transmission</li>
+</ul></li>
+<li>Algorithm
+<ol class="org-ol">
+<li>NIC receives datagram from network layer, creates frame</li>
+<li>If NIC senses channel idle, starts frame transmission. If NIC senses
+channel busy, waits until channel idle, then transmits.</li>
+<li>If NIC transmits entire frame without detecting another transmission, NIC
+is done with frame!</li>
+<li>If NIC detects another transmission while transmitting, aborts and sends
+jam signal</li>
+<li>After aborting, NIC enters exponential backoff: more collisions
+&rarr; longer wait interval</li>
+</ol></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline117" class="outline-5">
+<h5 id="orgheadline117"><span class="section-number-5">5.4.2.3</span> Taking turns</h5>
+<div class="outline-text-5" id="text-5-4-2-3">
+<ul class="org-ul">
+<li>Polling: master “invites” slave to transmit
+<ul class="org-ul">
+<li>Main concerns 
+<ul class="org-ul">
+<li>polling overhead</li>
+<li>single point of failure (master)</li>
+</ul></li>
+</ul></li>
+<li>Token passing: control token passed from one node to the next sequentially
+<ul class="org-ul">
+<li>Main concerns 
+<ul class="org-ul">
+<li>token overhead</li>
+<li>single point of failure (token)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline128" class="outline-3">
+<h3 id="orgheadline128"><span class="section-number-3">5.5</span> Link-layer forwarding++</h3>
+<div class="outline-text-3" id="text-5-5">
+</div><div id="outline-container-orgheadline120" class="outline-4">
+<h4 id="orgheadline120"><span class="section-number-4">5.5.1</span> MAC Addresses and Address Resolution Protocol (ARP)</h4>
+<div class="outline-text-4" id="text-5-5-1">
+<ul class="org-ul">
+<li>MAC Addresses
+<ul class="org-ul">
+<li>Used to move frames between link-layer nodes &rarr; one address per NIC</li>
+<li>Format: 48 bit address, flat &rarr; usually shown in hexadecimal format</li>
+</ul></li>
+<li>ARP
+<ul class="org-ul">
+<li>How to determine interface’s MAC address, knowing its IP address?</li>
+<li>Source broadcasts request for destination’s MAC address</li>
+<li>Stores response in local ARP table &lt; IP address; MAC address; TTL&gt;</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline124" class="outline-4">
+<h4 id="orgheadline124"><span class="section-number-4">5.5.2</span> Ethernet</h4>
+<div class="outline-text-4" id="text-5-5-2">
+<ul class="org-ul">
+<li>The dominant wired LAN technology
+<ul class="org-ul">
+<li>First widely used LAN technology</li>
+<li>Simpler, cheaper than token LANs and ATM</li>
+<li>Kept up with speed race: 10 Mbps – 100 Gbps</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline121" class="outline-5">
+<h5 id="orgheadline121"><span class="section-number-5">5.5.2.1</span> Ethernet services</h5>
+<div class="outline-text-5" id="text-5-5-2-1">
+<ul class="org-ul">
+<li>Connectionless 
+<ul class="org-ul">
+<li>no handshaking between sending and receiving NICs</li>
+</ul></li>
+<li>Unreliable 
+<ul class="org-ul">
+<li>receiving NIC does not send ACKs or NACKs to sending NIC</li>
+<li>recover dropped frames only if sender uses higher layer “rdt” (TCP)</li>
+</ul></li>
+<li>MAC protocol 
+<ul class="org-ul">
+<li>CSMA/CD with exponential backoff</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline122" class="outline-5">
+<h5 id="orgheadline122"><span class="section-number-5">5.5.2.2</span> Ethernet Frame Structure</h5>
+<div class="outline-text-5" id="text-5-5-2-2">
+<ul class="org-ul">
+<li>Sending adapter encapsulates datagram in Ethernet frame</li>
+<li>preamble: 7 x 10101010 followed by 1 x 10101011
+<ul class="org-ul">
+<li>synchronize sender, receiver clock rates</li>
+</ul></li>
+<li>addresses: 48 bit source, source/destination MAC address
+<ul class="org-ul">
+<li>receive frame only if destination matches or broadcast</li>
+</ul></li>
+<li>type: indicates higher layer protocol: mostly IP, others possible</li>
+<li>CRC: cyclic redundancy check at receiver</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline123" class="outline-5">
+<h5 id="orgheadline123"><span class="section-number-5">5.5.2.3</span> Ethernet Physical Topology</h5>
+<div class="outline-text-5" id="text-5-5-2-3">
+<ul class="org-ul">
+<li>bus: popular in the mid 90s
+<ul class="org-ul">
+<li>all nodes in same collision domain (frames can collide)</li>
+</ul></li>
+<li>star: prevails today
+<ul class="org-ul">
+<li>active switch in the middle - each “spoke” in a separate
+collision domain (no collisions)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline127" class="outline-4">
+<h4 id="orgheadline127"><span class="section-number-4">5.5.3</span> Link-layer Switch</h4>
+<div class="outline-text-4" id="text-5-5-3">
+<ul class="org-ul">
+<li>Forwards frames within LAN 
+<ul class="org-ul">
+<li>determines output port based on destination MAC address</li>
+<li>similar to router forwarding process</li>
+</ul></li>
+
+<li>Self-learning 
+<ul class="org-ul">
+<li>forwarding table populated automatically</li>
+<li>no need for manual configuration or routing protocol</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline125" class="outline-5">
+<h5 id="orgheadline125"><span class="section-number-5">5.5.3.1</span> Self learning</h5>
+<div class="outline-text-5" id="text-5-5-3-1">
+<p>
+When a frame is received at the switch:
+</p>
+<ol class="org-ol">
+<li>Record pair (source MAC address; incoming link)</li>
+<li>Index forwarding table using destination MAC address</li>
+<li>If entry found:
+<ul class="org-ul">
+<li>if destination on link from which frame arrived drop frame</li>
+<li>else forward frame on link indicated by entry</li>
+</ul></li>
+<li>(else) If entry not found:
+<ul class="org-ul">
+<li>flood: forward on all links except the arriving interface</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline126" class="outline-5">
+<h5 id="orgheadline126"><span class="section-number-5">5.5.3.2</span> Switches vs routers</h5>
+<div class="outline-text-5" id="text-5-5-3-2">
+<p>
+Both are store-and-forward
+</p>
+<ul class="org-ul">
+<li>routers: network-layer devices (examine network-layer headers)</li>
+<li>switches: link-layer devices (examine link-layer headers)</li>
+</ul>
+<p>
+Both have forwarding tables 
+</p>
+<ul class="org-ul">
+<li>routers: using routing</li>
+<li>switches: using self-learning</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline147" class="outline-2">
+<h2 id="orgheadline147"><span class="section-number-2">6</span> Chapter 8</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-orgheadline130" class="outline-3">
+<h3 id="orgheadline130"><span class="section-number-3">6.1</span> Security properties</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Confidentiality
+<ul class="org-ul">
+<li>only the sender and the receiver understand the contents of the message</li>
+</ul></li>
+<li>Authenticity
+<ul class="org-ul">
+<li>the message is from whom it claims to be</li>
+</ul></li>
+<li>Integrity
+<ul class="org-ul">
+<li>the message was not changed along the way</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline134" class="outline-3">
+<h3 id="orgheadline134"><span class="section-number-3">6.2</span> Building blocks</h3>
+<div class="outline-text-3" id="text-6-2">
+</div><div id="outline-container-orgheadline131" class="outline-4">
+<h4 id="orgheadline131"><span class="section-number-4">6.2.1</span> Symmetric key cryptography</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<ul class="org-ul">
+<li>Alice and Bob share the same key &rarr; used both for the encryption and decryption algorithm</li>
+<li>Used to “scramble” the plaintext
+<ul class="org-ul">
+<li>stream ciphers &amp; block ciphers</li>
+<li>RC4, AES, Blowfish</li>
+</ul></li>
+</ul>
+
+<p>
+Challenge: how to share a key?
+</p>
+<ul class="org-ul">
+<li>out of band</li>
+<li>not always an option</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline132" class="outline-4">
+<h4 id="orgheadline132"><span class="section-number-4">6.2.2</span> Asymmetric key cryptography</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<ul class="org-ul">
+<li>Alice and Bob use different keys
+<ul class="org-ul">
+<li>public (key+) and private (key-) key</li>
+</ul></li>
+<li>There is a special relationship between them
+<ul class="org-ul">
+<li>key-{ key+{ plaintext } } = plaintext</li>
+<li>key+{ key-{ plaintext } } = plaintext</li>
+<li>RSA, DSA</li>
+</ul></li>
+</ul>
+
+<p>
+Challenge: computationally expensive
+</p>
+<ul class="org-ul">
+<li>sophisticated encryption/decryption algorithms based on number theory</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline133" class="outline-4">
+<h4 id="orgheadline133"><span class="section-number-4">6.2.3</span> Cryptographic hash function</h4>
+<div class="outline-text-4" id="text-6-2-3">
+<ul class="org-ul">
+<li>Maps larger input to smaller hash</li>
+<li>Hash should not reveal information on input</li>
+<li>Should be hard to identify 2 inputs that lead to the same hash</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline135" class="outline-3">
+<h3 id="orgheadline135"><span class="section-number-3">6.3</span> Providing confidentiality</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>With symmetric key crypto
+<ul class="org-ul">
+<li>Alice encrypts message with shared key</li>
+<li>only Bob can decrypt it</li>
+</ul></li>
+
+<li>With asymmetric key crypto
+<ul class="org-ul">
+<li>Alice encrypts message with Bob’s public key</li>
+<li>only Bob can decrypt it (with his private key)</li>
+<li>but beware of man-in-the-middle attacks</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline136" class="outline-3">
+<h3 id="orgheadline136"><span class="section-number-3">6.4</span> Providing authenticity</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>With symmetric key crypto
+<ul class="org-ul">
+<li>Alice appends hash of message + shared key</li>
+<li>Bob verifies that it is correct (using shared key)</li>
+</ul></li>
+
+<li>With asymmetric key crypto
+<ul class="org-ul">
+<li>Alice encrypts hash of message with her private key, appends to unencrypted message</li>
+<li>Bob verifies that it is correct (using Alice’s public key)</li>
+</ul></li>
+
+<li>Nonce for avoiding replay attacks
+<ul class="org-ul">
+<li>Bob sends Alice a nonce (random number)</li>
+<li>Alice appends hash of message + shared key + nonce</li>
+</ul></li>
+
+<li>Still one issue: man in the middle attack</li>
+<li>Manuel poses as Alice (to Bob) and as Bob (to Alice) difficult to detect
+<ul class="org-ul">
+<li>Bob receives everything that Alice sends, and vice versa. (e.g., so Bob,
+Alice can meet one week later and recall conversation!)</li>
+<li>problem is that Manul receives all messages as well!</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline138" class="outline-3">
+<h3 id="orgheadline138"><span class="section-number-3">6.5</span> Providing integrity</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li>cryptographic technique analogous to hand-written signatures:
+<ul class="org-ul">
+<li>sender (Bob) digitally signs document, establishing he is document owner/creator.</li>
+<li>verifiable, nonforgeable: recipient (Alice) can prove to someone that Bob,
+and no one else (including Alice), must have signed document</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline137" class="outline-4">
+<h4 id="orgheadline137"><span class="section-number-4">6.5.1</span> Public key certification</h4>
+<div class="outline-text-4" id="text-6-5-1">
+<ul class="org-ul">
+<li>Trusted certificate authority (CA) digitally signs that key+ is Bob’s public
+key using the CA’s private key</li>
+<li>CA’s public key is obtained out of band &rarr; web browsers pre-configured with CA public keys</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline142" class="outline-3">
+<h3 id="orgheadline142"><span class="section-number-3">6.6</span> Securing email</h3>
+<div class="outline-text-3" id="text-6-6">
+</div><div id="outline-container-orgheadline139" class="outline-4">
+<h4 id="orgheadline139"><span class="section-number-4">6.6.1</span> Confidentiality</h4>
+<div class="outline-text-4" id="text-6-6-1">
+<p>
+Alice wants to send confidential e-mail, m, to Bob.
+</p>
+
+<p>
+Alice:
+</p>
+<ul class="org-ul">
+<li>generates random symmetric private key, K<sub>S</sub></li>
+<li>encrypts message with K<sub>S</sub> (for efficiency)</li>
+<li>also encrypts K<sub>S</sub> with Bob’s public key</li>
+<li>sends both K<sub>S</sub>(m) and K<sub>B</sub>(K<sub>S</sub>) to Bob</li>
+</ul>
+
+<p>
+Bob:
+</p>
+<ul class="org-ul">
+<li>uses his private key to decrypt and recover K<sub>S</sub></li>
+<li>uses K<sub>S</sub> to decrypt K<sub>S</sub>(m) to recover m</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline140" class="outline-4">
+<h4 id="orgheadline140"><span class="section-number-4">6.6.2</span> Authenticity and Integrity</h4>
+<div class="outline-text-4" id="text-6-6-2">
+<p>
+Alice wants to provide sender authentication message integrity
+</p>
+
+<ul class="org-ul">
+<li>Alice digitally signs message</li>
+<li>sends both message (in the clear) and digital signature</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline141" class="outline-4">
+<h4 id="orgheadline141"><span class="section-number-4">6.6.3</span> All of them</h4>
+<div class="outline-text-4" id="text-6-6-3">
+<p>
+Alice wants to provide secrecy, sender authentication, message integrity.
+</p>
+
+<p>
+Alice uses <b>three keys</b>: her private key, Bob’s public key, newly created symmetric key
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline143" class="outline-3">
+<h3 id="orgheadline143"><span class="section-number-3">6.7</span> Securing TCP</h3>
+<div class="outline-text-3" id="text-6-7">
+<ul class="org-ul">
+<li>Server sends its certificate, includes its public key</li>
+<li>Client creates and sends a shared master key, encrypts it with server’s public key</li>
+<li>Both use master key to create 4 session keys
+<ul class="org-ul">
+<li>1 key for encrypting client &rarr; server data</li>
+<li>1 key for creating MAC for client &rarr; server data</li>
+<li>same for server &rarr; client data</li>
+</ul></li>
+
+<li>Client organizes data in records, each record has a sequence number</li>
+<li>Creates MAC for each record + sequence #, using one of the 4 session keys</li>
+<li>Encrypts the data + MAC for each record, using (another) one of the 4 session keys</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline145" class="outline-3">
+<h3 id="orgheadline145"><span class="section-number-3">6.8</span> Securing IP</h3>
+<div class="outline-text-3" id="text-6-8">
+<ul class="org-ul">
+<li>2 IP routers establish a “secure tunnel” &rarr; usually between branch offices of a company</li>
+<li>Source encrypts each IP packet using a shared key</li>
+<li>Source creates MAC for encrypted IP packet using another shared key</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline144" class="outline-4">
+<h4 id="orgheadline144"><span class="section-number-4">6.8.1</span> Key ideas</h4>
+<div class="outline-text-4" id="text-6-8-1">
+<ul class="org-ul">
+<li>Combination of symmetric/asymmetric keys
+<ul class="org-ul">
+<li>asymmetric key crypto to exchange shared keys</li>
+<li>symmetric key crypto for confidentiality,authenticity, &amp; integrity</li>
+<li>symmetric key crypto is faster</li>
+</ul></li>
+<li>Seq. numbers to avoid reordering attacks
+<ul class="org-ul">
+<li>organize data in records with seq. numbers</li>
+<li>compute MAC on record data + seq. number</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline146" class="outline-3">
+<h3 id="orgheadline146"><span class="section-number-3">6.9</span> Firewall</h3>
+<div class="outline-text-3" id="text-6-9">
+<p>
+isolates organization’s internal net from larger Internet, allowing some packets
+to pass, blocking others
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline148" class="outline-2">
+<h2 id="orgheadline148"><span class="section-number-2">7</span> HW1</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 Imagine d<sub>end</sub>-to-end between 2 links is D, imagine now N links, to send P
 packets, time taken is N*D+(P-1)*D, in words, time for the first packet to
@@ -2055,9 +2760,9 @@ R∙d<sub>prop</sub>
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline111" class="outline-2">
-<h2 id="orgheadline111"><span class="section-number-2">6</span> HW2</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgheadline149" class="outline-2">
+<h2 id="orgheadline149"><span class="section-number-2">8</span> HW2</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 Time to get ip-address from name (cache empty), with n servers and constant
 delay of D between any two machines (RTT=2D) : 2nD. Now if cache contains name : 2D
@@ -2086,7 +2791,7 @@ replies is negligeable)
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-25 Wed 20:54</p>
+<p class="date">Created: 2015-12-06 Sun 20:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 10:03 -->
+<!-- 2015-12-07 Mon 09:52 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Analyse III</title>
@@ -395,6 +395,23 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#orgheadline117">8.22. Théorème</a></li>
 <li><a href="#orgheadline118">8.23. Ex. 11</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline127">9. Chapitre 18</a>
+<ul>
+<li><a href="#orgheadline121">9.1. équation de la chaleur</a>
+<ul>
+<li><a href="#orgheadline120">9.1.1. Conditions aux limites de Dirichlet</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline122">9.2. Thèorème :</a></li>
+<li><a href="#orgheadline123">9.3. Résoudre le système :</a></li>
+<li><a href="#orgheadline124">9.4. Résoudre le système</a></li>
+<li><a href="#orgheadline126">9.5. Thèorème</a>
+<ul>
+<li><a href="#orgheadline125">9.5.1. Exemple</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -3870,9 +3887,457 @@ b_n &= \frac{4}{\pi n^2} \sin(\frac{n\pi}{2})\\
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline127" class="outline-2">
+<h2 id="orgheadline127"><span class="section-number-2">9</span> Chapitre 18</h2>
+<div class="outline-text-2" id="text-9">
+<p style="font-size:20px">
+<span class="underline"><b>Application des séries de Fourier</b></span>
+</p>
+</div>
+
+<div id="outline-container-orgheadline121" class="outline-3">
+<h3 id="orgheadline121"><span class="section-number-3">9.1</span> équation de la chaleur</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+\(\delta_t u - K \delta_{x\ x}^2 u = 0\) \([0,T]\times[0,L]\)
+</p>
+
+<p>
+(\(\delta_{x\ x}^2 = \frac{\delta^2}{\delta x^2}\))
+</p>
+
+<p>
+\(K\): la constante de la diffusion
+</p>
+
+<p>
+\(u(t=0,x)=\varphi(x)\) \([0,L]\)
+</p>
+</div>
+<div id="outline-container-orgheadline120" class="outline-4">
+<h4 id="orgheadline120"><span class="section-number-4">9.1.1</span> Conditions aux limites de Dirichlet</h4>
+<div class="outline-text-4" id="text-9-1-1">
+<p>
+\(u(t,0)=u(t,L) = 0\)
+</p>
+
+<p>
+Le système :
+</p>
+
+\begin{align*}
+\begin{cases}
+\delta_t u - \delta_{x\ x} u = 0 & t > 0, x \in [0,L]\\
+u(t,0) = u(t,L) = 0 & t > 0\\
+u(t=0,x) = \varphi(x) & x \in [0,L]
+\end{cases}
+\end{align*}
+
+<p>
+<b>graphe chaleur</b>
+</p>
+
+<p>
+La méthodé : séparation des variables
+</p>
+
+<p>
+On cherche des solutions (non zéros) de
+</p>
+\begin{align*}
+\begin{cases}
+\delta_t u - \delta_{x\ x}^2 u = 0 \\
+u(t,0) = u(t,L) = 0
+\end{cases}
+\end{align*}
+<p>
+sour la forme \(u(t,X)=T(t).X(x)\)
+</p>
+\begin{align*}
+\begin{cases}
+\delta_t u = T'(t).X(x) \\
+\delta_{x\ x}^2 u = T(t).X''(x)\\
+X(0) = X(L) = 0
+\end{cases}
+\end{align*}
+
+<p>
+\(\delta_t u -K \delta_{x\ x}^2 u = T'(t).X(x) - K T(t).X''(x) = 0\)
+</p>
+
+<p>
+Cela implique:
+</p>
+
+<p>
+\(T'(t).X(x) = T(t).X''(x) \Rightarrow \frac{T'(t)}{T(t)} = \frac{X''(t)}{X(x)} = - \lambda\) constante (*)
+</p>
+
+<p>
+On va montrer \(\lambda \ge 0\) \((\lambda > 0)\)
+</p>
+
+<p>
+On a
+</p>
+\begin{align*}
+&\begin{cases}
+X''(x) + \lambda X(x) = 0 \text{ (**)}\\
+X(0) = X(L) = 0
+\end{cases} \\
+&\int\limits_0^L [X''(x) + \lambda X(x)] X(x) dx = 0\\
+&\Rightarrow - \int\limits_0^L X'(x) + X'(x)X(x)|^L_0 + \lambda \int\limits_0^L X^(x) dx = 0
+\end{align*}
+<p>
+En utilisant le fait
+</p>
+
+<p>
+\(X(0) = X(L) = 0\) on a
+</p>
+
+<p>
+\(- \int\limits_0^L X'(x)^2 dx + \int\limits_0^L \lambda X(x)^2 dx = 0 \Rightarrow \lambda \ge 0\)
+</p>
+
+\begin{align*}
+&\text{(**) } \Leftrightarrow \begin{cases}
+X''(x) = - \sqrt{\lambda}^2 X(x)\\
+X(0) = X(L) = 0
+\end{cases}\\
+&\Rightarrow X(x) = a \cos(\sqrt{\lambda} x) + b \sin(\sqrt{\lambda} x)\\
+&a,b \in \mathbb{R}\\
+&X(0) = 0\\
+&\Rightarrow a \cos(0) = 0\\
+&\Rightarrow a = 0\\
+& X(L) = 0\\
+&\Rightarrow b \sin(\sqrt{\lambda} L) = 0\\
+&\Rightarrow \sin (\sqrt{\lambda} L) = 0\\
+&\Rightarrow \sqrt{\lambda} L = n \pi,\ n \ge 1\\
+&\Rightarrow \lambda = \left(\frac{n\pi}{L}\right)^2,\ n \ge 1
+\end{align*}
+
+<p>
+Résumé :
+</p>
+\begin{align*}
+\begin{cases}
+X(x) = b\sin (\sqrt{\lambda_n} x)\\
+\lambda_n = \left(\frac{n\pi}{L}\right)^2,\ n \ge 1
+\end{cases}
+\end{align*}
+
+<p>
+On cherche \(T(t)\)
+</p>
+\begin{align*}
+&\text{(*)} \Rightarrow T'(t) = - K \lambda_n T(t)\\
+&\Rightarrow T(t) = c e^{K\lambda_n t}\\
+&\text{Donc}\\
+&u(t,x)= T(t) X(x)\\
+&= \alpha_n e^{-K\lambda_n t} \sin(\sqrt{\lambda_n} x)\\
+&\text{où}\\
+&\lambda_n = \left(\frac{n\pi}{L}\right)^2,\ n \ge 1
+\end{align*}
+
+<p>
+<span class="underline">Lemme</span>: Si \(u_1\), \(u_2\) sont 2 solutions du système
+</p>
+\begin{align*}
+\begin{cases}
+\delta_t u \delta_{x\ x}^2 u = 0\ t \ge 0\ x \in [0,L]\\
+u(t,0) = u(t,L) = 0\ t \ge 0
+\end{cases}
+\end{align*}
+<p>
+et $c<sub>1,c</sub><sub>2</sub> \(\in \mathbb{R}\)
+</p>
+
+<p>
+Alors \(c_1u_1+c_2u_2\) est aussi une solution
+</p>
+
+<p>
+Formellement, on obtient
+</p>
+
+<p>
+\(u(t,x) = \sum\limits_{n=1}^{\infty} \alpha_n e^{-K\lambda n t} \sin(\sqrt{\lambda} x)\)
+</p>
+
+<p>
+est une solution de
+</p>
+\begin{align*}
+\delta_t u - \delta^2_{x\ x} u = 0 & t > 0, x \in [0,1]\\
+u(t,0) = u(t,L) = 0 & t > 0
+\end{align*}
+
+<p>
+On cherche \(\alpha_n\) en utilisant le fait
+</p>
+
+<p>
+\(u(t=0,x) = \varphi(x)\)
+</p>
+
+<p>
+$&sum;\limits<sub>n=1</sub><sup>&infin;</sup> &alpha;<sub>n</sub> sin(\sqrt{\lambda_n} x) = &varphi;(x)
+</p>
+
+<p>
+Rappel sur les séries de Fourier :
+</p>
+
+<p>
+Soit \(f:[0,L] \rightarrow \mathbb{R}\)
+</p>
+
+<p>
+Alors:
+</p>
+
+<p>
+\(f(x) = \sum\limits_{n \ge 1}^{+\infty} a_n \sin(\frac{n\pi x}{L})\)
+</p>
+
+<p>
+où \(a_n = \frac{2}{L} \int\limits_0^L f(x) \sin(\frac{n\pi x}{L})\)
+</p>
+
+<p>
+bla bla
+</p>
+
+<p>
+*
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline122" class="outline-3">
+<h3 id="orgheadline122"><span class="section-number-3">9.2</span> Thèorème :</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+\(\varphi (x) = \sum a_n \sin(\frac{n\pi x}{L})\) et \(\sum |\lambda_n|^2 |a_n|^2 < + \infty\)
+</p>
+
+<p>
+\(u(t,x) = \sum a_n e^{-k \lambda_n t} \sin(\sqrt{\lambda n} x)\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline123" class="outline-3">
+<h3 id="orgheadline123"><span class="section-number-3">9.3</span> Résoudre le système :</h3>
+<div class="outline-text-3" id="text-9-3">
+\begin{align*}
+\begin{cases}
+\delta_t u (t,x) - \delta_{x\ x}^2 u(t,x) = 0\\
+u(t,\pi) = u(t,0) = 0 & (t,x) \in (0,+\infty) \times (0,\pi)\\
+u(0,x) = \sin x + \sin 2 x
+\end{cases}
+\end{align*}
+
+<p>
+Dans notre cas \(L=\pi\)
+</p>
+
+<p>
+\(\varphi (x) = \sin x + \sin 2 x = \sum\limits_{n\le 1} a_n \sin(n x)\)
+</p>
+
+<p>
+\(a_1 = 1\)
+</p>
+
+<p>
+\(a_2 = 1\)
+</p>
+
+<p>
+\(\forall n \in [3,+\infty),\ a_n = 0\)
+</p>
+
+\begin{align*}
+u(t,x) &= a_1 e^{-\lambda_1 t} \sin(\sqrt{\lambda_1} x) + a_2 e^{-\lambda_2 t} \sin(\sqrt{\lambda_2} x)\\
+&= e^{-t} \sin(x) + e^{-4t} \sin(2 x)
+\end{align*}
+</div>
+</div>
+<div id="outline-container-orgheadline124" class="outline-3">
+<h3 id="orgheadline124"><span class="section-number-3">9.4</span> Résoudre le système</h3>
+<div class="outline-text-3" id="text-9-4">
+\begin{align*}
+\begin{cases}
+\delta_t u(t,x) - K \delta_{x\ x}^2 u(t,x) = f(t,x) & \text{pour } (t,x) \in (0,+\infty) \times (0,L)\\
+u(t,0) = u(t,L) = 0 & t>0\\
+u(0,x) = \varphi(x) & x\in (0,L)
+\end{cases}
+\end{align*}
+
+<p>
+On cherche une solution sours la forme
+</p>
+
+<p>
+\(u(t,x) = \sum\limits_{n\ge 1} a_n (t) \sin(\sqrt{\lambda_n} x)\)
+</p>
+
+<p>
+Supposons que
+</p>
+
+<p>
+\(f(t,x) = \sum\limits_{n \ge 1} f_n(t) \sin(\sqrt{\lambda_n} x)\)
+</p>
+
+<p>
+\(\delta_t u(t,x) = \sum\limits_{n \ge 1}(a_n'(t) \sin(\sqrt{\lambda_n} x)\)
+</p>
+
+<p>
+\(k \delta_{x\ x}^2 u(t,x) = \sum\limits_{n \ge 1} K a_n(t) (-\lambda_n \sin(\sqrt{\lambda_n} x))\)
+</p>
+
+<p>
+Comme \(u\) satisfait l'équation de la chaleur avec source \(f\)
+</p>
+
+<p>
+\(\sum\limits_{n \ge 1} (a_n(t)' - k \lambda_n a_n(t) - f_n(t))\sin(\sqrt{\lambda_n} x) = 0\)
+</p>
+
+<p>
+On obtient:
+</p>
+
+<p>
+\(\forall n \ge 1\)  \(a_n'(t) + k \lambda_n a_n(t) = f_n(t)\) \(t>0\)
+</p>
+
+<p>
+On peut écrire:
+</p>
+
+<p>
+\(a_n(t) = a_n(0) e^{-k\lambda_n t} + \int\limits_0^t e^{k\lambda_n (s-t) f_n(s) ds\)
+</p>
+
+<p>
+On écrit que \(\varphi(x) = \sum\limits_{n\ ge 1} a_n \sin(\sqrt{\lambda_n} x)\)
+</p>
+
+<p>
+\(u(0,x) = \varphi(x) \Leftrightarrow \forall n \in \mathbb{N}* a_n(0) = a_n\)
+</p>
+
+<p>
+Nécessairement:
+</p>
+
+<p>
+\(u(t,x) = \sum\limits_{n\ge 1} a_n e^{-k \lambda_n t} \sin(\sqrt{\lambda_n} x) + \sum\limits_{n \ge 1} (\sum\limits_0^t e^{k(s-t)} f_n(s) ds) \sin(\sqrt{\lambda_n} x)\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline126" class="outline-3">
+<h3 id="orgheadline126"><span class="section-number-3">9.5</span> Thèorème</h3>
+<div class="outline-text-3" id="text-9-5">
+<p>
+Supposons que
+</p>
+\begin{align*}
+\begin{cases}
+\varphi(x) = \sum\limits_{n \ge 1} a_n \sin(\frac{n\pi x}{L})\\
+f(t,x) = \sum\limits_{n \ge } f_n(t) \sin(\frac{n \pi x}{L})
+\end{cases}
+\end{align*}
+
+<p>
+On suppose aussi:
+</p>
+
+<p>
+\(\sum\limits_{n \ge 1} \lambda_n^2 |a_n|^2 < + \infty\)
+</p>
+
+<p>
+\(\sum\limits_{n \ge 1} \text{sup}_{t \in [0,T]} \lambda_n^2 |f_n(t)| < + infty\)
+</p>
+
+<p>
+Alors \(u(t,x) = \sum\limits a_n e^{-k \lambda_n t} \sin(\sqrt{\lambda_n} x) + \sum\limits_{n \ge 1} \int\limits_0^t \int\limits_0^t e^{k \lambda_n (s-t)} f_n(s) ds \sin(\sqrt{\lambda_n} x)\)
+</p>
+</div>
+
+<div id="outline-container-orgheadline125" class="outline-4">
+<h4 id="orgheadline125"><span class="section-number-4">9.5.1</span> Exemple</h4>
+<div class="outline-text-4" id="text-9-5-1">
+<p>
+Résoudre :
+</p>
+\begin{align*}
+\begin{cases}
+\delta_t u(t,x) - \delta^2_{x\ x} u(t,x) = 0 & (t,x) \in (0,+\infty) \times (0,\pi)\\
+u(t,0) = 0\\
+u(t,\pi) = g(t) = \pi t
+u(0,x) = \sin x + tx & x \in (0,\pi)
+\end{cases}
+\end{align*}
+
+<p>
+Posons
+</p>
+
+<p>
+\(v(t,x) = u(t,x) - tx\) \((t,x) \in (0, +\infty) \times (0,\pi)\)
+</p>
+
+<p>
+\(\delta_t v(t,x) = \delta_t u(t,x) -x\)
+</p>
+
+<p>
+\(\delta^2_{x\ x} v(t,x) = \delta^2_{x\ x} u(t,x)\)
+</p>
+
+\begin{align*}
+\begin{cases}
+\delta_t v(t,x) 0 \delta^2_{x\ x} v(t,x) = x & (t,x) \in (0,+\infty) \times (0,\pi)\\
+v(t,0) = t(t,\pi) = 0\\
+u(0,x) = \sin x & x \in (0,\pi)
+\end{cases}
+\end{align*}
+
+<p>
+Cherchons \(a_n\), dans notre cas
+</p>
+
+<p>
+\(\varphi(x) = \sin x\)
+</p>
+
+<p>
+\(\forall n \neq 1\) \(a_n = 0\) et \(a_1 = 1\)
+</p>
+
+<p>
+Cherchons \(f_n\). On veut écrire \(x=\sum_{n \ge 1} f_n(t) \sin(\sqrt{\lambda_n} x)\)
+</p>
+
+\begin{align*}
+f_n(t) &= \frac{1}{\pi} \int\limits_0^{\pi} x \sin n x dx\\
+&= \frac{1}{\pi} \left( [ x \frac{- \cos nx}{n}]^{\pi}_0 + \frac{1}{n} \int\limits_0^{\pi} \cos nx dx \right)\\
+&= \frac{1}{\pi} \frac{\pi (-1)^{n+1}}{n} + 0 = \frac{(-1)^{n+1}}{n}
+\end{align*}
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 10:03</p>
+<p class="date">Created: 2015-12-07 Mon 09:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

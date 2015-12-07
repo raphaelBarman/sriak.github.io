@@ -5,14 +5,14 @@
                      '(("article" "11pt")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("inputenc" "utf8") ("fontenc" "T1") ("ulem" "normalem")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
-   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "url")
    (TeX-run-style-hooks
     "latex2e"
     "article"
@@ -84,7 +84,7 @@
     "sec:orgheadline51"
     "sec:orgheadline49"
     "sec:orgheadline50"
-    "sec:orgheadline66"
+    "sec:orgheadline82"
     "sec:orgheadline55"
     "sec:orgheadline53"
     "sec:orgheadline54"
@@ -98,6 +98,87 @@
     "sec:orgheadline64"
     "sec:orgheadline62"
     "sec:orgheadline63"
+    "sec:orgheadline81"
     "sec:orgheadline67"
-    "sec:orgheadline68")))
+    "sec:orgheadline66"
+    "sec:orgheadline70"
+    "sec:orgheadline68"
+    "sec:orgheadline69"
+    "sec:orgheadline71"
+    "sec:orgheadline72"
+    "sec:orgheadline75"
+    "sec:orgheadline73"
+    "sec:orgheadline74"
+    "sec:orgheadline80"
+    "sec:orgheadline76"
+    "sec:orgheadline77"
+    "sec:orgheadline78"
+    "sec:orgheadline79"
+    "sec:orgheadline109"
+    "sec:orgheadline83"
+    "sec:orgheadline87"
+    "sec:orgheadline84"
+    "sec:orgheadline85"
+    "sec:orgheadline86"
+    "sec:orgheadline94"
+    "sec:orgheadline88"
+    "sec:orgheadline89"
+    "sec:orgheadline91"
+    "sec:orgheadline90"
+    "sec:orgheadline92"
+    "sec:orgheadline93"
+    "sec:orgheadline101"
+    "sec:orgheadline95"
+    "sec:orgheadline96"
+    "sec:orgheadline99"
+    "sec:orgheadline97"
+    "sec:orgheadline98"
+    "sec:orgheadline100"
+    "sec:orgheadline108"
+    "sec:orgheadline102"
+    "sec:orgheadline103"
+    "sec:orgheadline104"
+    "sec:orgheadline107"
+    "sec:orgheadline105"
+    "sec:orgheadline106"
+    "sec:orgheadline129"
+    "sec:orgheadline110"
+    "sec:orgheadline111"
+    "sec:orgheadline113"
+    "sec:orgheadline112"
+    "sec:orgheadline119"
+    "sec:orgheadline114"
+    "sec:orgheadline118"
+    "sec:orgheadline115"
+    "sec:orgheadline116"
+    "sec:orgheadline117"
+    "sec:orgheadline128"
+    "sec:orgheadline120"
+    "sec:orgheadline124"
+    "sec:orgheadline121"
+    "sec:orgheadline122"
+    "sec:orgheadline123"
+    "sec:orgheadline127"
+    "sec:orgheadline125"
+    "sec:orgheadline126"
+    "sec:orgheadline147"
+    "sec:orgheadline130"
+    "sec:orgheadline134"
+    "sec:orgheadline131"
+    "sec:orgheadline132"
+    "sec:orgheadline133"
+    "sec:orgheadline135"
+    "sec:orgheadline136"
+    "sec:orgheadline138"
+    "sec:orgheadline137"
+    "sec:orgheadline142"
+    "sec:orgheadline139"
+    "sec:orgheadline140"
+    "sec:orgheadline141"
+    "sec:orgheadline143"
+    "sec:orgheadline145"
+    "sec:orgheadline144"
+    "sec:orgheadline146"
+    "sec:orgheadline148"
+    "sec:orgheadline149")))
 
