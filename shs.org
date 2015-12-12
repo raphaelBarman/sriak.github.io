@@ -737,3 +737,16 @@ RÉSEAU SOCIAL
   - l’université
   - les fournisseurs, concurrents, clients
   - l’intérieur de l’organisation
+* Week 13
+** Fait d'actualité
+En quoi est-ce compliqué de bloquer l'accès des terroristes aux médias sociaux ?
+- Techniquement ?
+  - Main d'oeuvre qualifiée pour décider à partir de quel seuil on
+    est un terroriste
+  - E.g. Facebook, rapports des utilisateurs pour détecter, problème de détecter
+    si abus car publié dans réseau proche
+- Liberté d'expression
+  - Entreprises liées à un mouvement libertariens, et défense de la liberté
+    d'expression \rightarrow pour certains, pas le rôle des entreprises privées,
+    mais plutôt de l'état
+- Clés d'encryption, doivent-elles être partagées avec l'état ?

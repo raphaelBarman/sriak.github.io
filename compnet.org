@@ -835,8 +835,9 @@ CSMA (carrier sense multiple access)
   - active switch in the middle - each “spoke” in a separate
     collision domain (no collisions)
 *** Link-layer Switch
-- Forwards frames within LAN 
-  - determines output port based on destination MAC address 
+- Forwards and filter frames within LAN 
+  - determines output port based on destination MAC address
+  - If destination is on the LAN, frame has already been broadcasted on LAN (comes from the LAN), thus switch filters (discards) the frame
   - similar to router forwarding process
 
 - Self-learning 
@@ -858,6 +859,48 @@ Both are store-and-forward
 Both have forwarding tables 
 - routers: using routing 
 - switches: using self-learning
+** Web Page request
+*** Connecting to the internet
+- Laptop uses DHCP to get: 
+  - IP address, subnet mask 
+  - IP address of first-hop router 
+  - IP address of DNS server
+- DHCP discovery message 
+  - encapsulated in UDP 
+  - encapsulated in IP 
+  - encapsulated in Ethernet
+- Ethernet frame broadcast on LAN 
+  - destination MAC: 0xffffffffffff 
+  - received by DHCP server (running on the router)
+- DHCP server and laptop exchange 
+  - offer 
+  - request 
+  - acknowledgement
+Laptop has IP address, knows IP address of the first-hop router and a DNS server
+*** DNS and ARP
+- Laptop uses DNS to get the IP address for www.google.com
+- DNS query 
+  - encapsulated in UDP 
+  - encapsulated in IP 
+  - encapsulated in.. ooops!
+- Laptop needs to get the MAC address of the first-hop router (gateway router)
+- ARP request broadcasted on LAN, received at first-hop router
+- Router sends ARP response back
+Laptop knows MAC address of the first-hop router
+*** Actual DNS
+- DNS query (IP datagram) forwarded to first-hop router via switch
+- DNS query (IP datagram) forwarded to Comcast network, DNS server
+- DNS server sends DNS response back to laptop
+Laptop knows IP address of www.google.com
+*** TCP connnection setup
+- Web browser process opens TCP socket
+- Sends SYN segment
+- Web server responds with SYNACK segment
+TCP connection established
+*** HTTP request/reply
+- Web browser sends HTTP request to web server
+- Web server sends HTTP reply to web client (the web page)
+Web page is finally displayed!
 * Chapter 8
 ** Security properties
 - Confidentiality

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-12-06 Sun 20:52 -->
+<!-- 2015-12-12 Sat 15:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Networks</title>
@@ -381,7 +381,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline129">5. Chapter 5</a>
+<li><a href="#orgheadline135">5. Chapter 5</a>
 <ul>
 <li><a href="#orgheadline110">5.1. Terminology</a></li>
 <li><a href="#orgheadline111">5.2. Link Layer Services</a></li>
@@ -420,43 +420,52 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#orgheadline147">6. Chapter 8</a>
+<li><a href="#orgheadline134">5.6. Web Page request</a>
 <ul>
-<li><a href="#orgheadline130">6.1. Security properties</a></li>
-<li><a href="#orgheadline134">6.2. Building blocks</a>
+<li><a href="#orgheadline129">5.6.1. Connecting to the internet</a></li>
+<li><a href="#orgheadline130">5.6.2. DNS and ARP</a></li>
+<li><a href="#orgheadline131">5.6.3. Actual DNS</a></li>
+<li><a href="#orgheadline132">5.6.4. TCP connnection setup</a></li>
+<li><a href="#orgheadline133">5.6.5. HTTP request/reply</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline153">6. Chapter 8</a>
 <ul>
-<li><a href="#orgheadline131">6.2.1. Symmetric key cryptography</a></li>
-<li><a href="#orgheadline132">6.2.2. Asymmetric key cryptography</a></li>
-<li><a href="#orgheadline133">6.2.3. Cryptographic hash function</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline135">6.3. Providing confidentiality</a></li>
-<li><a href="#orgheadline136">6.4. Providing authenticity</a></li>
-<li><a href="#orgheadline138">6.5. Providing integrity</a>
+<li><a href="#orgheadline136">6.1. Security properties</a></li>
+<li><a href="#orgheadline140">6.2. Building blocks</a>
 <ul>
-<li><a href="#orgheadline137">6.5.1. Public key certification</a></li>
+<li><a href="#orgheadline137">6.2.1. Symmetric key cryptography</a></li>
+<li><a href="#orgheadline138">6.2.2. Asymmetric key cryptography</a></li>
+<li><a href="#orgheadline139">6.2.3. Cryptographic hash function</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline142">6.6. Securing email</a>
+<li><a href="#orgheadline141">6.3. Providing confidentiality</a></li>
+<li><a href="#orgheadline142">6.4. Providing authenticity</a></li>
+<li><a href="#orgheadline144">6.5. Providing integrity</a>
 <ul>
-<li><a href="#orgheadline139">6.6.1. Confidentiality</a></li>
-<li><a href="#orgheadline140">6.6.2. Authenticity and Integrity</a></li>
-<li><a href="#orgheadline141">6.6.3. All of them</a></li>
+<li><a href="#orgheadline143">6.5.1. Public key certification</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline143">6.7. Securing TCP</a></li>
-<li><a href="#orgheadline145">6.8. Securing IP</a>
+<li><a href="#orgheadline148">6.6. Securing email</a>
 <ul>
-<li><a href="#orgheadline144">6.8.1. Key ideas</a></li>
+<li><a href="#orgheadline145">6.6.1. Confidentiality</a></li>
+<li><a href="#orgheadline146">6.6.2. Authenticity and Integrity</a></li>
+<li><a href="#orgheadline147">6.6.3. All of them</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline146">6.9. Firewall</a></li>
+<li><a href="#orgheadline149">6.7. Securing TCP</a></li>
+<li><a href="#orgheadline151">6.8. Securing IP</a>
+<ul>
+<li><a href="#orgheadline150">6.8.1. Key ideas</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline148">7. HW1</a></li>
-<li><a href="#orgheadline149">8. HW2</a></li>
+<li><a href="#orgheadline152">6.9. Firewall</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline154">7. HW1</a></li>
+<li><a href="#orgheadline155">8. HW2</a></li>
 </ul>
 </div>
 </div>
@@ -2095,8 +2104,8 @@ each node:
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline129" class="outline-2">
-<h2 id="orgheadline129"><span class="section-number-2">5</span> Chapter 5</h2>
+<div id="outline-container-orgheadline135" class="outline-2">
+<h2 id="orgheadline135"><span class="section-number-2">5</span> Chapter 5</h2>
 <div class="outline-text-2" id="text-5">
 </div><div id="outline-container-orgheadline110" class="outline-3">
 <h3 id="orgheadline110"><span class="section-number-3">5.1</span> Terminology</h3>
@@ -2402,9 +2411,10 @@ collision domain (no collisions)</li>
 <h4 id="orgheadline127"><span class="section-number-4">5.5.3</span> Link-layer Switch</h4>
 <div class="outline-text-4" id="text-5-5-3">
 <ul class="org-ul">
-<li>Forwards frames within LAN 
+<li>Forwards and filter frames within LAN 
 <ul class="org-ul">
 <li>determines output port based on destination MAC address</li>
+<li>If destination is on the LAN, frame has already been broadcasted on LAN (comes from the LAN), thus switch filters (discards) the frame</li>
 <li>similar to router forwarding process</li>
 </ul></li>
 
@@ -2457,12 +2467,107 @@ Both have forwarding tables
 </div>
 </div>
 </div>
+<div id="outline-container-orgheadline134" class="outline-3">
+<h3 id="orgheadline134"><span class="section-number-3">5.6</span> Web Page request</h3>
+<div class="outline-text-3" id="text-5-6">
+</div><div id="outline-container-orgheadline129" class="outline-4">
+<h4 id="orgheadline129"><span class="section-number-4">5.6.1</span> Connecting to the internet</h4>
+<div class="outline-text-4" id="text-5-6-1">
+<ul class="org-ul">
+<li>Laptop uses DHCP to get: 
+<ul class="org-ul">
+<li>IP address, subnet mask</li>
+<li>IP address of first-hop router</li>
+<li>IP address of DNS server</li>
+</ul></li>
+<li>DHCP discovery message 
+<ul class="org-ul">
+<li>encapsulated in UDP</li>
+<li>encapsulated in IP</li>
+<li>encapsulated in Ethernet</li>
+</ul></li>
+<li>Ethernet frame broadcast on LAN 
+<ul class="org-ul">
+<li>destination MAC: 0xffffffffffff</li>
+<li>received by DHCP server (running on the router)</li>
+</ul></li>
+<li>DHCP server and laptop exchange 
+<ul class="org-ul">
+<li>offer</li>
+<li>request</li>
+<li>acknowledgement</li>
+</ul></li>
+</ul>
+<p>
+Laptop has IP address, knows IP address of the first-hop router and a DNS server
+</p>
 </div>
-<div id="outline-container-orgheadline147" class="outline-2">
-<h2 id="orgheadline147"><span class="section-number-2">6</span> Chapter 8</h2>
+</div>
+<div id="outline-container-orgheadline130" class="outline-4">
+<h4 id="orgheadline130"><span class="section-number-4">5.6.2</span> DNS and ARP</h4>
+<div class="outline-text-4" id="text-5-6-2">
+<ul class="org-ul">
+<li>Laptop uses DNS to get the IP address for www.google.com</li>
+<li>DNS query 
+<ul class="org-ul">
+<li>encapsulated in UDP</li>
+<li>encapsulated in IP</li>
+<li>encapsulated in.. ooops!</li>
+</ul></li>
+<li>Laptop needs to get the MAC address of the first-hop router (gateway router)</li>
+<li>ARP request broadcasted on LAN, received at first-hop router</li>
+<li>Router sends ARP response back</li>
+</ul>
+<p>
+Laptop knows MAC address of the first-hop router
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline131" class="outline-4">
+<h4 id="orgheadline131"><span class="section-number-4">5.6.3</span> Actual DNS</h4>
+<div class="outline-text-4" id="text-5-6-3">
+<ul class="org-ul">
+<li>DNS query (IP datagram) forwarded to first-hop router via switch</li>
+<li>DNS query (IP datagram) forwarded to Comcast network, DNS server</li>
+<li>DNS server sends DNS response back to laptop</li>
+</ul>
+<p>
+Laptop knows IP address of www.google.com
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline132" class="outline-4">
+<h4 id="orgheadline132"><span class="section-number-4">5.6.4</span> TCP connnection setup</h4>
+<div class="outline-text-4" id="text-5-6-4">
+<ul class="org-ul">
+<li>Web browser process opens TCP socket</li>
+<li>Sends SYN segment</li>
+<li>Web server responds with SYNACK segment</li>
+</ul>
+<p>
+TCP connection established
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline133" class="outline-4">
+<h4 id="orgheadline133"><span class="section-number-4">5.6.5</span> HTTP request/reply</h4>
+<div class="outline-text-4" id="text-5-6-5">
+<ul class="org-ul">
+<li>Web browser sends HTTP request to web server</li>
+<li>Web server sends HTTP reply to web client (the web page)</li>
+</ul>
+<p>
+Web page is finally displayed!
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline153" class="outline-2">
+<h2 id="orgheadline153"><span class="section-number-2">6</span> Chapter 8</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgheadline130" class="outline-3">
-<h3 id="orgheadline130"><span class="section-number-3">6.1</span> Security properties</h3>
+</div><div id="outline-container-orgheadline136" class="outline-3">
+<h3 id="orgheadline136"><span class="section-number-3">6.1</span> Security properties</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>Confidentiality
@@ -2480,11 +2585,11 @@ Both have forwarding tables
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline134" class="outline-3">
-<h3 id="orgheadline134"><span class="section-number-3">6.2</span> Building blocks</h3>
+<div id="outline-container-orgheadline140" class="outline-3">
+<h3 id="orgheadline140"><span class="section-number-3">6.2</span> Building blocks</h3>
 <div class="outline-text-3" id="text-6-2">
-</div><div id="outline-container-orgheadline131" class="outline-4">
-<h4 id="orgheadline131"><span class="section-number-4">6.2.1</span> Symmetric key cryptography</h4>
+</div><div id="outline-container-orgheadline137" class="outline-4">
+<h4 id="orgheadline137"><span class="section-number-4">6.2.1</span> Symmetric key cryptography</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <ul class="org-ul">
 <li>Alice and Bob share the same key &rarr; used both for the encryption and decryption algorithm</li>
@@ -2504,8 +2609,8 @@ Challenge: how to share a key?
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline132" class="outline-4">
-<h4 id="orgheadline132"><span class="section-number-4">6.2.2</span> Asymmetric key cryptography</h4>
+<div id="outline-container-orgheadline138" class="outline-4">
+<h4 id="orgheadline138"><span class="section-number-4">6.2.2</span> Asymmetric key cryptography</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <ul class="org-ul">
 <li>Alice and Bob use different keys
@@ -2528,8 +2633,8 @@ Challenge: computationally expensive
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline133" class="outline-4">
-<h4 id="orgheadline133"><span class="section-number-4">6.2.3</span> Cryptographic hash function</h4>
+<div id="outline-container-orgheadline139" class="outline-4">
+<h4 id="orgheadline139"><span class="section-number-4">6.2.3</span> Cryptographic hash function</h4>
 <div class="outline-text-4" id="text-6-2-3">
 <ul class="org-ul">
 <li>Maps larger input to smaller hash</li>
@@ -2539,8 +2644,8 @@ Challenge: computationally expensive
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline135" class="outline-3">
-<h3 id="orgheadline135"><span class="section-number-3">6.3</span> Providing confidentiality</h3>
+<div id="outline-container-orgheadline141" class="outline-3">
+<h3 id="orgheadline141"><span class="section-number-3">6.3</span> Providing confidentiality</h3>
 <div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
 <li>With symmetric key crypto
@@ -2558,8 +2663,8 @@ Challenge: computationally expensive
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline136" class="outline-3">
-<h3 id="orgheadline136"><span class="section-number-3">6.4</span> Providing authenticity</h3>
+<div id="outline-container-orgheadline142" class="outline-3">
+<h3 id="orgheadline142"><span class="section-number-3">6.4</span> Providing authenticity</h3>
 <div class="outline-text-3" id="text-6-4">
 <ul class="org-ul">
 <li>With symmetric key crypto
@@ -2590,8 +2695,8 @@ Alice can meet one week later and recall conversation!)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline138" class="outline-3">
-<h3 id="orgheadline138"><span class="section-number-3">6.5</span> Providing integrity</h3>
+<div id="outline-container-orgheadline144" class="outline-3">
+<h3 id="orgheadline144"><span class="section-number-3">6.5</span> Providing integrity</h3>
 <div class="outline-text-3" id="text-6-5">
 <ul class="org-ul">
 <li>cryptographic technique analogous to hand-written signatures:
@@ -2602,8 +2707,8 @@ and no one else (including Alice), must have signed document</li>
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-orgheadline137" class="outline-4">
-<h4 id="orgheadline137"><span class="section-number-4">6.5.1</span> Public key certification</h4>
+<div id="outline-container-orgheadline143" class="outline-4">
+<h4 id="orgheadline143"><span class="section-number-4">6.5.1</span> Public key certification</h4>
 <div class="outline-text-4" id="text-6-5-1">
 <ul class="org-ul">
 <li>Trusted certificate authority (CA) digitally signs that key+ is Bob’s public
@@ -2614,11 +2719,11 @@ key using the CA’s private key</li>
 </div>
 </div>
 
-<div id="outline-container-orgheadline142" class="outline-3">
-<h3 id="orgheadline142"><span class="section-number-3">6.6</span> Securing email</h3>
+<div id="outline-container-orgheadline148" class="outline-3">
+<h3 id="orgheadline148"><span class="section-number-3">6.6</span> Securing email</h3>
 <div class="outline-text-3" id="text-6-6">
-</div><div id="outline-container-orgheadline139" class="outline-4">
-<h4 id="orgheadline139"><span class="section-number-4">6.6.1</span> Confidentiality</h4>
+</div><div id="outline-container-orgheadline145" class="outline-4">
+<h4 id="orgheadline145"><span class="section-number-4">6.6.1</span> Confidentiality</h4>
 <div class="outline-text-4" id="text-6-6-1">
 <p>
 Alice wants to send confidential e-mail, m, to Bob.
@@ -2643,8 +2748,8 @@ Bob:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline140" class="outline-4">
-<h4 id="orgheadline140"><span class="section-number-4">6.6.2</span> Authenticity and Integrity</h4>
+<div id="outline-container-orgheadline146" class="outline-4">
+<h4 id="orgheadline146"><span class="section-number-4">6.6.2</span> Authenticity and Integrity</h4>
 <div class="outline-text-4" id="text-6-6-2">
 <p>
 Alice wants to provide sender authentication message integrity
@@ -2656,8 +2761,8 @@ Alice wants to provide sender authentication message integrity
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline141" class="outline-4">
-<h4 id="orgheadline141"><span class="section-number-4">6.6.3</span> All of them</h4>
+<div id="outline-container-orgheadline147" class="outline-4">
+<h4 id="orgheadline147"><span class="section-number-4">6.6.3</span> All of them</h4>
 <div class="outline-text-4" id="text-6-6-3">
 <p>
 Alice wants to provide secrecy, sender authentication, message integrity.
@@ -2669,8 +2774,8 @@ Alice uses <b>three keys</b>: her private key, Bob’s public key, newly created
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline143" class="outline-3">
-<h3 id="orgheadline143"><span class="section-number-3">6.7</span> Securing TCP</h3>
+<div id="outline-container-orgheadline149" class="outline-3">
+<h3 id="orgheadline149"><span class="section-number-3">6.7</span> Securing TCP</h3>
 <div class="outline-text-3" id="text-6-7">
 <ul class="org-ul">
 <li>Server sends its certificate, includes its public key</li>
@@ -2688,8 +2793,8 @@ Alice uses <b>three keys</b>: her private key, Bob’s public key, newly created
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline145" class="outline-3">
-<h3 id="orgheadline145"><span class="section-number-3">6.8</span> Securing IP</h3>
+<div id="outline-container-orgheadline151" class="outline-3">
+<h3 id="orgheadline151"><span class="section-number-3">6.8</span> Securing IP</h3>
 <div class="outline-text-3" id="text-6-8">
 <ul class="org-ul">
 <li>2 IP routers establish a “secure tunnel” &rarr; usually between branch offices of a company</li>
@@ -2697,8 +2802,8 @@ Alice uses <b>three keys</b>: her private key, Bob’s public key, newly created
 <li>Source creates MAC for encrypted IP packet using another shared key</li>
 </ul>
 </div>
-<div id="outline-container-orgheadline144" class="outline-4">
-<h4 id="orgheadline144"><span class="section-number-4">6.8.1</span> Key ideas</h4>
+<div id="outline-container-orgheadline150" class="outline-4">
+<h4 id="orgheadline150"><span class="section-number-4">6.8.1</span> Key ideas</h4>
 <div class="outline-text-4" id="text-6-8-1">
 <ul class="org-ul">
 <li>Combination of symmetric/asymmetric keys
@@ -2716,8 +2821,8 @@ Alice uses <b>three keys</b>: her private key, Bob’s public key, newly created
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline146" class="outline-3">
-<h3 id="orgheadline146"><span class="section-number-3">6.9</span> Firewall</h3>
+<div id="outline-container-orgheadline152" class="outline-3">
+<h3 id="orgheadline152"><span class="section-number-3">6.9</span> Firewall</h3>
 <div class="outline-text-3" id="text-6-9">
 <p>
 isolates organization’s internal net from larger Internet, allowing some packets
@@ -2726,8 +2831,8 @@ to pass, blocking others
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline148" class="outline-2">
-<h2 id="orgheadline148"><span class="section-number-2">7</span> HW1</h2>
+<div id="outline-container-orgheadline154" class="outline-2">
+<h2 id="orgheadline154"><span class="section-number-2">7</span> HW1</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Imagine d<sub>end</sub>-to-end between 2 links is D, imagine now N links, to send P
@@ -2760,8 +2865,8 @@ R∙d<sub>prop</sub>
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline149" class="outline-2">
-<h2 id="orgheadline149"><span class="section-number-2">8</span> HW2</h2>
+<div id="outline-container-orgheadline155" class="outline-2">
+<h2 id="orgheadline155"><span class="section-number-2">8</span> HW2</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Time to get ip-address from name (cache empty), with n servers and constant
@@ -2791,7 +2896,7 @@ replies is negligeable)
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-12-06 Sun 20:52</p>
+<p class="date">Created: 2015-12-12 Sat 15:57</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
