@@ -1,0 +1,2503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-05-21 Sat 17:48 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="theme.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline9">1. Introduction</a>
+<ul>
+<li><a href="#orgheadline1">1.1. Psycho sociale</a></li>
+<li><a href="#orgheadline2">1.2. Impact du social: spicilège</a></li>
+<li><a href="#orgheadline3">1.3. Heuristiques sociales</a></li>
+<li><a href="#orgheadline4">1.4. Zimbardo (1971)</a></li>
+<li><a href="#orgheadline5">1.5. Williams et Bargh (2008)</a></li>
+<li><a href="#orgheadline8">1.6. Le social: facilitateur et inhibiteur</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline23">2. Facilitation et paresse sociale</a>
+<ul>
+<li><a href="#orgheadline10">2.1. Facilitation sociale</a></li>
+<li><a href="#orgheadline11">2.2. Paresse sociale</a></li>
+<li><a href="#orgheadline15">2.3. Articulation de la facilitation et de la paresse</a></li>
+<li><a href="#orgheadline22">2.4. La paresse sociale en tant que processus distinct de fonctionnement individuel dans les groupes</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline42">3. La comparaison sociale</a>
+<ul>
+<li><a href="#orgheadline28">3.1. Comparaison sociale et valeur informative de la comparaison</a></li>
+<li><a href="#orgheadline31">3.2. Effets affectifs de la comparaison sociale sur le soi</a></li>
+<li><a href="#orgheadline36">3.3. Effet des comparaisons sociales sur la performance</a></li>
+<li><a href="#orgheadline41">3.4. Fonction de valorisation/défense du soi remplie par la comparaison</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline61">4. Principes fonctionnalistes</a>
+<ul>
+<li><a href="#orgheadline46">4.1. Processus d’influence « fonctionnalistes »: fonctions de l’influence dans les groupes</a></li>
+<li><a href="#orgheadline50">4.2. Théorie des communications sociales informelles</a></li>
+<li><a href="#orgheadline53">4.3. La déviance</a></li>
+<li><a href="#orgheadline56">4.4. Estime de soi et ostracisme subi</a></li>
+<li><a href="#orgheadline57">4.5. La nécessité de maintenir les normes: La préférence pour le status quo et l’ancien</a></li>
+<li><a href="#orgheadline60">4.6. Similarité et constitution de groupes</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline87">5. Conformisme</a>
+<ul>
+<li><a href="#orgheadline62">5.1. Effet Asch classique</a></li>
+<li><a href="#orgheadline68">5.2. Taille de la source et modèles d’influence</a></li>
+<li><a href="#orgheadline70">5.3. L’isolement de l’individu face au groupe unanime</a></li>
+<li><a href="#orgheadline76">5.4. Besoins et dépendance</a></li>
+<li><a href="#orgheadline84">5.5. Les pouvoirs dans les groupes</a></li>
+<li><a href="#orgheadline85">5.6. Conformité: simple conformité sur les jugements ou réelle modification de la perception de la réalité?</a></li>
+<li><a href="#orgheadline86">5.7. Différences individuelles?</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline105">6. Soumission à l’autorité</a>
+<ul>
+<li><a href="#orgheadline88">6.1. Expériences de Milgram</a></li>
+<li><a href="#orgheadline89">6.2. Qu’auriez-vous fait?</a></li>
+<li><a href="#orgheadline95">6.3. Explication</a></li>
+<li><a href="#orgheadline101">6.4. Variables qui modifient l’effet</a></li>
+<li><a href="#orgheadline104">6.5. Validité écologique</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline121">7. Normalisation et socialisation</a>
+<ul>
+<li><a href="#orgheadline117">7.1. Normalisation</a></li>
+<li><a href="#orgheadline120">7.2. Socialisation</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline128">8. Rapports intergroupes: Catégorisation et discrimination</a>
+<ul>
+<li><a href="#orgheadline123">8.1. Théorie de l’identité sociale et concepts affiliés:</a></li>
+<li><a href="#orgheadline124">8.2. Turner (1982): théorie de l’auto-catégorisation:</a></li>
+<li><a href="#orgheadline125">8.3. Tajfel et Turner (1986): Théorie de l’identité sociale</a></li>
+<li><a href="#orgheadline126">8.4. Paradigme des groupes minimaux:</a></li>
+<li><a href="#orgheadline127">8.5. Black sheep effect</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Psycho sociale</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+La psychologie sociale c’est l’étude de l’impact qu’exerce sur le comportement au sens
+large (pensées, émotions, perceptions, décisions, comportements, etc.) des personnes, la
+présence réelle représentée ou symbolique d’autres personnes.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Impact du social: spicilège</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Impact du social sur des contenus prima facie non sociales
+</p>
+
+<p>
+Exemples :
+</p>
+<ul class="org-ul">
+<li>Perception : morphine vs placebo</li>
+<li>Physiologie : hypnose</li>
+<li>Raisonnement :
+<ul class="org-ul">
+<li>Heuristique: règle simple le plus souvent (mais pas systématiquement) vraie, qui sert à la découverte de la vérité (par opposition à algorithme).</li>
+<li>Règles sociales peuvent remplacer les heuristiques ou indiquer aux personnes quelle heuristique s’applique quand &rArr; règles sociales sont aussi des sortes d’heuristiques</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">1.3</span> Heuristiques sociales</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Les « heuristiques » ne sont pas limitées à la façon de résoudre une
+tâche &rArr; Ce sont plus largement des informations sur soi ou les
+autres comme des croyances relatives à qui est qui et comment il faut
+se comporter selon les situations.
+</p>
+
+<p>
+Exemples :
+</p>
+<ul class="org-ul">
+<li>Scripts</li>
+<li>Stéréotypes</li>
+<li>Rôles sociaux</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">1.4</span> Zimbardo (1971)</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Fausse prison avec étudiants gardiens et étudiants prisonniers, étude des réactions
+</p>
+
+<p>
+les individus croient que leur comportement dépend de leurs choix
+conscients, alors que la décision peut-être guidée par des facteurs non
+conscients et par des éléments contextuels.
+</p>
+
+<p>
+&rArr; Les individus ne sont pas ou peu conscients du rôle réel du contexte dans
+leur comportements.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">1.5</span> Williams et Bargh (2008)</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Altération d’impressions ou de décisions par
+des activations d’éléments sociaux qui échappent à la conscience.
+</p>
+
+<p>
+Expérience café chaud vs café froid.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">1.6</span> Le social: facilitateur et inhibiteur</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Un même facteur social peut jouer le rôle d’activateur comme d’inhibiteur des
+comportements.
+Exemple, le nombre de personnes :
+ Le nombre de personnes
+</p>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.6.1</span> Activation &rArr; imitation conformiste</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<p>
+Compères regardent en direction d'une fenêtre au 6ème étage, mesure le nombre de gens qui regardent et/ou s'arrêtent.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><span class="section-number-4">1.6.2</span> Inhibition &rArr; bystander effect</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<p>
+Peur d’être impliqué si on intervient + peur des conséquences ou coûts possibles
+</p>
+
+<p>
+&rArr; Affaiblissement de la norme qui pousse à intervenir par une dilution sociale
+de responsabilité
+</p>
+
+<p>
+Ex. Expérience avec interphones et 1,2,&#x2026; personnes et personne qui fait crise, mesure
+temps d'intervention
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline23" class="outline-2">
+<h2 id="orgheadline23"><span class="section-number-2">2</span> Facilitation et paresse sociale</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">2.1</span> Facilitation sociale</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Facilitation sociale = effet positif de la présence de tiers sur la performance de
+quelqu’un d’autre.
+</p>
+
+<p>
+Simple présence des autres et/ou co-action peut avoir une incidence positive sur la
+performance des autres.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">2.2</span> Paresse sociale</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Paresse sociale = effet négatif de la « présence » de tiers sur la performance de
+quelqu’un d’autre.
+</p>
+
+<p>
+Ils montrent que certains facteurs modèrent l’effet. La paresse sociale est plus
+élevée:
+</p>
+<ul class="org-ul">
+<li>Quand la performance personnelle ne peut pas être évaluée.</li>
+<li>Quand la tâche est de peu d’importance ou de peu d’intérêt.</li>
+<li>Quand les individus s’attendent à ce que les autres performent bien.</li>
+<li>Quand la performance est collective plutôt qu’individuelle.</li>
+<li>Quand les individus sont plus nombreux.</li>
+<li>Quand il s’agit d’hommes plutôt que de femmes.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">2.3</span> Articulation de la facilitation et de la paresse</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+La facilitation sociale et la paresse sociale sont-elles deux processus distincts ou
+deux processus symétriques d’un même phénomène global?
+</p>
+</div>
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">2.3.1</span> Théorie du drive</h4>
+<div class="outline-text-4" id="text-2-3-1">
+
+<div class="figure">
+<p><img src="La_facilitation-inhibition_sociale_selon_Zajonc.jpg" alt="La_facilitation-inhibition_sociale_selon_Zajonc.jpg" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">2.3.2</span> Appréhension de l'évaluation du soi</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<ul class="org-ul">
+<li>Les sujets ont davantage de pensées liées à l’appréhension de l’évaluation lorsque le soi peut-être évalué, que ce soit par soi-même ou par le tiers.</li>
+<li>Pas d'effet frappant de paresse sociale quand co-action (tâches complexe) ou auditoire (simple présence ou observation active), mais fort effet de facilitation sociale quand co-action sur tâche simple ou audience active.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">2.3.3</span> Théorie de la distraction-conflit</h4>
+<div class="outline-text-4" id="text-2-3-3">
+
+<div class="figure">
+<p><img src="distraction-conflit.jpg" alt="distraction-conflit.jpg" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline22" class="outline-3">
+<h3 id="orgheadline22"><span class="section-number-3">2.4</span> La paresse sociale en tant que processus distinct de fonctionnement individuel dans les groupes</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Confusion entre deux effets: un effet inhibiteur lié à l’appréhension et l’attention et un effet de paresse lié à une perte de motivation à fournir l’effort.
+</p>
+
+<p>
+La paresse sociale pourrait avoir une composante propre qui renvoie à une perte motivationnelle, pour des raisons inhérentes à:
+</p>
+<ul class="org-ul">
+<li>l’évaluation du soi (pertes motivationnelles)</li>
+<li>l’interaction sociale avec les autres (free rider et sucker effect).</li>
+</ul>
+
+<p>
+Par ailleurs, la baisse de performance pourrait aussi s’expliquer dans certains cas
+par autre chose que de la paresse sociale, en l’occurrence par la nature de la
+tâche (pertes mécaniques).
+</p>
+</div>
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">2.4.1</span> Nature de la tâche (Steiner)</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<ul class="org-ul">
+<li>Potentiel de productivité du groupe = niveau maximum que le groupe peut atteindre</li>
+<li><i>Process loss</i> : perte possible dans le processus de groupe</li>
+<li>Productivité réelle = Potentiel de productivité – <i>Process loss</i></li>
+</ul>
+
+<div class="figure">
+<p><img src="potentielProd.jpg" alt="potentielProd.jpg" />
+</p>
+</div>
+
+<p>
+<b>Critère de nature</b> :
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Tâche</th>
+<th scope="col" class="org-left">Descriptif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Divisible</td>
+<td class="org-left">Tâches divisibles peuvent être séparées en sous-tâches, chacune pouvant être réalisée séparément par différents individus. Ex: fabriquer une voiture, jouer au curling, etc&#x2026;</td>
+</tr>
+
+<tr>
+<td class="org-left">Unitaire</td>
+<td class="org-left">Tâches unitaires ne peuvent pas être divisées en sous-tâches, chaque personne faisant la même tâche. Ex: tirer à la corde</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Critère de performance</b> :
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Tâche</th>
+<th scope="col" class="org-left">Descriptif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">De maximisation</td>
+<td class="org-left">Tâches de maximisation identifient le succès en fonction de la vitesse à laquelle elles sont achevées Ex: course de vélo, mouliner un fil</td>
+</tr>
+
+<tr>
+<td class="org-left">D'optimisation</td>
+<td class="org-left">Tâches d’optimisation requièrent une réponse correcte ou optimale pour être réussies. Ex: résolution de problème, prise de décision,</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Quatre types de tâches unitaires</b> :
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Tâche</th>
+<th scope="col" class="org-left">Descriptif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Additive</td>
+<td class="org-left">La performance finale est la somme des contributions des individus membres du groupe (ex: crier/taper) &rArr; donne préférentiellement lieu à de la paresse sociale</td>
+</tr>
+
+<tr>
+<td class="org-left">Disjonctive</td>
+<td class="org-left">La performance finale est basée sur la contribution du meilleur membre (ex: tâches « Eureka ») Ex: résolution de problème, prise de décision, etc&#x2026; &rArr; Paresse sociale possible</td>
+</tr>
+
+<tr>
+<td class="org-left">Conjonctive</td>
+<td class="org-left">La performance finale est basée sur la contribution du moins bon membre (ex: patrouille des glaciers)</td>
+</tr>
+
+<tr>
+<td class="org-left">Discrétionnaire</td>
+<td class="org-left">La performance finale est une combinaison complexe des contributions des membres (ex: jazz band)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="section-number-4">2.4.2</span> Processus de perte</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<ul class="org-ul">
+<li>Perte mécanique (ou de coordination)</li>
+<li>Perte de motivation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">2.4.3</span> Les causes de la perte motivationnelle</h4>
+<div class="outline-text-4" id="text-2-4-3">
+</div><div id="outline-container-orgheadline18" class="outline-5">
+<h5 id="orgheadline18"><span class="section-number-5">2.4.3.1</span> Identifiabilité :</h5>
+<div class="outline-text-5" id="text-2-4-3-1">
+<p>
+Effet « lost in crowd » (perdu dans la foule). Deux causes possibles:
+</p>
+<ul class="org-ul">
+<li>Réduction de l’information sur la performance propre. Impossibilité ou difficulté d’estimer le niveau de soi. &rArr; chute de performance.</li>
+<li>Performance propre est noyée dans celle du groupe. Le groupe ne peut savoir qu’il y a une baisse d’effort parce qu’il n’en voit pas l’effet. Possibilité de tricher contre le groupe. &rArr; économie d’effort, chute de performance.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline19" class="outline-5">
+<h5 id="orgheadline19"><span class="section-number-5">2.4.3.2</span> Comparabilité</h5>
+<div class="outline-text-5" id="text-2-4-3-2">
+<p>
+Réduction de l’effort parce que pas d’évaluation possible du soi.
+&rArr; Comparaison de soi avec les autres pour pouvoir s’évaluer ou pour être évalué.
+</p>
+
+<p>
+Performance &gt; quand comparable + identifiable &rArr; amélioration du niveau car plus de paresse sociale. Sinon, paresse sociale.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline20" class="outline-5">
+<h5 id="orgheadline20"><span class="section-number-5">2.4.3.3</span> Free rider et sucker effects</h5>
+<div class="outline-text-5" id="text-2-4-3-3">
+<p>
+<b>Free rider effect</b> :
+être capable de prendre les bénéfices de la performance
+de groupe sans payer le coût de la coopération &rArr;
+réduction de l’effort pour profiter de celui des autres.
+</p>
+
+<p>
+<b>Sucker effect</b>:
+Les autres font du free riding sur le soi &rArr;
+réduction de l’effort pour éviter que les autres
+profitent de l’effort de soi.
+</p>
+
+<p>
+&rArr; Paresse sociale qui apparaît facilement dans les tâches ou l’on peut
+profiter de l’activité des autres, notamment additives ou disjonctives,
+surtout sans visibilité par le groupe.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline42" class="outline-2">
+<h2 id="orgheadline42"><span class="section-number-2">3</span> La comparaison sociale</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Fonctions de la comparaison :
+</p>
+<ul class="org-ul">
+<li>Informationnelle : utilisation des autres pour avoir infos sur soit, autrui ou le monde</li>
+<li>Valorisation de l'estime de soi : utilisation des différences relatives pour se valoriser</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="orgheadline28"><span class="section-number-3">3.1</span> Comparaison sociale et valeur informative de la comparaison</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">3.1.1</span> Festinger</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>Tendance de l'homme à évaluer ses opinions et aptitudes personnels
+<ul class="org-ul">
+<li>Principe d'incertitude</li>
+<li>Motivation individuelle à la réduction de l'incertitude</li>
+</ul></li>
+<li>Absence de moyens objectifs non sociaux, évaluation des opinions et aptitudes par comparaison aux autres
+<ul class="org-ul">
+<li>Distinction entre réalité physique et sociales</li>
+<li>Si réalité sociale &rArr; comparaison pour réduire l'incertitude</li>
+<li>Si réalité physique &rArr; on prend l'info dans la réalité (faux, aussi comparaison)</li>
+</ul></li>
+<li>Tendance à se comparer décroît à mesure que la différence avec la "cible" &rArr; comparaison avec des gens <span class="underline">similaires</span></li>
+<li>Si la perception de la différence qui existe entre soi-même et ceux qui ont des opinions ou des aptitudes divergentes est presque en fonction <i>d’attributs compatibles avec la nature de cette divergence</i>, la tendance à réduire la zone de comparaison possible sera plus grande.
+<ul class="org-ul">
+<li>Il faut comparabilité sur d’autres dimensions que l’opinions ou l’aptitude.</li>
+<li>On recherche la similarité sur des attributs en vertu desquels on attend à une similarité.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">3.1.2</span> Recherche de dissimilarité en matière d'aptitudes et de similarité en matière d'opinion</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+En matière d’ <b>opinions</b> au sens large, les individus choisissent la similarité pour ce qui relève des tâches d’opinions au sens large (jugement subjectif, croyance, norme de groupe, relation avec le groupe, etc).
+</p>
+
+<p>
+C’est l’appartenance catégorielle qui est déterminante. personnes similaires = autres membres du groupe auquel on est censé appartenir &rArr; identité sociale, cohésion, etc.
+</p>
+
+<p>
+Consensus du groupe est gage de validité &rArr; C’est norme du groupe qui indique quelle
+est la réalité.
+</p>
+
+<p>
+En matière d’ <b>aptitudes</b> au sens large, ils choisissent la dissimilarité (jugement objectif,
+vérité à établir, nécessité d’exactitude, compétence de soi à déterminer, etc).
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26"><span class="section-number-4">3.1.3</span> Comparaison sociale en matière d'aptitudes</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+Le différentiel d’aptitude interne peut-être une cause du différentiel de performance.
+Pour que le différentiel de performance informe sur le différentiel d’aptitude interne, il
+faut maintenir comparable les autres causes possibles.
+</p>
+
+<p>
+Recherche de similarité sur les autres causes possibles pour en annuler les effets, mais
+de différence sur la performance pour pouvoir évaluer l’aptitude.
+</p>
+
+<p>
+Deux types de causes de la performance:
+</p>
+<ul class="org-ul">
+<li>Le niveau d’aptitude interne</li>
+<li>Les « attributs reliés » à la performance
+<ul class="org-ul">
+<li>n’importe quelle caractéristique ou facteur relié à la performance qui pourrait en être la cause &rArr; âge, genre, entraînement, taille, état de santé, etc.</li>
+<li>Problème: Les attributs reliés sont une cause explicative possible de la performance et empêchent de faire l’inférence sur l’aptitude interne comme cause.</li>
+</ul></li>
+</ul>
+
+<p>
+Kelley:
+</p>
+<ul class="org-ul">
+<li><span class="underline">Principe d’élimination</span> : élimination d’une cause facilitatrice lorsque plusieurs causes facilitatrices sont présentes</li>
+<li><span class="underline">Principe d’augmentation</span> : augmentation du rôle d’une cause facilitatrice lorsque des causes inhibitrices sont présentes</li>
+</ul>
+
+<p>
+&rArr; Individus vont recherche la comparaison avec des sources similaires sur les attributs
+reliés afin d’avoir une comparaison des performances qui renseigne sur les
+aptitudes.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">3.1.4</span> Test empirique de la recherche de similarité sur les attributs reliés</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<p>
+Exemples d'attributs reliés les plus pertinents pour la comparaison: genre, profession, âge, race, taille, diplôme, entraînement, apparence physique, etc.
+</p>
+
+<p>
+Idée générale, on va toujours chercher à compenser un critère qui renvoie à la supériorité par un autre attribut relié égal pour l'annuler.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">3.2</span> Effets affectifs de la comparaison sociale sur le soi</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="section-number-4">3.2.1</span> Menace de la comparaison par le haut</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+La comparaison par le haut directe menace le soi et impacte négativement l’estime de soi.
+</p>
+
+<p>
+L’impact dépend de la comparabilité. Une similarité catégorielle ou sur les attributs
+reliés amène le différentiel de performance à produire un effet évaluatif négatif sur le
+soi.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30"><span class="section-number-4">3.2.2</span> Inspiration de la comparaison par haut</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<ul class="org-ul">
+<li>La comparaison par le haut inspire le soi.</li>
+<li>L’impact dépend de la comparabilité. Une similarité catégorielle ou sur les attributs reliés amène le différentiel de performance à produire un effet évaluatif positif sur le soi.</li>
+<li><i>Role model</i>: pair dont le niveau sert de standard à atteindre dans l’immédiat.</li>
+<li><i>Superstar effect</i>: confrontation à un pair brillantissime dont on peut espérer atteindre le niveau dans le futur.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="orgheadline36"><span class="section-number-3">3.3</span> Effet des comparaisons sociales sur la performance</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32"><span class="section-number-4">3.3.1</span> Effet de la comparaison par le haut</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<ul class="org-ul">
+<li>La comparaison qui améliore la performance est une comparaison par le haut, mais avec un pair qui est légèrement supérieur.</li>
+<li>Ni la comparaison avec un pair trop supérieur ni celle par le bas m’améliorent la performance.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline33" class="outline-4">
+<h4 id="orgheadline33"><span class="section-number-4">3.3.2</span> Lien comparaison par le haut et facilitation sociale</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<p>
+Comparaison par le haut &rArr; performance +
+</p>
+
+<p>
+Est-ce que comparaison par le haut produit le même effet que l’appréhension de l’évaluation?
+</p>
+
+<p>
+Est-ce que la comparaison par le haut produit le même effet que la co-action?
+</p>
+
+<p>
+&rArr; Co-action = anticipation d’une comparaison par le haut possible.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline35" class="outline-4">
+<h4 id="orgheadline35"><span class="section-number-4">3.3.3</span> Effet de la comparaison par le haut sur les performances: inspiration ou menace?</h4>
+<div class="outline-text-4" id="text-3-3-3">
+</div><div id="outline-container-orgheadline34" class="outline-5">
+<h5 id="orgheadline34"><span class="section-number-5">3.3.3.1</span> Rôle de la menace dans la performance</h5>
+<div class="outline-text-5" id="text-3-3-3-1">
+<ul class="org-ul">
+<li>Comparaison par le haut = menace pour le soi &rArr; appréhension de l’évaluation à cause de la comparaison qui permet aux tiers d’évaluer le soi.</li>
+<li>En accord avec la théorie de la distraction conflit, il y a une amélioration de la performance parce que les ressources attentionnelles traitent la menace.</li>
+</ul>
+<p>
+&rArr; Introduction d’une menace quelle qu’elle soit doit produire une hausse de la performance comparable à la comparaison par le haut
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline41" class="outline-3">
+<h3 id="orgheadline41"><span class="section-number-3">3.4</span> Fonction de valorisation/défense du soi remplie par la comparaison</h3>
+<div class="outline-text-3" id="text-3-4">
+</div><div id="outline-container-orgheadline37" class="outline-4">
+<h4 id="orgheadline37"><span class="section-number-4">3.4.1</span> La défense du soi, théorie de la comparaison par le bas de Wills</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+Ajustement à situations problématiques: accidents, malades, dépressifs, victimes, etc.
+</p>
+
+<p>
+Comparaison par le bas = stratégie de <b>coping</b>, processus adaptatif.
+</p>
+
+<p>
+&rArr; l’objectif n’est pas la comparaison en soi, ni l’information qu’elle apporte pour
+estimer le soi, mais son effet sur l’estime de soi (rehaussement ou protection du soi)
+</p>
+
+<p>
+Deux processus articulés:
+</p>
+<ul class="org-ul">
+<li>Les individus peuvent améliorer leur bien-être par la comparaison avec quelqu’un de moins bien loti qu’eux &rArr; CB améliore l’estime de soi</li>
+<li>Corollaire situationnel: la recherche de CB est évoquée par une diminution de bien-être. &rArr; Situation problématique ou menaçante pour l’estime de soi préférence pour la comparaison par le bas</li>
+</ul>
+
+<p>
+Rôle de l’ <b>estime de soi</b> a priori:
+</p>
+<ul class="org-ul">
+<li>Les personnes qui ont une estime de soi basse sont plus enclins à s’engager dans la comparaison par le bas. &rArr; Différence individuelle basée sur l’estime de soi</li>
+<li>ES basse rend plus facilement problématique &rArr; l’individu subit les effets négatifs des situations.</li>
+<li>ES basse répond plus facilement aux attaques ou menaces.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="orgheadline40"><span class="section-number-4">3.4.2</span> Exemples de stratégies de valorisation du soi par la comparaison:</h4>
+<div class="outline-text-4" id="text-3-4-2">
+</div><div id="outline-container-orgheadline38" class="outline-5">
+<h5 id="orgheadline38"><span class="section-number-5">3.4.2.1</span> Effet «Better than average»:</h5>
+<div class="outline-text-5" id="text-3-4-2-1">
+<p>
+BTA = Comparaison favorable pour le soi par rapport à un pair moyen sur divers
+comportements et traits
+</p>
+
+<p>
+&rArr; impression que le soi est supérieur aux autres ou à la moyenne des autres sur la
+dimension considérée
+</p>
+
+<p>
+C’est une question de valorisation du soi par la différence relative avec
+autrui.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline39" class="outline-5">
+<h5 id="orgheadline39"><span class="section-number-5">3.4.2.2</span> Genius effect</h5>
+<div class="outline-text-5" id="text-3-4-2-2">
+<p>
+Genius effect = projection de l’autre dans une catégorie différente pour éviter la comparaison
+&rArr; Stratégie de recherche d’incomparabilité
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline61" class="outline-2">
+<h2 id="orgheadline61"><span class="section-number-2">4</span> Principes fonctionnalistes</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgheadline46" class="outline-3">
+<h3 id="orgheadline46"><span class="section-number-3">4.1</span> Processus d’influence « fonctionnalistes »: fonctions de l’influence dans les groupes</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Fonctionnement des groupes &rArr; interactions &rArr; influence
+</p>
+
+<p>
+<span class="underline">Fonctionnalisme</span>: étude des fonctions de l’influence pour le groupe.
+</p>
+
+<p>
+Etude des processus d’influence classiques dans les groupes:
+</p>
+<ul class="org-ul">
+<li>Pressions à l’uniformité et déviance</li>
+<li>Conformisme</li>
+<li>Obéissance à l’autorité</li>
+<li>Normalisation</li>
+</ul>
+
+<p>
+La problématique peut se résumer en deux questions (Moscovici, 1979):
+</p>
+<ul class="org-ul">
+<li>Pourquoi les groupes tentent d’influencer les individus?</li>
+<li>Pourquoi les individus se laissent influencer?</li>
+</ul>
+
+<p>
+Pourquoi les groupes tentent d’influencer les individus?
+</p>
+
+<p>
+Deux fonctions essentielles de l’influence pour les groupes:
+</p>
+<ul class="org-ul">
+<li>« Locomotion » (objectifs, décisions, situations ou tâches à résoudre)</li>
+<li>Définition de la réalité sociale pour le groupe (représentation du monde, croyances, connaissances)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43"><span class="section-number-4">4.1.1</span> Locomotion</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+Groupes ont des objectifs.
+</p>
+
+<p>
+Pour définir objectif et moyens il faut:
+</p>
+<ul class="org-ul">
+<li><span class="underline">Cohésion</span>: sentiment d’appartenir ensemble au groupe, volonté d’être avec les autres</li>
+<li><span class="underline">Structure</span>: organisation, gestion logistique, hiérarchie, etc&#x2026;</li>
+</ul>
+<p>
+&rArr; <span class="underline">Uniformité</span>: accord sur objectif, moyen, structure, etc&#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline44" class="outline-4">
+<h4 id="orgheadline44"><span class="section-number-4">4.1.2</span> Définition de la réalité sociale</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<p>
+<span class="underline">Réalité physique</span>: réalité directement accessible, pour laquelle la perception
+immédiate donne la réponse.
+</p>
+
+<p>
+<span class="underline">Réalité sociale</span>: pas de réponse directement accessible dans le réel. C’est
+le groupe qui définit la réalité
+</p>
+
+<p>
+Pour disposer d’une réalité définie par le groupe il faut:
+</p>
+<ul class="org-ul">
+<li><span class="underline">Cohésion</span>: sentiment d’appartenir ensemble à un groupe de référence qui indique comment concevoir la réalité.</li>
+<li><span class="underline">Uniformité</span>: accord du groupe sur réalité &rArr; consensus sur norme sociale qui définit la réalité</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline45" class="outline-4">
+<h4 id="orgheadline45"><span class="section-number-4">4.1.3</span> Une conséquence, les pressions à l’uniformité</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<p>
+Si l’uniformité de mise comment le groupe l’obtient?
+</p>
+
+<p>
+&rArr; Pressions à l’uniformité
+</p>
+
+<p>
+Groupes tentent d’influencer les individus:
+</p>
+
+<p>
+Parce que nécessitent uniformité pour atteindre objectifs ou définir réalité
+sociale utile aux membres du groupe
+</p>
+
+<p>
+&rArr; Processus de communication &rArr; tentative d’influence pour obtenir
+l’uniformité
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline50" class="outline-3">
+<h3 id="orgheadline50"><span class="section-number-3">4.2</span> Théorie des communications sociales informelles</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-orgheadline47" class="outline-4">
+<h4 id="orgheadline47"><span class="section-number-4">4.2.1</span> Déterminants de la magnitude à communiquer</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<ul class="org-ul">
+<li>Hypothèse 1a. La pression à communiquer avec les autres dans le groupe concernant « le contenu x » s’accroît de façon monotone avec l’augmentation de la divergence perçue dans les opinions à propos du contenu entre les membres du groupe.</li>
+<li>Hypothèse 1b. La pression sur un membre a communiquer avec les autres sur le « contenu x » s’accroît de façon monotone avec l’augmentation de l’importance du contenu pour le fonctionnement du groupe.</li>
+<li>Hypothèse 1c. La pression à communiquer avec les autres dans le groupe concernant le « contenu x » s’accroît de façon monotone avec l’augmentation de la cohésion dans le groupe.</li>
+</ul>
+
+<p>
+&rArr; Lorsqu’il n’y a pas d’uniformité, plus il est nécessaire pour le groupe d’obtenir
+l’uniformité (définition d’une réalité sociale nécessaire) plus la pression à
+communiquer s’accroît.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline48" class="outline-4">
+<h4 id="orgheadline48"><span class="section-number-4">4.2.2</span> Choix de la cible des communications</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<ul class="org-ul">
+<li>Hypothèse 2a. Plus la divergence entre un membre particulier du groupe et le communiquant est grande à propos du « contenu x » et plus la tendance qui pousse à communiquer avec ce membre à propos du contenu augmentera.</li>
+<li>Hypothèse 2b. La tendance qui pousse à communiquer avec une personne particulière à propos du « contenu x » diminuera avec le fait que cet individu n’est pas perçu comme membre du groupe ou dans la mesure où il n’est pas désiré comme membre du groupe.</li>
+</ul>
+<p>
+&rArr; Les pressions à l’uniformité sont exercées vers ceux qui doivent impérativement
+produire l’uniformité: les membres du groupe divergents.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline49" class="outline-4">
+<h4 id="orgheadline49"><span class="section-number-4">4.2.3</span> Déterminants du changement dans la relation entre les membres du groupe</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<ul class="org-ul">
+<li>Hypothèse 4a. La tendance a changer la composition du groupe (en éjectant certains membres hors du groupe) s’accroît avec l’augmentation de la divergence.</li>
+<li>Hypothèse 4b. Lorsqu’il existe de la non conformité, la tendance à changer la composition du groupe s’accroît avec la cohésion du groupe et avec l’importance du « contenu x » et des ses conséquences pour le groupe.</li>
+</ul>
+<p>
+&rArr; Si pas d’uniformité, on redéfinit le groupe de façon à exclure ceux qui brisent
+l’uniformité de façon à ce que l’absence d’uniformité ne soit plus problématique.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline53" class="outline-3">
+<h3 id="orgheadline53"><span class="section-number-3">4.3</span> La déviance</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+La déviance n’est pas un attribut « universel » pour un comportement particulier en tant que tel: la déviance est une conséquence de la différence à la norme du groupe
+</p>
+
+<p>
+Conséquence: ce qui est déviant dans un cas est normatif dans un autre
+</p>
+
+<p>
+Implication de la théorie des communications sociales informelles: &rArr; déviance est
+problématique car elle empêche définition de réalité sociale homogène par le groupe:
+&rArr; Rejet, stigmatisation, persécution, etc.
+</p>
+</div>
+
+<div id="outline-container-orgheadline51" class="outline-4">
+<h4 id="orgheadline51"><span class="section-number-4">4.3.1</span> Les pressions communicatives et le rejet du déviant</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<ul class="org-ul">
+<li>pressions communicatives dans le groupe adressées aux déviants pour les faire changer.</li>
+<li>rejet des déviants si ne se conforment pas.</li>
+</ul>
+<p>
+Expérience avec déviants:
+</p>
+<ul class="org-ul">
+<li>Communications augmentent vers le déviant stable uniquement: Pression à l’uniformité pour que le déviant rejoigne la norme du groupe.</li>
+<li>A un moment donné communications avec lui chutent: dès lors que l’on ne peut le convaincre, rejet du déviant, mis en dehors du groupe.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline52" class="outline-4">
+<h4 id="orgheadline52"><span class="section-number-4">4.3.2</span> Déviance et normes existentielles: « Terror Management theory »</h4>
+<div class="outline-text-4" id="text-4-3-2">
+<p>
+Attaques directes à certaines normes comme religion sont extrêmement problématiques,
+réponses contre les déviants sont extrêmes.
+</p>
+
+<p>
+Dimension évolutive: croissance de capacité cognitive
+&rArr; conscience de soi
+</p>
+
+<p>
+Peur de la mort depuis que l’homme a conscience de lui
+</p>
+
+<p>
+Peur de la mort &rArr; « terreur paralysante » pas adaptative
+</p>
+
+<p>
+Nécessite gestion de la peur
+</p>
+
+<p>
+Importance de certaines normes existentielles :
+</p>
+<ul class="org-ul">
+<li>Ex: religion &rArr; Permettent management de la peur</li>
+</ul>
+
+<p>
+Fonction de la réalité sociale consensuelle = rassure face à la mort
+</p>
+
+<p>
+&rArr; Déviance problématique parce qu’en rompant le consensus le déviant
+diminue réassurance face à la mort
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline56" class="outline-3">
+<h3 id="orgheadline56"><span class="section-number-3">4.4</span> Estime de soi et ostracisme subi</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+L’estime de soi est comme un proxy ou un thermomètre de la satisfaction d’autres
+besoins auxquels elle est liée. Elle a donc évolué comme l’indicateur que l’on
+recherche psychologiquement, parce qu’il permet d’atteindre d’autres buts ou besoins
+essentiels pour l’organisme.
+</p>
+
+<p>
+L’estime de soi est un indicateur de gradian d’attraction et d’évitement comme le
+sucre ou l’acide pour une bactérie dans son milieu.
+</p>
+
+<p>
+Raisons évolutives à l’existence
+de l’estime de soi et à un besoin
+d’estime de soi positif
+</p>
+<ul class="org-ul">
+<li>Appartenance au groupe, relations et évitement de l’exclusion</li>
+<li>Position dans le groupe et dominance sociale</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline54" class="outline-4">
+<h4 id="orgheadline54"><span class="section-number-4">4.4.1</span> Appartenance au groupe et estime de soi</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<p>
+L’être humain est un animal social par excellence.
+</p>
+
+<p>
+La survie de l’être humain a été en partie déterminée par la construction
+d’un fonctionnement social et de groupe.
+</p>
+
+<p>
+Etre avec les autres &rArr; bonnes relations &rArr; coopération &rArr; accès aux
+ressources, défense, procréation, etc. &rArr; survie.
+</p>
+
+<p>
+Maintenir des relations sociales avec les autres (en fait ce qui permet de
+constituer un groupe cohésif avec eux) a constitué un facteur clé dans la
+survie. Il s’ensuit que des mécanismes pour éviter l’exclusion sociale ont
+dû être développés. L’estime de soi est un de ces mécanismes.
+</p>
+
+<p>
+&rArr; Estime de soi négative associée à la déviance, à la désapprobation ou
+au rejet social.
+</p>
+
+<p>
+&rArr; Estime de soi positive associée à l’approbation sociale (voir aussi glass
+reflection), à l’adhésion au groupe et à ses standards normatifs.
+</p>
+
+<p>
+Le fait d’être exclu par les autres est source d’affects négatifs et de baisse de
+l’estime de soi.
+</p>
+
+<p>
+C’est le fait d’être rejeté qui est déterminant et pas par qui on est rejeté.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline55" class="outline-4">
+<h4 id="orgheadline55"><span class="section-number-4">4.4.2</span> Position relative dans le groupe et estime de soi</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<p>
+La survie de l’être humain a été en partie améliorée lorsqu’il était dans des
+positions supérieures dans le groupe plutôt qu’inférieures.
+</p>
+
+<p>
+Etre en position plus favorable dans le groupe &rArr; dominance &rArr; accès aux
+ressources, défense, procréation, etc. &rArr; survie.
+</p>
+
+<p>
+Maintenir une position sociale supérieure par rapport aux autres (en fait ce qui
+permet d’obtenir des ressources des autres) a constitué un facteur clé dans la survie.
+Il s’ensuit que des mécanismes pour tenter d’être en position supérieure dans la
+domination sociale ont dû être développés. L’estime de soi est un de ces
+mécanismes.
+</p>
+
+<p>
+&rArr; Estime de soi négative associée à une position statutaire inférieure, à la position
+de dominé.
+</p>
+
+<p>
+&rArr; Estime de soi positive associée à une position statutaire supérieure, à la position
+de dominant.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline57" class="outline-3">
+<h3 id="orgheadline57"><span class="section-number-3">4.5</span> La nécessité de maintenir les normes: La préférence pour le status quo et l’ancien</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+Avant même les réactions face aux déviants, les individus évitent la production de
+déviance parce que la situation de déviance et ce qu’elle implique (rejet, ostracisme,
+etc) est difficile à supporter:
+</p>
+
+<p>
+&rArr; une conséquence indirecte c’est la défense des normes du groupe dans lequel ils
+sont nés ou dans lequel ils évoluent quelles que soient les normes!
+</p>
+
+<p>
+Au-delà des pressions sur les déviants, pour qu’ils rentrent dans le rang,
+il existe une stabilité de la norme en raison de:
+</p>
+<ul class="org-ul">
+<li>Préférence pour le status quo.</li>
+<li>Préférence pour l’ancien.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline60" class="outline-3">
+<h3 id="orgheadline60"><span class="section-number-3">4.6</span> Similarité et constitution de groupes</h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+Plus de similarité de personnalité au sein des mêmes organisations
+</p>
+
+<p>
+&rArr; On ne sait pas si c’est la ressemblance qui produit
+l’association ou l’association qui produit la ressemblance.
+</p>
+</div>
+
+<div id="outline-container-orgheadline58" class="outline-4">
+<h4 id="orgheadline58"><span class="section-number-4">4.6.1</span> De la similarité à la constitution de groupes</h4>
+<div class="outline-text-4" id="text-4-6-1">
+<p>
+Qui se ressemble s’assemble?
+</p>
+
+<p>
+Similarité &rArr; constitution de groupe de façon à avoir homogénéité.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline59" class="outline-4">
+<h4 id="orgheadline59"><span class="section-number-4">4.6.2</span> De la constitution de groupe à la similarité:</h4>
+<div class="outline-text-4" id="text-4-6-2">
+<p>
+Qui s’assemble se ressemble?
+</p>
+
+<p>
+Interactions &rArr; constitution de groupe &rArr; similarité
+</p>
+
+<p>
+homogénéité des comportements (opinions) doit se produire en raison
+d’interactions.
+</p>
+
+<p>
+Si vrai: c’est la possibilité des interactions qui détermine leur fréquence et
+c’est la fréquence des interactions qui détermine l’homogénéité &rArr; pure
+dimension spatiale doit jouer un rôle.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline87" class="outline-2">
+<h2 id="orgheadline87"><span class="section-number-2">5</span> Conformisme</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgheadline62" class="outline-3">
+<h3 id="orgheadline62"><span class="section-number-3">5.1</span> Effet Asch classique</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Groupe de 7 (à 9) personnes qui participent à une tâche
+de perception. Un seul vrai sujet en avant dernière
+position.
+</p>
+
+<p>
+Tâche: déterminer laquelle des 3 barres est la même que la barre étalon.
+</p>
+
+<p>
+Pression implicite (et non pas explicite) + certitude
+</p>
+
+<p>
+<span class="underline">Conformisme observé sur <b>36.8%</b> des réponses!</span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline68" class="outline-3">
+<h3 id="orgheadline68"><span class="section-number-3">5.2</span> Taille de la source et modèles d’influence</h3>
+<div class="outline-text-3" id="text-5-2">
+</div><div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63"><span class="section-number-4">5.2.1</span> Variante avec le nombre de personnes composant la majorité</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<p>
+Effet à 2 et aussi à 3 ensuite plus de différence
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline64" class="outline-4">
+<h4 id="orgheadline64"><span class="section-number-4">5.2.2</span> Théorie de l’impact social (TIS)</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<p>
+Si une seule cible d’influence, Impact (I) doit être résultat d’une fonction
+multiplicative de:
+</p>
+<ul class="org-ul">
+<li>La force (s) de la source (= pouvoir, importance, etc&#x2026;)</li>
+<li>Le nombre de sources (N)</li>
+<li>Le nombre de cibles (M)</li>
+</ul>
+<p>
+Par ailleurs incrémentation dégressive
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline65" class="outline-4">
+<h4 id="orgheadline65"><span class="section-number-4">5.2.3</span> « Social influence model » (SIM)</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<p>
+TIS de Latané a deux problèmes:
+</p>
+<ul class="org-ul">
+<li>TIS prédit que la première source doit avoir le plus grand impact &rArr; Mais résultat de Asch montre que non.</li>
+<li>TIS ne plafonne pas l’influence à un maximum &rArr; Mais résultat de Asch suggère qu’il peut exister un plafond.</li>
+</ul>
+
+<p>
+SIM prédit que la probabilité qu’un individu change sa position face à une
+majorité de taille N-M (où M = nb d’individus minoritaires) est de
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline66" class="outline-4">
+<h4 id="orgheadline66"><span class="section-number-4">5.2.4</span> Autres dimensions</h4>
+<div class="outline-text-4" id="text-5-2-4">
+<p>
+&rArr; variation du nombre de source d’influence mais aussi du type de tâche et de
+la mesure d’influence (ex: publique –privée)
+</p>
+
+<p>
+Ces dimensions lorsqu’elles sont prises en compte expliquent en partie les
+effets de conformisme.
+</p>
+
+<p>
+&rArr; Conclusion de Bond (2005): aucun modèle n’explique correctement tous
+les résultats parce que ces dimensions ne sont pas prises en compte.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline67" class="outline-4">
+<h4 id="orgheadline67"><span class="section-number-4">5.2.5</span> Qui est la source? Effet de la représentation du groupe</h4>
+<div class="outline-text-4" id="text-5-2-5">
+<p>
+Heuristique d’exactitude de la majorité
+</p>
+
+<p>
+La majorité est supposée correcte car de nombreux individus arrivent à la
+même conclusion supposément indépendamment les uns des autres &rArr;
+Ne peuvent tous êtres incorrects en même temps.
+</p>
+
+<p>
+Est objectivement faux: il existe des biais dans le raisonnement qui
+peuvent nous faire nous tromper presque tous de la même façon.
+</p>
+
+<p>
+Par ailleurs, les jugements ne sont pas individualisés: chacun de nous a
+des positions qui dépendent d’interactions et de processus de
+communication avec les autres. La similarité de position qu’on constate
+chez des tiers qui servent de source d’influence, est déjà le résultat d’un
+processus d’influence!
+</p>
+
+<p>
+les individus indépendants («aggregate») ont plus
+d’influence que ceux en groupe
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline70" class="outline-3">
+<h3 id="orgheadline70"><span class="section-number-3">5.3</span> L’isolement de l’individu face au groupe unanime</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Personnes discordantes ou autres déviants:
+</p>
+
+<p>
+Dans l’étude princeps de Asch: individu est isolé face à la majorité (&rArr; il est en
+situation d’être seul déviant)
+</p>
+
+<p>
+Quid s’il y a une autre personne discordante avec la majorité?
+</p>
+
+<p>
+Variante 1 dans laquelle on introduit un partenaire réel sur 8 personnes
+présentes &rArr; vrais sujets en position 4 et 8.
+</p>
+
+<p>
+Variante 2 dans laquelle on introduit un compère sur 8 personnes présentes &rArr;
+compère en position 4 sujet en 8
+</p>
+
+<p>
+&rArr; L’introduction d’un autre déviant qui casse uniformité des réponses du
+groupe suffit à faire chuter l’influence!
+</p>
+
+<p>
+Mais, est-ce rupture d’unanimité ou support social?
+</p>
+</div>
+<div id="outline-container-orgheadline69" class="outline-4">
+<h4 id="orgheadline69"><span class="section-number-4">5.3.1</span> Rupture d’unanimité, support social et nature de la tâche:</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<p>
+Jouent sur la rupture d’unanimité et le support social + nature de la tâche
+</p>
+<ul class="org-ul">
+<li>Tâche de type Asch: objective non ambigüe</li>
+<li>Tâche de type information vérifiable: réponse correcte + incertitude</li>
+<li>Tâche de type opinion: pas de bonne ou mauvaise réponse (ex: la plupart des jeunes reçoivent trop d’éducation scolaire)</li>
+</ul>
+
+<p>
+&rArr; Pour des <span class="underline">contenus objectifs non ambigus</span>, c’est la <span class="underline">rupture d’unanimité</span> qui est essentielle
+&rArr; Pour les <span class="underline">opinions</span> c’est le <span class="underline">support social</span> sur la réponse individuelle qui est essentiel
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline76" class="outline-3">
+<h3 id="orgheadline76"><span class="section-number-3">5.4</span> Besoins et dépendance</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Pourquoi les individus se conforment-ils?
+</p>
+
+<p>
+Approche motivationnelle:
+</p>
+</div>
+<div id="outline-container-orgheadline71" class="outline-4">
+<h4 id="orgheadline71"><span class="section-number-4">5.4.1</span> Besoins</h4>
+<div class="outline-text-4" id="text-5-4-1">
+<ul class="org-ul">
+<li>Affiliation &rArr; appartenir au groupe (« need to belong »)</li>
+<li>Approbation sociale et valorisation de soi</li>
+<li>Besoin matériel &rArr; groupe donne accès à des ressources</li>
+<li>Réduction de l’incertitude (soi + réalité)</li>
+</ul>
+<p>
+&rArr; Groupe permet de satisfaire ces besoins
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline75" class="outline-4">
+<h4 id="orgheadline75"><span class="section-number-4">5.4.2</span> Dépendances:</h4>
+<div class="outline-text-4" id="text-5-4-2">
+<p>
+Ce n’est pas tant l’appartenance au groupe qui est déterminante que les besoins
+des individus face aux autres
+</p>
+</div>
+<div id="outline-container-orgheadline72" class="outline-5">
+<h5 id="orgheadline72"><span class="section-number-5">5.4.2.1</span> Dépendance normative:</h5>
+<div class="outline-text-5" id="text-5-4-2-1">
+<p>
+Renvoie à une influence qui est le fait de se conformer aux attentes des
+autres (&rArr; effet du groupe)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline73" class="outline-5">
+<h5 id="orgheadline73"><span class="section-number-5">5.4.2.2</span> Dépendance informationnelle:</h5>
+<div class="outline-text-5" id="text-5-4-2-2">
+<p>
+Renvoie à une influence qui est le fait d’accepter l’information provenant
+d’autrui comme vrai à propos de la réalité
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline74" class="outline-5">
+<h5 id="orgheadline74"><span class="section-number-5">5.4.2.3</span> Quel besoin génère quelle dépendance?</h5>
+<div class="outline-text-5" id="text-5-4-2-3">
+<p>
+Affiliation, approbation sociale, besoins matériels &rArr; Dépendance normative
+</p>
+
+<p>
+Réduction de l'incertitude &rArr; Dépendance informationnelle
+</p>
+
+<p>
+&rArr; Conformisme serait le produit de ces dépendances différentes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline84" class="outline-3">
+<h3 id="orgheadline84"><span class="section-number-3">5.5</span> Les pouvoirs dans les groupes</h3>
+<div class="outline-text-3" id="text-5-5">
+</div><div id="outline-container-orgheadline77" class="outline-4">
+<h4 id="orgheadline77"><span class="section-number-4">5.5.1</span> Les bases du pouvoir</h4>
+<div class="outline-text-4" id="text-5-5-1">
+<p>
+L’uniformité s’obtient par des pressions &rArr; Nécessite de pouvoir effectif
+</p>
+
+
+<div class="figure">
+<p><img src="pouvoirbesoin.jpg" alt="pouvoirbesoin.jpg" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline78" class="outline-4">
+<h4 id="orgheadline78"><span class="section-number-4">5.5.2</span> Pouvoirs et niveaux d’influence</h4>
+<div class="outline-text-4" id="text-5-5-2">
+<p>
+Groupes exercent influence en exerçant pouvoirs sur les membres. Résultat
+différentiel selon la nature des pouvoirs
+</p>
+
+<p>
+Pouvoirs liés au <span class="underline">contrôle social</span> (coercition/récompense) impliquent le plus
+souvent une influence <span class="underline">manifeste</span> (= influence superficielle)
+</p>
+
+<p>
+Choix <span class="underline">autonomes sans contraintes</span> (légitimité) impliquent souvent une influence
+<span class="underline">profonde</span> (=vraie influence)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline83" class="outline-4">
+<h4 id="orgheadline83"><span class="section-number-4">5.5.3</span> Processus de conformisme selon Kelman</h4>
+<div class="outline-text-4" id="text-5-5-3">
+<p>
+Processus différents selon contexte social et nature des enjeux:
+</p>
+</div>
+<div id="outline-container-orgheadline79" class="outline-5">
+<h5 id="orgheadline79"><span class="section-number-5">5.5.3.1</span> Complaisance:</h5>
+<div class="outline-text-5" id="text-5-5-3-1">
+<p>
+Le conformisme joue un rôle purement instrumental. Gagner récompenses
+ou éviter punitions du groupe résultant d’anti-conformisme.
+</p>
+
+<p>
+&rArr; Croyances de l’individu ne sont pas touchées.
+</p>
+
+<p>
+&rArr; Influence n’apparaît que parce que contrôle social effectif.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline80" class="outline-5">
+<h5 id="orgheadline80"><span class="section-number-5">5.5.3.2</span> Identification:</h5>
+<div class="outline-text-5" id="text-5-5-3-2">
+<p>
+Désir d’établir ou de maintenir relation positive avec le groupe (ou la source)
+qui est jugé(e) attractive.
+</p>
+
+<p>
+&rArr; Pas réponse spécifique qui est importante mais relation avec le groupe
+(ou la source).
+</p>
+
+<p>
+&rArr; Peut apparaître avec contrôle effectif mais aussi lorsque le groupe est
+visible (saillant) dans le contexte.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline81" class="outline-5">
+<h5 id="orgheadline81"><span class="section-number-5">5.5.3.3</span> Intériorisation:</h5>
+<div class="outline-text-5" id="text-5-5-3-3">
+<p>
+Enjeu porte sur la réponse elle-même, c’est le contenu que l’individu désire
+incorporer dans son système de valeur en raison de sa valeur informative.
+</p>
+
+<p>
+&rArr; Ni contrôle social, ni visibilité ne sont nécessaires
+</p>
+
+<p>
+&rArr; Valeur informationnelle intrinsèque du contenu. Renvoie à la réduction
+de l’incertitude pour connaître ce qui est vrai.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline82" class="outline-5">
+<h5 id="orgheadline82"><span class="section-number-5">5.5.3.4</span> niveaux d’influence</h5>
+<div class="outline-text-5" id="text-5-5-3-4">
+
+<div class="figure">
+<p><img src="pouvoirprocessus.jpg" alt="pouvoirprocessus.jpg" /> 
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline85" class="outline-3">
+<h3 id="orgheadline85"><span class="section-number-3">5.6</span> Conformité: simple conformité sur les jugements ou réelle modification de la perception de la réalité?</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+Perception n’est pas enregistrement de la réalité, mais une reconstruction
+par le cerveau à partir d’indices
+</p>
+
+<p>
+Cette reconstruction peut être affectée par le social &rArr; Pas seulement une
+question de jugements émis qui sont contradictoires, mais modification au
+niveau de la perception possible
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline86" class="outline-3">
+<h3 id="orgheadline86"><span class="section-number-3">5.7</span> Différences individuelles?</h3>
+<div class="outline-text-3" id="text-5-7">
+<p>
+Le sexe :
+</p>
+
+<p>
+Est-ce que les femmes se conforment plus que les hommes ou est-ce
+que les hommes se conforment plus que les femmes?
+</p>
+
+<p>
+Effets liés aux stéréotypes associés aux groupes et à leur
+rapport avec les tâches!
+</p>
+
+<p>
+&rArr; Chaque sexe se conforme
+moins sur les contenus
+d’informations associés à son
+sexe.
+</p>
+
+<p>
+&rArr; Pas de différence sur les
+contenus neutres.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline105" class="outline-2">
+<h2 id="orgheadline105"><span class="section-number-2">6</span> Soumission à l’autorité</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-orgheadline88" class="outline-3">
+<h3 id="orgheadline88"><span class="section-number-3">6.1</span> Expériences de Milgram</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+En arrivant le sujet apprend que l’étude porte sur les effets de la punition sur l’apprentissage.
+</p>
+
+<p>
+Punition par paliers
+</p>
+
+<p>
+Injonctions de l’expérimentateur dans l’ordre &rArr; Chaque fois que le sujet veut s’arrêter on lui fait les injonctions depuis la première.
+</p>
+
+<p>
+En réalité le sujet est libre d’arrêter et de partir!
+</p>
+
+<p>
+Sur simple ordre de l’autorité:
+</p>
+
+<p>
+<span class="underline"><b>62.5%</b></span> des individus dans l’étude princeps » vont
+jusqu’au bout de la machine
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline89" class="outline-3">
+<h3 id="orgheadline89"><span class="section-number-3">6.2</span> Qu’auriez-vous fait?</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Illusion de moralité sur le soi
+</p>
+
+<p>
+« Les autres d’accord, mais pas moi »!
+</p>
+
+<p>
+Problème: biais liés à valorisation du soi. Que répondent
+psychiatres lorsque font prédictions pour autrui?
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline95" class="outline-3">
+<h3 id="orgheadline95"><span class="section-number-3">6.3</span> Explication</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+Lutte interne:
+</p>
+
+<p>
+&rArr; Moralité contre nécessité contextuelle d’obéir
+Pas une question de morale
+</p>
+</div>
+
+<div id="outline-container-orgheadline90" class="outline-4">
+<h4 id="orgheadline90"><span class="section-number-4">6.3.1</span> Le rôle du contexte:</h4>
+<div class="outline-text-4" id="text-6-3-1">
+<p>
+La prédiction pour le soi dépend de l’insertion justificative
+de l’acte et du contexte:
+</p>
+
+<p>
+Les individus fonctionnent dans des situations sociales
+précises avec des règles particulières qui s’appliquent in casu
+</p>
+
+<p>
+Ex:
+</p>
+<ul class="org-ul">
+<li>Enjeu de groupe &rArr; intergroupe justifie acte</li>
+<li>Situations concrètes vs abstraites &rArr; situation concrète justifie l’acte (pas une question de morale abstraite absolue, générale et généralisable)</li>
+<li>Effet des rôles et des attentes liés au contexte &rArr; les attentes générées par le contexte justifient l’acte.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline91" class="outline-4">
+<h4 id="orgheadline91"><span class="section-number-4">6.3.2</span> Relation intergroupe et justification de l’acte</h4>
+<div class="outline-text-4" id="text-6-3-2">
+<p>
+Questionnent sujets américains sur massacre de Mi Laï
+&rArr; massacre ordonné par lieutenant Calley de 500
+vietnamiens dans un village supposé aider le viet-cong.
+</p>
+
+<ul class="org-ul">
+<li>33% indiquent qu’il ne tireraient pas sur ordre.</li>
+<li>16% indiquent qu’ils ne savent pas.</li>
+<li>51% indiquent qu’ils ouvriraient le feu.</li>
+</ul>
+
+<p>
+Situation de guerre contre l’ennemi
+&rArr; change acceptation de soumission à autorité.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline92" class="outline-4">
+<h4 id="orgheadline92"><span class="section-number-4">6.3.3</span> Situation concrète vs abstraite</h4>
+<div class="outline-text-4" id="text-6-3-3">
+<p>
+Droits de l’homme: Questionnent sujets sur abstrait vs
+concret de situations relativement à la torture
+</p>
+
+<p>
+Est-ce que torture est acceptable?
+</p>
+
+<p>
+Un terroriste a mis une bombe. Est-ce que
+torture est acceptable pour le faire parler?
+</p>
+
+<p>
+&rArr; Individus acceptent davantage de torturer le
+terroriste dans la situation concrète qu’ils ne
+l’acceptent lorsqu’il s’agit d’une généralité
+abstraite.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline93" class="outline-4">
+<h4 id="orgheadline93"><span class="section-number-4">6.3.4</span> Contexte et rôles sociaux</h4>
+<div class="outline-text-4" id="text-6-3-4">
+<p>
+Rôle du contexte social dans notre comportement:
+</p>
+
+<p>
+Ex: Asch!
+</p>
+
+<p>
+Notre comportement reflète-t-il ce que nous sommes
+(personnalité, sadisme, etc.), ou ce que le contexte social ou
+« système » nous pousse à faire?
+</p>
+
+<p>
+&rArr; Effet de rôles liées aux attentes du contexte social
+</p>
+
+<p>
+Rappel: Prison de Zimbardo 1971!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline94" class="outline-4">
+<h4 id="orgheadline94"><span class="section-number-4">6.3.5</span> Explication de Milgram</h4>
+<div class="outline-text-4" id="text-6-3-5">
+<ul class="org-ul">
+<li>Potentiel d’obéissance: Propension innée à obéir. Groupes où obéissance est apparue ont été favorisés.</li>
+<li>Socialisation: Apprentissage depuis tout petit à obéir à figures d’autorité &rArr; parents, enseignants, police, administration, etc&#x2026;</li>
+</ul>
+
+<p>
+&rArr; Etat agentique:
+</p>
+
+<p>
+Plasticité contextuelle: passage d’un état
+individualisé autonome à un état de membre d’une
+hiérarchie dans le groupe
+</p>
+
+<p>
+Etat agentique implique que individu est agent
+exécutoire de l’autorité = déresponsabilisation
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline101" class="outline-3">
+<h3 id="orgheadline101"><span class="section-number-3">6.4</span> Variables qui modifient l’effet</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+Multiples facteurs qui modifient l’effet &rArr;
+permet de comprendre et d’expliquer effet
+</p>
+</div>
+<div id="outline-container-orgheadline96" class="outline-4">
+<h4 id="orgheadline96"><span class="section-number-4">6.4.1</span> Proximité de la victime</h4>
+<div class="outline-text-4" id="text-6-4-1">
+<p>
+4 variantes comparables qui éloignent victime:
+</p>
+<ul class="org-ul">
+<li>Il faut toucher la victime pour administrer les chocs</li>
+<li>Victime dans la même pièce visible</li>
+<li>Victime parle par haut parleur (étude princeps)</li>
+<li>Victime frappe contre le mur pour donner ses réponses</li>
+</ul>
+
+<p>
+Deux explications possibles:
+</p>
+<ul class="org-ul">
+<li>dépersonnalisation de la victime:</li>
+<li>Plus victime est loin moins elle est un individu autonome différencié. Plus facile de punir abstraitement que de punir un humain visible en tant que tel.</li>
+<li>Lorsque victime est un humain personnifié individualisé &rArr; plus difficile de l’agresser</li>
+<li>Conscience de soi
+<ul class="org-ul">
+<li>visibilité de l’autre rend saillant le soi dans le champs cognitif = conscience de soi et des implications pour le soi des actes exacerbée.</li>
+<li>Déindividuation du soi diminue conscience de soi</li>
+<li>Conscience de soi = responsabilité</li>
+<li>Lorsque nous ne sommes pas identifiables (anonymes) comportement d’agression est plus facile.</li>
+<li>Réduction de l’individualité de celui qui commet l’acte</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline97" class="outline-4">
+<h4 id="orgheadline97"><span class="section-number-4">6.4.2</span> Support social</h4>
+<div class="outline-text-4" id="text-6-4-2">
+<p>
+2 variantes de support social (positif et négatif):
+</p>
+<ul class="org-ul">
+<li>Deux compères (sujets par trois) dont l’un refuse de continuer à 150 volts et le second à 210 volts.</li>
+<li>Pair obéit (sujet intermédiaire entre expérimentateur et pair)</li>
+</ul>
+
+<p>
+Si le pair obéit, 92.5% jusqu'au bout, s'il désobéit 10% (vs 62.5 seul) !!!
+</p>
+
+<p>
+&rArr; Effet en relation avec conformisme. Support social arme à double tranchant.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline98" class="outline-4">
+<h4 id="orgheadline98"><span class="section-number-4">6.4.3</span> Rapport hiérarchique: Multiples autorités</h4>
+<div class="outline-text-4" id="text-6-4-3">
+<p>
+2 variantes avec multiples autorités contradictoires:
+</p>
+<ul class="org-ul">
+<li>2 expérimentateurs qui ordonnent mais sont contradictoires à 150 volts</li>
+<li>2 expérimentateurs, l’un prend la place de la victime</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">2 expé</th>
+<th scope="col" class="org-right">expé victime</th>
+<th scope="col" class="org-right">seul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Jusqu'au bout</td>
+<td class="org-right">0%</td>
+<td class="org-right">65%</td>
+<td class="org-right">62.2%</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+&rArr; Pas simplement « supérieurs » en contradiction.
+C’est position dans la hiérarchie entre eux qui est
+déterminante.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline99" class="outline-4">
+<h4 id="orgheadline99"><span class="section-number-4">6.4.4</span> Rapport hiérarchique: Contrôle et niveau de l’autorité:</h4>
+<div class="outline-text-4" id="text-6-4-4">
+<ul class="org-ul">
+<li>Expérimentateur s’en va et donne ordres par téléphone</li>
+<li>Expérimentateur s’en va et charge pair de donner ordres</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">Téléphone</th>
+<th scope="col" class="org-right">Pair</th>
+<th scope="col" class="org-right">seul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Jusqu'au bout</td>
+<td class="org-right">20.5%</td>
+<td class="org-right">20%</td>
+<td class="org-right">62.2%</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+&rArr; Contrôle doit être exercé par autorité en permanence,
+sinon perte de la soumission = similaire à complaisance
+</p>
+
+<p>
+&rArr; Contrôle doit être exercé par autorité supérieure &rArr; c’est
+supériorité légitime dans hiérarchie qui est déterminante.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline100" class="outline-4">
+<h4 id="orgheadline100"><span class="section-number-4">6.4.5</span> Variables qui ne changent que peu ou pas l’effet:</h4>
+<div class="outline-text-4" id="text-6-4-5">
+<ul class="org-ul">
+<li>Sexe des sujets</li>
+<li>« Apparence » physique expérimentateur vs victime</li>
+<li>Culture</li>
+<li>Epoque</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline104" class="outline-3">
+<h3 id="orgheadline104"><span class="section-number-3">6.5</span> Validité écologique</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+Problème des études de Milgram: situation
+artificielle et irréaliste de laboratoire.
+</p>
+
+<p>
+Résultat pourrait être artefact.
+</p>
+
+<p>
+Validité « écologique » faible
+</p>
+</div>
+<div id="outline-container-orgheadline102" class="outline-4">
+<h4 id="orgheadline102"><span class="section-number-4">6.5.1</span> Setting réel: Hofling, et al.</h4>
+<div class="outline-text-4" id="text-6-5-1">
+<p>
+Infirmières en hôpital reçoivent ordre de faire piqûre
+à un patient:
+</p>
+<ul class="org-ul">
+<li>avec dose qu’elle sait excessive et donc dangereuse</li>
+<li>par téléphone alors que c’est interdit par le règlement</li>
+<li>d’un médecin qu’elle ne connaissent pas</li>
+</ul>
+
+<p>
+&rArr; 98% des infirmières indiquent qu’elles ne le
+feraient pas lorsqu’on leur raconte la situation,
+alors que 95% le font!
+</p>
+
+<p>
+&rArr; Toutefois, Rank et Jacobson (1977) trouvent
+infirmières moins dociles à obéir.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline103" class="outline-4">
+<h4 id="orgheadline103"><span class="section-number-4">6.5.2</span> Violence administrative</h4>
+<div class="outline-text-4" id="text-6-5-2">
+<p>
+Violence archaïque de Milgram n’existe pas dans sociétés modernes
+occidentales. Mais peut s’exprimer d’une autre façon: violence
+psychologique-administrative &rArr; plus insidieuse insérée dans
+hiérarchies modernes.
+</p>
+
+<p>
+Marche aussi si injonctions.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline121" class="outline-2">
+<h2 id="orgheadline121"><span class="section-number-2">7</span> Normalisation et socialisation</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-orgheadline117" class="outline-3">
+<h3 id="orgheadline117"><span class="section-number-3">7.1</span> Normalisation</h3>
+<div class="outline-text-3" id="text-7-1">
+</div><div id="outline-container-orgheadline110" class="outline-4">
+<h4 id="orgheadline110"><span class="section-number-4">7.1.1</span> L’étude de Sherif: la convergence</h4>
+<div class="outline-text-4" id="text-7-1-1">
+<p>
+Comment se construit une norme dans un groupe, en l’absence
+de toute norme préalablement établie ?
+</p>
+</div>
+<div id="outline-container-orgheadline106" class="outline-5">
+<h5 id="orgheadline106"><span class="section-number-5">7.1.1.1</span> Résultats – condition seul puis groupe:</h5>
+<div class="outline-text-5" id="text-7-1-1-1">
+<ul class="org-ul">
+<li>Seuls : construction d’une valeur moyenne et d’un écart de variation &rArr; stabilisation des valeurs au fil des essais
+<ul class="org-ul">
+<li>Construction d’une norme individuelle</li>
+</ul></li>
+<li>En groupe : modification des réponses pour</li>
+</ul>
+<p>
+converger les uns vers les autres
+</p>
+<ul class="org-ul">
+<li>Abandon de la norme individuelle</li>
+<li>Établissement d’une nouvelle norme de groupe</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline107" class="outline-5">
+<h5 id="orgheadline107"><span class="section-number-5">7.1.1.2</span> Résultats – condition en groupe puis seul:</h5>
+<div class="outline-text-5" id="text-7-1-1-2">
+<ul class="org-ul">
+<li>En groupe : convergence les uns vers les autres
+<ul class="org-ul">
+<li>Établissement d’une norme collective</li>
+</ul></li>
+<li>Seuls : reproduction de la norme collective précédemment établie
+<ul class="org-ul">
+<li>Maintien de la norme collective</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline108" class="outline-5">
+<h5 id="orgheadline108"><span class="section-number-5">7.1.1.3</span> Conservation de la norme dans le temps?</h5>
+<div class="outline-text-5" id="text-7-1-1-3">
+<p>
+Probablement un niveau d’influence profond
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline109" class="outline-5">
+<h5 id="orgheadline109"><span class="section-number-5">7.1.1.4</span> Relâchement des contraintes de la situation ?</h5>
+<div class="outline-text-5" id="text-7-1-1-4">
+<p>
+Schonbar (1945) : réplication de l’effet même quand pièce illuminée (donc repère visuel et moins d’incertitude)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline115" class="outline-4">
+<h4 id="orgheadline115"><span class="section-number-4">7.1.2</span> Facteurs affectant la normalisation</h4>
+<div class="outline-text-4" id="text-7-1-2">
+</div><div id="outline-container-orgheadline111" class="outline-5">
+<h5 id="orgheadline111"><span class="section-number-5">7.1.2.1</span> Qui sont les membres du groupe ?</h5>
+<div class="outline-text-5" id="text-7-1-2-1">
+<p>
+Deux conditions expérimentales = interaction amicale de quelques minutes versus pas d’interaction (contrôle) [dans les deux cas, seuls d’abord et groupe ensuite]
+</p>
+
+<p>
+&rArr; Convergence plus forte quand il y a eu interaction
+</p>
+
+<p>
+Jugements de stimuli auditifs ambigus. Phase 1 = sujet
+seul versus avec un inconnu versus avec un amis. Phase 2 = groupe
+de 3 sujets issus de ces trois conditions préliminaires:
+</p>
+<ul class="org-ul">
+<li>Ceux qui étaient seuls: convergent le plus</li>
+<li>Ceux qui étaient en groupe d’amis: convergent le moins</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline112" class="outline-5">
+<h5 id="orgheadline112"><span class="section-number-5">7.1.2.2</span> Les effets du statut</h5>
+<div class="outline-text-5" id="text-7-1-2-2">
+<p>
+Si statut identique, convergence similaire (situation par défaut)
+</p>
+
+<p>
+Et si statut différent?
+</p>
+<ul class="org-ul">
+<li>groupes de trois personnes sur la base des statuts (évalués subjectivement par les sujets eux-mêmes)&rArr; relations asymétriques
+<ul class="org-ul">
+<li>L’individu au statut le plus faible converge le plus</li>
+<li>l’individu au statut le plus élevé converge le moins</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline113" class="outline-5">
+<h5 id="orgheadline113"><span class="section-number-5">7.1.2.3</span> Appartenance catégorielle et statut</h5>
+<div class="outline-text-5" id="text-7-1-2-3">
+<p>
+Effet de statut: implique implicitement appartenance au même groupe
+</p>
+<ul class="org-ul">
+<li>Nécessité de converger pour produire une norme commune (réalité sociale définie par le groupe)</li>
+</ul>
+
+<p>
+Et si appartenance à des groupes différents? Possibilité de créer des
+normes différentes?
+</p>
+<ul class="org-ul">
+<li>L’appartenance catégorielle modulerait les effets du statut.</li>
+</ul>
+
+<p>
+Niveaux d’analyse &rArr; articulation entre les niveaux 2
+(interindividuel) et 3 (intergroupe)
+</p>
+
+<ul class="org-ul">
+<li>Même statut &rArr; converge</li>
+<li>Statuts différents &rArr; converge vers celui au statu le plus élevé</li>
+<li>Statut et catégorie différente &rArr; D'abord convergent du bas statut, puis reprise lorsque constatation que l'autre ne converge pas</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline114" class="outline-5">
+<h5 id="orgheadline114"><span class="section-number-5">7.1.2.4</span> Confusion catégorielle et dissimilation</h5>
+<div class="outline-text-5" id="text-7-1-2-4">
+<p>
+Et si les normes individuelles sont identiques alors que la
+catégorie est différente ?
+</p>
+<ul class="org-ul">
+<li>Différence de catégorie justifie (nécessite?) différence de réponse</li>
+<li>Chaque groupe peut et DOIT avoir ses normes, si possible différentes des autres groupes</li>
+<li>Le consensus sur la norme du groupe doit s’accompagner d’une distanciation des autres groupes
+<ul class="org-ul">
+<li>Permet et justifie l’existence du groupe</li>
+<li>Définit normativement le groupe</li>
+<li>Sinon, risque de confusion identitaire&#x2026;</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline116" class="outline-4">
+<h4 id="orgheadline116"><span class="section-number-4">7.1.3</span> La perpétuation des normes</h4>
+<div class="outline-text-4" id="text-7-1-3">
+<ul class="org-ul">
+<li>Répétition de la norme du groupe par les sujets naïfs</li>
+<li>Lent glissement vers la valeur du groupe contrôle (vraisemblablement ce que les sujets perçoivent vraiment)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline120" class="outline-3">
+<h3 id="orgheadline120"><span class="section-number-3">7.2</span> Socialisation</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+mécanisme par lequel la société ou le groupe
+transmet son système de valeurs, de normes, et de rôles sociaux.
+</p>
+
+<p>
+Les principaux vecteurs de socialisation:
+</p>
+<ul class="org-ul">
+<li>Famille: Parents = autorité à suivre transmettent des rôles de genre +/- stéréotypés</li>
+<li>Ecole
+<ul class="org-ul">
+<li>Enseignants = figure d’autorité</li>
+<li>Pairs = individus égaux servant de modèle</li>
+</ul></li>
+<li>Sociétés: Médias, Etat, Group, lobby, etc. &rArr; Modèles, sources de persuasion</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline118" class="outline-4">
+<h4 id="orgheadline118"><span class="section-number-4">7.2.1</span> L’étude de Bennington College</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<p>
+Changement de l'attitude politique d'enfants de familles de "droite" dans une école de gauche
+et 25/50 ans plus tard, maintient des attitudes politiques acquises lors de leurs années 
+universitaires + choix d'amis et de conjoint ayant les même attitudes politiques
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline119" class="outline-4">
+<h4 id="orgheadline119"><span class="section-number-4">7.2.2</span> Socialisation et culture</h4>
+<div class="outline-text-4" id="text-7-2-2">
+<p>
+Différentes cultures/pays/institutions ont des normes ou croyances très
+différentes (+/- d’égalité, contrôle de l’Etat, liberté d’expression, corruption,
+religion, etc.)
+</p>
+
+<p>
+&rArr; Les citoyens apprennent par socialisation les normes de leur
+culture/pays/institutions, et les reproduisent dans leurs propres
+comportements personnels.
+</p>
+
+<p>
+CPI est un indice de corruption perçue
+</p>
+
+<ul class="org-ul">
+<li>Le TI (donc CPI selon pays d’origine) prédit les tentatives/acceptations de corruption quand on intègre les années d’études. Ceux qui proviennent de pays plus corrompus proposent/acceptent davantage le pot de vin que ceux qui proviennent de pays moins corrompus (ici UK).</li>
+<li>Mais il y a une variation selon le niveau d’étude: la différence apparaît seulement chez les étudiants de Bachelor (undergraduates), pas chez les Master et doctorants.</li>
+<li>La resocialisation a annulé la différence &rArr; les étudiants migrants se sont resocialisés dans le groupe des locaux.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline128" class="outline-2">
+<h2 id="orgheadline128"><span class="section-number-2">8</span> Rapports intergroupes: Catégorisation et discrimination</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Perception immédiate de la situation en terme de catégorisation
+</p>
+<ul class="org-ul">
+<li>Situation peut-être perçue comme opposant des membres d’un même groupe &rArr; Déviance dans l'intragroupe</li>
+<li>Situation peut-être perçue comme opposant des membres de deux groupes. &rArr; Conflit intergroupe</li>
+</ul>
+
+<p>
+Passage d’un niveau de relations
+interpersonnelles dans le groupe à un
+niveau de relations intergroupes:
+</p>
+
+<p>
+&rArr; Très souvent, on observe des émissions
+de préjugés, de la discrimination voire
+même de mauvais traitements basés sur la
+différence de catégorie d’appartenance.
+</p>
+</div>
+<div id="outline-container-orgheadline123" class="outline-3">
+<h3 id="orgheadline123"><span class="section-number-3">8.1</span> Théorie de l’identité sociale et concepts affiliés:</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Dimension cognitive propre à l’individu:
+Rôle de la catégorisation
+</p>
+</div>
+<div id="outline-container-orgheadline122" class="outline-4">
+<h4 id="orgheadline122"><span class="section-number-4">8.1.1</span> Effets de la catégorisation assimilation et contraste</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<p>
+Ressources cognitives limitées + monde complexe
+</p>
+
+<p>
+Catégorisation:
+</p>
+<ul class="org-ul">
+<li>Processus cognitif de simplification et d’organisation de la réalité</li>
+</ul>
+<p>
+Double fonctionnement cognitif de la catégorisation:
+</p>
+
+<p>
+Biais perceptif qui consiste à
+</p>
+<ul class="org-ul">
+<li>augmenter les similarités entre les objets d’une même</li>
+</ul>
+<p>
+catégorie
+</p>
+<ul class="org-ul">
+<li>et augmenter les différences entre les objets de catégories</li>
+</ul>
+<p>
+différentes
+</p>
+
+<p>
+&rArr; Biais d’assimilation et contraste
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline124" class="outline-3">
+<h3 id="orgheadline124"><span class="section-number-3">8.2</span> Turner (1982): théorie de l’auto-catégorisation:</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+Dépersonalisation: endossement de caractéristiques stéréotypiques du groupe
+</p>
+<ul class="org-ul">
+<li>Assimilation et contraste</li>
+<li>homogénéité intra-groupe et différenciation intergroupe</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline125" class="outline-3">
+<h3 id="orgheadline125"><span class="section-number-3">8.3</span> Tajfel et Turner (1986): Théorie de l’identité sociale</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>« Les individus essaient de maintenir une estime de soi positive.»</li>
+<li>« Les groupes et catégories sociales sont associés à des connotations positives ou négatives. L’identité sociale est positive ou négative selon les connotations des groupes qui contribuent à l’identité sociale des groupes. ».</li>
+<li>« L’évaluation de son propre groupe est déterminée en référence à d’autres groupes au travers d’une comparaison sociale en termes de caractéristiques évaluées ou connotées. Une différence positive (au profit de l’intra-groupe) provoque un prestige élevé. Une différence négative provoque un prestige bas. ».</li>
+</ul>
+<p>
+&rArr; Pour valoriser l’estime de soi, création de différence entre
+groupes au profit de l’intragroupe pour bénéficier d’une
+comparaison relative favorable = discrimination
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline126" class="outline-3">
+<h3 id="orgheadline126"><span class="section-number-3">8.4</span> Paradigme des groupes minimaux:</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+Elimination de tous les facteurs sociaux liés aux groupes
+« réels » qui pourraient expliquer discrimination
+</p>
+<ul class="org-ul">
+<li>production d’une <span class="underline">simple catégorisation</span></li>
+<li>groupes basés sur l’ <span class="underline">aléatoire</span> et pas sur des caractéristiques réelles</li>
+<li>groupes existent pour la <span class="underline">durée de l’expérience</span> uniquement</li>
+<li><span class="underline">pas de lien instrumental</span> personnel, individus ne choisissent pas bénéfice réel pour eux-mêmes</li>
+<li>individus <span class="underline">anonymes</span></li>
+<li>pas d’interaction préalable = <span class="underline">ne se connaissent pas</span></li>
+</ul>
+<p>
+&rArr; On cherche à montrer l’effet de la catégorisation en tant que
+telle sans présence de facteurs sociaux qui pourraient rendre
+compte de la situation en tant qu’alternative explicative
+</p>
+
+<p>
+Tâche de préférence visuelle: tableaux de Klee et Kandinsky, puis argent à distribuer: Les individus
+préfèrent ne pas maximiser le gain global et préfèrent perdre de l'argent plutôt que dans donner à l'autre groupe.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline127" class="outline-3">
+<h3 id="orgheadline127"><span class="section-number-3">8.5</span> Black sheep effect</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+De la déviance intragroupe à la déviance intergroupe
+</p>
+
+<p>
+Problème de déviants: remise en question de norme du groupe
+</p>
+<ul class="org-ul">
+<li>Affaiblissement de norme prend son sens dans rapport intergroupe conflictuel, où déviant affaiblit le groupe dans la confrontation.</li>
+<li>Pas le simple fait d’être déviant en soi qui pose problème, mais d’être déviant de l’intragroupe: connotations négatives du déviant associées à identité sociale des individus dans la confrontation intergroupe.</li>
+</ul>
+<p>
+&rArr; Déviant dans l’intragroupe est un « mouton noir » qui trahit
+doublement la cause du groupe.
+</p>
+
+<p>
+&rArr; Réplication de l’effet (mouton noir et héros intra) lorsque les
+normes sont opposées et qu’il y a confrontation sur celles-ci
+</p>
+
+<p>
+&rArr; Plus de différences entre intra et hors lorsque la norme est
+partagée, plus d’enjeu intergroupe
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2016-05-21 Sat 17:48</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
