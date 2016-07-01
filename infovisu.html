@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-07-01 Fri 19:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="theme.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline20">1. Styles d'interactions</a>
+<ul>
+<li><a href="#orgheadline14">1.1. les différents styles</a></li>
+<li><a href="#orgheadline19">1.2. Connaissances :</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline22">2. Visual computing</a>
+<ul>
+<li><a href="#orgheadline21">2.1. Homogeneous coordinates</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline34">3. Vision humaine</a>
+<ul>
+<li><a href="#orgheadline23">3.1. Pupille</a></li>
+<li><a href="#orgheadline24">3.2. Cristallin</a></li>
+<li><a href="#orgheadline25">3.3. Rétine, Macula et Fovéa</a></li>
+<li><a href="#orgheadline26">3.4. Cônes et bâtonnets</a></li>
+<li><a href="#orgheadline27">3.5. Quantité d'information</a></li>
+<li><a href="#orgheadline33">3.6. vision</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline40">4. Cognition humaine</a>
+<ul>
+<li><a href="#orgheadline35">4.1. 3 mémoire</a></li>
+<li><a href="#orgheadline36">4.2. Charge cognitive</a></li>
+<li><a href="#orgheadline37">4.3. Split attention effect</a></li>
+<li><a href="#orgheadline38">4.4. Mémoire à long terme</a></li>
+<li><a href="#orgheadline39">4.5. Metacognition</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline60">5. Mécanismes de jeux</a>
+<ul>
+<li><a href="#orgheadline41">5.1. Espace</a></li>
+<li><a href="#orgheadline42">5.2. Temps</a></li>
+<li><a href="#orgheadline43">5.3. Objets</a></li>
+<li><a href="#orgheadline44">5.4. Personnages et avatars</a></li>
+<li><a href="#orgheadline45">5.5. Actions</a></li>
+<li><a href="#orgheadline46">5.6. Règles</a></li>
+<li><a href="#orgheadline47">5.7. Modes</a></li>
+<li><a href="#orgheadline48">5.8. Skils</a></li>
+<li><a href="#orgheadline49">5.9. Chance</a></li>
+<li><a href="#orgheadline50">5.10. Points de vue</a></li>
+<li><a href="#orgheadline51">5.11. Roles</a></li>
+<li><a href="#orgheadline52">5.12. Secret</a></li>
+<li><a href="#orgheadline53">5.13. Collaboration / Compétition</a></li>
+<li><a href="#orgheadline54">5.14. Modélisation Mutuelle</a></li>
+<li><a href="#orgheadline55">5.15. Spectateurs</a></li>
+<li><a href="#orgheadline56">5.16. “Triangularity” (non transitivité)</a></li>
+<li><a href="#orgheadline57">5.17. Echapper à la réalité</a></li>
+<li><a href="#orgheadline58">5.18. ScoreBoards</a></li>
+<li><a href="#orgheadline59">5.19. Le flow</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline65">6. Visualisation de l'information</a>
+<ul>
+<li><a href="#orgheadline61">6.1. Visualiser</a></li>
+<li><a href="#orgheadline62">6.2. Principes de conception</a></li>
+<li><a href="#orgheadline63">6.3. Distoritions géométriques</a></li>
+<li><a href="#orgheadline64">6.4. Erreurs fréquentes</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline66">7. Edge detection&#x2026;.</a></li>
+<li><a href="#orgheadline71">8. Usability</a>
+<ul>
+<li><a href="#orgheadline67">8.1. Les 8 « golden rules » de Ben Schneiderman</a></li>
+<li><a href="#orgheadline68">8.2. Norman</a></li>
+<li><a href="#orgheadline69">8.3. Protoypage and user testing</a></li>
+<li><a href="#orgheadline70">8.4. Usability testing</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline81">9. Etudes utilisateurs</a>
+<ul>
+<li><a href="#orgheadline72">9.1. Concevoir une expérience:</a></li>
+<li><a href="#orgheadline75">9.2. Plan expérimental</a></li>
+<li><a href="#orgheadline80">9.3. biais expérimentaux:</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline82">10. Eye tracking</a></li>
+<li><a href="#orgheadline83">11. Homography</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline20" class="outline-2">
+<h2 id="orgheadline20"><span class="section-number-2">1</span> Styles d'interactions</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">1.1</span> les différents styles</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-orgheadline1" class="outline-4">
+<h4 id="orgheadline1"><span class="section-number-4">1.1.1</span> Langages de commande</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>long apprentissage</li>
+<li>Pour les experts : puissant et rapide</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2"><span class="section-number-4">1.1.2</span> Wimp = windows icons menus and pointers</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ul class="org-ul">
+<li>Utilise la souris</li>
+<li>!= manipulation directe</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3"><span class="section-number-4">1.1.3</span> Manipulation directe</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<ul class="org-ul">
+<li>drag &amp; drop</li>
+<li>action réversible</li>
+<li>feedback</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">1.1.4</span> Formulaire</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<ul class="org-ul">
+<li>conditions, format de données</li>
+<li>tâches de routine</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">1.1.5</span> Réalité virtuelle</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<ul class="org-ul">
+<li>Simulation informatique interactive immersive, visuelle et sonore, d'environnement réels ou imaginaires</li>
+<li>But stimulis/expérience semblable à un environnement réel analogue</li>
+<li>Vue, son, toucher (haptic devices)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.1.6</span> Tangible</h4>
+<div class="outline-text-4" id="text-1-1-6">
+<ul class="org-ul">
+<li>Manipulation d'objets</li>
+<li>souvent couplé avec réalité augmentée</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><span class="section-number-4">1.1.7</span> Réalité augmentée</h4>
+<div class="outline-text-4" id="text-1-1-7">
+<p>
+Superpose un information digitale sur une perception directe de la réalité, en temps réel
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><span class="section-number-4">1.1.8</span> Contrôle vocal</h4>
+<div class="outline-text-4" id="text-1-1-8">
+<ul class="org-ul">
+<li>Commande</li>
+<li>Dictée</li>
+<li>Problème de précision + usability (confidentialité, bruit, charge cognitive)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">1.1.9</span> Contrôle gestuelle</h4>
+<div class="outline-text-4" id="text-1-1-9">
+<p>
+Gros progès, mais peu d'utilité dans les tâches du quotidienne. Pas assez précis pour certaines tâches pro (e.g. chirurgien)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">1.1.10</span> Contrôle cérébral</h4>
+<div class="outline-text-4" id="text-1-1-10">
+<p>
+Cher, peu fiable
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">1.1.11</span> Interface bionique</h4>
+<div class="outline-text-4" id="text-1-1-11">
+<p>
+Médico informatique
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">1.1.12</span> Wearables</h4>
+<div class="outline-text-4" id="text-1-1-12">
+<p>
+Tout ce qui s'intégre dans les habits
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">1.1.13</span> Ambient</h4>
+<div class="outline-text-4" id="text-1-1-13">
+<p>
+Perçu par la vision périphérique
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19"><span class="section-number-3">1.2</span> Connaissances :</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">1.2.1</span> Sémantique liées à la tâche</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Inhérente à la tâche :
+</p>
+<ul class="org-ul">
+<li>table des matières</li>
+<li>introduction</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">1.2.2</span> Sémantique liée à la transposition informatique de la tâche</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<ul class="org-ul">
+<li>Style de paragraphe</li>
+<li>Espace inter-paragraphe</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="section-number-4">1.2.3</span> Syntaxiques, arbitraires</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<ul class="org-ul">
+<li>L'option trier se trouve dans le menu "tableau"</li>
+<li>Changer minuscule/majuscule, s'appelle "changer la casse"</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18"><span class="section-number-4">1.2.4</span> Tableau rec</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Sémantiques tâche</th>
+<th scope="col" class="org-left">Sémantiques informatique</th>
+<th scope="col" class="org-left">syntaxiques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Novices</td>
+<td class="org-left">X</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Intermittents</td>
+<td class="org-left">X</td>
+<td class="org-left">X</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Experts</td>
+<td class="org-left">X</td>
+<td class="org-left">X</td>
+<td class="org-left">X</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="orgheadline22"><span class="section-number-2">2</span> Visual computing</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21"><span class="section-number-3">2.1</span> Homogeneous coordinates</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Point have \(w=1\), vectors have \(w=0\)
+</p>
+
+<p>
+\(\pmatrix{p_x\\p_y\\p_w} \simeq \pmatrix{p_x/p_w\\p_y/p_w\\1}\)
+</p>
+
+<p>
+But can be any linear combination !
+</p>
+
+<p>
+\(\pmatrix{9\\12\\3} \simeq \pmatrix{45\\60\\15} \simeq \pmatrix{3\\4\\1}\)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline34" class="outline-2">
+<h2 id="orgheadline34"><span class="section-number-2">3</span> Vision humaine</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23"><span class="section-number-3">3.1</span> Pupille</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Contrôle la quantité de lumière qui entre dans l'oeil
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24"><span class="section-number-3">3.2</span> Cristallin</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Lentille bi-convexe, concentre plus ou moins les rayons lumineux sur la rétine, sorte d'écran placé au fond de l'oeil
+</p>
+
+<p>
+Permet de garder une images nette à différentes profondeurs de champ.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="orgheadline25"><span class="section-number-3">3.3</span> Rétine, Macula et Fovéa</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+La rétine, recouvre 75% de la surface interne de l'oeil et capte les photos grâce à un grand nombre de photos recepteurs
+</p>
+
+<p>
+La macule est la partie centrale de la rétine
+</p>
+
+<p>
+La fovéa est une partie de la macula, correspond à une zone qui donne la plus grand acuité visuelle
+</p>
+
+<p>
+Dans la fovea, très forte densité de cônes
+</p>
+
+<p>
+Dansle reste de la macula, bâtonnets
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26"><span class="section-number-3">3.4</span> Cônes et bâtonnets</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Cônes, 3 types différents, sensible à des longeurs d'ondes différentes, ne communiquent pas une couleur au cerveau, mais le nombre de photons
+</p>
+
+<p>
+Bâtonnets, sensibles au différents niveau de gris &rArr; mouvements en vision périphérique
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Bâtonnets</th>
+<th scope="col" class="org-left">Cones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">130 millions</td>
+<td class="org-left">6.5 mio</td>
+</tr>
+
+<tr>
+<td class="org-left">niveaux de gris</td>
+<td class="org-left">bleu,vert,rouge</td>
+</tr>
+
+<tr>
+<td class="org-left">très sensibles à la lumière</td>
+<td class="org-left">Moins sensible</td>
+</tr>
+
+<tr>
+<td class="org-left">100 i/s</td>
+<td class="org-left">3-4 i/s</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Il y a un point aveugle où est le nerf optique  
+</p>
+
+<p>
+La vision la plus précise se limite à 5 degrés
+</p>
+
+<p>
+Exemple : 5 deg, 50 cm de l'écran = 4 cm de diamètre de l'écran
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="orgheadline27"><span class="section-number-3">3.5</span> Quantité d'information</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+Dépend de :
+</p>
+<ul class="org-ul">
+<li>acuité visuelle, distance et lunettes</li>
+<li>zoom</li>
+<li>dimensions, définition, résolution et profondeur de l'écran/image</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33"><span class="section-number-3">3.6</span> vision</h3>
+<div class="outline-text-3" id="text-3-6">
+</div><div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">3.6.1</span> Effet stroop</h4>
+<div class="outline-text-4" id="text-3-6-1">
+<p>
+Rouge écrit en bleu, on donne une valeur sémantique au mot
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="section-number-4">3.6.2</span> Persitence rétinienne</h4>
+<div class="outline-text-4" id="text-3-6-2">
+<p>
+?
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30"><span class="section-number-4">3.6.3</span> Effet phi et effet beta</h4>
+<div class="outline-text-4" id="text-3-6-3">
+<p>
+L'effet phi est la sensation visuelle de mouvement provoquée par l'apparition
+d'images perçues successives, susceptibles d'être raccordées par un
+déplacement ou une transformation. C’est le cerveau qui “comblerait” les
+images intermédiaires, qui imagine le mouvement. L’effet Beta est la même
+illusion de mouvement créé par des images statiques, alors que l’effet Phi
+repose sur des images qui clignotent, la différence profonde étant encore un
+débat scientifique.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline31" class="outline-4">
+<h4 id="orgheadline31"><span class="section-number-4">3.6.4</span> Effet d'armoçage</h4>
+<div class="outline-text-4" id="text-3-6-4">
+<p>
+La  perception  d’objets  dans  une  image  est  fortement  influencée  par  nos  attentes,  nos  
+expériences,  nos  connaissances,&#x2026; (top down)
+</p>
+
+<p>
+Perception guidée par cognition
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32"><span class="section-number-4">3.6.5</span> Profondeur</h4>
+<div class="outline-text-4" id="text-3-6-5">
+<ul class="org-ul">
+<li>perspective, lignes parrallèle</li>
+<li>Parralaxe: Lorsque je me déplace, les objets en avant-plan donnent l’impression d’un déplacement plus rapide que les objets en arrière-plan.</li>
+<li>L’effet de “kinetic depth”: les mouvements de l’objet donnent une perception de sa structure en 3D.</li>
+<li>L'occlusion</li>
+<li>taille relative</li>
+<li>position par rapport à l'horizon</li>
+<li>&#x2026;</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-2">
+<h2 id="orgheadline40"><span class="section-number-2">4</span> Cognition humaine</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="orgheadline35"><span class="section-number-3">4.1</span> 3 mémoire</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>Mémoire sensorielle &lt; 1s</li>
+<li>Mémoire à court terme &lt; 10min</li>
+<li>Mémoire à long terme illimité</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="orgheadline36"><span class="section-number-3">4.2</span> Charge cognitive</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+7 +- 2 éléments
+</p>
+
+<p>
+l’augmentation de la difficulté
+sur une tâche augmente une augmentation du nombre
+d’erreurs sur l’autre tâche, probablement parce qu’elles
+sollicitent les mêmes ressources
+</p>
+
+<p>
+Expert vs novice :
+</p>
+<ul class="org-ul">
+<li>connaissances compilées</li>
+<li>large répertoire de cas typiques (mémoire à long terme)</li>
+<li>Sélection du cas le plus pertinent sur base de critère de fond</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline37" class="outline-3">
+<h3 id="orgheadline37"><span class="section-number-3">4.3</span> Split attention effect</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Augment la charge mentale
+</p>
+
+<p>
+La structure de l'information réduit la charge cognitive :
+</p>
+
+<p>
+\(\text{Charge cognitive } = \frac{\text{Quantité d'information}}{\text{Niveau d'expertise}\times \text{Qualité du design}}\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="orgheadline38"><span class="section-number-3">4.4</span> Mémoire à long terme</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Connaissances déclaratives
+<ul class="org-ul">
+<li>Mémoire sémantique = faits, concepts, définitions <b>Modèles mentaux</b></li>
+<li>Mémoire épisodique = évenements passés ou imaginé</li>
+</ul></li>
+<li>Connaissances procédurale = marche à suivre pour faire qqch</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline39" class="outline-3">
+<h3 id="orgheadline39"><span class="section-number-3">4.5</span> Metacognition</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+Connaissance de ses connaissances
+</p>
+
+<p>
+Raisonnement sur son raisonnement
+</p>
+
+<p>
+Capacité à se mettre en doute + vérifier ses résultats
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline60" class="outline-2">
+<h2 id="orgheadline60"><span class="section-number-2">5</span> Mécanismes de jeux</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgheadline41" class="outline-3">
+<h3 id="orgheadline41"><span class="section-number-3">5.1</span> Espace</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Ensembles des positions correspondant à un état, dicret ou continue
+</p>
+
+<p>
+Nécessite des moyens d'orientation dans l'espace (outils, cartes, repères)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="orgheadline42"><span class="section-number-3">5.2</span> Temps</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Discret ou continu
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline43" class="outline-3">
+<h3 id="orgheadline43"><span class="section-number-3">5.3</span> Objets</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Constantes vs états, transitions
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline44" class="outline-3">
+<h3 id="orgheadline44"><span class="section-number-3">5.4</span> Personnages et avatars</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Uncanny Valley, si très proche d'humain, très peu familier (on remarque plus les défauts)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline45" class="outline-3">
+<h3 id="orgheadline45"><span class="section-number-3">5.5</span> Actions</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+Un jeu est élégant un petit nombre d’actions de base autorise
+un grand nombre d’actions stratégiques (“emergent gameplay”)
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline46" class="outline-3">
+<h3 id="orgheadline46"><span class="section-number-3">5.6</span> Règles</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+Faisable, souhaitable, fondamentale
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline47" class="outline-3">
+<h3 id="orgheadline47"><span class="section-number-3">5.7</span> Modes</h3>
+<div class="outline-text-3" id="text-5-7">
+<p>
+Règles différentes pendant différentes phases de jeu.
+</p>
+
+<p>
+Joueur doit désapprendre puis réapprendre &rArr; petit nombre de mode + mode actif doit être clair
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline48" class="outline-3">
+<h3 id="orgheadline48"><span class="section-number-3">5.8</span> Skils</h3>
+<div class="outline-text-3" id="text-5-8">
+<p>
+Trouver un équilibre entre skills du joueur et de son personnages.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline49" class="outline-3">
+<h3 id="orgheadline49"><span class="section-number-3">5.9</span> Chance</h3>
+<div class="outline-text-3" id="text-5-9">
+<p>
+Trouver équilibre entre skill du joueur et la chance
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline50" class="outline-3">
+<h3 id="orgheadline50"><span class="section-number-3">5.10</span> Points de vue</h3>
+<div class="outline-text-3" id="text-5-10">
+<ul class="org-ul">
+<li>fixe</li>
+<li>top down</li>
+<li>scroll latéral</li>
+<li>bird eye</li>
+<li>first person</li>
+<li>over the shoulder</li>
+<li>lock-on</li>
+<li>radar</li>
+<li>camérae contrôlable</li>
+</ul>
+
+<p>
+Choisir la meilleure vue au meilleur moment
+constitue une compétence-clé dans le jeu
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline51" class="outline-3">
+<h3 id="orgheadline51"><span class="section-number-3">5.11</span> Roles</h3>
+<div class="outline-text-3" id="text-5-11">
+<p>
+Rôle = différences des règles assignées aux joueurs
+« qui peut faire quelle action sur quel objet quand »
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline52" class="outline-3">
+<h3 id="orgheadline52"><span class="section-number-3">5.12</span> Secret</h3>
+<div class="outline-text-3" id="text-5-12">
+<p>
+Accès à l’information : Qui voit quoi et quand ?
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline53" class="outline-3">
+<h3 id="orgheadline53"><span class="section-number-3">5.13</span> Collaboration / Compétition</h3>
+</div>
+<div id="outline-container-orgheadline54" class="outline-3">
+<h3 id="orgheadline54"><span class="section-number-3">5.14</span> Modélisation Mutuelle</h3>
+<div class="outline-text-3" id="text-5-14">
+<p>
+Quels mécanismes permettent au joueur A
+de prédire ce que va faire le joueur B
+(équipier ou adversaire) ?
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline55" class="outline-3">
+<h3 id="orgheadline55"><span class="section-number-3">5.15</span> Spectateurs</h3>
+<div class="outline-text-3" id="text-5-15">
+<p>
+La présence les spectateurs doit être prises en
+compte dans le design de ‘game mecanics’
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline56" class="outline-3">
+<h3 id="orgheadline56"><span class="section-number-3">5.16</span> “Triangularity” (non transitivité)</h3>
+</div>
+<div id="outline-container-orgheadline57" class="outline-3">
+<h3 id="orgheadline57"><span class="section-number-3">5.17</span> Echapper à la réalité</h3>
+</div>
+<div id="outline-container-orgheadline58" class="outline-3">
+<h3 id="orgheadline58"><span class="section-number-3">5.18</span> ScoreBoards</h3>
+</div>
+<div id="outline-container-orgheadline59" class="outline-3">
+<h3 id="orgheadline59"><span class="section-number-3">5.19</span> Le flow</h3>
+<div class="outline-text-3" id="text-5-19">
+<p>
+Balance entre challenge et skills pour éviter de tomber dans l'anxiété ou l'ennui
+</p>
+
+<p>
+Effet élastique (mario kart)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline65" class="outline-2">
+<h2 id="orgheadline65"><span class="section-number-2">6</span> Visualisation de l'information</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-orgheadline61" class="outline-3">
+<h3 id="orgheadline61"><span class="section-number-3">6.1</span> Visualiser</h3>
+<div class="outline-text-3" id="text-6-1">
+<ol class="org-ol">
+<li>Placer des données sur une image de base de telle sorte que les propriétés visuelles de l’image reflètent les propriétés abstraites des données, en particulier les relations entre données.</li>
+<li>Créer une grammaire visuelle qui met en correspondance les variables des données et les composantes graphiques</li>
+<li>Mettre en correspondance un espace de n dimensions vers un espace de moindre dimensions par des méthodes graphique&#x2026;. et des méthodes statistiques</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline62" class="outline-3">
+<h3 id="orgheadline62"><span class="section-number-3">6.2</span> Principes de conception</h3>
+<div class="outline-text-3" id="text-6-2">
+<ol class="org-ol">
+<li>Choisir des unités qui conservent du sens à travers les comparaisons</li>
+<li>Chosir des unités qui ont du sens pour le lecteur</li>
+<li>Choisir des intervalles pertinentes</li>
+<li>Evaluer les effets du choix des intervalles</li>
+<li>Vérifier l'intégrité graphique (Tufte) : Est-ce que l’importance visuelle correspond à la quantité représentée?</li>
+<li>Minimiser le "chart junk" (Tufte) : Eviter les éléments qui n’apportent pas d’information et risquent de bruiter le message</li>
+<li>Optimiser le "data ink ratio" (Tufte) Quel pourcentage des pixels correspond à une donnée ?</li>
+<li>Utiliser les "small multiple" (Tufte) : suites de graph en lien</li>
+<li>Montrer les co-variation (Tufte)</li>
+<li>Montrer le contexte</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline63" class="outline-3">
+<h3 id="orgheadline63"><span class="section-number-3">6.3</span> Distoritions géométriques</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+Lie factor
+</p>
+<ol class="org-ol">
+<li>Forcées : sphère, pyramide sur un plan, montagne.</li>
+<li>Nécessaire : variations de densité, e.g carte de métro, ajout de bruit pour rendre visible des points</li>
+<li>Pour révéler l'information</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline64" class="outline-3">
+<h3 id="orgheadline64"><span class="section-number-3">6.4</span> Erreurs fréquentes</h3>
+<div class="outline-text-3" id="text-6-4">
+<ol class="org-ol">
+<li>Les couleurs qui ne fournissent pas d'information</li>
+<li>L'empilement nécessite de calculer mentalement les comparaisons</li>
+<li>Les valeurs extrêmes écrasent l'information</li>
+<li>Le système génère automatiquement une échelle inappropriée</li>
+<li>Ordre des données non justifié</li>
+<li>Ordre des données innaproprié (mercredi, mardi, jeudi)</li>
+<li>Les points connectés par des traits ne sont pas réellement des données liées les unes aux autres?</li>
+<li>Sensibilité de la moyenne aux valeurs extrêmes</li>
+<li>Sensibilité des courbes de tendance</li>
+<li>Intepréter une corrélation comme un lien de causalité</li>
+<li>Les acronymes rares pour l’utilisateur augmentent sa charge cognitive</li>
+<li>Le ‘split attention effect’ augmente la charge cognitive</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline66" class="outline-2">
+<h2 id="orgheadline66"><span class="section-number-2">7</span> Edge detection&#x2026;.</h2>
+</div>
+<div id="outline-container-orgheadline71" class="outline-2">
+<h2 id="orgheadline71"><span class="section-number-2">8</span> Usability</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-orgheadline67" class="outline-3">
+<h3 id="orgheadline67"><span class="section-number-3">8.1</span> Les 8 « golden rules » de Ben Schneiderman</h3>
+<div class="outline-text-3" id="text-8-1">
+<ol class="org-ol">
+<li>Strive for consistency : Utiliser les mêmes interactions et termes dans les mêmes situations.</li>
+<li>Enable frequent users to use shortcuts</li>
+<li>Offer informative feedback. (erreur, state, micro-feedback.)</li>
+<li>Design dialog to yield closure (étapes)</li>
+<li>Offer simple error handling.</li>
+<li>Permit easy reversal of actions</li>
+<li>Support internal locus of control.</li>
+<li>Reduce short-term memory load.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline68" class="outline-3">
+<h3 id="orgheadline68"><span class="section-number-3">8.2</span> Norman</h3>
+<div class="outline-text-3" id="text-8-2">
+<ol class="org-ol">
+<li>Affordance: la forme de l’objet nous indique comment l’utiliser</li>
+<li>Mapping: Le lien entre l’action et son effet sont évidents</li>
+<li>Constraints: Par exemple, une grille de dessin avec l’option « snap to grid »</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline69" class="outline-3">
+<h3 id="orgheadline69"><span class="section-number-3">8.3</span> Protoypage and user testing</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>Paper</li>
+<li>Mockup</li>
+<li>Wizard of Oz = humain qui fait comme s'il était la machine</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline70" class="outline-3">
+<h3 id="orgheadline70"><span class="section-number-3">8.4</span> Usability testing</h3>
+<div class="outline-text-3" id="text-8-4">
+<ol class="org-ol">
+<li>Learnability: Commbien de temps un novice a-t-il besoin pour manipuler le logiciel (NO USER GUIDE)</li>
+<li>Efficiency: Combien de temps est nécessaire pour faire la tâche qu’il veut faire ?</li>
+<li>Memorability: Si ils ne l’utilisent pas pendant un certain temps, est-ce que c’est difficile d’y revenir?</li>
+<li>Errors: Combien d’erreurs? Prêtent-elles à conséquence ?</li>
+<li>Satisfaction: Est-ce agréable d’utiliser l’application?</li>
+</ol>
+
+<p>
+Usability Testing
+</p>
+<ol class="org-ol">
+<li>Apprendre l’application</li>
+<li>Préparer une liste de tâches</li>
+<li>Recruter 8 utilisateurs (échantillon stratifié)</li>
+<li>Leur demander de faire la tâche en pensant à voix haute, prendre note vorie enregistrer</li>
+<li>(Leur demander ce qu’ils pensent)</li>
+<li>Analyser les résultats</li>
+<li>Convaincre les concepteurs</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline81" class="outline-2">
+<h2 id="orgheadline81"><span class="section-number-2">9</span> Etudes utilisateurs</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Comment savoir si
+une interface de type X
+est plus efficace que
+une interface de type Y ?
+</p>
+</div>
+
+<div id="outline-container-orgheadline72" class="outline-3">
+<h3 id="orgheadline72"><span class="section-number-3">9.1</span> Concevoir une expérience:</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Mesurer l’effet, c-à-d quantifier
+les variations d’une variable dépendante (résultat dépendant du choix)
+si on modifie une variable indépendante (choix de l'expérimentateur)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline75" class="outline-3">
+<h3 id="orgheadline75"><span class="section-number-3">9.2</span> Plan expérimental</h3>
+<div class="outline-text-3" id="text-9-2">
+</div><div id="outline-container-orgheadline73" class="outline-4">
+<h4 id="orgheadline73"><span class="section-number-4">9.2.1</span> Between subject</h4>
+<div class="outline-text-4" id="text-9-2-1">
+<p>
+Pas les mêmes personnes pour les différentes conditions
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline74" class="outline-4">
+<h4 id="orgheadline74"><span class="section-number-4">9.2.2</span> Within subjects</h4>
+<div class="outline-text-4" id="text-9-2-2">
+<p>
+Tout le monde passe par toutes les conditions.
+</p>
+<ul class="org-ul">
+<li>On a besoin de deux fois moins de sujets</li>
+<li>On est sûr que les sujets soient identiques dans les 2 conditions</li>
+<li>Mais les effets d’ordre sont souvent assez compliqués à interpréter</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline80" class="outline-3">
+<h3 id="orgheadline80"><span class="section-number-3">9.3</span> biais expérimentaux:</h3>
+<div class="outline-text-3" id="text-9-3">
+<ol class="org-ol">
+<li>Est-ce que les sujets soumis aux différentes conditions étaient vraiment équivalents au départ ?</li>
+<li>Est-ce que les sujets étaient informés du but de l’expérience ?</li>
+<li>Est-ce que l’expérimentateur était vraiment neutre ?</li>
+<li>Est-ce qu’un élément non-controllé peu expliquer les variations de la variable dépendante?</li>
+</ol>
+</div>
+<div id="outline-container-orgheadline76" class="outline-4">
+<h4 id="orgheadline76"><span class="section-number-4">9.3.1</span> L’effet Hawthorne</h4>
+<div class="outline-text-4" id="text-9-3-1">
+<p>
+Changer X, Y ou Z = Gain de productivité
+Le simple fait de participer à une expérience a une
+conséquence importante en termes de motivation
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline77" class="outline-4">
+<h4 id="orgheadline77"><span class="section-number-4">9.3.2</span> L’effet Pygmalion</h4>
+<div class="outline-text-4" id="text-9-3-2">
+<p>
+La performance des sujets est fonction des
+attentes de l’exprimentateur
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline78" class="outline-4">
+<h4 id="orgheadline78"><span class="section-number-4">9.3.3</span> Attention aux corrélations</h4>
+<div class="outline-text-4" id="text-9-3-3">
+<p>
+Corrélation ne signifie pas causalit é
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline79" class="outline-4">
+<h4 id="orgheadline79"><span class="section-number-4">9.3.4</span> Attention aux moyennes</h4>
+<div class="outline-text-4" id="text-9-3-4">
+<p>
+Certaines ne correspondent à aucune réalité
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline82" class="outline-2">
+<h2 id="orgheadline82"><span class="section-number-2">10</span> Eye tracking</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+En gros, on est capable de détecter quel charactère est lu.
+</p>
+
+<p>
+Fixations : 120-1000ms, en général 200-600 = +- 3 fois par seconde
+</p>
+
+<p>
+Saccades : saut rapides de l'oeil entre 40 et 120 ms, nous sommes aveugles pendant ce temps
+</p>
+
+<p>
+Applications
+</p>
+<ol class="org-ol">
+<li>Recherche: perception, cognition, education,&#x2026;</li>
+<li>Marketing : quels éléments visuels accrochent</li>
+<li>Sécurité : détecter les pertes d’attention</li>
+<li>Education: détecter le niveau d’expertise</li>
+<li>Groupware: détecter la qualité de l’interaction
+<ul class="org-ul">
+<li>Low gaze reccurence : assymetric speech, little backchannelling, frequent scrolling</li>
+<li>High gaze reccurence : equal participation, frequent backchannelling, good flow</li>
+</ul></li>
+<li>Groupware: montrer le regard du partenaire</li>
+<li>Contrôler une interface avec l’oeil</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline83" class="outline-2">
+<h2 id="orgheadline83"><span class="section-number-2">11</span> Homography</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2016-07-01 Fri 19:05</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
