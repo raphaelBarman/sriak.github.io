@@ -1,0 +1,4173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-01-21 Sat 22:34 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="theme.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline4">1. Introduction</a>
+<ul>
+<li><a href="#orgheadline1">1.1. Buts</a></li>
+<li><a href="#orgheadline2">1.2. Remarques</a></li>
+<li><a href="#orgheadline3">1.3. Gestion de la sécurité</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline61">2. Les menaces</a>
+<ul>
+<li><a href="#orgheadline14">2.1. Messageries</a></li>
+<li><a href="#orgheadline29">2.2. Codes malveillants (virus)</a></li>
+<li><a href="#orgheadline44">2.3. Attaques réseau</a></li>
+<li><a href="#orgheadline51">2.4. Applications</a></li>
+<li><a href="#orgheadline60">2.5. Vulnerabilités Webs</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline69">3. Principes fondamentaux</a>
+<ul>
+<li><a href="#orgheadline62">3.1. Moindre privilège</a></li>
+<li><a href="#orgheadline63">3.2. Défense en profondeur</a></li>
+<li><a href="#orgheadline64">3.3. Simplicité</a></li>
+<li><a href="#orgheadline65">3.4. Participation des utilisateurs</a></li>
+<li><a href="#orgheadline66">3.5. Goulot d'étranglement</a></li>
+<li><a href="#orgheadline67">3.6. Interdiction par défaut</a></li>
+<li><a href="#orgheadline68">3.7. La maillon le plus faible</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline100">4. Pare-feux</a>
+<ul>
+<li><a href="#orgheadline70">4.1. Filtrage</a></li>
+<li><a href="#orgheadline75">4.2. Types de pare-feux</a></li>
+<li><a href="#orgheadline82">4.3. Translation d'adresses (NAT)</a></li>
+<li><a href="#orgheadline83">4.4. Fonctionnalités supplémentaires</a></li>
+<li><a href="#orgheadline84">4.5. Protection contre le syn-flooding</a></li>
+<li><a href="#orgheadline89">4.6. Architecture de pare-feux</a></li>
+<li><a href="#orgheadline93">4.7. Règles de filtrage</a></li>
+<li><a href="#orgheadline99">4.8. Détection d'intrusion (IDS)</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline120">5. Proxys</a>
+<ul>
+<li><a href="#orgheadline105">5.1. Proxy HTTP</a></li>
+<li><a href="#orgheadline109">5.2. Proxy FTP</a></li>
+<li><a href="#orgheadline110">5.3. Proxy SMTP</a></li>
+<li><a href="#orgheadline111">5.4. Proxy DNS</a></li>
+<li><a href="#orgheadline113">5.5. Proxy Socks</a></li>
+<li><a href="#orgheadline116">5.6. Proxy HTTPS</a></li>
+<li><a href="#orgheadline119">5.7. Proxy inverse</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline130">6. Antivirus</a>
+<ul>
+<li><a href="#orgheadline121">6.1. Détection de virus</a></li>
+<li><a href="#orgheadline129">6.2. Protection complète anti-virus</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline163">7. Cryptographie</a>
+<ul>
+<li><a href="#orgheadline131">7.1. Chiffrement symétrique</a></li>
+<li><a href="#orgheadline133">7.2. Fonctions de hachage</a></li>
+<li><a href="#orgheadline135">7.3. Chiffrement asymétrique</a></li>
+<li><a href="#orgheadline136">7.4. Echange de clef</a></li>
+<li><a href="#orgheadline138">7.5. Echange Diffie-Hellman</a></li>
+<li><a href="#orgheadline141">7.6. Chiffrement hybride</a></li>
+<li><a href="#orgheadline148">7.7. Certificats</a></li>
+<li><a href="#orgheadline159">7.8. PGP</a></li>
+<li><a href="#orgheadline162">7.9. S/Mime: Secure Mime</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline179">8. Mots de passe</a>
+<ul>
+<li><a href="#orgheadline164">8.1. Généralité</a></li>
+<li><a href="#orgheadline165">8.2. Nom d'utilisateur et mot de passe</a></li>
+<li><a href="#orgheadline166">8.3. Modèle classique et stockage des mots de passes</a></li>
+<li><a href="#orgheadline171">8.4. Authentification Unix</a></li>
+<li><a href="#orgheadline178">8.5. Authentification Windows</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline191">9. Cassage de mots de passe</a>
+<ul>
+<li><a href="#orgheadline180">9.1. Démarche de l'attaquant</a></li>
+<li><a href="#orgheadline181">9.2. Cassage à l'aide d'un dictionnaire</a></li>
+<li><a href="#orgheadline182">9.3. Cassage à l'aide d'heuristiques</a></li>
+<li><a href="#orgheadline183">9.4. Recherche exhaustive</a></li>
+<li><a href="#orgheadline188">9.5. Compromis temps-mémoire</a></li>
+<li><a href="#orgheadline189">9.6. Importance du sel</a></li>
+<li><a href="#orgheadline190">9.7. Bon choix de mot de passe</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline199">10. Authentification forte</a>
+<ul>
+<li><a href="#orgheadline194">10.1. Authentification par token</a></li>
+<li><a href="#orgheadline198">10.2. Biométrie</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline214">11. Réseaux virtuels privés (VPN) et IPSec</a>
+<ul>
+<li><a href="#orgheadline200">11.1. IPSec</a></li>
+<li><a href="#orgheadline201">11.2. Principes</a></li>
+<li><a href="#orgheadline202">11.3. Authentication Header (AH)</a></li>
+<li><a href="#orgheadline203">11.4. Encapsulated security payload (ESP)</a></li>
+<li><a href="#orgheadline204">11.5. Les SA (Security Association)</a></li>
+<li><a href="#orgheadline205">11.6. Mode transport et tunnel</a></li>
+<li><a href="#orgheadline206">11.7. IPSec et NAT</a></li>
+<li><a href="#orgheadline209">11.8. Internet Key Exchange (IKE)</a></li>
+<li><a href="#orgheadline210">11.9. IPSec notes</a></li>
+<li><a href="#orgheadline213">11.10. Alternatives</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline228">12. Transport Layer Security (TLS)</a>
+<ul>
+<li><a href="#orgheadline215">12.1. TLS record layer</a></li>
+<li><a href="#orgheadline218">12.2. Authentification</a></li>
+<li><a href="#orgheadline219">12.3. TLS Handshake protocol</a></li>
+<li><a href="#orgheadline220">12.4. Echange de clé</a></li>
+<li><a href="#orgheadline221">12.5. TLS: autres sous protocoles</a></li>
+<li><a href="#orgheadline222">12.6. Client hello</a></li>
+<li><a href="#orgheadline223">12.7. Mémorisation des sessions</a></li>
+<li><a href="#orgheadline224">12.8. Application de TLS</a></li>
+<li><a href="#orgheadline227">12.9. Exemples</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline229">13. READ PADDING ORACLE ATTACK</a></li>
+<li><a href="#orgheadline233">14. Secure Shell (SSH)</a>
+<ul>
+<li><a href="#orgheadline230">14.1. Etablissement de la connexion</a></li>
+<li><a href="#orgheadline231">14.2. Port forwarding avec SSH</a></li>
+<li><a href="#orgheadline232">14.3. Transfert de fichiers avec SSH</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline242">15. WiFi WEP/WPA</a>
+<ul>
+<li><a href="#orgheadline234">15.1. WPA/ WPA2</a></li>
+<li><a href="#orgheadline235">15.2. Faiblesses de WPA</a></li>
+<li><a href="#orgheadline238">15.3. Mode personnel et entreprise</a></li>
+<li><a href="#orgheadline239">15.4. Dérivation des clés de sessions</a></li>
+<li><a href="#orgheadline241">15.5. Attaques par dictionnaire</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline250">16. Kerberos</a>
+<ul>
+<li><a href="#orgheadline243">16.1. Tickets</a></li>
+<li><a href="#orgheadline244">16.2. Fonctionnement</a></li>
+<li><a href="#orgheadline245">16.3. Ticket, Authentificateur</a></li>
+<li><a href="#orgheadline246">16.4. Demande d'un ticket de service</a></li>
+<li><a href="#orgheadline247">16.5. Le ticket de service</a></li>
+<li><a href="#orgheadline248">16.6. Résumé</a></li>
+<li><a href="#orgheadline249">16.7. DIscussion</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline276">17. Gestion de la sécurité</a>
+<ul>
+<li><a href="#orgheadline251">17.1. Appréciation des risques</a></li>
+<li><a href="#orgheadline252">17.2. Politique de sécurité</a></li>
+<li><a href="#orgheadline253">17.3. Mesures de sécurité</a></li>
+<li><a href="#orgheadline254">17.4. Validation</a></li>
+<li><a href="#orgheadline258">17.5. Documents clés</a></li>
+<li><a href="#orgheadline260">17.6. Organigramme</a></li>
+<li><a href="#orgheadline275">17.7. Normes et standards</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Buts</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Garantir :
+</p>
+<ul class="org-ul">
+<li>la confidentialité</li>
+<li>l'intégrité</li>
+<li>la disponibilité des données</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Remarques</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Attaques viennent aussi bien de l'intérieur que de l'extérieur</li>
+<li>Attaques automatiques &rarr; cibles arbitraires: tous visés</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">1.3</span> Gestion de la sécurité</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>Ce ne sont pas les serruriers qui font de la sécurité, mais les architectes</li>
+<li>Approche systématique :
+<ul class="org-ul">
+<li>Analyse de la situation</li>
+<li>Analyse de risques
+<ul class="org-ul">
+<li>Valeurs</li>
+<li>Menaces</li>
+<li>Risques</li>
+</ul></li>
+<li>Politique de sécurité</li>
+<li>Mesures de sécurité</li>
+<li>Implémentation</li>
+<li>Validation</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline61" class="outline-2">
+<h2 id="orgheadline61"><span class="section-number-2">2</span> Les menaces</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">2.1</span> Messageries</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">2.1.1</span> Emails forgés</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<ul class="org-ul">
+<li>Protocole utilisé = SMTP</li>
+<li>N'utilise aucune authentification &rarr; très facile de forger des messages</li>
+<li>Emails forgés utilisé pour le spam, phishing et la propagation de rumeur</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline5" class="outline-5">
+<h5 id="orgheadline5"><span class="section-number-5">2.1.1.1</span> SMTP</h5>
+<div class="outline-text-5" id="text-2-1-1-1">
+<ul class="org-ul">
+<li>Connection TCP sur le port 25</li>
+<li>Ne connaît que des commandes simples :
+<ul class="org-ul">
+<li>HELO (annonce d'un serveur)</li>
+<li>Mail from:&lt;blabla@blabla.com&gt; (définition expéditeur)</li>
+<li>Rcpt To:&lt;blabla@blabla.com586e75&gt; (définition destinataire)</li>
+<li>data (définition du contenu)</li>
+</ul></li>
+<li>Parcours du message:
+<ul class="org-ul">
+<li>Déposé dans le serveur SMTP</li>
+<li>Celui-ci le dépose dans un autre serveur plus proche</li>
+<li>Utilise DNS</li>
+<li>A destination, déposé dans la boîte à lettres du destinataire</li>
+<li>Chaque serveur ajoute un entête au message</li>
+</ul></li>
+<li>Tout serveur SMTP note
+<ul class="org-ul">
+<li>Le commentaire de la commande hello</li>
+<li>l'adresse IP de l'émetteur du message</li>
+<li>L'heure de réception</li>
+<li>&rArr; avec ces infos, souvent possible de retrouver l'auteur</li>
+</ul></li>
+<li>Possible d'obtenir le même résultat en modifiant les infos du programme de messagerie</li>
+<li>Pour être moins traçable, il faut lancer la connection telnet depuis une machine qui ne tient pas de logs</li>
+<li>Il existe des système de messagerie réellement anonyme basés sur d'autres principes (e.g TOR).</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><span class="section-number-4">2.1.2</span> Hameçonnage / phishing</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<ul class="org-ul">
+<li>Falsification d'adresse est utilisée pour le phishing</li>
+<li>On se fait passer pour un expéditeur de confiance pour obtenir des informations</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">2.1.3</span> Spam</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<ul class="org-ul">
+<li>Messages non-sollicités, non-ciblés, à très grand tirage</li>
+<li>Adresse de l'émetteur toujours forgée (représailles)</li>
+<li>D'après Spamhaus:
+<ul class="org-ul">
+<li>90% du mail est du spam</li>
+<li>80% du spam est dû à une centaine de gangs de 1-5 personnes</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline11" class="outline-5">
+<h5 id="orgheadline11"><span class="section-number-5">2.1.3.1</span> Techniques de diffusion</h5>
+<div class="outline-text-5" id="text-2-1-3-1">
+</div><ol class="org-ol"><li><a id="orgheadline8"></a>Relais ouverts<br  /><div class="outline-text-6" id="text-2-1-3-1-1">
+<ul class="org-ul">
+<li>Dégâts
+<ul class="org-ul">
+<li>Serveur abusés sont surchargés</li>
+<li>Disques se remplissent de logs et de messages (risque de blocage)</li>
+<li>bal de l'admin rempli de messages d'erreurs (adresses invalides)</li>
+<li>ISP menace de couper la ligne</li>
+<li>Inclusion dans les listes noires</li>
+</ul></li>
+<li>Protection
+<ul class="org-ul">
+<li>Pour qu'un serveur smtp ne puisse servir de relais pour des tiers (open relay) il faut configurer deux règles:
+<ol class="org-ol">
+<li>Expéditeur ou destinataire doit être local</li>
+<li>Seules les machines locales ont le droit de spécifier des expéditeurs locaux</li>
+</ol></li>
+<li>La deuxième règle peut empêcher l'envoi de messages pour des utilisateurs en déplacement &rArr; solution = serveur SMTP demande une identification</li>
+</ul></li>
+</ul>
+</div></li>
+<li><a id="orgheadline9"></a>Machines infectées<br  /><div class="outline-text-6" id="text-2-1-3-1-2">
+<ul class="org-ul">
+<li>Les spammers infectent des machines &rArr; les transforment en spam bots</li>
+<li>Le spammer envoie du spam au travers des serveurs de messagerie de la victime</li>
+<li>Les bots sont groupés en botnet</li>
+<li>Typiquement les bots communiquent avec leur maître en se connectant à un chat</li>
+</ul>
+</div></li>
+<li><a id="orgheadline10"></a>Abus de messagerie en ligne<br  /><div class="outline-text-6" id="text-2-1-3-1-3">
+<ul class="org-ul">
+<li>Les spammers ouvrent des comptes dans des messageries en ligne gratuites (protection possible, captchas)</li>
+<li>Avec chaque envoie le nombre max de messages autorisés</li>
+</ul>
+</div></li></ol>
+</div>
+<div id="outline-container-orgheadline12" class="outline-5">
+<h5 id="orgheadline12"><span class="section-number-5">2.1.3.2</span> Protections</h5>
+<div class="outline-text-5" id="text-2-1-3-2">
+<ul class="org-ul">
+<li>Filtres utilisés pour séprarer les spams de e-mail légitimes
+<ul class="org-ul">
+<li>Basés par exemple sur
+<ul class="org-ul">
+<li>Contenu (mots clés)</li>
+<li>Formats</li>
+<li>Liste noire de messages</li>
+</ul></li>
+<li>Les filtres ne seront jamais parfait &rarr; toujours faux-positifs/faux-négatifs</li>
+</ul></li>
+<li>Liste noires des serveurs
+<ul class="org-ul">
+<li>Ex. SpamHaus, bdd d'adresses</li>
+<li>Utilisé par les serveurs de messageries pour bloquer les spams entrants</li>
+<li>La liste peut être consultée par le DNS</li>
+</ul></li>
+<li>Idées de solution :
+<ul class="org-ul">
+<li>Coût à chaque messageries</li>
+<li>Preuves que les messages sont émis par des serveurs autorisés
+<ul class="org-ul">
+<li>SPF, serveur enregistré dans le DNS</li>
+<li>DKIM, clé pub du serveur dans DNS + serveurs signent</li>
+</ul></li>
+<li>Problèmes :
+<ul class="org-ul">
+<li>Solution efficace que si tout le monde y adhère (refus des messages de non-adhérents)</li>
+<li>Spams utilisent déjà SPF ou DKIM</li>
+</ul></li>
+</ul></li>
+<li>Solution non technique : peine juridiques lourdes (amende, prison)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29"><span class="section-number-3">2.2</span> Codes malveillants (virus)</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">2.2.1</span> Revenus des codes malveillants</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<ul class="org-ul">
+<li>Transfert d'argent (e-banking)</li>
+<li>Extorsion (chiffrement de fichiers)</li>
+<li>Exploitation de la messagerie pour phishing ou spam</li>
+<li>Mise en réseau (botnet) puis location</li>
+<li>Publicité</li>
+<li>Espionnage</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18"><span class="section-number-4">2.2.2</span> Evolution</h4>
+<div class="outline-text-4" id="text-2-2-2">
+</div><div id="outline-container-orgheadline16" class="outline-5">
+<h5 id="orgheadline16"><span class="section-number-5">2.2.2.1</span> Epoque classique</h5>
+<div class="outline-text-5" id="text-2-2-2-1">
+<ul class="org-ul">
+<li>Propagation passive, échange de disquette</li>
+<li>Propagation lente, besoin d'efficacité</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-5">
+<h5 id="orgheadline17"><span class="section-number-5">2.2.2.2</span> Epoque moderne</h5>
+<div class="outline-text-5" id="text-2-2-2-2">
+<ul class="org-ul">
+<li>Propagation active via internet</li>
+<li>Très rapide (infecter la planète en quelques heures)</li>
+<li>Mode de propagation:
+<ul class="org-ul">
+<li>Email (spam) e.g. attachement</li>
+<li>Téléchargement de site web</li>
+<li>Copie sur des partages réseaux</li>
+<li>Copie sur clés USB</li>
+<li>Faille du navigateur/flash player/ outil de messagerie pour s'installer sans aucune intervention de l'utilisateur &rArr; drive-by download</li>
+</ul></li>
+<li>Souvent simple et facile à détecter</li>
+<li>Efficaces, car se propagent plus vite que les anti-virus ne peuvent être mis à jour</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">2.2.3</span> Virus</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+Fragment qui ne se propage pas par ses propres moyens
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">2.2.4</span> Vers</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+Programme qui se propage de manière autonome
+</p>
+
+<p>
+Exemple Stuxnet, ver pour infecter centrales nucléaire iranaise &rarr; détruit.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">2.2.5</span> Cheval de troie</h4>
+<div class="outline-text-4" id="text-2-2-5">
+<p>
+Programme utile qui contient un programme malveillant
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">2.2.6</span> Backdoor</h4>
+<div class="outline-text-4" id="text-2-2-6">
+<ul class="org-ul">
+<li>Accès caché à un ordinateur, à l'insu de son utilisateur</li>
+<li>Souvent installée par des chevaux de Troie</li>
+<li>Propriétés:
+<ul class="org-ul">
+<li>Plus il est petit, plus il est facile à installer</li>
+<li>Téléchargement d'autres programmes, espionnage réseau, écran, clavier</li>
+<li>Communique soit par TCP/UDP ou encore mieux via un chat/P2P/twitter</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="section-number-4">2.2.7</span> Spyware</h4>
+<div class="outline-text-4" id="text-2-2-7">
+<p>
+Logiciel qui transmet des informations privées
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">2.2.8</span> Adware</h4>
+<div class="outline-text-4" id="text-2-2-8">
+<p>
+Logiciel qui affiche de la publicité
+</p>
+
+<p>
+Superfish
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">2.2.9</span> Rootkit</h4>
+<div class="outline-text-4" id="text-2-2-9">
+<p>
+Logiciel qui masque la présence d'intrus
+</p>
+
+<p>
+Sony, fichier sys deviennent invisibles&#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26"><span class="section-number-4">2.2.10</span> Rançongiciels et Cryptovirus</h4>
+<div class="outline-text-4" id="text-2-2-10">
+<ul class="org-ul">
+<li>Chiffre les fichier de la victime</li>
+<li>Pour obtenir une clé de déchiffrement la victime doit payer un rançon</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">2.2.11</span> Canulars</h4>
+<div class="outline-text-4" id="text-2-2-11">
+<p>
+Infectent le cerveau de l'utilisateur pour se propager :
+</p>
+<ul class="org-ul">
+<li>Décrivent des menaces importante (suppression de compte Twitter)</li>
+<li>Ne font par référence à des sources fiables</li>
+<li>Demande de les envoyer à tous les contacts de la victime</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">2.2.12</span> Polymorphisme</h4>
+<div class="outline-text-4" id="text-2-2-12">
+<p>
+Le virus se modifie à chaque infection de manière à être méconnaissable
+</p>
+<ul class="org-ul">
+<li>Une partie du virus peut être chiffré avec une clé différente à chaque fois</li>
+<li>Le reste doit être modifié tout en gardant la même fonctionnalité (insertion d'opérations nulles, remplacement équivalents, différents algo)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline44" class="outline-3">
+<h3 id="orgheadline44"><span class="section-number-3">2.3</span> Attaques réseau</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-orgheadline30" class="outline-4">
+<h4 id="orgheadline30"><span class="section-number-4">2.3.1</span> Ecoute réseau (sniffing)</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<ul class="org-ul">
+<li>Certains protocoles utilisent une authentification en clair (telnet, rsh, ftp, pop, imap, http)</li>
+<li>En visualisant le trafic sur un segment réseau on peut glaner des noms d'utilisateurs et des mots de passes</li>
+<li>Un mot de passe peut donner accès à une machine distante de laquelle on peut sniffer de nouveau mots de passe</li>
+<li>Les réseaux wifi donnent accès à tout le monde au média de transmission, si pas chiffré, facile de sniffer</li>
+<li>Les réseaux cablés limitent les possibilité de sniffer, mais les switchs peuvent être manipuler (cf. ARP poisonning)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline31" class="outline-4">
+<h4 id="orgheadline31"><span class="section-number-4">2.3.2</span> Session Hijacking</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<ul class="org-ul">
+<li>Au lieu de voler un mot de passe, le pirate peut attendre qu'un utilisateur s'authentifie puis lui voler sas session</li>
+<li>Exemple TCP :
+<ul class="org-ul">
+<li>Si un pirate peut espionner une connexion TCP, il peut insérer un paquet TCP</li>
+<li>Il doit forger les adresses sources et destination, les ports et les numéros de séquences</li>
+<li>Si le trafic légitime n'est pas bloqué, le paquet inséré va désynchroniser la connexion
+<ul class="org-ul">
+<li>La source, qui n'a pas émis le paquet, n'est pas d'accord avec le numéro de séquence acquitté et émet un acquittement</li>
+<li>La destination, qui a vu le paquet inséré, n'est pas d'accord avec le numéro de séquence et envoie un acquittement</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline35" class="outline-4">
+<h4 id="orgheadline35"><span class="section-number-4">2.3.3</span> Usurpation d'identité (spoofing)</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+En modifiant la configuration de son ordinateur ou en créant des paquets de toute pièces il est possible de forger l'adresse source (MAC ou IP) pour se faire passer pour qqn d'autre
+</p>
+</div>
+<div id="outline-container-orgheadline32" class="outline-5">
+<h5 id="orgheadline32"><span class="section-number-5">2.3.3.1</span> Usurpation de MAC</h5>
+<div class="outline-text-5" id="text-2-3-3-1">
+<ul class="org-ul">
+<li>On peut facilement changer l'adresse MAC de sa carte réseau câblée ou WiFi</li>
+<li>Certains routeurs WiFi permettent de filtrer les clients d'après leur adresses MAC</li>
+<li>Certaines entreprises n'acceptent que des machines qui ont des adresses MAC répertoriée</li>
+<li>Facile de changer pour que son adresse MAC en fasse partie&#x2026;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline33" class="outline-5">
+<h5 id="orgheadline33"><span class="section-number-5">2.3.3.2</span> Usurpation d'IP</h5>
+<div class="outline-text-5" id="text-2-3-3-2">
+<ul class="org-ul">
+<li>Dans certains cas, IP source est utilisée pour autoriser une communication
+<ul class="org-ul">
+<li>Routeurs et firewall peuvent filtrer paquets en fonction de leurs sources</li>
+<li>Certains programmes peuvent autoriser certaines sources à se connecter sans authentification</li>
+</ul></li>
+<li>Facile de forger la source d'un paquet IP et d'usurper la confiance faite à cette source</li>
+<li>La réponse à un message forgé est envoyée à l'adresse usurpée</li>
+<li>Facile à appliquer sur des protocoles basés sur UDP</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline34" class="outline-5">
+<h5 id="orgheadline34"><span class="section-number-5">2.3.3.3</span> Usurpation IP avec TCP</h5>
+<div class="outline-text-5" id="text-2-3-3-3">
+<ul class="org-ul">
+<li>TCP utilise des numéros de séquences pour suivre les données envoyées et reçues</li>
+<li>Pour éviter de réutiliser les mêmes numéros de séquence, un numéro de séquence initial aléatoire (ISN) est choisi à chaque nouvelle connection</li>
+<li>Rappel TCP:
+<ol class="org-ol">
+<li>A =&gt; B syn ISN.A</li>
+<li>B =&gt; A syn ISN.B ack ISN.A+1</li>
+<li>A =&gt; B data ISN.A+1, ack ISN.B+1</li>
+</ol></li>
+<li>Difficultés
+<ul class="org-ul">
+<li>A envoie ses paquets à B avec une adresse source C &rArr; A doit deviner l'ISN que B va proposer à C</li>
+<li>C Envoie un reset à B (vu qu'il n'avait pas demander d'ouvrir une connection TCP)</li>
+</ul></li>
+<li>Avant on pouvait deviner l'incrément facilement, procédé du pirate :
+<ul class="org-ul">
+<li>Il bloque les connections de C vers B</li>
+<li>Il ouvre quelques connections réelles (e.g. SMTP) pour obtenir un ISN actuel et des échantillons d'incréments</li>
+<li>Il lance sa connexion forgée en utilisant le dernier ISN plus un incrément déduit de ces échantillons</li>
+<li>Il peut lancer une multitude de connexions forgées avec des incréments variés en espérant avoir juste au moins une fois.</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="pics/tcp_spoofing.png" alt="tcp_spoofing.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39"><span class="section-number-4">2.3.4</span> Détournement de connexions</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<ul class="org-ul">
+<li>Plutôt que d'utiliser l'adresse d'une autre machine, on peut convaincre la victime que c'est chez nous qu'elle doit se connecter</li>
+<li>Permet à l'attaquant:
+<ul class="org-ul">
+<li>Se faire passer pour le serveur auquel la victime voulait se connecter</li>
+<li>Se faire passer pour son routeur et récupérer tout le trafic de la victime.</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline36" class="outline-5">
+<h5 id="orgheadline36"><span class="section-number-5">2.3.4.1</span> ARP</h5>
+<div class="outline-text-5" id="text-2-3-4-1">
+<ul class="org-ul">
+<li>ARP: address resolution protocl &rArr; sert à trouver l'adresse couche 2 (ethernet) d'une adresse de couche 3 (IP)</li>
+<li>Très simple et non sécurisé &rArr; client pose question, n'importe qui peut répondre</li>
+<li>Facile de forger des réponses (même non sollicitées) pour rediriger le trafic</li>
+<li>Typiquement on se fait passer pour le routeur par défaut et on peut écouter tout le traffic</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline37" class="outline-5">
+<h5 id="orgheadline37"><span class="section-number-5">2.3.4.2</span> Cache NDP</h5>
+<div class="outline-text-5" id="text-2-3-4-2">
+<ul class="org-ul">
+<li>équivalent de l'ARP pour IPv6</li>
+<li>Peut-être manipulé de la même manière</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline38" class="outline-5">
+<h5 id="orgheadline38"><span class="section-number-5">2.3.4.3</span> Empoisonnement du DNS</h5>
+<div class="outline-text-5" id="text-2-3-4-3">
+<ul class="org-ul">
+<li>Requête de nom de domaine vers IP</li>
+<li>Requête contient un identifiant de 16 bits et provient d'un port aléatoire</li>
+<li>Si on arrive à deviner ou à observer ces deux éléments on peut forger une réponse et rediriger une victime vers une fausse adresse</li>
+<li>Une seule réponse forgée peut suffire à tromper un serveur DNS intermédiaire qui va la garder dans son cache (DNS cache poisonning)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43"><span class="section-number-4">2.3.5</span> Dénis de service</h4>
+<div class="outline-text-4" id="text-2-3-5">
+<ul class="org-ul">
+<li>Denial of Service (DoS)</li>
+<li>Distributed Denial of Service (DDoS)</li>
+<li>les système informatiques sont si complexes qu'il est facile de les gripper</li>
+<li>Un bon DDoS doit rester anonyme
+<ul class="org-ul">
+<li>Passer par plusieurs couches intermédiaire</li>
+<li>A l'aide d'un virus/ver autonome</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline40" class="outline-5">
+<h5 id="orgheadline40"><span class="section-number-5">2.3.5.1</span> Syn flooding</h5>
+<div class="outline-text-5" id="text-2-3-5-1">
+<ul class="org-ul">
+<li>On envoie une grande quantité de paquets syn faisant croire qu'on veut établir des nouvelles connexions</li>
+<li>Quand un serveur reçoit un paquet syn, il alloue de la mémoire et d'autres ressources et enregistre la connexion dans une queue de connexions mi-ouvertes</li>
+<li>Si le serveur ne gère pas bien cette situation, il ne sera plus capable d'accepter de nouvelles connexions</li>
+<li>Le pirate ne désire pas vraiment établir des connexions, peut forger IP source pour rester anonyme</li>
+<li>La plupart des OS sont protégés contre ces attaques: Avant 16 connexion = overflow, maintenant un synflood ne bloque plus, mais consomme des ressources.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline41" class="outline-5">
+<h5 id="orgheadline41"><span class="section-number-5">2.3.5.2</span> Attaques par réflexion</h5>
+<div class="outline-text-5" id="text-2-3-5-2">
+<ul class="org-ul">
+<li>Noyer la cible à l'aide d'amplificateur de trafic</li>
+<li>Cas typique: ICMP echo-request (ping)</li>
+<li>Pirate envoie paquet ping avec l'adresse cible comme source</li>
+<li>Machine "pingée" envoie réponse à la cible</li>
+<li>Si le pirate envoie le paquet à une adresse broadcast, ce sont toutes les machines du réseaux qui vont répondre à la cible</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline42" class="outline-5">
+<h5 id="orgheadline42"><span class="section-number-5">2.3.5.3</span> DDoS</h5>
+<div class="outline-text-5" id="text-2-3-5-3">
+<ul class="org-ul">
+<li>Pour gagner en puissance, pirate compromettent une série de machines en installent des agents (bots)</li>
+<li>Les agents communiquent avec un maître par une ou deux couches intermédiaires</li>
+<li>Le but est typiquement d'extorquer de l'argent de sites qui font du commerce en ligne</li>
+<li>Bande passante ++</li>
+<li>Plus difficile de remonter à l'attaquant</li>
+<li>Attaque vient de plusieurs sources, plus difficile à filtrer</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline51" class="outline-3">
+<h3 id="orgheadline51"><span class="section-number-3">2.4</span> Applications</h3>
+<div class="outline-text-3" id="text-2-4">
+</div><div id="outline-container-orgheadline45" class="outline-4">
+<h4 id="orgheadline45"><span class="section-number-4">2.4.1</span> Interactions peu sûres entre composants</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<ul class="org-ul">
+<li>Exemple: injection de commande systèmes.</li>
+<li>Paramètre hostname utilisé lors de l'utilisation de commande système</li>
+<li>Peut contenir mauvais code: hostname="www.test.com; rm -rf *"</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline46" class="outline-4">
+<h4 id="orgheadline46"><span class="section-number-4">2.4.2</span> Gestion des ressources risquées</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<ul class="org-ul">
+<li>E.g. buffer overflow</li>
+<li>Si un programme ne vérifie pas la quantité de données qu'il reçoit, il risque d'écraser une zone mémoire qui contient des variable, du code ou des adresses de saut</li>
+<li>En connaissant bien l'architecture de la machine on peut fournir du code machine qui sera exécuté.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline47" class="outline-4">
+<h4 id="orgheadline47"><span class="section-number-4">2.4.3</span> La pile</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<ul class="org-ul">
+<li>Sert a stocker des info temporairement</li>
+<li>Retire les info dans l'ordre inverse d'ajout.</li>
+<li>Lors d'un appel à une procédure, adresse de retour déposé dans la pile + args</li>
+<li>Variable local de la procédure aussi sur la pile</li>
+<li>Zone mémoire réservée pour la pile (trame)</li>
+<li>Pointeur de trame indique ou commence la trame active sur la pile</li>
+<li>Lors d'un appel à une procédure, pointeur de la trame aussi déposé sur la trame avant d'être remplacé</li>
+<li>Pile croît de haut en bas</li>
+<li>Bas de la mémoire = réservé pour le programme</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline50" class="outline-4">
+<h4 id="orgheadline50"><span class="section-number-4">2.4.4</span> Débordement de tampon</h4>
+<div class="outline-text-4" id="text-2-4-4">
+<ul class="org-ul">
+<li>On dépasse l'adresse de retour et une partie de la pile</li>
+<li>La pile peut être écrasée avec un fragment de programme</li>
+<li>l'adresse de retour peut pointer sur ce fragment</li>
+<li>à la fin de la procédure:
+<ul class="org-ul">
+<li>La trame est retirée de la pile</li>
+<li>le pointeur de trame précédant est retiré</li>
+<li>l'adresse de retour est retirée</li>
+<li>L'exécution continue à l'adresse de retour</li>
+</ul></li>
+<li>Si adr pointe sur le début du programme, l'exécute.</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline48" class="outline-5">
+<h5 id="orgheadline48"><span class="section-number-5">2.4.4.1</span> Difficultés:</h5>
+<div class="outline-text-5" id="text-2-4-4-1">
+<ul class="org-ul">
+<li>Difficile de deviner l'avancement de la pile et de choisir l'adresse</li>
+<li>La programme n'a pas le droit de contenir le caractère spéciale "\0" qui termine les chaîne de caractères et donc le débordement de mémoire.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline49" class="outline-5">
+<h5 id="orgheadline49"><span class="section-number-5">2.4.4.2</span> Protection:</h5>
+<div class="outline-text-5" id="text-2-4-4-2">
+<ul class="org-ul">
+<li>Canari:
+<ul class="org-ul">
+<li>On écrit une valeur secrète sur la pile juste avant l'adresse de retour</li>
+<li>Avant de sauter à l'adresse de retour, on vérifie que la canari à la même valeur</li>
+</ul></li>
+<li>Address Space Layout Randomization (ASLR)
+<ul class="org-ul">
+<li>On charge le code à une adresse différente à chaque exécution</li>
+<li>Le pirate ne sait pas à quelle adresse se trouve le code qu'il a injecté ou les routines qu'il veut appeler</li>
+</ul></li>
+<li>Mémoire non-exécutable
+<ul class="org-ul">
+<li>On marque les zones de mémoire contenant du code comme non modifiables et les zones modifiables comme non exécutables</li>
+<li>Si le pirate arrive à injecter du code, il ne sera pas exécutable</li>
+<li>Soit on peut écrire, soit on peut exécuter.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline60" class="outline-3">
+<h3 id="orgheadline60"><span class="section-number-3">2.5</span> Vulnerabilités Webs</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Site web contiennent des formulaires pour interagir avec le site</li>
+<li>BDD</li>
+<li>URL peut donner infos</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53"><span class="section-number-4">2.5.1</span> Cross-Site Scripting</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<p>
+Contexte de la page web
+</p>
+<ul class="org-ul">
+<li>Si les paramêtres fournis par l'utilisateur ne sont pas vérifiés &rArr; peuvent contenir script</li>
+<li>Possibilité de charger des scripts distant
+<ul class="org-ul">
+<li>Consiste à injecter du code js dans une page</li>
+<li>Souvent le script se trouve sur au autre site</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline52" class="outline-5">
+<h5 id="orgheadline52"><span class="section-number-5">2.5.1.1</span> Dangers</h5>
+<div class="outline-text-5" id="text-2-5-1-1">
+<ul class="org-ul">
+<li>Redirection de session (par exemple sur une copie du site original)</li>
+<li>Affichage de formulaire pour récupérer des infos utilisateur</li>
+<li>Exécution d'actions (clicks) à la place de l'utilisateur (propagation de vers)</li>
+<li>Vol du cookie de session (session hijacking) &rArr; si le pirate y arrive, peut accéder à la session de l'utilisateur authentifié</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline54" class="outline-4">
+<h4 id="orgheadline54"><span class="section-number-4">2.5.2</span> SQL injection</h4>
+<div class="outline-text-4" id="text-2-5-2">
+<p>
+Quand une requête SQL est crée depuis des données fournies par l'utilisateur, peut introduire des commandes (e.g. list all passwords&#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline55" class="outline-4">
+<h4 id="orgheadline55"><span class="section-number-4">2.5.3</span> Références directe</h4>
+<div class="outline-text-4" id="text-2-5-3">
+<p>
+Exemple: afficher solde d'un compte : <a href="http://www.com/afficher_solde?compte=12901">http://www.com/afficher_solde?compte=12901</a>
+</p>
+<ul class="org-ul">
+<li>Il faut se méfier des paramêtres fournis par l'utilisateur</li>
+<li>Il ne faut pas lui permettre de faire des références directes</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline59" class="outline-4">
+<h4 id="orgheadline59"><span class="section-number-4">2.5.4</span> Code mobile</h4>
+<div class="outline-text-4" id="text-2-5-4">
+</div><div id="outline-container-orgheadline56" class="outline-5">
+<h5 id="orgheadline56"><span class="section-number-5">2.5.4.1</span> Applets Java</h5>
+<div class="outline-text-5" id="text-2-5-4-1">
+<ul class="org-ul">
+<li>Applets java = petit programme téléchargés et éxécuté par les navigateurs</li>
+<li>applets précompilées en bytecode (universel)</li>
+<li>Interprété avec la JVM</li>
+<li>"Bac à sable" JVM limite strictement les op que l'applet poeut éxécuter</li>
+<li>Limitations sécurité paramétrables</li>
+<li>Applet peut demander à sortir du bac à sable, utilisateur doit être d'accord</li>
+<li>Problème : failles régulièrement découverte dans la JVM &rArr; permet à l'applet de sortir du bac à sable, ou bytecode malformé pour faire un buffer overflow</li>
+<li>Utilisateur imprudent peuvent baisser le niveau de sécurité par défaut.</li>
+<li>Protection:
+<ul class="org-ul">
+<li>scanner qui savent reconnaître signatures d'applet malicieuses</li>
+<li>Proxys peuvent bloquer applet par signée par tiers digne de confiance</li>
+<li>Navigateur de + en + prudents et demande à l'utilisateur de confirmer exécution.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline57" class="outline-5">
+<h5 id="orgheadline57"><span class="section-number-5">2.5.4.2</span> ActiveX</h5>
+<div class="outline-text-5" id="text-2-5-4-2">
+<ul class="org-ul">
+<li>Code mobile compilé, développé par MS pour windows</li>
+<li>Modèle de sécurité
+<ul class="org-ul">
+<li>Les objets ActiveX tourne directement sur la machine (pas de bac à sable)</li>
+<li>Objets peuvent être signés pour certifier qu'ils peuvent être utilisés sans risque</li>
+</ul></li>
+<li>Risques
+<ul class="org-ul">
+<li>éditeur peut se tromper et signer objet ActiveX dangereux</li>
+<li>Utilisateurs imprudents peuvent désactiver la confirmation requise pour des objets non-signés</li>
+</ul></li>
+<li>Protection
+<ul class="org-ul">
+<li>Scanner pour vérifier signatures &rArr; éliminent non-signés + ceux connus comme vulnérable</li>
+<li>MS met liste noire à jour. Pas exécuté sur app windows &rArr; dans le registre</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline58" class="outline-5">
+<h5 id="orgheadline58"><span class="section-number-5">2.5.4.3</span> Autres</h5>
+<div class="outline-text-5" id="text-2-5-4-3">
+<ul class="org-ul">
+<li>D'autres applications veulent s'exécuter dans le navigateur (flash, pdf,
+silverlight), interprétée par plugin adéquat &rArr; problème si faille
+dedans&#x2026; suffit de visiter un site pour qu'un attaquant puisse exécuter du
+code&#x2026;</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline69" class="outline-2">
+<h2 id="orgheadline69"><span class="section-number-2">3</span> Principes fondamentaux</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgheadline62" class="outline-3">
+<h3 id="orgheadline62"><span class="section-number-3">3.1</span> Moindre privilège</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Donner le minimum de privilège nécessaire à chaque élément d'un système
+(utilisateur/logiciel) pour qu'il puisse accomplir sa tâche.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline63" class="outline-3">
+<h3 id="orgheadline63"><span class="section-number-3">3.2</span> Défense en profondeur</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Plusieurs mesures de sécurité = mieux qu'une</li>
+<li>Eviter que la sécurité ne dépende que d'une mesure</li>
+</ul>
+<p>
+E.G. antivirus sur messagerie + poste de travail, protège (configuration,patchs)
+machines protégées derrière un firewall
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline64" class="outline-3">
+<h3 id="orgheadline64"><span class="section-number-3">3.3</span> Simplicité</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Plupart des problème viennent d'une erreur humaine</li>
+<li>Dans un système simple : risque d'erreur plus petit, plus facile de tester bon
+fonctionnement</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline65" class="outline-3">
+<h3 id="orgheadline65"><span class="section-number-3">3.4</span> Participation des utilisateurs</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Système de protection efficace que si les utilisateurs le supportent</li>
+<li>But du firewall = autoriser tout ce qui est utile en évitant les dangers</li>
+<li>Système trop restrictif pousse les utilisateurs à devenir créatifs&#x2026;</li>
+<li>Bien connaître les besoins des utilisateurs + bien communiquer les raisons des
+restrictions</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline66" class="outline-3">
+<h3 id="orgheadline66"><span class="section-number-3">3.5</span> Goulot d'étranglement</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+Plus facile de contrôler la sécurité si toutes les données passent par un même
+point:
+</p>
+<ul class="org-ul">
+<li>Interdiction d'utiliser des modems/hotspots dans le réseau de l'entreprise</li>
+<li>Interconnexions avec d'autres entreprises (ex. maintenance) doivent aussi
+passer par le firewall</li>
+<li>Attion: firewall devient élément critique, mettre en place de la redondance</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline67" class="outline-3">
+<h3 id="orgheadline67"><span class="section-number-3">3.6</span> Interdiction par défaut</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+Mieux d'interdire tout ce qui n'est pas explicitement permis que de permettre
+tout ce qui n'est pas explicitement permis (principe de la whitelist)
+</p>
+<ul class="org-ul">
+<li>On ne connaît jamais à l'avance toutes les menaces que l'on va subir</li>
+<li>Si on fait un oubli, il veut mieux interdire qqch que d'autoriser une attaques</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline68" class="outline-3">
+<h3 id="orgheadline68"><span class="section-number-3">3.7</span> La maillon le plus faible</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+Firewall aussi sûr que son maillon le plus faible:
+</p>
+<ul class="org-ul">
+<li>Penser à sécuriser tous les aspects du réseau</li>
+<li>Ne pas investir beaucoup sur un aspect tant que les autres ne sont pas bien
+couverts</li>
+<li>Ex. Investir même effor sur le filtrage de virus dans le traffic http que dans
+le trafic smtp</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline100" class="outline-2">
+<h2 id="orgheadline100"><span class="section-number-2">4</span> Pare-feux</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Pare-feux empêche la propagation d'un incendie</li>
+<li>Pare-feux dovient empêcher la propagation d'une attaque tout en laissant
+passer le traffic utile</li>
+<li>Pare-feux peut être constitué d'un ou plusieurs éléments</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline70" class="outline-3">
+<h3 id="orgheadline70"><span class="section-number-3">4.1</span> Filtrage</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>Fonction principale du pare-feux</li>
+<li>Sert à limiter le trafic au services utiles</li>
+<li>IL peut se faire sur de multiples critères
+<ul class="org-ul">
+<li>Adresses IP <i>src</i> et <i>dst</i></li>
+<li>Protocoles (TCP,UDP,ICMP,&#x2026;) et ports</li>
+</ul></li>
+<li>Le filtrage des adresses sources permet d'éviter le IP spoofing</li>
+<li>Le filtrage des flags TCP permet de définir le sens dans lequel les connexions
+peuvent être établies</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline75" class="outline-3">
+<h3 id="orgheadline75"><span class="section-number-3">4.2</span> Types de pare-feux</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Sans état (stateless) &rArr; ne se rapelle pas des paquets qu'il a déjà
+vu</li>
+<li>A état (stateful)
+<ul class="org-ul">
+<li>Garde une trace des paquets qui passent</li>
+<li>Reconstruit l'état de chaque connexion voire des certains protocoles</li>
+</ul></li>
+<li>Logiciel &rArr; ordinateur standards avec logiciel pare-feu</li>
+<li>Matériel &rArr; boîte noire spécialisée (qui contient aussi du logiciel)</li>
+<li>Virtuel &rArr; machine virtuelle, e.g. pour VmWare</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline71" class="outline-4">
+<h4 id="orgheadline71"><span class="section-number-4">4.2.1</span> Par-feux à état: TCP</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<ul class="org-ul">
+<li>Pour chaque connexion il sait à quoi doit ressembler le prochain paquet
+(flags, nums de séquence)</li>
+<li>Il peut éliminer les paquets qui ne correspondent pas
+Il peut remplacer les numéros de séquence (évite la prédiciton des numéros de
+ séquences initiaux)</li>
+<li>Il peut empêcher le syn-flooding</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline72" class="outline-4">
+<h4 id="orgheadline72"><span class="section-number-4">4.2.2</span> Logiciel vs matériel</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<ul class="org-ul">
+<li>Pare-feux logiciels héritent de toutes les vulnérabilité de l'OS sur lequel
+ils tournent</li>
+<li>Architecture des pare-feux logiciels étant très bien connue, plus facile
+d'exploiter des vulnérabilités (e.g buffer overflow)</li>
+<li>Perfomances des pare-feux logiciels sont souvent meilleurs (ils profitent des
+avancées des PC grand public)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline73" class="outline-4">
+<h4 id="orgheadline73"><span class="section-number-4">4.2.3</span> Pare-feu applicatif</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<ul class="org-ul">
+<li>Spécialisé pour un type d'application (Web, SMTP)</li>
+<li>Connaît les commandes et les formats de l'application &rArr; permet de
+bloquer les requêts dangereuses (injection SQL, XCSS)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline74" class="outline-4">
+<h4 id="orgheadline74"><span class="section-number-4">4.2.4</span> Pare-feu personnel</h4>
+<div class="outline-text-4" id="text-4-2-4">
+<ul class="org-ul">
+<li>S'intalle sur un poste de travail</li>
+<li>Surveille le trafic reçu et généré par les applications actives sur le poste
+de travail</li>
+<li>Demande à l'utilisateur de confirmer que telle application à le droit de
+recevoir/émettre sur tel port (e.g flash demande à se connecter à un site web,
+permet de bloquer les codes malveillants)</li>
+<li>Tous les OS récents ont un pare-feu personnel installé par défaut qui bloque
+au minimum tout le traffic entrant</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline82" class="outline-3">
+<h3 id="orgheadline82"><span class="section-number-3">4.3</span> Translation d'adresses (NAT)</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>Adresses IP publiques = limitées (en nombre)</li>
+<li>Au lieu de réserver 256 adreses pour 100 postes, on peut les "cacher" derrière
+une seule adresse</li>
+<li>Plage résérvées pour:
+<ul class="org-ul">
+<li>10.0.0.0 - 10.255.255.255</li>
+<li>172.16.0.0 - 172.32.255.255</li>
+<li>192.168.0.0 - 192.168.255.255</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline76" class="outline-4">
+<h4 id="orgheadline76"><span class="section-number-4">4.3.1</span> Fonctionnement</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<ul class="org-ul">
+<li>On utilise des adresses privées dans le réseau interne et une/des adresses
+publique pour communiquer avec internet</li>
+<li>Quand un paquet sort du réseau privé, on remplace son adresse de source par
+une adrese publique</li>
+<li>Quand un paquet arrive d'Internet, on remplace la destination publique par une
+adresse privée</li>
+<li>On utilise un table de translation pour trouver la destination privée</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline78" class="outline-4">
+<h4 id="orgheadline78"><span class="section-number-4">4.3.2</span> NAT dynamique</h4>
+<div class="outline-text-4" id="text-4-3-2">
+<ul class="org-ul">
+<li>Initialement la table de translation est vide</li>
+<li>Quand paquet sort, on remplace l'adresse source par une IP publique</li>
+<li>On note les adresses et ports source et destination internes et externes</li>
+<li>Quand une réponse à un paquet arrive depuis Internet, on cherche la source
+externe qui correspond à la destination du paquet</li>
+<li>On remplace la destination par la source interne1</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline77" class="outline-5">
+<h5 id="orgheadline77"><span class="section-number-5">4.3.2.1</span> Propriétés</h5>
+<div class="outline-text-5" id="text-4-3-2-1">
+<ul class="org-ul">
+<li>Collision quand deux connexions ne sont différentes que par l'adresse interne
+<ul class="org-ul">
+<li>On peut utiliser un pool d'adresses publiques et utiliser des adresses
+sources différentes</li>
+<li>On peut changer le port source (Port and Address Translation PAT)</li>
+</ul></li>
+<li>Le NAT dynamique ne permet pas l'établissement de connexions entrantes (bonne
+protection par défaut)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline79" class="outline-4">
+<h4 id="orgheadline79"><span class="section-number-4">4.3.3</span> NAT statique</h4>
+<div class="outline-text-4" id="text-4-3-3">
+<ul class="org-ul">
+<li>Pour permettre des connexions entrantes, on définit des entrées statiques dans
+la table de translation</li>
+<li>Typiquement on crée une entrée par protocole (SMTP, HTTP)</li>
+<li>Les différents ports d'une même adresse externe peuvent aboutir sur
+différentes adresses internes.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline80" class="outline-4">
+<h4 id="orgheadline80"><span class="section-number-4">4.3.4</span> Inconvénients</h4>
+<div class="outline-text-4" id="text-4-3-4">
+<ul class="org-ul">
+<li>Certaines protocoles échangent leurs adresses IP
+<ul class="org-ul">
+<li>Avec du NAT, c'est l'adresse privée qui sera fournie</li>
+<li>Si le FW connaît le protocole, il peut "patcher" les paquets pour remplacer
+l'adresse privée par l'adresse publique</li>
+<li>E.g. FTP, P2P, jeux, X windows</li>
+</ul></li>
+<li>Certains protocoles ne supportent pas de modifications des paquets (e.g.
+IPSec)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline81" class="outline-4">
+<h4 id="orgheadline81"><span class="section-number-4">4.3.5</span> Avantages</h4>
+<div class="outline-text-4" id="text-4-3-5">
+<ul class="org-ul">
+<li>Moins d'adresses publiques, coûts limités</li>
+<li>Facilité pour changer de fournisseur d'accès</li>
+<li>Facilité pour réorganiser le réseau interne</li>
+<li>Effet automatique de protection (cf. NAT statique)</li>
+<li>Dissimule la structure interne du réseau</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline83" class="outline-3">
+<h3 id="orgheadline83"><span class="section-number-3">4.4</span> Fonctionnalités supplémentaires</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Authentification</li>
+<li>Accès à distance, chiffrement (VPN)</li>
+<li>Inspection des paquets (Intrusion Detection System IDS)</li>
+<li>Génération de logs</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline84" class="outline-3">
+<h3 id="orgheadline84"><span class="section-number-3">4.5</span> Protection contre le syn-flooding</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>Simple:
+<ul class="org-ul">
+<li>Le FW surveille les tentatives d'ouverture de connexion qu'il voit passer</li>
+<li>S'il constate qu'une connexion reste à demi-ouverte trop longtemps, il
+envoie un RST au serveur</li>
+</ul></li>
+<li>Avancé
+<ul class="org-ul">
+<li>Le FW temporise les paquets syn et génère lui-même un syn-ack</li>
+<li>C'est seulement s'il reçoit un ack qu'il envoie le syn original</li>
+<li>La FW génère à la place de B un ISN, passe le reste de la connexion à
+ajuster les numéros de séquences</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline89" class="outline-3">
+<h3 id="orgheadline89"><span class="section-number-3">4.6</span> Architecture de pare-feux</h3>
+<div class="outline-text-3" id="text-4-6">
+</div><div id="outline-container-orgheadline85" class="outline-4">
+<h4 id="orgheadline85"><span class="section-number-4">4.6.1</span> NAT + filtrage</h4>
+<div class="outline-text-4" id="text-4-6-1">
+<ul class="org-ul">
+<li>Configuration
+<ul class="org-ul">
+<li>NAT dynamique pour les machines internes</li>
+<li>NAT statiques pour les serveurs accessibles</li>
+<li>Filtrage sortant (trafic utile)</li>
+<li>Filtrage entrant (blocage de l'accès au firewall)</li>
+</ul></li>
+<li>Limitations
+<ul class="org-ul">
+<li>Pas d'analyse de contenus (virus) depuis internet</li>
+<li>Connexions directe sur les serveurs internes (exploits, DoS)</li>
+</ul></li>
+<li>Application : sécurité basse, pas de serveur web grand public</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline88" class="outline-4">
+<h4 id="orgheadline88"><span class="section-number-4">4.6.2</span> Zone démilitarisée (DMZ)</h4>
+<div class="outline-text-4" id="text-4-6-2">
+</div><div id="outline-container-orgheadline86" class="outline-5">
+<h5 id="orgheadline86"><span class="section-number-5">4.6.2.1</span> Exemple 1</h5>
+<div class="outline-text-5" id="text-4-6-2-1">
+<p>
+CF. slides 196-197
+</p>
+<ul class="org-ul">
+<li>DMZ ni connectée à internet, ni au réseau interne &rArr; permet de
+contenir les attaques</li>
+<li>Configuration
+<ul class="org-ul">
+<li>Machines internes ne peuvent se connecter qu'au proxy</li>
+<li>Seul le proxy peut se connecter à internet</li>
+<li>NAT dynamqiue sortant, statique entrant</li>
+<li>Filtrage sortant (trafic utile), filtrage entrant (blocage de l'accès au
+firewall)</li>
+</ul></li>
+<li>Limitations (de l'exemple particulier, cf. image)
+<ul class="org-ul">
+<li>FW point critique</li>
+<li>TOus les services passent par le même proxy, une vulnérabilité sur un seul
+service donne accès à tout le trafic</li>
+</ul></li>
+<li>Application : sécurité moyenne</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline87" class="outline-5">
+<h5 id="orgheadline87"><span class="section-number-5">4.6.2.2</span> DMZ en sandwich</h5>
+<div class="outline-text-5" id="text-4-6-2-2">
+<p>
+cf. slide 198
+</p>
+<ul class="org-ul">
+<li>Configuration
+<ul class="org-ul">
+<li>Machines internes ne peuvent se connecter qu'aux proxys (un protocole par proxy)</li>
+<li>Seul les proxys peut se connecter à internet</li>
+<li>PAs de routage dans les proxys</li>
+<li>NAT dynamqiue sortant, statique entrant</li>
+<li>Filtrage sortant (trafic utile), filtrage entrant (blocage de l'accès au
+firewall)</li>
+</ul></li>
+<li>Application : sécurité élevée</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline93" class="outline-3">
+<h3 id="orgheadline93"><span class="section-number-3">4.7</span> Règles de filtrage</h3>
+<div class="outline-text-3" id="text-4-7">
+<ul class="org-ul">
+<li>Règles de filtrages spécifiées dans une liste</li>
+<li>FW parcourt la liste pour voir si règle s'applique</li>
+<li>FW exécute action spécifiée par la règle puis passe au paquet suivant</li>
+<li>Dernière règle pour interdire toute ce qui n'a pas été autorisé</li>
+<li>cf. slides 206-207</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline92" class="outline-4">
+<h4 id="orgheadline92"><span class="section-number-4">4.7.1</span> Organisation</h4>
+<div class="outline-text-4" id="text-4-7-1">
+<ul class="org-ul">
+<li>Ordre = important</li>
+<li>Quand bcp de règle, il est important de les organiser systématiquement</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline90" class="outline-5">
+<h5 id="orgheadline90"><span class="section-number-5">4.7.1.1</span> Méthode</h5>
+<div class="outline-text-5" id="text-4-7-1-1">
+<ul class="org-ul">
+<li>Niveau de sécurité pour chaque zone</li>
+<li>On groupe les règles par zone dans l'ordre décroissant du niveau de sécurité</li>
+<li>Chaque groupe est fait de 4 parties:
+<ul class="org-ul">
+<li>Autorisations explicites du trafic en entrée</li>
+<li>Interdiciton générale de trafic en entrée</li>
+<li>Autorisations explicites du trafic en sortie</li>
+<li>Interdiciton générale de trafic en sortie</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline91" class="outline-5">
+<h5 id="orgheadline91"><span class="section-number-5">4.7.1.2</span> Propriétés</h5>
+<div class="outline-text-5" id="text-4-7-1-2">
+<ul class="org-ul">
+<li>Pour chaque zone il suffit de déclarer les flux vers les zones moins
+sécurisées</li>
+<li>Les flux vers des zones plus sécurisées ne peuvent plus être influencée (but
+de l'opération): "any" se réfère aux niveaux suivants</li>
+<li>Une règle qui implique 2 zones doit apparaître dans le bloc de la zone la pluc
+sécurisées</li>
+<li>le bloc de la dernière zone est vide</li>
+<li>La dernière règle (any-any) ne devrait pas être nécessaire, En activant les
+logs sur celle-ci on peut découvrir d'éventuelles erreurs.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline99" class="outline-3">
+<h3 id="orgheadline99"><span class="section-number-3">4.8</span> Détection d'intrusion (IDS)</h3>
+<div class="outline-text-3" id="text-4-8">
+<ul class="org-ul">
+<li>Protéger bien, surveiller + défendre = mieux</li>
+<li>Réagir avant l'attaque</li>
+<li>Systèmes de détection d'intrusion (IDS) analysent
+<ul class="org-ul">
+<li>Trafic sur le réseau (Network IDS, NIDS) typiquement devant le FW</li>
+<li>les événements sur le serveur (Host IDS, HIDS)</li>
+</ul></li>
+<li>En cas d'attaque ils lancent une alarme (SMS, mail) et peuvent reconfigurer
+le FW (filtrage de l'attaquant) ou les serveurs</li>
+<li>Analyse soit en temps réel ou en analysant les logs</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Réseau (NIDS)</th>
+<th scope="col" class="org-left">Machine (HIDS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Analyse a posteriori</td>
+<td class="org-left">Analyse des logs et configuration de FW, routeurs</td>
+<td class="org-left">Analyse de logs systèmes</td>
+</tr>
+
+<tr>
+<td class="org-left">temps réel</td>
+<td class="org-left">Snifer réseau</td>
+<td class="org-left">Surveillance des évenements</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-orgheadline94" class="outline-4">
+<h4 id="orgheadline94"><span class="section-number-4">4.8.1</span> IDS à caractérisation du trafic</h4>
+<div class="outline-text-4" id="text-4-8-1">
+<ul class="org-ul">
+<li>IDS qui fait des statistiques du trafic</li>
+<li>Si une valeur est hors normes, il doit s'agir d'une attaque</li>
+<li>Ce système peut reconnaître des attaques nouvelles</li>
+<li>Ou ne pas les reconnaître&#x2026;</li>
+<li>Voit des attaques où il n'y en a pas (faux positif) &rArr; utilité réduite&#x2026;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline95" class="outline-4">
+<h4 id="orgheadline95"><span class="section-number-4">4.8.2</span> IDS à signature</h4>
+<div class="outline-text-4" id="text-4-8-2">
+<ul class="org-ul">
+<li>l'IDS a une base de donnée des attaques connues (e.g. requête web avec 2000
+caractères = buffer overflow)</li>
+<li>Il ne reconnaît pas les attaques nouvelles &rArr; besoin d'être
+constamment mis à jour</li>
+<li>Faux négatifs: attaques manuelles avec des variations non détectées</li>
+<li>Faux positifs: signatures pas toujours précises + IDS ne sait pas si la cible
+est vulnérable (e.g. attaque linux sur serveur Win)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline96" class="outline-4">
+<h4 id="orgheadline96"><span class="section-number-4">4.8.3</span> HIDS avancés</h4>
+<div class="outline-text-4" id="text-4-8-3">
+<p>
+Certains éditeurs proposent des HIDS qui combinent plusieurs fonctionnalités
+</p>
+<ul class="org-ul">
+<li>Contrôle d'accès à des fichiers ou des fonctions du système</li>
+<li>Contrôle des applications qui peuvent accéder au réseau</li>
+<li>Contrôle des communications entre applications</li>
+<li>Liste blanche ou noir des app qui peuvent être exécutées</li>
+<li>Contrôle des périphériques (clés USB, graveurs, etc.)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline97" class="outline-4">
+<h4 id="orgheadline97"><span class="section-number-4">4.8.4</span> Efficacité</h4>
+<div class="outline-text-4" id="text-4-8-4">
+<p>
+cf. slide 228
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline98" class="outline-4">
+<h4 id="orgheadline98"><span class="section-number-4">4.8.5</span> Discussion</h4>
+<div class="outline-text-4" id="text-4-8-5">
+<ul class="org-ul">
+<li>IDS à signature fonctionnent bien mais:
+<ul class="org-ul">
+<li>La majeur partie des attaques dont on a la signature peuvent être bloquées
+par le FW ou les proxys</li>
+<li>Il faut d'abord faire l'effort d'empêcher avant de faire l'effort de
+détecter</li>
+<li>Il ne suffit pas d'installer un IDS, il faut ensuite savoir réagir aux
+attaques et traiter quotidienement les faux positifs</li>
+<li>Les réactions automatiques ne sont pas conseillées car elles peuvet mener à
+des DoS (ex. spoofing)</li>
+</ul></li>
+<li>Quand on peut se permettre les deux, c'est une bonne défense en profondeur</li>
+<li>Les IDS déployés dans les réseaux internes donnent des alarmes moins
+fréquentes et plus critiques</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline120" class="outline-2">
+<h2 id="orgheadline120"><span class="section-number-2">5</span> Proxys</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Proxys = relais d'applications</li>
+<li>Ils jouent le rôle de serveur pour le client et de client pour le serveurs</li>
+<li>Ils peuvent analyser les données dans le contexte de l'application et filtrer
+si nécessaire (contenu, virus, exploits)</li>
+<li>Ils permettent d'éviter des connexions directes depuis un réseau interne vers
+internet</li>
+<li>Ils sont un exemple typique des principes de la défense en profondeur et du
+goulet d'étranglement</li>
+<li>Ils aggissent dans la couche applications</li>
+<li>Les filtres (même à mémoire) agissent dans les couches inférieures</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline105" class="outline-3">
+<h3 id="orgheadline105"><span class="section-number-3">5.1</span> Proxy HTTP</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Protocole HTTP = simple, on se connecte directement au serveur et on fait un
+GET du doc (GET /index.en.html)</li>
+<li>Pour passer par un proxy, le protocole doit être modifié, on doit configurer
+le browser : connection au proxy, puis demande au proxy page + doc (GET
+<a href="http://www.epfl.ch/index.en.html">http://www.epfl.ch/index.en.html</a>)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline102" class="outline-4">
+<h4 id="orgheadline102"><span class="section-number-4">5.1.1</span> Cache</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<ul class="org-ul">
+<li>Le proxy peut garder un copie locale de tous les documents qu'il a été cherché</li>
+<li>Quand un deuxième client demande le même doc, il peut fournir la copie locale</li>
+<li>Le transfert est beaucoup plus rapide (augmentation du confort)</li>
+<li>On peut économiser de la bande passante (limitation des coûts)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline101" class="outline-5">
+<h5 id="orgheadline101"><span class="section-number-5">5.1.1.1</span> Fraîcheur des docs</h5>
+<div class="outline-text-5" id="text-5-1-1-1">
+<ul class="org-ul">
+<li>Avant de fournir la copie du doc, le cache doit s'assurer que l'original n'a
+pas changé</li>
+<li>Pour cela il ajoute le paramètre "if modified since:&#x2026;" à sa requête</li>
+<li>Si le doc n'a pas changé, le serveur répond "not modified", sinon il fourni le
+doc</li>
+<li>Si le doc est pourvu d'une date de péremption et qu'elle est encore valide, la
+cache n'a pas besoin de contacter le serveur</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline103" class="outline-4">
+<h4 id="orgheadline103"><span class="section-number-4">5.1.2</span> Filtrage parental</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<ul class="org-ul">
+<li>Le proxy peut servir à interdire l'accès à des pages webs en fonctions de
+leurs contenu</li>
+<li>Pour cela il utilise une liste d'URLs par catégorie (NSFW, jeux, chats,
+recherche d'emploi, sport,&#x2026;)</li>
+<li>Pour mettre la liste à jour, il faut s'abonner à un service</li>
+<li>Limitations
+<ul class="org-ul">
+<li>Les lis comportent des erreurs, les faux positifs empêchent les gens de
+travailler</li>
+<li>Il y a des moyens de contourner les filtres</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline104" class="outline-4">
+<h4 id="orgheadline104"><span class="section-number-4">5.1.3</span> Proxy transparent</h4>
+<div class="outline-text-4" id="text-5-1-3">
+<ul class="org-ul">
+<li>Pour ne pas avoir à configurer les navigateurs on peut utiliser des proxys
+transparents</li>
+<li>Dans ce cas, le trafic destiné à un certain port est automatiquement détourné
+vers le proxy par le FW</li>
+<li>Limitation: ça ne marche pas pour des serveurs web qui n'utilisent pas le port
+standard</li>
+<li>Utilité: forcer l'utilisation d'un proxy e.g. dans un hotspot d'une entreprise</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline109" class="outline-3">
+<h3 id="orgheadline109"><span class="section-number-3">5.2</span> Proxy FTP</h3>
+<div class="outline-text-3" id="text-5-2">
+</div><div id="outline-container-orgheadline106" class="outline-4">
+<h4 id="orgheadline106"><span class="section-number-4">5.2.1</span> FTP</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<ul class="org-ul">
+<li>FTP utilise une connexion de contrôle et des connexions de données</li>
+<li>Les connexions de données peuvent être dirigées vers le client (mode actif,
+défaut) ou vers le serveur (mode passif)</li>
+<li>Le sens de la connexion de données est indépendantes du sens de transfert des
+fichiers</li>
+<li>Le protocole FTP ne connaît pas la notion de proxy (pas moyen de spécifier un
+serveur tiers)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline107" class="outline-4">
+<h4 id="orgheadline107"><span class="section-number-4">5.2.2</span> Proxy FTP par HTTP</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<ul class="org-ul">
+<li>Les navigateurs peuvent utiliser des URLs du type : <a href="ftp://monserveur.ch/a.txt">ftp://monserveur.ch/a.txt</a></li>
+<li>Si le navigateur est configuré pour utiliser un proxy HTTP, il va demander
+cette URL au proxy</li>
+<li>C'est le proxy qui va faire le transfert FTP et fournir le document dans la
+réponse HTTP</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline108" class="outline-4">
+<h4 id="orgheadline108"><span class="section-number-4">5.2.3</span> Proxy FTP user@</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<ul class="org-ul">
+<li>Le serveur user@ se comporte comme un serveur FTP (peuvent être utilisés par
+n'importe quel client FTP)</li>
+<li>Pour atteindre le serveur distant BOB en utilisation le username Joe, on donne
+Joe@BOB comme username au proxy</li>
+<li>Celui-ci se connecte au serveur et relaie le mdp, les commandes et les datas</li>
+<li>Le proxy peut travailler en mode passif avec le serveur, même si le client se
+connecte en mode actif au proxy.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline110" class="outline-3">
+<h3 id="orgheadline110"><span class="section-number-3">5.3</span> Proxy SMTP</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>SMTP est conçu à la base pour transporter du courrier par étape</li>
+<li>Tout serveur SMTP complet peut donc agir comme proxy</li>
+<li>En sortie (sens direct), il suffit de configurer les clients pour déposer le
+courrier dans le proxy plutôt que dans les serveurs distants</li>
+<li>En entrée (sens inverse), il faut déclarer le proxy dans le DNS et lui
+indiquer le serveur interne qui doit recevoir le courrier.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline111" class="outline-3">
+<h3 id="orgheadline111"><span class="section-number-3">5.4</span> Proxy DNS</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>Protocole DNS est conçu pour relayer les requêtes</li>
+<li>Un serveur DNS peut servir comme proxy</li>
+<li>Les serveurs DNS ont un cache pour limiter le trafic et réduire les temps de
+réponses</li>
+<li>Il peut être judicieux de configuer un serveur DNS proxy pour toujours diriger
+ses requêtes vers un plus grand serveur (e.g ISP ou Google) afin de profiter
+d'un plus grand cache</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline113" class="outline-3">
+<h3 id="orgheadline113"><span class="section-number-3">5.5</span> Proxy Socks</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li>Le proxy socks (Socket Server) est un proxy général de connexions TCP et UDP</li>
+<li>Il accepte une connexion du client et ouvre une autre connexion vers le
+serveur</li>
+<li>Il transvase ensuite les données entre les deux connexions</li>
+<li>Avantage: Socks permet de faire passer n'importe quel protocole par un proxy</li>
+<li>Limitation: Socks permet de faire passer n'importe quel protocole par un proxy</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline112" class="outline-4">
+<h4 id="orgheadline112"><span class="section-number-4">5.5.1</span> Implémentation</h4>
+<div class="outline-text-4" id="text-5-5-1">
+<ul class="org-ul">
+<li>Au lieu d'ouvrir directement une connexion distante, on ouvre une connexion
+vers le proxy et on lui indique l'adresse distante</li>
+<li>Le proxy fait la connexion distante, confirme et devient transparent.</li>
+<li>Il suffit parfois de modifier la pile de protocole d'une machine pour qu'elle
+utilise automatiquement Socks</li>
+<li>Parfois il faut modifier (socksifier) les programmes. Des outils automatiques
+permettent de patcher le code source pour utiliser socks (socksification)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline116" class="outline-3">
+<h3 id="orgheadline116"><span class="section-number-3">5.6</span> Proxy HTTPS</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li>HTTPS = version sécurisée (chiffrement, authentification) de HTTP</li>
+<li>Proxy HTTPS ne sont PAS une version sécurisée des proxy HTTP!</li>
+<li>HTTPS chiffre en authentifie de bout en bout. Si c'est le proxy qui fait la
+connexion, on perd tous les avantages.</li>
+<li>Le proxy HTTPS se contente donc de relayer de manière transparente les données
+entre une connexion client et une connexion serveur (comme un socks)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline114" class="outline-4">
+<h4 id="orgheadline114"><span class="section-number-4">5.6.1</span> Implémentation</h4>
+<div class="outline-text-4" id="text-5-6-1">
+<ul class="org-ul">
+<li>Le proxy HTTPS connaît la commande HTTP connect qui lui indique l'adresse du
+serveurs</li>
+<li>Il répond par un statut et devient transparent</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline115" class="outline-4">
+<h4 id="orgheadline115"><span class="section-number-4">5.6.2</span> Problèmes de sécurité</h4>
+<div class="outline-text-4" id="text-5-6-2">
+<ul class="org-ul">
+<li>Le proxy HTTPS permet de relayer n'importe quel protocole (il est transparent
+comme Socks)
+<ul class="org-ul">
+<li>Pour limiter les abus, les ports disponibles sont souvent limités à 443
+(HTTPS) et 563 (SNEWS)</li>
+<li>Pour permettre à un protocole quelconque de traverser un firewall, il suffit
+de faire tourner le serveur sur le port 443 et passer par un proxy HTTPS</li>
+</ul></li>
+<li>Le proxy ne voit que du contenu chiffré &rArr; ne peut pas faire de
+filtrage de contenu</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline119" class="outline-3">
+<h3 id="orgheadline119"><span class="section-number-3">5.7</span> Proxy inverse</h3>
+<div class="outline-text-3" id="text-5-7">
+<ul class="org-ul">
+<li>En sens direct, le client sait qu'il doit passer par un proxy, il peut
+adapater ses requêtes en conséquences</li>
+<li>En sens inverse, le client ne sait pas s'il parle à un serveur ou à un proxy</li>
+<li>Le proxy doit agir de manière identique à un serveur</li>
+<li>pour les protocoles qui ne connaissent pas les relais (HTTP, FTP) le proxy
+inverse ne peut agir comme proxy que pour un seul serveur</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline117" class="outline-4">
+<h4 id="orgheadline117"><span class="section-number-4">5.7.1</span> Proxy inverse HTTP</h4>
+<div class="outline-text-4" id="text-5-7-1">
+<ul class="org-ul">
+<li>Les proxys inverses HTTP permettent:
+<ul class="org-ul">
+<li>De filtrer les requêtes (blocage d'exploit)</li>
+<li>D'authentifier les clients avant même qu'ils ne parlent au serveurs</li>
+<li>D'accélérer les serveurs</li>
+</ul></li>
+<li>Accélérateurs de serveurs
+<ul class="org-ul">
+<li>Les proxys inverse fonctionnent comme cache</li>
+<li>C'est le proxy qui fournit les documents statiques, le serveur n'a plus qu'à
+gérer les docuements dynamqiues</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline118" class="outline-4">
+<h4 id="orgheadline118"><span class="section-number-4">5.7.2</span> Proxy inverse HTTPS</h4>
+<div class="outline-text-4" id="text-5-7-2">
+<ul class="org-ul">
+<li>Les proxys HTTPS servent d'accélérateurs de chiffrement</li>
+<li>Ils peuvent décharger le serveur en s'occupant du chiffrement et de
+l'authentificaiton</li>
+<li>La connexion entre le proxy et le serveur est alors du HTTP et non du HTTPS</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline130" class="outline-2">
+<h2 id="orgheadline130"><span class="section-number-2">6</span> Antivirus</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-orgheadline121" class="outline-3">
+<h3 id="orgheadline121"><span class="section-number-3">6.1</span> Détection de virus</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Analys de code
+<ul class="org-ul">
+<li>Analyse statique du code &rArr; difficile si le code est compressé ou
+chiffré</li>
+<li>Analyse dynamique du code (exécution virtuelle) &rArr; le code peut
+détecter qu'il est exécuté et changer son comportement</li>
+</ul></li>
+<li>Par signature &rArr; utilisation d'une bdd de signatures</li>
+<li>Combinaisons &rArr; exécution virtuelle, puis recherche de signature dans
+la code décompressé/chiffré</li>
+<li>Limites de l'analyse de code:
+<ul class="org-ul">
+<li>Peu efficace</li>
+<li>Méthode heuristiques (approximative) que utilisées en conjonction avec
+signature</li>
+<li>Halting problem avec virus (V(x) sait si x est un virus, P(x): si v(x) exit,
+sinon spread, on exécute P(P) &rArr; ne peut être ni vrai ni faux&#x2026;)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline129" class="outline-3">
+<h3 id="orgheadline129"><span class="section-number-3">6.2</span> Protection complète anti-virus</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Protection anti-virus est un cas classique du principe de la défense en
+profondeur</li>
+<li>Les produits anti-virus doivent être déployés à tous les niveaux du réseau</li>
+<li>Ils doivent se mettre à jour et être contrôlés automatiquement</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline122" class="outline-4">
+<h4 id="orgheadline122"><span class="section-number-4">6.2.1</span> Desktop</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<ul class="org-ul">
+<li>Tous les desktops doivent être protégés par un anti-virus</li>
+<li>Mise à jour auto &rArr; initié par le desktop (push/pull) ou heure donnée</li>
+<li>Console centralisée doit surveiller la mise à jour</li>
+<li>Problèmes:
+<ul class="org-ul">
+<li>Interférence des utilisateurs</li>
+<li>Laptop en ballade</li>
+<li>Desktop éteints, machines virtuelles arrêtées</li>
+<li>PC non contrôlés (tests, labos, nouvelles machines)</li>
+<li>Il reste toujours des machines non protégées</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline123" class="outline-4">
+<h4 id="orgheadline123"><span class="section-number-4">6.2.2</span> Serveurs de fichiers</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<ul class="org-ul">
+<li>Les serveurs de fichiers contiennent les fichiers de multiples utilisateurs,
+infection peut être particulièrement grave</li>
+<li>Les serveurs sont plus simples à gérer (pas d'interférence utilisateur + 7/24)</li>
+<li>Scanner tous les fichiers à l'écriture (moins lourd que de toute scanner à
+chaque lecture)</li>
+<li>Mise à jour automatique quotidiene à heure fixe</li>
+<li>Analyse des logs automatiques pour générer des alarmes</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline124" class="outline-4">
+<h4 id="orgheadline124"><span class="section-number-4">6.2.3</span> Serveurs de messageries</h4>
+<div class="outline-text-4" id="text-6-2-3">
+<ul class="org-ul">
+<li>Les messages sont analysés avant d'être déposé dans la boîte à lettre du
+destinataire.</li>
+<li>Le logiciel anti-virus doit savoir traiter toutes les formes d'attachements
+(zip, tar, rar imbriqués)</li>
+<li>Le logiciel anti-virus élimine les virus détectés et avertit l'expéditeur, le
+destinataire et un admin par un e-mail</li>
+<li>L'expéditeur peut être mis sur une black list</li>
+<li>Mise à jour quotidiene de l'anti-virus</li>
+<li>Mise à jour régulière du logiciel de messagerie</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline127" class="outline-4">
+<h4 id="orgheadline127"><span class="section-number-4">6.2.4</span> Passerelles internet</h4>
+<div class="outline-text-4" id="text-6-2-4">
+</div><div id="outline-container-orgheadline125" class="outline-5">
+<h5 id="orgheadline125"><span class="section-number-5">6.2.4.1</span> Proxy mail</h5>
+<div class="outline-text-5" id="text-6-2-4-1">
+<ul class="org-ul">
+<li>Proxy mail isole les serveurs de messageries de l'Internet</li>
+<li>Les attaques (mass mailing, DoS) aboutissent sur la passerelle et non sur les
+serveurs internes</li>
+<li>Le proxy est sous la responsabilité d'une seule équipe</li>
+<li>Interception des virus avant même qu'ils ne pénetrent le réseau interne</li>
+<li>Maintenance 7/24</li>
+<li>Nombre réduit = facilité de màj</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline126" class="outline-5">
+<h5 id="orgheadline126"><span class="section-number-5">6.2.4.2</span> Proxys Web</h5>
+<div class="outline-text-5" id="text-6-2-4-2">
+<ul class="org-ul">
+<li>On peut télécharger des logiciels potentiellement infectés par le Web</li>
+<li>On peut aussi recevoir du courrier électronique par le Web (gmail)</li>
+<li>Des pages web peuvent contenir des virus (drive-by download)</li>
+<li>Les proxys Web analysent tous les documents accédés et éliminent les virus
+détectés</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline128" class="outline-4">
+<h4 id="orgheadline128"><span class="section-number-4">6.2.5</span> Filtre générique</h4>
+<div class="outline-text-4" id="text-6-2-5">
+<ul class="org-ul">
+<li>Un filtre générique permet de bloquer de nouveaux virus avant même que le
+logiciel anti-virus ne soit mis à jour</li>
+<li>Un filtre générique permet d'interdire les attachements qui ne sont pas utiles
+(.exe,.pif,.vbs,.scr,shs,.bat)</li>
+<li>Principe de l'interdiction par défaut: on peut tout interdire par défaut et
+spécifier les attachements autorisés (pdf sans scripts, ms-office sans macros,
+gif, jpeg, txt)</li>
+<li>Le filtre doit être installé sur les passerelles mail, web, ftp.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline163" class="outline-2">
+<h2 id="orgheadline163"><span class="section-number-2">7</span> Cryptographie</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-orgheadline131" class="outline-3">
+<h3 id="orgheadline131"><span class="section-number-3">7.1</span> Chiffrement symétrique</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Chiffrement à clé secrète</li>
+<li>Chiffre souvent les données par bloc</li>
+<li>Manière dont on combine les blocs = <b>mode de chiffrement</b></li>
+<li>Mode le plus simple = ECB, chaque bloc est chiffé
+indépendamment avec la même clé</li>
+<li>Mode de chiffrement les plus avancé combinent les données d'un nouveau bloc avec celle des autres blocs (E.g CBC, Cipher Bloc Chaining, utilise XOR)</li>
+<li>Exemple de chiffrement symétrique AES</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline133" class="outline-3">
+<h3 id="orgheadline133"><span class="section-number-3">7.2</span> Fonctions de hachage</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Prennent un grand de nombre de donnée et créent une empreinte de longueur fixe</li>
+<li>Génèrent une image depuis une pré-image</li>
+<li>Irréversibles</li>
+<li>Peuvent générer des collisions (inévitable)</li>
+<li>Résistante au collsisons:
+<ul class="org-ul">
+<li>Résistance à la deuxième pré-image, avec un message + empreinte, pas possible de générer deuxième message avec même empreinte</li>
+<li>Résistance à la collision, pas possible de créer deux messages quelconques avec la même empreinte.</li>
+</ul></li>
+<li>Certains des système de hachage sont "cassés" (possible de générer des collisions) e.g md5 (128bits), sha-1 presque cassé (160bits), sha-2 loin de l'être (224-512bits)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline132" class="outline-4">
+<h4 id="orgheadline132"><span class="section-number-4">7.2.1</span> Authentification des messages</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<ul class="org-ul">
+<li>Si on utilise une clé symétrique pour protéger l'empreinte on obtient un Message Authentication Code (MAC)</li>
+<li>Méthode symétrique qui utilise la même clef pour créer et vérifié l'authenticité</li>
+<li>Si la clef n'est connue que par les deux partenaires, alors une authentification basée sur cette clef permet de prouver que le messagerie
+<ul class="org-ul">
+<li>ne provient pas d'un tiers</li>
+<li>n'a pas été altéré en routeurs</li>
+</ul></li>
+<li>Beaucoup plus rapide à calculer qu'une signature</li>
+<li>Moins générique, celui qui vérifie le MAC est aussi capable de le créer (pas le cas dans la vérification des signatures)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline135" class="outline-3">
+<h3 id="orgheadline135"><span class="section-number-3">7.3</span> Chiffrement asymétrique</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Clé publique/privée</li>
+<li>Pas possible de dériver la clé privée depuis la publique</li>
+<li>Pour signer, il suffit de chiffrer son empreinte (avec sa clé privée), la résistance à la deuxième pré-image garantit que c'est bien ce document qui a été signé</li>
+<li>Algo sûr: seul moyen de déchiffrer, essayer toutes les clés, algo public plus sûr</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline134" class="outline-4">
+<h4 id="orgheadline134"><span class="section-number-4">7.3.1</span> Longeur de clé</h4>
+<div class="outline-text-4" id="text-7-3-1">
+<p>
+Pour les symétriques:
+</p>
+<ul class="org-ul">
+<li>40 bits: 2<sup>40</sup> (1mio de mio)</li>
+<li>56 bits: 2<sup>56</sup>, 2 jours pour $200</li>
+<li>128 bits: 2<sup>128</sup> = bcp</li>
+</ul>
+<p>
+Pour les clés asymétrique, que les nbres premiers candidats
+</p>
+<ul class="org-ul">
+<li>512 bits équiv à 56 bits</li>
+<li>768 bits crackés en 2.5 ans</li>
+<li>2048 bits équiv à 128bits</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline136" class="outline-3">
+<h3 id="orgheadline136"><span class="section-number-3">7.4</span> Echange de clef</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>Pour pouvoir utiliser algo symétrique, besoin d'échanger clef</li>
+<li>Echange de clef RSA: chiffrage d'une clé symétrique, problème: besoin de la clef publique du partenaire</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline138" class="outline-3">
+<h3 id="orgheadline138"><span class="section-number-3">7.5</span> Echange Diffie-Hellman</h3>
+<div class="outline-text-3" id="text-7-5">
+<ul class="org-ul">
+<li>Diffie-Hellman permet de générer une clef symétrique à la volé sans avoir à la transmettre</li>
+<li>DH basé sur les log discrets</li>
+<li>On utilise un modulo \(p\) et un générateur \(g\)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline137" class="outline-4">
+<h4 id="orgheadline137"><span class="section-number-4">7.5.1</span> Procédure</h4>
+<div class="outline-text-4" id="text-7-5-1">
+<ul class="org-ul">
+<li>Alice choisit un chiffre \(a\), Bob un chiffre \(b\)</li>
+<li>Alice calcule \(A = g^a \text{ mod } p\)</li>
+<li>Bob calcule \(B = g^b \text{ mod } p\)</li>
+<li>Alice et Bob s'échangent \(A\) et \(B\) et font</li>
+</ul>
+<p>
+\[ B^a \text{ mod } p = g^{ba} \text{ mod } p = g^{ab} \text{ mod } p = A^b \text{ mod } p = K\]
+</p>
+<ul class="org-ul">
+<li>Ils ont maintenant le même secret \(K\)</li>
+<li>Il n'est pas possible de retrouver \(K\) depuis \(A\) et \(B\)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline141" class="outline-3">
+<h3 id="orgheadline141"><span class="section-number-3">7.6</span> Chiffrement hybride</h3>
+<div class="outline-text-3" id="text-7-6">
+</div><div id="outline-container-orgheadline139" class="outline-4">
+<h4 id="orgheadline139"><span class="section-number-4">7.6.1</span> Symétrique vs Asymétrique</h4>
+<div class="outline-text-4" id="text-7-6-1">
+<ul class="org-ul">
+<li>Asymétrique plus utile
+<ul class="org-ul">
+<li>Elimine le problème du partage de la clé</li>
+<li>Permet de signer les messages</li>
+</ul></li>
+<li>Le chiffrement symétrique est beaucoup plus performant</li>
+<li>Souvent on combine les deux</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline140" class="outline-4">
+<h4 id="orgheadline140"><span class="section-number-4">7.6.2</span> Protocole</h4>
+<div class="outline-text-4" id="text-7-6-2">
+<ul class="org-ul">
+<li>On chiffre le message avec une clef symétrique</li>
+<li>On chiffre la clef avec la clé publique du destinataire</li>
+<li>On envoie les deux</li>
+<li>Si plusieurs destinataire, on chiffre plusieurs fois la clé symétrique</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline148" class="outline-3">
+<h3 id="orgheadline148"><span class="section-number-3">7.7</span> Certificats</h3>
+<div class="outline-text-3" id="text-7-7">
+<ul class="org-ul">
+<li>Distribution de clé publique sujette à mitm attaque</li>
+<li>Certificat = document qui sert à prouver que la clé appartient bien à qui de droit</li>
+<li>Certificat signé par un tiers dont on connaît la clé publique</li>
+<li>Certificat contient au moins:
+<ul class="org-ul">
+<li>Identité (nom/email) et la clef publique</li>
+<li>Date de validité</li>
+<li>Signature du certificat</li>
+</ul></li>
+<li>Les deux types les plus connus: X.509 et PGP</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline144" class="outline-4">
+<h4 id="orgheadline144"><span class="section-number-4">7.7.1</span> Infrastructure à clef publique (PKI)</h4>
+<div class="outline-text-4" id="text-7-7-1">
+<ul class="org-ul">
+<li>Dispositif nécessaire pour gérer la génération et la distribution contrôlée de certificats</li>
+<li>Une PKI est fait de:
+<ul class="org-ul">
+<li>Des autorités d'enregistrement (RA)</li>
+<li>Des autorités de certification (CA)</li>
+<li>Des autorités de dépôt (repository) qui stockent les certificats</li>
+<li>Dans certains cas, l'autorité de séquestre de clef (key escrow) qui garde une copie des clefs privées</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline142" class="outline-5">
+<h5 id="orgheadline142"><span class="section-number-5">7.7.1.1</span> Autorité de certification CA</h5>
+<div class="outline-text-5" id="text-7-7-1-1">
+<ul class="org-ul">
+<li>La CA crée et signe les certificats</li>
+<li>Chaque nouveau participant doit se présenter
+<ul class="org-ul">
+<li>La CA authentifie physiquement le participant ou délègue ce travail au l'autorité d'enregistrement</li>
+<li>Elle fait générer une pair de clefs au participant</li>
+<li>Elle crée un certificat</li>
+<li>Elle fournit une copie de sa propre clef publique au participant</li>
+</ul></li>
+<li>Muni de son certificat et de la clef publique de la CA, le nouveau participant peut communiquer avec tous les autres participants certifié par le même CA</li>
+<li>Une CA peut être une CA privée d'une entreprise ou une CA publique</li>
+<li>Une CA peut faire certifier sa clef publique par une autre CA (Hiérarchie, chain of trust)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline143" class="outline-5">
+<h5 id="orgheadline143"><span class="section-number-5">7.7.1.2</span> Autorité d'enregistrement RA</h5>
+<div class="outline-text-5" id="text-7-7-1-2">
+<ul class="org-ul">
+<li>La CA peut lui déléguer l'enregistrement des nouveaux participants</li>
+<li>La RA ne possède pas la clef privée de la CA</li>
+<li>La CA lui fait confiance pour l'authentification physique des participants</li>
+<li>Après avoir authentifié le nouveau participant, la RA lui fait générer une paire de clef et envoie la clef publique à la CA pour qu'elle crée le certificat</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline145" class="outline-4">
+<h4 id="orgheadline145"><span class="section-number-4">7.7.2</span> Dépôt de certificat (repository)</h4>
+<div class="outline-text-4" id="text-7-7-2">
+<ul class="org-ul">
+<li>Pour faciliter l'accès aux certificats, la CA met à disposition un annuaire (LDAP, HTTP)</li>
+<li>Pour envoyer un mail à Bob, Alice demande son certificat à l'annuaire, Bob n'a pas besoin d'être atteignable</li>
+<li>L'annuaire fournit aussi la liste des certificats révoqués (Certificate Revocation List, CRL)</li>
+<li>Un certificat peut être révoqué avant son échéance pour cause de vol, perte ou changement de statut</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline146" class="outline-4">
+<h4 id="orgheadline146"><span class="section-number-4">7.7.3</span> Certificats (clefs) à usage défini</h4>
+<div class="outline-text-4" id="text-7-7-3">
+<ul class="org-ul">
+<li>La CA d'une entreprise peut fournir deux certificats par participant:
+<ul class="org-ul">
+<li>L'un avec la clef publique de signature</li>
+<li>L'autre avec la clef publique de chiffrement</li>
+</ul></li>
+<li>La CA met de copie une copie de la clef <b>privée</b> de chiffrement (sequestre de clé, <i>key escrow</i>)</li>
+<li>En cas de problème, l'entreprise peut toujours déchiffrer les mails de ses employés</li>
+<li>Les employés restent donc les seuls à pouvoir signer avec leur clef de signature (donc responsables)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline147" class="outline-4">
+<h4 id="orgheadline147"><span class="section-number-4">7.7.4</span> Les pratiques de la certification</h4>
+<div class="outline-text-4" id="text-7-7-4">
+<ul class="org-ul">
+<li>Chaque CA publie ses pratiques de certification (Certification Practice Statement, CPS)</li>
+<li>Document décrit:
+<ul class="org-ul">
+<li>Comment les membres sont identifiés et authentifié</li>
+<li>La durée de validité des certificats</li>
+<li>Comment sont gérées les révocations</li>
+<li>Limites de responsabilité</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline159" class="outline-3">
+<h3 id="orgheadline159"><span class="section-number-3">7.8</span> PGP</h3>
+<div class="outline-text-3" id="text-7-8">
+</div><div id="outline-container-orgheadline149" class="outline-4">
+<h4 id="orgheadline149"><span class="section-number-4">7.8.1</span> Format:</h4>
+<div class="outline-text-4" id="text-7-8-1">
+<ul class="org-ul">
+<li>base 64 à la base</li>
+<li>Format Mime
+<ul class="org-ul">
+<li>Décrit les attachements d'email</li>
+<li>Format PGP/Mime et OpenPGP/Mime permettent de traiter les attachements de manière standard (sinon doit chiffrer chaque attachement indépendamment)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline150" class="outline-4">
+<h4 id="orgheadline150"><span class="section-number-4">7.8.2</span> Certificat PGP peut contenir</h4>
+<div class="outline-text-4" id="text-7-8-2">
+<ul class="org-ul">
+<li>Une ou plusieurs identités (noms,mails)</li>
+<li>Une ou plusieurs signatures par identité</li>
+<li>Des informations supplémentaires (photo, révocateur, certificat X.509)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline151" class="outline-4">
+<h4 id="orgheadline151"><span class="section-number-4">7.8.3</span> Clefs spéciales</h4>
+<div class="outline-text-4" id="text-7-8-3">
+<ul class="org-ul">
+<li>Le designated revoker &rArr; clef qui a la droit de révoquer la clef (pratique si clef privée perdue)</li>
+<li>Plus courant de générer un certificat de révocation signé par sa clef et mis en lieu sûr</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline152" class="outline-4">
+<h4 id="orgheadline152"><span class="section-number-4">7.8.4</span> Protection de la clef privée</h4>
+<div class="outline-text-4" id="text-7-8-4">
+<ul class="org-ul">
+<li>Ne peut être mémorisée (2048 bits)</li>
+<li>Stockée sur le disque dur
+<ul class="org-ul">
+<li>Avec un mot de passe de bonne qualité</li>
+<li>Une fois déchiffrée est dans la mémoire de l'ordinateur !</li>
+</ul></li>
+<li>Elle peut être stockée sur une carte à puce
+<ul class="org-ul">
+<li>L'accès à la carte est protégé par un mot de passe</li>
+<li>La clef ne quitte jamais la carte, c'est les données (clef symétrique) qui y transitent afin d'être chiffrées/déchiffrées</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline153" class="outline-4">
+<h4 id="orgheadline153"><span class="section-number-4">7.8.5</span> Serveur de clef PGP</h4>
+<div class="outline-text-4" id="text-7-8-5">
+<ul class="org-ul">
+<li>Plusieurs serveurs à travers le monde</li>
+<li>Contiennent les clefs de tous les utilisateurs voulant publier leur clefs</li>
+<li>Si Alice est certaine que la clef au nom de Clara appartient à Clara, elle peut la signer et la soumettre aux serveurs, si qqn fait confiance à Alice, il peut accepter la clef de Clara</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline154" class="outline-4">
+<h4 id="orgheadline154"><span class="section-number-4">7.8.6</span> Révocation d'une clef</h4>
+<div class="outline-text-4" id="text-7-8-6">
+<ul class="org-ul">
+<li>Il ne suffit pas de retirer sa clef du serveur de clef</li>
+<li>On publie un certificat de revocation sur les serveurs</li>
+<li>Si on a perdu sa clé privée ou la phrase secrète, on ne peut plus révoquer sa clé</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline155" class="outline-4">
+<h4 id="orgheadline155"><span class="section-number-4">7.8.7</span> Validité et confiance</h4>
+<div class="outline-text-4" id="text-7-8-7">
+<ul class="org-ul">
+<li>Deux notions importantes dans PGP
+<ul class="org-ul">
+<li>Validité: je sais que la clé appartient à Bob</li>
+<li>Confiance: je sais que Bob ne signe pas les clés à la légère</li>
+</ul></li>
+<li>Lorsqu'on signe une clef, on déclare sa validité</li>
+<li>On peut aussi déclarer une confiance partielle ou complète</li>
+<li>Une clef est valide si la somme de la confiance partielle de ses signatures valides est au moins 1</li>
+<li>Forme un graphe de confiance (Web of Trust)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline156" class="outline-4">
+<h4 id="orgheadline156"><span class="section-number-4">7.8.8</span> Signature d'une clef PGP</h4>
+<div class="outline-text-4" id="text-7-8-8">
+<ul class="org-ul">
+<li>Avant de signer une clef, il faut vérifier.
+<ul class="org-ul">
+<li>Pour éviter MitM</li>
+<li>Pour éviter le cas d'un imposteur</li>
+</ul></li>
+<li>On vérifie une clef en comparant l'empreinte de la clef que l'on a avec l'empreinte de la clef que possède son propriétaire</li>
+<li>L'empreinte est un hash de 160 bits (20 bytes)</li>
+<li>Si la clef provient d'une personne dont on connaît la voix, on peut l'appeler pour vérifier l'empreinte de la clef par téléphone</li>
+<li>Si c'est une personne que l'on en connaît pas, une rencontre face à face est nécessaire avec un document attestant l'identité de la personne</li>
+<li>On peut éventuellement se fier à une empreinte publiée sur le web ou dans des archives de mail si on est au moins sûr de l'adresse mail.</li>
+<li>C'est une bonne idée de signer sa propre clef pour éviter qu'elle soit modifiée</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline157" class="outline-4">
+<h4 id="orgheadline157"><span class="section-number-4">7.8.9</span> Key signing parties</h4>
+<div class="outline-text-4" id="text-7-8-9">
+<ul class="org-ul">
+<li>Pour tisser le web of trust on peut signer des key signing parties</li>
+<li>La clef publique de chaque participant est publiée à l'avance</li>
+<li>Chaque participant se présente (avec passeport) et lit l'empreinte de sa clef à haute voix</li>
+<li>Chacun signe sur son laptop les clefs des autres participants</li>
+<li>Les clefs signées sont chargées sur les serveurs de clefs</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline158" class="outline-4">
+<h4 id="orgheadline158"><span class="section-number-4">7.8.10</span> Utilité du web of trust</h4>
+<div class="outline-text-4" id="text-7-8-10">
+<p>
+Deux raison pour chiffrer:
+</p>
+<ul class="org-ul">
+<li>On veut éviter que les messages puissent être facilement lu par tout le monde
+<ul class="org-ul">
+<li>Si on connaît l'adresse mail du destinataire, on peut se permettre d'utiliser une clef trouvée sur un serveur de clef</li>
+<li>Seuls des pirates déterminés pourront lire les messages</li>
+<li>Si une seule fois le pirate n'est pas en mitm on va le découvrir</li>
+</ul></li>
+<li>On veut être sûr que personne ne puisse intercepter les messages
+<ul class="org-ul">
+<li>Il ne faut faire confiance à personne</li>
+<li>Il faut vérifier la validité des clefs manuellement avec leur détenteur</li>
+</ul></li>
+</ul>
+<p>
+Finalement, le web of trust n'est pas très utile
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline162" class="outline-3">
+<h3 id="orgheadline162"><span class="section-number-3">7.9</span> S/Mime: Secure Mime</h3>
+<div class="outline-text-3" id="text-7-9">
+<ul class="org-ul">
+<li>MIME (Multipurpose Internet Mail Extensions) est un standard pour représenter des objets quelconques dans des e-mails ou autres documents électronique (ex. réponses à des requêtes http)</li>
+<li>Un document MIME contient au moins les deux en-têtes suivants:
+<ul class="org-ul">
+<li>Mime-version</li>
+<li>Content-type: text/plain, text/html, image/gif, etc.</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline160" class="outline-4">
+<h4 id="orgheadline160"><span class="section-number-4">7.9.1</span> Principes</h4>
+<div class="outline-text-4" id="text-7-9-1">
+<ul class="org-ul">
+<li>S/Mime est basé sur des types MIME permettant de définir un document chiffré et/ou signée</li>
+<li>S/Mime utilise exclusivement des certificats de type X.509 signés par une autorité de certification (chain of trust)</li>
+<li>Avant de pouvoir utiliser S/MIME il faut donc obtenir un certificat auprès d'une CA</li>
+<li>Tous les logiciels récents supportent S/MIME, mais pas tous les webmails ni téléphones mobiles</li>
+<li>S/MIME permet d'appliquer des signatures et du chiffrement à des éléments Mime (enveloppe digitale)</li>
+<li>S/MIME permet des structures récursives (une enveloppe peut se trouver dans une autre enveloppe)</li>
+<li>Ceci permet par exemple de signer un mail avant de le faire suivre à qqn</li>
+<li>Le chiffrement est hybride. La clé symétrique peut être chiffrée plusieurs fois (une fois pour chaque destinataire).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline161" class="outline-4">
+<h4 id="orgheadline161"><span class="section-number-4">7.9.2</span> PGP VS S/Mime</h4>
+<div class="outline-text-4" id="text-7-9-2">
+<ul class="org-ul">
+<li>Les deux sont basés sur crypto asymétrique pour signer et hybride pour chiffrer</li>
+<li>Les utilisateurs S/Mime délèguent la certification à des autorités de certification, mais doivent la payer. Ceux de PGP la font eux-mêmes (auto-organisation, typique d'internet)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline179" class="outline-2">
+<h2 id="orgheadline179"><span class="section-number-2">8</span> Mots de passe</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-orgheadline164" class="outline-3">
+<h3 id="orgheadline164"><span class="section-number-3">8.1</span> Généralité</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Mesures de sécurité ont peu de sens sans l'identification et authentification des utilisateurs</li>
+<li>Afin d'obtenir des privilèges les utilisateurs doivent indiquer qui ils sont (identification) et le prouver (authentification)</li>
+<li>On peut authentifier un utilisateur à l'aide de
+<ul class="org-ul">
+<li>qqch qu'il sait (mdp)</li>
+<li>qqch qu'il possède (tokens)</li>
+<li>qqch qu'il est (biométrie)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline165" class="outline-3">
+<h3 id="orgheadline165"><span class="section-number-3">8.2</span> Nom d'utilisateur et mot de passe</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>On utilise le nom pour l'identification, le mot de passe pour l'authentification</li>
+<li>Pour éviter de s'authentifier pour chaque opération, on utilise des systèmes d'authentification centralisés (OS, contrôle de domaine, serveur d'authentification)</li>
+<li>Une fois qu'il a authentifié l'utilisateur, le système lui assigne des privilèges qui lui donnent accès à certaines ressources</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline166" class="outline-3">
+<h3 id="orgheadline166"><span class="section-number-3">8.3</span> Modèle classique et stockage des mots de passes</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>Deux points de vulnérabilité
+<ul class="org-ul">
+<li>Lors du protocole d'authentification, quand l'utilisateur donne son mdp au système (espionnage)</li>
+<li>Le système stock le mdp pour le vérifier, possibilité de vol&#x2026;</li>
+</ul></li>
+<li>Mdp jamais stocké en clair, risque trop grand</li>
+<li>On stock des empreintes (hash)</li>
+<li>L'empreinte doit être unique + irréversible</li>
+<li>En comparant l'empreinte du mdp fourni avec l'empreinte stockée on sait si les deux empreintes ont été créées à partir du même mdp</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline171" class="outline-3">
+<h3 id="orgheadline171"><span class="section-number-3">8.4</span> Authentification Unix</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+Algorithme original = DES (ne devrait plus être utilisé):
+</p>
+<ul class="org-ul">
+<li>Le hash est crée en chiffrant (25 fois) une chaîne de caractères vide avec le mdp comme clé</li>
+<li>L'algo de chiffrement (DES) utilise un clé de 56 bits. 7 extrait par caractère du mdp (caractère au-delà du huitième ignorés!)</li>
+<li>Un <b>grain de sel</b> (12 bits) est ajouté pour que le même mdp ne génère pas toujours la même empreinte</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline167" class="outline-4">
+<h4 id="orgheadline167"><span class="section-number-4">8.4.1</span> Hachage sous Unix</h4>
+<div class="outline-text-4" id="text-8-4-1">
+<ul class="org-ul">
+<li>Sel stocké avec le hash, charactères ASCII (6 bit/char)</li>
+<li>Maintenant, on utilise des fonctions de hachage modernes (comme SHA-512)</li>
+<li>Nombre de ronde/bits de sel dépendent de l'implémentation:
+<ul class="org-ul">
+<li>Ubuntu: sha512, 5000 itératation, 48 bits de sel</li>
+<li>OSX: sha512, nombre variable d'itération (0.1s), 256bits de sel</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline168" class="outline-4">
+<h4 id="orgheadline168"><span class="section-number-4">8.4.2</span> Login sous Unix</h4>
+<div class="outline-text-4" id="text-8-4-2">
+<ul class="org-ul">
+<li>Lors d'un login local, empreinte est générée depuis le mdp fourni et du sel stocké localement. Comparée avec celle stockée localement</li>
+<li>Lors d'un login réseau (LDAP) le nom et le mdp sont envoyé au serveur LDAP
+<ul class="org-ul">
+<li>Normalement chiffrés avec SSL/TLs</li>
+<li>Le hachage et le stockage des mdp sur le serveur dépend de la configuration du serveur LDAP</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline169" class="outline-4">
+<h4 id="orgheadline169"><span class="section-number-4">8.4.3</span> Stockage sous Unix</h4>
+<div class="outline-text-4" id="text-8-4-3">
+<ul class="org-ul">
+<li>Méthode historique: nom et hash dans le fichier /etc/passwd avec accès libre en lecture</li>
+<li>Méthode plus sûre : hash dans fichiers séparé, /etc/shadow qui ne peuvent être lu que par l'administrateur</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline170" class="outline-4">
+<h4 id="orgheadline170"><span class="section-number-4">8.4.4</span> Stockage sous Unix: vol</h4>
+<div class="outline-text-4" id="text-8-4-4">
+<p>
+Pour obtenir le fichier /etc/shadow:
+</p>
+<ul class="org-ul">
+<li>Rebooter la machine avec un CD ou une clé USB</li>
+<li>Obtenir les privilèges administrateur (par exemple à l'aide d'un exploit)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline178" class="outline-3">
+<h3 id="orgheadline178"><span class="section-number-3">8.5</span> Authentification Windows</h3>
+<div class="outline-text-3" id="text-8-5">
+<ul class="org-ul">
+<li>Windows utilise deux hashs différents
+<ul class="org-ul">
+<li>Le LM Hash qui était utilisé par windows 95,98,ME.</li>
+<li>Le NT Hash qui est utilisé sur les serveur depuis NT et sur les clients depuis Win 2000</li>
+</ul></li>
+<li>Le LM Hashs n'a été désactivé par défaut qu'après Windows XP</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline172" class="outline-4">
+<h4 id="orgheadline172"><span class="section-number-4">8.5.1</span> Le LM Hash (historique)</h4>
+<div class="outline-text-4" id="text-8-5-1">
+<ul class="org-ul">
+<li>Le mdp est coupé en deux blocs de 7 caractères. Les minuscules sont transformées en majuscules.</li>
+<li>Une empreinte séparée est générée pour chaque blocs</li>
+<li>Les blocs de 7 bytes sont utilisés comme clé DES pour chiffrer une chaîne constante de 8 bytes</li>
+<li>Le LM hash ne comporte pas de sel</li>
+<li>Le LM hash de tous les mots de passes alpha-numériques peut être calculé en moins de 3h sur un PC normal</li>
+</ul>
+<p>
+cf image 358
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline173" class="outline-4">
+<h4 id="orgheadline173"><span class="section-number-4">8.5.2</span> Le NTLM Hash</h4>
+<div class="outline-text-4" id="text-8-5-2">
+<ul class="org-ul">
+<li>Empreinte NTLM est créée à l'aide de la fonction de hachage MD4 qui génère une empreinte de 128 bits</li>
+<li>Lors d'un login local, l'empreinte MD4 du mot de passe est comparée avec celle stockée localement</li>
+<li>Lors d'un login réseau, deux possibilités:
+<ul class="org-ul">
+<li>Réseau sans domaine active directory (ex. à la maison): challenge-response</li>
+<li>Réseau avec active directory: Kerberos</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline174" class="outline-4">
+<h4 id="orgheadline174"><span class="section-number-4">8.5.3</span> Protocole challenge/réponse</h4>
+<div class="outline-text-4" id="text-8-5-3">
+<ul class="org-ul">
+<li>Le client contacte le serveur</li>
+<li>le serveur envoie un message aléatoire (challenge) au client</li>
+<li>le client chiffre le challenge avec l'empreinte du mdp et renvoie le résultat au serveur (response)</li>
+<li>Le serveur effectue le même chiffrement et compare les résultats</li>
+</ul>
+<p>
+Protocol vulnérable au mitm : cf. slides 361
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline175" class="outline-4">
+<h4 id="orgheadline175"><span class="section-number-4">8.5.4</span> Login réseau avec active directory</h4>
+<div class="outline-text-4" id="text-8-5-4">
+<ul class="org-ul">
+<li>Dans un réseau avec AD le login réseau est fait à l'aide du protocole Kerberos</li>
+<li>Ce protocole authentifie aussi bien l'utilisateur que le serveur (évite les attaques du type mitm)
+<ul class="org-ul">
+<li>Le client est authentifié par le hash NT de son mdp</li>
+<li>Le serveur est authentifié par une clé connue de toutes les machines du domaine</li>
+</ul></li>
+<li>L'utilisateur obtient des tickets d'accès, plus besoin de s'authentifier à chaque fois pour accéder à un service, il suffit de présenter un ticket d'accès valide</li>
+<li>Il n'y a pas de faille connue à l'authentification par Kerberos</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline176" class="outline-4">
+<h4 id="orgheadline176"><span class="section-number-4">8.5.5</span> Stockage des hash</h4>
+<div class="outline-text-4" id="text-8-5-5">
+<ul class="org-ul">
+<li>Les hashs NTLM (et LM s'ils ne sont pas désactivés) des utilisateurs locaux sont stocké dans le fichier SAM. Il fait partie de la registry</li>
+<li>Les hashs des utilisateurs d'un réseau sont stockés dans l'Active Directory (fichiers ntds.dit)</li>
+<li>Le fichier qui contient les hash est verrouillé dès le démarrage du système</li>
+<li>Le fichier est chiffré , mais la clé se trouve par défaut dans le registry</li>
+<li>Il faut être administrateur et utiliser des outils spécifiques (reg sav hkml \sam) pour voler les hash du système windows en marche</li>
+<li>Les hash des utilisateurs locaux peuvent être lus du disqure dur d'une machine Windows à l'arrêt (samdump)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline177" class="outline-4">
+<h4 id="orgheadline177"><span class="section-number-4">8.5.6</span> Stockage de mdp des utilisateurs connectés</h4>
+<div class="outline-text-4" id="text-8-5-6">
+<ul class="org-ul">
+<li>Stocké en mémoire en clair&#x2026;</li>
+<li>Si vous êtes admin local d'un poste, vous pouvez récupérer le mdp de toutes
+les personnes connectée. P.ex admin qui dépanne ordinateur ou l'utilisateur de
+l'ordinateur auquel vous êtes connecté par le réseau</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline191" class="outline-2">
+<h2 id="orgheadline191"><span class="section-number-2">9</span> Cassage de mots de passe</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-orgheadline180" class="outline-3">
+<h3 id="orgheadline180"><span class="section-number-3">9.1</span> Démarche de l'attaquant</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Il soit d'abord se procurer une copie des empreintes de mots de passe</li>
+<li>Comme il ne peut pas inverser les empreintes il va
+<ul class="org-ul">
+<li>Imaginer des mots de passes possibles</li>
+<li>Générer les empreintes de ces mots</li>
+<li>Comparer avec les empreinte volées pour savoir s'il a bien deviné</li>
+</ul></li>
+<li>Si les utilisateurs avaient des mots de passes qu'on ne peut pas deviner, il n'y aurait pas de problème de cassage</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline181" class="outline-3">
+<h3 id="orgheadline181"><span class="section-number-3">9.2</span> Cassage à l'aide d'un dictionnaire</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Dictionnaire de la langue de la victime</li>
+<li>Dictionnaire de noms propres (environnement professionnel de la victime, noms de lieux de la région)</li>
+<li>Typiquement un dictionnaire contient moins de 100'000 mots. Il peut être testé en quelques fractions de secondes.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline182" class="outline-3">
+<h3 id="orgheadline182"><span class="section-number-3">9.3</span> Cassage à l'aide d'heuristiques</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>On essaie de générer des mots de passes probables</li>
+<li>On s'inspire de listes de mots de passe publiées lors d'attaque précédentes</li>
+<li>P.ex. on prend des mots dans un dico et on applique des règle (chiffre à la fin, majuscule au début)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline183" class="outline-3">
+<h3 id="orgheadline183"><span class="section-number-3">9.4</span> Recherche exhaustive</h3>
+<div class="outline-text-3" id="text-9-4">
+<ul class="org-ul">
+<li>On génère systématiquement toutes les combinaisons de caractères</li>
+<li>Pour une longueur maximale et un jeu de caractères donnés</li>
+<li>Devient très vite très complexe</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline188" class="outline-3">
+<h3 id="orgheadline188"><span class="section-number-3">9.5</span> Compromis temps-mémoire</h3>
+<div class="outline-text-3" id="text-9-5">
+<ul class="org-ul">
+<li>Si les empreintes ne sont pas salées, elles peuvent être calculées à l'avance</li>
+<li>Si on pouvait stocker toutes les empreintes, le cassage serait immédiat</li>
+<li>On aurait besoin de beaucoup de mémoire (e.g. 8 cars,min,maj,chiffres = 2.1*10<sup>14</sup>, mdp+empreinte = 24 bytes &rArr; 4'844 TB)</li>
+<li>Les compromis temps-mémoire permettent d'accélérer le crackage en ne stockant qu'une fraction des empreintes</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline185" class="outline-4">
+<h4 id="orgheadline185"><span class="section-number-4">9.5.1</span> Chaînes</h4>
+<div class="outline-text-4" id="text-9-5-1">
+<ul class="org-ul">
+<li>On choisit une fonction \(R\) qui génère un mdp arbitraire à partir d'une empreinte (fonction de réduction)</li>
+</ul>
+<p>
+\[p_0 \xrightarrow{H} h_0 \text{    } h_0 \xrightarrow{R} p_2\]
+</p>
+<ul class="org-ul">
+<li>On peut créer des chaînes:</li>
+</ul>
+<p>
+\[p_0 \xrightarrow{H} h_0 \xrightarrow{R} p_2 \xrightarrow{H} h_2 \xrightarrow{R} p_3 \xrightarrow{H} h_3 \xrightarrow{R} p_9\]
+</p>
+<ul class="org-ul">
+<li>On ne stocke que le début et la fin</li>
+<li>On ne peut pas les parcourir en arrière, mais si on connaît le début, on peut reconstruire toute la chaîne</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline184" class="outline-5">
+<h5 id="orgheadline184"><span class="section-number-5">9.5.1.1</span> Astuce</h5>
+<div class="outline-text-5" id="text-9-5-1-1">
+<ul class="org-ul">
+<li>On génère une chaîne à partir du hash</li>
+<li>Quand on tombe sur une fin de chaîne on la régénère à partir du début.</li>
+</ul>
+<p>
+Ex. : On a une ligne:
+\[\text{aaaaaa} \xrightarrow{H} \text{281DAF40} \xrightarrow{R} \text{sgfnyd} \xrightarrow{H} \text{920ECF10} \xrightarrow{R} \text{kiebgt}\]
+On nous veut cracker 920ECF10, on applique \(R\) dessus et on obtient kiebgt qui correspond à une de nos fin de ligne, il y a des chances que le mdp soit dedans la ligne (mais pas forcément)
+Si pas dedans, on applique \(H\) puis \(R\) à nouveau jusqu'à obtenir un match
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline186" class="outline-4">
+<h4 id="orgheadline186"><span class="section-number-4">9.5.2</span> Problème des fusions</h4>
+<div class="outline-text-4" id="text-9-5-2">
+<ul class="org-ul">
+<li>La fonction de réduction peut générer le même mot de passe à partir de deux hash différents = <b>fusion</b></li>
+<li>La même information apparaît deux fois dans la table, perte d'efficacité</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline187" class="outline-4">
+<h4 id="orgheadline187"><span class="section-number-4">9.5.3</span> Multiple tables</h4>
+<div class="outline-text-4" id="text-9-5-3">
+<ul class="org-ul">
+<li>Plus une table est grande, plus on a de risque qu'une nouvelle chaîne fusionne avec une chaîne existante (efficacité des nouvelles chaînes diminue)</li>
+<li>Il devient plus efficace de faire un nouvelle table avec une fonction de réduction différente</li>
+<li>Les rainbows tables utilisent une fonction de réduction différente pour chacune des colonnes
+<ul class="org-ul">
+<li>Une fusion n'est possible que si une collision apparaît dans une même colonne</li>
+<li>On peut créer des tables plus grandes</li>
+<li>On a besoin de moins d'opération de hachage et de moins d'accès aux tables pour retrouver un mot de passe.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline189" class="outline-3">
+<h3 id="orgheadline189"><span class="section-number-3">9.6</span> Importance du sel</h3>
+<div class="outline-text-3" id="text-9-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Sans sel</th>
+<th scope="col" class="org-left">avec Sel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Deux utilisateurs qui ont le même mdp on la même empreinte</td>
+<td class="org-left">Même si les mdps sont les mêmes, les empreintes sont différentes</td>
+</tr>
+
+<tr>
+<td class="org-left">Si on tente de casser un ensemble d'empreinte il suffit de hacher une fois chaque candidat de mot de passe et de comparer avec l'empreinte de tous les éléments de l'ensemble</td>
+<td class="org-left">Il faut hacher chaque candidat une fois pour chaque empreinte de l'ensemble, avec le sel correspondant</td>
+</tr>
+
+<tr>
+<td class="org-left">On peut calculer les empreintes à l'avance et utiliser des compromis temps-mémoire</td>
+<td class="org-left">Si on voulait calculer les empreintes à l'avance, on devrait les calculer pour toutes les valeurs possibles du sel</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgheadline190" class="outline-3">
+<h3 id="orgheadline190"><span class="section-number-3">9.7</span> Bon choix de mot de passe</h3>
+<div class="outline-text-3" id="text-9-7">
+<ul class="org-ul">
+<li>Utiliser mot de passe complexe, au moins 9 cars, casse mixte, chiffres et cars spéciaux</li>
+<li>Utiliser des mots de passe différents pour chaque système</li>
+<li>Changer de mot de passe régulièrement</li>
+<li>Utiliser un gestionnaire de mot de passe</li>
+<li>Un bon mot de passe correspond à au moins une clé de 60bits, \(N\) = taille du jeu de caractère, \(L\) = longueur: bits = \(log_2(N^L)\)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline199" class="outline-2">
+<h2 id="orgheadline199"><span class="section-number-2">10</span> Authentification forte</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+On parle d'authentification forte (ou à deux facteurs) quand on utilise un deuxième éléments en plus du mot de passe
+</p>
+<ul class="org-ul">
+<li>Quelque chose que l'on possède (token)</li>
+<li>Quelque chose que l'on est (biométrie)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline194" class="outline-3">
+<h3 id="orgheadline194"><span class="section-number-3">10.1</span> Authentification par token</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>Un token est un objet, si possible unique, en possession de l'authentifiant</li>
+<li>Grille de chiffres
+<ul class="org-ul">
+<li>Preuve que l'utilisateur possède la grille (ou une copie)</li>
+<li>Peut être copiée sans que son propriétaire ne le remarque</li>
+</ul></li>
+<li>Token OTP (One time password)
+<ul class="org-ul">
+<li>Affiches/injecte un nombre à 6 chiffres qui change chaque minute ou a chaque utilisation</li>
+<li>Preuve que l'utilisateur détient l'objet unique au moment de l'authentification</li>
+<li>Exemples:
+<ul class="org-ul">
+<li>Calculettes, preuve que l'utilisateur à la calculette + a lu le challenge</li>
+<li>Téléphone portable: otp par sms, calcul d'un otp sur le téléphone</li>
+<li>Certificat logiciel, sur un dongle</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline192" class="outline-4">
+<h4 id="orgheadline192"><span class="section-number-4">10.1.1</span> OTP: fonctionnement et standards</h4>
+<div class="outline-text-4" id="text-10-1-1">
+<ul class="org-ul">
+<li>Les tokens génèrent un mdp à usage unique</li>
+<li>Le mdp dépend soit de l'heure, soit du nombre de fois qu'on s'authentifier
+<ul class="org-ul">
+<li>Time based OTP (attention à la synchronisation d'horloge)</li>
+<li>Event based (attention à la synchronisation du nombre d'utilisation)</li>
+</ul></li>
+<li>Les mdp sont généré à partir d'un secret connu, du token, du serveur ainsi que d'un compteur ou de l'heure actuelle</li>
+<li>Ex. OATH standard décrit</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline193" class="outline-4">
+<h4 id="orgheadline193"><span class="section-number-4">10.1.2</span> Signature des transactions</h4>
+<div class="outline-text-4" id="text-10-1-2">
+<ul class="org-ul">
+<li>Les calculettes peuvent générer des signatures de chaque transaction:
+<ul class="org-ul">
+<li>L'utilisateur tape le numéro de compte et le montant</li>
+<li>La calculette donne la signature nécessaire pour confirmer la transaction</li>
+</ul></li>
+<li>Le SMS permet de faire valider la transaction par un canal indépendant de l'ordinateur</li>
+<li>Les grilles numériques et les tokens de type OTP ne permettent pas de signer les transactions et donc d'éviter les attaques de type mitm</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline198" class="outline-3">
+<h3 id="orgheadline198"><span class="section-number-3">10.2</span> Biométrie</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>Biométrie = science de la mesure des propriétés des êtres vivant</li>
+<li>Deux classes: morphologie (e.g. empreinte digitale) vs comportement (dynamique de la signature, voix)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline195" class="outline-4">
+<h4 id="orgheadline195"><span class="section-number-4">10.2.1</span> Taux de rejet</h4>
+<div class="outline-text-4" id="text-10-2-1">
+<ul class="org-ul">
+<li>Difficile de créer un système biométrique parfait
+<ul class="org-ul">
+<li>S'il est trop sensible, trop de faux négatifs</li>
+<li>S'il n'est pas assez sensible, il génère trop de faux positif</li>
+</ul></li>
+<li>On indique la qualité d'un système par le taux de rejet ou les taux négatifs et de faux positifs sont égaux</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline196" class="outline-4">
+<h4 id="orgheadline196"><span class="section-number-4">10.2.2</span> Exemple: empreintes digitales</h4>
+<div class="outline-text-4" id="text-10-2-2">
+<ul class="org-ul">
+<li>Empreinte du doigt scannée par un capteur</li>
+<li>Les points intéressants (minuties) sont extraits (coordonnées x,y + direction)</li>
+<li>La liste des minuties est transmise à un serveur</li>
+<li>La liste est comparée avec une liste enregistrée préalablement</li>
+<li>Le nombre de minuties concordantes donne le degré d'identification de la personne</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline197" class="outline-4">
+<h4 id="orgheadline197"><span class="section-number-4">10.2.3</span> Discussion</h4>
+<div class="outline-text-4" id="text-10-2-3">
+<p>
+Limitations
+</p>
+<ul class="org-ul">
+<li>Les infos ne sont jamais identiques
+<ul class="org-ul">
+<li>Pas de hachage possible (ni pour la transmission, ni pour le stockage)</li>
+<li>risque de vol</li>
+</ul></li>
+<li>Il n'est pas possible de changer un doigt volé !</li>
+<li>Certains capteurs peuvent être trompés ou substitués</li>
+</ul>
+<p>
+Applications idéales
+</p>
+<ul class="org-ul">
+<li>Contrôle d'accès physique</li>
+<li>Authentification de payements à la caisse</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline214" class="outline-2">
+<h2 id="orgheadline214"><span class="section-number-2">11</span> Réseaux virtuels privés (VPN) et IPSec</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>Les VPN permettent d'étendre un réseau privé à travers un réseau public</li>
+<li>Scénarios
+<ul class="org-ul">
+<li>Interconnexions de sites distants par Internet</li>
+<li>Accès au réseau d'entreprise à partir d'un laptop sur Internet</li>
+</ul></li>
+<li>Logiciel, protocole de VPN sur les routeurs ou les PCs (laptop)</li>
+<li>Encapsulation des paquets pour leur voyage à travers Internet</li>
+<li>Chiffrement des données pour garantir la confidentialité</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline200" class="outline-3">
+<h3 id="orgheadline200"><span class="section-number-3">11.1</span> IPSec</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li>LE protocole standard pour VPN</li>
+<li>Norme développé par l'IEFT
+<ul class="org-ul">
+<li>Format ouvert et extensible</li>
+<li>Algorithmes publics (chiffrement, hash, signature)</li>
+</ul></li>
+<li>Deux modes d'opération: tunnel et transport</li>
+<li>Deux protocoles, un pour le chiffrement (ESP) et un pour l'authentification (AH)</li>
+<li>Un protocole d'échange de clé: IKE (Internet Key Exchange)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline201" class="outline-3">
+<h3 id="orgheadline201"><span class="section-number-3">11.2</span> Principes</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+Modes
+</p>
+<ul class="org-ul">
+<li><b>transport</b>: ne protège que les payloads des paquets transmis</li>
+<li><b>tunnel</b>: le paquet entier est encapsulé dans un nouveau paquet</li>
+</ul>
+<p>
+SA:
+</p>
+
+<p>
+Pour chaque conversation protégée, la Security Association (SA) mémorise les algo, les clés, la durée de validité des clés, les nos de séquence et l'identité des partenaires
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline202" class="outline-3">
+<h3 id="orgheadline202"><span class="section-number-3">11.3</span> Authentication Header (AH)</h3>
+<div class="outline-text-3" id="text-11-3">
+<ul class="org-ul">
+<li>L'ajout d'un en-tête d'authentification permet de vérifier l'authenticité et l'intégrité des paquets</li>
+<li>L'entête AH contient:
+<ul class="org-ul">
+<li>Le SPI qui permet de retrouver la SA à destination</li>
+<li>Un numéro de séquence (replay protection)</li>
+<li>Information d'authentification (HMAC-SHA)</li>
+<li>Le type de l'en-tête suivant (ICMP, TCP, UDP, &#x2026;)</li>
+</ul></li>
+<li>L'authentification est faite sur les données qui suivent l'en-tête AH, sur l'en-tête AH ET sur les champs importants de l'en-tête IP (source, destination, protocole, longueur, version)</li>
+<li>L'algorithme utilisé pour générer l'information est négocié lors de la création de la SA</li>
+<li>Deux MAC (hash avec clé sym) standards doivent être disponibles: HMAC-SHA-96, HMAC-MD5-96 (longeur 96 bits)</li>
+<li>Pour calculer l'information d'authentification on met le champ qui doit la contenir à zéro</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline203" class="outline-3">
+<h3 id="orgheadline203"><span class="section-number-3">11.4</span> Encapsulated security payload (ESP)</h3>
+<div class="outline-text-3" id="text-11-4">
+<ul class="org-ul">
+<li>L'en-tête ESP permet de chiffrer et d'authentifier les paquets</li>
+<li>L'en-tête ESP contient:
+<ul class="org-ul">
+<li>header:
+<ul class="org-ul">
+<li>Le SPI qui permet de retrouver la SA à destination</li>
+<li>Un numéro de séquence (replay protection)</li>
+<li>Un vecteur d'initialisation</li>
+</ul></li>
+<li>payload: données chiffrées</li>
+<li>trailer:
+<ul class="org-ul">
+<li>Du remplissage (padding), la longueur du pad</li>
+<li>Le type de l'en-tête, chiffré, suivant (IP, TCP, UDP, &#x2026;)</li>
+</ul></li>
+<li>Données d'authentification (optionnel)</li>
+</ul></li>
+<li>Le chiffrement ne porte que sur les données encapsulées et le trailer</li>
+<li>Il ne porte pas sur les champs de l'en-tête et les données d'authentification</li>
+<li>L'authentification optionnelle porte sur l'en-tête ESP et tout ce qui suit, PAS sur l'en-tête IP</li>
+<li>Les algo obligatoires: AES, NULL pour chiffr. HMAC-SHA-96 pour auth.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline204" class="outline-3">
+<h3 id="orgheadline204"><span class="section-number-3">11.5</span> Les SA (Security Association)</h3>
+<div class="outline-text-3" id="text-11-5">
+<ul class="org-ul">
+<li>Une SA est négociée pour chaque flux unidirectionnel, une connexion TCP nécessite donc deux SA, une pour chaque sens</li>
+<li>Les SA sont identifiées par un index (SPI): chaque destination crée des SPI uniques pour chaque protocole (AH,ESP)</li>
+<li>La source indique le SPI sur tous les paquets qu'elle envoie: la destination l'utilise pour retrouver les algos, clés et autres info négociées</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline205" class="outline-3">
+<h3 id="orgheadline205"><span class="section-number-3">11.6</span> Mode transport et tunnel</h3>
+<div class="outline-text-3" id="text-11-6">
+<ul class="org-ul">
+<li>En mode transport, on chiffre ou authentifie la partie data d'un paquet IP &rArr; sécurité de bout en bout</li>
+<li>En mode tunnel, on protège le paquet complet et on l'encapsule dans un nouveau paquet &rArr; sécurité par les routeurs intermédiaires</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline206" class="outline-3">
+<h3 id="orgheadline206"><span class="section-number-3">11.7</span> IPSec et NAT</h3>
+<div class="outline-text-3" id="text-11-7">
+<ul class="org-ul">
+<li>IPSec protège les paquets contre toute modification</li>
+<li>NAT change les adresses source et aussi les checksum TCP et UDP!
+<ul class="org-ul">
+<li>le calcul du checksum TCP et UDP inclut les adresses et ports sources et destination (pseudoheader)</li>
+<li>Quand on modifie une adresse IP on doit ajouter la différence entre l'ancienne et la nouvelle adresse au checksum TCP</li>
+<li>Les routeurs ou pare-feux qui font du NAT le font automatiquement</li>
+</ul></li>
+<li>transport: AH protège l'en-tête, ESP protège le checksum TCP!</li>
+<li>tunnel: AH protège l'en-tête, ESP sans soucis!</li>
+<li>Certains routeurs ne savent pas faire du NAT avec ESP car ils ne voient pas de numéros de port, on peut encapsuler IPSec dans UDP</li>
+<li>Pour éviter les problèmes dus au NAT, il vaut mieux appliquer IPSec à l'extérieur du routeur qui fait le NAT</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline209" class="outline-3">
+<h3 id="orgheadline209"><span class="section-number-3">11.8</span> Internet Key Exchange (IKE)</h3>
+<div class="outline-text-3" id="text-11-8">
+<ul class="org-ul">
+<li>Sert à négocier les paramèẗres pour les protocoles AH et ESP</li>
+<li>Authentifie les partenaires (par secrets partagés, clé publiques ou certificats)</li>
+<li>Deux tâches:
+<ul class="org-ul">
+<li>Négocier une SA IKE pour protéger les négociations</li>
+<li>Définir les SA nécessaires pour des flux ESP ou AH</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline207" class="outline-4">
+<h4 id="orgheadline207"><span class="section-number-4">11.8.1</span> Echange initial</h4>
+<div class="outline-text-4" id="text-11-8-1">
+<ul class="org-ul">
+<li>Les deux stations s'authentifie et créent une SA pour les négociations suivantes</li>
+<li>Les deux premiers paquets échanger permettent:
+<ul class="org-ul">
+<li>De faire un échange Diffie-Hellman afin d'obtenir une clé symétrique</li>
+<li>De proposer un algo de chiffrement/authentification (pour le trafic IKE)</li>
+<li>De faire le choix des algos (pour le trafic IKE)</li>
+<li>De s'échanger des nombres aléatoires pour la prochaine étape</li>
+</ul></li>
+<li>Les deuxièmes paquets échangés:
+<ul class="org-ul">
+<li>Sont chiffrées et authentifiés grâce aux algos négociés et la clé obtenue par DH</li>
+<li>Exécutent l'authentification des deux parties selon les algos négociés</li>
+<li>Négocient les algos à utiliser (pour le trafic IPSec)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline208" class="outline-4">
+<h4 id="orgheadline208"><span class="section-number-4">11.8.2</span> Renégociations</h4>
+<div class="outline-text-4" id="text-11-8-2">
+<ul class="org-ul">
+<li>Des nouvelles SA peuvent être ajoutées</li>
+<li>les SA sont renouvelées régulièrement</li>
+<li>Un nouveau DH est exécuté pour échanger de nouvelles clef
+<ul class="org-ul">
+<li>Confidentialité Persistante (Perfect Forward Secrecy): il n'y a aucun lien entre les nouvelles et anciennes clés</li>
+<li>Si la NSA enregistre tout le trafic, mais n'est pas capable de voler les clés avant qu'elle ne soient remplacées, elle ne pourra jamais déchiffrer le trafic !</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline210" class="outline-3">
+<h3 id="orgheadline210"><span class="section-number-3">11.9</span> IPSec notes</h3>
+<div class="outline-text-3" id="text-11-9">
+<ul class="org-ul">
+<li>Sûr, flexible, ouvert, compliqué</li>
+<li>Inclus dans Windows, Linux, OSX</li>
+<li>Obligatoire dans IPv6</li>
+<li>Problèmes avec le NAT</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline213" class="outline-3">
+<h3 id="orgheadline213"><span class="section-number-3">11.10</span> Alternatives</h3>
+<div class="outline-text-3" id="text-11-10">
+</div><div id="outline-container-orgheadline211" class="outline-4">
+<h4 id="orgheadline211"><span class="section-number-4">11.10.1</span> OpenVPN</h4>
+<div class="outline-text-4" id="text-11-10-1">
+<ul class="org-ul">
+<li>logiciel open sources</li>
+<li>nécessite l'installation d'un client</li>
+<li>Crée une interface virtuelle sur le client et le serveur</li>
+<li>Utilise le protocole TLS pour chiffrer les paquets échangés entre le client et le serveur</li>
+<li>Fonctionne avec TCP ou UDP (UDP préféré, car problèmes de perfs avec TCP sur TCP)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline212" class="outline-4">
+<h4 id="orgheadline212"><span class="section-number-4">11.10.2</span> SSL VPN</h4>
+<div class="outline-text-4" id="text-11-10-2">
+<ul class="org-ul">
+<li>Technologie "clientles"</li>
+<li>Utilise un navigateur et HTTPS pour télécharger un client Java ou ActiveX</li>
+<li>Redirige d'une manière plus ou moins sûre le trafic du client vers le réseau de l'entreprise en passant par la connexion HTTPS
+<ul class="org-ul">
+<li>Autant de standards que de fabricants</li>
+<li>On espère que c'est sûr&#x2026;</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline228" class="outline-2">
+<h2 id="orgheadline228"><span class="section-number-2">12</span> Transport Layer Security (TLS)</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li>Lorsque l'on veut offrir un seul service sécurisé (web, mail, login), il est plus intéressant au niveau du transport qu'au niveau du réseau</li>
+<li>TLS permet de sécuriser n'importe quel service basé sur TCP (https, pop3s, telnets, ftps, esmtp,&#x2026;)</li>
+<li>VPN: sécurité de toutes les données entre deux points du réseau</li>
+<li>TLS: sécurité d'un seul service, entre un serveur et des clients dans tout le réseau</li>
+<li>TLS offre:
+<ul class="org-ul">
+<li>Authentification forte avec des certificats</li>
+<li>Chiffrement</li>
+<li>Compression</li>
+<li>Négociation des algo d'authentification et de chiffrement</li>
+<li>Gestion des clés de sessions</li>
+</ul></li>
+<li>S'appelait avant SSL</li>
+<li>S'insère comme une couche intermédiaire entre TCP et l'application</li>
+<li>Contient deux couches:
+<ul class="org-ul">
+<li>La couche inférieure (record layer) applique les mesures de sécurité au données échangées</li>
+<li>La couche supérieure traite quatre type de messages (auth, data, alert, change cipher)</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline215" class="outline-3">
+<h3 id="orgheadline215"><span class="section-number-3">12.1</span> TLS record layer</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>Traite les données échangées
+<ul class="org-ul">
+<li>Fragmentation</li>
+<li>Compression (facultatif)</li>
+<li>Authentification</li>
+<li>Chiffrement</li>
+</ul></li>
+<li>Elle passe le fragment ainsi traité à la couche de transport (TCP)</li>
+<li>A la réception les opération inverse sont effectuée</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline218" class="outline-3">
+<h3 id="orgheadline218"><span class="section-number-3">12.2</span> Authentification</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>Le serveur et/ou le client peuvent s'authentifier avec un certificat X.509</li>
+<li>On envoie le certificat à l'autre partenaire</li>
+<li>On prouve que l'on détient la clé privée en l'utilisant lors de l'échange de clés (p.ex. pour singer un message)</li>
+<li>On envoie aussi les certificats intermédiaires qui permettre de remonter jusqu'au certificat racine d'une autorité de certification reconnue</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline216" class="outline-4">
+<h4 id="orgheadline216"><span class="section-number-4">12.2.1</span> Authentification serveur</h4>
+<div class="outline-text-4" id="text-12-2-1">
+<ul class="org-ul">
+<li>Sauf cas exceptionnels, le serveur utilise toujours un certificat. Si on ne le faisait pas, on pourrait faire des attaques mitm</li>
+<li>Cas accepté: chiffrement facultatif de message dans SMTP
+<ul class="org-ul">
+<li>On accepte de toute façon le risque d'envoyer le courrier en clair</li>
+<li>Si le certificat du serveur ne pouvait pas être validé, on enverrait quand même le courrier</li>
+<li>Du coup, on ne demande même pas le certificat du serveur</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline217" class="outline-4">
+<h4 id="orgheadline217"><span class="section-number-4">12.2.2</span> Authentification client</h4>
+<div class="outline-text-4" id="text-12-2-2">
+<p>
+Pas souvent utilisée
+</p>
+<ul class="org-ul">
+<li>On l'utilise quand le client est une machine</li>
+<li>Quand c'est un humain, c'est trop compliqué à expliquer</li>
+<li>On préfère demander à l'humain de taper un mot de passe</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline219" class="outline-3">
+<h3 id="orgheadline219"><span class="section-number-3">12.3</span> TLS Handshake protocol</h3>
+<div class="outline-text-3" id="text-12-3">
+<ul class="org-ul">
+<li>Négociation de:
+<ul class="org-ul">
+<li>La version du protocol (SSL 2.0,3.0, TLS 1.0, 1.1, 1.2)</li>
+<li>Les algos:
+<ul class="org-ul">
+<li>échange de clés (DH, RSA)</li>
+<li>Chiffrement (AES, RC4)</li>
+<li>Authentification (HMAC-SHA256, HMAC-MD5, HMAC-SHA)</li>
+<li>Le client propose les algorithmes désirés dans l'ordre de préférence, le serveur choisit</li>
+</ul></li>
+</ul></li>
+<li>Authentification optionnelle du partenaire à l'aide d'un certificat</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline220" class="outline-3">
+<h3 id="orgheadline220"><span class="section-number-3">12.4</span> Echange de clé</h3>
+<div class="outline-text-3" id="text-12-4">
+<ul class="org-ul">
+<li>Soit le client choisi une clé aléatoire et la chiffre avec la clé publique du serveur (échange RSA), prouve que le serveur possède la clé privée du certificat</li>
+<li>Soit on fait un DH, dans ce cas, le serveur signe sa moitié du DH pour prouver qu'il détient la clé privée</li>
+<li>On préfère DH car il fournit la <b>confidentialité persistante</b> (<b>perfect forward secrecy</b>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline221" class="outline-3">
+<h3 id="orgheadline221"><span class="section-number-3">12.5</span> TLS: autres sous protocoles</h3>
+<div class="outline-text-3" id="text-12-5">
+<ul class="org-ul">
+<li>Change cipher spec protocl: définit à quel moment on change l'algo de chiffrement, p.ex. à la fin du handshake</li>
+<li>Alter protocol: permet de signaliser à l'application des erreurs ou avertissement concernant la session en cours</li>
+<li>Data protocol: passe les données d'une application de manière transparente au record layer</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline222" class="outline-3">
+<h3 id="orgheadline222"><span class="section-number-3">12.6</span> Client hello</h3>
+<div class="outline-text-3" id="text-12-6">
+<ul class="org-ul">
+<li>Dans le client hello, le client propose toutes les ciphersuites qu'il connaît</li>
+<li>C'est le serveur qui choisit. Il indique son choix dans le server hello</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline223" class="outline-3">
+<h3 id="orgheadline223"><span class="section-number-3">12.7</span> Mémorisation des sessions</h3>
+<div class="outline-text-3" id="text-12-7">
+<ul class="org-ul">
+<li>Les paramètres négociés sont associés à une session</li>
+<li>La session peut-être mémorisée et réutilisée lors d'une prochaine connexion</li>
+<li>Par exemple HTTP génère bcp de connexion consécutives (requêtes):
+<ul class="org-ul">
+<li>Lors d'une connexion subséquente, le client présente le numéro de la session qu'il veut réutiliser</li>
+<li>Le serveur choisit s'il veut continuer la session ou faire un nouveau handshake</li>
+<li>Si le client a des clés compatibles avec la session du serveur, c'est qu'il est bien le même client</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline224" class="outline-3">
+<h3 id="orgheadline224"><span class="section-number-3">12.8</span> Application de TLS</h3>
+<div class="outline-text-3" id="text-12-8">
+<ul class="org-ul">
+<li>Soit on crée un nouveau protocol depuis l'ancien:
+<ul class="org-ul">
+<li>Ex. HTTP (port 80) &rArr; HTTPS (port 443)</li>
+<li>désavantage: seul des clients supportant TLS peuvent se connecter</li>
+<li>avantage: on est sûr que la communication est sécurisée</li>
+</ul></li>
+<li>Soit on étend un protocole pour négocier SSL/TLS</li>
+<li>ex. ESMTP, à l'aide de la commande STARTTLS le client peut demander à utiliser TLS</li>
+<li>Avantage: le client n'a pas besoin de supporter TLS pour utiliser le service</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline227" class="outline-3">
+<h3 id="orgheadline227"><span class="section-number-3">12.9</span> Exemples</h3>
+<div class="outline-text-3" id="text-12-9">
+</div><div id="outline-container-orgheadline225" class="outline-4">
+<h4 id="orgheadline225"><span class="section-number-4">12.9.1</span> HTTPS</h4>
+<div class="outline-text-4" id="text-12-9-1">
+<ul class="org-ul">
+<li>Utilisation ou non de TLS n'est pas négociable</li>
+<li>Garantit la confidentialité des données transmises et l'authenticité du site</li>
+<li>Le serveur doit posséder un certificat</li>
+<li>Le client peut en posséder un</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline226" class="outline-4">
+<h4 id="orgheadline226"><span class="section-number-4">12.9.2</span> ESMTP, POP3, IMAP</h4>
+<div class="outline-text-4" id="text-12-9-2">
+<ul class="org-ul">
+<li>TLS est implémenté comme extension du protocole</li>
+<li>Les certificats ne sont pas forcément requis</li>
+<li>L'utilisation de TLS est optionnelle (configurable)</li>
+<li>Tous ces protocoles envoient par défaut les mdp en clair, TLS les protège aussi</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline229" class="outline-2">
+<h2 id="orgheadline229"><span class="section-number-2">13</span> READ PADDING ORACLE ATTACK</h2>
+</div>
+<div id="outline-container-orgheadline233" class="outline-2">
+<h2 id="orgheadline233"><span class="section-number-2">14</span> Secure Shell (SSH)</h2>
+<div class="outline-text-2" id="text-14">
+<ul class="org-ul">
+<li>SSH remplace de manière sécurisée les protocoles comme: telnet, rlogin, rsh, ftp</li>
+<li>Les données sont chiffrées, les mots de passe ne sont pas échangés en clair</li>
+<li>SSH utilise une connexion TCP sur le port 22</li>
+<li>On peut utiliser SSH pour transporter un autre protocole (violation des couches de protocoles)</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline230" class="outline-3">
+<h3 id="orgheadline230"><span class="section-number-3">14.1</span> Etablissement de la connexion</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li>Négociation des algos</li>
+<li>DH</li>
+<li>Authentification du serveur par signature du DH (TOFU, trust on first use)</li>
+<li>Authentification du client
+<ul class="org-ul">
+<li>Clef publique + signature &rArr; copier sa clé pub sur le serveur + copie de la clef privé sur le client, si attaquant vole clé privée = accès au serveur</li>
+<li>Mot de passe</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline231" class="outline-3">
+<h3 id="orgheadline231"><span class="section-number-3">14.2</span> Port forwarding avec SSH</h3>
+<div class="outline-text-3" id="text-14-2">
+<ul class="org-ul">
+<li>On peut utiliser une connexion SSH existante pour protéger d'autres connexions</li>
+<li>On demande au client ssh de forwarder un port vers une destination donnée</li>
+<li>On indique au client de l'application qu'il doit se connecter au port local au lieu du serveur distant</li>
+<li>Automagiquement, le client se retrouve connecté au serveur distant, le trajet est chiffré</li>
+<li>Port forwarding peut être aussi faite dans l'autre sens, par exemple pour
+faire des sessions X windows. Le serveur ouvre écoute sur un port et transmet
+toutes les connexions entrantes vers le client</li>
+<li>Le port forwarding permet donc de chiffrer plusieurs connexions simultanément
+<ul class="org-ul">
+<li>Effet similaire à un VPN</li>
+<li>Limitation: pour chaque protocole on ne peut se connecter qu'à un seul
+serveur</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline232" class="outline-3">
+<h3 id="orgheadline232"><span class="section-number-3">14.3</span> Transfert de fichiers avec SSH</h3>
+<div class="outline-text-3" id="text-14-3">
+<ul class="org-ul">
+<li>SCP: remplace la commande cp</li>
+<li>SFTP: remplace le protocole FTP</li>
+<li>Dans les deux cas les fichiers sont transférés pare une connexion TCP, pas de
+problème de NAT</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline242" class="outline-2">
+<h2 id="orgheadline242"><span class="section-number-2">15</span> WiFi WEP/WPA</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li>Réseaux sans fil vulnérables, facile de faire des écoutes</li>
+<li>WEP = très mauvais, à proscrire</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline234" class="outline-3">
+<h3 id="orgheadline234"><span class="section-number-3">15.1</span> WPA/ WPA2</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li>Le WPA (Wi-Fi Protected Access) a été standardisé en urgence en 2003 pour
+éliminer les failles de WEP</li>
+<li>WPA/WPA2 vs WEP
+<ul class="org-ul">
+<li>Compteur pour éviter le replay de paquets (!)</li>
+<li>Vecteur d'initialisation de 48 bits au lieu de 12</li>
+<li>Utilisation d'un mec au lieu d'une somme de contrôle linéaire, basé sur AES
+pour WPA2</li>
+<li>Utilisation des clés longues, aléatoires et raffraîchies régulièrement</li>
+<li>WPA2: chiffrement avec AES, WAP chiffre avec RC4 pour faciliter la
+transition avec WEP</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline235" class="outline-3">
+<h3 id="orgheadline235"><span class="section-number-3">15.2</span> Faiblesses de WPA</h3>
+<div class="outline-text-3" id="text-15-2">
+<ul class="org-ul">
+<li>Sous certaines conditions spécifiques, possible d'injecter ou de déchiffrer
+des paquets</li>
+<li>Possible de déchiffrer RC4 si le même texte clair est retransmis de nombreuses
+fois</li>
+<li>Aucune raison d'utiliser WPA vs WPA2</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline238" class="outline-3">
+<h3 id="orgheadline238"><span class="section-number-3">15.3</span> Mode personnel et entreprise</h3>
+<div class="outline-text-3" id="text-15-3">
+<ul class="org-ul">
+<li>WPA supporte deux modes</li>
+<li>Personnel: le point d'accès authentifie directement les clients à l'aide d'un
+secret partagé (PSK, pre-shared-key)</li>
+<li>Entreprise
+<ul class="org-ul">
+<li>Le point d'accès n'est qu'un passe-plat qui permet au client de
+s'authentifier auprès du serveur d'authentification</li>
+<li>Un protocole d'authentification existant (EAP, extensible authentication
+protocol) est utilisé</li>
+</ul></li>
+<li>Dans les deux cas, l'authentification fournit à chacun des client une Pairwise
+Master Key (PMK) à partir de laquelle les clés de chiffrement et de MAC sont dérivées</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline236" class="outline-4">
+<h4 id="orgheadline236"><span class="section-number-4">15.3.1</span> Authentification en mode personnel</h4>
+<div class="outline-text-4" id="text-15-3-1">
+<ul class="org-ul">
+<li>La PMK est dérivée de la PSK (pre-shared key = mdp du wifi), on utilise le nom
+du réseau comme sel, une fonction de hashage (SHA-1) et un nombre important
+d'itération (4096)</li>
+<li>Le client et le point d'accès calculent chacun la PMK de leur côté</li>
+<li>Ils se font ensuite des challenge-response avec des nombres aléatoires pour
+établir les clés de chiffrement et de MAC (forward secrecy)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline237" class="outline-4">
+<h4 id="orgheadline237"><span class="section-number-4">15.3.2</span> Authentification en mode entreprise</h4>
+<div class="outline-text-4" id="text-15-3-2">
+<ul class="org-ul">
+<li>Le protocole EAP connaît plusieurs méthodes d'authentification</li>
+<li>Les plus courants sont TLS et TTLS</li>
+<li>TLS
+<ul class="org-ul">
+<li>Une connexion TLS est établie entre le client et le serveur</li>
+<li>On utilise un certificat client pour authentifier le client</li>
+<li>et un certificat serveur pour authentifier le serveur</li>
+<li>S=ur, mais nécessite l'installation d'un certificat sur chaque client
+(laptop, smartphone)</li>
+</ul></li>
+<li>TTLS (tunneled TLS)
+<ul class="org-ul">
+<li>Une connexion TLS est établie entre le client et le serveur</li>
+<li>Le serveur est authentifié par son certificat</li>
+<li>Le client utilise un mdp pour s'authentifier
+<ul class="org-ul">
+<li>PAP: il envoie le mdp par la connexion TLS</li>
+<li>CHAP: le serveur envoie un challenge par la connexion TLS, le client
+calcule la réponse à l'aide du mot de passe</li>
+</ul></li>
+<li>Un peu moins sûr (on pourrait p.ex. voler le mdp par phishing</li>
+<li>Plus facile à configurer</li>
+</ul></li>
+<li>A la fin de l'authentification en mode entreprise, le client calcule une PMK</li>
+<li>Le serveur calcule la même clé et la fournit au point d'accès</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline239" class="outline-3">
+<h3 id="orgheadline239"><span class="section-number-3">15.4</span> Dérivation des clés de sessions</h3>
+<div class="outline-text-3" id="text-15-4">
+<ul class="org-ul">
+<li>En mode personnel ou entreprise, le client et le point d'accès utilisent le
+même protocole pour générer les clés de session à partir de la PMK</li>
+<li>La clé PTK est un code d'authentification (HMAC) calculé sur les challenges et
+les adresses MAC échangées</li>
+<li>Les clés de session sont dérivées de la PMK, des challenges et des adresses</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline241" class="outline-3">
+<h3 id="orgheadline241"><span class="section-number-3">15.5</span> Attaques par dictionnaire</h3>
+<div class="outline-text-3" id="text-15-5">
+<ul class="org-ul">
+<li>En observant un challenge-response, on peut essayer de retrouver la PMK</li>
+<li>Seulement possible en mode personnel
+<ul class="org-ul">
+<li>La PMK est dérivée du mot de passe (PSK)</li>
+<li>En mode entreprise, la PMK est complètement aléatoire</li>
+</ul></li>
+<li>Comme il y a 4096 itérations dans la dérivation de la PMK, le crackage est
+très lent</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline240" class="outline-4">
+<h4 id="orgheadline240"><span class="section-number-4">15.5.1</span> Steps</h4>
+<div class="outline-text-4" id="text-15-5-1">
+<ol class="org-ol">
+<li>à partir du SSID et d'un mot de passe:
+<ul class="org-ul">
+<li>Calculer la PMK (4096 itérations)</li>
+</ul></li>
+<li>A partir des adresses MAC et des challenges échangés:
+<ul class="org-ul">
+<li>Calculer la PTK</li>
+<li>Calculer le MIC</li>
+<li>Vérifier si c'est le même que celui calculé par le point d'accès ou le
+client</li>
+</ul></li>
+<li>Le première étape peut être faite à l'avance pour tous les ssids et les mdp
+courants &rArr; également un compromis temps mémoire (pas une rainbow
+table)</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline250" class="outline-2">
+<h2 id="orgheadline250"><span class="section-number-2">16</span> Kerberos</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li>Système qui permet de gérer les droits d'accès dans des systèmes distribués</li>
+<li>Utilise exclusivement des clés symétriques</li>
+<li>Basé sur la notion du Ticket</li>
+<li>Existe pour UNIX et windowsA</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline243" class="outline-3">
+<h3 id="orgheadline243"><span class="section-number-3">16.1</span> Tickets</h3>
+<div class="outline-text-3" id="text-16-1">
+<ul class="org-ul">
+<li>Il y a deux niveaux de tickets
+<ul class="org-ul">
+<li>On obtient un Ticket Granting Ticket (TGT) si on arrive à s'authentifier</li>
+<li>Avec le TGT on peut obtenir des tickets de services (TS) pour les services
+qu'on a le droit d'utiliser</li>
+</ul></li>
+<li>Le TGT est obtenu auprès d'un serveur d'authentification (AS, authentication
+server)</li>
+<li>Les TS sont obtenus auprès des serveur de tickets TGS (Tick Granting Server)</li>
+<li>Le TGT prouve donc qu'on est authentifié, le TS prouve qu'on a le droit
+d'utiliser un services</li>
+<li>Les tickets ont une date d'expiration. Ils peuvent être utilisés plusieurs
+fois tant qu'ils sont valides</li>
+<li>Le TGT permet d'obtenir de multiples TS sans nécessiter une nouvelle
+authentification</li>
+<li>A chaque fois qu'il présente un ticket, le client présente aussi un
+authentificateur</li>
+<li>En résumés 4 groupes/éléments:
+<ul class="org-ul">
+<li>Serveur d'authentification AS</li>
+<li>Serveur de tickets TGS (avec AS forment le KDC, key distribution center)</li>
+<li>Le client c</li>
+<li>le(s) serveur(s) s auquel c veut accéder</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline244" class="outline-3">
+<h3 id="orgheadline244"><span class="section-number-3">16.2</span> Fonctionnement</h3>
+<div class="outline-text-3" id="text-16-2">
+<ul class="org-ul">
+<li>Pour commencer, l'utilisateur doit indiquer à l'AS qu'il veut un TGT pour
+accéder au TGS</li>
+<li>Le client et l'AS connaissent les deux le hash du mdp de l'utilisateur (\(K_c\))</li>
+<li>c envoie à l'AS son nom et celui du TGS auquel il voudrait avoir accès</li>
+<li>Le KDC lui répond avec un TGT chiffré avec la clé du TGS et une clé de session
+chiffrée avec \(K_c\)</li>
+</ul>
+
+
+<ol class="org-ol">
+<li>\(c\), \(tgs\)</li>
+<li>\(\lbrace K_{c,tgs}\rbrace_{K_c}\), \(\lbrace T_{c,tgs}\rbrace_{K_{tgs}}\)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline245" class="outline-3">
+<h3 id="orgheadline245"><span class="section-number-3">16.3</span> Ticket, Authentificateur</h3>
+<div class="outline-text-3" id="text-16-3">
+<ul class="org-ul">
+<li>Le ticket contient
+<ul class="org-ul">
+<li>c: l'identité du client</li>
+<li>a: son adresse IP</li>
+<li>v: début et fin de validité</li>
+<li>$K<sub>c,s</sub> une clé de session symétrique à utiliser entre le client et le
+serveur</li>
+</ul></li>
+<li>Il est chiffré avec la clef du serveur auquel il est destiné</li>
+<li>Un ticket pour le serveur s contient donc les valeurs suivantes:</li>
+</ul>
+<p>
+\[T=\lbrace c,a,v,K_{c,s} \rbrace_{K_s}\]
+</p>
+<ul class="org-ul">
+<li>Un authentificateur est simplement l'identité du client et un timestamp
+chiffré avec la clé de session</li>
+</ul>
+<p>
+\[A=\lbrace c,t \rbrace_{K_{c,s}}\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline246" class="outline-3">
+<h3 id="orgheadline246"><span class="section-number-3">16.4</span> Demande d'un ticket de service</h3>
+<div class="outline-text-3" id="text-16-4">
+<ul class="org-ul">
+<li>Le client envoie le ticket ainsi qu'un authentificateur au TGS, le TGS
+déchiffre le ticket, découvre \(K_{c,tgs}\) et l'utilise pour vérifier
+l'authentificateur</li>
+<li>Le TGS sait si le client est autorisé à accéder à s</li>
+<li>Le TGS donne au client un ticket pour accéder au service et une clé \(K_{c,s}\)</li>
+</ul>
+
+
+<ol class="org-ol">
+<li>\(\lbrace A_{c}\rbrace_{K_{c,tgs}}\), \(\lbrace T_{c,tgs}\rbrace_{K_{tgs}}\), \(s\)</li>
+<li>\(\lbrace K_{c,s}\rbrace_{K_{c,tgs}}\), \(\lbrace T_{c,s}\rbrace_{K_{s}}\)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline247" class="outline-3">
+<h3 id="orgheadline247"><span class="section-number-3">16.5</span> Le ticket de service</h3>
+<div class="outline-text-3" id="text-16-5">
+<ul class="org-ul">
+<li>Le ticket de service contient de nouveau l'identité du client, son IP, une
+durée de validité et la clé à utiliser entre le client et le serveur</li>
+<li>Le client a aussi reçu une clé de session client/serveur chiffrée avec la clé
+de session précédente (client/TGS)</li>
+<li>Il envoie un authentificateur et le ticket au serveur</li>
+</ul>
+
+
+<ol class="org-ol">
+<li>\(\lbrace A_{c}\rbrace_{K_{c,s}}\), \(\lbrace T_{c,s}\rbrace_{K_{s}}\)</li>
+<li>autorisation</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline248" class="outline-3">
+<h3 id="orgheadline248"><span class="section-number-3">16.6</span> Résumé</h3>
+<div class="outline-text-3" id="text-16-6">
+
+<div class="figure">
+<p><img src="./kerberos.png" alt="kerberos.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline249" class="outline-3">
+<h3 id="orgheadline249"><span class="section-number-3">16.7</span> DIscussion</h3>
+<div class="outline-text-3" id="text-16-7">
+<ul class="org-ul">
+<li>Pour être utile, Kerberos doit être intégré aux services offerts dans le
+réseau</li>
+<li>Il existe des versions "kerberisées" de ssh, telnet, rlogin, rsh, pop et même
+HTTP. Win 2000, en mode natif, utilise Kerberos</li>
+<li>Kerberos délègue au client le soin de stocker son information
+d'authentification (les tickets)</li>
+<li>Le serveur d'authentification n'est accéder qu'une seule fois pendant la durée
+de validité du ticket (typiquement 8 heures). Les clients peuvent obtenir des
+services avec leurs tickets même si le serveur d'authentification est en panne</li>
+<li>Les attaques de type man-in-the-middle ne sont pas possible
+<ul class="org-ul">
+<li>Le hash du mot de passe est nécessaire pour obtenir la première clé de
+session et générer des authentificateur valides</li>
+<li>Les tickets contiennent l'adresse IP du client</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline276" class="outline-2">
+<h2 id="orgheadline276"><span class="section-number-2">17</span> Gestion de la sécurité</h2>
+<div class="outline-text-2" id="text-17">
+
+<div class="figure">
+<p><img src="./securite.png" alt="securite.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline251" class="outline-3">
+<h3 id="orgheadline251"><span class="section-number-3">17.1</span> Appréciation des risques</h3>
+<div class="outline-text-3" id="text-17-1">
+<ul class="org-ul">
+<li>Inventaire des valeurs (V)</li>
+<li>Inventaire des menaces (M)</li>
+<li>Estimation de la probabilité de chaque menace (P)</li>
+</ul>
+<p>
+\[R_{\text{total}} = \sum P_{M_i}V_i\]
+</p>
+<ul class="org-ul">
+<li>Il doit être ramené à un risque résiduel acceptable</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline252" class="outline-3">
+<h3 id="orgheadline252"><span class="section-number-3">17.2</span> Politique de sécurité</h3>
+<div class="outline-text-3" id="text-17-2">
+<ul class="org-ul">
+<li>"Bible" de la sécurité:
+<ul class="org-ul">
+<li>Inventaire du système d'information</li>
+<li>Classification de l'information</li>
+<li>Identification des domaines de sécurités</li>
+<li>Aspects physiques et organisationnels</li>
+<li>Règles du jeux</li>
+</ul></li>
+<li>On peut s'appuyer sur des standards (ISO, BSI)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline253" class="outline-3">
+<h3 id="orgheadline253"><span class="section-number-3">17.3</span> Mesures de sécurité</h3>
+<div class="outline-text-3" id="text-17-3">
+<ul class="org-ul">
+<li>Service de sécurité avec mission et compétences définies</li>
+<li>Choix technologiques
+<ul class="org-ul">
+<li>FW, filtres anti-virus</li>
+<li>Chiffrement, signatures électroniques</li>
+<li>Authentification et contrôle d'accès</li>
+</ul></li>
+<li>Règlements
+<ul class="org-ul">
+<li>Configuration des équipements, backup, anti-virus</li>
+</ul></li>
+<li>Plans de secours
+<ul class="org-ul">
+<li>Mesures techniques</li>
+<li>Mesures légales</li>
+<li>Relations publiques</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline254" class="outline-3">
+<h3 id="orgheadline254"><span class="section-number-3">17.4</span> Validation</h3>
+<div class="outline-text-3" id="text-17-4">
+<ul class="org-ul">
+<li>Validation automatique à l'aide de scanners de vulnérabilités</li>
+<li>Audit manuel</li>
+<li>Test de pénétration, "ethical hacking"</li>
+<li>Security gap: la différence entre la sécurité que l'on croit avoir et celle
+que l'on a vraiment
+<ul class="org-ul">
+<li>Des nouvelles vulnérabilités sont découvertes</li>
+<li>Tout changement peut produire des erreurs</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline258" class="outline-3">
+<h3 id="orgheadline258"><span class="section-number-3">17.5</span> Documents clés</h3>
+<div class="outline-text-3" id="text-17-5">
+<ul class="org-ul">
+<li>Charte de la sécurité informatique &rArr; le "pourquoi ?"</li>
+<li>Politiques de sécurité &rArr; le "quoi ?"</li>
+<li>Les standards/procédures &rArr; le "comment ?"</li>
+<li>Les logs (enregistrements) &rArr; le "vraiment ?"</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline255" class="outline-4">
+<h4 id="orgheadline255"><span class="section-number-4">17.5.1</span> Règlement d'utilisation acceptable</h4>
+<div class="outline-text-4" id="text-17-5-1">
+<ul class="org-ul">
+<li>Politiques dédiées aux utilisateurs, à faire signer lors de l'engagement ou à
+inclure dans le règlement interne</li>
+<li>Contenu typique:
+<ul class="org-ul">
+<li>Motivation (dangers, coûts, resp. légales et morales)</li>
+<li>Devoirs de l'utilisateur (confidentialité, respect des règlements,..)</li>
+<li>Utilisation à titre privé  (limite)</li>
+<li>Mesures de surveillance</li>
+<li>Environnement de travail (mots de passe, logiciels)</li>
+<li>Messageries (règles de bonne conduite, définition des abus)</li>
+<li>Internet (opération et sites illicites ou non-appropriés)</li>
+<li>Mesures en cas d'abus</li>
+<li>Fondement juridique</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline256" class="outline-4">
+<h4 id="orgheadline256"><span class="section-number-4">17.5.2</span> Standards/procédures</h4>
+<div class="outline-text-4" id="text-17-5-2">
+<ul class="org-ul">
+<li>Les standards et procédures traitent d'un service spécifique et sont destinés
+aux administrateurs de ce service (FW, serveurs, backup, etc.)</li>
+<li>Ils contiennent les procédures détaillées d'opération</li>
+<li>Ils sont élaborés en collaboration avec les administrateurs</li>
+<li>Le but est de garantir que les opérations satisfont aux exigences spécifiées
+dans la politique de sécurité</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline257" class="outline-4">
+<h4 id="orgheadline257"><span class="section-number-4">17.5.3</span> Le plan de secours</h4>
+<div class="outline-text-4" id="text-17-5-3">
+<ul class="org-ul">
+<li>Il contient les mesures à prendre avant, pendant et après un sinistre pour en
+limiter les conséquences</li>
+<li>Avant: identification des éléments critiques, backups, contrats de
+maintenance, définition du comité de crise, test du plan de reprise</li>
+<li>Pendant: notification interne et externe, continuation des opérations (site de
+backup), restauration des systèmes</li>
+<li>Après: documentation, récupérations (actions légales, assurances), correction
+du plan de secours</li>
+<li>Plan de reprises des activités (PRA) et plan de continuation des activités
+(PDCA):
+<ul class="org-ul">
+<li>Reprise: mesures qui visent à rétablir la situation normale</li>
+<li>Continuation: mesures qui visent à offrir les services critiques pendant le
+rétablissement</li>
+</ul></li>
+<li>Exemple: Un quartier est bloqué pendant 24h à cause de fuites toxiques:
+<ul class="org-ul">
+<li>Pour continuer ses opérations boursières, une banque a besoin d'un site de
+backup en dehors du quartier</li>
+<li>Pour la reprise, il suffit d'attendre que le blocage soit terminé</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline260" class="outline-3">
+<h3 id="orgheadline260"><span class="section-number-3">17.6</span> Organigramme</h3>
+<div class="outline-text-3" id="text-17-6">
+<ul class="org-ul">
+<li>Eviter les conflits d'intérêts: une personne responsable de la sécurité ne
+peut pas être responsable de l'exploitation (conflits d'intérêts)</li>
+<li>Le responsable de la sécurité doit dépendre directement de la direction
+<ul class="org-ul">
+<li>Il doit pouvoir signaler des manquements directement à la direction</li>
+<li>Il ne doit pas avoir un chef qui est responsable de l'exploitation
+informatique (conflits d'intérêts du chef)</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline259" class="outline-4">
+<h4 id="orgheadline259"><span class="section-number-4">17.6.1</span> Responsable de la sécurité des systèmes d'information: RSSI (CISO)</h4>
+<div class="outline-text-4" id="text-17-6-1">
+<ul class="org-ul">
+<li>Responsable du maintient du niveau de sécurité désiré</li>
+<li>Crée la politique de sécurité</li>
+<li>Crée ou valide les règlements</li>
+<li>Crée le plan de formation et de sensibilisation des utilisateurs</li>
+<li>Suit l'évolution des risques, des besoins et des normes</li>
+<li>Gère les incidents</li>
+<li>Collabore avec les auditeurs</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline275" class="outline-3">
+<h3 id="orgheadline275"><span class="section-number-3">17.7</span> Normes et standards</h3>
+<div class="outline-text-3" id="text-17-7">
+</div><div id="outline-container-orgheadline264" class="outline-4">
+<h4 id="orgheadline264"><span class="section-number-4">17.7.1</span> Normes ISO 270XX</h4>
+<div class="outline-text-4" id="text-17-7-1">
+</div><div id="outline-container-orgheadline261" class="outline-5">
+<h5 id="orgheadline261"><span class="section-number-5">17.7.1.1</span> ISO 27001</h5>
+<div class="outline-text-5" id="text-17-7-1-1">
+<p>
+Gestion de la sécurité de l'information - Spécification pour les systèmes de
+management de la sécurité de l'information
+</p>
+<ul class="org-ul">
+<li>Spécifie les exigences pour mettre en place, exploiter, améliorer un SMSI
+documenté</li>
+<li>SMSI: système de management de la sécurité de l'information</li>
+<li>Même approche que ISO 9001 dans le domaine de la qualité</li>
+<li>Norme certifiante</li>
+<li>Le système de management permet de:
+<ul class="org-ul">
+<li>Définir une politique</li>
+<li>Etablir des objectifs</li>
+<li>Atteindre ces objectifs</li>
+</ul></li>
+<li>En pratique:
+<ul class="org-ul">
+<li>La politique se traduit par des mesures de sécurité
+<ul class="org-ul">
+<li>Organisationnelles</li>
+<li>Techniques</li>
+</ul></li>
+<li>Ces mesures de sécurité permettent d'atteindre les objectifs:</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline262" class="outline-5">
+<h5 id="orgheadline262"><span class="section-number-5">17.7.1.2</span> Modèle PDCA</h5>
+<div class="outline-text-5" id="text-17-7-1-2">
+
+<div class="figure">
+<p><img src="./pdca.png" alt="pdca.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline263" class="outline-5">
+<h5 id="orgheadline263"><span class="section-number-5">17.7.1.3</span> ISO 27002</h5>
+<div class="outline-text-5" id="text-17-7-1-3">
+<p>
+Technologie de l'information - Code de pratiques pour la gestion de la sécurité
+de l'information
+</p>
+<ul class="org-ul">
+<li>A utiliser comme doc de référence</li>
+<li>Fournit une gamme complète de contrôle de sécurité</li>
+<li>Basée sur les meilleurs pratiques de sécurité de l'information</li>
+<li>Composée de 11 sections comportant 133 contrôles</li>
+<li>Pas de certification
+<ul class="org-ul">
+<li>Recommandations uniquement</li>
+<li>Pas d'obligations</li>
+</ul></li>
+</ul>
+<p>
+bla bla cf slides&#x2026;
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline267" class="outline-4">
+<h4 id="orgheadline267"><span class="section-number-4">17.7.2</span> IT Grundschutz Kataloge</h4>
+<div class="outline-text-4" id="text-17-7-2">
+<ul class="org-ul">
+<li>Edité par le gouv allemand</li>
+<li>But: fournir de manière systématique et concrète un niveau de sécurités  de base
+(baseline security, Grundschutz). Le niveau de sécurité de base protège contre
+toutes les menaces résultantes de l'utilisation standard d'un système
+d'information</li>
+</ul>
+</div>
+<div id="outline-container-orgheadline265" class="outline-5">
+<h5 id="orgheadline265"><span class="section-number-5">17.7.2.1</span> Contenu</h5>
+<div class="outline-text-5" id="text-17-7-2-1">
+<ul class="org-ul">
+<li>Catalogue de menace, e.g. Network analysis tools (sniffers)</li>
+<li>Catalogue de mesures de sécurités, e.g. Use of TLS/SSL</li>
+<li>Catalogue d'éléments, e.g. PC sous win7</li>
+<li>Méthode de sélection des mesures
+<ul class="org-ul">
+<li>Inventaire du système d'information</li>
+<li>Représentation par des éléments standards</li>
+<li>Applications des mesures concernant les modules</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline266" class="outline-5">
+<h5 id="orgheadline266"><span class="section-number-5">17.7.2.2</span> Discussion</h5>
+<div class="outline-text-5" id="text-17-7-2-2">
+<ul class="org-ul">
+<li>Très concret et technique (parle aux ingénieurs)</li>
+<li>Bien pour:
+<ul class="org-ul">
+<li>établir des règlements</li>
+<li>Auditer des règlement existant</li>
+</ul></li>
+<li>Pas indiqué pour développer une politique de sécurité</li>
+<li>Défaut: jamais à jour ni complet (évolution trop rapide des aspects
+techniques)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline273" class="outline-4">
+<h4 id="orgheadline273"><span class="section-number-4">17.7.3</span> Critères communs (ISO 15408)</h4>
+<div class="outline-text-4" id="text-17-7-3">
+<ul class="org-ul">
+<li>Créé par plusieurs pays d'Europe et les USA</li>
+<li>But:
+<ul class="org-ul">
+<li>Spécifier des critères pour pouvoir certifier des produits qui y sont
+conformes</li>
+<li>Avoir une norme internationale afin que les certifications soient reconnues
+dans tous les pays</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgheadline268" class="outline-5">
+<h5 id="orgheadline268"><span class="section-number-5">17.7.3.1</span> Concepts</h5>
+<div class="outline-text-5" id="text-17-7-3-1">
+<ul class="org-ul">
+<li>Deux types d'exigences:
+<ul class="org-ul">
+<li>Exigences fonctionnelles: décrivent des fonctions de sécurité (e.g.
+authentification forte)</li>
+<li>Exigences d'assurances: décrivent la confiance dans l'implémentation des
+fonctions (implémentation correcte, efficacité de la fonction)</li>
+</ul></li>
+<li>Profiles de protections (PP): ensemble d'objectifs de sécurité pour une classe
+de produits (firewall-pp, smartcard-pp)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline269" class="outline-5">
+<h5 id="orgheadline269"><span class="section-number-5">17.7.3.2</span> Exigences</h5>
+<div class="outline-text-5" id="text-17-7-3-2">
+<ul class="org-ul">
+<li>Fonctionnelles: fonctionnalités requises (e.g. audit, cryptographic support,
+privacy, system access)</li>
+<li>Assurances: comment s'assurer du bon fonctionnement des fonctionnalités
+requises (e.g. test, life cycle support, guidance documents)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline270" class="outline-5">
+<h5 id="orgheadline270"><span class="section-number-5">17.7.3.3</span> Niveaux d'assurances</h5>
+<div class="outline-text-5" id="text-17-7-3-3">
+<p>
+7 niveaux possibles:
+</p>
+<ol class="org-ol">
+<li>Functionnaly teted</li>
+<li>Structurally tested</li>
+<li>Methodically tested and checked</li>
+<li>Methodically designed, tested and reviewed</li>
+<li>Semiformally designed and tested</li>
+<li>Semiformally verified design and tested</li>
+<li>Formally verified design and tested</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline271" class="outline-5">
+<h5 id="orgheadline271"><span class="section-number-5">17.7.3.4</span> Exemples de produits</h5>
+<div class="outline-text-5" id="text-17-7-3-4">
+<p>
+EAL4:
+</p>
+<ul class="org-ul">
+<li>Red Hat Enterprise Linux</li>
+<li>Win7</li>
+</ul>
+<p>
+EAL5:
+</p>
+<ul class="org-ul">
+<li>Boeing Secure Network Server</li>
+</ul>
+<p>
+EAL6:
+</p>
+<ul class="org-ul">
+<li>Crypto Library</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline272" class="outline-5">
+<h5 id="orgheadline272"><span class="section-number-5">17.7.3.5</span> Publique cible</h5>
+<div class="outline-text-5" id="text-17-7-3-5">
+<ul class="org-ul">
+<li>Développeurs: spécifie les critères à suivre pour obtenir un produit sûr</li>
+<li>Evaluateurs: Donne une méthode systématique pour évaluer les produits</li>
+<li>Consommateurs:
+<ul class="org-ul">
+<li>Permet de comparer et juger les produits</li>
+<li>Bcp d'agences gouvernementales et certaines réglementations (ex. signature
+numérique légale) exigent des certifications CC</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline274" class="outline-4">
+<h4 id="orgheadline274"><span class="section-number-4">17.7.4</span> Comparaison</h4>
+<div class="outline-text-4" id="text-17-7-4">
+<ul class="org-ul">
+<li>ISO270xx: pour gérer la sécurité</li>
+<li>Catalogues allemands: pour créer des standards, configurer ses machines</li>
+<li>Common Criteria: pour évaluer un produit</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-01-21 Sat 22:34</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
