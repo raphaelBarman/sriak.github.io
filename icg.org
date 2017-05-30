@@ -1,0 +1,107 @@
+#+TITLE: CS-341: Introduction to Computer Graphics
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/home/raph/school/theme.css"/>
+#+OPTIONS: toc:2, H:4
+
+* Grading
+  
+- 15% Homework assignments
+- 35% Project
+- 50% Written exam
+
+* Lecture 1
+** Goals
+
+- Explain and apply fundamental concepts of computer-based image synthesis
+- Explain core functionalities of the OpenGL graphics API
+- Develop graphics programs in OpenGL using shader programming
+- Design and implement geometry synthesis methods based on procedural techniques
+
+* Lecture 2
+** Rasterization
+*** Implicit Geometry Representation
+- Define a curve as zero set of 2D implicit function:
+  - F(x,y) = 0 \rightarrow on curve
+  - F(x,y) < 0 \rightarrow inside curve
+  - F(x,y) > 0 \rightarrow outside curve
+- Example: Circle x^2+y^2-1=0
+- Simple rasterization algorithm
+#+BEGIN_SRC 
+for all pixels (i,j):
+  if F(i,j) < 0: draw
+#+END_SRC
+*** Triangle Rasterization
+- Each triangle is represented as three 2D points $(x_0,y_0),(x_1,y_1),(x_2,y_2)$
+- Using [[https://en.wikipedia.org/wiki/Barycentric_coordinate_system][Barycentric coordinates]]
+- Cannot add two points \rightarrow problematic since change coordinate system, cf. [[http://stackoverflow.com/questions/35997616/why-adding-two-points-by-adding-coordinates-is-wrong][Why adding two points by adding coordinates is wrong?]]
+- What works: $\alpha P_1 + \beta P_2$, where $\alpha + \beta = 1$, i.e. Point + Vector
+- Barycentric coordinates: $(x,y)=\alpha (x_0,y_0) + \beta (x_1,y_1) + \gamma (x_2,y_2)$
+- When $\alpha,\beta,\gamma > 0$, inside the triangle
+Typical exam question: Here is a triangle, here is a point, what is its barycentric coordinates
+** 2D transformations
+*** Scaling
+$$\begin{pmatrix}x' \\ y' \end{pmatrix} = \begin{pmatrix}c_1 && 0 \\ 0 && c_2 \end{pmatrix} \begin{pmatrix}x \\ y \end{pmatrix}$$
+*** Rotation
+...
+*** Shearing
+Shear along x-axis:
+$$\begin{pmatrix}x' \\ y' \end{pmatrix} = \begin{pmatrix}1 && a \\ 0 && 1 \end{pmatrix} \begin{pmatrix}x \\ y \end{pmatrix}$$
+Shear along y-axis
+$$\begin{pmatrix}x' \\ y' \end{pmatrix} = \begin{pmatrix}1 && 0 \\ b && 1 \end{pmatrix} \begin{pmatrix}x \\ y \end{pmatrix}$$
+*** Translation
+Translation is a vector addition, need [[https://en.wikipedia.org/wiki/Homogeneous_coordinates][homogeneous coordinates]]
+* Pipeline
+#+BEGIN_SRC c++
+    private:
+        GLuint vertex_array_id_;        // vertex array object
+        GLuint program_id_;             // GLSL shader program ID
+        GLuint vertex_buffer_object_;   // memory buffer
+
+    public:
+        void Init() {
+            // LoadShaders                  <--- compile the shaders
+            // glUseProgram                 <--- bind the shader (for attributes)
+            //---
+            // glGenVertexArrays            <--- create vertex array
+            // glBindVertexArray            <--- and bind it
+            //---
+            // glGenBuffers                 <--- generate buffer pointer
+            // glBindBuffers                <--- make it current
+            // glBufferData                 <--- tell it where to find data
+            //---
+            // glGetAttribLocation          <--- fetch attribute ID
+            // glEnableVertexAttribArray    <--- make it the current
+            // glVertexAttribPointer        <--- specify layout of attribute
+            //---
+            // stbi_load                    <--- load image from file
+            // glGenTextures                <--- create texture buffer
+            // glBindTexture                <--- and bind it
+            // glTexImage2D                 <--- fill the texture with image
+            // stbi_image_free              <--- free the image in cpu memory
+            //---
+            // glGetUniformLocation         <--- fetch ID from shader
+            // glUniform*(...)              <--- set the values of a uniform
+            //--- To avoid resource pollution, unload resources
+            // glUseProgram(0)              <--- unbind program (safety!)
+            // glBindVertexArray(0)         <--- unbind array (safety!)
+        }
+
+        void Cleanup() {
+            // glDelete*(...);
+        }
+        
+        void Draw() {
+            // glUseProgram(_pid);
+            // glBindVertexArray(_vao);
+            //--- if there is a texture :
+            // glActiveTexture          <--- enable certain tex-unit
+            // glBindTexture            <--- bind it to CPU memory
+            //--- if there a "changing" value to pass to the shader :
+            // glUniform*(...)          <--- set the values of a uniform
+            //---
+            // glDraw*(...)             <--- draws the buffers
+            //---
+            // glBindVertexArray(0);
+            // glUseProgram(0);
+        }
+};
+#+END_SRC

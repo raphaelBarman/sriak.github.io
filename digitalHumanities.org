@@ -1,0 +1,17 @@
+#+TITLE:HUM-369: Digital Humanities
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/home/raph/school/theme.css"/>
+#+OPTIONS: toc:2, H:4
+
+* Grading
+
+- Ecrire une datafication biographique et participer à la construction ontologie commune
+(30%) (Travail individuel)
+- Relire, noter et completer 5 datafications biographiques (10%) (Travail individuel)
+- Ecrire la description d’un automate extracteur d’information (Bot) (30%) (Travail de
+groupe)
+- Présenter oralement le projet (30%) (Travail de groupe)
+
+* Cours 1
+** [[http://journal.frontiersin.org/article/10.3389/fdigh.2015.00001/full][A map for big data research in digital humanities]]
+** [[http://wikipast.epfl.ch/wikipast/index.php/Accueil][Wiki]]
+* Cours 2

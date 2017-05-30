@@ -1,0 +1,558 @@
+#+TITLE: CS-322: Introduction to Database Systems
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/home/raph/school/theme.css"/>
+#+OPTIONS: toc:2, H:4
+# Local Variables:
+# org-download-image-dir: \./files
+# End:
+* Administrative stuff
+** Reading
+- [[file:Ramakrishnan%20-%20Database%20Management%20Systems%203rd%20Edition.pdf][Book]] 
+- Papers
+** Grading
+- Midterm 30%
+- Project 30%
+- Final   40% (During summer exam session) 
+* Lecture 1
+** Data vs Information
+Data:
+- Facts - Basis for reasoning,...
+- Can be useful/relevant or not
+- Must be processed
+When organized/processed, becomes Information:
+- Meaningful
+- Relevant
+- *Actionable* leads to a solution
+** Look up house of cards big data [[http://wwInternet analyticsw.bigwisdom.net/blog/2016/03/13/4-big-data-lessons-from-house-of-cards/][here]]
+** Look up [[https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf][emc report for 2020]]
+** Database Management System (DBMS)
+- DBMS is a software to *store*, *manager* and *facilitate access* to databases.
+- DBMS = Interrelated data (database) + set of program + access it (software).
+- DBMS provides *efficient* (thousands of queries/update per second), *reliable*
+  (availability), *convenient* (physical data indep, high level query languages)
+  and *safe* (protect data from failures: h/w,s/w,power, malicious users)
+  *multi-user* (concu(cfw:open-org-calendar)rrency) storage of and access to *massive* (extremly large
+  TB everyday) amounts of *persistent* (data outlives programs that operate on
+  it) data.
+** Database
+- A *large*, *integrated*, *structured collection* of data.
+- Usually intended to model some real-world enterprise.
+- Entities and Relationships.
+*** Is WWW a DBMS?
+ - Sophisticated search available
+ - But not really DBMS, data unstructured, "correct answer" not well defined, few
+   guarantees.
+*** Is FS a DBMS?
+ No, no guarantees when conflict (two edit at same time) or when power out...
+** DBMS Design and Architecture
+*** Describing Data
+- *Data model* is a collection of concepts for describing data
+- *Relation data model*, relation (table with row and columns), schema
+  (structure (columns) of a relation)
+- *Nested data model*, not all data fits naturally in tables
+- *Schema vs. Data*, type vs variable
+*** Logical and physical data independence
+- *Data independence* is the ability to change the
+schema at one level of the database system without
+changing the schema at the next higher level
+- *Logical data independence* is the capacity to change
+the conceptual schema without changing the user
+views
+- *Physical data independence* is the capacity to
+change the internal schema without having to
+change the conceptual schema or user views
+\Rightarrow allows for modularity
+* Lecture 2
+** Data model
+- A *data model* is a collection of concepts for describing data
+  - High-level : hides lot of low-level storage details
+  - Relational, XML, Graph, Object-Oriented,...
+- *Relational data model*
+  - Set of records
+  - *Relation*: Table with rows and columns
+  - *Schema*: Describes the structure (columns) of a relation
+- *Schema vs. Data*
+  - Type vs. variable
+  - Description of a particular collection of data, using a given data model
+** Conceptual design
+- What are the *entities* and *relationships*?
+- What info should be stored?
+- What are the *integrity constraints*?
+** Entity-Relationships Model Basics
+*** Entity
+- Real-world object distinguishable from other objects.
+- An entity is described (in DB) using a set of attributes
+*** Entity Set
+- A collection of similar entities. E.g., all employees
+- All entities in an entity set have the same set of attributes. (Until we
+  consider hierarchies, anyway!)
+- Each entity set has a *key* (underlined)
+- Each attribute has a *domain*
+*** Relationship
+ - Association among two or more entities. E.g., Fred works in Pharmacy
+ department
+ - Can have their own attributes
+*** Relationship Set
+A collection of similar relationships. E.g., all employees
+** Constraints
+Limits the freedom of the data
+*** Key Constraints
+- An employee can work in many departments; a department can have many
+  employees: *Many-to-Many*
+- In contrast, each department has at most one manager, according to the key
+  constraint on Manages: *One-to-Many*
+- Each driver can drive at most one vehicle and each vehicle will have at most
+  one driver: *One-to-One*
+/!\ *At most*, i.e. >= 1
+*** Participation Constraints
+- Every Employee should work in at least one department
+- Every Department should have at least one employee
+\Rightarrow *Total participation*
+
+- There could be some Employees who are not managers
+- Every Department should have at least one manager
+If also at most, then it means: "*exactly one*"
+
+- There could be some Customers who do not buy any Products
+- There could be some Products which are not bought by any Customer
+\Rightarrow *Partial Participation*
+
+[[file:~/org/school/2016-2017/secondSemester/files/db_participation_constraints.png]]
+*** Weak Entities
+ A weak entity can be identified uniquely only by considering the primary key of
+ another (owner) entity
+ - Owner entity set and weak entity set must participate in a one-to-many
+   relationship set (one owner, many weak entities)
+ - Weak entity set must have total participation in this identifying relationship
+   set
+ Weak entities have only a “partial key” (dashed underline)
+ [[file:~/org/school/2016-2017/secondSemester/files/database_weak_entities.png]]
+*** Ternary Relationships
+ [[file:~/org/school/2016-2017/secondSemester/files/database_ternary.png]]
+ - Proj1 uses Part1
+ - Supp1 supplies to Proj1
+ - Supp1 supplies Part1
+ does this imply
+ - Proj1 uses Part1 supplied by Supp1
+ \Rightarrow No
+
+ Can be done for n-ary relationships
+** Complex relationships
+*** ISA ('is a') Hierarchies
+- As in C++, or other PLs, attributes are inherited.
+- If we declare A ISA B, every A entity is also considered to be a B entity.
+
+- *Overlap constraints*: Can Joe be an HourlyEmps as well as a ContractEmps
+  entity? (Allowed/Disallowed)
+- *Covering constraints*: Does every Employees entity also have to be an
+  HourlyEmps or a ContractEmps entity? (Yes/No)
+- Reasons for using ISA:
+  - To add descriptive attributes specific to a subclass. (i.e., not appropriate
+    for all entities in the superclass)
+  - To identify entities that participate in a particular relationship (i.e., not
+    all superclass entities participate)
+[[file:~/org/school/2016-2017/secondSemester/files/database_isa.png]]
+*** Aggregation
+- Used to model a relationship involving a relationship set
+- Allows us to treat a relationship set as an entity set for purposes of
+  participation in (other) relationships
+** Conceptual Design
+* Lecture 3
+** Role of database system
+- Database: integrated, shared data collection
+- Integrated
+  - Eliminate needless redundancy
+- Maintain strong consistency
+- Shared
+  - Application written by programmers in multiple languages
+  - End-users who use applications, forms, CLI to interact
+- Database systems shield users from
+  - How data is stored (bits & bytes, 1 vs N files, 1 vs N disks...)
+  - How data is accessed (btree, hashtable, scan, ...)
+** What is a data model?
+- Collection of application-visible constructs
+  - Describe data in application & storage agnostic way
+- Constructs to describe structural aspects
+  - How do applications perceive the data?
+  - Ex: table, graph, associative array...
+- Constructs to describe manipulation aspects
+  - What operators can applications use?
+  - Ex: join, traverse, lookup...
+- Constructs to describe data integrity aspects
+  - How do we ensure that data manipulation is “correct”?
+[[file:../../org/school/2016-2017/secondSemester/files/Lecture 3/screenshot_2017-03-06_10-36-55.png]]
+** Relation Model: Structural aspect
+- Database = set of named *relations* (or *tables*)
+- Each relation has a set of named *attributes* (or *columns*)
+- Each *tuple* (or *row*) has a value for each attribute
+- Each attribute has a *type* (or *domain*)
+  - integer, real, string, file formats (jpeg,...), enumerated and many more
+- *Relation Schema*: relation name + field names + field domains
+  - Students(sid: string, name: string, login: string, age: integer, gpa: real)
+- *Relation Instance*: contents at a given point in time
+  - set of rows or tuples. (all rows are distinct with no specific ordering)
+  - Cardinality: # rows, Arity or degree: # attributes
+- *Database Schema*: collection of relation schemas
+- *Database Instance*: collection of relation instances
+** Relational Model: Integrity Aspect
+- Relational model provides *Integrity Constraints*
+  - condition specified on schema that restricts the data that can be stored in any instance
+  - ICs are specified when schema is defined.
+  - ICs are checked when relations are modified.
+- A *legal* instance of a relation is one that satisfies all specified ICs
+  - DBMS should not allow illegal instances.
+- With ICs, stored data is more faithful to real-world meaning
+  - Avoids data entry errors, too!
+** Domain Constraints
+- Domain constraints: type of Integrity Constraints
+  - Domain specified in schema restricts the data that can be stored in that field
+- Enforced by the DBMS whenever tuples are added or modified.
+  - Similar to type checks in programming languages
+** Relational Model: Keys
+- Attribute whose value is *unique* in each tuple
+- Or set of attributes whose combined values are unique
+- Keys specify *key constraint*
+  - Enforced when tuples are inserted/updated
+
+- Key
+  - Set of attributes which uniquely identify a tuple
+- Candidate Keys
+  - If there are multiple keys, each of them is referred to as a candidate key
+  - UNIQUE(licence#)
+- Primary Key
+  - One of the candidate keys is chosen (by DBA)
+  - PRIMARY KEY(sid)
+- Superkey
+  - Superset that includes a key
+  - no two distinct tuples can have same values in all key fields
+
+Key must be assigned carefully \Rightarrow must be specific
+** Relational Model: Foreign Keys
+- Set of fields in one relation that `refer’ to a tuple in another relation
+  (like a pointer)
+- Foreign keys specify Foreign Key Constraint
+  - FK must correspond to the primary key of the other relation
+- If all foreign key constraints are enforced, referential integrity is achieved
+  (i.e., no dangling references.)
+- FOREIGN KEY (sid) REFERENCES Students(sid)
+*** Enforcing Referential Integrity
+- What if an Enrolled tuple with a non-existent student id is inserted? (Reject it!)
+- What if a Students tuple is deleted?
+  - Also delete all Enrolled tuples that refer to it?
+  - Disallow deletion of a Students tuple that is referred to?
+  - Set sid in Enrolled tuples that refer to it to a default sid?
+  - Set sid in Enrolled tuples that refer to it to a special value null, denoting `unknown ’ or `inapplicable ’ .
+- Can specify action taken on violation in SQL
+** Mapping ER with key constraints
+[[file:files/Lecture 3/screenshot_2017-03-06_11-36-30.png]]
+If no manager yet, could have a null ssn foreign key, maybe not what we want...
+- Does every department have a manager?
+  - If so, this is a participation constraint: the participation of Departments in Manages is said to be total.
+  - Every did value in Departments relation must appear in a row of the Manages
+    relation (with a non-null ssn value!)
+[[file:files/Lecture 3/screenshot_2017-03-06_11-50-07.png]]
+#+BEGIN_SRC sql
+CREATE TABLE Dept_Mgr(
+  did INTEGER,
+  dname CHAR(20),
+  budget REAL,
+  ssn CHAR(11) NOT NULL,
+  since DATE,
+  PRIMARY KEY (did),
+  FOREIGN KEY (ssn) REFERENCES Employees, ON DELETE NO ACTION)
+#+END_SRC
+This way, department must have a manager
+*** Participation Constraints in SQL: Issues
+We cannot capture all participation constraints with PK, FK, not null
+- Ex: Works_In relationship - total participation, no key constraint
+- Every did must must appear in a tuple in Works_in table
+- Cannot make did foreign key as did is not candidate key in Works_In
+[[file:files/Lecture 3/screenshot_2017-03-06_11-45-33.png]]
+** Translating Weak Entity Sets
+Weak entity set and identifying relationship set are translated into a single table.
+- When the owner entity is deleted, all owned weak entities must also be
+  deleted.
+[[file:files/Lecture 3/screenshot_2017-03-06_11-51-38.png]]
+#+BEGIN_SRC sql
+CREATE TABLE Dep_Policy (
+  pname CHAR(20),
+  age INTEGER,
+  cost REAL,
+  ssn CHAR(11) NOT NULL,
+  PRIMARY KEY (pname, ssn),
+  FOREIGN KEY (ssn) REFERENCES Employees, ON DELETE CASCADE)
+#+END_SRC
+** Translating ISA Hierarchies to Relations
+[[file:files/Lecture 3/screenshot_2017-03-06_11-54-01.png]]
+*** Recall
+If we declare A ISA B, every A entity is also considered to be a B entity
+- Overlap constraints: Can Joe be an Hourly_Emps as well as a Contract_Emps
+  entity? (Allowed/disallowed)
+- Covering constraints: Does every Employees entity also have to be an
+  Hourly_Emps or a Contract_Emps entity? (Yes/no)
+*** General approach
+3 relations: Employees, Hourly_Emps and Contract_Emps.
+- Every employee is recorded in Employees.
+- Hourly_Emps: For hourly emps, extra info recorded in Hourly_Emps
+  (hourly_wages, hours_worked, ssn); must delete Hourly_Emps tuple if
+  referenced Employees tuple is deleted).
+- Queries involving all employees easy, those involving just Hourly_Emps require
+  a join to get some attributes.
+*** Alternative: Just Hourly_Emps,Contract_Emps
+- Hourly_Emps: ssn, name, lot, hourly_wages, hours_worked.
+- Each employee must be in one of these two subclasses.
+** NoSQL
+* Lecture 4   
+** Relational Query Languages
+- Query languages: Allow manipulation and retrieval of data from a database.
+- Relational model supports simple, powerful QLs:
+  - Strong formal foundation based on logic.
+  - Allows for much optimization.
+- Query Languages != Programming Languages!
+  - QLs not expected to be “Turing complete”.
+  - QLs not intended to be used for complex calculations.
+  - QLs support easy, efficient access to large data sets.
+** Relational Algebra
+More operational, very useful for representing execution plans.
+Since each operation returns a relation, operations can be composed! (Algebra is
+5 basic operations:
+- Selection (\sigma)
+- Projection (\pi)
+- Cross-product (X)
+- Set-difference (-)
+- Union (\cup)
+There can be more operations, some of them are called compound operators, they
+use basic operators, but they allow for shorthands.
+*** Selectiona and projection
+**** Selection (\sigma )
+ Selects a subset of rows from relation (horizontal).
+ - Selects rows that satisfy selection condition.
+ - Output schema of result is same as that of the input relation
+ E.g. \sigma_{rating<9 ^ age>50}(S2)
+**** Projection ( \pi )
+ Retains only wanted columns from relation (vertical).
+ - Retains only attributes that are in the projection list.
+ - Output schema is exactly the fields in the projection list, with the same
+ names that they had in the input relation.
+ E.g. \pi_{sname,rating}(S2)
+ - Projection operator has to eliminate duplicates (How do they arise? Why remove them?)
+ - Relational algebra is set based while SQL is bag (multiset) based
+ E.g. rows with same age, if project, should only get two ages, however in SQL,
+ we get them all...
+*** Composing multiple operators
+Output of one operator can become input to another operator.
+
+E.g. \pi_{sname,rating}(\sigma_{rating>8}(S2))
+*** Union, Set Difference & Intersection
+- All of these operations take two input relations, which must be union-compatible:
+  - Same number of fields.
+  - “Corresponding” fields have the same type.
+- For which, if any, is duplicate elimination required?
+  - Yes for Union
+  - No for Set difference
+**** Union ( \cup )
+ Tuples in r1 and/or in r2. (“closed”).
+
+Combine two tables of same type, only includes one duplicates.
+**** Set-difference (–)
+ Tuples in r1, but not in r2.
+**** Compound Operator: Intersection
+Must be union compatible:
+$$R \cap S = R - (R-S)$$
+*** Cross-product 
+**** Renaming Operator (\rho)
+- Renames the list of attributes specified in the form of oldname → newname or
+  position → newname
+- Output schema is same as input except for the renamed attributes.
+- Returns same tuples as input
+- Can also be used to rename the name of the output relation
+**** Cross-Product (X)
+Allows us to combine two relations.
+- S1 X R1: Each row of S1 paired with each row of R1
+- Has #rows(S1)*#rows(R1)
+- Result schema has one field per field of S1 and R1, with field names “inherited” if possible.
+- May have a naming conflict: Both S1 and R1 have a field with the same name.
+- In this case, can use the renaming operator: \rho ( C ( 1 \to sid1 , 5 \to
+  sid2 ), S1 \times R1)
+Example:
+
+[[file:files/Lecture 4/screenshot_2017-03-13_10-57-01.png]]
+*** Compound Operator: Join
+- Joins are compound operators involving cross product, selection, and (sometimes) projection.
+- Most common type of join is a natural join (often just called “join”).
+  $R\bowtie S$ conceptually is:
+  - Compute R X S
+  - Select rows where attributes that appear in both relations have equal values
+  - Project all unique attributes and one copy of each of the common ones.
+- Note: Usually done much more efficiently than this.
+- Useful for putting “normalized” relations back together.
+**** Natural Join
+[[file:files/Lecture 4/screenshot_2017-03-13_11-23-24.png]]
+**** Condition Join or Theta-Join
+$$R \bowtie_C S = \sigma_C(R\times S)$$
+- Output schema same as that of cross-product.
+- May have fewer tuples than cross-product.
+[[file:files/Lecture 4/screenshot_2017-03-13_11-25-46.png]]
+**** Equi-Join
+- Special case of theta-join: condition c contains only conjunction of equalities.
+- Find all pairs of sailors in S2 who have same age.
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-03-13 11:29:44
+[[file:files/Lecture 4/screenshot_2017-03-13_11-29-44.png]]
+*** Compound Operator: Division
+- Useful for expressing “for all” queries like:
+  - Find sids of sailors who have reserved all boats.
+- For A/B attributes of B are subset of attributes of A.
+  - May need to “project” to make this happen.
+- E.g., let A have 2 fields, x and y ; B have only field y :
+$$A/B = \lbrace \langle x \rangle |" \langle y \rangle Î B($\langle x,y \rangle
+Î A) \rbrace$$
+A/B contains all x tuples such that
+for every y tuple in B, there is an xy tuple in A.
+
+E.g.
+
+[[file:files/Lecture 4/screenshot_2017-03-13_12-01-19.png]]
+
+- Division is not essential op; just a useful shorthand.
+  - (Also true of joins, but joins are so common that systems implement joins specially.)
+- Idea: For A/B, compute all x values that are not “disqualified” by some y value in B.
+  - x value is disqualified if by attaching y value from B, we obtain an xy tuple that is not in A.
+Disqualified $x$ values: $\pi_x ((\pi_x ( A )\times B ) - A )$
+
+$A/B: \pi_x( A ) - \text{Disqualified } x \text{ values}$
+** Relational Calculus
+Lets users describe what they want, rather than how to compute it.
+(Non-procedural, declarative.)
+* Lecture 5
+** File and access Layer
+Database as a “file of records”
+- Create/delete files
+- insert/delete/modify record
+- retrieve one particular record (point access)
+  - specified using record id
+- retrieve range of records (range access)
+  - satisfying some conditions
+- retrieve all records (scan)
+** File Organization
+*** Page format
+- Page = collection of slots
+- Each slots stores one record
+  - Record identifier: <page_id, slot_number>
+  - Option 2: <uniq> -> <page_id, slot_number>
+- Page format should support
+  - Fast searching, inserting, deleting
+- Page format depends on record format
+  - Fixed-Length
+  - Variable-Length
+*** Fixed length
+**** Record Formats: Fixed-Length
+- Schema is stored in system catalog
+  - Number of fields is fixed for all records of a table
+  - Domain is fixed for all records of a table
+- Each field has fixed length
+- Finding ith field is done via arithmetic.
+**** Page format with fixed-length records
+- Record id = <page id, slot #>
+- In the packed case, moving records for free space management changes rid;
+  maybe unacceptable.
+*** Variable length
+**** Record Formats: Variable-Length
+Fields are delimited by special symbols, to have faster random access, can
+maintain array of offsets
+
+Array of field offsets is typically superior
+- Direct access to fields
+- Clean way of handling NULL values
+- Oracle 8: length—data pairs, DB2: Array of offsets
+**** Page Format: Variable-Length Records
+- Need to move records in a page: Allocation/deletion must find/release free space
+- Maintain slot directory with <record offset, record length> pairs
+  - Records can move on page without changing rid
+  - Useful for freely moving fixed-length records (ex: sorting)
+**** Issue
+- If a field grows and no longer fits?
+  - shift all subsequent fields
+- If record no longer fits in page?
+  - Move a record to another page after modification
+- What if record size > page size?
+  - SQL Server record size = 8KB
+  - DB2 record size = page size
+*** Column store
+Depends on what kind of queries you want to make.
+
+Decompose a relational table to sub-tables per attribute \to Saves IO by
+bringing only the relevant attributes
+
+Issue, data is everywhere, if you want to update a row, must access lots of
+pages.
+** Heap and sorted files
+*** Heap (unordered) files
+- Simplest file structure
+  - contains records in no particular order \to to search, need to scan all files
+  - Need to be able to scan, search based on rid
+  - Simple to add file
+- As file grows and shrinks, disk pages are allocated and de-allocated.
+  - Need to manage free space
+**** Heap File Implemented Using Lists
+- <Heap file name, header page id> stored somewhere
+- Each page contains 2 ‘pointers’ plus data.
+- Manage free pages using free list
+  - What is most pages have some space?
+**** Heap File Using a Page Directory
+- The directory is a collection of pages
+  - linked list implementation is just one alternative.
+- The entry for a page can include the number of free bytes on the page.
+  - Much smaller than linked list of all HF pages!
+*** Sorted file
+Just store in sorted order.
+*** Heap File vs. Sorted file
+- Which is better?
+  - Let us design a cost model to find out
+- Simplified cost model:
+  - Based only on IO cost
+    - IO is the dominating cost
+    - Ignore CPU and other overheads
+    - Ignore effect of prefetching and sequential access
+  - Consider only average case
+Also, assume:
+- Single record insert and delete.
+- Equality search - exactly one match (e.g., search on key)
+  - Question: what if more or fewer? Just go through all
+- Heap Files:
+  - Insert always appends to end of file.
+- Sorted Files:
+  - Files compacted after deletions.
+  - Search done on file-ordering attribute.
+Costs:
+B = number of data pages
+|                  | Heap File | Sorted File              | notes...                     |
+|------------------+-----------+--------------------------+------------------------------|
+| Scan all records | B         | B                        |                              |
+| Equality Search  | 0.5B      | log_2 B                  | assumes exactly one match    |
+| Range Search     | B         | log_2 B + (#match pages) |                              |
+| Insert           | 2         | log_2 B + 2*(B/2)        | must R & W, update all files |
+| Delete           | 0.5B + 1  | log_2 B + 2*(B/2)        | must R & W                   |
+** Indexing   
+- Sometimes, we want to retrieve records by specifying the values in one or more
+  fields, e.g.,
+  - Find all students in the “CS” department
+  - Find all students with a gpa > 3
+- An index on a file speeds up selections on the search key fields for the index
+  - Search key is not the same as key (e.g., doesn’t have to be unique).
+- Index and keys
+  - Any subset of the fields of a relation can be the search key for an index on
+    the relation.
+  - Can have multiple indices on any number of fields
+
+
+
+
+
+
+
+
+
+
+
+
+

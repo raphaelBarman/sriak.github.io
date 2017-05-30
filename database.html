@@ -1,0 +1,1647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-03-20 Mon 11:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CS-322: Introduction to Database Systems</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/home/raph/school/theme.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">CS-322: Introduction to Database Systems</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org130075c">1. Administrative stuff</a>
+<ul>
+<li><a href="#org5652803">1.1. Reading</a></li>
+<li><a href="#org794581d">1.2. Grading</a></li>
+</ul>
+</li>
+<li><a href="#org46ed2f6">2. Lecture 1</a>
+<ul>
+<li><a href="#org48b86a6">2.1. Data vs Infororg-caldavmation</a></li>
+<li><a href="#org2390a3d">2.2. Look up house of cards big data here</a></li>
+<li><a href="#orgc2169ae">2.3. Look up emc report for 2020</a></li>
+<li><a href="#org88f40f0">2.4. Database Management System (DBMS)</a></li>
+<li><a href="#org50ea48f">2.5. Database</a></li>
+<li><a href="#org2cb555c">2.6. DBMS Design and Architecture</a></li>
+</ul>
+</li>
+<li><a href="#org60060c7">3. Lecture 2</a>
+<ul>
+<li><a href="#org2d411e3">3.1. Data model</a></li>
+<li><a href="#orgbbe3d82">3.2. Conceptual design</a></li>
+<li><a href="#org9e0238b">3.3. Entity-Relationships Model Basics</a></li>
+<li><a href="#org498dc51">3.4. Constraints</a></li>
+<li><a href="#org86d8183">3.5. Complex relationships</a></li>
+<li><a href="#org84d13b2">3.6. Conceptual Design</a></li>
+</ul>
+</li>
+<li><a href="#orgb6d58a0">4. Lecture 3</a>
+<ul>
+<li><a href="#org2b17dc0">4.1. Role of database system</a></li>
+<li><a href="#org72300af">4.2. What is a data model?</a></li>
+<li><a href="#org995015c">4.3. Relation Model: Structural aspect</a></li>
+<li><a href="#org3553147">4.4. Relational Model: Integrity Aspect</a></li>
+<li><a href="#org5a5c5b1">4.5. Domain Constraints</a></li>
+<li><a href="#org730c16d">4.6. Relational Model: Keys</a></li>
+<li><a href="#org6a0e5bb">4.7. Relational Model: Foreign Keys</a></li>
+<li><a href="#org1ae3ac4">4.8. Mapping ER with key constraints</a></li>
+<li><a href="#org73e70fd">4.9. Translating Weak Entity Sets</a></li>
+<li><a href="#org14afabe">4.10. Translating ISA Hierarchies to Relations</a></li>
+<li><a href="#orgd298950">4.11. NoSQL</a></li>
+</ul>
+</li>
+<li><a href="#orgc09ae6c">5. Lecture 4</a>
+<ul>
+<li><a href="#org792c0f5">5.1. Relational Query Languages</a></li>
+<li><a href="#orgcf7e2e5">5.2. Relational Algebra</a></li>
+<li><a href="#org3d4976f">5.3. Relational Calculus</a></li>
+</ul>
+</li>
+<li><a href="#org68028ef">6. Lecture 5</a>
+<ul>
+<li><a href="#org0713000">6.1. File and access Layer</a></li>
+<li><a href="#org1e4c766">6.2. File Organization</a></li>
+<li><a href="#org42df996">6.3. Heap and sorted files</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org130075c" class="outline-2">
+<h2 id="org130075c"><span class="section-number-2">1</span> Administrative stuff</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org5652803" class="outline-3">
+<h3 id="org5652803"><span class="section-number-3">1.1</span> Reading</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><a href="Ramakrishnan%20-%20Database%20Management%20Systems%203rd%20Edition.pdf">Book</a></li>
+<li>Papers</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org794581d" class="outline-3">
+<h3 id="org794581d"><span class="section-number-3">1.2</span> Grading</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Midterm 30%</li>
+<li>Project 30%</li>
+<li>Final   40% (During summer exam session)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org46ed2f6" class="outline-2">
+<h2 id="org46ed2f6"><span class="section-number-2">2</span> Lecture 1</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org48b86a6" class="outline-3">
+<h3 id="org48b86a6"><span class="section-number-3">2.1</span> Data vs Infororg-caldavmation</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Data:
+</p>
+<ul class="org-ul">
+<li>Facts</li>
+</ul>
+<p>
+org-caldav- Basis for reasoning,&#x2026;
+</p>
+<ul class="org-ul">
+<li>Can be useful/reorg-caldavlevant or not</li>
+<li>Must be processed</li>
+</ul>
+<p>
+When organized/processed, becomes Information:
+</p>
+<ul class="org-ul">
+<li>Meaningful</li>
+<li>Relevant</li>
+<li><b>Actionable</b> leads to a solution</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2390a3d" class="outline-3">
+<h3 id="org2390a3d"><span class="section-number-3">2.2</span> Look up house of cards big data <a href="http://wwinternet%20analyticsw.bigwisdom.net/blog/2016/03/13/4-big-data-lessons-from-house-of-cards/">here</a></h3>
+</div>
+<div id="outline-container-orgc2169ae" class="outline-3">
+<h3 id="orgc2169ae"><span class="section-number-3">2.3</span> Look up <a href="https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf">emc report for 2020</a></h3>
+</div>
+<div id="outline-container-org88f40f0" class="outline-3">
+<h3 id="org88f40f0"><span class="section-number-3">2.4</span> Database Management System (DBMS)</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>DBMS is a software to <b>store</b>, <b>manager</b> and <b>facilitate access</b> to databases.</li>
+<li><p>
+DBMS = Interrelated data (database) + set of program + se;; refile setup
+;;
+</p>
+
+<p>
+;; targets include this file and any file contributing to the agenda, up to 9 levels deep
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+</p></li>
+</ul>
+<p>
+(org-agenda-files :maxlevel . 9))))t of p(with-eval-after-load 'orgrograms to
+  access it (software).
+</p>
+<ul class="org-ul">
+<li>DBMS provides <b>efficient</b> (thousands of queries/update per second), <b>reliable</b>
+(availability), <b>convenient</b> (physical data indep, high level query languages)
+and <b>safe</b> (protect data from failures: h/w,s/w,power, malicious users)
+<b>multi-user</b> (concu(cfw:open-org-calendar)rrency) storage of and access to <b>massive</b> (extremly large
+TB everyday) amounts of <b>persistent</b> (data outlives programs that operate on
+it) data.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org50ea48f" class="outline-3">
+<h3 id="org50ea48f"><span class="section-number-3">2.5</span> Database</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>A <b>large</b>, <b>integrated</b>, <b>structured collection</b> of data.</li>
+<li>Usually intended to model some real-world enterprise.</li>
+<li>Entities and Relationships.</li>
+</ul>
+</div>
+<div id="outline-container-org0367fff" class="outline-4">
+<h4 id="org0367fff"><span class="section-number-4">2.5.1</span> Is WWW a DBMS?</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<ul class="org-ul">
+<li>Sophisticated search available</li>
+<li>But not really DBMS, data unstructured, "correct answer" not well defined, few
+guarantees.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf87dc9d" class="outline-4">
+<h4 id="orgf87dc9d"><span class="section-number-4">2.5.2</span> Is FS a DBMS?</h4>
+<div class="outline-text-4" id="text-2-5-2">
+<p>
+No, no guarantees when conflict (two edit at same time) or when power out&#x2026;
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2cb555c" class="outline-3">
+<h3 id="org2cb555c"><span class="section-number-3">2.6</span> DBMS Design and Architecture</h3>
+<div class="outline-text-3" id="text-2-6">
+</div><div id="outline-container-orgce291a1" class="outline-4">
+<h4 id="orgce291a1"><span class="section-number-4">2.6.1</span> Describing Data</h4>
+<div class="outline-text-4" id="text-2-6-1">
+<ul class="org-ul">
+<li><b>Data model</b> is a collection of concepts for describing data</li>
+<li><b>Relation data model</b>, relation (table with row and columns), schema
+(structure (columns) of a relation)</li>
+<li><b>Nested data model</b>, not all data fits naturally in tables</li>
+<li><b>Schema vs. Data</b>, type vs variable</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org54de84f" class="outline-4">
+<h4 id="org54de84f"><span class="section-number-4">2.6.2</span> Logical and physical data independence</h4>
+<div class="outline-text-4" id="text-2-6-2">
+<ul class="org-ul">
+<li><b>Data independence</b> is the ability to change the</li>
+</ul>
+<p>
+schema at one level of the database system without
+changing the schema at the next higher level
+</p>
+<ul class="org-ul">
+<li><b>Logical data independence</b> is the capacity to change</li>
+</ul>
+<p>
+the conceptual schema without changing the user
+views
+</p>
+<ul class="org-ul">
+<li><b>Physical data independence</b> is the capacity to</li>
+</ul>
+<p>
+change the internal schema without having to
+change the conceptual schema or user views
+&rArr; allows for modularity
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org60060c7" class="outline-2">
+<h2 id="org60060c7"><span class="section-number-2">3</span> Lecture 2</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org2d411e3" class="outline-3">
+<h3 id="org2d411e3"><span class="section-number-3">3.1</span> Data model</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>A <b>data model</b> is a collection of concepts for describing data
+<ul class="org-ul">
+<li>High-level : hides lot of low-level storage details</li>
+<li>Relational, XML, Graph, Object-Oriented,&#x2026;</li>
+</ul></li>
+<li><b>Relational data model</b>
+<ul class="org-ul">
+<li>Set of records</li>
+<li><b>Relation</b>: Table with rows and columns</li>
+<li><b>Schema</b>: Describes the structure (columns) of a relation</li>
+</ul></li>
+<li><b>Schema vs. Data</b>
+<ul class="org-ul">
+<li>Type vs. variable</li>
+<li>Description of a particular collection of data, using a given data model</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbbe3d82" class="outline-3">
+<h3 id="orgbbe3d82"><span class="section-number-3">3.2</span> Conceptual design</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>What are the <b>entities</b> and <b>relationships</b>?</li>
+<li>What info should be stored?</li>
+<li>What are the <b>integrity constraints</b>?</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9e0238b" class="outline-3">
+<h3 id="org9e0238b"><span class="section-number-3">3.3</span> Entity-Relationships Model Basics</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-org752b0ff" class="outline-4">
+<h4 id="org752b0ff"><span class="section-number-4">3.3.1</span> Entity</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<ul class="org-ul">
+<li>Real-world object distinguishable from other objects.</li>
+<li>An entity is described (in DB) using a set of attributes</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4ad1db0" class="outline-4">
+<h4 id="org4ad1db0"><span class="section-number-4">3.3.2</span> Entity Set</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<ul class="org-ul">
+<li>A collection of similar entities. E.g., all employees</li>
+<li>All entities in an entity set have the same set of attributes. (Until we
+consider hierarchies, anyway!)</li>
+<li>Each entity set has a <b>key</b> (underlined)</li>
+<li>Each attribute has a <b>domain</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org055ec4e" class="outline-4">
+<h4 id="org055ec4e"><span class="section-number-4">3.3.3</span> Relationship</h4>
+<div class="outline-text-4" id="text-3-3-3">
+<ul class="org-ul">
+<li>Association among two or more entities. E.g., Fred works in Pharmacy</li>
+</ul>
+<p>
+department
+</p>
+<ul class="org-ul">
+<li>Can have their own attributes</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8f314c2" class="outline-4">
+<h4 id="org8f314c2"><span class="section-number-4">3.3.4</span> Relationship Set</h4>
+<div class="outline-text-4" id="text-3-3-4">
+<p>
+A collection of similar relationships. E.g., all employees
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org498dc51" class="outline-3">
+<h3 id="org498dc51"><span class="section-number-3">3.4</span> Constraints</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Limits the freedom of the data
+</p>
+</div>
+<div id="outline-container-org39985f0" class="outline-4">
+<h4 id="org39985f0"><span class="section-number-4">3.4.1</span> Key Constraints</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<ul class="org-ul">
+<li>An employee can work in many departments; a department can have many
+employees: <b>Many-to-Many</b></li>
+<li>In contrast, each department has at most one manager, according to the key
+constraint on Manages: <b>One-to-Many</b></li>
+<li>Each driver can drive at most one vehicle and each vehicle will have at most
+one driver: <b>One-to-One</b></li>
+</ul>
+<p>
+/!\ <b>At most</b>, i.e. &gt;= 1
+</p>
+</div>
+</div>
+<div id="outline-container-org27eea09" class="outline-4">
+<h4 id="org27eea09"><span class="section-number-4">3.4.2</span> Participation Constraints</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<ul class="org-ul">
+<li>Every Employee should work in at least one department</li>
+<li>Every Department should have at least one employee</li>
+</ul>
+<p>
+&rArr; <b>Total participation</b>
+</p>
+
+<ul class="org-ul">
+<li>There could be some Employees who are not managers</li>
+<li>Every Department should have at least one manager</li>
+</ul>
+<p>
+If also at most, then it means: "<b>exactly one</b>"
+</p>
+
+<ul class="org-ul">
+<li>There could be some Customers who do not buy any Products</li>
+<li>There could be some Products which are not bought by any Customer</li>
+</ul>
+<p>
+&rArr; <b>Partial Participation</b>
+</p>
+
+
+<div class="figure">
+<p><img src="file:///home/raph/org/school/2016-2017/secondSemester/files/db_participation_constraints.png" alt="db_participation_constraints.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0607734" class="outline-4">
+<h4 id="org0607734"><span class="section-number-4">3.4.3</span> Weak Entities</h4>
+<div class="outline-text-4" id="text-3-4-3">
+<p>
+A weak entity can be identified uniquely only by considering the primary key of
+another (owner) entity
+</p>
+<ul class="org-ul">
+<li>Owner entity set and weak entity set must participate in a one-to-many
+relationship set (one owner, many weak entities)</li>
+<li>Weak entity set must have total participation in this identifying relationship
+set</li>
+</ul>
+<p>
+Weak entities have only a “partial key” (dashed underline)
+<img src="file:///home/raph/org/school/2016-2017/secondSemester/files/database_weak_entities.png" alt="database_weak_entities.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgd66538b" class="outline-4">
+<h4 id="orgd66538b"><span class="section-number-4">3.4.4</span> Ternary Relationships</h4>
+<div class="outline-text-4" id="text-3-4-4">
+
+<div class="figure">
+<p><img src="file:///home/raph/org/school/2016-2017/secondSemester/files/database_ternary.png" alt="database_ternary.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Proj1 uses Part1</li>
+<li>Supp1 supplies to Proj1</li>
+<li>Supp1 supplies Part1</li>
+</ul>
+<p>
+does this imply
+</p>
+<ul class="org-ul">
+<li>Proj1 uses Part1 supplied by Supp1</li>
+</ul>
+<p>
+&rArr; No
+</p>
+
+<p>
+Can be done for n-ary relationships
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org86d8183" class="outline-3">
+<h3 id="org86d8183"><span class="section-number-3">3.5</span> Complex relationships</h3>
+<div class="outline-text-3" id="text-3-5">
+</div><div id="outline-container-org2dc7c44" class="outline-4">
+<h4 id="org2dc7c44"><span class="section-number-4">3.5.1</span> ISA ('is a') Hierarchies</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<ul class="org-ul">
+<li>As in C++, or other PLs, attributes are inherited.</li>
+<li>If we declare A ISA B, every A entity is also considered to be a B entity.</li>
+
+<li><b>Overlap constraints</b>: Can Joe be an HourlyEmps as well as a ContractEmps
+entity? (Allowed/Disallowed)</li>
+<li><b>Covering constraints</b>: Does every Employees entity also have to be an
+HourlyEmps or a ContractEmps entity? (Yes/No)</li>
+<li>Reasons for using ISA:
+<ul class="org-ul">
+<li>To add descriptive attributes specific to a subclass. (i.e., not appropriate
+for all entities in the superclass)</li>
+<li>To identify entities that participate in a particular relationship (i.e., not
+all superclass entities participate)</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="file:///home/raph/org/school/2016-2017/secondSemester/files/database_isa.png" alt="database_isa.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org39151e1" class="outline-4">
+<h4 id="org39151e1"><span class="section-number-4">3.5.2</span> Aggregation</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<ul class="org-ul">
+<li>Used to model a relationship involving a relationship set</li>
+<li>Allows us to treat a relationship set as an entity set for purposes of
+participation in (other) relationships</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org84d13b2" class="outline-3">
+<h3 id="org84d13b2"><span class="section-number-3">3.6</span> Conceptual Design</h3>
+</div>
+</div>
+<div id="outline-container-orgb6d58a0" class="outline-2">
+<h2 id="orgb6d58a0"><span class="section-number-2">4</span> Lecture 3</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org2b17dc0" class="outline-3">
+<h3 id="org2b17dc0"><span class="section-number-3">4.1</span> Role of database system</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>Database: integrated, shared data collection</li>
+<li>Integrated
+<ul class="org-ul">
+<li>Eliminate needless redundancy</li>
+</ul></li>
+<li>Maintain strong consistency</li>
+<li>Shared
+<ul class="org-ul">
+<li>Application written by programmers in multiple languages</li>
+<li>End-users who use applications, forms, CLI to interact</li>
+</ul></li>
+<li>Database systems shield users from
+<ul class="org-ul">
+<li>How data is stored (bits &amp; bytes, 1 vs N files, 1 vs N disks&#x2026;)</li>
+<li>How data is accessed (btree, hashtable, scan, &#x2026;)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org72300af" class="outline-3">
+<h3 id="org72300af"><span class="section-number-3">4.2</span> What is a data model?</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Collection of application-visible constructs
+<ul class="org-ul">
+<li>Describe data in application &amp; storage agnostic way</li>
+</ul></li>
+<li>Constructs to describe structural aspects
+<ul class="org-ul">
+<li>How do applications perceive the data?</li>
+<li>Ex: table, graph, associative array&#x2026;</li>
+</ul></li>
+<li>Constructs to describe manipulation aspects
+<ul class="org-ul">
+<li>What operators can applications use?</li>
+<li>Ex: join, traverse, lookup&#x2026;</li>
+</ul></li>
+<li>Constructs to describe data integrity aspects
+<ul class="org-ul">
+<li>How do we ensure that data manipulation is “correct”?</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="../../org/school/2016-2017/secondSemester/files/Lecture 3/screenshot_2017-03-06_10-36-55.png" alt="screenshot_2017-03-06_10-36-55.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org995015c" class="outline-3">
+<h3 id="org995015c"><span class="section-number-3">4.3</span> Relation Model: Structural aspect</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>Database = set of named <b>relations</b> (or <b>tables</b>)</li>
+<li>Each relation has a set of named <b>attributes</b> (or <b>columns</b>)</li>
+<li>Each <b>tuple</b> (or <b>row</b>) has a value for each attribute</li>
+<li>Each attribute has a <b>type</b> (or <b>domain</b>)
+<ul class="org-ul">
+<li>integer, real, string, file formats (jpeg,&#x2026;), enumerated and many more</li>
+</ul></li>
+<li><b>Relation Schema</b>: relation name + field names + field domains
+<ul class="org-ul">
+<li>Students(sid: string, name: string, login: string, age: integer, gpa: real)</li>
+</ul></li>
+<li><b>Relation Instance</b>: contents at a given point in time
+<ul class="org-ul">
+<li>set of rows or tuples. (all rows are distinct with no specific ordering)</li>
+<li>Cardinality: # rows, Arity or degree: # attributes</li>
+</ul></li>
+<li><b>Database Schema</b>: collection of relation schemas</li>
+<li><b>Database Instance</b>: collection of relation instances</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3553147" class="outline-3">
+<h3 id="org3553147"><span class="section-number-3">4.4</span> Relational Model: Integrity Aspect</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Relational model provides <b>Integrity Constraints</b>
+<ul class="org-ul">
+<li>condition specified on schema that restricts the data that can be stored in any instance</li>
+<li>ICs are specified when schema is defined.</li>
+<li>ICs are checked when relations are modified.</li>
+</ul></li>
+<li>A <b>legal</b> instance of a relation is one that satisfies all specified ICs
+<ul class="org-ul">
+<li>DBMS should not allow illegal instances.</li>
+</ul></li>
+<li>With ICs, stored data is more faithful to real-world meaning
+<ul class="org-ul">
+<li>Avoids data entry errors, too!</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5a5c5b1" class="outline-3">
+<h3 id="org5a5c5b1"><span class="section-number-3">4.5</span> Domain Constraints</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>Domain constraints: type of Integrity Constraints
+<ul class="org-ul">
+<li>Domain specified in schema restricts the data that can be stored in that field</li>
+</ul></li>
+<li>Enforced by the DBMS whenever tuples are added or modified.
+<ul class="org-ul">
+<li>Similar to type checks in programming languages</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org730c16d" class="outline-3">
+<h3 id="org730c16d"><span class="section-number-3">4.6</span> Relational Model: Keys</h3>
+<div class="outline-text-3" id="text-4-6">
+<ul class="org-ul">
+<li>Attribute whose value is <b>unique</b> in each tuple</li>
+<li>Or set of attributes whose combined values are unique</li>
+<li>Keys specify <b>key constraint</b>
+<ul class="org-ul">
+<li>Enforced when tuples are inserted/updated</li>
+</ul></li>
+
+<li>Key
+<ul class="org-ul">
+<li>Set of attributes which uniquely identify a tuple</li>
+</ul></li>
+<li>Candidate Keys
+<ul class="org-ul">
+<li>If there are multiple keys, each of them is referred to as a candidate key</li>
+<li>UNIQUE(licence#)</li>
+</ul></li>
+<li>Primary Key
+<ul class="org-ul">
+<li>One of the candidate keys is chosen (by DBA)</li>
+<li>PRIMARY KEY(sid)</li>
+</ul></li>
+<li>Superkey
+<ul class="org-ul">
+<li>Superset that includes a key</li>
+<li>no two distinct tuples can have same values in all key fields</li>
+</ul></li>
+</ul>
+
+<p>
+Key must be assigned carefully &rArr; must be specific
+</p>
+</div>
+</div>
+<div id="outline-container-org6a0e5bb" class="outline-3">
+<h3 id="org6a0e5bb"><span class="section-number-3">4.7</span> Relational Model: Foreign Keys</h3>
+<div class="outline-text-3" id="text-4-7">
+<ul class="org-ul">
+<li>Set of fields in one relation that `refer’ to a tuple in another relation
+(like a pointer)</li>
+<li>Foreign keys specify Foreign Key Constraint
+<ul class="org-ul">
+<li>FK must correspond to the primary key of the other relation</li>
+</ul></li>
+<li>If all foreign key constraints are enforced, referential integrity is achieved
+(i.e., no dangling references.)</li>
+<li>FOREIGN KEY (sid) REFERENCES Students(sid)</li>
+</ul>
+</div>
+<div id="outline-container-org81176af" class="outline-4">
+<h4 id="org81176af"><span class="section-number-4">4.7.1</span> Enforcing Referential Integrity</h4>
+<div class="outline-text-4" id="text-4-7-1">
+<ul class="org-ul">
+<li>What if an Enrolled tuple with a non-existent student id is inserted? (Reject it!)</li>
+<li>What if a Students tuple is deleted?
+<ul class="org-ul">
+<li>Also delete all Enrolled tuples that refer to it?</li>
+<li>Disallow deletion of a Students tuple that is referred to?</li>
+<li>Set sid in Enrolled tuples that refer to it to a default sid?</li>
+<li>Set sid in Enrolled tuples that refer to it to a special value null, denoting `unknown ’ or `inapplicable ’ .</li>
+</ul></li>
+<li>Can specify action taken on violation in SQL</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org1ae3ac4" class="outline-3">
+<h3 id="org1ae3ac4"><span class="section-number-3">4.8</span> Mapping ER with key constraints</h3>
+<div class="outline-text-3" id="text-4-8">
+<p>
+<img src="files/Lecture 3/screenshot_2017-03-06_11-36-30.png" alt="screenshot_2017-03-06_11-36-30.png" />
+If no manager yet, could have a null ssn foreign key, maybe not what we want&#x2026;
+</p>
+<ul class="org-ul">
+<li>Does every department have a manager?
+<ul class="org-ul">
+<li>If so, this is a participation constraint: the participation of Departments in Manages is said to be total.</li>
+<li>Every did value in Departments relation must appear in a row of the Manages
+relation (with a non-null ssn value!)</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="files/Lecture 3/screenshot_2017-03-06_11-50-07.png" alt="screenshot_2017-03-06_11-50-07.png" />
+</p>
+</div>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #859900; font-weight: bold;">CREATE</span> <span style="color: #859900; font-weight: bold;">TABLE</span> <span style="color: #268bd2;">Dept_Mgr</span><span style="color: #2aa198;">(</span>
+  did <span style="color: #b58900;">INTEGER</span>,
+  dname <span style="color: #b58900;">CHAR</span><span style="color: #b58900;">(</span><span style="color: #6c71c4;">20</span><span style="color: #b58900;">)</span>,
+  budget <span style="color: #b58900;">REAL</span>,
+  ssn <span style="color: #b58900;">CHAR</span><span style="color: #b58900;">(</span><span style="color: #6c71c4;">11</span><span style="color: #b58900;">)</span> <span style="color: #859900; font-weight: bold;">NOT</span> <span style="color: #859900; font-weight: bold;">NULL</span>,
+  since <span style="color: #b58900;">DATE</span>,
+  <span style="color: #859900; font-weight: bold;">PRIMARY</span> <span style="color: #859900; font-weight: bold;">KEY</span> <span style="color: #b58900;">(</span>did<span style="color: #b58900;">)</span>,
+  <span style="color: #859900; font-weight: bold;">FOREIGN</span> <span style="color: #859900; font-weight: bold;">KEY</span> <span style="color: #b58900;">(</span>ssn<span style="color: #b58900;">)</span> <span style="color: #859900; font-weight: bold;">REFERENCES</span> Employees, <span style="color: #859900; font-weight: bold;">ON</span> <span style="color: #859900; font-weight: bold;">DELETE</span> <span style="color: #859900; font-weight: bold;">NO</span> <span style="color: #859900; font-weight: bold;">ACTION</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+<p>
+This way, department must have a manager
+</p>
+</div>
+<div id="outline-container-orgb5a1823" class="outline-4">
+<h4 id="orgb5a1823"><span class="section-number-4">4.8.1</span> Participation Constraints in SQL: Issues</h4>
+<div class="outline-text-4" id="text-4-8-1">
+<p>
+We cannot capture all participation constraints with PK, FK, not null
+</p>
+<ul class="org-ul">
+<li>Ex: Works<sub>In</sub> relationship - total participation, no key constraint</li>
+<li>Every did must must appear in a tuple in Works<sub>in</sub> table</li>
+<li>Cannot make did foreign key as did is not candidate key in Works<sub>In</sub></li>
+</ul>
+
+<div class="figure">
+<p><img src="files/Lecture 3/screenshot_2017-03-06_11-45-33.png" alt="screenshot_2017-03-06_11-45-33.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org73e70fd" class="outline-3">
+<h3 id="org73e70fd"><span class="section-number-3">4.9</span> Translating Weak Entity Sets</h3>
+<div class="outline-text-3" id="text-4-9">
+<p>
+Weak entity set and identifying relationship set are translated into a single table.
+</p>
+<ul class="org-ul">
+<li>When the owner entity is deleted, all owned weak entities must also be
+deleted.</li>
+</ul>
+
+<div class="figure">
+<p><img src="files/Lecture 3/screenshot_2017-03-06_11-51-38.png" alt="screenshot_2017-03-06_11-51-38.png" />
+</p>
+</div>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #859900; font-weight: bold;">CREATE</span> <span style="color: #859900; font-weight: bold;">TABLE</span> <span style="color: #268bd2;">Dep_Policy</span> <span style="color: #2aa198;">(</span>
+  pname <span style="color: #b58900;">CHAR</span><span style="color: #b58900;">(</span><span style="color: #6c71c4;">20</span><span style="color: #b58900;">)</span>,
+  age <span style="color: #b58900;">INTEGER</span>,
+  cost <span style="color: #b58900;">REAL</span>,
+  ssn <span style="color: #b58900;">CHAR</span><span style="color: #b58900;">(</span><span style="color: #6c71c4;">11</span><span style="color: #b58900;">)</span> <span style="color: #859900; font-weight: bold;">NOT</span> <span style="color: #859900; font-weight: bold;">NULL</span>,
+  <span style="color: #859900; font-weight: bold;">PRIMARY</span> <span style="color: #859900; font-weight: bold;">KEY</span> <span style="color: #b58900;">(</span>pname, ssn<span style="color: #b58900;">)</span>,
+  <span style="color: #859900; font-weight: bold;">FOREIGN</span> <span style="color: #859900; font-weight: bold;">KEY</span> <span style="color: #b58900;">(</span>ssn<span style="color: #b58900;">)</span> <span style="color: #859900; font-weight: bold;">REFERENCES</span> Employees, <span style="color: #859900; font-weight: bold;">ON</span> <span style="color: #859900; font-weight: bold;">DELETE</span> <span style="color: #859900; font-weight: bold;">CASCADE</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org14afabe" class="outline-3">
+<h3 id="org14afabe"><span class="section-number-3">4.10</span> Translating ISA Hierarchies to Relations</h3>
+<div class="outline-text-3" id="text-4-10">
+
+<div class="figure">
+<p><img src="files/Lecture 3/screenshot_2017-03-06_11-54-01.png" alt="screenshot_2017-03-06_11-54-01.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org4b96949" class="outline-4">
+<h4 id="org4b96949"><span class="section-number-4">4.10.1</span> Recall</h4>
+<div class="outline-text-4" id="text-4-10-1">
+<p>
+If we declare A ISA B, every A entity is also considered to be a B entity
+</p>
+<ul class="org-ul">
+<li>Overlap constraints: Can Joe be an Hourly<sub>Emps</sub> as well as a Contract<sub>Emps</sub>
+entity? (Allowed/disallowed)</li>
+<li>Covering constraints: Does every Employees entity also have to be an
+Hourly<sub>Emps</sub> or a Contract<sub>Emps</sub> entity? (Yes/no)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7e71be1" class="outline-4">
+<h4 id="org7e71be1"><span class="section-number-4">4.10.2</span> General approach</h4>
+<div class="outline-text-4" id="text-4-10-2">
+<p>
+3 relations: Employees, Hourly<sub>Emps</sub> and Contract<sub>Emps</sub>.
+</p>
+<ul class="org-ul">
+<li>Every employee is recorded in Employees.</li>
+<li>Hourly<sub>Emps</sub>: For hourly emps, extra info recorded in Hourly<sub>Emps</sub>
+(hourly<sub>wages</sub>, hours<sub>worked</sub>, ssn); must delete Hourly<sub>Emps</sub> tuple if
+referenced Employees tuple is deleted).</li>
+<li>Queries involving all employees easy, those involving just Hourly<sub>Emps</sub> require
+a join to get some attributes.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc46856b" class="outline-4">
+<h4 id="orgc46856b"><span class="section-number-4">4.10.3</span> Alternative: Just Hourly<sub>Emps,Contract</sub><sub>Emps</sub></h4>
+<div class="outline-text-4" id="text-4-10-3">
+<ul class="org-ul">
+<li>Hourly<sub>Emps</sub>: ssn, name, lot, hourly<sub>wages</sub>, hours<sub>worked</sub>.</li>
+<li>Each employee must be in one of these two subclasses.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd298950" class="outline-3">
+<h3 id="orgd298950"><span class="section-number-3">4.11</span> NoSQL</h3>
+</div>
+</div>
+<div id="outline-container-orgc09ae6c" class="outline-2">
+<h2 id="orgc09ae6c"><span class="section-number-2">5</span> Lecture 4</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-org792c0f5" class="outline-3">
+<h3 id="org792c0f5"><span class="section-number-3">5.1</span> Relational Query Languages</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Query languages: Allow manipulation and retrieval of data from a database.</li>
+<li>Relational model supports simple, powerful QLs:
+<ul class="org-ul">
+<li>Strong formal foundation based on logic.</li>
+<li>Allows for much optimization.</li>
+</ul></li>
+<li>Query Languages != Programming Languages!
+<ul class="org-ul">
+<li>QLs not expected to be “Turing complete”.</li>
+<li>QLs not intended to be used for complex calculations.</li>
+<li>QLs support easy, efficient access to large data sets.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcf7e2e5" class="outline-3">
+<h3 id="orgcf7e2e5"><span class="section-number-3">5.2</span> Relational Algebra</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+More operational, very useful for representing execution plans.
+Since each operation returns a relation, operations can be composed! (Algebra is
+5 basic operations:
+</p>
+<ul class="org-ul">
+<li>Selection (&sigma;)</li>
+<li>Projection (&pi;)</li>
+<li>Cross-product (X)</li>
+<li>Set-difference (-)</li>
+<li>Union (&cup;)</li>
+</ul>
+<p>
+There can be more operations, some of them are called compound operators, they
+use basic operators, but they allow for shorthands.
+</p>
+</div>
+<div id="outline-container-org4a5a6c5" class="outline-4">
+<h4 id="org4a5a6c5"><span class="section-number-4">5.2.1</span> Selectiona and projection</h4>
+<div class="outline-text-4" id="text-5-2-1">
+</div><div id="outline-container-org9a21ac0" class="outline-5">
+<h5 id="org9a21ac0"><span class="section-number-5">5.2.1.1</span> Selection (&sigma; )</h5>
+<div class="outline-text-5" id="text-5-2-1-1">
+<p>
+Selects a subset of rows from relation (horizontal).
+</p>
+<ul class="org-ul">
+<li>Selects rows that satisfy selection condition.</li>
+<li>Output schema of result is same as that of the input relation</li>
+</ul>
+<p>
+E.g. &sigma;<sub>rating&lt;9 ^ age&gt;50</sub>(S2)
+</p>
+</div>
+</div>
+<div id="outline-container-org8e2ed36" class="outline-5">
+<h5 id="org8e2ed36"><span class="section-number-5">5.2.1.2</span> Projection ( &pi; )</h5>
+<div class="outline-text-5" id="text-5-2-1-2">
+<p>
+Retains only wanted columns from relation (vertical).
+</p>
+<ul class="org-ul">
+<li>Retains only attributes that are in the projection list.</li>
+<li>Output schema is exactly the fields in the projection list, with the same</li>
+</ul>
+<p>
+names that they had in the input relation.
+E.g. &pi;<sub>sname,rating</sub>(S2)
+</p>
+<ul class="org-ul">
+<li>Projection operator has to eliminate duplicates (How do they arise? Why remove them?)</li>
+<li>Relational algebra is set based while SQL is bag (multiset) based</li>
+</ul>
+<p>
+E.g. rows with same age, if project, should only get two ages, however in SQL,
+we get them all&#x2026;
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org861efea" class="outline-4">
+<h4 id="org861efea"><span class="section-number-4">5.2.2</span> Composing multiple operators</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<p>
+Output of one operator can become input to another operator.
+</p>
+
+<p>
+E.g. &pi;<sub>sname,rating</sub>(&sigma;<sub>rating&gt;8</sub>(S2))
+</p>
+</div>
+</div>
+<div id="outline-container-org00c0480" class="outline-4">
+<h4 id="org00c0480"><span class="section-number-4">5.2.3</span> Union, Set Difference &amp; Intersection</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<ul class="org-ul">
+<li>All of these operations take two input relations, which must be union-compatible:
+<ul class="org-ul">
+<li>Same number of fields.</li>
+<li>“Corresponding” fields have the same type.</li>
+</ul></li>
+<li>For which, if any, is duplicate elimination required?
+<ul class="org-ul">
+<li>Yes for Union</li>
+<li>No for Set difference</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-org808edee" class="outline-5">
+<h5 id="org808edee"><span class="section-number-5">5.2.3.1</span> Union ( &cup; )</h5>
+<div class="outline-text-5" id="text-5-2-3-1">
+<p>
+Tuples in r1 and/or in r2. (“closed”).
+</p>
+
+<p>
+Combine two tables of same type, only includes one duplicates.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf40a34c" class="outline-5">
+<h5 id="orgf40a34c"><span class="section-number-5">5.2.3.2</span> Set-difference (–)</h5>
+<div class="outline-text-5" id="text-5-2-3-2">
+<p>
+Tuples in r1, but not in r2.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb464619" class="outline-5">
+<h5 id="orgb464619"><span class="section-number-5">5.2.3.3</span> Compound Operator: Intersection</h5>
+<div class="outline-text-5" id="text-5-2-3-3">
+<p>
+Must be union compatible:
+\[R \cap S = R - (R-S)\]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf65d255" class="outline-4">
+<h4 id="orgf65d255"><span class="section-number-4">5.2.4</span> Cross-product</h4>
+<div class="outline-text-4" id="text-5-2-4">
+</div><div id="outline-container-org09a3ff0" class="outline-5">
+<h5 id="org09a3ff0"><span class="section-number-5">5.2.4.1</span> Renaming Operator (&rho;)</h5>
+<div class="outline-text-5" id="text-5-2-4-1">
+<ul class="org-ul">
+<li>Renames the list of attributes specified in the form of oldname → newname or
+position → newname</li>
+<li>Output schema is same as input except for the renamed attributes.</li>
+<li>Returns same tuples as input</li>
+<li>Can also be used to rename the name of the output relation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4a18e53" class="outline-5">
+<h5 id="org4a18e53"><span class="section-number-5">5.2.4.2</span> Cross-Product (X)</h5>
+<div class="outline-text-5" id="text-5-2-4-2">
+<p>
+Allows us to combine two relations.
+</p>
+<ul class="org-ul">
+<li>S1 X R1: Each row of S1 paired with each row of R1</li>
+<li>Has #rows(S1)*#rows(R1)</li>
+<li>Result schema has one field per field of S1 and R1, with field names “inherited” if possible.</li>
+<li>May have a naming conflict: Both S1 and R1 have a field with the same name.</li>
+<li>In this case, can use the renaming operator: &rho; ( C ( 1 &rarr; sid1 , 5 &rarr;
+sid2 ), S1 &times; R1)</li>
+</ul>
+<p>
+Example:
+</p>
+
+
+<div class="figure">
+<p><img src="files/Lecture 4/screenshot_2017-03-13_10-57-01.png" alt="screenshot_2017-03-13_10-57-01.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge6714bc" class="outline-4">
+<h4 id="orge6714bc"><span class="section-number-4">5.2.5</span> Compound Operator: Join</h4>
+<div class="outline-text-4" id="text-5-2-5">
+<ul class="org-ul">
+<li>Joins are compound operators involving cross product, selection, and (sometimes) projection.</li>
+<li>Most common type of join is a natural join (often just called “join”).
+\(R\bowtie S\) conceptually is:
+<ul class="org-ul">
+<li>Compute R X S</li>
+<li>Select rows where attributes that appear in both relations have equal values</li>
+<li>Project all unique attributes and one copy of each of the common ones.</li>
+</ul></li>
+<li>Note: Usually done much more efficiently than this.</li>
+<li>Useful for putting “normalized” relations back together.</li>
+</ul>
+</div>
+<div id="outline-container-org74ff5d0" class="outline-5">
+<h5 id="org74ff5d0"><span class="section-number-5">5.2.5.1</span> Natural Join</h5>
+<div class="outline-text-5" id="text-5-2-5-1">
+
+<div class="figure">
+<p><img src="files/Lecture 4/screenshot_2017-03-13_11-23-24.png" alt="screenshot_2017-03-13_11-23-24.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbf9932c" class="outline-5">
+<h5 id="orgbf9932c"><span class="section-number-5">5.2.5.2</span> Condition Join or Theta-Join</h5>
+<div class="outline-text-5" id="text-5-2-5-2">
+<p>
+\[R \bowtie_C S = \sigma_C(R\times S)\]
+</p>
+<ul class="org-ul">
+<li>Output schema same as that of cross-product.</li>
+<li>May have fewer tuples than cross-product.</li>
+</ul>
+
+<div class="figure">
+<p><img src="files/Lecture 4/screenshot_2017-03-13_11-25-46.png" alt="screenshot_2017-03-13_11-25-46.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org804666e" class="outline-5">
+<h5 id="org804666e"><span class="section-number-5">5.2.5.3</span> Equi-Join</h5>
+<div class="outline-text-5" id="text-5-2-5-3">
+<ul class="org-ul">
+<li>Special case of theta-join: condition c contains only conjunction of equalities.</li>
+<li>Find all pairs of sailors in S2 who have same age.</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="files/Lecture 4/screenshot_2017-03-13_11-29-44.png" alt="screenshot_2017-03-13_11-29-44.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga2ee4bd" class="outline-4">
+<h4 id="orga2ee4bd"><span class="section-number-4">5.2.6</span> Compound Operator: Division</h4>
+<div class="outline-text-4" id="text-5-2-6">
+<ul class="org-ul">
+<li>Useful for expressing “for all” queries like:
+<ul class="org-ul">
+<li>Find sids of sailors who have reserved all boats.</li>
+</ul></li>
+<li>For A/B attributes of B are subset of attributes of A.
+<ul class="org-ul">
+<li>May need to “project” to make this happen.</li>
+</ul></li>
+<li>E.g., let A have 2 fields, x and y ; B have only field y :</li>
+</ul>
+<p>
+\[A/B = \lbrace \langle x \rangle |" \langle y \rangle Î B($\langle x,y \rangle
+Î A) \rbrace\]
+A/B contains all x tuples such that
+for every y tuple in B, there is an xy tuple in A.
+</p>
+
+<p>
+E.g.
+</p>
+
+
+<div class="figure">
+<p><img src="files/Lecture 4/screenshot_2017-03-13_12-01-19.png" alt="screenshot_2017-03-13_12-01-19.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>Division is not essential op; just a useful shorthand.
+<ul class="org-ul">
+<li>(Also true of joins, but joins are so common that systems implement joins specially.)</li>
+</ul></li>
+<li>Idea: For A/B, compute all x values that are not “disqualified” by some y value in B.
+<ul class="org-ul">
+<li>x value is disqualified if by attaching y value from B, we obtain an xy tuple that is not in A.</li>
+</ul></li>
+</ul>
+<p>
+Disqualified \(x\) values: \(\pi_x ((\pi_x ( A )\times B ) - A )\)
+</p>
+
+<p>
+\(A/B: \pi_x( A ) - \text{Disqualified } x \text{ values}\)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3d4976f" class="outline-3">
+<h3 id="org3d4976f"><span class="section-number-3">5.3</span> Relational Calculus</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Lets users describe what they want, rather than how to compute it.
+(Non-procedural, declarative.)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org68028ef" class="outline-2">
+<h2 id="org68028ef"><span class="section-number-2">6</span> Lecture 5</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-org0713000" class="outline-3">
+<h3 id="org0713000"><span class="section-number-3">6.1</span> File and access Layer</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Database as a “file of records”
+</p>
+<ul class="org-ul">
+<li>Create/delete files</li>
+<li>insert/delete/modify record</li>
+<li>retrieve one particular record (point access)
+<ul class="org-ul">
+<li>specified using record id</li>
+</ul></li>
+<li>retrieve range of records (range access)
+<ul class="org-ul">
+<li>satisfying some conditions</li>
+</ul></li>
+<li>retrieve all records (scan)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1e4c766" class="outline-3">
+<h3 id="org1e4c766"><span class="section-number-3">6.2</span> File Organization</h3>
+<div class="outline-text-3" id="text-6-2">
+</div><div id="outline-container-orgfca419a" class="outline-4">
+<h4 id="orgfca419a"><span class="section-number-4">6.2.1</span> Page format</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<ul class="org-ul">
+<li>Page = collection of slots</li>
+<li>Each slots stores one record
+<ul class="org-ul">
+<li>Record identifier: &lt;page<sub>id</sub>, slot<sub>number</sub>&gt;</li>
+<li>Option 2: &lt;uniq&gt; -&gt; &lt;page<sub>id</sub>, slot<sub>number</sub>&gt;</li>
+</ul></li>
+<li>Page format should support
+<ul class="org-ul">
+<li>Fast searching, inserting, deleting</li>
+</ul></li>
+<li>Page format depends on record format
+<ul class="org-ul">
+<li>Fixed-Length</li>
+<li>Variable-Length</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc50ac2c" class="outline-4">
+<h4 id="orgc50ac2c"><span class="section-number-4">6.2.2</span> Fixed length</h4>
+<div class="outline-text-4" id="text-6-2-2">
+</div><div id="outline-container-org35e02d9" class="outline-5">
+<h5 id="org35e02d9"><span class="section-number-5">6.2.2.1</span> Record Formats: Fixed-Length</h5>
+<div class="outline-text-5" id="text-6-2-2-1">
+<ul class="org-ul">
+<li>Schema is stored in system catalog
+<ul class="org-ul">
+<li>Number of fields is fixed for all records of a table</li>
+<li>Domain is fixed for all records of a table</li>
+</ul></li>
+<li>Each field has fixed length</li>
+<li>Finding ith field is done via arithmetic.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org204e46a" class="outline-5">
+<h5 id="org204e46a"><span class="section-number-5">6.2.2.2</span> Page format with fixed-length records</h5>
+<div class="outline-text-5" id="text-6-2-2-2">
+<ul class="org-ul">
+<li>Record id = &lt;page id, slot #&gt;</li>
+<li>In the packed case, moving records for free space management changes rid;
+maybe unacceptable.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org5a94f45" class="outline-4">
+<h4 id="org5a94f45"><span class="section-number-4">6.2.3</span> Variable length</h4>
+<div class="outline-text-4" id="text-6-2-3">
+</div><div id="outline-container-orgebf528e" class="outline-5">
+<h5 id="orgebf528e"><span class="section-number-5">6.2.3.1</span> Record Formats: Variable-Length</h5>
+<div class="outline-text-5" id="text-6-2-3-1">
+<p>
+Fields are delimited by special symbols, to have faster random access, can
+maintain array of offsets
+</p>
+
+<p>
+Array of field offsets is typically superior
+</p>
+<ul class="org-ul">
+<li>Direct access to fields</li>
+<li>Clean way of handling NULL values</li>
+<li>Oracle 8: length—data pairs, DB2: Array of offsets</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3513869" class="outline-5">
+<h5 id="org3513869"><span class="section-number-5">6.2.3.2</span> Page Format: Variable-Length Records</h5>
+<div class="outline-text-5" id="text-6-2-3-2">
+<ul class="org-ul">
+<li>Need to move records in a page: Allocation/deletion must find/release free space</li>
+<li>Maintain slot directory with &lt;record offset, record length&gt; pairs
+<ul class="org-ul">
+<li>Records can move on page without changing rid</li>
+<li>Useful for freely moving fixed-length records (ex: sorting)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org97b077f" class="outline-5">
+<h5 id="org97b077f"><span class="section-number-5">6.2.3.3</span> Issue</h5>
+<div class="outline-text-5" id="text-6-2-3-3">
+<ul class="org-ul">
+<li>If a field grows and no longer fits?
+<ul class="org-ul">
+<li>shift all subsequent fields</li>
+</ul></li>
+<li>If record no longer fits in page?
+<ul class="org-ul">
+<li>Move a record to another page after modification</li>
+</ul></li>
+<li>What if record size &gt; page size?
+<ul class="org-ul">
+<li>SQL Server record size = 8KB</li>
+<li>DB2 record size = page size</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4461a68" class="outline-4">
+<h4 id="org4461a68"><span class="section-number-4">6.2.4</span> Column store</h4>
+<div class="outline-text-4" id="text-6-2-4">
+<p>
+Depends on what kind of queries you want to make.
+</p>
+
+<p>
+Decompose a relational table to sub-tables per attribute &rarr; Saves IO by
+bringing only the relevant attributes
+</p>
+
+<p>
+Issue, data is everywhere, if you want to update a row, must access lots of
+pages.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org42df996" class="outline-3">
+<h3 id="org42df996"><span class="section-number-3">6.3</span> Heap and sorted files</h3>
+<div class="outline-text-3" id="text-6-3">
+</div><div id="outline-container-org4764941" class="outline-4">
+<h4 id="org4764941"><span class="section-number-4">6.3.1</span> Heap (unordered) files</h4>
+<div class="outline-text-4" id="text-6-3-1">
+<ul class="org-ul">
+<li>Simplest file structure
+<ul class="org-ul">
+<li>contains records in no particular order &rarr; to search, need to scan all files</li>
+<li>Need to be able to scan, search based on rid</li>
+<li>Simple to add file</li>
+</ul></li>
+<li>As file grows and shrinks, disk pages are allocated and de-allocated.
+<ul class="org-ul">
+<li>Need to manage free space</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-org926de77" class="outline-5">
+<h5 id="org926de77"><span class="section-number-5">6.3.1.1</span> Heap File Implemented Using Lists</h5>
+<div class="outline-text-5" id="text-6-3-1-1">
+<ul class="org-ul">
+<li>&lt;Heap file name, header page id&gt; stored somewhere</li>
+<li>Each page contains 2 ‘pointers’ plus data.</li>
+<li>Manage free pages using free list
+<ul class="org-ul">
+<li>What is most pages have some space?</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8e6ec51" class="outline-5">
+<h5 id="org8e6ec51"><span class="section-number-5">6.3.1.2</span> Heap File Using a Page Directory</h5>
+<div class="outline-text-5" id="text-6-3-1-2">
+<ul class="org-ul">
+<li>The directory is a collection of pages
+<ul class="org-ul">
+<li>linked list implementation is just one alternative.</li>
+</ul></li>
+<li>The entry for a page can include the number of free bytes on the page.
+<ul class="org-ul">
+<li>Much smaller than linked list of all HF pages!</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc2ea9b6" class="outline-4">
+<h4 id="orgc2ea9b6"><span class="section-number-4">6.3.2</span> Sorted file</h4>
+<div class="outline-text-4" id="text-6-3-2">
+<p>
+Just store in sorted order.
+</p>
+</div>
+</div>
+<div id="outline-container-org0ddacdd" class="outline-4">
+<h4 id="org0ddacdd"><span class="section-number-4">6.3.3</span> Heap File vs. Sorted file</h4>
+<div class="outline-text-4" id="text-6-3-3">
+<ul class="org-ul">
+<li>Which is better?
+<ul class="org-ul">
+<li>Let us design a cost model to find out</li>
+</ul></li>
+<li>Simplified cost model:
+<ul class="org-ul">
+<li>Based only on IO cost
+<ul class="org-ul">
+<li>IO is the dominating cost</li>
+<li>Ignore CPU and other overheads</li>
+<li>Ignore effect of prefetching and sequential access</li>
+</ul></li>
+<li>Consider only average case</li>
+</ul></li>
+</ul>
+<p>
+Also, assume:
+</p>
+<ul class="org-ul">
+<li>Single record insert and delete.</li>
+<li>Equality search - exactly one match (e.g., search on key)
+<ul class="org-ul">
+<li>Question: what if more or fewer? Just go through all</li>
+</ul></li>
+<li>Heap Files:
+<ul class="org-ul">
+<li>Insert always appends to end of file.</li>
+</ul></li>
+<li>Sorted Files:
+<ul class="org-ul">
+<li>Files compacted after deletions.</li>
+<li>Search done on file-ordering attribute.</li>
+</ul></li>
+</ul>
+<p>
+Costs:
+B = number of data pages
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Heap File</th>
+<th scope="col" class="org-left">Sorted File</th>
+<th scope="col" class="org-left">notes&#x2026;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Scan all records</td>
+<td class="org-left">B</td>
+<td class="org-left">B</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Equality Search</td>
+<td class="org-left">0.5B</td>
+<td class="org-left">log<sub>2</sub> B</td>
+<td class="org-left">assumes exactly one match</td>
+</tr>
+
+<tr>
+<td class="org-left">Range Search</td>
+<td class="org-left">B</td>
+<td class="org-left">log<sub>2</sub> B + (#match pages)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Insert</td>
+<td class="org-left">2</td>
+<td class="org-left">log<sub>2</sub> B + 2*(B/2)</td>
+<td class="org-left">must R &amp; W, update all files</td>
+</tr>
+
+<tr>
+<td class="org-left">Delete</td>
+<td class="org-left">0.5B + 1</td>
+<td class="org-left">log<sub>2</sub> B + 2*(B/2)</td>
+<td class="org-left">must R &amp; W</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-03-20 Mon 11:03</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.51 in css mode. -->
+<html>
+  <head>
+    <title>Agenda View</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #839496;
+        background-color: #002b36;
+      }
+      .bold {
+        /* bold */
+        font-weight: bold;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #586e75;
+      }
+      .custom {
+        /* (:foreground "#002b36") */
+        color: #002b36;
+      }
+      .org-document-info-keyword {
+        /* org-document-info-keyword */
+        color: #586e75;
+      }
+      .org-document-title {
+        /* org-document-title */
+        color: #93a1a1;
+        font-size: 130%;
+        font-weight: bold;
+      }
+      .org-level-1 {
+        /* org-level-1 */
+        color: #cb4b16;
+        font-size: 130%;
+      }
+      .org-level-2 {
+        /* org-level-2 */
+        color: #859900;
+        font-size: 120%;
+      }
+      .org-level-3 {
+        /* org-level-3 */
+        color: #268bd2;
+        font-size: 114%;
+      }
+      .org-level-4 {
+        /* org-level-4 */
+        color: #b58900;
+        font-size: 110%;
+      }
+      .org-link {
+        /* org-link */
+        color: #b58900;
+        text-decoration: underline;
+      }
+      .org-meta-line {
+        /* org-meta-line */
+        color: #586e75;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">COM-308: Internet Analytics
+</span><span class="org-meta-line">#+HTML_HEAD: &lt;link rel="stylesheet" type="text/css" href="/home/raph/school/theme.css"/&gt;</span>
+<span class="org-meta-line">#+OPTIONS: toc:2, H:4</span>
+<span class="comment"># Local Variables&#58;</span>
+<span class="comment"># org-download-image-dir: \./files</span>
+<span class="comment"># End:</span>
+
+<span class="org-level-1">* Grading</span>
+
+- Project 20%
+- Midterm 30%
+- Final   50%
+
+<span class="org-level-1">* Lecture 1</span>
+<span class="org-level-1">* Lecture 2</span>
+
+For <span class="bold">*networks*</span> we use models, can't be exactly accurate (would be too complicated), but can
+still be useful to understand.
+
+<span class="custom">*</span><span class="org-level-2">* What are models for</span>
+<span class="custom">**</span><span class="org-level-3">* Explanation of phenomenon/behavior/pattern</span>
+
+- Occam's razor = simplest possible model preferred
+- Uses most important features of the system
+- E.g. economics - income distribution
+
+*** Prediction and inference
+
+- Favor performance, not parsimony
+- Can be black-box
+- E.g. stock-price prediction for time series
+
+** Social networks
+
+- Captures ties between individuals
+- Ties can be several things (friendship,business relationship,...)
+- Tie formation:
+  - Complex social process
+  - Type and level of tie
+- Most parsimonious model: "social network"
+  - Graph
+  - Undirected edges, without attributes or weights
+  - Only structure
+- Becoming really huge (more data)
+
+** Information networks
+
+- Web
+- Assymetric links \Rightarrow directed graph
+
+*** Examples
+
+- Internet, traffic exchange arrangements (peering) w/o central coordination
+- Wikipedia, references to related concepts
+- Scientific literature, bibliography cites prior works
+- Dictionary: explaining one term in terms of other terms
+
+** Common features
+
+- No rules or centralized design
+- Nobody has global information (knowledge of "neighborhood" only)
+- Element of chance (random models)
+
+** Giant component
+
+- Definition: Connected component that is:
+  - Much larger than other connected components
+  - Significant fraction of whole network (Same order of magnitude)
+- The could be several very large components
+- Finding GC:
+  - Finding components: start at vertex $u$ and run BFS/DFS to exhaustion
+  - Find dominant component
+
+*** Random graphs ($G(n,p)$)
+
+$G(n,p)$ model:
+- $n$ vertices
+- Every edge $(u,v)$ exists independently with prob $p$
+Expected degree (# of neighbors) =  $c$ = $(n-1)p \sim np$
+
+*** Giant component in $G(n,p)$
+
+- Conditions for GC in $G(n,p)$
+- As $n \to \infty$, what functions $p_n$ ensure that $P(G(n,p_n)$ has GC $\to
+  1$
+- Discovery process:
+  - Start at a node $u$
+  - Find $u$ 's neighbors recursively until done (BFS/DFS)
+- Property of set of discovered nodes: only a function of edges and independent
+  of other edges
+
+**** Using Principle of Deferred Decision (PDD) for node discovery
+
+Flip coin to choose next node (amongst connected and not already checked nodes)
+- Three types of node:
+  - Potential, could be in the component
+  - Active, is in the component, edges not checked
+  - saturated, in the component and edges already checked
+- $k$ th step:
+  - $A_k$: # active
+  - $k$: # saturated (used)
+  - $n-k-A_k$: # potential
+- Number of new active nodes from old active node:
+  - $X_k \sim \text{Binom}(n-k-A_k,p)$
+  - Indep.
+- Approximation: while $k$ and $A_k &lt;&lt; n$: $\text{Binom}(n-k-A_k,p) \simeq
+  \text{Binom}(n,p)$
+- Termination: if E[# offspring] &gt; 1; then P[termination] &lt; 1; if E[# offspring]
+  &lt; 1, then P[termination] = 1
+
+**** Condition for GC in $G(n,p)$
+
+- Set $p=\frac{c}{n}$
+  - $c$: average degree
+  - Number of offspring $\sim$ Poisson($c$)
+- Theorem:
+  - if $c &gt; 1$, then $G(n,p)$ has a single component of size $\Theta(n)$
+    asymptotically almost surely; all other components are small (of size
+    $o(n)$)
+  - if $c &lt; 1$, then $G(n,p)$ has only small components
+- Interpretation:
+  - Giant component emerges naturally, even with completely random edge
+    generation
+  - No network-wide &#8220;coordination&#8221; needed
+  - Sharp threshold &#8211; phase transition! At avg degree c = 1
+- Note:
+  - More to prove: single component; impact of ignoring $k + A_k$
+  - Below threshold (c &lt; 1): all small components are trees
+
+**** $G(n,p)$ model: connectivity
+
+- Another phase transition: Consider threshold function $t(n) = \frac{\log n}{n}$
+- Theorem:
+  - If $p(n)/t(n) \to \infty$, then $G(n, p)$ is connected (a.a.s.)
+  - If $p(n)/t(n) \to 0$, then $G(n, p)$ is not connected (a.a.s.)
+  - Gap between these two \to harder to analyze
+- Intuition: [[https://en.wikipedia.org/wiki/Coupon_collector's_problem][Coupon collector problem]]: $n \log n$ balls needed to have no empty
+  bins
+
+** Clustering
+
+- Clustering = transitivity, two nodes with common neighbor likely to be
+  connected
+- Clustering coefficient = # links among friends / # possible links among
+  friends = empirical probability that $(v,w)$ exists given $(u,v)$ and $(u,w)$
+  exist
+- If links were entirely random:
+  - $c_u=p=\frac{m}{\binom{n}{2}} \simeq \frac{2m}{n^2}$, where $m$ = # edges in
+    network
+  - So $c_u &gt;&gt; p$ means the network has high clustering
+
+*** Network metrics
+
+- Average clustering coefficient: $c_G = \frac{1}{n} \sum_u c_u$
+- Weighted average clustering coefficient (also called "transitivity"):
+$$c_G = \frac{\sum_u \binom{d_u}{2}c_u}{\sum_u \binom{d_u}{2}} = \frac{\text{#
+closed triples}}{\text{# connected triples}} = 3 \frac{\text{#
+triangles}}{\text{# connected triples}}$$
+
+** Strong and weak ties
+
+Now edges have propery: "Strong" = close person, "weak" = acquaintances
+
+*** Bridges
+
+- Bridge, removing it disconnects two components
+- Local bridge, makes distance big, no more common neighbors
+
+*** Strong Triadic Closure (STC) node property
+
+A node a violates [[https://en.wikipedia.org/wiki/Triadic_closure][STC]] if there are two strong edges $(a, b)$ and $(a, c)$, but there
+is no edge $(b, c)$
+
+*** STC \Rightarrow local bridges are weak ties
+
+- Lemma: if a node $a$ satisfies STC (and has at least two strong ties), then
+  any local bridge $(a,b)$ is weak.
+- Proof:
+  - Assume node a satisfies STC, but $(a, b)$ is strong and local bridge
+  - By assumption, there is at least one other strong tie $(a, c)$
+  - By STC, $(b, c)$ must exist
+  - But then $a$ and $b$ have common neighbor $c$, so $(a, b)$ is not a local bridge
+  - Contradiction
+- Insight: Social ties to communities usually go through weak links
+
+** Short paths
+
+[[https://en.wikipedia.org/wiki/Small-world_experiment][Milgram 1969]]
+- Theorem: $G(n,p)$ has diameter $\log(n) / \log(np)$
+- Intuition:
+  - Graph looke close to a tree from every node
+  - Randomness creates very "efficient" graphs (edges used very well to reach
+    large number of nodes + few short cycle, incl. triangles)
+
+*** Evolution of average distance with shortcuts
+
+- Average distance on a circle: $cn$, where $c$ is a constant
+- Average distance with one "ideal" shortcut $cn/2$
+- With $k$ shortcuts $O(\frac{n}{2^k})$
+- Distance drops quickly with $k$
+
+*** Evolution of clustering coeff with shortcuts
+
+- As long as $k &lt;&lt; n$, small impact on clustering coefficient, few triangles get
+  destroyed
+
+*** Small worlds
+
+- high clustering
+- small distances
+
+<span class="org-level-1">* Lecture 3</span>
+<span class="custom">*</span><span class="org-level-2">* Herding and "watching thy neighbor"</span>
+
+- Information cascades: why imitating your friends makes sense &#8211; and how it can lead to surprising group behavior
+- Heavy-tailed degree distributions: &#8220;the rich get richer&#8221; applied to networks
+
+<span class="custom">*</span><span class="org-level-2">* Watching thy Neighbor</span>
+
+- Human decision-making:
+  - Primary private information...
+  - Heavily influenced by what decisions taken by others
+- Reason:
+  - Primary information: often too voluminous, noisy, not trustworthy,...
+  - By imitating others, piggyback on their effort to interpret primary information
+- Question: Macro behavior of such systems?
+
+** Herding how it can go wrong? Urn model
+
+- Urn with 3 balls
+  - A priori distribution (blue/red majority) = (0.5,0.5)
+  - majority blue: 2 blue + 1 red
+  - majority red: 2 red + 1 blue
+- A group of people take turns:
+  - Draw a ball from the urn at random
+  - Check the color of the ball privately, put it back in urn
+  - Announce their guess (blue/red majority) to everybody
+- Assumption:
+  1. Each individual is altruistic: do what allows others to make best guess
+  2. Each individual is selfish = tries to make best guess for himself
+
+*** Urn model: altruistic
+
+- Every person:
+  - Selects a ball at random (with replacement)
+  - Announces the color of the ball to everybody
+- As $n \to \infty$, majority color of urn is equal to color most frequently observed
+  - Consequence of law of large numbers
+- After a few &#8220;sacrifices&#8221;, everybody could produce best guess
+  - Sacrifice in the sense that first few individuals might be forced to say red
+    (color of their ball) even if previous information suggests blue majority
+
+*** Urn model: selfish
+
+- Sequential decision-making
+  - Public guess &#8211; goal: correct guess for many/most people
+  - Observed color remains private
+- First individual:
+  - Blue ball: announce guess(1) = blue
+  - Red ball: announce guess(1) = red
+  - Public guess of first fully reveals private information
+- Second individual:
+  - If color(2) = guess(1): announce this color
+  - If color(2) &#8800; guess(1): does not matter (assume color(2))
+  - Public guess of second fully reveals private information
+- Third individual:
+  - if guess(1) &#8800; guess(2): announce guess(3) = color(3)
+  - If guess(1) = guess(2): Announce guess(3)=guess(2)=guess(1), regardless of color(3)
+  - Why is this?
+    - Person 3 knows that guesses 1+2 reveal perfect information
+    - Therefore, regardless of color(3), guess(1)=guess(2) dominates guess
+- Fourth,...,&#8734;th individual:
+  - If guess(1) = guess(2): Announce guess(i) = guess(2)=guess(1), regardless of
+    color(i)
+This model leads to cascade
+- If guess(1) = guess(2) were both wrong, then all future guesses are wrong!
+- This happens with prob. 1/9
+- Even though each individual is using available information in the best way to make a guess
+- Can show that in this model, this is sure to happen eventually (even if not
+  for 3 rd individual)
+
+*** Information cascade: suboptimal decision
+
+- Cascade: sequential decisions
+- Individual:
+  - Efficiency gain by observing others&#8217; decisions
+- Global behavior:
+  - Primary information can &#8220;wash out&#8221;
+  - Suboptimal or random decisions
+- Might these be cascades:
+  - Stock market gyrations, &#8220;flash crash&#8221;
+  - Inexplicable shifts in popularity of {restaurants, clubs, celebrities,...}
+  - Fashion, style, celebrity,...
+  - ...
+
+** Herding in networks
+
+- Observation: degree distributions in networks often resemble power laws
+- Power law: $P(D &gt; d) \propto d^{-\gamma}$
+- Must distributions have "light tails": eg. $P(D &gt; d) \propto e^{0\alpha d}$
+Example of such distribution: [[https://en.wikipedia.org/wiki/Pareto_distribution][Pareto distribution]] 
+
+Useful to compare the tail of the distribution, what is d* s.t P(D &gt; d*) = 10^-9
+
+** Preferential attachment in growing nets
+
+- Growth model: nodes arrive one by one and join the existing network
+  - Directed graph
+  - In-degree $d_{in{(v)$ measures "popularity" and attractiveness" of node
+- Preferential attachment: new node creates one edge
+- Prob. of connecting to $v$ is $\propto d_{in}(v)$
+- Intuition: high-degree easier to meet; more popular; more useful;...
+- Node with in-degree 0 never gets &#8220;started&#8221;
+- Need another assumption:
+  - With prob. $\alpha$, new node connects uniformly at random
+  - With prob. $1 - \alpha$ , preferential attachment
+
+*** Analysis
+
+cf. slides for details.
+
+** Observing
+*** [[https://en.wikipedia.org/wiki/Friendship_paradox][Friendship Paradox]]
+
+- &#8220;Your friends have more friends than you&#8221;
+- Social network = $G(V,E)$
+- $d_v$ : degree of node $v$
+- $n = |V|$ : number of nodes, $m = |E|$ : number of edges
+- Average number of friends: $\mu = \frac{\sum d_v}{n}$
+- How to talk about average number of friends&#8217; friends?
+  - Average degree over nodes: $\mu = \frac{\sum d_v}{n} = 2 \frac{m}{n}$, look at each person
+  - Average degree over edges: $\frac{\sum_{(u,v)\in E} d_v}{2m}$, look at each person's list of friends
+- Lemma:
+  - $\frac{\sum_{(u,v)\in E} d_v}{2m} = \mu\left(1+\frac{\sigma^2}{\mu^2}\right)$
+  - Degree variance: $\sigma^2 = \frac{1}{n} \sum_{v\in V} d^2_v - \left(\frac{1}{n} \sum_{v\in V} d_v\right)^2$
+
+*** Observer matters
+
+Sampling bias
+
+<span class="org-level-1">* Lecture 4</span>
+<span class="custom">*</span><span class="org-level-2">* Node statistics in large networks</span>
+
+- Breadth-First Search
+  - Problem: &#8220;locality bias&#8221;
+  - E.g.: starting node is a page in English \to most nearby pages probably are as well
+- Depth-First Search
+  - Advantage: avoid locality bias
+  - Problem: bias in ordering of links
+  - E.g.: suppose FB friends listed alphabetically -&gt; only visit people named
+    &#8220;A*"
+- Node sampling
+  - Urn model: select every node with prob. 1/n indep. with replacement; compute
+    average over many samples
+  - Problem: usually not available, because we only have &#8220;neighbors of current
+    node&#8221;!
+
+<span class="custom">*</span><span class="org-level-2">* Random walks on graphs</span>
+
+- Random Walk
+  - Advantage: no ordering bias (by def); no locality bias (under some conditions)
+  - A bit like DFS with shuffled neighbors (but RW can return)
+- Undirected graph $G(V,E)$
+- Assume connected (otherwise assume G is the GC for the actual network)
+  - Random Walk:
+    + Discrete time $t$
+    + Node at time $t$: $X_t$
+    + At each time step, go to a neighbor of $X_t$ uniformly at random \to
+      $X_{t+1}$
+Problem, bias: high-degree nodes sampled more frequently
+
+<span class="custom">**</span><span class="org-level-3">* Random walks as Markov chain</span>
+
+- Transition matrix $P$:
+$$P= \begin{cases}
+p_{ij} = 1/d_i &amp; (i,j) \in E\\
+0 &amp; \text{otherwise}
+\end{cases}$$
+- If $G(V, E)$ is undirected, connected and non-bipartite, then $\lbrace X_t
+  \rbrace$ is an ergodic (irreducible, aperiodic) Markov chain
+(Ergodicity: Stationary distribution $\pi$, $p_{ij}(t) \to \pi_j$
+
+<span class="custom">**</span><span class="org-level-3">* Stationary distribution \pi</span>
+
+- Lemma: $\pi \propto [d_1 , d_2 , \dots , d_n ]$
+- Proof:
+  - Def of stationary distribution: $\pi = \pi P$
+  - [d_1 , d_2 , d_3 , \dots , d_n] P = x
+  - $x_j = \sum_i d_i p_{ij} = \sum_i 1_{\lbrace(i,j) \in E \rbrace} = d_j$
+  - $[d_1 , \dots , d_n]$ is eigenvector with eigenvalue=1 \to stationary distribution
+Intuition:
+- Random walk &#8220;sees&#8221; uniformly random edges; nodes biased by # of edges = degree
+- Similar to Friendship Paradox!
+
+<span class="custom">**</span><span class="org-level-3">* Obtaining unbiased estimator from RW</span>
+
+- Node statistic $f(i)$
+- Would like to know $F = \frac{1}{n} \sum_{v\in V} f(v)$
+- Sampling:
+  - Ideal: $P(X_t = v) = \frac{1}{n}$
+  - RW: $P(X_t = v) = \frac{d_v}{||d||_1} = \frac{d_v}{2m}$
+- Compensate for degree bias:
+  - Let RW run for $T$ time steps
+  - Compute $\hat{F} = \frac{2m \sum_t f(X_t)/d_{X_t}}{nT}$
+- Stationary regime: unbiased $E[\hat{F}] = E[f(X_t)] = F$, but we cannot start
+  in stationary regime, instead at a specific state \to how large does $T$ have
+  to be?
+
+*** Estimator without knowledge of $n,m$
+
+- In practice, we may not know $n, m$
+- Eliminate from estimate:
+  - Can estimate normalization constant from sample path
+  - $\hat{F} = \frac{\sum_t f(X_t)/d_{X_t}}{\sum_t 1/d_{X_t}}$
+  - Denominator: sum of all (random) weights
+
+*** Spectral theorem applied to RW
+
+- Want to compute powers of $P$: $p_{ij}(t) = [P^t]_{ij}$: $P$(at $j$ after $t$
+  steps|starting at $i$)
+- Spectral decomposition: But P is not symmetric
+- Work with a &#8220;symmetrized&#8221; version of P
+  - Def: D =diag(\frac{1}{d_1},\dots, \frac{1}{d_n})
+  - Def: A = adjacency matrix
+  - N = D1/2 AD1/2 = D &#8722;1/2 PD1/2
+  - Symmetric \to spectral form: $N = \sum_{k=1}^n \lambda_k v_k v_k^T$
+  - $\lambda k$ : eigenvalues
+  - $v_k$ : normalized eigenvectors
+- $p_{ij}(t) = [P^t]_{ij} = \pi_j + \sum_{k=2}^n \lambda_k^t \nu_{ki}\nu_{kj}
+  \sqrt{\frac{d_j}{d_i}}$
+
+<span class="custom">**</span><span class="org-level-3">* Conductance</span>
+<span class="custom">*</span><span class="org-level-2">* Epidemics</span>
+<span class="org-level-1">* Lecture 5</span>
+<span class="custom">*</span><span class="org-level-2">* Structure of the web</span>
+One dominant giant strongly connected component.
+<span class="custom">*</span><span class="org-level-2">* Search \to Ranking</span>
+- Search query \to ranked list of results
+- Two ingredients:
+  - Relevance score: how relevant is the result to the query (cf retrieval lectures)
+  - Importance score: quality, importance of the result independent of query
+<span class="custom">**</span><span class="org-level-3">* Hyperlink: intuition</span>
+Links are asymmetric
+- Existence under control of link tail
+  - Means &#8220;X considers Y relevant&#8221;
+  - Does not necessarily mean &#8220;quality&#8221; or &#8220;agreement&#8221;
+- Represented as directed graph
+<span class="custom">**</span><span class="org-level-3">* Turning hyperlink net into ranking</span>
+- Importance score of page $u:$ $\pi_u$
+- Approach 1: $\pi_u = i_u$ (in-degree)
+  - More endorsements = more important
+  - Problem: easy to spam (e.g., link-farm)
+- Approach 2: take into account importance of endorser \to circular
+  - $\pi = \sum_{(v,u)}\pi_v$
+  - More important endorsers = more important
+  - Problem: a page pointing to a single other page should be stronger endorsement
+    than e.g. a long list of links
+Approach 3:
+$$\pi_u = \sum_{(v,u)} \frac{\pi_v}{o_v}$$
+<span class="custom">**</span><span class="org-level-3">* Score-flow matrix $H$</span>
+- Def: $H_{uv} = \begin{cases} \frac{1}{o_u} &amp; (u,v) \in E \\
+0 &amp; \text{otherwise}
+\end{cases}$
+- Note: $H$ is the transition matrix of a RW on the web
+  - "Random surfer": $P(\text{at }v\text{ at time }t+1) = \sum_u P(\text{at
+    }u\text{ at time }t)/o_u$
+  - $\pi_{t+1} = \pi_t H$
+- If RW is ergodic, then $\pi_t \to \pi$
+  - $\pi = \pi H$, i.e., solves the score-flow equation
+  - Condition for ergodicity: graph has to be non-periodic and strongly connected
+    \to aperiodic and irreducible Markov chain
+<span class="custom">**</span><span class="org-level-3">* Dangling nodes</span>
+Dangling node = absorbing state of RW (not strongly connected)
+
+\Rightarrow There is no (non-zero) $\pi$ that solves $\pi = \pi H$
+<span class="custom">**</span><span class="org-level-3">* Dealing with dangling nodes</span>
+- Idea: if random surfer arrives at dangling node \to go to any webpage uniformly at random
+  - Or following some well-chosen distribution a over all nodes
+- Def: $w=$indicator of dangling nodes, Example: $w = (0,0,0,1)$
+- $\hat{H} = H +\frac{1}{n} (w^T e)$ (stochastic matrix)
+<span class="custom">**</span><span class="org-level-3">* Google Matrix $G$</span>
+Can have sets that forms absorbing class or can have several solutions.
+<span class="custom">***</span><span class="org-level-4">* Solution</span>
+Add randomization: at every iteration, coin flip: with prob $\theta$ walk on the
+graph $\hat{H}$, with prob. $1-\theta$ jump to a random page.
+- $G = \theta \hat{H} = (1-\theta) \frac{e^T e}{n}$, where $e^T e/n$ is called
+  the teleportation matrix
+- Theorem:
+  - if $\theta &lt; 1$, $\pi = \pi G$ has exactly one solution for any network
+    graph
+  - if $\theta = 0$, then $\pi$ uniform
+  - In practice: $0.8 \le \theta \le 0.9$
+  - Prob of jumping = geometric
+- PageRank algoithm computes this solution
+<span class="org-level-1">* Tips and tricks</span>
+<span class="custom">*</span><span class="org-level-2">* Stationary distribution of RW</span>
+
+HOW to: compute eigenvectors of P (probability transition matrix), then \pi
+where \pi P = P, is the stationary distribution.
+
+<span class="org-level-1">* Lab1</span>
+<span class="custom">*</span><span class="org-level-2">* </span><span class="org-link"><a href="https://github.com/mdeff/python_tour_of_data_science">https://github.com/mdeff/python_tour_of_data_science</a></span>
+<span class="custom">*</span><span class="org-level-2">* Finish lab 1</span>
+<span class="org-level-1">* Research</span>
+<span class="custom">*</span><span class="org-level-2">* Principle of deffered decision for giant component discovery</span>
+<span class="custom">*</span><span class="org-level-2">* Unbiased estimator for Random Walks</span>
+<span class="custom">*</span><span class="org-level-2">* Mixing time for RW</span>
+<span class="custom">*</span><span class="org-level-2">* Conductance</span>
+</pre>
+  </body>
+</html>
