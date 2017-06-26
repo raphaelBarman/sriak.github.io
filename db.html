@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-06-26 Mon 10:58 -->
+<!-- 2017-06-26 Mon 11:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CS-322: Introduction to Database Systems</title>
@@ -255,58 +255,58 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org949147e">1. B+trees</a></li>
-<li><a href="#org480c018">2. Sorting</a>
+<li><a href="#org6a6d906">1. B+trees</a></li>
+<li><a href="#orgc5d58c7">2. Sorting</a>
 <ul>
-<li><a href="#org6da5d1f">2.1. External merge sort</a></li>
-<li><a href="#org0b81a13">2.2. (Un)Clustered b+tree</a></li>
+<li><a href="#orgaa4d31d">2.1. External merge sort</a></li>
+<li><a href="#orgd1d17c2">2.2. (Un)Clustered b+tree</a></li>
 </ul>
 </li>
-<li><a href="#org610ff04">3. Operations costs</a>
+<li><a href="#org01bc488">3. Operations costs</a>
 <ul>
-<li><a href="#org3aee7ce">3.1. Simple selections</a></li>
-<li><a href="#org33a5bd6">3.2. Projections duplicate</a></li>
-<li><a href="#org529f25b">3.3. Joins</a></li>
-<li><a href="#orga8b4990">3.4. Union</a></li>
-<li><a href="#orgc02eb18">3.5. Aggregate operations (avg, min)</a></li>
+<li><a href="#orgf75de75">3.1. Simple selections</a></li>
+<li><a href="#orga0c8571">3.2. Projections duplicate</a></li>
+<li><a href="#org51811e5">3.3. Joins</a></li>
+<li><a href="#org2a4e78d">3.4. Union</a></li>
+<li><a href="#orgb3968e5">3.5. Aggregate operations (avg, min)</a></li>
 </ul>
 </li>
-<li><a href="#org76ef9ec">4. Query rewriting</a>
+<li><a href="#org710603f">4. Query rewriting</a>
 <ul>
-<li><a href="#org23ac2e4">4.1. De-correlation</a></li>
-<li><a href="#org765465d">4.2. Flattening</a></li>
+<li><a href="#orga6e803b">4.1. De-correlation</a></li>
+<li><a href="#org79cd67b">4.2. Flattening</a></li>
 </ul>
 </li>
-<li><a href="#org475e106">5. Stats and catalog</a>
+<li><a href="#org08a69da">5. Stats and catalog</a>
 <ul>
-<li><a href="#orgc72ac58">5.1. Results estimation for selections</a></li>
-<li><a href="#orgb83b294">5.2. Results estimation for joins</a></li>
+<li><a href="#org7da9e69">5.1. Results estimation for selections</a></li>
+<li><a href="#orgd621110">5.2. Results estimation for joins</a></li>
 </ul>
 </li>
-<li><a href="#orgbedb066">6. Plan enumeration and costing</a>
+<li><a href="#orgccd7abc">6. Plan enumeration and costing</a>
 <ul>
-<li><a href="#org64a17c3">6.1. Single-relation plan</a></li>
-<li><a href="#org3855fd3">6.2. Over multiple relations</a></li>
+<li><a href="#orgf7c20c4">6.1. Single-relation plan</a></li>
+<li><a href="#org18c1fcc">6.2. Over multiple relations</a></li>
 </ul>
 </li>
-<li><a href="#org7b76d51">7. Conflict Serializable</a></li>
-<li><a href="#orgb0777d6">8. 2 phase locking 2PL</a></li>
-<li><a href="#org2478956">9. Deadlocks</a>
+<li><a href="#org3d3bde9">7. Conflict Serializable</a></li>
+<li><a href="#org264f39f">8. 2 phase locking 2PL</a></li>
+<li><a href="#org60674bb">9. Deadlocks</a>
 <ul>
-<li><a href="#orgbc439cd">9.1. Detection</a></li>
-<li><a href="#org3330d83">9.2. Prevention</a></li>
+<li><a href="#orgd3deddd">9.1. Detection</a></li>
+<li><a href="#orgf05f89b">9.2. Prevention</a></li>
 </ul>
 </li>
-<li><a href="#org9efbed2">10. Locking Granularity</a>
+<li><a href="#org3ff822e">10. Locking Granularity</a>
 <ul>
-<li><a href="#org95ed13f">10.1. Phantom problem</a></li>
+<li><a href="#orgadbea66">10.1. Phantom problem</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org949147e" class="outline-2">
-<h2 id="org949147e"><span class="section-number-2">1</span> B+trees</h2>
+<div id="outline-container-org6a6d906" class="outline-2">
+<h2 id="org6a6d906"><span class="section-number-2">1</span> B+trees</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Number of tuples = R tuples</li>
@@ -318,23 +318,23 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org480c018" class="outline-2">
-<h2 id="org480c018"><span class="section-number-2">2</span> Sorting</h2>
+<div id="outline-container-orgc5d58c7" class="outline-2">
+<h2 id="orgc5d58c7"><span class="section-number-2">2</span> Sorting</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org6da5d1f" class="outline-3">
-<h3 id="org6da5d1f"><span class="section-number-3">2.1</span> External merge sort</h3>
+</div><div id="outline-container-orgaa4d31d" class="outline-3">
+<h3 id="orgaa4d31d"><span class="section-number-3">2.1</span> External merge sort</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Number of passes with N pages and B buffers: 1 (initial sorting pass) + \(\left\lceil \log_{B-1} \left\lceil \frac{N}{B} \right\rceil \right\rceil\)</li>
 <li>Cost = 2*N*# of passes</li>
-<li>To maintain number of pass with maximum number of pages, we get that in pass 0
+<li>To sort in two passes with maximum number of pages, we get that in pass 0
 we have upper(N/B) runs, then we need \(B - 1 \ge \left\lceil \frac{N}{B} \right\rceil\), i.e. large enough
 to satisfy \(B \cdot (B-1) \ge N\) (and check again the first one)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0b81a13" class="outline-3">
-<h3 id="org0b81a13"><span class="section-number-3">2.2</span> (Un)Clustered b+tree</h3>
+<div id="outline-container-orgd1d17c2" class="outline-3">
+<h3 id="orgd1d17c2"><span class="section-number-3">2.2</span> (Un)Clustered b+tree</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>Clustered is good, if alternative (1), very good, else, only cost to retrieve
@@ -344,15 +344,15 @@ data (always better than merge-sort)</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org610ff04" class="outline-2">
-<h2 id="org610ff04"><span class="section-number-2">3</span> Operations costs</h2>
+<div id="outline-container-org01bc488" class="outline-2">
+<h2 id="org01bc488"><span class="section-number-2">3</span> Operations costs</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Relation R with M pages, B buffers, Pr tuples per page
 </p>
 </div>
-<div id="outline-container-org3aee7ce" class="outline-3">
-<h3 id="org3aee7ce"><span class="section-number-3">3.1</span> Simple selections</h3>
+<div id="outline-container-orgf75de75" class="outline-3">
+<h3 id="orgf75de75"><span class="section-number-3">3.1</span> Simple selections</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Select * from R where R.a &lt; x.
@@ -373,8 +373,8 @@ then filter, if several indexes, can intersect rids.
 </ul>
 </div>
 </div>
-<div id="outline-container-org33a5bd6" class="outline-3">
-<h3 id="org33a5bd6"><span class="section-number-3">3.2</span> Projections duplicate</h3>
+<div id="outline-container-orga0c8571" class="outline-3">
+<h3 id="orga0c8571"><span class="section-number-3">3.2</span> Projections duplicate</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>If using external merge sort, can be modified to remove duplicates in all the
@@ -383,15 +383,15 @@ passes, total cost: M + T + T (where T = # page after projection)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org529f25b" class="outline-3">
-<h3 id="org529f25b"><span class="section-number-3">3.3</span> Joins</h3>
+<div id="outline-container-org51811e5" class="outline-3">
+<h3 id="org51811e5"><span class="section-number-3">3.3</span> Joins</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Adding a second relation S with N pages, Ps tuples per page
 </p>
 </div>
-<div id="outline-container-org0c6fe49" class="outline-4">
-<h4 id="org0c6fe49"><span class="section-number-4">3.3.1</span> Nested loop joins</h4>
+<div id="outline-container-org67f9f30" class="outline-4">
+<h4 id="org67f9f30"><span class="section-number-4">3.3.1</span> Nested loop joins</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <ul class="org-ul">
 <li>Naive simple nested loop: \(M + M\cdot Pr\cdot N\) (or \(N + N\cdot Pr \cdot M\))</li>
@@ -402,8 +402,8 @@ of pages of outer / blocksize), i.e \(M + \frac{\text{# page outer}}{\text{block
 </ul>
 </div>
 </div>
-<div id="outline-container-orge5afedd" class="outline-4">
-<h4 id="orge5afedd"><span class="section-number-4">3.3.2</span> Hash join</h4>
+<div id="outline-container-org3b6a3ea" class="outline-4">
+<h4 id="org3b6a3ea"><span class="section-number-4">3.3.2</span> Hash join</h4>
 <div class="outline-text-4" id="text-3-3-2">
 <p>
 If \(B > \sqrt{f\cdot N}\), where \(f\) is a fudge factor used to capture small increase in
@@ -412,8 +412,8 @@ relationship, cost is \(3\cdot (M+N)\).
 </p>
 </div>
 </div>
-<div id="outline-container-org99880ae" class="outline-4">
-<h4 id="org99880ae"><span class="section-number-4">3.3.3</span> Sort Merge join</h4>
+<div id="outline-container-org354ab34" class="outline-4">
+<h4 id="org354ab34"><span class="section-number-4">3.3.3</span> Sort Merge join</h4>
 <div class="outline-text-4" id="text-3-3-3">
 <ul class="org-ul">
 <li>Basic cost: sorting of M + sorting of N + (N + M) (merging).</li>
@@ -423,8 +423,8 @@ relationship, cost is \(3\cdot (M+N)\).
 </div>
 </div>
 </div>
-<div id="outline-container-orga8b4990" class="outline-3">
-<h3 id="orga8b4990"><span class="section-number-3">3.4</span> Union</h3>
+<div id="outline-container-org2a4e78d" class="outline-3">
+<h3 id="org2a4e78d"><span class="section-number-3">3.4</span> Union</h3>
 <div class="outline-text-3" id="text-3-4">
 <ul class="org-ul">
 <li>Sorting based:
@@ -442,8 +442,8 @@ and add tuples while discarding duplicates</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc02eb18" class="outline-3">
-<h3 id="orgc02eb18"><span class="section-number-3">3.5</span> Aggregate operations (avg, min)</h3>
+<div id="outline-container-orgb3968e5" class="outline-3">
+<h3 id="orgb3968e5"><span class="section-number-3">3.5</span> Aggregate operations (avg, min)</h3>
 <div class="outline-text-3" id="text-3-5">
 <ul class="org-ul">
 <li>Without grouping:
@@ -462,8 +462,8 @@ group-by order.</li>
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org92a3055" class="outline-4">
-<h4 id="org92a3055"><span class="section-number-4">3.5.1</span> Hybrid Hash join</h4>
+<div id="outline-container-orgfd119d7" class="outline-4">
+<h4 id="orgfd119d7"><span class="section-number-4">3.5.1</span> Hybrid Hash join</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
 Cf. book
@@ -472,11 +472,11 @@ Cf. book
 </div>
 </div>
 </div>
-<div id="outline-container-org76ef9ec" class="outline-2">
-<h2 id="org76ef9ec"><span class="section-number-2">4</span> Query rewriting</h2>
+<div id="outline-container-org710603f" class="outline-2">
+<h2 id="org710603f"><span class="section-number-2">4</span> Query rewriting</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org23ac2e4" class="outline-3">
-<h3 id="org23ac2e4"><span class="section-number-3">4.1</span> De-correlation</h3>
+</div><div id="outline-container-orga6e803b" class="outline-3">
+<h3 id="orga6e803b"><span class="section-number-3">4.1</span> De-correlation</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Before:
@@ -510,8 +510,8 @@ Advantage, subquery only evaluted once
 </p>
 </div>
 </div>
-<div id="outline-container-org765465d" class="outline-3">
-<h3 id="org765465d"><span class="section-number-3">4.2</span> Flattening</h3>
+<div id="outline-container-org79cd67b" class="outline-3">
+<h3 id="org79cd67b"><span class="section-number-3">4.2</span> Flattening</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Before:
@@ -544,8 +544,8 @@ and reorder freely
 </div>
 </div>
 </div>
-<div id="outline-container-org475e106" class="outline-2">
-<h2 id="org475e106"><span class="section-number-2">5</span> Stats and catalog</h2>
+<div id="outline-container-org08a69da" class="outline-2">
+<h2 id="org08a69da"><span class="section-number-2">5</span> Stats and catalog</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Values:
@@ -558,8 +558,8 @@ Values:
 <li># Index pages (INPages) for each index</li>
 </ul>
 </div>
-<div id="outline-container-orgc72ac58" class="outline-3">
-<h3 id="orgc72ac58"><span class="section-number-3">5.1</span> Results estimation for selections</h3>
+<div id="outline-container-org7da9e69" class="outline-3">
+<h3 id="org7da9e69"><span class="section-number-3">5.1</span> Results estimation for selections</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>Result cardinality = max # tuples * product of all RF's</li>
@@ -568,8 +568,8 @@ Values:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb83b294" class="outline-3">
-<h3 id="orgb83b294"><span class="section-number-3">5.2</span> Results estimation for joins</h3>
+<div id="outline-container-orgd621110" class="outline-3">
+<h3 id="orgd621110"><span class="section-number-3">5.2</span> Results estimation for joins</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 General case: R<sub>cols</sub> &cap; S<sub>cols</sub> = {A} (and A is key for neither)
@@ -582,11 +582,11 @@ General case: R<sub>cols</sub> &cap; S<sub>cols</sub> = {A} (and A is key for ne
 </div>
 </div>
 </div>
-<div id="outline-container-orgbedb066" class="outline-2">
-<h2 id="orgbedb066"><span class="section-number-2">6</span> Plan enumeration and costing</h2>
+<div id="outline-container-orgccd7abc" class="outline-2">
+<h2 id="orgccd7abc"><span class="section-number-2">6</span> Plan enumeration and costing</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-org64a17c3" class="outline-3">
-<h3 id="org64a17c3"><span class="section-number-3">6.1</span> Single-relation plan</h3>
+</div><div id="outline-container-orgf7c20c4" class="outline-3">
+<h3 id="orgf7c20c4"><span class="section-number-3">6.1</span> Single-relation plan</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>Index on primary key matches selection, lookup cost:
@@ -602,8 +602,8 @@ matchin select OR (NPages(I)+NPages(R)) * RFs</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3855fd3" class="outline-3">
-<h3 id="org3855fd3"><span class="section-number-3">6.2</span> Over multiple relations</h3>
+<div id="outline-container-org18c1fcc" class="outline-3">
+<h3 id="org18c1fcc"><span class="section-number-3">6.2</span> Over multiple relations</h3>
 <div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li>Consider only left-deep join trees, allows for fully pipelined plans.</li>
@@ -615,8 +615,8 @@ by, group by, join attr of other joins)</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org7b76d51" class="outline-2">
-<h2 id="org7b76d51"><span class="section-number-2">7</span> Conflict Serializable</h2>
+<div id="outline-container-org3d3bde9" class="outline-2">
+<h2 id="org3d3bde9"><span class="section-number-2">7</span> Conflict Serializable</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Dependency graph:
@@ -628,8 +628,8 @@ appears earlier in the schedule than Oj</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb0777d6" class="outline-2">
-<h2 id="orgb0777d6"><span class="section-number-2">8</span> 2 phase locking 2PL</h2>
+<div id="outline-container-org264f39f" class="outline-2">
+<h2 id="org264f39f"><span class="section-number-2">8</span> 2 phase locking 2PL</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>If not strict, can have problem during release cascade, how to roll-back ?</li>
@@ -638,19 +638,19 @@ complete</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2478956" class="outline-2">
-<h2 id="org2478956"><span class="section-number-2">9</span> Deadlocks</h2>
+<div id="outline-container-org60674bb" class="outline-2">
+<h2 id="org60674bb"><span class="section-number-2">9</span> Deadlocks</h2>
 <div class="outline-text-2" id="text-9">
-</div><div id="outline-container-orgbc439cd" class="outline-3">
-<h3 id="orgbc439cd"><span class="section-number-3">9.1</span> Detection</h3>
+</div><div id="outline-container-orgd3deddd" class="outline-3">
+<h3 id="orgd3deddd"><span class="section-number-3">9.1</span> Detection</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 Create wait for graph, check for cycle
 </p>
 </div>
 </div>
-<div id="outline-container-org3330d83" class="outline-3">
-<h3 id="org3330d83"><span class="section-number-3">9.2</span> Prevention</h3>
+<div id="outline-container-orgf05f89b" class="outline-3">
+<h3 id="orgf05f89b"><span class="section-number-3">9.2</span> Prevention</h3>
 <div class="outline-text-3" id="text-9-2">
 <ul class="org-ul">
 <li>Assign priority based on timestamp: TSi &lt; TSj =&gt; priority(i) &gt; priority(j)</li>
@@ -663,8 +663,8 @@ Create wait for graph, check for cycle
 </div>
 </div>
 </div>
-<div id="outline-container-org9efbed2" class="outline-2">
-<h2 id="org9efbed2"><span class="section-number-2">10</span> Locking Granularity</h2>
+<div id="outline-container-org3ff822e" class="outline-2">
+<h2 id="org3ff822e"><span class="section-number-2">10</span> Locking Granularity</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 New locks, Intention locks, IS, IX and SIX (S and IX).
@@ -736,8 +736,8 @@ Compatibility of locks:
 </tbody>
 </table>
 </div>
-<div id="outline-container-org95ed13f" class="outline-3">
-<h3 id="org95ed13f"><span class="section-number-3">10.1</span> Phantom problem</h3>
+<div id="outline-container-orgadbea66" class="outline-3">
+<h3 id="orgadbea66"><span class="section-number-3">10.1</span> Phantom problem</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 T1 wants max, but T2 insert new max, need predicate locking or index locking
@@ -747,7 +747,7 @@ T1 wants max, but T2 insert new max, need predicate locking or index locking
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-06-26 Mon 10:58</p>
+<p class="date">Created: 2017-06-26 Mon 11:03</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

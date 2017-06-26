@@ -15,7 +15,7 @@
 ** External merge sort
 - Number of passes with N pages and B buffers: 1 (initial sorting pass) + $\left\lceil \log_{B-1} \left\lceil \frac{N}{B} \right\rceil \right\rceil$
 - Cost = 2*N*# of passes
-- To maintain number of pass with maximum number of pages, we get that in pass 0
+- To sort in two passes with maximum number of pages, we get that in pass 0
   we have upper(N/B) runs, then we need $B - 1 \ge \left\lceil \frac{N}{B} \right\rceil$, i.e. large enough
   to satisfy $B \cdot (B-1) \ge N$ (and check again the first one)
 ** (Un)Clustered b+tree
