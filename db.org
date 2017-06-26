@@ -1,5 +1,5 @@
 #+TITLE: CS-322: Introduction to Database Systems
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/home/raph/school/theme.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./theme.css"/>
 #+OPTIONS: toc:2, H:4
 # Local Variables:
 # org-download-image-dir: \./files
