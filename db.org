@@ -10,14 +10,14 @@
 - Size of the index entry = E Bytes
 - Fanout F = B/E
 - Number of leaf pages = R/F
-- Height of the tree = log_F(number of leaf pages) = cost of lookup
+- Height of the tree = $\log_F$(number of leaf pages) = cost of lookup
 * Sorting
 ** External merge sort
-- Number of passes with N pages and B buffers: 1 (initial sorting pass) + upper of (log B-1 upper(N/B))
+- Number of passes with N pages and B buffers: 1 (initial sorting pass) + $\left\lceil \log_{B-1} \left\lceil \frac{N}{B} \right\rceil \right\rceil$
 - Cost = 2*N*# of passes
 - To maintain number of pass with maximum number of pages, we get that in pass 0
-  we have upper(N/B) runs, then we need B - 1 >= upper(N/B), i.e. large enough
-  to satisfy B * (B-1) >= N (and check again the first one)
+  we have upper(N/B) runs, then we need $B - 1 \ge \left\lceil \frac{N}{B} \right\rceil$, i.e. large enough
+  to satisfy $B \cdot (B-1) \ge N$ (and check again the first one)
 ** (Un)Clustered b+tree
 - Clustered is good, if alternative (1), very good, else, only cost to retrieve
   data (always better than merge-sort)
@@ -43,19 +43,19 @@ Select * from R where R.a < x.
 ** Joins
 Adding a second relation S with N pages, Ps tuples per page
 *** Nested loop joins
-- Naive simple nested loop: M + M*Pr*N (or N + N*Pr*M)
-- Page oriented loop: M + M * N
+- Naive simple nested loop: $M + M\cdot Pr\cdot N$ (or $N + N\cdot Pr \cdot M$)
+- Page oriented loop: $M + M \cdot N$
 - Using all available buffer, with R outer, S inner, create block of R, cost:
-  M(outer scan) + # outer blocks * N (inner scan), with #outer blocks = upper(#
-  of pages of outer / blocksize)
+  M(outer scan) + # outer blocks $\cdot$ N (inner scan), with #outer blocks = upper(#
+  of pages of outer / blocksize), i.e $M + \frac{\text{# page outer}}{\text{blocksize}} \cdot N$
 *** Hash join
-If B > sqrt(f*N), where f is a fudge factor used to capture small increase in
-size for building the hash table and N is the number of page of the smaller
-relationship, cost is 3*(M+N).
+If $B > \sqrt{f\cdot N}$, where $f$ is a fudge factor used to capture small increase in
+size for building the hash table and $N$ is the number of page of the smaller
+relationship, cost is $3\cdot (M+N)$.
 *** Sort Merge join
 - Basic cost: sorting of M + sorting of N + (N + M) (merging). 
-- Possible to combine merging phase of sorting with merging phase of join, if B
-  > sqrt(M) and B > sqrt(N), then cost: 3*(M+N)
+- Possible to combine merging phase of sorting with merging phase of join, if $B
+  > \sqrt{M}$ and $B > \sqrt{N}$, then cost: $3\cdot (M+N)$
 ** Union
 - Sorting based:
   - Sort
