@@ -1,0 +1,190 @@
+#+TITLE: CS-322: Introduction to Database Systems
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/home/raph/school/theme.css"/>
+#+OPTIONS: toc:2, H:4
+# Local Variables:
+# org-download-image-dir: \./files
+# End:
+* B+trees
+- Number of tuples = R tuples
+- Size of a page = B Bytes
+- Size of the index entry = E Bytes
+- Fanout F = B/E
+- Number of leaf pages = R/F
+- Height of the tree = log_F(number of leaf pages) = cost of lookup
+* Sorting
+** External merge sort
+- Number of passes with N pages and B buffers: 1 (initial sorting pass) + upper of (log B-1 upper(N/B))
+- Cost = 2*N*# of passes
+- To maintain number of pass with maximum number of pages, we get that in pass 0
+  we have upper(N/B) runs, then we need B - 1 >= upper(N/B), i.e. large enough
+  to satisfy B * (B-1) >= N (and check again the first one)
+** (Un)Clustered b+tree
+- Clustered is good, if alternative (1), very good, else, only cost to retrieve
+  data (always better than merge-sort)
+- Unclustered can be very bad, one record per page...
+* Operations costs
+Relation R with M pages, B buffers, Pr tuples per page
+** Simple selections
+Select * from R where R.a < x.
+- No index, unsorted: cost = R, full scan
+- No index, sorted, binary search + number of page of result (selectivity *
+  #pages)
+- Index, depends of alternatives, if clustered cost = lookup (= height of
+  tree) + selectivity * #pages, if not, cost is up to = lookup + selectivity * #
+  of tuples (small optimization, sort rid?)
+- For conditions, need to be cnf (bla or blo) and (blu or ble), fetch matching,
+  then filter, if several indexes, can intersect rids.
+  - For B+tree, need to match prefix
+  - For hash indexes, match all
+** Projections duplicate
+- If using external merge sort, can be modified to remove duplicates in all the
+  passes, total cost: M + T + T (where T = # page after projection)
+- Hashing possible with same cost, but sensible to data skew and result not sorted.
+** Joins
+Adding a second relation S with N pages, Ps tuples per page
+*** Nested loop joins
+- Naive simple nested loop: M + M*Pr*N (or N + N*Pr*M)
+- Page oriented loop: M + M * N
+- Using all available buffer, with R outer, S inner, create block of R, cost:
+  M(outer scan) + # outer blocks * N (inner scan), with #outer blocks = upper(#
+  of pages of outer / blocksize)
+*** Hash join
+If B > sqrt(f*N), where f is a fudge factor used to capture small increase in
+size for building the hash table and N is the number of page of the smaller
+relationship, cost is 3*(M+N).
+*** Sort Merge join
+- Basic cost: sorting of M + sorting of N + (N + M) (merging). 
+- Possible to combine merging phase of sorting with merging phase of join, if B
+  > sqrt(M) and B > sqrt(N), then cost: 3*(M+N)
+** Union
+- Sorting based:
+  - Sort
+  - Scan
+  - Merge runs from pass 0 for both relations
+- Hash based:
+  - Partition R and S using h
+  - For each S-partition, build in memory hash table with h2, scan R-partition
+    and add tuples while discarding duplicates
+** Aggregate operations (avg, min)
+- Without grouping:
+  - In general, full scan
+  - If relevant indexes, index-only scan
+- With grouping:
+  - Sort on group-by attr, the scan and compute aggregate for each group, can
+    combine sorting and aggregate
+  - If tree index with all search attributes in select,where,group by clause,
+    can do index-only
+  - If group-by attributes form prefix, can retrieve data entries/tuples in
+    group-by order.
+*** Hybrid Hash join
+Cf. book
+* Query rewriting
+** De-correlation
+Before:
+#+BEGIN_SRC sql
+SELECT S.sid
+FROM Sailors S
+WHERE S.sid IN
+  (SELECT R.sid
+  FROM Reserves R
+  WHERE R.bid=103)
+#+END_SRC
+
+After:
+#+BEGIN_SRC sql
+SELECT S.sid
+FROM Sailors S
+WHERE EXISTS
+  (SELECT *
+  FROM Reserves R
+  WHERE R.bid=103
+  AND R.sid=S.sid)
+#+END_SRC
+
+Advantage, subquery only evaluted once
+** Flattening
+Before:
+#+BEGIN_SRC sql
+SELECT S.sid
+FROM Sailors S, Reserves R
+WHERE S.sid=R.sid
+AND R.bid=103
+#+END_SRC
+
+After:
+#+BEGIN_SRC sql
+SELECT S.sid
+FROM Sailors S
+WHERE S.sid IN
+(SELECT R.sid
+FROM Reserves R
+WHERE R.bid=103)
+#+END_SRC
+
+Advantage, can us ea join algorithm + optimizer can select among join algorithms
+and reorder freely
+* Stats and catalog
+Values:
+- # tuples (Ntuples) and # pages (Npages) per relation
+- # distinct key values (Nkeys) for each index
+- low/high key values (Low/High) for each index
+- Index height (IHeight) for each tree index
+- # Index pages (INPages) for each index
+** Results estimation for selections
+- Result cardinality = max # tuples * product of all RF's
+- Term col=value (with index I on col): RF = 1/NKeys(I)
+- Term col > value: RF = (High(I)-value)/(High(I)-Low(I))
+** Results estimation for joins
+General case: R_cols \cap S_cols = {A} (and A is key for neither)
+- if NKey(A,S) > NKeys(A,R): size = NTuples(R) * NTuples(S)/NKeys(A,S)
+- if NKey(A,R) > NKeys(A,S): size = NTuples(R) * NTuples(S)/NKeys(A,R)
+- Overall: RF = 1/MAX(NKeys(A,S),NKeys(A,R))
+* Plan enumeration and costing 
+** Single-relation plan
+- Index on primary key matches selection, lookup cost:
+  - If B+tree, height of tree
+  - If hash, 1.2
+- Clustered index match one or more conjucts: lookup + NPages(R) * product of RFs of
+  matchin select OR (NPages(I)+NPages(R)) * RFs
+- Unclustered index match one or more conjucts: NTuples(R) * product of RFs OR
+  (NPages(I) + NTuples(R)) * Rfs
+- File scan: NPages(R)
+** Over multiple relations
+- Consider only left-deep join trees, allows for fully pipelined plans.
+- System R: Enumerate plans in N passes (N = # of relations joined), retain only
+  cheapest subplan overall + cheapest subplan for each interesting order (order
+  by, group by, join attr of other joins)
+- Always push all selection and projection as far down the plan as possible.
+* Conflict Serializable
+Dependency graph:
+- One node per transaction
+- Edge from Ti to Tj if: an OP Oi of Ti conflicts with an OP Oj of Tj and Oi
+  appears earlier in the schedule than Oj
+* 2 phase locking 2PL
+- If not strict, can have problem during release cascade, how to roll-back ?
+- If strict, all locks held by a transaction released only when transaction
+  complete
+* Deadlocks
+** Detection
+Create wait for graph, check for cycle
+** Prevention
+- Assign priority based on timestamp: TSi < TSj => priority(i) > priority(j)
+- if Ti wants lock that Tj holds:
+  - Wait-Die: If Ti has higher priority than Tj, Ti waits for Tj, else abort
+  - Wound Wait: If Ti has higher priority, Tj aborted, else Ti waits.
+* Locking Granularity
+New locks, Intention locks, IS, IX and SIX (S and IX).
+
+Each transaction starts from root, to get S/X lock on a node, must hold IS/IX on
+parent node, release in bottom up.
+
+Compatibility of locks:
+|    | IS | IX | S  | X  |
+|----+----+----+----+----|
+| IS | ok | ok | ok | no |
+| IX | ok | ok | no | no |
+| S  | ok | no | ok | no |
+| X  | no | no | no | no |
+** Phantom problem
+T1 wants max, but T2 insert new max, need predicate locking or index locking
+
