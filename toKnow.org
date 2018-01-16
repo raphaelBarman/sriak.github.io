@@ -1,0 +1,55 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" HREF="./theme.css"/>
+#+OPTIONS: toc:2, H:4
+# Local Variables:
+# org-download-image-dir: \./files
+# End:
+
+* SP
+- Uniform quantization: Dividing signal in $N$ intervals of amplitude $\Delta$,
+  then absolute value of error between $[0, \Delta/2]$, if amplitude = $A$, then
+  relationship: $A = N \cdot \Delta$
+- Sampled signal with sampling frequency $f_s$:
+  - in fourier domain: $\sum\limits_{k=-\infty}^{\infty} X(f - kf_s)$
+  - Fundamental period = $\frac{f_s}{2}$
+- Normalized frequencies when sampling: base frequency / sampling frequency
+- autocorrelation: $R(k) = \alpha \sum\limits_{n=1}^{N-|k|} x[n+k] x^*[n]$ with
+  $\alpha = \frac{1}{N-|k|}$ if unbiased, else $\alpha = \frac{1}{N}$, unbiased
+  = bad a extreme lags, biased = bad if signal is deterministic or constant,
+  since factor reduces amplitude introducing a bias
+- Periodogram: impossible to distinguish lines closer than $\Delta f \le 1 / N$
+  in normalized frequencies, example: sampling frequency of 100 Hz, signal
+  $x(t)$ is sum of sinusoids with freq 10Hz and 20 Hz, normalized frequencies
+  are $\frac{10}{100} = 0.1$ Hz and $\frac{20}{100} = 0.2$ Hz, thus $\Delta = 0.1$,
+  so $N$ needs to be $\ge 1/\Delta = 10$.
+* ML
+- Softmax $p(C_k | \mathbf{x} ) = \mathbf{\hat{y}} = \frac{\exp(\mathbf{W}^T_k
+  \mathbf{x} + \mathbf{b}_k)}{\sum^K_{j=1} \exp(\mathbf{W}^T_j \mathbf{x} +
+  \mathbf{b}_j)}$
+- SVM: maximize distance from closest point to decision boundary, if overlap
+  then $\lbrace \mathbf{w}^*, b^*, \lbrace \xi_i\rbrace \rbrace =
+  \text{arg}\min\limits_{\mathbf{w}, b} \frac{1}{2} ||\mathbf{w}||^2 + C
+  \sum\limits_{i=1}^N \xi_i$ s.t. $y_i(\mathbf{w}^T\mathbf{x}_i + b) \ge 1 -
+  \xi_i,\ \forall i \text{ and } \xi_i \ge 0 \forall i$
+- Kernel: positive definite, $k(\mathbf{x}_i, \mathbf{x}_j ) =
+  \phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j)$
+- Dim-red:
+  - PCA: maximize variance
+  - Fisher LDA: cluster among classes, separate clusters (generalized eigenvalue
+    problem)
+  - Canonical Correlation Analysis: find jointly low dimension for two types of
+    variables (eigenvalue)
+  - Kernel PCA
+  - Isomap: geodesic distances, graph with euclidean dist then  find mapping
+    that preserves the most the distances (eigenvalue)
+  - t-SNE, low dim s.t. joint distribution of pair of points similar in both
+    dimension (KL divergence: $KL(P||Q) = \sum\limits_i \sum\limits_j p_{i,j}
+    \log \frac{p_{i,j}}{q_{i,j}}$
+  - Gaussian Process Latent Variable Model: map from low to high, find
+    likelihood of data given low dim: $p(\mathbf{X}|\mathbf{Y}, \beta) =
+    \frac{1}{(2\pi)^{DN/2}|\mathbf{K}|^{D/2}}
+    \exp\left(-\frac{1}{2}\text{tr}(\mathbf{K}^{-1}
+    \mathbf{X}\mathbf{X}^T)\right)$ (Gaussian Process mapping from $y$ to $x$)
+  - Auto-encoder
+- K-means vs GMM: GMM allows assignment to  several cluster, ellipsoid rather
+  than circle
+
